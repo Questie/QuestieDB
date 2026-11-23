@@ -10,14 +10,14 @@ local QuestieDB = QuestieLoader:ImportModule("QuestieDB")
 -- Each Assumption says what the traces saw, which signals agree, how certain the relation is (very high: score 0.99+, high: 0.95+, medium: 0.9+, low) and how many characters back it (<10, 10+, 100+); relations-review.md has the exact evidence
 -- Commented-out fields are accepted relations this module does not apply; the comment above each says why
 -- Sessions aggregated: 998061
--- Generated at: 2026-11-18T11:23:20.159Z
+-- Generated at: 2026-11-23T12:35:23.842Z
 function ForeverQuestRelationTraces:Load()
     local questKeys = QuestieDB.questKeys
 
     return {
         -- [2] = { -- Sharptalon's Claw https://wowhead.com/forever/quest=2
             -- 6383 "The Ashenvale Hunt" https://wowhead.com/forever/quest=6383
-            -- already in QuestieDB; Assumption: 6383 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: 6383 was done whenever it was offered (offer-set, cooccurrence; medium; 100+ characters)
             -- [questKeys.preQuestSingle] = {6383},
         -- },
         -- [5] = { -- Jitters' Growling Gut https://wowhead.com/forever/quest=5
@@ -85,12 +85,12 @@ function ForeverQuestRelationTraces:Load()
         -- [19] = { -- Tharil'zun https://wowhead.com/forever/quest=19
             -- 20 "Blackrock Menace" https://wowhead.com/forever/quest=20
             -- 98387 "Blackrock Blockade" https://wowhead.com/forever/quest=98387
-            -- already in QuestieDB; Assumption: offered right after 20 was turned in (handoff, offer-set, absence, cooccurrence; low; 100+ characters), kept below the min score to complete its accepted AND list; offered right after 98387 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- already in QuestieDB; Assumption: offered right after 20 was turned in (handoff, offer-set, absence, cooccurrence; high; 100+ characters); offered right after 98387 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestGroup] = {20,98387},
         -- },
         -- [20] = { -- Blackrock Menace https://wowhead.com/forever/quest=20
             -- 19 "Tharil'zun" https://wowhead.com/forever/quest=19
-            -- already in QuestieDB; Assumption: turning it in led straight to 19 (handoff; high; 100+ characters)
+            -- not applied: an authored fix sets this field; Assumption: turning it in led straight to 19 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 19,
         -- },
         -- [21] = { -- Skirmish at Echo Ridge https://wowhead.com/forever/quest=21
@@ -198,17 +198,11 @@ function ForeverQuestRelationTraces:Load()
             -- 48 "Sweet Amber" https://wowhead.com/forever/quest=48
             -- already in QuestieDB; Assumption: offered right after 48 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
             -- [questKeys.preQuestSingle] = {48},
-            -- 50 "Sweet Amber" https://wowhead.com/forever/quest=50
-            -- already in QuestieDB; Assumption: turning it in led straight to 50 (handoff; medium; <10 characters)
-            -- [questKeys.nextQuestInChain] = 50,
         -- },
         -- [50] = { -- Sweet Amber https://wowhead.com/forever/quest=50
             -- 49 "Sweet Amber" https://wowhead.com/forever/quest=49
             -- already in QuestieDB; Assumption: offered right after 49 was turned in (handoff, offer-set, absence, cooccurrence; very high; <10 characters)
             -- [questKeys.preQuestSingle] = {49},
-            -- 51 "Sweet Amber" https://wowhead.com/forever/quest=51
-            -- already in QuestieDB; Assumption: turning it in led straight to 51 (handoff; medium; <10 characters)
-            -- [questKeys.nextQuestInChain] = 51,
         -- },
         -- [51] = { -- Sweet Amber https://wowhead.com/forever/quest=51
             -- 50 "Sweet Amber" https://wowhead.com/forever/quest=50
@@ -358,7 +352,7 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 650 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {650},
             -- 81 "Ripple Delivery" https://wowhead.com/forever/quest=81
-            -- already in QuestieDB; Assumption: turning it in led straight to 81 (handoff; high; 10+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 81 (handoff; medium; 10+ characters)
             -- [questKeys.nextQuestInChain] = 81,
         -- },
         -- [78] = { -- The Legend of Stalvan https://wowhead.com/forever/quest=78
@@ -483,7 +477,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [105] = { -- Alas, Andorhal https://wowhead.com/forever/quest=105
             -- 5098 "All Along the Watchtowers" https://wowhead.com/forever/quest=5098
-            -- already in QuestieDB; Assumption: offered right after 5098 was turned in (handoff, offer-set, absence, cooccurrence; high; 10+ characters)
+            -- already in QuestieDB; Assumption: offered right after 5098 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
             -- [questKeys.preQuestSingle] = {5098},
         -- },
         -- [106] = { -- Young Lovers https://wowhead.com/forever/quest=106
@@ -533,7 +527,7 @@ function ForeverQuestRelationTraces:Load()
         -- [115] = { -- Shadow Magic https://wowhead.com/forever/quest=115
             -- 20 "Blackrock Menace" https://wowhead.com/forever/quest=20
             -- 98387 "Blackrock Blockade" https://wowhead.com/forever/quest=98387
-            -- already in QuestieDB; Assumption: offered right after 20 was turned in (handoff, offer-set, absence, cooccurrence; medium; 100+ characters); offered right after 98387 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- already in QuestieDB; Assumption: offered right after 20 was turned in (handoff, offer-set, absence, cooccurrence; high; 100+ characters); offered right after 98387 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestGroup] = {20,98387},
         -- },
         -- [118] = { -- The Price of Shoes https://wowhead.com/forever/quest=118
@@ -792,7 +786,7 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 113 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {113},
             -- 4493 "March of the Silithid" https://wowhead.com/forever/quest=4493
-            -- already in QuestieDB; Assumption: turning it in led straight to 4493 (handoff; high; 10+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 4493 (handoff; medium; 10+ characters)
             -- [questKeys.nextQuestInChain] = 4493,
         -- },
         -- [163] = { -- Raven Hill https://wowhead.com/forever/quest=163
@@ -977,27 +971,26 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [204] = { -- Bad Medicine https://wowhead.com/forever/quest=204
             -- 574 "Special Forces" https://wowhead.com/forever/quest=574
-            -- not applied: 574 needs this quest together with 203 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 574 (handoff; high; 100+ characters)
+            -- not applied: 574 needs this quest together with 203 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 574 (handoff; medium; 100+ characters)
             -- [questKeys.nextQuestInChain] = 574,
         -- },
-        [205] = { -- Troll Witchery https://wowhead.com/forever/quest=205
+        -- [205] = { -- Troll Witchery https://wowhead.com/forever/quest=205
             -- 207 "Kurzen's Mystery" https://wowhead.com/forever/quest=207
             -- already in QuestieDB; Assumption: offered right after 207 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {207},
             -- 95786 "An Acquaintance in Southshore" https://wowhead.com/forever/quest=95786
-            -- Assumption: turning it in led straight to 95786 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 95786,
-        },
+            -- already in QuestieDB; Assumption: turning it in led straight to 95786 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 95786,
+        -- },
         -- [206] = { -- Mai'Zoth https://wowhead.com/forever/quest=206
             -- 205 "Troll Witchery" https://wowhead.com/forever/quest=205
             -- already in QuestieDB; Assumption: 205 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
             -- [questKeys.preQuestSingle] = {205},
         -- },
         -- [207] = { -- Kurzen's Mystery https://wowhead.com/forever/quest=207
-            -- 203 "The Second Rebellion" https://wowhead.com/forever/quest=203
             -- 204 "Bad Medicine" https://wowhead.com/forever/quest=204
-            -- already in QuestieDB; Assumption: 203 was done whenever it was offered (offer-set, absence, cooccurrence; medium; 100+ characters); 204 was done whenever it was offered (offer-set, absence, cooccurrence; high; 100+ characters)
-            -- [questKeys.preQuestGroup] = {203,204},
+            -- already in QuestieDB; Assumption: 204 was done whenever it was offered (offer-set, absence, cooccurrence; high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {204},
             -- 205 "Troll Witchery" https://wowhead.com/forever/quest=205
             -- already in QuestieDB; Assumption: turning it in led straight to 205 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 205,
@@ -1005,7 +998,7 @@ function ForeverQuestRelationTraces:Load()
         -- [208] = { -- Big Game Hunter https://wowhead.com/forever/quest=208
             -- 193 "Panther Mastery" https://wowhead.com/forever/quest=193
             -- 197 "Raptor Mastery" https://wowhead.com/forever/quest=197
-            -- already in QuestieDB; Assumption: offered right after 193 was turned in (handoff, offer-set, absence, cooccurrence; low; 100+ characters), kept below the min score to complete its accepted AND list; offered right after 197 was turned in (handoff, offer-set, absence, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: offered right after 193 was turned in (handoff, offer-set, absence, cooccurrence; low; 100+ characters), kept below the min score to complete its accepted AND list; offered right after 197 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestGroup] = {193,197},
         -- },
         -- [209] = { -- Skullsplitter Tusks https://wowhead.com/forever/quest=209
@@ -1036,7 +1029,7 @@ function ForeverQuestRelationTraces:Load()
         -- [217] = { -- In Defense of the King's Lands https://wowhead.com/forever/quest=217
             -- 263 "In Defense of the King's Lands" https://wowhead.com/forever/quest=263
             -- 267 "The Trogg Threat" https://wowhead.com/forever/quest=267
-            -- already in QuestieDB; Assumption: 263 was done whenever it was offered (offer-set, absence, cooccurrence; medium; 100+ characters); offered right after 267 was turned in (handoff, offer-set, cooccurrence; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: 263 was done whenever it was offered (offer-set, absence, cooccurrence; high; 100+ characters); offered right after 267 was turned in (handoff, offer-set, cooccurrence; high; 100+ characters)
             -- [questKeys.preQuestGroup] = {263,267},
         -- },
         -- [218] = { -- The Stolen Journal https://wowhead.com/forever/quest=218
@@ -1141,7 +1134,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [237] = { -- In Defense of the King's Lands https://wowhead.com/forever/quest=237
             -- 224 "In Defense of the King's Lands" https://wowhead.com/forever/quest=224
-            -- already in QuestieDB; Assumption: offered right after 224 was turned in (handoff, offer-set, absence, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: offered right after 224 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {224},
         -- },
         -- [238] = { -- Errand for Apothecary Zinge https://wowhead.com/forever/quest=238
@@ -1149,7 +1142,7 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 232 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {232},
             -- 243 "Into the Field" https://wowhead.com/forever/quest=243
-            -- already in QuestieDB; Assumption: turning it in led straight to 243 (handoff; high; 100+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 243 (handoff; medium; 100+ characters)
             -- [questKeys.nextQuestInChain] = 243,
         -- },
         -- [239] = { -- Westbrook Garrison Needs Help! https://wowhead.com/forever/quest=239
@@ -1328,14 +1321,14 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: turning it in led straight to 278 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 278,
         -- },
-        [275] = { -- Blisters on The Land https://wowhead.com/forever/quest=275
+        -- [275] = { -- Blisters on The Land https://wowhead.com/forever/quest=275
             -- 277 "Fire Taboo" https://wowhead.com/forever/quest=277
             -- already in QuestieDB; Assumption: offered right after 277 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {277},
             -- 98283 "Carnage" https://wowhead.com/forever/quest=98283
-            -- Assumption: turning it in led straight to 98283 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 98283,
-        },
+            -- already in QuestieDB; Assumption: turning it in led straight to 98283 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 98283,
+        -- },
         -- [276] = { -- Tramping Paws https://wowhead.com/forever/quest=276
             -- 277 "Fire Taboo" https://wowhead.com/forever/quest=277
             -- already in QuestieDB; Assumption: turning it in led straight to 277 (handoff; high; 100+ characters)
@@ -1444,7 +1437,7 @@ function ForeverQuestRelationTraces:Load()
         -- [291] = { -- The Reports https://wowhead.com/forever/quest=291
             -- 287 "Frostmane Hold" https://wowhead.com/forever/quest=287
             -- 98323 "Secure the Mountain" https://wowhead.com/forever/quest=98323
-            -- already in QuestieDB; Assumption: offered right after 287, 98323 was turned in (handoff, offer-set, absence, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: offered right after 287, 98323 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestGroup] = {287,98323},
         -- },
         -- [292] = { -- The Eye of Paleth https://wowhead.com/forever/quest=292
@@ -1483,11 +1476,11 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: turning it in led straight to 301 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 301,
         -- },
-        [299] = { -- Uncovering the Past https://wowhead.com/forever/quest=299
+        -- [299] = { -- Uncovering the Past https://wowhead.com/forever/quest=299
             -- 98216 "Understanding Our Present" https://wowhead.com/forever/quest=98216
-            -- Assumption: turning it in led straight to 98216 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 98216,
-        },
+            -- already in QuestieDB; Assumption: turning it in led straight to 98216 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 98216,
+        -- },
         -- [301] = { -- Report to Ironforge https://wowhead.com/forever/quest=301
             -- 298 "Excavation Progress Report" https://wowhead.com/forever/quest=298
             -- already in QuestieDB; Assumption: offered right after 298 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
@@ -1620,7 +1613,7 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 329 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {329},
             -- 331 "Report to Doren" https://wowhead.com/forever/quest=331
-            -- already in QuestieDB; Assumption: turning it in led straight to 331 (handoff; high; 100+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 331 (handoff; medium; 100+ characters)
             -- [questKeys.nextQuestInChain] = 331,
         -- },
         -- [331] = { -- Report to Doren https://wowhead.com/forever/quest=331
@@ -1648,26 +1641,26 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: 583 was done whenever it was offered (offer-set, absence, cooccurrence; high; 100+ characters)
             -- [questKeys.preQuestSingle] = {583},
         -- },
-        [339] = { -- Chapter I https://wowhead.com/forever/quest=339
+        -- [339] = { -- Chapter I https://wowhead.com/forever/quest=339
             -- 583 "Welcome to the Jungle" https://wowhead.com/forever/quest=583
-            -- Assumption: 583 was done whenever it was offered (offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {583},
-        },
-        [340] = { -- Chapter II https://wowhead.com/forever/quest=340
+            -- not applied: implied, as it comes before 338, this quest's parent quest or other prerequisites; Assumption: 583 was done whenever it was offered (offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {583},
+        -- },
+        -- [340] = { -- Chapter II https://wowhead.com/forever/quest=340
             -- 583 "Welcome to the Jungle" https://wowhead.com/forever/quest=583
-            -- Assumption: 583 was done whenever it was offered (offer-set, absence, cooccurrence; high; 100+ characters)
-            [questKeys.preQuestSingle] = {583},
-        },
-        [341] = { -- Chapter III https://wowhead.com/forever/quest=341
+            -- not applied: implied, as it comes before 338, this quest's parent quest or other prerequisites; Assumption: 583 was done whenever it was offered (offer-set, absence, cooccurrence; high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {583},
+        -- },
+        -- [341] = { -- Chapter III https://wowhead.com/forever/quest=341
             -- 583 "Welcome to the Jungle" https://wowhead.com/forever/quest=583
-            -- Assumption: 583 was done whenever it was offered (offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {583},
-        },
-        [342] = { -- Chapter IV https://wowhead.com/forever/quest=342
+            -- not applied: implied, as it comes before 338, this quest's parent quest or other prerequisites; Assumption: 583 was done whenever it was offered (offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {583},
+        -- },
+        -- [342] = { -- Chapter IV https://wowhead.com/forever/quest=342
             -- 583 "Welcome to the Jungle" https://wowhead.com/forever/quest=583
-            -- Assumption: 583 was done whenever it was offered (offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {583},
-        },
+            -- not applied: implied, as it comes before 338, this quest's parent quest or other prerequisites; Assumption: 583 was done whenever it was offered (offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {583},
+        -- },
         -- [343] = { -- Speaking of Fortitude https://wowhead.com/forever/quest=343
             -- 344 "Brother Paxton" https://wowhead.com/forever/quest=344
             -- already in QuestieDB; Assumption: turning it in led straight to 344 (handoff; high; 100+ characters)
@@ -1728,7 +1721,7 @@ function ForeverQuestRelationTraces:Load()
         -- [355] = { -- Speak with Sevren https://wowhead.com/forever/quest=355
             -- 354 "Deaths in the Family" https://wowhead.com/forever/quest=354
             -- 362 "The Haunted Mills" https://wowhead.com/forever/quest=362
-            -- already in QuestieDB; Assumption: offered right after 354 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters); offered right after 362 was turned in (handoff, offer-set, absence, cooccurrence; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: offered right after 354 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters); offered right after 362 was turned in (handoff, offer-set, absence, cooccurrence; high; 100+ characters)
             -- [questKeys.preQuestGroup] = {354,362},
             -- 408 "The Family Crypt" https://wowhead.com/forever/quest=408
             -- already in QuestieDB; Assumption: turning it in led straight to 408 (handoff; high; 100+ characters)
@@ -1843,24 +1836,21 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: 427 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
             -- [questKeys.preQuestSingle] = {427},
         -- },
-        [376] = { -- The Damned https://wowhead.com/forever/quest=376
+        -- [376] = { -- The Damned https://wowhead.com/forever/quest=376
             -- 6395 "Marla's Last Wish" https://wowhead.com/forever/quest=6395
-            -- Assumption: turning it in led straight to 6395 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 6395,
-        },
+            -- not applied: an authored fix sets this field; Assumption: turning it in led straight to 6395 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 6395,
+        -- },
         -- [378] = { -- The Fury Runs Deep https://wowhead.com/forever/quest=378
             -- 303 "The Dark Iron War" https://wowhead.com/forever/quest=303
             -- already in QuestieDB; Assumption: offered right after 303 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {303},
         -- },
-        [379] = { -- Slake That Thirst https://wowhead.com/forever/quest=379
+        -- [379] = { -- Slake That Thirst https://wowhead.com/forever/quest=379
             -- 243 "Into the Field" https://wowhead.com/forever/quest=243
             -- already in QuestieDB; Assumption: offered right after 243 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {243},
-            -- 841 "Another Power Source?" https://wowhead.com/forever/quest=841
-            -- Assumption: turning it in led straight to 841 (handoff; medium; <10 characters)
-            [questKeys.nextQuestInChain] = 841,
-        },
+        -- },
         -- [380] = { -- Night Web's Hollow https://wowhead.com/forever/quest=380
             -- 381 "The Scarlet Crusade" https://wowhead.com/forever/quest=381
             -- already in QuestieDB; Assumption: turning it in led straight to 381 (handoff; high; 100+ characters)
@@ -1942,7 +1932,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [397] = { -- You Have Served Us Well https://wowhead.com/forever/quest=397
             -- 336 "A Noble Brew" https://wowhead.com/forever/quest=336
-            -- already in QuestieDB; Assumption: 336 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: 336 was done whenever it was offered (offer-set, cooccurrence; medium; 100+ characters)
             -- [questKeys.preQuestSingle] = {336},
         -- },
         -- [401] = { -- Wait for Sirra to Finish https://wowhead.com/forever/quest=401
@@ -2069,7 +2059,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [428] = { -- Lost Deathstalkers https://wowhead.com/forever/quest=428
             -- 429 "Wild Hearts" https://wowhead.com/forever/quest=429
-            -- already in QuestieDB; Assumption: turning it in led straight to 429 (handoff, absence; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 429 (handoff, absence; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 429,
         -- },
         -- [429] = { -- Wild Hearts https://wowhead.com/forever/quest=429
@@ -2100,7 +2090,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [436] = { -- Ironband's Excavation https://wowhead.com/forever/quest=436
             -- 297 "Gathering Idols" https://wowhead.com/forever/quest=297
-            -- already in QuestieDB; Assumption: turning it in led straight to 297 (handoff, absence; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 297 (handoff, absence; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 297,
         -- },
         -- [437] = { -- The Dead Fields https://wowhead.com/forever/quest=437
@@ -2260,20 +2250,18 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: turning it in led straight to 465 (handoff; medium; 100+ characters)
             -- [questKeys.nextQuestInChain] = 465,
         -- },
-        [465] = { -- Nek'rosh's Gambit https://wowhead.com/forever/quest=465
-            -- cleared so the accepted preQuestGroup applies: Questie ignores preQuestGroup while preQuestSingle is set
-            [questKeys.preQuestSingle] = {},
+        -- [465] = { -- Nek'rosh's Gambit https://wowhead.com/forever/quest=465
             -- 464 "War Banners" https://wowhead.com/forever/quest=464
             -- 98221 "From the Ashes" https://wowhead.com/forever/quest=98221
-            -- Assumption: offered right after 464 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters); offered right after 98221 was turned in (handoff, offer-set, absence; high; 100+ characters)
-            [questKeys.preQuestGroup] = {464,98221},
+            -- already in QuestieDB; Assumption: offered right after 464 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters); offered right after 98221 was turned in (handoff, offer-set, absence; high; 100+ characters)
+            -- [questKeys.preQuestGroup] = {464,98221},
             -- 474 "Defeat Nek'rosh" https://wowhead.com/forever/quest=474
-            -- already in QuestieDB; Assumption: turning it in led straight to 474 (handoff; high; 100+ characters)
+            -- not applied: an authored fix sets this field; Assumption: turning it in led straight to 474 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 474,
-        },
+        -- },
         -- [467] = { -- Stonegear's Search https://wowhead.com/forever/quest=467
             -- 466 "Search for Incendicite" https://wowhead.com/forever/quest=466
-            -- already in QuestieDB; Assumption: turning it in led straight to 466 (handoff, absence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 466 (handoff, absence; very high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 466,
         -- },
         -- [468] = { -- Report to Mountaineer Rockgar https://wowhead.com/forever/quest=468
@@ -2333,17 +2321,15 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 482 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {482},
             -- 480 "The Weaver" https://wowhead.com/forever/quest=480
-            -- already in QuestieDB; Assumption: turning it in led straight to 480 (handoff; medium; 100+ characters)
+            -- not applied: an authored fix sets this field; Assumption: turning it in led straight to 480 (handoff; medium; 100+ characters)
             -- [questKeys.nextQuestInChain] = 480,
         -- },
-        [480] = { -- The Weaver https://wowhead.com/forever/quest=480
-            -- cleared so the accepted preQuestGroup applies: Questie ignores preQuestGroup while preQuestSingle is set
-            [questKeys.preQuestSingle] = {},
+        -- [480] = { -- The Weaver https://wowhead.com/forever/quest=480
             -- 479 "Ambermill Investigations" https://wowhead.com/forever/quest=479
             -- 95981 "Watching the Roads" https://wowhead.com/forever/quest=95981
-            -- Assumption: offered right after 479, 95981 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestGroup] = {479,95981},
-        },
+            -- already in QuestieDB; Assumption: offered right after 479, 95981 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestGroup] = {479,95981},
+        -- },
         -- [481] = { -- Dalar's Analysis https://wowhead.com/forever/quest=481
             -- 478 "Maps and Runes" https://wowhead.com/forever/quest=478
             -- already in QuestieDB; Assumption: offered right after 478 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
@@ -2385,7 +2371,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [489] = { -- Seek Redemption! https://wowhead.com/forever/quest=489
             -- 488 "Zenn's Bidding" https://wowhead.com/forever/quest=488
-            -- already in QuestieDB; Assumption: 488 was done whenever it was offered (offer-set, absence, cooccurrence; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: 488 was done whenever it was offered (offer-set, absence, cooccurrence; high; 100+ characters)
             -- [questKeys.preQuestSingle] = {488},
         -- },
         -- [491] = { -- Wand to Bethor https://wowhead.com/forever/quest=491
@@ -2519,7 +2505,7 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 515 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {515},
             -- 524 "Elixir of Agony" https://wowhead.com/forever/quest=524
-            -- already in QuestieDB; Assumption: turning it in led straight to 524 (handoff; high; 100+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 524 (handoff; medium; 100+ characters)
             -- [questKeys.nextQuestInChain] = 524,
         -- },
         -- [518] = { -- The Crown of Will https://wowhead.com/forever/quest=518
@@ -2652,7 +2638,7 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 538 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {538},
             -- 542 "Return to Milton" https://wowhead.com/forever/quest=542
-            -- already in QuestieDB; Assumption: turning it in led straight to 542 (handoff; high; 100+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 542 (handoff; medium; 100+ characters)
             -- [questKeys.nextQuestInChain] = 542,
         -- },
         -- [541] = { -- Battle of Hillsbrad https://wowhead.com/forever/quest=541
@@ -2673,15 +2659,15 @@ function ForeverQuestRelationTraces:Load()
             -- not applied: an authored fix sets this field; Assumption: turning it in led straight to 545 (handoff; medium; 100+ characters)
             -- [questKeys.nextQuestInChain] = 545,
         -- },
-        [545] = { -- Dalaran Patrols https://wowhead.com/forever/quest=545
+        -- [545] = { -- Dalaran Patrols https://wowhead.com/forever/quest=545
             -- 544 "Prison Break In" https://wowhead.com/forever/quest=544
             -- 93680 "Key to the City" https://wowhead.com/forever/quest=93680
-            -- already in QuestieDB; Assumption: offered right after 544 was turned in (handoff, offer-set, absence, cooccurrence; medium; 100+ characters); offered right after 93680 was turned in (handoff, offer-set, absence, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: offered right after 544 was turned in (handoff, offer-set, absence, cooccurrence; high; 100+ characters); offered right after 93680 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestGroup] = {544,93680},
             -- 92434 "Blood in the Streets" https://wowhead.com/forever/quest=92434
-            -- Assumption: turning it in led straight to 92434 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 92434,
-        },
+            -- already in QuestieDB; Assumption: turning it in led straight to 92434 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 92434,
+        -- },
         -- [546] = { -- Souvenirs of Death https://wowhead.com/forever/quest=546
             -- 527 "Battle of Hillsbrad" https://wowhead.com/forever/quest=527
             -- already in QuestieDB; Assumption: 527 was done whenever it was offered (offer-set, absence, cooccurrence; very high; 100+ characters)
@@ -2712,11 +2698,11 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 551 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {551},
         -- },
-        [555] = { -- Soothing Turtle Bisque https://wowhead.com/forever/quest=555
+        -- [555] = { -- Soothing Turtle Bisque https://wowhead.com/forever/quest=555
             -- 7321 "Soothing Turtle Bisque" https://wowhead.com/forever/quest=7321
-            -- Assumption: the server completes it and 7321 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {7321},
-        },
+            -- already in QuestieDB; Assumption: the server completes it and 7321 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {7321},
+        -- },
         -- [556] = { -- Stone Tokens https://wowhead.com/forever/quest=556
             -- 557 "Bracers of Binding" https://wowhead.com/forever/quest=557
             -- already in QuestieDB; Assumption: turning it in led straight to 557 (handoff; high; 100+ characters)
@@ -2769,14 +2755,11 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: turning it in led straight to 569 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 569,
         -- },
-        [569] = { -- The Defense of Grom'gol https://wowhead.com/forever/quest=569
+        -- [569] = { -- The Defense of Grom'gol https://wowhead.com/forever/quest=569
             -- 568 "The Defense of Grom'gol" https://wowhead.com/forever/quest=568
             -- already in QuestieDB; Assumption: offered right after 568 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {568},
-            -- 97386 "The Offense of Grom'gol" https://wowhead.com/forever/quest=97386
-            -- Assumption: turning it in led straight to 97386 (handoff; medium; 100+ characters)
-            [questKeys.nextQuestInChain] = 97386,
-        },
+        -- },
         -- [570] = { -- Mok'thardin's Enchantment https://wowhead.com/forever/quest=570
             -- 572 "Mok'thardin's Enchantment" https://wowhead.com/forever/quest=572
             -- already in QuestieDB; Assumption: turning it in led straight to 572 (handoff; high; 100+ characters)
@@ -2843,11 +2826,11 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 581 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {581},
         -- },
-        [583] = { -- Welcome to the Jungle https://wowhead.com/forever/quest=583
+        -- [583] = { -- Welcome to the Jungle https://wowhead.com/forever/quest=583
             -- 194 "Raptor Mastery" https://wowhead.com/forever/quest=194
-            -- Assumption: turning it in led straight to 194 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 194,
-        },
+            -- not applied: an authored fix sets this field; Assumption: turning it in led straight to 194 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 194,
+        -- },
         -- [584] = { -- Bloodscalp Clan Heads https://wowhead.com/forever/quest=584
             -- 582 "Headhunting" https://wowhead.com/forever/quest=582
             -- already in QuestieDB; Assumption: offered right after 582 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
@@ -2857,9 +2840,6 @@ function ForeverQuestRelationTraces:Load()
             -- 584 "Bloodscalp Clan Heads" https://wowhead.com/forever/quest=584
             -- already in QuestieDB; Assumption: offered right after 584 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {584},
-            -- 588 "The Fate of Yenniku" https://wowhead.com/forever/quest=588
-            -- not applied: handoff saw it contradicted more often than supported; Assumption: turning it in led straight to 588 (handoff; medium; 10+ characters)
-            -- [questKeys.nextQuestInChain] = 588,
         -- },
         -- [586] = { -- Speaking with Gan'zulah https://wowhead.com/forever/quest=586
             -- 584 "Bloodscalp Clan Heads" https://wowhead.com/forever/quest=584
@@ -2872,7 +2852,7 @@ function ForeverQuestRelationTraces:Load()
         -- [588] = { -- The Fate of Yenniku https://wowhead.com/forever/quest=588
             -- 585 "Speaking with Nezzliok" https://wowhead.com/forever/quest=585
             -- 586 "Speaking with Gan'zulah" https://wowhead.com/forever/quest=586
-            -- already in QuestieDB; Assumption: offered right after 585 was turned in (handoff, offer-set, absence, cooccurrence; medium; 100+ characters); offered right after 586 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- already in QuestieDB; Assumption: offered right after 585 was turned in (handoff, offer-set, absence, cooccurrence; high; 100+ characters); offered right after 586 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestGroup] = {585,586},
             -- 589 "The Singing Crystals" https://wowhead.com/forever/quest=589
             -- already in QuestieDB; Assumption: turning it in led straight to 589 (handoff; medium; 100+ characters)
@@ -2888,7 +2868,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [590] = { -- A Rogue's Deal https://wowhead.com/forever/quest=590
             -- 8 "A Rogue's Deal" https://wowhead.com/forever/quest=8
-            -- already in QuestieDB; Assumption: 8 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: 8 was done whenever it was offered (offer-set, cooccurrence; medium; 100+ characters)
             -- [questKeys.preQuestSingle] = {8},
         -- },
         -- [591] = { -- The Mind's Eye https://wowhead.com/forever/quest=591
@@ -2922,7 +2902,7 @@ function ForeverQuestRelationTraces:Load()
         -- [598] = { -- Split Bone Necklace https://wowhead.com/forever/quest=598
             -- 596 "Bloody Bone Necklaces" https://wowhead.com/forever/quest=596
             -- 629 "The Vile Reef" https://wowhead.com/forever/quest=629
-            -- already in QuestieDB; Assumption: offered right after 596 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters); offered right after 629 was turned in (handoff, offer-set, absence, cooccurrence; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: offered right after 596 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters); offered right after 629 was turned in (handoff, offer-set, absence, cooccurrence; high; 100+ characters)
             -- [questKeys.preQuestGroup] = {596,629},
         -- },
         -- [599] = { -- The Bloodsail Buccaneers https://wowhead.com/forever/quest=599
@@ -3013,19 +2993,19 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 609 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {609},
         -- },
-        [614] = { -- The Captain's Chest https://wowhead.com/forever/quest=614
+        -- [614] = { -- The Captain's Chest https://wowhead.com/forever/quest=614
             -- 8551 "The Captain's Chest" https://wowhead.com/forever/quest=8551
-            -- Assumption: the server completes it and 8551 together (cooccurrence; medium; 100+ characters)
-            [questKeys.exclusiveTo] = {8551},
-        },
-        [615] = { -- The Captain's Cutlass https://wowhead.com/forever/quest=615
+            -- already in QuestieDB; Assumption: the server completes it and 8551 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {8551},
+        -- },
+        -- [615] = { -- The Captain's Cutlass https://wowhead.com/forever/quest=615
             -- 8552 "The Monogrammed Sash" https://wowhead.com/forever/quest=8552
-            -- Assumption: offered right after 8552 was turned in (handoff, cooccurrence; high; 100+ characters)
-            [questKeys.preQuestSingle] = {8552},
+            -- already in QuestieDB; Assumption: offered right after 8552 was turned in (handoff, cooccurrence; high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {8552},
             -- 8553 "The Captain's Cutlass" https://wowhead.com/forever/quest=8553
-            -- Assumption: the server completes it and 8553 together (cooccurrence; medium; 100+ characters)
-            [questKeys.exclusiveTo] = {8553},
-        },
+            -- already in QuestieDB; Assumption: the server completes it and 8553 together (cooccurrence; high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {8553},
+        -- },
         -- [616] = { -- The Haunted Isle https://wowhead.com/forever/quest=616
             -- 578 "The Stone of the Tides" https://wowhead.com/forever/quest=578
             -- already in QuestieDB; Assumption: turning it in led straight to 578 (handoff; high; 100+ characters)
@@ -3036,11 +3016,11 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: turning it in led straight to 623 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 623,
         -- },
-        [618] = { -- Facing Negolash https://wowhead.com/forever/quest=618
+        -- [618] = { -- Facing Negolash https://wowhead.com/forever/quest=618
             -- 8554 "Facing Negolash" https://wowhead.com/forever/quest=8554
-            -- Assumption: the server completes it and 8554 together (cooccurrence; medium; 10+ characters)
-            [questKeys.exclusiveTo] = {8554},
-        },
+            -- already in QuestieDB; Assumption: the server completes it and 8554 together (cooccurrence; high; 10+ characters)
+            -- [questKeys.exclusiveTo] = {8554},
+        -- },
         -- [622] = { -- Return to Corporal Kaleb https://wowhead.com/forever/quest=622
             -- 627 "Favor for Krazek" https://wowhead.com/forever/quest=627
             -- already in QuestieDB; Assumption: offered right after 627 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
@@ -3138,7 +3118,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [642] = { -- The Princess Trapped https://wowhead.com/forever/quest=642
             -- 651 "Stones of Binding" https://wowhead.com/forever/quest=651
-            -- already in QuestieDB; Assumption: turning it in led straight to 651 (handoff; high; 100+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 651 (handoff; medium; 100+ characters)
             -- [questKeys.nextQuestInChain] = 651,
         -- },
         -- [643] = { -- Sigil of Arathor https://wowhead.com/forever/quest=643
@@ -3352,7 +3332,7 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 677 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {677},
             -- 679 "Call to Arms" https://wowhead.com/forever/quest=679
-            -- already in QuestieDB; Assumption: turning it in led straight to 679 (handoff; high; 100+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 679 (handoff; medium; 100+ characters)
             -- [questKeys.nextQuestInChain] = 679,
         -- },
         -- [679] = { -- Call to Arms https://wowhead.com/forever/quest=679
@@ -3362,7 +3342,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [680] = { -- The Real Threat https://wowhead.com/forever/quest=680
             -- 678 "Call to Arms" https://wowhead.com/forever/quest=678
-            -- already in QuestieDB; Assumption: 678 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: 678 was done whenever it was offered (offer-set, cooccurrence; medium; 100+ characters)
             -- [questKeys.preQuestSingle] = {678},
         -- },
         -- [681] = { -- Northfold Manor https://wowhead.com/forever/quest=681
@@ -3377,7 +3357,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [683] = { -- Sara Balloo's Plea https://wowhead.com/forever/quest=683
             -- 637 "Sully Balloo's Letter" https://wowhead.com/forever/quest=637
-            -- already in QuestieDB; Assumption: 637 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: 637 was done whenever it was offered (offer-set, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {637},
         -- },
         -- [686] = { -- A King's Tribute https://wowhead.com/forever/quest=686
@@ -3503,7 +3483,7 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 710 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {710},
             -- 712 "Study of the Elements: Rock" https://wowhead.com/forever/quest=712
-            -- already in QuestieDB; Assumption: turning it in led straight to 712 (handoff; high; 100+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 712 (handoff; medium; 100+ characters)
             -- [questKeys.nextQuestInChain] = 712,
         -- },
         -- [712] = { -- Study of the Elements: Rock https://wowhead.com/forever/quest=712
@@ -3647,7 +3627,7 @@ function ForeverQuestRelationTraces:Load()
         -- [734] = { -- This Is Going to Be Hard https://wowhead.com/forever/quest=734
             -- 712 "Study of the Elements: Rock" https://wowhead.com/forever/quest=712
             -- 714 "Gyro... What?" https://wowhead.com/forever/quest=714
-            -- already in QuestieDB; Assumption: offered right after 712 was turned in (handoff, offer-set, absence, cooccurrence; high; 100+ characters); offered right after 714 was turned in (handoff, offer-set, absence, cooccurrence; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: offered right after 712 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters); offered right after 714 was turned in (handoff, offer-set, absence, cooccurrence; high; 100+ characters)
             -- [questKeys.preQuestGroup] = {712,714},
             -- 777 "This Is Going to Be Hard" https://wowhead.com/forever/quest=777
             -- already in QuestieDB; Assumption: turning it in led straight to 777 (handoff; medium; 100+ characters)
@@ -3662,9 +3642,6 @@ function ForeverQuestRelationTraces:Load()
             -- 728 "To the Undercity for Yagyin's Digest" https://wowhead.com/forever/quest=728
             -- already in QuestieDB; Assumption: offered right after 728 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {728},
-            -- 737 "Forbidden Knowledge" https://wowhead.com/forever/quest=737
-            -- already in QuestieDB; Assumption: turning it in led straight to 737 (handoff; medium; 10+ characters)
-            -- [questKeys.nextQuestInChain] = 737,
         -- },
         -- [737] = { -- Forbidden Knowledge https://wowhead.com/forever/quest=737
             -- 735 "The Star, the Hand and the Heart" https://wowhead.com/forever/quest=735
@@ -3914,7 +3891,7 @@ function ForeverQuestRelationTraces:Load()
         -- [794] = { -- Burning Blade Medallion https://wowhead.com/forever/quest=794
             -- 792 "Vile Familiars" https://wowhead.com/forever/quest=792
             -- 1499 "Vile Familiars" https://wowhead.com/forever/quest=1499
-            -- already in QuestieDB; Assumption: offered right after 792, 1499 was turned in (handoff, absence, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: offered right after 792 was turned in (handoff, absence, cooccurrence; high; 100+ characters); offered right after 1499 was turned in (handoff, absence, cooccurrence; medium; 100+ characters)
             -- [questKeys.preQuestSingle] = {792,1499},
             -- 805 "Report to Sen'jin Village" https://wowhead.com/forever/quest=805
             -- already in QuestieDB; Assumption: turning it in led straight to 805 (handoff; high; 100+ characters)
@@ -4148,7 +4125,7 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: turning it in led straight to 877 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 877,
             -- 886 "The Barrens Oases" https://wowhead.com/forever/quest=886
-            -- already in QuestieDB; Assumption: 886 is an optional lead-in to it (breadcrumbs, absence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: 886 is an optional lead-in to it (breadcrumbs, absence; very high; 100+ characters)
             -- [questKeys.breadcrumbs] = {886},
         -- },
         -- [872] = { -- The Disruption Ends https://wowhead.com/forever/quest=872
@@ -4227,7 +4204,7 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: turning it in led straight to 870 (handoff, absence; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 870,
             -- 870 "The Forgotten Pools" https://wowhead.com/forever/quest=870
-            -- already in QuestieDB; Assumption: optional lead-in to 870 (breadcrumbs, absence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: optional lead-in to 870 (breadcrumbs, absence; very high; 100+ characters)
             -- [questKeys.breadcrumbForQuestId] = 870,
         -- },
         -- [887] = { -- Southsea Freebooters https://wowhead.com/forever/quest=887
@@ -4418,11 +4395,11 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: turning it in led straight to 7383 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 7383,
         -- },
-        [934] = { -- Crown of the Earth https://wowhead.com/forever/quest=934
+        -- [934] = { -- Crown of the Earth https://wowhead.com/forever/quest=934
             -- 7383 "Crown of the Earth" https://wowhead.com/forever/quest=7383
-            -- Assumption: the server completes it and 7383 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {7383},
-        },
+            -- already in QuestieDB; Assumption: the server completes it and 7383 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {7383},
+        -- },
         -- [935] = { -- Crown of the Earth https://wowhead.com/forever/quest=935
             -- 7383 "Crown of the Earth" https://wowhead.com/forever/quest=7383
             -- already in QuestieDB; Assumption: offered right after 7383 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
@@ -4431,7 +4408,7 @@ function ForeverQuestRelationTraces:Load()
         -- [936] = { -- Assisting Arch Druid Runetotem https://wowhead.com/forever/quest=936
             -- 3762 "Assisting Arch Druid Runetotem" https://wowhead.com/forever/quest=3762
             -- 3784 "Assisting Arch Druid Runetotem" https://wowhead.com/forever/quest=3784
-            -- already in QuestieDB; Assumption: the server completes it and 3762 together (cooccurrence; medium; 100+ characters); offer lists show it and 3784 exclude each other (absence, cooccurrence; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 3762 together (cooccurrence; high; 100+ characters); offer lists show it and 3784 exclude each other (absence, cooccurrence; high; 100+ characters)
             -- [questKeys.exclusiveTo] = {3762,3784},
         -- },
         -- [937] = { -- The Enchanted Glade https://wowhead.com/forever/quest=937
@@ -4591,7 +4568,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [974] = { -- Finding the Source https://wowhead.com/forever/quest=974
             -- 980 "The New Springs" https://wowhead.com/forever/quest=980
-            -- already in QuestieDB; Assumption: turning it in led straight to 980 (handoff; high; 10+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 980 (handoff; medium; 10+ characters)
             -- [questKeys.nextQuestInChain] = 980,
         -- },
         -- [975] = { -- Cache of Mau'ari https://wowhead.com/forever/quest=975
@@ -4608,17 +4585,11 @@ function ForeverQuestRelationTraces:Load()
             -- 3783 "Are We There, Yeti?" https://wowhead.com/forever/quest=3783
             -- already in QuestieDB; Assumption: offered right after 3783 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
             -- [questKeys.preQuestSingle] = {3783},
-            -- 5163 "Are We There, Yeti?" https://wowhead.com/forever/quest=5163
-            -- already in QuestieDB; Assumption: turning it in led straight to 5163 (handoff; medium; 10+ characters)
-            -- [questKeys.nextQuestInChain] = 5163,
         -- },
         -- [978] = { -- Moontouched Wildkin https://wowhead.com/forever/quest=978
             -- 3661 "Favored of Elune?" https://wowhead.com/forever/quest=3661
             -- already in QuestieDB; Assumption: offered right after 3661 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
             -- [questKeys.preQuestSingle] = {3661},
-            -- 979 "Find Ranshalla" https://wowhead.com/forever/quest=979
-            -- already in QuestieDB; Assumption: turning it in led straight to 979 (handoff; medium; 10+ characters)
-            -- [questKeys.nextQuestInChain] = 979,
         -- },
         -- [979] = { -- Find Ranshalla https://wowhead.com/forever/quest=979
             -- 978 "Moontouched Wildkin" https://wowhead.com/forever/quest=978
@@ -4630,7 +4601,7 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 974 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {974},
             -- 4842 "Strange Sources" https://wowhead.com/forever/quest=4842
-            -- already in QuestieDB; Assumption: turning it in led straight to 4842 (handoff; high; 10+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 4842 (handoff; medium; 10+ characters)
             -- [questKeys.nextQuestInChain] = 4842,
         -- },
         -- [981] = { -- The Tower of Althalaxx https://wowhead.com/forever/quest=981
@@ -4747,11 +4718,8 @@ function ForeverQuestRelationTraces:Load()
         -- [1015] = { -- The New Frontier https://wowhead.com/forever/quest=1015
             -- 1019 "The New Frontier" https://wowhead.com/forever/quest=1019
             -- 1047 "The New Frontier" https://wowhead.com/forever/quest=1047
-            -- already in QuestieDB; Assumption: the server completes it and 1019 together (cooccurrence; medium; 10+ characters); the server completes it and 1047 together (cooccurrence; high; 10+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 1019, 1047 together (cooccurrence; medium; 10+ characters)
             -- [questKeys.exclusiveTo] = {1019,1047},
-            -- 6761 "The New Frontier" https://wowhead.com/forever/quest=6761
-            -- already in QuestieDB; Assumption: turning it in led straight to 6761 (handoff; medium; <10 characters)
-            -- [questKeys.nextQuestInChain] = 6761,
         -- },
         -- [1016] = { -- Elemental Bracers https://wowhead.com/forever/quest=1016
             -- 1017 "Mage Summoner" https://wowhead.com/forever/quest=1017
@@ -4774,17 +4742,11 @@ function ForeverQuestRelationTraces:Load()
             -- 1047 "The New Frontier" https://wowhead.com/forever/quest=1047
             -- already in QuestieDB; Assumption: the server completes it and 1015, 1047 together (cooccurrence; medium; 10+ characters)
             -- [questKeys.exclusiveTo] = {1015,1047},
-            -- 6761 "The New Frontier" https://wowhead.com/forever/quest=6761
-            -- already in QuestieDB; Assumption: turning it in led straight to 6761 (handoff; medium; <10 characters)
-            -- [questKeys.nextQuestInChain] = 6761,
         -- },
         -- [1020] = { -- Orendil's Cure https://wowhead.com/forever/quest=1020
             -- 1010 "Bathran's Hair" https://wowhead.com/forever/quest=1010
             -- already in QuestieDB; Assumption: offered right after 1010 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {1010},
-            -- 1033 "Elune's Tear" https://wowhead.com/forever/quest=1033
-            -- already in QuestieDB; Assumption: turning it in led straight to 1033 (handoff; medium; <10 characters)
-            -- [questKeys.nextQuestInChain] = 1033,
         -- },
         -- [1021] = { -- Vile Satyr! Dryads in Danger! https://wowhead.com/forever/quest=1021
             -- 1031 "The Branch of Cenarius" https://wowhead.com/forever/quest=1031
@@ -4876,7 +4838,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [1035] = { -- Fallen Sky Lake https://wowhead.com/forever/quest=1035
             -- 1034 "The Ruins of Stardust" https://wowhead.com/forever/quest=1034
-            -- already in QuestieDB; Assumption: 1034 was done whenever it was offered (offer-set, cooccurrence; very high; 100+ characters)
+            -- already in QuestieDB; Assumption: 1034 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
             -- [questKeys.preQuestSingle] = {1034},
         -- },
         -- [1037] = { -- Velinde Starsong https://wowhead.com/forever/quest=1037
@@ -4932,7 +4894,7 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 1042 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {1042},
             -- 1044 "Answered Questions" https://wowhead.com/forever/quest=1044
-            -- already in QuestieDB; Assumption: turning it in led straight to 1044 (handoff; high; 10+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 1044 (handoff; medium; 10+ characters)
             -- [questKeys.nextQuestInChain] = 1044,
         -- },
         -- [1044] = { -- Answered Questions https://wowhead.com/forever/quest=1044
@@ -4956,7 +4918,7 @@ function ForeverQuestRelationTraces:Load()
         -- [1047] = { -- The New Frontier https://wowhead.com/forever/quest=1047
             -- 1015 "The New Frontier" https://wowhead.com/forever/quest=1015
             -- 1019 "The New Frontier" https://wowhead.com/forever/quest=1019
-            -- already in QuestieDB; Assumption: the server completes it and 1015 together (cooccurrence; high; 10+ characters); the server completes it and 1019 together (cooccurrence; medium; 10+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 1015, 1019 together (cooccurrence; medium; 10+ characters)
             -- [questKeys.exclusiveTo] = {1015,1019},
             -- 6761 "The New Frontier" https://wowhead.com/forever/quest=6761
             -- already in QuestieDB; Assumption: turning it in led straight to 6761 (handoff; medium; 10+ characters)
@@ -5002,7 +4964,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [1063] = { -- The Elder Crone https://wowhead.com/forever/quest=1063
             -- 1062 "Goblin Invaders" https://wowhead.com/forever/quest=1062
-            -- already in QuestieDB; Assumption: 1062 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: 1062 was done whenever it was offered (offer-set, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {1062},
             -- 1064 "Forsaken Aid" https://wowhead.com/forever/quest=1064
             -- already in QuestieDB; Assumption: turning it in led straight to 1064 (handoff; high; 10+ characters)
@@ -5075,7 +5037,7 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 1071 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {1071},
             -- 1076 "Devils in Westfall" https://wowhead.com/forever/quest=1076
-            -- already in QuestieDB; Assumption: turning it in led straight to 1076 (handoff; high; 100+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 1076 (handoff; medium; 100+ characters)
             -- [questKeys.nextQuestInChain] = 1076,
         -- },
         -- [1076] = { -- Devils in Westfall https://wowhead.com/forever/quest=1076
@@ -5100,7 +5062,7 @@ function ForeverQuestRelationTraces:Load()
         -- [1080] = { -- Covert Ops - Beta https://wowhead.com/forever/quest=1080
             -- 1074 "Ineptitude + Chemicals = Fun" https://wowhead.com/forever/quest=1074
             -- 1077 "Special Delivery for Gaxim" https://wowhead.com/forever/quest=1077
-            -- already in QuestieDB; Assumption: offered right after 1074, 1077 was turned in (handoff, offer-set, absence, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: offered right after 1074 was turned in (handoff, offer-set, absence, cooccurrence; high; 100+ characters); offered right after 1077 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestGroup] = {1074,1077},
             -- 1091 "Kaela's Update" https://wowhead.com/forever/quest=1091
             -- not applied: 1091 needs this quest together with 1079 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 1091 (handoff; medium; 10+ characters)
@@ -5114,7 +5076,7 @@ function ForeverQuestRelationTraces:Load()
         -- [1082] = { -- Update for Sentinel Thenysil https://wowhead.com/forever/quest=1082
             -- 1083 "Enraged Spirits" https://wowhead.com/forever/quest=1083
             -- 1084 "Wounded Ancients" https://wowhead.com/forever/quest=1084
-            -- already in QuestieDB; Assumption: offered right after 1083 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters); offered right after 1084 was turned in (handoff, offer-set, absence, cooccurrence; high; 10+ characters)
+            -- already in QuestieDB; Assumption: offered right after 1083 was turned in (handoff, offer-set, absence, cooccurrence; high; 10+ characters); offered right after 1084 was turned in (handoff, offer-set, absence, cooccurrence; medium; 10+ characters)
             -- [questKeys.preQuestGroup] = {1083,1084},
             -- 1081 "Reception from Tyrande" https://wowhead.com/forever/quest=1081
             -- already in QuestieDB; Assumption: turning it in led straight to 1081 (handoff; medium; 10+ characters)
@@ -5133,17 +5095,17 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: 1091 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
             -- [questKeys.preQuestSingle] = {1091},
             -- 1082 "Update for Sentinel Thenysil" https://wowhead.com/forever/quest=1082
-            -- not applied: 1082 needs this quest together with 1083 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 1082 (handoff; high; 10+ characters)
+            -- not applied: 1082 needs this quest together with 1083 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 1082 (handoff; medium; 10+ characters)
             -- [questKeys.nextQuestInChain] = 1082,
         -- },
-        [1085] = { -- On Guard in Stonetalon https://wowhead.com/forever/quest=1085
+        -- [1085] = { -- On Guard in Stonetalon https://wowhead.com/forever/quest=1085
             -- 1070 "On Guard in Stonetalon" https://wowhead.com/forever/quest=1070
-            -- Assumption: offered right after 1070 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {1070},
+            -- not applied: QuestieDB has 1070 as breadcrumbs of this quest, optional lead-ins rather than prerequisites; Assumption: offered right after 1070 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {1070},
             -- 1071 "A Gnome's Respite" https://wowhead.com/forever/quest=1071
             -- already in QuestieDB; Assumption: turning it in led straight to 1071 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 1071,
-        },
+        -- },
         -- [1086] = { -- The Flying Machine Airport https://wowhead.com/forever/quest=1086
             -- 1067 "Return to Thunder Bluff" https://wowhead.com/forever/quest=1067
             -- already in QuestieDB; Assumption: offered right after 1067 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
@@ -5235,7 +5197,7 @@ function ForeverQuestRelationTraces:Load()
         -- [1106] = { -- Martek the Exiled https://wowhead.com/forever/quest=1106
             -- 1104 "Salt Flat Venom" https://wowhead.com/forever/quest=1104
             -- 1105 "Hardened Shells" https://wowhead.com/forever/quest=1105
-            -- already in QuestieDB; Assumption: offered right after 1104 was turned in (handoff, offer-set, absence, cooccurrence; medium; 100+ characters); 1105 was done whenever it was offered (offer-set, absence, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: offered right after 1104 was turned in (handoff, offer-set, absence, cooccurrence; high; 100+ characters); 1105 was done whenever it was offered (offer-set, absence, cooccurrence; high; 100+ characters)
             -- [questKeys.preQuestGroup] = {1104,1105},
             -- 1108 "Indurium" https://wowhead.com/forever/quest=1108
             -- already in QuestieDB; Assumption: turning it in led straight to 1108 (handoff; high; 100+ characters)
@@ -5315,29 +5277,21 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 1119 was turned in (handoff, offer-set, absence, cooccurrence; high; 10+ characters)
             -- [questKeys.preQuestSingle] = {1119},
         -- },
-        [1122] = { -- Report Back to Fizzlebub https://wowhead.com/forever/quest=1122
+        -- [1122] = { -- Report Back to Fizzlebub https://wowhead.com/forever/quest=1122
             -- 1119 "Zanzil's Mixture and a Fool's Stout" https://wowhead.com/forever/quest=1119
-            -- 1120 "Get the Gnomes Drunk" https://wowhead.com/forever/quest=1120
-            -- 1121 "Get the Goblins Drunk" https://wowhead.com/forever/quest=1121
-            -- Assumption: 1119 was done whenever it was offered (offer-set, cooccurrence; medium; 100+ characters); 1120, 1121 kept from QuestieDB
-            [questKeys.preQuestSingle] = {1119,1120,1121},
-        },
+            -- not applied: implied, as it comes before 1120, 1121, this quest's parent quest or other prerequisites; Assumption: 1119 was done whenever it was offered (offer-set, cooccurrence; medium; 100+ characters)
+            -- [questKeys.preQuestSingle] = {1119},
+        -- },
         -- [1123] = { -- Rabine Saturna https://wowhead.com/forever/quest=1123
             -- 1000 "The New Frontier" https://wowhead.com/forever/quest=1000
             -- already in QuestieDB; Assumption: offered right after 1000 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
             -- [questKeys.preQuestSingle] = {1000},
-            -- 1124 "Wasteland" https://wowhead.com/forever/quest=1124
-            -- already in QuestieDB; Assumption: turning it in led straight to 1124 (handoff; medium; <10 characters)
-            -- [questKeys.nextQuestInChain] = 1124,
         -- },
         -- [1124] = { -- Wasteland https://wowhead.com/forever/quest=1124
             -- 1123 "Rabine Saturna" https://wowhead.com/forever/quest=1123
             -- 6762 "Rabine Saturna" https://wowhead.com/forever/quest=6762
             -- already in QuestieDB; Assumption: offered right after 1123, 6762 was turned in (handoff, offer-set, absence, cooccurrence; medium; 10+ characters)
             -- [questKeys.preQuestSingle] = {1123,6762},
-            -- 1125 "The Spirits of Southwind" https://wowhead.com/forever/quest=1125
-            -- already in QuestieDB; Assumption: turning it in led straight to 1125 (handoff; medium; 10+ characters)
-            -- [questKeys.nextQuestInChain] = 1125,
         -- },
         -- [1125] = { -- The Spirits of Southwind https://wowhead.com/forever/quest=1125
             -- 1124 "Wasteland" https://wowhead.com/forever/quest=1124
@@ -5371,7 +5325,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [1137] = { -- News for Fizzle https://wowhead.com/forever/quest=1137
             -- 1108 "Indurium" https://wowhead.com/forever/quest=1108
-            -- already in QuestieDB; Assumption: 1108 was done whenever it was offered (offer-set, cooccurrence; very high; 100+ characters)
+            -- already in QuestieDB; Assumption: 1108 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
             -- [questKeys.preQuestSingle] = {1108},
         -- },
         -- [1139] = { -- The Lost Tablets of Will https://wowhead.com/forever/quest=1139
@@ -5599,7 +5553,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [1192] = { -- Indurium Ore https://wowhead.com/forever/quest=1192
             -- 1194 "Rizzle's Schematics" https://wowhead.com/forever/quest=1194
-            -- already in QuestieDB; Assumption: 1194 was done whenever it was offered (offer-set; high; 10+ characters)
+            -- already in QuestieDB; Assumption: 1194 was done whenever it was offered (offer-set; medium; 10+ characters)
             -- [questKeys.preQuestSingle] = {1194},
         -- },
         -- [1194] = { -- Rizzle's Schematics https://wowhead.com/forever/quest=1194
@@ -5637,7 +5591,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         [1203] = { -- Jarl Needs a Blade https://wowhead.com/forever/quest=1203
             -- 81570 "Jarl Needs a Blade" https://wowhead.com/forever/quest=81570
-            -- Assumption: the server completes it and 81570 together (cooccurrence; medium; 100+ characters)
+            -- Assumption: the server completes it and 81570 together (cooccurrence; high; 100+ characters)
             [questKeys.exclusiveTo] = {81570},
         },
         -- [1204] = { -- Mudrock Soup and Bugs https://wowhead.com/forever/quest=1204
@@ -5645,11 +5599,11 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: turning it in led straight to 1258 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 1258,
         -- },
-        [1205] = { -- Deadmire https://wowhead.com/forever/quest=1205
+        -- [1205] = { -- Deadmire https://wowhead.com/forever/quest=1205
             -- 97378 "Mirrorscale" https://wowhead.com/forever/quest=97378
-            -- Assumption: turning it in led straight to 97378 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 97378,
-        },
+            -- already in QuestieDB; Assumption: turning it in led straight to 97378 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 97378,
+        -- },
         -- [1206] = { -- Jarl Needs Eyes https://wowhead.com/forever/quest=1206
             -- 1218 "Soothing Spices" https://wowhead.com/forever/quest=1218
             -- already in QuestieDB; Assumption: offered right after 1218 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
@@ -5788,7 +5742,7 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 1252 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {1252},
             -- 1285 "Daelin's Men" https://wowhead.com/forever/quest=1285
-            -- already in QuestieDB; Assumption: turning it in led straight to 1285 (handoff; high; 100+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 1285 (handoff; medium; 100+ characters)
             -- [questKeys.nextQuestInChain] = 1285,
         -- },
         -- [1260] = { -- Morgan Stern https://wowhead.com/forever/quest=1260
@@ -5879,7 +5833,7 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 1253 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {1253},
             -- 1320 "The Black Shield" https://wowhead.com/forever/quest=1320
-            -- already in QuestieDB; Assumption: turning it in led straight to 1320 (handoff; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 1320 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 1320,
         -- },
         -- [1320] = { -- The Black Shield https://wowhead.com/forever/quest=1320
@@ -5966,11 +5920,11 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: turning it in led straight to 1370 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 1370,
         -- },
-        [1369] = { -- Broken Tears https://wowhead.com/forever/quest=1369
+        -- [1369] = { -- Broken Tears https://wowhead.com/forever/quest=1369
             -- 92743 "A Conqueror's Crown" https://wowhead.com/forever/quest=92743
-            -- Assumption: turning it in led straight to 92743 (handoff; medium; 100+ characters)
-            [questKeys.nextQuestInChain] = 92743,
-        },
+            -- already in QuestieDB; Assumption: turning it in led straight to 92743 (handoff; medium; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 92743,
+        -- },
         -- [1370] = { -- Stealing Supplies https://wowhead.com/forever/quest=1370
             -- 1373 "Ongeku" https://wowhead.com/forever/quest=1373
             -- already in QuestieDB; Assumption: turning it in led straight to 1373 (handoff; high; 100+ characters)
@@ -5986,14 +5940,14 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: turning it in led straight to 1383 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 1383,
         -- },
-        [1373] = { -- Ongeku https://wowhead.com/forever/quest=1373
+        -- [1373] = { -- Ongeku https://wowhead.com/forever/quest=1373
             -- 1370 "Stealing Supplies" https://wowhead.com/forever/quest=1370
             -- already in QuestieDB; Assumption: offered right after 1370 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {1370},
             -- 93034 "Valley of Bones" https://wowhead.com/forever/quest=93034
-            -- Assumption: turning it in led straight to 93034 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 93034,
-        },
+            -- already in QuestieDB; Assumption: turning it in led straight to 93034 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 93034,
+        -- },
         -- [1382] = { -- Strange Alliance https://wowhead.com/forever/quest=1382
             -- 1384 "Raid on the Kolkar" https://wowhead.com/forever/quest=1384
             -- already in QuestieDB; Assumption: turning it in led straight to 1384 (handoff; high; 100+ characters)
@@ -6014,7 +5968,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [1385] = { -- Brutal Politics https://wowhead.com/forever/quest=1385
             -- 1386 "Assault on the Kolkar" https://wowhead.com/forever/quest=1386
-            -- already in QuestieDB; Assumption: turning it in led straight to 1386 (handoff; high; 100+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 1386 (handoff; medium; 100+ characters)
             -- [questKeys.nextQuestInChain] = 1386,
         -- },
         -- [1386] = { -- Assault on the Kolkar https://wowhead.com/forever/quest=1386
@@ -6033,11 +5987,11 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: turning it in led straight to 1391 (handoff; medium; 10+ characters)
             -- [questKeys.nextQuestInChain] = 1391,
         -- },
-        [1389] = { -- Draenethyst Crystals https://wowhead.com/forever/quest=1389
+        -- [1389] = { -- Draenethyst Crystals https://wowhead.com/forever/quest=1389
             -- 93464 "The Visiting Mage" https://wowhead.com/forever/quest=93464
-            -- Assumption: turning it in led straight to 93464 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 93464,
-        },
+            -- already in QuestieDB; Assumption: turning it in led straight to 93464 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 93464,
+        -- },
         -- [1391] = { -- Nothing But The Truth https://wowhead.com/forever/quest=1391
             -- 1388 "Nothing But The Truth" https://wowhead.com/forever/quest=1388
             -- already in QuestieDB; Assumption: offered right after 1388 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters)
@@ -6074,7 +6028,7 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 699 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {699},
             -- 1426 "Threat From the Sea" https://wowhead.com/forever/quest=1426
-            -- already in QuestieDB; Assumption: turning it in led straight to 1426 (handoff; high; 100+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 1426 (handoff; medium; 100+ characters)
             -- [questKeys.nextQuestInChain] = 1426,
         -- },
         -- [1424] = { -- Pool of Tears https://wowhead.com/forever/quest=1424
@@ -6092,7 +6046,7 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 1422 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {1422},
             -- 1427 "Threat From the Sea" https://wowhead.com/forever/quest=1427
-            -- already in QuestieDB; Assumption: turning it in led straight to 1427 (handoff; high; 10+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 1427 (handoff; medium; 10+ characters)
             -- [questKeys.nextQuestInChain] = 1427,
         -- },
         -- [1427] = { -- Threat From the Sea https://wowhead.com/forever/quest=1427
@@ -6110,7 +6064,7 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 1424 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {1424},
             -- 1444 "Return to Fel'Zerul" https://wowhead.com/forever/quest=1444
-            -- already in QuestieDB; Assumption: turning it in led straight to 1444 (handoff; high; 10+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 1444 (handoff; medium; 10+ characters)
             -- [questKeys.nextQuestInChain] = 1444,
         -- },
         -- [1431] = { -- Alliance Relations https://wowhead.com/forever/quest=1431
@@ -6136,7 +6090,7 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: 1432 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
             -- [questKeys.preQuestSingle] = {1432},
             -- 1436 "Alliance Relations" https://wowhead.com/forever/quest=1436
-            -- not applied: 1436 needs this quest together with 1435 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 1436 (handoff; high; 10+ characters)
+            -- not applied: an authored fix sets this field; Assumption: turning it in led straight to 1436 (handoff; high; 10+ characters)
             -- [questKeys.nextQuestInChain] = 1436,
         -- },
         -- [1435] = { -- The Burning of Spirits https://wowhead.com/forever/quest=1435
@@ -6180,7 +6134,7 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 1429 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {1429},
             -- 1445 "The Temple of Atal'Hakkar" https://wowhead.com/forever/quest=1445
-            -- already in QuestieDB; Assumption: turning it in led straight to 1445 (handoff; high; 10+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 1445 (handoff; medium; 10+ characters)
             -- [questKeys.nextQuestInChain] = 1445,
         -- },
         -- [1445] = { -- The Temple of Atal'Hakkar https://wowhead.com/forever/quest=1445
@@ -6243,7 +6197,7 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 1454 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {1454},
             -- 1456 "The Karnitol Shipwreck" https://wowhead.com/forever/quest=1456
-            -- already in QuestieDB; Assumption: turning it in led straight to 1456 (handoff; high; 100+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 1456 (handoff; medium; 100+ characters)
             -- [questKeys.nextQuestInChain] = 1456,
         -- },
         -- [1456] = { -- The Karnitol Shipwreck https://wowhead.com/forever/quest=1456
@@ -6277,7 +6231,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [1464] = { -- Fire Sapta https://wowhead.com/forever/quest=1464
             -- 1525 "Call of Fire" https://wowhead.com/forever/quest=1525
-            -- already in QuestieDB; Assumption: 1525 was done whenever it was offered (offer-set; high; 10+ characters)
+            -- already in QuestieDB; Assumption: 1525 was done whenever it was offered (offer-set; medium; 10+ characters)
             -- [questKeys.preQuestSingle] = {1525},
         -- },
         -- [1465] = { -- Vahlarriel's Search https://wowhead.com/forever/quest=1465
@@ -6365,7 +6319,7 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 1480 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {1480},
             -- 1482 "The Corrupter" https://wowhead.com/forever/quest=1482
-            -- already in QuestieDB; Assumption: turning it in led straight to 1482 (handoff; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 1482 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 1482,
         -- },
         -- [1482] = { -- The Corrupter https://wowhead.com/forever/quest=1482
@@ -6419,7 +6373,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [1498] = { -- Path of Defense https://wowhead.com/forever/quest=1498
             -- 1819 "Ulag the Cleaver" https://wowhead.com/forever/quest=1819
-            -- already in QuestieDB; Assumption: the server completes it and 1819 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 1819 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {1819},
             -- 1502 "Thun'grim Firegaze" https://wowhead.com/forever/quest=1502
             -- already in QuestieDB; Assumption: turning it in led straight to 1502 (handoff; high; 100+ characters)
@@ -6458,7 +6412,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [1505] = { -- Veteran Uzzek https://wowhead.com/forever/quest=1505
             -- 1498 "Path of Defense" https://wowhead.com/forever/quest=1498
-            -- already in QuestieDB; Assumption: turning it in led straight to 1498 (handoff, absence; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 1498 (handoff, absence; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 1498,
         -- },
         -- [1508] = { -- Blind Cazul https://wowhead.com/forever/quest=1508
@@ -6482,7 +6436,7 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 1509 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {1509},
             -- 1511 "Ken'zigla's Draught" https://wowhead.com/forever/quest=1511
-            -- already in QuestieDB; Assumption: turning it in led straight to 1511 (handoff; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 1511 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 1511,
         -- },
         -- [1511] = { -- Ken'zigla's Draught https://wowhead.com/forever/quest=1511
@@ -6511,13 +6465,13 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 1511 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {1511},
             -- 1512 "Love's Gift" https://wowhead.com/forever/quest=1512
-            -- already in QuestieDB; Assumption: turning it in led straight to 1512 (handoff; high; 100+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 1512 (handoff; medium; 100+ characters)
             -- [questKeys.nextQuestInChain] = 1512,
         -- },
         -- [1516] = { -- Call of Earth https://wowhead.com/forever/quest=1516
             -- 1519 "Call of Earth" https://wowhead.com/forever/quest=1519
             -- 92466 "Call of Earth" https://wowhead.com/forever/quest=92466
-            -- already in QuestieDB; Assumption: the server completes it and 1519, 92466 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 1519, 92466 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {1519,92466},
             -- 1517 "Call of Earth" https://wowhead.com/forever/quest=1517
             -- already in QuestieDB; Assumption: turning it in led straight to 1517 (handoff; high; 100+ characters)
@@ -6539,7 +6493,7 @@ function ForeverQuestRelationTraces:Load()
         -- [1519] = { -- Call of Earth https://wowhead.com/forever/quest=1519
             -- 1516 "Call of Earth" https://wowhead.com/forever/quest=1516
             -- 92466 "Call of Earth" https://wowhead.com/forever/quest=92466
-            -- already in QuestieDB; Assumption: the server completes it and 1516, 92466 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 1516, 92466 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {1516,92466},
             -- 1520 "Call of Earth" https://wowhead.com/forever/quest=1520
             -- already in QuestieDB; Assumption: turning it in led straight to 1520 (handoff; high; 100+ characters)
@@ -6562,24 +6516,24 @@ function ForeverQuestRelationTraces:Load()
             -- 1523 "Call of Fire" https://wowhead.com/forever/quest=1523
             -- 2983 "Call of Fire" https://wowhead.com/forever/quest=2983
             -- 2984 "Call of Fire" https://wowhead.com/forever/quest=2984
-            -- already in QuestieDB; Assumption: the server completes it and 1523, 2984 together (cooccurrence; high; 100+ characters); offer lists show it and 2983 exclude each other (absence, cooccurrence; very high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 1523, 2984 together (cooccurrence; very high; 100+ characters); offer lists show it and 2983 exclude each other (absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {1523,2983,2984},
         -- },
         -- [1523] = { -- Call of Fire https://wowhead.com/forever/quest=1523
             -- 1522 "Call of Fire" https://wowhead.com/forever/quest=1522
             -- 2983 "Call of Fire" https://wowhead.com/forever/quest=2983
             -- 2984 "Call of Fire" https://wowhead.com/forever/quest=2984
-            -- already in QuestieDB; Assumption: the server completes it and 1522, 2983 together (cooccurrence; high; 100+ characters); offer lists show it and 2984 exclude each other (absence, cooccurrence; very high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 1522, 2983 together (cooccurrence; very high; 100+ characters); offer lists show it and 2984 exclude each other (absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {1522,2983,2984},
         -- },
-        [1524] = { -- Call of Fire https://wowhead.com/forever/quest=1524
+        -- [1524] = { -- Call of Fire https://wowhead.com/forever/quest=1524
             -- 97243 "Call of Fire" https://wowhead.com/forever/quest=97243
-            -- Assumption: the server completes it and 97243 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {97243},
+            -- already in QuestieDB; Assumption: the server completes it and 97243 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {97243},
             -- 1525 "Call of Fire" https://wowhead.com/forever/quest=1525
             -- already in QuestieDB; Assumption: turning it in led straight to 1525 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 1525,
-        },
+        -- },
         -- [1525] = { -- Call of Fire https://wowhead.com/forever/quest=1525
             -- 1524 "Call of Fire" https://wowhead.com/forever/quest=1524
             -- already in QuestieDB; Assumption: offered right after 1524 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
@@ -6605,14 +6559,14 @@ function ForeverQuestRelationTraces:Load()
             -- 1529 "Call of Water" https://wowhead.com/forever/quest=1529
             -- 2985 "Call of Water" https://wowhead.com/forever/quest=2985
             -- 2986 "Call of Water" https://wowhead.com/forever/quest=2986
-            -- already in QuestieDB; Assumption: the server completes it and 1529, 2985, 2986 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 1529, 2985, 2986 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {1529,2985,2986},
         -- },
         -- [1529] = { -- Call of Water https://wowhead.com/forever/quest=1529
             -- 1528 "Call of Water" https://wowhead.com/forever/quest=1528
             -- 2985 "Call of Water" https://wowhead.com/forever/quest=2985
             -- 2986 "Call of Water" https://wowhead.com/forever/quest=2986
-            -- already in QuestieDB; Assumption: the server completes it and 1528, 2985, 2986 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 1528, 2985, 2986 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {1528,2985,2986},
         -- },
         -- [1530] = { -- Call of Water https://wowhead.com/forever/quest=1530
@@ -6620,24 +6574,24 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: turning it in led straight to 1535 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 1535,
         -- },
-        [1531] = { -- Call of Air https://wowhead.com/forever/quest=1531
+        -- [1531] = { -- Call of Air https://wowhead.com/forever/quest=1531
             -- 1532 "Call of Air" https://wowhead.com/forever/quest=1532
             -- 96136 "Call of Air" https://wowhead.com/forever/quest=96136
-            -- already in QuestieDB; Assumption: the server completes it and 1532, 96136 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 1532, 96136 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {1532,96136},
             -- 79360 "Elemental Aid" https://wowhead.com/forever/quest=79360
-            -- Assumption: turning it in led straight to 79360 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 79360,
-        },
-        [1532] = { -- Call of Air https://wowhead.com/forever/quest=1532
+            -- already in QuestieDB; Assumption: turning it in led straight to 79360 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 79360,
+        -- },
+        -- [1532] = { -- Call of Air https://wowhead.com/forever/quest=1532
             -- 1531 "Call of Air" https://wowhead.com/forever/quest=1531
             -- 96136 "Call of Air" https://wowhead.com/forever/quest=96136
-            -- already in QuestieDB; Assumption: the server completes it and 1531, 96136 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 1531, 96136 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {1531,96136},
             -- 79360 "Elemental Aid" https://wowhead.com/forever/quest=79360
-            -- Assumption: turning it in led straight to 79360 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 79360,
-        },
+            -- already in QuestieDB; Assumption: turning it in led straight to 79360 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 79360,
+        -- },
         -- [1534] = { -- Call of Water https://wowhead.com/forever/quest=1534
             -- 1536 "Call of Water" https://wowhead.com/forever/quest=1536
             -- already in QuestieDB; Assumption: offered right after 1536 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
@@ -6679,18 +6633,24 @@ function ForeverQuestRelationTraces:Load()
         -- },
         [1638] = { -- A Warrior's Training https://wowhead.com/forever/quest=1638
             -- 1639 "Bartleby the Drunk" https://wowhead.com/forever/quest=1639
-            -- Assumption: turning it in led straight to 1639 (handoff, absence; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 1639,
+            -- not applied: an authored fix sets this field; Assumption: turning it in led straight to 1639 (handoff, absence; very high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 1639,
+            -- 1639 "Bartleby the Drunk" https://wowhead.com/forever/quest=1639
+            -- Assumption: 1638 left off offer lists once 1639 was taken or done (absence; medium; 100+ characters)
+            [questKeys.breadcrumbForQuestId] = 1639,
         },
-        -- [1639] = { -- Bartleby the Drunk https://wowhead.com/forever/quest=1639
+        [1639] = { -- Bartleby the Drunk https://wowhead.com/forever/quest=1639
             -- 1678 "Vejrek" https://wowhead.com/forever/quest=1678
             -- 1683 "Vorlus Vilehoof" https://wowhead.com/forever/quest=1683
-            -- already in QuestieDB; Assumption: the server completes it and 1678, 1683 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 1678, 1683 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {1678,1683},
             -- 1640 "Beat Bartleby" https://wowhead.com/forever/quest=1640
             -- already in QuestieDB; Assumption: turning it in led straight to 1640 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 1640,
-        -- },
+            -- 1638 "A Warrior's Training" https://wowhead.com/forever/quest=1638
+            -- Assumption: 1638 left off offer lists once 1639 was taken or done (absence; medium; 100+ characters)
+            [questKeys.breadcrumbs] = {1638},
+        },
         -- [1640] = { -- Beat Bartleby https://wowhead.com/forever/quest=1640
             -- 1639 "Bartleby the Drunk" https://wowhead.com/forever/quest=1639
             -- already in QuestieDB; Assumption: offered right after 1639 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
@@ -6722,7 +6682,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [1646] = { -- The Tome of Divinity https://wowhead.com/forever/quest=1646
             -- 1647 "The Tome of Divinity" https://wowhead.com/forever/quest=1647
-            -- already in QuestieDB; Assumption: turning it in led straight to 1647 (handoff; high; 100+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 1647 (handoff; medium; 100+ characters)
             -- [questKeys.nextQuestInChain] = 1647,
         -- },
         -- [1647] = { -- The Tome of Divinity https://wowhead.com/forever/quest=1647
@@ -6730,7 +6690,7 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 1646 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {1646},
             -- 1648 "The Tome of Divinity" https://wowhead.com/forever/quest=1648
-            -- already in QuestieDB; Assumption: turning it in led straight to 1648 (handoff; high; 100+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 1648 (handoff; medium; 100+ characters)
             -- [questKeys.nextQuestInChain] = 1648,
         -- },
         -- [1648] = { -- The Tome of Divinity https://wowhead.com/forever/quest=1648
@@ -6786,11 +6746,11 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: turning it in led straight to 1806 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 1806,
         -- },
-        [1661] = { -- The Tome of Nobility https://wowhead.com/forever/quest=1661
+        -- [1661] = { -- The Tome of Nobility https://wowhead.com/forever/quest=1661
             -- 4486 "The Tome of Nobility" https://wowhead.com/forever/quest=4486
-            -- Assumption: 4486 is an optional lead-in to it (breadcrumbs, absence; high; 10+ characters)
-            [questKeys.breadcrumbs] = {4486},
-        },
+            -- already in QuestieDB; Assumption: 4486 is an optional lead-in to it (breadcrumbs, absence; high; 10+ characters)
+            -- [questKeys.breadcrumbs] = {4486},
+        -- },
         -- [1665] = { -- Bartleby's Mug https://wowhead.com/forever/quest=1665
             -- 1640 "Beat Bartleby" https://wowhead.com/forever/quest=1640
             -- already in QuestieDB; Assumption: offered right after 1640 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
@@ -6804,7 +6764,7 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 1665 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {1665},
             -- 1667 "Dead-tooth Jack" https://wowhead.com/forever/quest=1667
-            -- already in QuestieDB; Assumption: turning it in led straight to 1667 (handoff; high; 100+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 1667 (handoff; medium; 100+ characters)
             -- [questKeys.nextQuestInChain] = 1667,
         -- },
         -- [1667] = { -- Dead-tooth Jack https://wowhead.com/forever/quest=1667
@@ -6815,7 +6775,7 @@ function ForeverQuestRelationTraces:Load()
         -- [1678] = { -- Vejrek https://wowhead.com/forever/quest=1678
             -- 1639 "Bartleby the Drunk" https://wowhead.com/forever/quest=1639
             -- 1683 "Vorlus Vilehoof" https://wowhead.com/forever/quest=1683
-            -- already in QuestieDB; Assumption: the server completes it and 1639, 1683 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 1639, 1683 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {1639,1683},
             -- 1680 "Tormus Deepforge" https://wowhead.com/forever/quest=1680
             -- already in QuestieDB; Assumption: turning it in led straight to 1680 (handoff; high; 100+ characters)
@@ -6850,7 +6810,7 @@ function ForeverQuestRelationTraces:Load()
         -- [1683] = { -- Vorlus Vilehoof https://wowhead.com/forever/quest=1683
             -- 1639 "Bartleby the Drunk" https://wowhead.com/forever/quest=1639
             -- 1678 "Vejrek" https://wowhead.com/forever/quest=1678
-            -- already in QuestieDB; Assumption: the server completes it and 1639, 1678 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 1639, 1678 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {1639,1678},
             -- 1686 "The Shade of Elura" https://wowhead.com/forever/quest=1686
             -- already in QuestieDB; Assumption: turning it in led straight to 1686 (handoff; high; 100+ characters)
@@ -6910,21 +6870,18 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: turning it in led straight to 1699 (handoff, absence; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 1699,
             -- 1699 "The Rethban Gauntlet" https://wowhead.com/forever/quest=1699
-            -- already in QuestieDB; Assumption: optional lead-in to 1699 (breadcrumbs, absence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: optional lead-in to 1699 (breadcrumbs, absence; very high; 100+ characters)
             -- [questKeys.breadcrumbForQuestId] = 1699,
         -- },
         -- [1699] = { -- The Rethban Gauntlet https://wowhead.com/forever/quest=1699
             -- 1698 "Yorus Barleybrew" https://wowhead.com/forever/quest=1698
-            -- already in QuestieDB; Assumption: 1698 is an optional lead-in to it (breadcrumbs, absence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: 1698 is an optional lead-in to it (breadcrumbs, absence; very high; 100+ characters)
             -- [questKeys.breadcrumbs] = {1698},
         -- },
         -- [1700] = { -- Grimand Elmore https://wowhead.com/forever/quest=1700
             -- 1782 "Furen's Armor" https://wowhead.com/forever/quest=1782
             -- already in QuestieDB; Assumption: offered right after 1782 was turned in (handoff, offer-set, absence, cooccurrence; high; 10+ characters)
             -- [questKeys.preQuestSingle] = {1782},
-            -- 1705 "Burning Blood" https://wowhead.com/forever/quest=1705
-            -- already in QuestieDB; Assumption: turning it in led straight to 1705 (handoff; medium; 10+ characters)
-            -- [questKeys.nextQuestInChain] = 1705,
         -- },
         -- [1701] = { -- Fire Hardened Mail https://wowhead.com/forever/quest=1701
             -- 1702 "The Shieldsmith" https://wowhead.com/forever/quest=1702
@@ -7016,7 +6973,7 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 1778 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {1778},
             -- 1783 "The Tome of Divinity" https://wowhead.com/forever/quest=1783
-            -- already in QuestieDB; Assumption: turning it in led straight to 1783 (handoff; high; 100+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 1783 (handoff; medium; 100+ characters)
             -- [questKeys.nextQuestInChain] = 1783,
         -- },
         -- [1780] = { -- The Tome of Divinity https://wowhead.com/forever/quest=1780
@@ -7090,17 +7047,17 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: turning it in led straight to 4781 (handoff; medium; 100+ characters)
             -- [questKeys.nextQuestInChain] = 4781,
         -- },
-        [1799] = { -- Fragments of the Orb of Orahil https://wowhead.com/forever/quest=1799
+        -- [1799] = { -- Fragments of the Orb of Orahil https://wowhead.com/forever/quest=1799
             -- 4965 "Knowledge of the Orb of Orahil" https://wowhead.com/forever/quest=4965
             -- 4967 "Knowledge of the Orb of Orahil" https://wowhead.com/forever/quest=4967
             -- 4968 "Knowledge of the Orb of Orahil" https://wowhead.com/forever/quest=4968
             -- 4969 "Knowledge of the Orb of Orahil" https://wowhead.com/forever/quest=4969
-            -- Assumption: offered right after 4965 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters); offered right after 4967, 4968, 4969 was turned in (handoff, offer-set, absence, cooccurrence; high; 100+ characters)
-            [questKeys.preQuestSingle] = {4965,4967,4968,4969},
+            -- not applied: QuestieDB has 4965, 4967, 4968, 4969 as breadcrumbs of this quest, optional lead-ins rather than prerequisites; Assumption: offered right after 4965 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters); offered right after 4967, 4968, 4969 was turned in (handoff, offer-set, absence, cooccurrence; high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {4965,4967,4968,4969},
             -- 4961 "Cleansing of the Orb of Orahil" https://wowhead.com/forever/quest=4961
-            -- already in QuestieDB; Assumption: turning it in led straight to 4961 (handoff; medium; 100+ characters)
+            -- not applied: an authored fix sets this field; Assumption: turning it in led straight to 4961 (handoff; medium; 100+ characters)
             -- [questKeys.nextQuestInChain] = 4961,
-        },
+        -- },
         -- [1801] = { -- Tome of the Cabal https://wowhead.com/forever/quest=1801
             -- 1803 "Tome of the Cabal" https://wowhead.com/forever/quest=1803
             -- already in QuestieDB; Assumption: turning it in led straight to 1803 (handoff; medium; 100+ characters)
@@ -7150,7 +7107,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [1819] = { -- Ulag the Cleaver https://wowhead.com/forever/quest=1819
             -- 1498 "Path of Defense" https://wowhead.com/forever/quest=1498
-            -- already in QuestieDB; Assumption: the server completes it and 1498 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 1498 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {1498},
             -- 1820 "Speak with Coleman" https://wowhead.com/forever/quest=1820
             -- already in QuestieDB; Assumption: turning it in led straight to 1820 (handoff; medium; 100+ characters)
@@ -7179,7 +7136,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [1823] = { -- Speak with Ruga https://wowhead.com/forever/quest=1823
             -- 1824 "Trial at the Field of Giants" https://wowhead.com/forever/quest=1824
-            -- already in QuestieDB; Assumption: turning it in led straight to 1824 (handoff, absence; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 1824 (handoff, absence; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 1824,
             -- 1824 "Trial at the Field of Giants" https://wowhead.com/forever/quest=1824
             -- already in QuestieDB; Assumption: optional lead-in to 1824 (breadcrumbs, absence; high; 100+ characters)
@@ -7198,15 +7155,15 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 1824 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {1824},
             -- 1838 "Brutal Armor" https://wowhead.com/forever/quest=1838
-            -- already in QuestieDB; Assumption: implied by its breadcrumb to 1838 (medium)
+            -- already in QuestieDB; Assumption: implied by its breadcrumb to 1838 (high)
             -- [questKeys.nextQuestInChain] = 1838,
             -- 1838 "Brutal Armor" https://wowhead.com/forever/quest=1838
-            -- already in QuestieDB; Assumption: optional lead-in to 1838 (breadcrumbs; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: optional lead-in to 1838 (breadcrumbs; high; 100+ characters)
             -- [questKeys.breadcrumbForQuestId] = 1838,
         -- },
         -- [1838] = { -- Brutal Armor https://wowhead.com/forever/quest=1838
             -- 1825 "Speak with Thun'grim" https://wowhead.com/forever/quest=1825
-            -- already in QuestieDB; Assumption: 1825 is an optional lead-in to it (breadcrumbs; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: 1825 is an optional lead-in to it (breadcrumbs; high; 100+ characters)
             -- [questKeys.breadcrumbs] = {1825},
         -- },
         -- [1839] = { -- Ula'elek and the Brutal Gauntlets https://wowhead.com/forever/quest=1839
@@ -7227,12 +7184,11 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 1848 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {1848},
         -- },
-        [1842] = { -- Satyr Hooves https://wowhead.com/forever/quest=1842
+        -- [1842] = { -- Satyr Hooves https://wowhead.com/forever/quest=1842
             -- 1839 "Ula'elek and the Brutal Gauntlets" https://wowhead.com/forever/quest=1839
-            -- 1848 "Brutal Hauberk" https://wowhead.com/forever/quest=1848
-            -- Assumption: offered right after 1839 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters); 1848 kept from QuestieDB
-            [questKeys.preQuestSingle] = {1839,1848},
-        },
+            -- not applied: QuestieDB has 1839 as breadcrumbs of this quest, optional lead-ins rather than prerequisites; Assumption: offered right after 1839 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {1839},
+        -- },
         -- [1848] = { -- Brutal Hauberk https://wowhead.com/forever/quest=1848
             -- 1838 "Brutal Armor" https://wowhead.com/forever/quest=1838
             -- already in QuestieDB; Assumption: offered right after 1838 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
@@ -7240,7 +7196,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [1858] = { -- The Shattered Hand https://wowhead.com/forever/quest=1858
             -- 1963 "The Shattered Hand" https://wowhead.com/forever/quest=1963
-            -- already in QuestieDB; Assumption: offered right after 1963 was turned in (handoff, offer-set, absence, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: offered right after 1963 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {1963},
         -- },
         -- [1859] = { -- Therzok https://wowhead.com/forever/quest=1859
@@ -7250,7 +7206,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [1860] = { -- Speak with Jennea https://wowhead.com/forever/quest=1860
             -- 1861 "Mirror Lake" https://wowhead.com/forever/quest=1861
-            -- already in QuestieDB; Assumption: turning it in led straight to 1861 (handoff, absence; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 1861 (handoff, absence; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 1861,
             -- 1861 "Mirror Lake" https://wowhead.com/forever/quest=1861
             -- already in QuestieDB; Assumption: optional lead-in to 1861 (breadcrumbs, absence; very high; 100+ characters)
@@ -7258,7 +7214,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [1861] = { -- Mirror Lake https://wowhead.com/forever/quest=1861
             -- 1880 "Mage-tastic Gizmonitor" https://wowhead.com/forever/quest=1880
-            -- already in QuestieDB; Assumption: the server completes it and 1880 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 1880 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {1880},
             -- 1860 "Speak with Jennea" https://wowhead.com/forever/quest=1860
             -- already in QuestieDB; Assumption: 1860 is an optional lead-in to it (breadcrumbs, absence; very high; 100+ characters)
@@ -7276,7 +7232,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [1880] = { -- Mage-tastic Gizmonitor https://wowhead.com/forever/quest=1880
             -- 1861 "Mirror Lake" https://wowhead.com/forever/quest=1861
-            -- already in QuestieDB; Assumption: the server completes it and 1861 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 1861 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {1861},
         -- },
         -- [1881] = { -- Speak with Anastasia https://wowhead.com/forever/quest=1881
@@ -7289,7 +7245,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [1882] = { -- The Balnir Farmstead https://wowhead.com/forever/quest=1882
             -- 1884 "Ju-Ju Heaps" https://wowhead.com/forever/quest=1884
-            -- already in QuestieDB; Assumption: the server completes it and 1884 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 1884 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {1884},
             -- 1881 "Speak with Anastasia" https://wowhead.com/forever/quest=1881
             -- already in QuestieDB; Assumption: 1881 is an optional lead-in to it (breadcrumbs, absence; very high; 100+ characters)
@@ -7302,7 +7258,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [1884] = { -- Ju-Ju Heaps https://wowhead.com/forever/quest=1884
             -- 1882 "The Balnir Farmstead" https://wowhead.com/forever/quest=1882
-            -- already in QuestieDB; Assumption: the server completes it and 1882 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 1882 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {1882},
         -- },
         -- [1885] = { -- Mennet Carkad https://wowhead.com/forever/quest=1885
@@ -7310,7 +7266,7 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: turning it in led straight to 1886 (handoff, absence; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 1886,
             -- 1886 "The Deathstalkers" https://wowhead.com/forever/quest=1886
-            -- already in QuestieDB; Assumption: optional lead-in to 1886 (breadcrumbs; high; 100+ characters)
+            -- already in QuestieDB; Assumption: optional lead-in to 1886 (breadcrumbs; very high; 100+ characters)
             -- [questKeys.breadcrumbForQuestId] = 1886,
         -- },
         -- [1886] = { -- The Deathstalkers https://wowhead.com/forever/quest=1886
@@ -7318,7 +7274,7 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: turning it in led straight to 1898 (handoff; medium; 100+ characters)
             -- [questKeys.nextQuestInChain] = 1898,
             -- 1885 "Mennet Carkad" https://wowhead.com/forever/quest=1885
-            -- already in QuestieDB; Assumption: 1885 is an optional lead-in to it (breadcrumbs; high; 100+ characters)
+            -- already in QuestieDB; Assumption: 1885 is an optional lead-in to it (breadcrumbs; very high; 100+ characters)
             -- [questKeys.breadcrumbs] = {1885},
         -- },
         -- [1898] = { -- The Deathstalkers https://wowhead.com/forever/quest=1898
@@ -7344,7 +7300,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [1919] = { -- Report to Jennea https://wowhead.com/forever/quest=1919
             -- 1920 "Investigate the Blue Recluse" https://wowhead.com/forever/quest=1920
-            -- already in QuestieDB; Assumption: turning it in led straight to 1920 (handoff, absence; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 1920 (handoff, absence; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 1920,
             -- 1920 "Investigate the Blue Recluse" https://wowhead.com/forever/quest=1920
             -- already in QuestieDB; Assumption: optional lead-in to 1920 (breadcrumbs, absence; very high; 100+ characters)
@@ -7449,7 +7405,7 @@ function ForeverQuestRelationTraces:Load()
         -- [1952] = { -- Mage's Wand https://wowhead.com/forever/quest=1952
             -- 1948 "Items of Power" https://wowhead.com/forever/quest=1948
             -- 1951 "Rituals of Power" https://wowhead.com/forever/quest=1951
-            -- already in QuestieDB; Assumption: offered right after 1948 was turned in (handoff, offer-set, absence, cooccurrence; high; 10+ characters); offered right after 1951 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- already in QuestieDB; Assumption: offered right after 1948 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters); offered right after 1951 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestGroup] = {1948,1951},
         -- },
         -- [1953] = { -- Return to the Marsh https://wowhead.com/forever/quest=1953
@@ -7474,9 +7430,6 @@ function ForeverQuestRelationTraces:Load()
             -- 1955 "The Exorcism" https://wowhead.com/forever/quest=1955
             -- already in QuestieDB; Assumption: offered right after 1955 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {1955},
-            -- 1957 "Mana Surges" https://wowhead.com/forever/quest=1957
-            -- already in QuestieDB; Assumption: turning it in led straight to 1957 (handoff; medium; 10+ characters)
-            -- [questKeys.nextQuestInChain] = 1957,
         -- },
         -- [1957] = { -- Mana Surges https://wowhead.com/forever/quest=1957
             -- 1956 "Power in Uldaman" https://wowhead.com/forever/quest=1956
@@ -7490,7 +7443,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [1959] = { -- Report to Anastasia https://wowhead.com/forever/quest=1959
             -- 1960 "Investigate the Alchemist Shop" https://wowhead.com/forever/quest=1960
-            -- already in QuestieDB; Assumption: turning it in led straight to 1960 (handoff, absence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 1960 (handoff, absence; very high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 1960,
             -- 1960 "Investigate the Alchemist Shop" https://wowhead.com/forever/quest=1960
             -- already in QuestieDB; Assumption: optional lead-in to 1960 (breadcrumbs, absence; very high; 100+ characters)
@@ -7498,7 +7451,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [1960] = { -- Investigate the Alchemist Shop https://wowhead.com/forever/quest=1960
             -- 1961 "Gathering Materials" https://wowhead.com/forever/quest=1961
-            -- already in QuestieDB; Assumption: turning it in led straight to 1961 (handoff; high; 100+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 1961 (handoff; medium; 100+ characters)
             -- [questKeys.nextQuestInChain] = 1961,
             -- 1959 "Report to Anastasia" https://wowhead.com/forever/quest=1959
             -- already in QuestieDB; Assumption: 1959 is an optional lead-in to it (breadcrumbs, absence; very high; 100+ characters)
@@ -7541,7 +7494,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [2041] = { -- Speak with Shoni https://wowhead.com/forever/quest=2041
             -- 2040 "Underground Assault" https://wowhead.com/forever/quest=2040
-            -- already in QuestieDB; Assumption: turning it in led straight to 2040 (handoff, absence; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 2040 (handoff, absence; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 2040,
         -- },
         -- [2078] = { -- Gyromast's Revenge https://wowhead.com/forever/quest=2078
@@ -7705,11 +7658,11 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: optional lead-in to 2298 (breadcrumbs, absence; very high; 100+ characters)
             -- [questKeys.breadcrumbForQuestId] = 2298,
         -- },
-        [2300] = { -- SI:7 https://wowhead.com/forever/quest=2300
+        -- [2300] = { -- SI:7 https://wowhead.com/forever/quest=2300
             -- 2281 "Redridge Rendezvous" https://wowhead.com/forever/quest=2281
-            -- Assumption: turning it in led straight to 2281 (handoff, absence; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 2281,
-        },
+            -- not applied: an authored fix sets this field; Assumption: turning it in led straight to 2281 (handoff, absence; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 2281,
+        -- },
         -- [2318] = { -- Translating the Journal https://wowhead.com/forever/quest=2318
             -- 2284 "Necklace Recovery, Take 2" https://wowhead.com/forever/quest=2284
             -- already in QuestieDB; Assumption: 2284 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
@@ -7732,9 +7685,6 @@ function ForeverQuestRelationTraces:Load()
             -- 2339 "Find the Gems and Power Source" https://wowhead.com/forever/quest=2339
             -- already in QuestieDB; Assumption: offered right after 2339 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
             -- [questKeys.preQuestSingle] = {2339},
-            -- 2341 "Necklace Recovery, Take 3" https://wowhead.com/forever/quest=2341
-            -- already in QuestieDB; Assumption: turning it in led straight to 2341 (handoff; medium; 10+ characters)
-            -- [questKeys.nextQuestInChain] = 2341,
         -- },
         -- [2341] = { -- Necklace Recovery, Take 3 https://wowhead.com/forever/quest=2341
             -- 2340 "Deliver the Gems" https://wowhead.com/forever/quest=2340
@@ -7822,7 +7772,7 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 2458 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {2458},
             -- 2479 "Hinott's Assistance" https://wowhead.com/forever/quest=2479
-            -- already in QuestieDB; Assumption: turning it in led straight to 2479 (handoff; high; 100+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 2479 (handoff; medium; 100+ characters)
             -- [questKeys.nextQuestInChain] = 2479,
         -- },
         -- [2479] = { -- Hinott's Assistance https://wowhead.com/forever/quest=2479
@@ -7853,7 +7803,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [2501] = { -- Badlands Reagent Run II https://wowhead.com/forever/quest=2501
             -- 17 "Uldaman Reagent Run" https://wowhead.com/forever/quest=17
-            -- already in QuestieDB; Assumption: offered right after 17 was turned in (handoff, offer-set, cooccurrence; high; 10+ characters)
+            -- already in QuestieDB; Assumption: offered right after 17 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters)
             -- [questKeys.preQuestSingle] = {17},
         -- },
         -- [2518] = { -- Tears of the Moon https://wowhead.com/forever/quest=2518
@@ -7893,7 +7843,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [2602] = { -- Infallible Mind https://wowhead.com/forever/quest=2602
             -- 2601 "The Basilisk's Bite" https://wowhead.com/forever/quest=2601
-            -- already in QuestieDB; Assumption: 2601 was done whenever it was offered (offer-set; high; 10+ characters)
+            -- already in QuestieDB; Assumption: 2601 was done whenever it was offered (offer-set; medium; 10+ characters)
             -- [questKeys.preQuestSingle] = {2601},
         -- },
         -- [2604] = { -- Spiritual Domination https://wowhead.com/forever/quest=2604
@@ -7942,7 +7892,7 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 2621 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {2621},
             -- 2623 "The Swamp Talker" https://wowhead.com/forever/quest=2623
-            -- already in QuestieDB; Assumption: turning it in led straight to 2623 (handoff; high; 10+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 2623 (handoff; medium; 10+ characters)
             -- [questKeys.nextQuestInChain] = 2623,
         -- },
         -- [2623] = { -- The Swamp Talker https://wowhead.com/forever/quest=2623
@@ -7972,11 +7922,6 @@ function ForeverQuestRelationTraces:Load()
             -- 2801 "A Tale of Sorrow" https://wowhead.com/forever/quest=2801
             -- already in QuestieDB; Assumption: offered right after 2801 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {2801},
-        -- },
-        -- [2701] = { -- Heroes of Old https://wowhead.com/forever/quest=2701
-            -- 2702 "Heroes of Old" https://wowhead.com/forever/quest=2702
-            -- already in QuestieDB; Assumption: offered right after 2702 was turned in (handoff, offer-set, cooccurrence; medium; <10 characters)
-            -- [questKeys.preQuestSingle] = {2702},
         -- },
         -- [2742] = { -- Rin'ji is Trapped! https://wowhead.com/forever/quest=2742
             -- 2782 "Rin'ji's Secret" https://wowhead.com/forever/quest=2782
@@ -8115,12 +8060,12 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [2783] = { -- Petty Squabbles https://wowhead.com/forever/quest=2783
             -- 2801 "A Tale of Sorrow" https://wowhead.com/forever/quest=2801
-            -- already in QuestieDB; Assumption: turning it in led straight to 2801 (handoff; high; 10+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 2801 (handoff; medium; 10+ characters)
             -- [questKeys.nextQuestInChain] = 2801,
         -- },
         -- [2784] = { -- Fall From Grace https://wowhead.com/forever/quest=2784
             -- 2621 "The Disgraced One" https://wowhead.com/forever/quest=2621
-            -- already in QuestieDB; Assumption: turning it in led straight to 2621 (handoff; high; 10+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 2621 (handoff; medium; 10+ characters)
             -- [questKeys.nextQuestInChain] = 2621,
         -- },
         -- [2801] = { -- A Tale of Sorrow https://wowhead.com/forever/quest=2801
@@ -8140,7 +8085,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [2844] = { -- The Giant Guardian https://wowhead.com/forever/quest=2844
             -- 2845 "Wandering Shay" https://wowhead.com/forever/quest=2845
-            -- already in QuestieDB; Assumption: turning it in led straight to 2845 (handoff; high; 10+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 2845 (handoff; medium; 10+ characters)
             -- [questKeys.nextQuestInChain] = 2845,
         -- },
         -- [2845] = { -- Wandering Shay https://wowhead.com/forever/quest=2845
@@ -8167,7 +8112,7 @@ function ForeverQuestRelationTraces:Load()
             -- 2848 "Wild Leather Shoulders" https://wowhead.com/forever/quest=2848
             -- 2849 "Wild Leather Vest" https://wowhead.com/forever/quest=2849
             -- 2850 "Wild Leather Helmet" https://wowhead.com/forever/quest=2850
-            -- already in QuestieDB; Assumption: offered right after 2848 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters); offered right after 2849, 2850 was turned in (handoff, offer-set, absence, cooccurrence; high; 10+ characters)
+            -- already in QuestieDB; Assumption: offered right after 2848, 2849 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters); offered right after 2850 was turned in (handoff, offer-set, absence, cooccurrence; high; 10+ characters)
             -- [questKeys.preQuestGroup] = {2848,2849,2850},
         -- },
         -- [2852] = { -- Wild Leather Leggings https://wowhead.com/forever/quest=2852
@@ -8199,11 +8144,10 @@ function ForeverQuestRelationTraces:Load()
             -- [questKeys.preQuestSingle] = {2854},
         -- },
         -- [2858] = { -- Wild Leather Boots https://wowhead.com/forever/quest=2858
-            -- 2855 "Wild Leather Shoulders" https://wowhead.com/forever/quest=2855
             -- 2856 "Wild Leather Vest" https://wowhead.com/forever/quest=2856
             -- 2857 "Wild Leather Helmet" https://wowhead.com/forever/quest=2857
-            -- already in QuestieDB; Assumption: 2855 was done whenever it was offered (offer-set, absence, cooccurrence; low; 10+ characters), kept below the min score to complete its accepted AND list; offered right after 2856, 2857 was turned in (handoff, offer-set, absence, cooccurrence; high; 10+ characters)
-            -- [questKeys.preQuestGroup] = {2855,2856,2857},
+            -- already in QuestieDB; Assumption: offered right after 2856, 2857 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestGroup] = {2856,2857},
         -- },
         -- [2859] = { -- Wild Leather Leggings https://wowhead.com/forever/quest=2859
             -- 2856 "Wild Leather Vest" https://wowhead.com/forever/quest=2856
@@ -8214,7 +8158,7 @@ function ForeverQuestRelationTraces:Load()
         -- [2860] = { -- Master of the Wild Leather https://wowhead.com/forever/quest=2860
             -- 2858 "Wild Leather Boots" https://wowhead.com/forever/quest=2858
             -- 2859 "Wild Leather Leggings" https://wowhead.com/forever/quest=2859
-            -- already in QuestieDB; Assumption: offered right after 2858 was turned in (handoff, offer-set, absence, cooccurrence; high; 10+ characters); offered right after 2859 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- already in QuestieDB; Assumption: offered right after 2858, 2859 was turned in (handoff, offer-set, absence, cooccurrence; high; 10+ characters)
             -- [questKeys.preQuestGroup] = {2858,2859},
         -- },
         -- [2862] = { -- War on the Woodpaw https://wowhead.com/forever/quest=2862
@@ -8269,6 +8213,11 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 2870 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {2870},
         -- },
+        -- [2872] = { -- Stoley's Debt https://wowhead.com/forever/quest=2872
+            -- 2873 "Stoley's Shipment" https://wowhead.com/forever/quest=2873
+            -- already in QuestieDB; Assumption: turning it in led straight to 2873 (handoff, absence; medium; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 2873,
+        -- },
         -- [2873] = { -- Stoley's Shipment https://wowhead.com/forever/quest=2873
             -- 2874 "Deliver to MacKinley" https://wowhead.com/forever/quest=2874
             -- already in QuestieDB; Assumption: turning it in led straight to 2874 (handoff; high; 100+ characters)
@@ -8289,7 +8238,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [2881] = { -- Troll Necklace Bounty https://wowhead.com/forever/quest=2881
             -- 2880 "Troll Necklace Bounty" https://wowhead.com/forever/quest=2880
-            -- already in QuestieDB; Assumption: 2880 was done whenever it was offered (offer-set; high; 100+ characters)
+            -- already in QuestieDB; Assumption: 2880 was done whenever it was offered (offer-set; medium; 100+ characters)
             -- [questKeys.preQuestSingle] = {2880},
         -- },
         -- [2902] = { -- Woodpaw Investigation https://wowhead.com/forever/quest=2902
@@ -8325,7 +8274,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [2931] = { -- Castpipe's Task https://wowhead.com/forever/quest=2931
             -- 2930 "Data Rescue" https://wowhead.com/forever/quest=2930
-            -- already in QuestieDB; Assumption: turning it in led straight to 2930 (handoff, absence; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 2930 (handoff, absence; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 2930,
         -- },
         -- [2933] = { -- Venom Bottles https://wowhead.com/forever/quest=2933
@@ -8361,9 +8310,6 @@ function ForeverQuestRelationTraces:Load()
             -- 2936 "The Spider God" https://wowhead.com/forever/quest=2936
             -- already in QuestieDB; Assumption: offered right after 2936 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {2936},
-            -- 2938 "Venom to the Undercity" https://wowhead.com/forever/quest=2938
-            -- already in QuestieDB; Assumption: turning it in led straight to 2938 (handoff; medium; 10+ characters)
-            -- [questKeys.nextQuestInChain] = 2938,
         -- },
         -- [2938] = { -- Venom to the Undercity https://wowhead.com/forever/quest=2938
             -- 2937 "Summoning Shadra" https://wowhead.com/forever/quest=2937
@@ -8424,7 +8370,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [2949] = { -- Return of the Ring https://wowhead.com/forever/quest=2949
             -- 2945 "Grime-Encrusted Ring" https://wowhead.com/forever/quest=2945
-            -- already in QuestieDB; Assumption: 2945 was done whenever it was offered (offer-set, cooccurrence; very high; 100+ characters)
+            -- already in QuestieDB; Assumption: 2945 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
             -- [questKeys.preQuestSingle] = {2945},
             -- 2950 "Nogg's Ring Redo" https://wowhead.com/forever/quest=2950
             -- already in QuestieDB; Assumption: turning it in led straight to 2950 (handoff; high; 100+ characters)
@@ -8438,23 +8384,21 @@ function ForeverQuestRelationTraces:Load()
         -- [2951] = { -- The Sparklematic 5200! https://wowhead.com/forever/quest=2951
             -- 4601 "The Sparklematic 5200!" https://wowhead.com/forever/quest=4601
             -- 4602 "The Sparklematic 5200!" https://wowhead.com/forever/quest=4602
-            -- already in QuestieDB; Assumption: the server completes it and 4601, 4602 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 4601, 4602 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {4601,4602},
         -- },
         -- [2952] = { -- The Sparklematic 5200! https://wowhead.com/forever/quest=2952
             -- 2951 "The Sparklematic 5200!" https://wowhead.com/forever/quest=2951
-            -- 4601 "The Sparklematic 5200!" https://wowhead.com/forever/quest=4601
-            -- 4602 "The Sparklematic 5200!" https://wowhead.com/forever/quest=4602
-            -- already in QuestieDB; Assumption: 2951 was done whenever it was offered (offer-set, cooccurrence; very high; 100+ characters); 4601, 4602 was done whenever it was offered (offer-set, cooccurrence; medium; 100+ characters)
-            -- [questKeys.preQuestSingle] = {2951,4601,4602},
+            -- already in QuestieDB; Assumption: 2951 was done whenever it was offered (offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {2951},
             -- 4605 "The Sparklematic 5200!" https://wowhead.com/forever/quest=4605
             -- 4606 "The Sparklematic 5200!" https://wowhead.com/forever/quest=4606
-            -- already in QuestieDB; Assumption: the server completes it and 4605, 4606 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 4605, 4606 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {4605,4606},
         -- },
         -- [2953] = { -- More Sparklematic Action https://wowhead.com/forever/quest=2953
             -- 2952 "The Sparklematic 5200!" https://wowhead.com/forever/quest=2952
-            -- already in QuestieDB; Assumption: 2952 was done whenever it was offered (offer-set; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: 2952 was done whenever it was offered (offer-set; high; 100+ characters)
             -- [questKeys.preQuestSingle] = {2952},
         -- },
         -- [2954] = { -- The Stone Watcher https://wowhead.com/forever/quest=2954
@@ -8470,7 +8414,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [2963] = { -- Portents of Uldum https://wowhead.com/forever/quest=2963
             -- 2946 "Seeing What Happens" https://wowhead.com/forever/quest=2946
-            -- already in QuestieDB; Assumption: turning it in led straight to 2946 (handoff; high; 10+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 2946 (handoff; medium; 10+ characters)
             -- [questKeys.nextQuestInChain] = 2946,
         -- },
         -- [2964] = { -- A Future Task https://wowhead.com/forever/quest=2964
@@ -8580,28 +8524,28 @@ function ForeverQuestRelationTraces:Load()
             -- 1522 "Call of Fire" https://wowhead.com/forever/quest=1522
             -- 1523 "Call of Fire" https://wowhead.com/forever/quest=1523
             -- 2984 "Call of Fire" https://wowhead.com/forever/quest=2984
-            -- already in QuestieDB; Assumption: offer lists show it and 1522 exclude each other (absence, cooccurrence; very high; 100+ characters); the server completes it and 1523 together (cooccurrence; high; 100+ characters); the server completes it and 2984 together (cooccurrence; very high; 100+ characters)
+            -- already in QuestieDB; Assumption: offer lists show it and 1522 exclude each other (absence, cooccurrence; very high; 100+ characters); the server completes it and 1523, 2984 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {1522,1523,2984},
         -- },
         -- [2984] = { -- Call of Fire https://wowhead.com/forever/quest=2984
             -- 1522 "Call of Fire" https://wowhead.com/forever/quest=1522
             -- 1523 "Call of Fire" https://wowhead.com/forever/quest=1523
             -- 2983 "Call of Fire" https://wowhead.com/forever/quest=2983
-            -- already in QuestieDB; Assumption: the server completes it and 1522 together (cooccurrence; high; 100+ characters); offer lists show it and 1523 exclude each other (absence, cooccurrence; very high; 100+ characters); the server completes it and 2983 together (cooccurrence; very high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 1522, 2983 together (cooccurrence; very high; 100+ characters); offer lists show it and 1523 exclude each other (absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {1522,1523,2983},
         -- },
         -- [2985] = { -- Call of Water https://wowhead.com/forever/quest=2985
             -- 1528 "Call of Water" https://wowhead.com/forever/quest=1528
             -- 1529 "Call of Water" https://wowhead.com/forever/quest=1529
             -- 2986 "Call of Water" https://wowhead.com/forever/quest=2986
-            -- already in QuestieDB; Assumption: the server completes it and 1528, 1529, 2986 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 1528, 1529, 2986 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {1528,1529,2986},
         -- },
         -- [2986] = { -- Call of Water https://wowhead.com/forever/quest=2986
             -- 1528 "Call of Water" https://wowhead.com/forever/quest=1528
             -- 1529 "Call of Water" https://wowhead.com/forever/quest=1529
             -- 2985 "Call of Water" https://wowhead.com/forever/quest=2985
-            -- already in QuestieDB; Assumption: the server completes it and 1528, 1529, 2985 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 1528, 1529, 2985 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {1528,1529,2985},
         -- },
         -- [2988] = { -- Witherbark Cages https://wowhead.com/forever/quest=2988
@@ -8657,7 +8601,7 @@ function ForeverQuestRelationTraces:Load()
         -- [2997] = { -- Tome of Divinity https://wowhead.com/forever/quest=2997
             -- 2999 "Tome of Divinity" https://wowhead.com/forever/quest=2999
             -- 3000 "Tome of Divinity" https://wowhead.com/forever/quest=3000
-            -- already in QuestieDB; Assumption: offer lists show it and 2999 exclude each other (absence, cooccurrence; high; 100+ characters); the server completes it and 3000 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: offer lists show it and 2999 exclude each other (absence, cooccurrence; very high; 100+ characters); the server completes it and 3000 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {2999,3000},
         -- },
         -- [2998] = { -- Tome of Divinity https://wowhead.com/forever/quest=2998
@@ -8671,13 +8615,13 @@ function ForeverQuestRelationTraces:Load()
         -- [2999] = { -- Tome of Divinity https://wowhead.com/forever/quest=2999
             -- 2997 "Tome of Divinity" https://wowhead.com/forever/quest=2997
             -- 3000 "Tome of Divinity" https://wowhead.com/forever/quest=3000
-            -- already in QuestieDB; Assumption: offer lists show it and 2997, 3000 exclude each other (absence, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: offer lists show it and 2997, 3000 exclude each other (absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {2997,3000},
         -- },
         -- [3000] = { -- Tome of Divinity https://wowhead.com/forever/quest=3000
             -- 2997 "Tome of Divinity" https://wowhead.com/forever/quest=2997
             -- 2999 "Tome of Divinity" https://wowhead.com/forever/quest=2999
-            -- already in QuestieDB; Assumption: the server completes it and 2997 together (cooccurrence; high; 100+ characters); offer lists show it and 2999 exclude each other (absence, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 2997 together (cooccurrence; very high; 100+ characters); offer lists show it and 2999 exclude each other (absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {2997,2999},
         -- },
         -- [3002] = { -- The Gordunni Orb https://wowhead.com/forever/quest=3002
@@ -8902,9 +8846,6 @@ function ForeverQuestRelationTraces:Load()
             -- 3123 "Testing the Vessel" https://wowhead.com/forever/quest=3123
             -- already in QuestieDB; Assumption: offered right after 3123 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {3123},
-            -- 3125 "Faerie Dragon Muisek" https://wowhead.com/forever/quest=3125
-            -- already in QuestieDB; Assumption: turning it in led straight to 3125 (handoff; medium; 10+ characters)
-            -- [questKeys.nextQuestInChain] = 3125,
         -- },
         -- [3125] = { -- Faerie Dragon Muisek https://wowhead.com/forever/quest=3125
             -- 3124 "Hippogryph Muisek" https://wowhead.com/forever/quest=3124
@@ -8992,7 +8933,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [3321] = { -- Did You Lose This? https://wowhead.com/forever/quest=3321
             -- 2773 "The Mithril Kid" https://wowhead.com/forever/quest=2773
-            -- already in QuestieDB; Assumption: offered right after 2773 was turned in (handoff, offer-set, cooccurrence; high; <10 characters)
+            -- already in QuestieDB; Assumption: offered right after 2773 was turned in (handoff, offer-set, cooccurrence; medium; <10 characters)
             -- [questKeys.preQuestSingle] = {2773},
         -- },
         -- [3365] = { -- Bring Back the Mug https://wowhead.com/forever/quest=3365
@@ -9088,7 +9029,7 @@ function ForeverQuestRelationTraces:Load()
         -- [3444] = { -- The Stone Circle https://wowhead.com/forever/quest=3444
             -- 3380 "The Sunken Temple" https://wowhead.com/forever/quest=3380
             -- 3445 "The Sunken Temple" https://wowhead.com/forever/quest=3445
-            -- already in QuestieDB; Assumption: offered right after 3380, 3445 was turned in (handoff, offer-set, absence, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: offered right after 3380, 3445 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {3380,3445},
         -- },
         -- [3445] = { -- The Sunken Temple https://wowhead.com/forever/quest=3445
@@ -9119,14 +9060,14 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: turning it in led straight to 3461 (handoff; medium; 10+ characters)
             -- [questKeys.nextQuestInChain] = 3461,
         -- },
-        [3450] = { -- An Easy Pickup https://wowhead.com/forever/quest=3450
+        -- [3450] = { -- An Easy Pickup https://wowhead.com/forever/quest=3450
             -- 3448 "Passing the Burden" https://wowhead.com/forever/quest=3448
-            -- Assumption: 3448 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
-            [questKeys.preQuestSingle] = {3448},
+            -- not applied: implied, as it comes before 3449, this quest's parent quest or other prerequisites; Assumption: 3448 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {3448},
             -- 3451 "Signal for Pickup" https://wowhead.com/forever/quest=3451
             -- already in QuestieDB; Assumption: turning it in led straight to 3451 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 3451,
-        },
+        -- },
         -- [3451] = { -- Signal for Pickup https://wowhead.com/forever/quest=3451
             -- 3450 "An Easy Pickup" https://wowhead.com/forever/quest=3450
             -- already in QuestieDB; Assumption: offered right after 3450 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
@@ -9186,11 +9127,11 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 3501 was turned in (handoff, offer-set; very high; 10+ characters)
             -- [questKeys.preQuestSingle] = {3501},
         -- },
-        [3505] = { -- Betrayed https://wowhead.com/forever/quest=3505
+        -- [3505] = { -- Betrayed https://wowhead.com/forever/quest=3505
             -- 91497 "Seals of the Sin'dorei" https://wowhead.com/forever/quest=91497
-            -- Assumption: turning it in led straight to 91497 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 91497,
-        },
+            -- already in QuestieDB; Assumption: turning it in led straight to 91497 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 91497,
+        -- },
         -- [3512] = { -- In Eranikus' Own Words https://wowhead.com/forever/quest=3512
             -- 3374 "The Essence of Eranikus" https://wowhead.com/forever/quest=3374
             -- already in QuestieDB; Assumption: offered right after 3374 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
@@ -9210,9 +9151,6 @@ function ForeverQuestRelationTraces:Load()
             -- 3517 "Stealing Knowledge" https://wowhead.com/forever/quest=3517
             -- already in QuestieDB; Assumption: offered right after 3517 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
             -- [questKeys.preQuestSingle] = {3517},
-            -- 3562 "Magatha's Payment to Jediga" https://wowhead.com/forever/quest=3562
-            -- already in QuestieDB; Assumption: turning it in led straight to 3562 (handoff; medium; 10+ characters)
-            -- [questKeys.nextQuestInChain] = 3562,
         -- },
         -- [3519] = { -- A Friend in Need https://wowhead.com/forever/quest=3519
             -- 4495 "A Good Friend" https://wowhead.com/forever/quest=4495
@@ -9247,7 +9185,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [3525] = { -- Extinguishing the Idol https://wowhead.com/forever/quest=3525
             -- 3523 "Scourge of the Downs" https://wowhead.com/forever/quest=3523
-            -- already in QuestieDB; Assumption: 3523 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: 3523 was done whenever it was offered (offer-set, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {3523},
         -- },
         -- [3527] = { -- The Prophecy of Mosh'aru https://wowhead.com/forever/quest=3527
@@ -9275,9 +9213,6 @@ function ForeverQuestRelationTraces:Load()
             -- 3517 "Stealing Knowledge" https://wowhead.com/forever/quest=3517
             -- already in QuestieDB; Assumption: offered right after 3517 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
             -- [questKeys.preQuestSingle] = {3517},
-            -- 3564 "Andron's Payment to Jediga" https://wowhead.com/forever/quest=3564
-            -- already in QuestieDB; Assumption: turning it in led straight to 3564 (handoff; medium; 10+ characters)
-            -- [questKeys.nextQuestInChain] = 3564,
         -- },
         -- [3561] = { -- Delivery to Archmage Xylem https://wowhead.com/forever/quest=3561
             -- 3517 "Stealing Knowledge" https://wowhead.com/forever/quest=3517
@@ -9294,7 +9229,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [3563] = { -- Jes'rimon's Payment to Jediga https://wowhead.com/forever/quest=3563
             -- 3541 "Delivery to Jes'rimon" https://wowhead.com/forever/quest=3541
-            -- already in QuestieDB; Assumption: offered right after 3541 was turned in (handoff, offer-set, absence, cooccurrence; high; 10+ characters)
+            -- already in QuestieDB; Assumption: offered right after 3541 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
             -- [questKeys.preQuestSingle] = {3541},
         -- },
         -- [3564] = { -- Andron's Payment to Jediga https://wowhead.com/forever/quest=3564
@@ -9317,12 +9252,42 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: turning it in led straight to 5534 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 5534,
         -- },
+        -- [3629] = { -- Goblin Engineering https://wowhead.com/forever/quest=3629
+            -- 3633 "Goblin Engineering" https://wowhead.com/forever/quest=3633
+            -- 4181 "Goblin Engineering" https://wowhead.com/forever/quest=4181
+            -- already in QuestieDB; Assumption: the server completes it and 3633 together (cooccurrence; low; 10+ characters), kept below the min score for its accepted exclusive group; offer lists show it and 4181 exclude each other (absence, cooccurrence; high; 10+ characters)
+            -- [questKeys.exclusiveTo] = {3633,4181},
+        -- },
         -- [3631] = { -- Summon Felsteed https://wowhead.com/forever/quest=3631
             -- 4487 "Summon Felsteed" https://wowhead.com/forever/quest=4487
             -- 4488 "Summon Felsteed" https://wowhead.com/forever/quest=4488
             -- 4489 "Summon Felsteed" https://wowhead.com/forever/quest=4489
             -- already in QuestieDB; Assumption: the server completes it and 4487, 4488, 4489 together (cooccurrence; high; 100+ characters)
             -- [questKeys.exclusiveTo] = {4487,4488,4489},
+        -- },
+        -- [3632] = { -- Gnome Engineering https://wowhead.com/forever/quest=3632
+            -- 3635 "Gnome Engineering" https://wowhead.com/forever/quest=3635
+            -- 3637 "Gnome Engineering" https://wowhead.com/forever/quest=3637
+            -- already in QuestieDB; Assumption: the server completes it and 3635 together (cooccurrence; low; 10+ characters), kept below the min score for its accepted exclusive group; the server completes it and 3637 together (cooccurrence; medium; 10+ characters)
+            -- [questKeys.exclusiveTo] = {3635,3637},
+        -- },
+        -- [3633] = { -- Goblin Engineering https://wowhead.com/forever/quest=3633
+            -- 3629 "Goblin Engineering" https://wowhead.com/forever/quest=3629
+            -- 4181 "Goblin Engineering" https://wowhead.com/forever/quest=4181
+            -- already in QuestieDB; Assumption: the server completes it and 3629 together (cooccurrence; low; 10+ characters), kept below the min score for its accepted exclusive group; the server completes it and 4181 together (cooccurrence; medium; 10+ characters)
+            -- [questKeys.exclusiveTo] = {3629,4181},
+        -- },
+        -- [3635] = { -- Gnome Engineering https://wowhead.com/forever/quest=3635
+            -- 3632 "Gnome Engineering" https://wowhead.com/forever/quest=3632
+            -- 3637 "Gnome Engineering" https://wowhead.com/forever/quest=3637
+            -- already in QuestieDB; Assumption: the server completes it and 3632 together (cooccurrence; low; 10+ characters), kept below the min score for its accepted exclusive group; offer lists show it and 3637 exclude each other (absence, cooccurrence; medium; 10+ characters)
+            -- [questKeys.exclusiveTo] = {3632,3637},
+        -- },
+        -- [3637] = { -- Gnome Engineering https://wowhead.com/forever/quest=3637
+            -- 3632 "Gnome Engineering" https://wowhead.com/forever/quest=3632
+            -- 3635 "Gnome Engineering" https://wowhead.com/forever/quest=3635
+            -- already in QuestieDB; Assumption: the server completes it and 3632 together (cooccurrence; medium; 10+ characters); offer lists show it and 3635 exclude each other (absence, cooccurrence; medium; 10+ characters)
+            -- [questKeys.exclusiveTo] = {3632,3635},
         -- },
         -- [3638] = { -- The Pledge of Secrecy https://wowhead.com/forever/quest=3638
             -- 3526 "Goblin Engineering" https://wowhead.com/forever/quest=3526
@@ -9341,9 +9306,9 @@ function ForeverQuestRelationTraces:Load()
             -- 3630 "Gnome Engineering" https://wowhead.com/forever/quest=3630
             -- already in QuestieDB; Assumption: offered right after 3630 was turned in (handoff, offer-set, absence, cooccurrence; high; 10+ characters)
             -- [questKeys.preQuestSingle] = {3630},
-            -- 3641 "Show Your Work" https://wowhead.com/forever/quest=3641
-            -- already in QuestieDB; Assumption: turning it in led straight to 3641 (handoff; medium; 10+ characters)
-            -- [questKeys.nextQuestInChain] = 3641,
+            -- 3642 "The Pledge of Secrecy" https://wowhead.com/forever/quest=3642
+            -- already in QuestieDB; Assumption: the server completes it and 3642 together (cooccurrence; medium; 10+ characters)
+            -- [questKeys.exclusiveTo] = {3642},
         -- },
         -- [3641] = { -- Show Your Work https://wowhead.com/forever/quest=3641
             -- 3640 "The Pledge of Secrecy" https://wowhead.com/forever/quest=3640
@@ -9354,9 +9319,9 @@ function ForeverQuestRelationTraces:Load()
             -- 3635 "Gnome Engineering" https://wowhead.com/forever/quest=3635
             -- already in QuestieDB; Assumption: offered right after 3635 was turned in (handoff, offer-set, absence, cooccurrence; high; 10+ characters)
             -- [questKeys.preQuestSingle] = {3635},
-            -- 3643 "Show Your Work" https://wowhead.com/forever/quest=3643
-            -- already in QuestieDB; Assumption: turning it in led straight to 3643 (handoff; medium; 10+ characters)
-            -- [questKeys.nextQuestInChain] = 3643,
+            -- 3640 "The Pledge of Secrecy" https://wowhead.com/forever/quest=3640
+            -- already in QuestieDB; Assumption: the server completes it and 3640 together (cooccurrence; medium; 10+ characters)
+            -- [questKeys.exclusiveTo] = {3640},
         -- },
         -- [3643] = { -- Show Your Work https://wowhead.com/forever/quest=3643
             -- 3642 "The Pledge of Secrecy" https://wowhead.com/forever/quest=3642
@@ -9365,12 +9330,12 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [3644] = { -- Membership Card Renewal https://wowhead.com/forever/quest=3644
             -- 3639 "Show Your Work" https://wowhead.com/forever/quest=3639
-            -- already in QuestieDB; Assumption: 3639 was done whenever it was offered (offer-set; high; 10+ characters)
+            -- already in QuestieDB; Assumption: 3639 was done whenever it was offered (offer-set; medium; 10+ characters)
             -- [questKeys.preQuestSingle] = {3639},
         -- },
         -- [3645] = { -- Membership Card Renewal https://wowhead.com/forever/quest=3645
             -- 3643 "Show Your Work" https://wowhead.com/forever/quest=3643
-            -- already in QuestieDB; Assumption: 3643 was done whenever it was offered (offer-set; high; 10+ characters)
+            -- already in QuestieDB; Assumption: 3643 was done whenever it was offered (offer-set; medium; 10+ characters)
             -- [questKeys.preQuestSingle] = {3643},
         -- },
         -- [3647] = { -- Membership Card Renewal https://wowhead.com/forever/quest=3647
@@ -9390,25 +9355,25 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [3702] = { -- The Smoldering Ruins of Thaurissan https://wowhead.com/forever/quest=3702
             -- 3701 "The Smoldering Ruins of Thaurissan" https://wowhead.com/forever/quest=3701
-            -- already in QuestieDB; Assumption: turning it in led straight to 3701 (handoff; high; 10+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 3701 (handoff; medium; 10+ characters)
             -- [questKeys.nextQuestInChain] = 3701,
         -- },
         -- [3721] = { -- An OOX of Your Own https://wowhead.com/forever/quest=3721
             -- 836 "Rescue OOX-09/HL!" https://wowhead.com/forever/quest=836
             -- 2767 "Rescue OOX-22/FE!" https://wowhead.com/forever/quest=2767
-            -- already in QuestieDB; Assumption: offered right after 836 was turned in (handoff, offer-set, absence, cooccurrence; high; 10+ characters); offered right after 2767 was turned in (handoff, offer-set, absence, cooccurrence; medium; 10+ characters)
+            -- already in QuestieDB; Assumption: offered right after 836, 2767 was turned in (handoff, offer-set, absence, cooccurrence; high; 10+ characters)
             -- [questKeys.preQuestGroup] = {836,2767},
         -- },
         -- [3762] = { -- Assisting Arch Druid Runetotem https://wowhead.com/forever/quest=3762
             -- 936 "Assisting Arch Druid Runetotem" https://wowhead.com/forever/quest=936
             -- 3784 "Assisting Arch Druid Runetotem" https://wowhead.com/forever/quest=3784
-            -- already in QuestieDB; Assumption: the server completes it and 936 together (cooccurrence; medium; 100+ characters); offer lists show it and 3784 exclude each other (absence, cooccurrence; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 936 together (cooccurrence; high; 100+ characters); offer lists show it and 3784 exclude each other (absence, cooccurrence; high; 100+ characters)
             -- [questKeys.exclusiveTo] = {936,3784},
         -- },
         -- [3763] = { -- Assisting Arch Druid Staghelm https://wowhead.com/forever/quest=3763
             -- 3789 "Assisting Arch Druid Staghelm" https://wowhead.com/forever/quest=3789
             -- 3790 "Assisting Arch Druid Staghelm" https://wowhead.com/forever/quest=3790
-            -- already in QuestieDB; Assumption: offer lists show it and 3789 exclude each other (absence, cooccurrence; medium; 100+ characters); the server completes it and 3790 together (cooccurrence; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: offer lists show it and 3789 exclude each other (absence, cooccurrence; high; 100+ characters); the server completes it and 3790 together (cooccurrence; high; 100+ characters)
             -- [questKeys.exclusiveTo] = {3789,3790},
             -- 3764 "Un'Goro Soil" https://wowhead.com/forever/quest=3764
             -- already in QuestieDB; Assumption: implied by its breadcrumb to 3764 (very high)
@@ -9434,9 +9399,6 @@ function ForeverQuestRelationTraces:Load()
             -- 3761 "Un'Goro Soil" https://wowhead.com/forever/quest=3761
             -- already in QuestieDB; Assumption: 3761 was done whenever it was offered (offer-set, absence, cooccurrence; medium; 100+ characters)
             -- [questKeys.preQuestSingle] = {3761},
-            -- 3786 "Morrowgrain Research" https://wowhead.com/forever/quest=3786
-            -- already in QuestieDB; Assumption: turning it in led straight to 3786 (handoff; medium; 10+ characters)
-            -- [questKeys.nextQuestInChain] = 3786,
         -- },
         -- [3783] = { -- Are We There, Yeti? https://wowhead.com/forever/quest=3783
             -- 977 "Are We There, Yeti?" https://wowhead.com/forever/quest=977
@@ -9446,7 +9408,7 @@ function ForeverQuestRelationTraces:Load()
         -- [3784] = { -- Assisting Arch Druid Runetotem https://wowhead.com/forever/quest=3784
             -- 936 "Assisting Arch Druid Runetotem" https://wowhead.com/forever/quest=936
             -- 3762 "Assisting Arch Druid Runetotem" https://wowhead.com/forever/quest=3762
-            -- already in QuestieDB; Assumption: offer lists show it and 936, 3762 exclude each other (absence, cooccurrence; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: offer lists show it and 936, 3762 exclude each other (absence, cooccurrence; high; 100+ characters)
             -- [questKeys.exclusiveTo] = {936,3762},
         -- },
         -- [3785] = { -- Morrowgrain Research https://wowhead.com/forever/quest=3785
@@ -9462,21 +9424,18 @@ function ForeverQuestRelationTraces:Load()
         -- [3789] = { -- Assisting Arch Druid Staghelm https://wowhead.com/forever/quest=3789
             -- 3763 "Assisting Arch Druid Staghelm" https://wowhead.com/forever/quest=3763
             -- 3790 "Assisting Arch Druid Staghelm" https://wowhead.com/forever/quest=3790
-            -- already in QuestieDB; Assumption: offer lists show it and 3763, 3790 exclude each other (absence, cooccurrence; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: offer lists show it and 3763, 3790 exclude each other (absence, cooccurrence; high; 100+ characters)
             -- [questKeys.exclusiveTo] = {3763,3790},
-            -- 3764 "Un'Goro Soil" https://wowhead.com/forever/quest=3764
-            -- already in QuestieDB; Assumption: turning it in led straight to 3764 (handoff, absence; medium; 10+ characters)
-            -- [questKeys.nextQuestInChain] = 3764,
         -- },
         -- [3790] = { -- Assisting Arch Druid Staghelm https://wowhead.com/forever/quest=3790
             -- 3763 "Assisting Arch Druid Staghelm" https://wowhead.com/forever/quest=3763
             -- 3789 "Assisting Arch Druid Staghelm" https://wowhead.com/forever/quest=3789
-            -- already in QuestieDB; Assumption: the server completes it and 3763 together (cooccurrence; medium; 100+ characters); offer lists show it and 3789 exclude each other (absence, cooccurrence; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 3763 together (cooccurrence; high; 100+ characters); offer lists show it and 3789 exclude each other (absence, cooccurrence; high; 100+ characters)
             -- [questKeys.exclusiveTo] = {3763,3789},
         -- },
         -- [3792] = { -- Morrowgrain to Feathermoon Stronghold https://wowhead.com/forever/quest=3792
             -- 3791 "The Mystery of Morrowgrain" https://wowhead.com/forever/quest=3791
-            -- already in QuestieDB; Assumption: 3791 was done whenever it was offered (offer-set; high; <10 characters)
+            -- already in QuestieDB; Assumption: 3791 was done whenever it was offered (offer-set; medium; <10 characters)
             -- [questKeys.preQuestSingle] = {3791},
         -- },
         -- [3801] = { -- Dark Iron Legacy https://wowhead.com/forever/quest=3801
@@ -9518,9 +9477,6 @@ function ForeverQuestRelationTraces:Load()
             -- 3823 "Extinguish the Firegut" https://wowhead.com/forever/quest=3823
             -- already in QuestieDB; Assumption: offered right after 3823 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
             -- [questKeys.preQuestSingle] = {3823},
-            -- 3825 "Ogre Head On A Stick = Party" https://wowhead.com/forever/quest=3825
-            -- already in QuestieDB; Assumption: turning it in led straight to 3825 (handoff; medium; 10+ characters)
-            -- [questKeys.nextQuestInChain] = 3825,
         -- },
         -- [3825] = { -- Ogre Head On A Stick = Party https://wowhead.com/forever/quest=3825
             -- 3824 "Gor'tesh the Brute Lord" https://wowhead.com/forever/quest=3824
@@ -9536,9 +9492,6 @@ function ForeverQuestRelationTraces:Load()
             -- 3841 "An Orphan Looking For a Home" https://wowhead.com/forever/quest=3841
             -- already in QuestieDB; Assumption: offered right after 3841 was turned in (handoff, offer-set, cooccurrence; very high; <10 characters)
             -- [questKeys.preQuestSingle] = {3841},
-            -- 3843 "The Newest Member of the Family" https://wowhead.com/forever/quest=3843
-            -- already in QuestieDB; Assumption: turning it in led straight to 3843 (handoff; medium; <10 characters)
-            -- [questKeys.nextQuestInChain] = 3843,
         -- },
         -- [3843] = { -- The Newest Member of the Family https://wowhead.com/forever/quest=3843
             -- 3842 "A Short Incubation" https://wowhead.com/forever/quest=3842
@@ -9566,15 +9519,13 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 364 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {364},
         -- },
-        -- [3902] = { -- Scavenging Deathknell https://wowhead.com/forever/quest=3902
-            -- 376 "The Damned" https://wowhead.com/forever/quest=376
-            -- already in QuestieDB; Assumption: everyone who took it had done 376 (cooccurrence; medium; 100+ characters)
-            -- [questKeys.preQuestSingle] = {376},
-        -- },
         -- [3903] = { -- Milly Osworth https://wowhead.com/forever/quest=3903
             -- 18 "Brotherhood of Thieves" https://wowhead.com/forever/quest=18
             -- already in QuestieDB; Assumption: offered right after 18 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {18},
+            -- 3904 "Milly's Harvest" https://wowhead.com/forever/quest=3904
+            -- already in QuestieDB; Assumption: turning it in led straight to 3904 (handoff, absence; medium; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 3904,
         -- },
         -- [3904] = { -- Milly's Harvest https://wowhead.com/forever/quest=3904
             -- 3905 "Grape Manifest" https://wowhead.com/forever/quest=3905
@@ -9611,11 +9562,8 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [3912] = { -- Meet at the Grave https://wowhead.com/forever/quest=3912
             -- 3909 "The Videre Elixir" https://wowhead.com/forever/quest=3909
-            -- already in QuestieDB; Assumption: offered right after 3909 was turned in (handoff, offer-set, absence, cooccurrence; high; 10+ characters)
+            -- already in QuestieDB; Assumption: offered right after 3909 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
             -- [questKeys.preQuestSingle] = {3909},
-            -- 3913 "A Grave Situation" https://wowhead.com/forever/quest=3913
-            -- already in QuestieDB; Assumption: turning it in led straight to 3913 (handoff; medium; 10+ characters)
-            -- [questKeys.nextQuestInChain] = 3913,
         -- },
         -- [3913] = { -- A Grave Situation https://wowhead.com/forever/quest=3913
             -- 3912 "Meet at the Grave" https://wowhead.com/forever/quest=3912
@@ -9669,11 +9617,8 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [3942] = { -- Linken's Memory https://wowhead.com/forever/quest=3942
             -- 3941 "A Gnome's Assistance" https://wowhead.com/forever/quest=3941
-            -- already in QuestieDB; Assumption: 3941 was done whenever it was offered (offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- already in QuestieDB; Assumption: 3941 was done whenever it was offered (offer-set, absence, cooccurrence; high; 10+ characters)
             -- [questKeys.preQuestSingle] = {3941},
-            -- 4084 "Silver Heart" https://wowhead.com/forever/quest=4084
-            -- already in QuestieDB; Assumption: turning it in led straight to 4084 (handoff; medium; 10+ characters)
-            -- [questKeys.nextQuestInChain] = 4084,
         -- },
         -- [3961] = { -- Linken's Adventure https://wowhead.com/forever/quest=3961
             -- 4005 "Aquementas" https://wowhead.com/forever/quest=4005
@@ -9685,32 +9630,23 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 3961 was turned in (handoff, offer-set, cooccurrence; very high; <10 characters)
             -- [questKeys.preQuestSingle] = {3961},
         -- },
-        -- [3981] = { -- Commander Gor'shak https://wowhead.com/forever/quest=3981
-            -- 3906 "Disharmony of Flame" https://wowhead.com/forever/quest=3906
-            -- already in QuestieDB; Assumption: 3906 was done whenever it was offered (offer-set, cooccurrence; medium; 10+ characters)
-            -- [questKeys.preQuestSingle] = {3906},
-        -- },
         -- [3982] = { -- What Is Going On? https://wowhead.com/forever/quest=3982
             -- 3981 "Commander Gor'shak" https://wowhead.com/forever/quest=3981
-            -- already in QuestieDB; Assumption: 3981 was done whenever it was offered (offer-set; high; 10+ characters)
+            -- already in QuestieDB; Assumption: 3981 was done whenever it was offered (offer-set, cooccurrence; high; 10+ characters)
             -- [questKeys.preQuestSingle] = {3981},
         -- },
-        [4001] = { -- What Is Going On? https://wowhead.com/forever/quest=4001
-            -- 3981 "Commander Gor'shak" https://wowhead.com/forever/quest=3981
+        -- [4001] = { -- What Is Going On? https://wowhead.com/forever/quest=4001
             -- 3982 "What Is Going On?" https://wowhead.com/forever/quest=3982
-            -- Assumption: 3981 was done whenever it was offered (offer-set, cooccurrence; high; 10+ characters); 3982 kept from QuestieDB
-            [questKeys.preQuestSingle] = {3981,3982},
+            -- already in QuestieDB; Assumption: 3982 was done whenever it was offered (offer-set, cooccurrence; high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {3982},
             -- 4002 "The Eastern Kingdom" https://wowhead.com/forever/quest=4002
             -- already in QuestieDB; Assumption: turning it in led straight to 4002 (handoff; medium; 10+ characters)
             -- [questKeys.nextQuestInChain] = 4002,
-        },
+        -- },
         -- [4002] = { -- The Eastern Kingdom https://wowhead.com/forever/quest=4002
             -- 4001 "What Is Going On?" https://wowhead.com/forever/quest=4001
             -- already in QuestieDB; Assumption: offered right after 4001 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
             -- [questKeys.preQuestSingle] = {4001},
-            -- 4003 "The Royal Rescue" https://wowhead.com/forever/quest=4003
-            -- already in QuestieDB; Assumption: turning it in led straight to 4003 (handoff; medium; 10+ characters)
-            -- [questKeys.nextQuestInChain] = 4003,
         -- },
         -- [4003] = { -- The Royal Rescue https://wowhead.com/forever/quest=4003
             -- 4002 "The Eastern Kingdom" https://wowhead.com/forever/quest=4002
@@ -9733,11 +9669,6 @@ function ForeverQuestRelationTraces:Load()
             -- [questKeys.preQuestSingle] = {852},
         -- },
         -- [4022] = { -- A Taste of Flame https://wowhead.com/forever/quest=4022
-            -- 4024 "A Taste of Flame" https://wowhead.com/forever/quest=4024
-            -- already in QuestieDB; Assumption: turning it in led straight to 4024 (handoff; medium; 10+ characters)
-            -- [questKeys.nextQuestInChain] = 4024,
-        -- },
-        -- [4023] = { -- A Taste of Flame https://wowhead.com/forever/quest=4023
             -- 4024 "A Taste of Flame" https://wowhead.com/forever/quest=4024
             -- already in QuestieDB; Assumption: turning it in led straight to 4024 (handoff; medium; 10+ characters)
             -- [questKeys.nextQuestInChain] = 4024,
@@ -9860,7 +9791,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [4145] = { -- Larion and Muigin https://wowhead.com/forever/quest=4145
             -- 4147 "Marvon's Workshop" https://wowhead.com/forever/quest=4147
-            -- already in QuestieDB; Assumption: turning it in led straight to 4147 (handoff; high; 10+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 4147 (handoff; medium; 10+ characters)
             -- [questKeys.nextQuestInChain] = 4147,
         -- },
         -- [4146] = { -- Zapper Fuel https://wowhead.com/forever/quest=4146
@@ -9872,14 +9803,17 @@ function ForeverQuestRelationTraces:Load()
             -- 4145 "Larion and Muigin" https://wowhead.com/forever/quest=4145
             -- already in QuestieDB; Assumption: offered right after 4145 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
             -- [questKeys.preQuestSingle] = {4145},
-            -- 4146 "Zapper Fuel" https://wowhead.com/forever/quest=4146
-            -- already in QuestieDB; Assumption: turning it in led straight to 4146 (handoff; medium; 10+ characters)
-            -- [questKeys.nextQuestInChain] = 4146,
         -- },
         -- [4148] = { -- Bloodpetal Zapper https://wowhead.com/forever/quest=4148
             -- 4146 "Zapper Fuel" https://wowhead.com/forever/quest=4146
             -- already in QuestieDB; Assumption: offered right after 4146 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
             -- [questKeys.preQuestSingle] = {4146},
+        -- },
+        -- [4181] = { -- Goblin Engineering https://wowhead.com/forever/quest=4181
+            -- 3629 "Goblin Engineering" https://wowhead.com/forever/quest=3629
+            -- 3633 "Goblin Engineering" https://wowhead.com/forever/quest=3633
+            -- already in QuestieDB; Assumption: offer lists show it and 3629 exclude each other (absence, cooccurrence; high; 10+ characters); the server completes it and 3633 together (cooccurrence; medium; 10+ characters)
+            -- [questKeys.exclusiveTo] = {3629,3633},
         -- },
         -- [4182] = { -- Dragonkin Menace https://wowhead.com/forever/quest=4182
             -- 4183 "The True Masters" https://wowhead.com/forever/quest=4183
@@ -9996,11 +9930,6 @@ function ForeverQuestRelationTraces:Load()
             -- not applied: 4493 requires 162, not this quest, and Questie hides a quest once its next quest is done or in the log; Assumption: turning it in led straight to 4493 (handoff; medium; 10+ characters)
             -- [questKeys.nextQuestInChain] = 4493,
         -- },
-        -- [4281] = { -- Thalanaar Delivery https://wowhead.com/forever/quest=4281
-            -- 4131 "The Woodpaw Gnolls" https://wowhead.com/forever/quest=4131
-            -- already in QuestieDB; Assumption: 4131 was done whenever it was offered (offer-set, cooccurrence; medium; 100+ characters)
-            -- [questKeys.preQuestSingle] = {4131},
-        -- },
         -- [4282] = { -- A Shred of Hope https://wowhead.com/forever/quest=4282
             -- 4264 "A Crumpled Up Note" https://wowhead.com/forever/quest=4264
             -- already in QuestieDB; Assumption: 4264 was done whenever it was offered (offer-set, cooccurrence; high; 10+ characters)
@@ -10072,11 +10001,6 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: turning it in led straight to 6402 (handoff; medium; <10 characters)
             -- [questKeys.nextQuestInChain] = 6402,
         -- },
-        -- [4341] = { -- Kharan Mighthammer https://wowhead.com/forever/quest=4341
-            -- 3701 "The Smoldering Ruins of Thaurissan" https://wowhead.com/forever/quest=3701
-            -- already in QuestieDB; Assumption: 3701 was done whenever it was offered (offer-set, cooccurrence; medium; 10+ characters)
-            -- [questKeys.preQuestSingle] = {3701},
-        -- },
         -- [4342] = { -- Kharan's Tale https://wowhead.com/forever/quest=4342
             -- 4341 "Kharan Mighthammer" https://wowhead.com/forever/quest=4341
             -- already in QuestieDB; Assumption: 4341 was done whenever it was offered (offer-set, cooccurrence; high; 10+ characters)
@@ -10097,7 +10021,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [4363] = { -- The Princess's Surprise https://wowhead.com/forever/quest=4363
             -- 4362 "The Fate of the Kingdom" https://wowhead.com/forever/quest=4362
-            -- already in QuestieDB; Assumption: 4362 was done whenever it was offered (offer-set, cooccurrence; high; 10+ characters)
+            -- already in QuestieDB; Assumption: 4362 was done whenever it was offered (offer-set, cooccurrence; medium; 10+ characters)
             -- [questKeys.preQuestSingle] = {4362},
         -- },
         -- [4402] = { -- Galgar's Cactus Apple Surprise https://wowhead.com/forever/quest=4402
@@ -10125,14 +10049,14 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 4449 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {4449},
         -- },
-        [4486] = { -- The Tome of Nobility https://wowhead.com/forever/quest=4486
+        -- [4486] = { -- The Tome of Nobility https://wowhead.com/forever/quest=4486
             -- 1661 "The Tome of Nobility" https://wowhead.com/forever/quest=1661
-            -- Assumption: implied by its breadcrumb to 1661 (high)
-            [questKeys.nextQuestInChain] = 1661,
+            -- already in QuestieDB; Assumption: implied by its breadcrumb to 1661 (high)
+            -- [questKeys.nextQuestInChain] = 1661,
             -- 1661 "The Tome of Nobility" https://wowhead.com/forever/quest=1661
-            -- Assumption: optional lead-in to 1661 (breadcrumbs, absence; high; 10+ characters)
-            [questKeys.breadcrumbForQuestId] = 1661,
-        },
+            -- already in QuestieDB; Assumption: optional lead-in to 1661 (breadcrumbs, absence; high; 10+ characters)
+            -- [questKeys.breadcrumbForQuestId] = 1661,
+        -- },
         -- [4487] = { -- Summon Felsteed https://wowhead.com/forever/quest=4487
             -- 3631 "Summon Felsteed" https://wowhead.com/forever/quest=3631
             -- 4488 "Summon Felsteed" https://wowhead.com/forever/quest=4488
@@ -10161,15 +10085,10 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [4492] = { -- Lost! https://wowhead.com/forever/quest=4492
             -- 4491 "A Little Help From My Friends" https://wowhead.com/forever/quest=4491
-            -- already in QuestieDB; Assumption: turning it in led straight to 4491 (handoff; high; 10+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 4491 (handoff; medium; 10+ characters)
             -- [questKeys.nextQuestInChain] = 4491,
         -- },
         -- [4493] = { -- March of the Silithid https://wowhead.com/forever/quest=4493
-            -- 4496 "Bungle in the Jungle" https://wowhead.com/forever/quest=4496
-            -- already in QuestieDB; Assumption: turning it in led straight to 4496 (handoff; medium; 10+ characters)
-            -- [questKeys.nextQuestInChain] = 4496,
-        -- },
-        -- [4494] = { -- March of the Silithid https://wowhead.com/forever/quest=4494
             -- 4496 "Bungle in the Jungle" https://wowhead.com/forever/quest=4496
             -- already in QuestieDB; Assumption: turning it in led straight to 4496 (handoff; medium; 10+ characters)
             -- [questKeys.nextQuestInChain] = 4496,
@@ -10182,7 +10101,7 @@ function ForeverQuestRelationTraces:Load()
         -- [4496] = { -- Bungle in the Jungle https://wowhead.com/forever/quest=4496
             -- 4493 "March of the Silithid" https://wowhead.com/forever/quest=4493
             -- 4494 "March of the Silithid" https://wowhead.com/forever/quest=4494
-            -- already in QuestieDB; Assumption: offered right after 4493, 4494 was turned in (handoff, offer-set, absence, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: offered right after 4493, 4494 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {4493,4494},
         -- },
         -- [4506] = { -- Corrupted Sabers https://wowhead.com/forever/quest=4506
@@ -10199,9 +10118,6 @@ function ForeverQuestRelationTraces:Load()
             -- 4507 "Pawn Captures Queen" https://wowhead.com/forever/quest=4507
             -- already in QuestieDB; Assumption: offered right after 4507 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
             -- [questKeys.preQuestSingle] = {4507},
-            -- 4510 "Calm Before the Storm" https://wowhead.com/forever/quest=4510
-            -- already in QuestieDB; Assumption: turning it in led straight to 4510 (handoff; medium; <10 characters)
-            -- [questKeys.nextQuestInChain] = 4510,
         -- },
         -- [4509] = { -- Calm Before the Storm https://wowhead.com/forever/quest=4509
             -- 4507 "Pawn Captures Queen" https://wowhead.com/forever/quest=4507
@@ -10239,13 +10155,13 @@ function ForeverQuestRelationTraces:Load()
         -- [4601] = { -- The Sparklematic 5200! https://wowhead.com/forever/quest=4601
             -- 2951 "The Sparklematic 5200!" https://wowhead.com/forever/quest=2951
             -- 4602 "The Sparklematic 5200!" https://wowhead.com/forever/quest=4602
-            -- already in QuestieDB; Assumption: the server completes it and 2951, 4602 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 2951, 4602 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {2951,4602},
         -- },
         -- [4602] = { -- The Sparklematic 5200! https://wowhead.com/forever/quest=4602
             -- 2951 "The Sparklematic 5200!" https://wowhead.com/forever/quest=2951
             -- 4601 "The Sparklematic 5200!" https://wowhead.com/forever/quest=4601
-            -- already in QuestieDB; Assumption: the server completes it and 2951, 4601 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 2951, 4601 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {2951,4601},
         -- },
         -- [4605] = { -- The Sparklematic 5200! https://wowhead.com/forever/quest=4605
@@ -10256,7 +10172,7 @@ function ForeverQuestRelationTraces:Load()
             -- [questKeys.preQuestSingle] = {2951,4601,4602},
             -- 2952 "The Sparklematic 5200!" https://wowhead.com/forever/quest=2952
             -- 4606 "The Sparklematic 5200!" https://wowhead.com/forever/quest=4606
-            -- already in QuestieDB; Assumption: the server completes it and 2952, 4606 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 2952, 4606 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {2952,4606},
         -- },
         -- [4606] = { -- The Sparklematic 5200! https://wowhead.com/forever/quest=4606
@@ -10267,7 +10183,7 @@ function ForeverQuestRelationTraces:Load()
             -- [questKeys.preQuestSingle] = {2951,4601,4602},
             -- 2952 "The Sparklematic 5200!" https://wowhead.com/forever/quest=2952
             -- 4605 "The Sparklematic 5200!" https://wowhead.com/forever/quest=4605
-            -- already in QuestieDB; Assumption: the server completes it and 2952, 4605 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 2952, 4605 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {2952,4605},
         -- },
         -- [4641] = { -- Your Place In The World https://wowhead.com/forever/quest=4641
@@ -10281,7 +10197,7 @@ function ForeverQuestRelationTraces:Load()
         -- [4642] = { -- Melding of Influences https://wowhead.com/forever/quest=4642
             -- 4293 "A Sample of Slime..." https://wowhead.com/forever/quest=4293
             -- 4294 "... and a Batch of Ooze" https://wowhead.com/forever/quest=4294
-            -- already in QuestieDB; Assumption: offered right after 4293 was turned in (handoff, offer-set, absence, cooccurrence; medium; <10 characters); offered right after 4294 was turned in (handoff, offer-set, cooccurrence; low; <10 characters), kept below the min score to complete its accepted AND list
+            -- already in QuestieDB; Assumption: offered right after 4293 was turned in (handoff, offer-set, absence, cooccurrence; high; <10 characters); offered right after 4294 was turned in (handoff, offer-set, cooccurrence; medium; <10 characters)
             -- [questKeys.preQuestGroup] = {4293,4294},
         -- },
         -- [4681] = { -- Washed Ashore https://wowhead.com/forever/quest=4681
@@ -10323,14 +10239,14 @@ function ForeverQuestRelationTraces:Load()
             -- 4737 "In Search of Menara Voidrender" https://wowhead.com/forever/quest=4737
             -- 4738 "In Search of Menara Voidrender" https://wowhead.com/forever/quest=4738
             -- 4739 "In Search of Menara Voidrender" https://wowhead.com/forever/quest=4739
-            -- already in QuestieDB; Assumption: the server completes it and 4737, 4739 together (cooccurrence; high; 100+ characters); offer lists show it and 4738 exclude each other (absence, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 4737, 4739 together (cooccurrence; very high; 100+ characters); offer lists show it and 4738 exclude each other (absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {4737,4738,4739},
         -- },
         -- [4737] = { -- In Search of Menara Voidrender https://wowhead.com/forever/quest=4737
             -- 4736 "In Search of Menara Voidrender" https://wowhead.com/forever/quest=4736
             -- 4738 "In Search of Menara Voidrender" https://wowhead.com/forever/quest=4738
             -- 4739 "In Search of Menara Voidrender" https://wowhead.com/forever/quest=4739
-            -- already in QuestieDB; Assumption: the server completes it and 4736, 4738 together (cooccurrence; high; 100+ characters); offer lists show it and 4739 exclude each other (absence, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 4736, 4738 together (cooccurrence; very high; 100+ characters); offer lists show it and 4739 exclude each other (absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {4736,4738,4739},
             -- 1796 "Components for the Enchanted Gold Bloodrobe" https://wowhead.com/forever/quest=1796
             -- already in QuestieDB; Assumption: turning it in led straight to 1796 (handoff, absence; medium; 10+ characters)
@@ -10340,7 +10256,7 @@ function ForeverQuestRelationTraces:Load()
             -- 4736 "In Search of Menara Voidrender" https://wowhead.com/forever/quest=4736
             -- 4737 "In Search of Menara Voidrender" https://wowhead.com/forever/quest=4737
             -- 4739 "In Search of Menara Voidrender" https://wowhead.com/forever/quest=4739
-            -- already in QuestieDB; Assumption: offer lists show it and 4736 exclude each other (absence, cooccurrence; high; 100+ characters); the server completes it and 4737, 4739 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: offer lists show it and 4736 exclude each other (absence, cooccurrence; very high; 100+ characters); the server completes it and 4737, 4739 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {4736,4737,4739},
             -- 1796 "Components for the Enchanted Gold Bloodrobe" https://wowhead.com/forever/quest=1796
             -- already in QuestieDB; Assumption: turning it in led straight to 1796 (handoff, absence; medium; 10+ characters)
@@ -10350,7 +10266,7 @@ function ForeverQuestRelationTraces:Load()
             -- 4736 "In Search of Menara Voidrender" https://wowhead.com/forever/quest=4736
             -- 4737 "In Search of Menara Voidrender" https://wowhead.com/forever/quest=4737
             -- 4738 "In Search of Menara Voidrender" https://wowhead.com/forever/quest=4738
-            -- already in QuestieDB; Assumption: the server completes it and 4736, 4738 together (cooccurrence; high; 100+ characters); offer lists show it and 4737 exclude each other (absence, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 4736, 4738 together (cooccurrence; very high; 100+ characters); offer lists show it and 4737 exclude each other (absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {4736,4737,4738},
             -- 1796 "Components for the Enchanted Gold Bloodrobe" https://wowhead.com/forever/quest=1796
             -- already in QuestieDB; Assumption: turning it in led straight to 1796 (handoff, absence; medium; 10+ characters)
@@ -10437,27 +10353,27 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [4801] = { -- Frostsaber E'ko https://wowhead.com/forever/quest=4801
             -- 975 "Cache of Mau'ari" https://wowhead.com/forever/quest=975
-            -- already in QuestieDB; Assumption: 975 was done whenever it was offered (offer-set; high; <10 characters)
+            -- already in QuestieDB; Assumption: 975 was done whenever it was offered (offer-set; medium; <10 characters)
             -- [questKeys.preQuestSingle] = {975},
         -- },
         -- [4802] = { -- Winterfall E'ko https://wowhead.com/forever/quest=4802
             -- 975 "Cache of Mau'ari" https://wowhead.com/forever/quest=975
-            -- already in QuestieDB; Assumption: 975 was done whenever it was offered (offer-set; high; <10 characters)
+            -- already in QuestieDB; Assumption: 975 was done whenever it was offered (offer-set; medium; <10 characters)
             -- [questKeys.preQuestSingle] = {975},
         -- },
         -- [4803] = { -- Shardtooth E'ko https://wowhead.com/forever/quest=4803
             -- 975 "Cache of Mau'ari" https://wowhead.com/forever/quest=975
-            -- already in QuestieDB; Assumption: 975 was done whenever it was offered (offer-set; high; <10 characters)
+            -- already in QuestieDB; Assumption: 975 was done whenever it was offered (offer-set; medium; <10 characters)
             -- [questKeys.preQuestSingle] = {975},
         -- },
         -- [4804] = { -- Chillwind E'ko https://wowhead.com/forever/quest=4804
             -- 975 "Cache of Mau'ari" https://wowhead.com/forever/quest=975
-            -- already in QuestieDB; Assumption: 975 was done whenever it was offered (offer-set; high; <10 characters)
+            -- already in QuestieDB; Assumption: 975 was done whenever it was offered (offer-set; medium; <10 characters)
             -- [questKeys.preQuestSingle] = {975},
         -- },
         -- [4805] = { -- Ice Thistle E'ko https://wowhead.com/forever/quest=4805
             -- 975 "Cache of Mau'ari" https://wowhead.com/forever/quest=975
-            -- already in QuestieDB; Assumption: 975 was done whenever it was offered (offer-set; high; <10 characters)
+            -- already in QuestieDB; Assumption: 975 was done whenever it was offered (offer-set; medium; <10 characters)
             -- [questKeys.preQuestSingle] = {975},
         -- },
         -- [4806] = { -- Frostmaul E'ko https://wowhead.com/forever/quest=4806
@@ -10467,7 +10383,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [4807] = { -- Wildkin E'ko https://wowhead.com/forever/quest=4807
             -- 975 "Cache of Mau'ari" https://wowhead.com/forever/quest=975
-            -- already in QuestieDB; Assumption: 975 was done whenever it was offered (offer-set; high; <10 characters)
+            -- already in QuestieDB; Assumption: 975 was done whenever it was offered (offer-set; medium; <10 characters)
             -- [questKeys.preQuestSingle] = {975},
         -- },
         -- [4808] = { -- Felnok Steelspring https://wowhead.com/forever/quest=4808
@@ -10575,11 +10491,11 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 4421 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
             -- [questKeys.preQuestSingle] = {4421},
         -- },
-        [4921] = { -- Lost in Battle https://wowhead.com/forever/quest=4921
+        -- [4921] = { -- Lost in Battle https://wowhead.com/forever/quest=4921
             -- 95774 "Her Name Is Olgra" https://wowhead.com/forever/quest=95774
-            -- Assumption: turning it in led straight to 95774 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 95774,
-        },
+            -- already in QuestieDB; Assumption: turning it in led straight to 95774 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 95774,
+        -- },
         -- [4941] = { -- Eitrigg's Wisdom https://wowhead.com/forever/quest=4941
             -- 4903 "Warlord's Command" https://wowhead.com/forever/quest=4903
             -- already in QuestieDB; Assumption: offered right after 4903 was turned in (handoff, offer-set, cooccurrence; high; <10 characters)
@@ -10599,14 +10515,14 @@ function ForeverQuestRelationTraces:Load()
         -- [4964] = { -- The Completed Orb of Dar'Orahil https://wowhead.com/forever/quest=4964
             -- 4962 "Shard of a Felhound" https://wowhead.com/forever/quest=4962
             -- 4976 "Returning the Cleansed Orb" https://wowhead.com/forever/quest=4976
-            -- already in QuestieDB; Assumption: offered right after 4962 was turned in (handoff, offer-set, absence, cooccurrence; high; 100+ characters); offered right after 4976 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- already in QuestieDB; Assumption: offered right after 4962, 4976 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestGroup] = {4962,4976},
         -- },
         -- [4965] = { -- Knowledge of the Orb of Orahil https://wowhead.com/forever/quest=4965
             -- 4967 "Knowledge of the Orb of Orahil" https://wowhead.com/forever/quest=4967
             -- 4968 "Knowledge of the Orb of Orahil" https://wowhead.com/forever/quest=4968
             -- 4969 "Knowledge of the Orb of Orahil" https://wowhead.com/forever/quest=4969
-            -- already in QuestieDB; Assumption: the server completes it and 4967, 4969 together (cooccurrence; medium; 100+ characters); offer lists show it and 4968 exclude each other (absence, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 4967, 4969 together (cooccurrence; very high; 100+ characters); offer lists show it and 4968 exclude each other (absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {4967,4968,4969},
             -- 1799 "Fragments of the Orb of Orahil" https://wowhead.com/forever/quest=1799
             -- already in QuestieDB; Assumption: turning it in led straight to 1799 (handoff; medium; 10+ characters)
@@ -10621,7 +10537,7 @@ function ForeverQuestRelationTraces:Load()
             -- 4965 "Knowledge of the Orb of Orahil" https://wowhead.com/forever/quest=4965
             -- 4968 "Knowledge of the Orb of Orahil" https://wowhead.com/forever/quest=4968
             -- 4969 "Knowledge of the Orb of Orahil" https://wowhead.com/forever/quest=4969
-            -- already in QuestieDB; Assumption: the server completes it and 4965, 4968 together (cooccurrence; medium; 100+ characters); offer lists show it and 4969 exclude each other (absence, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 4965, 4968 together (cooccurrence; very high; 100+ characters); offer lists show it and 4969 exclude each other (absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {4965,4968,4969},
             -- 1799 "Fragments of the Orb of Orahil" https://wowhead.com/forever/quest=1799
             -- already in QuestieDB; Assumption: turning it in led straight to 1799 (handoff; medium; 10+ characters)
@@ -10631,7 +10547,7 @@ function ForeverQuestRelationTraces:Load()
             -- 4965 "Knowledge of the Orb of Orahil" https://wowhead.com/forever/quest=4965
             -- 4967 "Knowledge of the Orb of Orahil" https://wowhead.com/forever/quest=4967
             -- 4969 "Knowledge of the Orb of Orahil" https://wowhead.com/forever/quest=4969
-            -- already in QuestieDB; Assumption: offer lists show it and 4965 exclude each other (absence, cooccurrence; high; 100+ characters); the server completes it and 4967, 4969 together (cooccurrence; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: offer lists show it and 4965 exclude each other (absence, cooccurrence; very high; 100+ characters); the server completes it and 4967, 4969 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {4965,4967,4969},
             -- 1799 "Fragments of the Orb of Orahil" https://wowhead.com/forever/quest=1799
             -- already in QuestieDB; Assumption: turning it in led straight to 1799 (handoff; medium; 10+ characters)
@@ -10641,7 +10557,7 @@ function ForeverQuestRelationTraces:Load()
             -- 4965 "Knowledge of the Orb of Orahil" https://wowhead.com/forever/quest=4965
             -- 4967 "Knowledge of the Orb of Orahil" https://wowhead.com/forever/quest=4967
             -- 4968 "Knowledge of the Orb of Orahil" https://wowhead.com/forever/quest=4968
-            -- already in QuestieDB; Assumption: the server completes it and 4965, 4968 together (cooccurrence; medium; 100+ characters); offer lists show it and 4967 exclude each other (absence, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 4965, 4968 together (cooccurrence; very high; 100+ characters); offer lists show it and 4967 exclude each other (absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {4965,4967,4968},
             -- 1799 "Fragments of the Orb of Orahil" https://wowhead.com/forever/quest=1799
             -- already in QuestieDB; Assumption: turning it in led straight to 1799 (handoff; medium; 10+ characters)
@@ -10702,9 +10618,6 @@ function ForeverQuestRelationTraces:Load()
             -- 5001 "Bijou's Belongings" https://wowhead.com/forever/quest=5001
             -- already in QuestieDB; Assumption: 5001 was done whenever it was offered (offer-set, cooccurrence; medium; <10 characters)
             -- [questKeys.preQuestSingle] = {5001},
-            -- 5081 "Maxwell's Mission" https://wowhead.com/forever/quest=5081
-            -- already in QuestieDB; Assumption: turning it in led straight to 5081 (handoff; medium; <10 characters)
-            -- [questKeys.nextQuestInChain] = 5081,
         -- },
         -- [5022] = { -- Better Late Than Never https://wowhead.com/forever/quest=5022
             -- 5021 "Better Late Than Never" https://wowhead.com/forever/quest=5021
@@ -10723,6 +10636,11 @@ function ForeverQuestRelationTraces:Load()
             -- [questKeys.nextQuestInChain] = 5049,
         -- },
         -- [5043] = { -- Agamaggan's Agility https://wowhead.com/forever/quest=5043
+            -- 5052 "Blood Shards of Agamaggan" https://wowhead.com/forever/quest=5052
+            -- already in QuestieDB; Assumption: 5052 was done whenever it was offered (offer-set; medium; 100+ characters)
+            -- [questKeys.preQuestSingle] = {5052},
+        -- },
+        -- [5044] = { -- Wisdom of Agamaggan https://wowhead.com/forever/quest=5044
             -- 5052 "Blood Shards of Agamaggan" https://wowhead.com/forever/quest=5052
             -- already in QuestieDB; Assumption: 5052 was done whenever it was offered (offer-set; medium; 100+ characters)
             -- [questKeys.preQuestSingle] = {5052},
@@ -10747,11 +10665,6 @@ function ForeverQuestRelationTraces:Load()
             -- 5050 "Good Luck Charm" https://wowhead.com/forever/quest=5050
             -- already in QuestieDB; Assumption: turning it in led straight to 5050 (handoff; medium; <10 characters)
             -- [questKeys.nextQuestInChain] = 5050,
-        -- },
-        -- [5050] = { -- Good Luck Charm https://wowhead.com/forever/quest=5050
-            -- 5051 "Two Halves Become One" https://wowhead.com/forever/quest=5051
-            -- already in QuestieDB; Assumption: turning it in led straight to 5051 (handoff; medium; 10+ characters)
-            -- [questKeys.nextQuestInChain] = 5051,
         -- },
         -- [5051] = { -- Two Halves Become One https://wowhead.com/forever/quest=5051
             -- 5050 "Good Luck Charm" https://wowhead.com/forever/quest=5050
@@ -10799,15 +10712,11 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 4841 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {4841},
         -- },
-        -- [5065] = { -- The Lost Tablets of Mosh'aru https://wowhead.com/forever/quest=5065
-            -- 4788 "The Final Tablets" https://wowhead.com/forever/quest=4788
-            -- already in QuestieDB; Assumption: turning it in led straight to 4788 (handoff; medium; <10 characters)
-            -- [questKeys.nextQuestInChain] = 4788,
-        -- },
         -- [5066] = { -- A Call to Arms: The Plaguelands! https://wowhead.com/forever/quest=5066
             -- 5090 "A Call to Arms: The Plaguelands!" https://wowhead.com/forever/quest=5090
-            -- already in QuestieDB; Assumption: offer lists show it and 5090 exclude each other (absence, cooccurrence; medium; 100+ characters)
-            -- [questKeys.exclusiveTo] = {5090},
+            -- 5091 "A Call to Arms: The Plaguelands!" https://wowhead.com/forever/quest=5091
+            -- already in QuestieDB; Assumption: offer lists show it and 5090 exclude each other (absence, cooccurrence; high; 100+ characters); the server completes it and 5091 together (cooccurrence; high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {5090,5091},
         -- },
         -- [5081] = { -- Maxwell's Mission https://wowhead.com/forever/quest=5081
             -- 5002 "Message to Maxwell" https://wowhead.com/forever/quest=5002
@@ -10832,16 +10741,13 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 5084 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters)
             -- [questKeys.preQuestSingle] = {5084},
             -- 5086 "Toxic Horrors" https://wowhead.com/forever/quest=5086
-            -- already in QuestieDB; Assumption: turning it in led straight to 5086 (handoff; high; 10+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 5086 (handoff; medium; 10+ characters)
             -- [questKeys.nextQuestInChain] = 5086,
         -- },
         -- [5086] = { -- Toxic Horrors https://wowhead.com/forever/quest=5086
             -- 5085 "Mystery Goo" https://wowhead.com/forever/quest=5085
             -- already in QuestieDB; Assumption: offered right after 5085 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
             -- [questKeys.preQuestSingle] = {5085},
-            -- 5087 "Winterfall Runners" https://wowhead.com/forever/quest=5087
-            -- already in QuestieDB; Assumption: turning it in led straight to 5087 (handoff; medium; 10+ characters)
-            -- [questKeys.nextQuestInChain] = 5087,
         -- },
         -- [5087] = { -- Winterfall Runners https://wowhead.com/forever/quest=5087
             -- 5086 "Toxic Horrors" https://wowhead.com/forever/quest=5086
@@ -10853,15 +10759,35 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 5062 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {5062},
         -- },
-        -- [5089] = { -- General Drakkisath's Command https://wowhead.com/forever/quest=5089
-            -- 5102 "General Drakkisath's Demise" https://wowhead.com/forever/quest=5102
-            -- already in QuestieDB; Assumption: turning it in led straight to 5102 (handoff; medium; <10 characters)
-            -- [questKeys.nextQuestInChain] = 5102,
-        -- },
         -- [5090] = { -- A Call to Arms: The Plaguelands! https://wowhead.com/forever/quest=5090
             -- 5066 "A Call to Arms: The Plaguelands!" https://wowhead.com/forever/quest=5066
-            -- already in QuestieDB; Assumption: offer lists show it and 5066 exclude each other (absence, cooccurrence; medium; 100+ characters)
-            -- [questKeys.exclusiveTo] = {5066},
+            -- 5091 "A Call to Arms: The Plaguelands!" https://wowhead.com/forever/quest=5091
+            -- already in QuestieDB; Assumption: offer lists show it and 5066, 5091 exclude each other (absence, cooccurrence; high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {5066,5091},
+        -- },
+        -- [5091] = { -- A Call to Arms: The Plaguelands! https://wowhead.com/forever/quest=5091
+            -- 5066 "A Call to Arms: The Plaguelands!" https://wowhead.com/forever/quest=5066
+            -- 5090 "A Call to Arms: The Plaguelands!" https://wowhead.com/forever/quest=5090
+            -- already in QuestieDB; Assumption: the server completes it and 5066 together (cooccurrence; high; 100+ characters); offer lists show it and 5090 exclude each other (absence, cooccurrence; high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {5066,5090},
+        -- },
+        -- [5093] = { -- A Call to Arms: The Plaguelands! https://wowhead.com/forever/quest=5093
+            -- 5094 "A Call to Arms: The Plaguelands!" https://wowhead.com/forever/quest=5094
+            -- 5095 "A Call to Arms: The Plaguelands!" https://wowhead.com/forever/quest=5095
+            -- already in QuestieDB; Assumption: offer lists show it and 5094, 5095 exclude each other (absence, cooccurrence; medium; 10+ characters)
+            -- [questKeys.exclusiveTo] = {5094,5095},
+        -- },
+        -- [5094] = { -- A Call to Arms: The Plaguelands! https://wowhead.com/forever/quest=5094
+            -- 5093 "A Call to Arms: The Plaguelands!" https://wowhead.com/forever/quest=5093
+            -- 5095 "A Call to Arms: The Plaguelands!" https://wowhead.com/forever/quest=5095
+            -- already in QuestieDB; Assumption: offer lists show it and 5093 exclude each other (absence, cooccurrence; medium; 10+ characters); the server completes it and 5095 together (cooccurrence; low; 10+ characters), kept below the min score for its accepted exclusive group
+            -- [questKeys.exclusiveTo] = {5093,5095},
+        -- },
+        -- [5095] = { -- A Call to Arms: The Plaguelands! https://wowhead.com/forever/quest=5095
+            -- 5093 "A Call to Arms: The Plaguelands!" https://wowhead.com/forever/quest=5093
+            -- 5094 "A Call to Arms: The Plaguelands!" https://wowhead.com/forever/quest=5094
+            -- already in QuestieDB; Assumption: offer lists show it and 5093 exclude each other (absence, cooccurrence; medium; 10+ characters); the server completes it and 5094 together (cooccurrence; low; 10+ characters), kept below the min score for its accepted exclusive group
+            -- [questKeys.exclusiveTo] = {5093,5094},
         -- },
         -- [5097] = { -- All Along the Watchtowers https://wowhead.com/forever/quest=5097
             -- 5092 "Clear the Way" https://wowhead.com/forever/quest=5092
@@ -10875,7 +10801,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [5102] = { -- General Drakkisath's Demise https://wowhead.com/forever/quest=5102
             -- 5089 "General Drakkisath's Command" https://wowhead.com/forever/quest=5089
-            -- already in QuestieDB; Assumption: offered right after 5089 was turned in (handoff, offer-set, cooccurrence; high; <10 characters)
+            -- already in QuestieDB; Assumption: offered right after 5089 was turned in (handoff, offer-set, cooccurrence; very high; <10 characters)
             -- [questKeys.preQuestSingle] = {5089},
         -- },
         -- [5121] = { -- High Chief Winterfall https://wowhead.com/forever/quest=5121
@@ -10944,9 +10870,6 @@ function ForeverQuestRelationTraces:Load()
             -- 5159 "Cleansed Water Returns to Felwood" https://wowhead.com/forever/quest=5159
             -- already in QuestieDB; Assumption: offered right after 5159 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
             -- [questKeys.preQuestSingle] = {5159},
-            -- 5242 "A Final Blow" https://wowhead.com/forever/quest=5242
-            -- already in QuestieDB; Assumption: turning it in led straight to 5242 (handoff; medium; 10+ characters)
-            -- [questKeys.nextQuestInChain] = 5242,
         -- },
         -- [5168] = { -- Heroes of Darrowshire https://wowhead.com/forever/quest=5168
             -- 5210 "Brother Carlin" https://wowhead.com/forever/quest=5210
@@ -10970,9 +10893,6 @@ function ForeverQuestRelationTraces:Load()
             -- 5203 "Rescue From Jaedenar" https://wowhead.com/forever/quest=5203
             -- already in QuestieDB; Assumption: offered right after 5203 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
             -- [questKeys.preQuestSingle] = {5203},
-            -- 5385 "The Remains of Trey Lightforge" https://wowhead.com/forever/quest=5385
-            -- already in QuestieDB; Assumption: turning it in led straight to 5385 (handoff; medium; 10+ characters)
-            -- [questKeys.nextQuestInChain] = 5385,
         -- },
         -- [5206] = { -- Marauders of Darrowshire https://wowhead.com/forever/quest=5206
             -- 5168 "Heroes of Darrowshire" https://wowhead.com/forever/quest=5168
@@ -10984,11 +10904,6 @@ function ForeverQuestRelationTraces:Load()
             -- 5154 "The Annals of Darrowshire" https://wowhead.com/forever/quest=5154
             -- already in QuestieDB; Assumption: offered right after 5154 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
             -- [questKeys.preQuestSingle] = {5154},
-        -- },
-        -- [5212] = { -- The Flesh Does Not Lie https://wowhead.com/forever/quest=5212
-            -- 5213 "The Active Agent" https://wowhead.com/forever/quest=5213
-            -- already in QuestieDB; Assumption: turning it in led straight to 5213 (handoff; medium; <10 characters)
-            -- [questKeys.nextQuestInChain] = 5213,
         -- },
         -- [5213] = { -- The Active Agent https://wowhead.com/forever/quest=5213
             -- 5212 "The Flesh Does Not Lie" https://wowhead.com/forever/quest=5212
@@ -11023,9 +10938,6 @@ function ForeverQuestRelationTraces:Load()
             -- 5217 "Return to Chillwind Camp" https://wowhead.com/forever/quest=5217
             -- already in QuestieDB; Assumption: offered right after 5217 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
             -- [questKeys.preQuestSingle] = {5217},
-            -- 5220 "Return to Chillwind Camp" https://wowhead.com/forever/quest=5220
-            -- already in QuestieDB; Assumption: turning it in led straight to 5220 (handoff; medium; 10+ characters)
-            -- [questKeys.nextQuestInChain] = 5220,
         -- },
         -- [5220] = { -- Return to Chillwind Camp https://wowhead.com/forever/quest=5220
             -- 5219 "Target: Dalson's Tears" https://wowhead.com/forever/quest=5219
@@ -11039,9 +10951,6 @@ function ForeverQuestRelationTraces:Load()
             -- 5220 "Return to Chillwind Camp" https://wowhead.com/forever/quest=5220
             -- already in QuestieDB; Assumption: offered right after 5220 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
             -- [questKeys.preQuestSingle] = {5220},
-            -- 5223 "Return to Chillwind Camp" https://wowhead.com/forever/quest=5223
-            -- already in QuestieDB; Assumption: turning it in led straight to 5223 (handoff; medium; 10+ characters)
-            -- [questKeys.nextQuestInChain] = 5223,
         -- },
         -- [5223] = { -- Return to Chillwind Camp https://wowhead.com/forever/quest=5223
             -- 5222 "Target: Writhing Haunt" https://wowhead.com/forever/quest=5222
@@ -11055,9 +10964,6 @@ function ForeverQuestRelationTraces:Load()
             -- 5223 "Return to Chillwind Camp" https://wowhead.com/forever/quest=5223
             -- already in QuestieDB; Assumption: offered right after 5223 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
             -- [questKeys.preQuestSingle] = {5223},
-            -- 5226 "Return to Chillwind Camp" https://wowhead.com/forever/quest=5226
-            -- already in QuestieDB; Assumption: turning it in led straight to 5226 (handoff; medium; 10+ characters)
-            -- [questKeys.nextQuestInChain] = 5226,
         -- },
         -- [5226] = { -- Return to Chillwind Camp https://wowhead.com/forever/quest=5226
             -- 5225 "Target: Gahrron's Withering" https://wowhead.com/forever/quest=5225
@@ -11068,17 +10974,11 @@ function ForeverQuestRelationTraces:Load()
             -- 5096 "Scarlet Diversions" https://wowhead.com/forever/quest=5096
             -- already in QuestieDB; Assumption: offered right after 5096 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
             -- [questKeys.preQuestSingle] = {5096},
-            -- 5229 "Target: Felstone Field" https://wowhead.com/forever/quest=5229
-            -- already in QuestieDB; Assumption: turning it in led straight to 5229 (handoff; medium; 10+ characters)
-            -- [questKeys.nextQuestInChain] = 5229,
         -- },
         -- [5229] = { -- Target: Felstone Field https://wowhead.com/forever/quest=5229
             -- 5228 "The Scourge Cauldrons" https://wowhead.com/forever/quest=5228
             -- already in QuestieDB; Assumption: offered right after 5228 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
             -- [questKeys.preQuestSingle] = {5228},
-            -- 5230 "Return to the Bulwark" https://wowhead.com/forever/quest=5230
-            -- already in QuestieDB; Assumption: turning it in led straight to 5230 (handoff; medium; 10+ characters)
-            -- [questKeys.nextQuestInChain] = 5230,
         -- },
         -- [5230] = { -- Return to the Bulwark https://wowhead.com/forever/quest=5230
             -- 5229 "Target: Felstone Field" https://wowhead.com/forever/quest=5229
@@ -11110,9 +11010,6 @@ function ForeverQuestRelationTraces:Load()
             -- 5233 "Target: Writhing Haunt" https://wowhead.com/forever/quest=5233
             -- already in QuestieDB; Assumption: offered right after 5233 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters)
             -- [questKeys.preQuestSingle] = {5233},
-            -- 5235 "Target: Gahrron's Withering" https://wowhead.com/forever/quest=5235
-            -- already in QuestieDB; Assumption: turning it in led straight to 5235 (handoff; medium; <10 characters)
-            -- [questKeys.nextQuestInChain] = 5235,
         -- },
         -- [5235] = { -- Target: Gahrron's Withering https://wowhead.com/forever/quest=5235
             -- 5234 "Return to the Bulwark" https://wowhead.com/forever/quest=5234
@@ -11124,11 +11021,6 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 5235 was turned in (handoff, offer-set, cooccurrence; high; <10 characters)
             -- [questKeys.preQuestSingle] = {5235},
         -- },
-        -- [5237] = { -- Mission Accomplished! https://wowhead.com/forever/quest=5237
-            -- 5226 "Return to Chillwind Camp" https://wowhead.com/forever/quest=5226
-            -- already in QuestieDB; Assumption: 5226 was done whenever it was offered (offer-set, cooccurrence; medium; 10+ characters)
-            -- [questKeys.preQuestSingle] = {5226},
-        -- },
         -- [5241] = { -- Uncle Carlin https://wowhead.com/forever/quest=5241
             -- 5149 "Pamela's Doll" https://wowhead.com/forever/quest=5149
             -- already in QuestieDB; Assumption: 5149 was done whenever it was offered (offer-set, cooccurrence; high; 10+ characters)
@@ -11139,22 +11031,19 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 5165 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
             -- [questKeys.preQuestSingle] = {5165},
         -- },
-        [5244] = { -- The Ruins of Kel'Theril https://wowhead.com/forever/quest=5244
+        -- [5244] = { -- The Ruins of Kel'Theril https://wowhead.com/forever/quest=5244
             -- 5249 "To Winterspring!" https://wowhead.com/forever/quest=5249
             -- 5250 "Starfall" https://wowhead.com/forever/quest=5250
-            -- Assumption: offered right after 5249, 5250 was turned in (handoff, offer-set, cooccurrence; high; 10+ characters)
-            [questKeys.preQuestGroup] = {5249,5250},
+            -- not applied: QuestieDB has 5249, 5250 as breadcrumbs of this quest, optional lead-ins rather than prerequisites; Assumption: offered right after 5249, 5250 was turned in (handoff, offer-set, cooccurrence; high; 10+ characters)
+            -- [questKeys.preQuestGroup] = {5249,5250},
             -- 5245 "Troubled Spirits of Kel'Theril" https://wowhead.com/forever/quest=5245
             -- already in QuestieDB; Assumption: turning it in led straight to 5245 (handoff; medium; 10+ characters)
             -- [questKeys.nextQuestInChain] = 5245,
-        },
+        -- },
         -- [5245] = { -- Troubled Spirits of Kel'Theril https://wowhead.com/forever/quest=5245
             -- 5244 "The Ruins of Kel'Theril" https://wowhead.com/forever/quest=5244
             -- already in QuestieDB; Assumption: offered right after 5244 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
             -- [questKeys.preQuestSingle] = {5244},
-            -- 5246 "Fragments of the Past" https://wowhead.com/forever/quest=5246
-            -- already in QuestieDB; Assumption: turning it in led straight to 5246 (handoff; medium; 10+ characters)
-            -- [questKeys.nextQuestInChain] = 5246,
         -- },
         -- [5246] = { -- Fragments of the Past https://wowhead.com/forever/quest=5246
             -- 5245 "Troubled Spirits of Kel'Theril" https://wowhead.com/forever/quest=5245
@@ -11163,15 +11052,21 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [5247] = { -- Fragments of the Past https://wowhead.com/forever/quest=5247
             -- 5246 "Fragments of the Past" https://wowhead.com/forever/quest=5246
-            -- already in QuestieDB; Assumption: offered right after 5246 was turned in (handoff, offer-set; high; <10 characters)
+            -- already in QuestieDB; Assumption: offered right after 5246 was turned in (handoff, offer-set; very high; <10 characters)
             -- [questKeys.preQuestSingle] = {5246},
         -- },
         -- [5249] = { -- To Winterspring! https://wowhead.com/forever/quest=5249
+            -- 5250 "Starfall" https://wowhead.com/forever/quest=5250
+            -- already in QuestieDB; Assumption: the server completes it and 5250 together (cooccurrence; medium; 10+ characters)
+            -- [questKeys.exclusiveTo] = {5250},
             -- 5244 "The Ruins of Kel'Theril" https://wowhead.com/forever/quest=5244
             -- already in QuestieDB; Assumption: turning it in led straight to 5244 (handoff; medium; 10+ characters)
             -- [questKeys.nextQuestInChain] = 5244,
         -- },
         -- [5250] = { -- Starfall https://wowhead.com/forever/quest=5250
+            -- 5249 "To Winterspring!" https://wowhead.com/forever/quest=5249
+            -- already in QuestieDB; Assumption: the server completes it and 5249 together (cooccurrence; medium; 10+ characters)
+            -- [questKeys.exclusiveTo] = {5249},
             -- 5244 "The Ruins of Kel'Theril" https://wowhead.com/forever/quest=5244
             -- already in QuestieDB; Assumption: turning it in led straight to 5244 (handoff; medium; 10+ characters)
             -- [questKeys.nextQuestInChain] = 5244,
@@ -11211,6 +11106,12 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 5204 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters)
             -- [questKeys.preQuestSingle] = {5204},
         -- },
+        -- [5401] = { -- Argent Dawn Commission https://wowhead.com/forever/quest=5401
+            -- 5405 "Argent Dawn Commission" https://wowhead.com/forever/quest=5405
+            -- 5503 "Argent Dawn Commission" https://wowhead.com/forever/quest=5503
+            -- already in QuestieDB; Assumption: the server completes it and 5405, 5503 together (cooccurrence; high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {5405,5503},
+        -- },
         -- [5402] = { -- Minion's Scourgestones https://wowhead.com/forever/quest=5402
             -- 5401 "Argent Dawn Commission" https://wowhead.com/forever/quest=5401
             -- already in QuestieDB; Assumption: 5401 was done whenever it was offered (offer-set; medium; 10+ characters)
@@ -11223,22 +11124,28 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [5404] = { -- Corruptor's Scourgestones https://wowhead.com/forever/quest=5404
             -- 5401 "Argent Dawn Commission" https://wowhead.com/forever/quest=5401
-            -- already in QuestieDB; Assumption: 5401 was done whenever it was offered (offer-set; high; 10+ characters)
+            -- already in QuestieDB; Assumption: 5401 was done whenever it was offered (offer-set; medium; 10+ characters)
             -- [questKeys.preQuestSingle] = {5401},
+        -- },
+        -- [5405] = { -- Argent Dawn Commission https://wowhead.com/forever/quest=5405
+            -- 5401 "Argent Dawn Commission" https://wowhead.com/forever/quest=5401
+            -- 5503 "Argent Dawn Commission" https://wowhead.com/forever/quest=5503
+            -- already in QuestieDB; Assumption: the server completes it and 5401, 5503 together (cooccurrence; high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {5401,5503},
         -- },
         -- [5406] = { -- Corruptor's Scourgestones https://wowhead.com/forever/quest=5406
             -- 5405 "Argent Dawn Commission" https://wowhead.com/forever/quest=5405
-            -- already in QuestieDB; Assumption: 5405 was done whenever it was offered (offer-set; high; 10+ characters)
+            -- already in QuestieDB; Assumption: 5405 was done whenever it was offered (offer-set; medium; 10+ characters)
             -- [questKeys.preQuestSingle] = {5405},
         -- },
         -- [5407] = { -- Invader's Scourgestones https://wowhead.com/forever/quest=5407
             -- 5405 "Argent Dawn Commission" https://wowhead.com/forever/quest=5405
-            -- already in QuestieDB; Assumption: 5405 was done whenever it was offered (offer-set; high; 10+ characters)
+            -- already in QuestieDB; Assumption: 5405 was done whenever it was offered (offer-set; medium; 10+ characters)
             -- [questKeys.preQuestSingle] = {5405},
         -- },
         -- [5408] = { -- Minion's Scourgestones https://wowhead.com/forever/quest=5408
             -- 5405 "Argent Dawn Commission" https://wowhead.com/forever/quest=5405
-            -- already in QuestieDB; Assumption: 5405 was done whenever it was offered (offer-set; high; 10+ characters)
+            -- already in QuestieDB; Assumption: 5405 was done whenever it was offered (offer-set; medium; 10+ characters)
             -- [questKeys.preQuestSingle] = {5405},
         -- },
         -- [5441] = { -- Lazy Peons https://wowhead.com/forever/quest=5441
@@ -11259,28 +11166,36 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: turning it in led straight to 99142 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 99142,
         -- },
+        -- [5503] = { -- Argent Dawn Commission https://wowhead.com/forever/quest=5503
+            -- 5401 "Argent Dawn Commission" https://wowhead.com/forever/quest=5401
+            -- 5405 "Argent Dawn Commission" https://wowhead.com/forever/quest=5405
+            -- already in QuestieDB; Assumption: the server completes it and 5401, 5405 together (cooccurrence; high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {5401,5405},
+        -- },
+        -- [5505] = { -- The Key to Scholomance https://wowhead.com/forever/quest=5505
+            -- 5803 "Araj's Scarab" https://wowhead.com/forever/quest=5803
+            -- already in QuestieDB; Assumption: offered right after 5803 was turned in (handoff, absence; medium; <10 characters)
+            -- [questKeys.preQuestSingle] = {5803},
+        -- },
         -- [5514] = { -- Mold Rhymes With... https://wowhead.com/forever/quest=5514
             -- 964 "Skeletal Fragments" https://wowhead.com/forever/quest=964
-            -- already in QuestieDB; Assumption: offered right after 964 was turned in (handoff, offer-set, absence, cooccurrence; high; <10 characters)
+            -- already in QuestieDB; Assumption: offered right after 964 was turned in (handoff, offer-set, absence, cooccurrence; very high; <10 characters)
             -- [questKeys.preQuestSingle] = {964},
         -- },
         -- [5515] = { -- Krastinov's Bag of Horrors https://wowhead.com/forever/quest=5515
             -- 5382 "Doctor Theolen Krastinov, the Butcher" https://wowhead.com/forever/quest=5382
-            -- already in QuestieDB; Assumption: offered right after 5382 was turned in (handoff, offer-set, absence, cooccurrence; high; <10 characters)
+            -- already in QuestieDB; Assumption: offered right after 5382 was turned in (handoff, offer-set, absence, cooccurrence; very high; <10 characters)
             -- [questKeys.preQuestSingle] = {5382},
         -- },
         -- [5526] = { -- Shards of the Felvine https://wowhead.com/forever/quest=5526
             -- 5527 "A Reliquary of Purity" https://wowhead.com/forever/quest=5527
-            -- already in QuestieDB; Assumption: offered right after 5527 was turned in (handoff, offer-set; high; <10 characters)
+            -- already in QuestieDB; Assumption: offered right after 5527 was turned in (handoff, offer-set; very high; <10 characters)
             -- [questKeys.preQuestSingle] = {5527},
         -- },
         -- [5533] = { -- Scholomance https://wowhead.com/forever/quest=5533
             -- 5097 "All Along the Watchtowers" https://wowhead.com/forever/quest=5097
             -- already in QuestieDB; Assumption: offered right after 5097 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
             -- [questKeys.preQuestSingle] = {5097},
-            -- 5537 "Skeletal Fragments" https://wowhead.com/forever/quest=5537
-            -- already in QuestieDB; Assumption: turning it in led straight to 5537 (handoff; medium; 10+ characters)
-            -- [questKeys.nextQuestInChain] = 5537,
         -- },
         -- [5534] = { -- Kim'jael's "Missing" Equipment https://wowhead.com/forever/quest=5534
             -- 3601 "Kim'jael Indeed!" https://wowhead.com/forever/quest=3601
@@ -11291,9 +11206,6 @@ function ForeverQuestRelationTraces:Load()
             -- 5533 "Scholomance" https://wowhead.com/forever/quest=5533
             -- already in QuestieDB; Assumption: offered right after 5533 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
             -- [questKeys.preQuestSingle] = {5533},
-            -- 5538 "Mold Rhymes With..." https://wowhead.com/forever/quest=5538
-            -- already in QuestieDB; Assumption: turning it in led straight to 5538 (handoff; medium; 10+ characters)
-            -- [questKeys.nextQuestInChain] = 5538,
         -- },
         -- [5538] = { -- Mold Rhymes With... https://wowhead.com/forever/quest=5538
             -- 5537 "Skeletal Fragments" https://wowhead.com/forever/quest=5537
@@ -11323,12 +11235,12 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: turning it in led straight to 5624 (handoff, absence; medium; 100+ characters)
             -- [questKeys.nextQuestInChain] = 5624,
             -- 5624 "Garments of the Light" https://wowhead.com/forever/quest=5624
-            -- already in QuestieDB; Assumption: optional lead-in to 5624 (breadcrumbs; high; 100+ characters)
+            -- already in QuestieDB; Assumption: optional lead-in to 5624 (breadcrumbs; very high; 100+ characters)
             -- [questKeys.breadcrumbForQuestId] = 5624,
         -- },
         -- [5624] = { -- Garments of the Light https://wowhead.com/forever/quest=5624
             -- 5623 "In Favor of the Light" https://wowhead.com/forever/quest=5623
-            -- already in QuestieDB; Assumption: 5623 is an optional lead-in to it (breadcrumbs; high; 100+ characters)
+            -- already in QuestieDB; Assumption: 5623 is an optional lead-in to it (breadcrumbs; very high; 100+ characters)
             -- [questKeys.breadcrumbs] = {5623},
         -- },
         -- [5626] = { -- In Favor of the Light https://wowhead.com/forever/quest=5626
@@ -11343,7 +11255,7 @@ function ForeverQuestRelationTraces:Load()
             -- 5631 "Returning Home" https://wowhead.com/forever/quest=5631
             -- 5632 "Returning Home" https://wowhead.com/forever/quest=5632
             -- 5633 "Returning Home" https://wowhead.com/forever/quest=5633
-            -- already in QuestieDB; Assumption: the server completes it and 5628, 5632 together (cooccurrence; medium; 100+ characters); the server completes it and 5629, 5630, 5631, 5633 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 5628, 5629, 5630, 5631, 5632, 5633 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {5628,5629,5630,5631,5632,5633},
         -- },
         -- [5628] = { -- Returning Home https://wowhead.com/forever/quest=5628
@@ -11353,7 +11265,7 @@ function ForeverQuestRelationTraces:Load()
             -- 5631 "Returning Home" https://wowhead.com/forever/quest=5631
             -- 5632 "Returning Home" https://wowhead.com/forever/quest=5632
             -- 5633 "Returning Home" https://wowhead.com/forever/quest=5633
-            -- already in QuestieDB; Assumption: the server completes it and 5627, 5632, 5633 together (cooccurrence; medium; 100+ characters); offer lists show it and 5629, 5630, 5631 exclude each other (absence, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 5627, 5632, 5633 together (cooccurrence; very high; 100+ characters); offer lists show it and 5629, 5630, 5631 exclude each other (absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {5627,5629,5630,5631,5632,5633},
         -- },
         -- [5629] = { -- Returning Home https://wowhead.com/forever/quest=5629
@@ -11363,7 +11275,7 @@ function ForeverQuestRelationTraces:Load()
             -- 5631 "Returning Home" https://wowhead.com/forever/quest=5631
             -- 5632 "Returning Home" https://wowhead.com/forever/quest=5632
             -- 5633 "Returning Home" https://wowhead.com/forever/quest=5633
-            -- already in QuestieDB; Assumption: the server completes it and 5627, 5630, 5631, 5633 together (cooccurrence; high; 100+ characters); offer lists show it and 5628 exclude each other (absence, cooccurrence; high; 100+ characters); the server completes it and 5632 together (cooccurrence; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 5627, 5630, 5631, 5632, 5633 together (cooccurrence; very high; 100+ characters); offer lists show it and 5628 exclude each other (absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {5627,5628,5630,5631,5632,5633},
         -- },
         -- [5630] = { -- Returning Home https://wowhead.com/forever/quest=5630
@@ -11373,7 +11285,7 @@ function ForeverQuestRelationTraces:Load()
             -- 5631 "Returning Home" https://wowhead.com/forever/quest=5631
             -- 5632 "Returning Home" https://wowhead.com/forever/quest=5632
             -- 5633 "Returning Home" https://wowhead.com/forever/quest=5633
-            -- already in QuestieDB; Assumption: the server completes it and 5627, 5629, 5631, 5633 together (cooccurrence; high; 100+ characters); offer lists show it and 5628 exclude each other (absence, cooccurrence; high; 100+ characters); the server completes it and 5632 together (cooccurrence; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 5627, 5629, 5631, 5632, 5633 together (cooccurrence; very high; 100+ characters); offer lists show it and 5628 exclude each other (absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {5627,5628,5629,5631,5632,5633},
         -- },
         -- [5631] = { -- Returning Home https://wowhead.com/forever/quest=5631
@@ -11383,7 +11295,7 @@ function ForeverQuestRelationTraces:Load()
             -- 5630 "Returning Home" https://wowhead.com/forever/quest=5630
             -- 5632 "Returning Home" https://wowhead.com/forever/quest=5632
             -- 5633 "Returning Home" https://wowhead.com/forever/quest=5633
-            -- already in QuestieDB; Assumption: the server completes it and 5627, 5629, 5630, 5633 together (cooccurrence; high; 100+ characters); offer lists show it and 5628 exclude each other (absence, cooccurrence; high; 100+ characters); the server completes it and 5632 together (cooccurrence; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 5627, 5629, 5630, 5632, 5633 together (cooccurrence; very high; 100+ characters); offer lists show it and 5628 exclude each other (absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {5627,5628,5629,5630,5632,5633},
         -- },
         -- [5632] = { -- Returning Home https://wowhead.com/forever/quest=5632
@@ -11393,7 +11305,7 @@ function ForeverQuestRelationTraces:Load()
             -- 5630 "Returning Home" https://wowhead.com/forever/quest=5630
             -- 5631 "Returning Home" https://wowhead.com/forever/quest=5631
             -- 5633 "Returning Home" https://wowhead.com/forever/quest=5633
-            -- already in QuestieDB; Assumption: the server completes it and 5627, 5628, 5629, 5630, 5631, 5633 together (cooccurrence; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 5627, 5628, 5629, 5630, 5631, 5633 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {5627,5628,5629,5630,5631,5633},
         -- },
         -- [5633] = { -- Returning Home https://wowhead.com/forever/quest=5633
@@ -11403,77 +11315,119 @@ function ForeverQuestRelationTraces:Load()
             -- 5630 "Returning Home" https://wowhead.com/forever/quest=5630
             -- 5631 "Returning Home" https://wowhead.com/forever/quest=5631
             -- 5632 "Returning Home" https://wowhead.com/forever/quest=5632
-            -- already in QuestieDB; Assumption: the server completes it and 5627, 5629, 5630, 5631 together (cooccurrence; high; 100+ characters); the server completes it and 5628, 5632 together (cooccurrence; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 5627, 5628, 5629, 5630, 5631, 5632 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {5627,5628,5629,5630,5631,5632},
         -- },
         -- [5634] = { -- Desperate Prayer https://wowhead.com/forever/quest=5634
             -- 5635 "Desperate Prayer" https://wowhead.com/forever/quest=5635
+            -- 5636 "Desperate Prayer" https://wowhead.com/forever/quest=5636
             -- 5637 "Desperate Prayer" https://wowhead.com/forever/quest=5637
+            -- 5638 "Desperate Prayer" https://wowhead.com/forever/quest=5638
             -- 5639 "Desperate Prayer" https://wowhead.com/forever/quest=5639
-            -- already in QuestieDB; Assumption: offer lists show it and 5635, 5637 exclude each other (absence, cooccurrence; high; 100+ characters); the server completes it and 5639 together (cooccurrence; medium; 100+ characters)
-            -- [questKeys.exclusiveTo] = {5635,5637,5639},
+            -- 5640 "Desperate Prayer" https://wowhead.com/forever/quest=5640
+            -- already in QuestieDB; Assumption: offer lists show it and 5635, 5637 exclude each other (absence, cooccurrence; very high; 100+ characters); the server completes it and 5636, 5638, 5639, 5640 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {5635,5636,5637,5638,5639,5640},
         -- },
         -- [5635] = { -- Desperate Prayer https://wowhead.com/forever/quest=5635
             -- 5634 "Desperate Prayer" https://wowhead.com/forever/quest=5634
+            -- 5636 "Desperate Prayer" https://wowhead.com/forever/quest=5636
             -- 5637 "Desperate Prayer" https://wowhead.com/forever/quest=5637
+            -- 5638 "Desperate Prayer" https://wowhead.com/forever/quest=5638
             -- 5639 "Desperate Prayer" https://wowhead.com/forever/quest=5639
-            -- already in QuestieDB; Assumption: offer lists show it and 5634, 5637 exclude each other (absence, cooccurrence; high; 100+ characters); the server completes it and 5639 together (cooccurrence; low; 100+ characters), kept below the min score for its accepted exclusive group
-            -- [questKeys.exclusiveTo] = {5634,5637,5639},
+            -- 5640 "Desperate Prayer" https://wowhead.com/forever/quest=5640
+            -- already in QuestieDB; Assumption: offer lists show it and 5634, 5637 exclude each other (absence, cooccurrence; very high; 100+ characters); the server completes it and 5636, 5638, 5639, 5640 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {5634,5636,5637,5638,5639,5640},
+        -- },
+        -- [5636] = { -- Desperate Prayer https://wowhead.com/forever/quest=5636
+            -- 5634 "Desperate Prayer" https://wowhead.com/forever/quest=5634
+            -- 5635 "Desperate Prayer" https://wowhead.com/forever/quest=5635
+            -- 5637 "Desperate Prayer" https://wowhead.com/forever/quest=5637
+            -- 5638 "Desperate Prayer" https://wowhead.com/forever/quest=5638
+            -- 5639 "Desperate Prayer" https://wowhead.com/forever/quest=5639
+            -- 5640 "Desperate Prayer" https://wowhead.com/forever/quest=5640
+            -- already in QuestieDB; Assumption: the server completes it and 5634, 5635, 5637, 5638, 5639, 5640 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {5634,5635,5637,5638,5639,5640},
         -- },
         -- [5637] = { -- Desperate Prayer https://wowhead.com/forever/quest=5637
             -- 5634 "Desperate Prayer" https://wowhead.com/forever/quest=5634
             -- 5635 "Desperate Prayer" https://wowhead.com/forever/quest=5635
+            -- 5636 "Desperate Prayer" https://wowhead.com/forever/quest=5636
+            -- 5638 "Desperate Prayer" https://wowhead.com/forever/quest=5638
             -- 5639 "Desperate Prayer" https://wowhead.com/forever/quest=5639
-            -- already in QuestieDB; Assumption: offer lists show it and 5634, 5635 exclude each other (absence, cooccurrence; high; 100+ characters); the server completes it and 5639 together (cooccurrence; medium; 100+ characters)
-            -- [questKeys.exclusiveTo] = {5634,5635,5639},
+            -- 5640 "Desperate Prayer" https://wowhead.com/forever/quest=5640
+            -- already in QuestieDB; Assumption: offer lists show it and 5634, 5635 exclude each other (absence, cooccurrence; very high; 100+ characters); the server completes it and 5636, 5638, 5639, 5640 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {5634,5635,5636,5638,5639,5640},
+        -- },
+        -- [5638] = { -- Desperate Prayer https://wowhead.com/forever/quest=5638
+            -- 5634 "Desperate Prayer" https://wowhead.com/forever/quest=5634
+            -- 5635 "Desperate Prayer" https://wowhead.com/forever/quest=5635
+            -- 5636 "Desperate Prayer" https://wowhead.com/forever/quest=5636
+            -- 5637 "Desperate Prayer" https://wowhead.com/forever/quest=5637
+            -- 5639 "Desperate Prayer" https://wowhead.com/forever/quest=5639
+            -- 5640 "Desperate Prayer" https://wowhead.com/forever/quest=5640
+            -- already in QuestieDB; Assumption: the server completes it and 5634, 5635, 5636, 5637, 5639, 5640 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {5634,5635,5636,5637,5639,5640},
         -- },
         -- [5639] = { -- Desperate Prayer https://wowhead.com/forever/quest=5639
             -- 5634 "Desperate Prayer" https://wowhead.com/forever/quest=5634
             -- 5635 "Desperate Prayer" https://wowhead.com/forever/quest=5635
+            -- 5636 "Desperate Prayer" https://wowhead.com/forever/quest=5636
             -- 5637 "Desperate Prayer" https://wowhead.com/forever/quest=5637
-            -- already in QuestieDB; Assumption: the server completes it and 5634, 5637 together (cooccurrence; medium; 100+ characters); the server completes it and 5635 together (cooccurrence; low; 100+ characters), kept below the min score for its accepted exclusive group
-            -- [questKeys.exclusiveTo] = {5634,5635,5637},
+            -- 5638 "Desperate Prayer" https://wowhead.com/forever/quest=5638
+            -- 5640 "Desperate Prayer" https://wowhead.com/forever/quest=5640
+            -- already in QuestieDB; Assumption: the server completes it and 5634, 5635, 5636, 5637, 5638, 5640 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {5634,5635,5636,5637,5638,5640},
+        -- },
+        -- [5640] = { -- Desperate Prayer https://wowhead.com/forever/quest=5640
+            -- 5634 "Desperate Prayer" https://wowhead.com/forever/quest=5634
+            -- 5635 "Desperate Prayer" https://wowhead.com/forever/quest=5635
+            -- 5636 "Desperate Prayer" https://wowhead.com/forever/quest=5636
+            -- 5637 "Desperate Prayer" https://wowhead.com/forever/quest=5637
+            -- 5638 "Desperate Prayer" https://wowhead.com/forever/quest=5638
+            -- 5639 "Desperate Prayer" https://wowhead.com/forever/quest=5639
+            -- already in QuestieDB; Assumption: the server completes it and 5634, 5635, 5636, 5637, 5638, 5639 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {5634,5635,5636,5637,5638,5639},
         -- },
         -- [5641] = { -- A Lack of Fear https://wowhead.com/forever/quest=5641
             -- 5645 "A Lack of Fear" https://wowhead.com/forever/quest=5645
             -- 5647 "A Lack of Fear" https://wowhead.com/forever/quest=5647
-            -- already in QuestieDB; Assumption: the server completes it and 5645 together (cooccurrence; high; 100+ characters); the server completes it and 5647 together (cooccurrence; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 5645, 5647 together (cooccurrence; high; 100+ characters)
             -- [questKeys.exclusiveTo] = {5645,5647},
         -- },
         -- [5642] = { -- Shadowguard https://wowhead.com/forever/quest=5642
             -- 5643 "Shadowguard" https://wowhead.com/forever/quest=5643
             -- 5680 "Shadowguard" https://wowhead.com/forever/quest=5680
-            -- already in QuestieDB; Assumption: offer lists show it and 5643 exclude each other (absence, cooccurrence; high; 100+ characters); the server completes it and 5680 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: offer lists show it and 5643 exclude each other (absence, cooccurrence; very high; 100+ characters); the server completes it and 5680 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {5643,5680},
         -- },
         -- [5643] = { -- Shadowguard https://wowhead.com/forever/quest=5643
             -- 5642 "Shadowguard" https://wowhead.com/forever/quest=5642
             -- 5680 "Shadowguard" https://wowhead.com/forever/quest=5680
-            -- already in QuestieDB; Assumption: offer lists show it and 5642 exclude each other (absence, cooccurrence; high; 100+ characters); the server completes it and 5680 together (cooccurrence; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: offer lists show it and 5642 exclude each other (absence, cooccurrence; very high; 100+ characters); the server completes it and 5680 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {5642,5680},
         -- },
         -- [5644] = { -- Dark Sacrifice https://wowhead.com/forever/quest=5644
             -- 5646 "Dark Sacrifice" https://wowhead.com/forever/quest=5646
             -- 5679 "Dark Sacrifice" https://wowhead.com/forever/quest=5679
-            -- already in QuestieDB; Assumption: offer lists show it and 5646 exclude each other (absence, cooccurrence; high; 100+ characters); the server completes it and 5679 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: offer lists show it and 5646 exclude each other (absence, cooccurrence; very high; 100+ characters); the server completes it and 5679 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {5646,5679},
         -- },
         -- [5645] = { -- A Lack of Fear https://wowhead.com/forever/quest=5645
             -- 5641 "A Lack of Fear" https://wowhead.com/forever/quest=5641
             -- 5647 "A Lack of Fear" https://wowhead.com/forever/quest=5647
-            -- already in QuestieDB; Assumption: the server completes it and 5641 together (cooccurrence; high; 100+ characters); offer lists show it and 5647 exclude each other (absence, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 5641 together (cooccurrence; high; 100+ characters); offer lists show it and 5647 exclude each other (absence, cooccurrence; medium; 100+ characters)
             -- [questKeys.exclusiveTo] = {5641,5647},
         -- },
         -- [5646] = { -- Dark Sacrifice https://wowhead.com/forever/quest=5646
             -- 5644 "Dark Sacrifice" https://wowhead.com/forever/quest=5644
             -- 5679 "Dark Sacrifice" https://wowhead.com/forever/quest=5679
-            -- already in QuestieDB; Assumption: offer lists show it and 5644 exclude each other (absence, cooccurrence; high; 100+ characters); the server completes it and 5679 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: offer lists show it and 5644 exclude each other (absence, cooccurrence; very high; 100+ characters); the server completes it and 5679 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {5644,5679},
         -- },
         -- [5647] = { -- A Lack of Fear https://wowhead.com/forever/quest=5647
             -- 5641 "A Lack of Fear" https://wowhead.com/forever/quest=5641
             -- 5645 "A Lack of Fear" https://wowhead.com/forever/quest=5645
-            -- already in QuestieDB; Assumption: the server completes it and 5641 together (cooccurrence; medium; 100+ characters); offer lists show it and 5645 exclude each other (absence, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 5641 together (cooccurrence; high; 100+ characters); offer lists show it and 5645 exclude each other (absence, cooccurrence; medium; 100+ characters)
             -- [questKeys.exclusiveTo] = {5641,5645},
         -- },
         -- [5649] = { -- In Favor of Spirituality https://wowhead.com/forever/quest=5649
@@ -11483,7 +11437,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [5651] = { -- In Favor of Darkness https://wowhead.com/forever/quest=5651
             -- 5650 "Garments of Darkness" https://wowhead.com/forever/quest=5650
-            -- already in QuestieDB; Assumption: turning it in led straight to 5650 (handoff, absence; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 5650 (handoff, absence; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 5650,
         -- },
         -- [5652] = { -- Hex of Weakness https://wowhead.com/forever/quest=5652
@@ -11491,7 +11445,7 @@ function ForeverQuestRelationTraces:Load()
             -- 5655 "Hex of Weakness" https://wowhead.com/forever/quest=5655
             -- 5656 "Hex of Weakness" https://wowhead.com/forever/quest=5656
             -- 5657 "Hex of Weakness" https://wowhead.com/forever/quest=5657
-            -- already in QuestieDB; Assumption: the server completes it and 5654, 5655, 5656, 5657 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 5654, 5655, 5656, 5657 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {5654,5655,5656,5657},
         -- },
         -- [5654] = { -- Hex of Weakness https://wowhead.com/forever/quest=5654
@@ -11499,7 +11453,7 @@ function ForeverQuestRelationTraces:Load()
             -- 5655 "Hex of Weakness" https://wowhead.com/forever/quest=5655
             -- 5656 "Hex of Weakness" https://wowhead.com/forever/quest=5656
             -- 5657 "Hex of Weakness" https://wowhead.com/forever/quest=5657
-            -- already in QuestieDB; Assumption: the server completes it and 5652, 5655, 5656, 5657 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 5652, 5655, 5656, 5657 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {5652,5655,5656,5657},
         -- },
         -- [5655] = { -- Hex of Weakness https://wowhead.com/forever/quest=5655
@@ -11507,7 +11461,7 @@ function ForeverQuestRelationTraces:Load()
             -- 5654 "Hex of Weakness" https://wowhead.com/forever/quest=5654
             -- 5656 "Hex of Weakness" https://wowhead.com/forever/quest=5656
             -- 5657 "Hex of Weakness" https://wowhead.com/forever/quest=5657
-            -- already in QuestieDB; Assumption: the server completes it and 5652, 5654, 5657 together (cooccurrence; high; 100+ characters); offer lists show it and 5656 exclude each other (absence, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 5652, 5654, 5657 together (cooccurrence; very high; 100+ characters); offer lists show it and 5656 exclude each other (absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {5652,5654,5656,5657},
         -- },
         -- [5656] = { -- Hex of Weakness https://wowhead.com/forever/quest=5656
@@ -11515,7 +11469,7 @@ function ForeverQuestRelationTraces:Load()
             -- 5654 "Hex of Weakness" https://wowhead.com/forever/quest=5654
             -- 5655 "Hex of Weakness" https://wowhead.com/forever/quest=5655
             -- 5657 "Hex of Weakness" https://wowhead.com/forever/quest=5657
-            -- already in QuestieDB; Assumption: the server completes it and 5652, 5654, 5657 together (cooccurrence; high; 100+ characters); offer lists show it and 5655 exclude each other (absence, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 5652, 5654, 5657 together (cooccurrence; very high; 100+ characters); offer lists show it and 5655 exclude each other (absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {5652,5654,5655,5657},
         -- },
         -- [5657] = { -- Hex of Weakness https://wowhead.com/forever/quest=5657
@@ -11523,7 +11477,7 @@ function ForeverQuestRelationTraces:Load()
             -- 5654 "Hex of Weakness" https://wowhead.com/forever/quest=5654
             -- 5655 "Hex of Weakness" https://wowhead.com/forever/quest=5655
             -- 5656 "Hex of Weakness" https://wowhead.com/forever/quest=5656
-            -- already in QuestieDB; Assumption: the server completes it and 5652, 5654, 5655, 5656 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 5652, 5654, 5655, 5656 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {5652,5654,5655,5656},
         -- },
         -- [5658] = { -- Touch of Weakness https://wowhead.com/forever/quest=5658
@@ -11531,7 +11485,7 @@ function ForeverQuestRelationTraces:Load()
             -- 5661 "Touch of Weakness" https://wowhead.com/forever/quest=5661
             -- 5662 "Touch of Weakness" https://wowhead.com/forever/quest=5662
             -- 5663 "Touch of Weakness" https://wowhead.com/forever/quest=5663
-            -- already in QuestieDB; Assumption: the server completes it and 5660, 5661, 5662, 5663 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 5660, 5661, 5662, 5663 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {5660,5661,5662,5663},
         -- },
         -- [5660] = { -- Touch of Weakness https://wowhead.com/forever/quest=5660
@@ -11539,7 +11493,7 @@ function ForeverQuestRelationTraces:Load()
             -- 5661 "Touch of Weakness" https://wowhead.com/forever/quest=5661
             -- 5662 "Touch of Weakness" https://wowhead.com/forever/quest=5662
             -- 5663 "Touch of Weakness" https://wowhead.com/forever/quest=5663
-            -- already in QuestieDB; Assumption: the server completes it and 5658, 5661 together (cooccurrence; high; 100+ characters); offer lists show it and 5662, 5663 exclude each other (absence, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 5658, 5661 together (cooccurrence; very high; 100+ characters); offer lists show it and 5662, 5663 exclude each other (absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {5658,5661,5662,5663},
         -- },
         -- [5661] = { -- Touch of Weakness https://wowhead.com/forever/quest=5661
@@ -11547,7 +11501,7 @@ function ForeverQuestRelationTraces:Load()
             -- 5660 "Touch of Weakness" https://wowhead.com/forever/quest=5660
             -- 5662 "Touch of Weakness" https://wowhead.com/forever/quest=5662
             -- 5663 "Touch of Weakness" https://wowhead.com/forever/quest=5663
-            -- already in QuestieDB; Assumption: the server completes it and 5658, 5660, 5662, 5663 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 5658, 5660, 5662, 5663 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {5658,5660,5662,5663},
         -- },
         -- [5662] = { -- Touch of Weakness https://wowhead.com/forever/quest=5662
@@ -11555,7 +11509,7 @@ function ForeverQuestRelationTraces:Load()
             -- 5660 "Touch of Weakness" https://wowhead.com/forever/quest=5660
             -- 5661 "Touch of Weakness" https://wowhead.com/forever/quest=5661
             -- 5663 "Touch of Weakness" https://wowhead.com/forever/quest=5663
-            -- already in QuestieDB; Assumption: the server completes it and 5658, 5661 together (cooccurrence; high; 100+ characters); offer lists show it and 5660, 5663 exclude each other (absence, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 5658, 5661 together (cooccurrence; very high; 100+ characters); offer lists show it and 5660, 5663 exclude each other (absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {5658,5660,5661,5663},
         -- },
         -- [5663] = { -- Touch of Weakness https://wowhead.com/forever/quest=5663
@@ -11563,65 +11517,65 @@ function ForeverQuestRelationTraces:Load()
             -- 5660 "Touch of Weakness" https://wowhead.com/forever/quest=5660
             -- 5661 "Touch of Weakness" https://wowhead.com/forever/quest=5661
             -- 5662 "Touch of Weakness" https://wowhead.com/forever/quest=5662
-            -- already in QuestieDB; Assumption: the server completes it and 5658, 5661 together (cooccurrence; high; 100+ characters); offer lists show it and 5660, 5662 exclude each other (absence, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 5658, 5661 together (cooccurrence; very high; 100+ characters); offer lists show it and 5660, 5662 exclude each other (absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {5658,5660,5661,5662},
         -- },
         -- [5672] = { -- Elune's Grace https://wowhead.com/forever/quest=5672
             -- 5673 "Elune's Grace" https://wowhead.com/forever/quest=5673
             -- 5674 "Elune's Grace" https://wowhead.com/forever/quest=5674
             -- 5675 "Elune's Grace" https://wowhead.com/forever/quest=5675
-            -- already in QuestieDB; Assumption: the server completes it and 5673, 5674, 5675 together (cooccurrence; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 5673, 5674, 5675 together (cooccurrence; high; 100+ characters)
             -- [questKeys.exclusiveTo] = {5673,5674,5675},
         -- },
         -- [5673] = { -- Elune's Grace https://wowhead.com/forever/quest=5673
             -- 5672 "Elune's Grace" https://wowhead.com/forever/quest=5672
             -- 5674 "Elune's Grace" https://wowhead.com/forever/quest=5674
             -- 5675 "Elune's Grace" https://wowhead.com/forever/quest=5675
-            -- already in QuestieDB; Assumption: the server completes it and 5672, 5674, 5675 together (cooccurrence; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 5672, 5674, 5675 together (cooccurrence; high; 100+ characters)
             -- [questKeys.exclusiveTo] = {5672,5674,5675},
         -- },
         -- [5674] = { -- Elune's Grace https://wowhead.com/forever/quest=5674
             -- 5672 "Elune's Grace" https://wowhead.com/forever/quest=5672
             -- 5673 "Elune's Grace" https://wowhead.com/forever/quest=5673
             -- 5675 "Elune's Grace" https://wowhead.com/forever/quest=5675
-            -- already in QuestieDB; Assumption: the server completes it and 5672, 5673, 5675 together (cooccurrence; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 5672, 5673, 5675 together (cooccurrence; high; 100+ characters)
             -- [questKeys.exclusiveTo] = {5672,5673,5675},
         -- },
         -- [5675] = { -- Elune's Grace https://wowhead.com/forever/quest=5675
             -- 5672 "Elune's Grace" https://wowhead.com/forever/quest=5672
             -- 5673 "Elune's Grace" https://wowhead.com/forever/quest=5673
             -- 5674 "Elune's Grace" https://wowhead.com/forever/quest=5674
-            -- already in QuestieDB; Assumption: the server completes it and 5672, 5673, 5674 together (cooccurrence; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 5672, 5673, 5674 together (cooccurrence; high; 100+ characters)
             -- [questKeys.exclusiveTo] = {5672,5673,5674},
         -- },
         -- [5676] = { -- Arcane Feedback https://wowhead.com/forever/quest=5676
             -- 5677 "Arcane Feedback" https://wowhead.com/forever/quest=5677
             -- 5678 "Arcane Feedback" https://wowhead.com/forever/quest=5678
-            -- already in QuestieDB; Assumption: the server completes it and 5677, 5678 together (cooccurrence; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 5677, 5678 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {5677,5678},
         -- },
         -- [5677] = { -- Arcane Feedback https://wowhead.com/forever/quest=5677
             -- 5676 "Arcane Feedback" https://wowhead.com/forever/quest=5676
             -- 5678 "Arcane Feedback" https://wowhead.com/forever/quest=5678
-            -- already in QuestieDB; Assumption: the server completes it and 5676, 5678 together (cooccurrence; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 5676, 5678 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {5676,5678},
         -- },
         -- [5678] = { -- Arcane Feedback https://wowhead.com/forever/quest=5678
             -- 5676 "Arcane Feedback" https://wowhead.com/forever/quest=5676
             -- 5677 "Arcane Feedback" https://wowhead.com/forever/quest=5677
-            -- already in QuestieDB; Assumption: the server completes it and 5676, 5677 together (cooccurrence; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 5676, 5677 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {5676,5677},
         -- },
         -- [5679] = { -- Dark Sacrifice https://wowhead.com/forever/quest=5679
             -- 5644 "Dark Sacrifice" https://wowhead.com/forever/quest=5644
             -- 5646 "Dark Sacrifice" https://wowhead.com/forever/quest=5646
-            -- already in QuestieDB; Assumption: the server completes it and 5644, 5646 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 5644, 5646 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {5644,5646},
         -- },
         -- [5680] = { -- Shadowguard https://wowhead.com/forever/quest=5680
             -- 5642 "Shadowguard" https://wowhead.com/forever/quest=5642
             -- 5643 "Shadowguard" https://wowhead.com/forever/quest=5643
-            -- already in QuestieDB; Assumption: the server completes it and 5642 together (cooccurrence; high; 100+ characters); the server completes it and 5643 together (cooccurrence; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 5642, 5643 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {5642,5643},
         -- },
         -- [5724] = { -- Returning the Lost Satchel https://wowhead.com/forever/quest=5724
@@ -11680,24 +11634,18 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [5801] = { -- Fire Plume Forged https://wowhead.com/forever/quest=5801
             -- 5538 "Mold Rhymes With..." https://wowhead.com/forever/quest=5538
-            -- already in QuestieDB; Assumption: offered right after 5538 was turned in (handoff, offer-set, cooccurrence; high; <10 characters)
+            -- already in QuestieDB; Assumption: offered right after 5538 was turned in (handoff, offer-set, cooccurrence; very high; <10 characters)
             -- [questKeys.preQuestSingle] = {5538},
         -- },
         -- [5845] = { -- Of Lost Honor https://wowhead.com/forever/quest=5845
             -- 5781 "Of Forgotten Memories" https://wowhead.com/forever/quest=5781
             -- already in QuestieDB; Assumption: offered right after 5781 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
             -- [questKeys.preQuestSingle] = {5781},
-            -- 5846 "Of Love and Family" https://wowhead.com/forever/quest=5846
-            -- already in QuestieDB; Assumption: turning it in led straight to 5846 (handoff; medium; <10 characters)
-            -- [questKeys.nextQuestInChain] = 5846,
         -- },
         -- [5846] = { -- Of Love and Family https://wowhead.com/forever/quest=5846
             -- 5845 "Of Lost Honor" https://wowhead.com/forever/quest=5845
             -- already in QuestieDB; Assumption: offered right after 5845 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
             -- [questKeys.preQuestSingle] = {5845},
-            -- 5848 "Of Love and Family" https://wowhead.com/forever/quest=5848
-            -- already in QuestieDB; Assumption: turning it in led straight to 5848 (handoff; medium; 10+ characters)
-            -- [questKeys.nextQuestInChain] = 5848,
         -- },
         -- [5848] = { -- Of Love and Family https://wowhead.com/forever/quest=5848
             -- 5846 "Of Love and Family" https://wowhead.com/forever/quest=5846
@@ -11739,6 +11687,11 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 4102 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters)
             -- [questKeys.preQuestSingle] = {4102},
         -- },
+        -- [5891] = { -- Salve via Disenchanting https://wowhead.com/forever/quest=5891
+            -- 4102 "Cleansing Felwood" https://wowhead.com/forever/quest=4102
+            -- already in QuestieDB; Assumption: offered right after 4102 was turned in (handoff; medium; <10 characters)
+            -- [questKeys.preQuestSingle] = {4102},
+        -- },
         -- [5901] = { -- A Plague Upon Thee https://wowhead.com/forever/quest=5901
             -- 5902 "A Plague Upon Thee" https://wowhead.com/forever/quest=5902
             -- already in QuestieDB; Assumption: turning it in led straight to 5902 (handoff; medium; <10 characters)
@@ -11758,16 +11711,13 @@ function ForeverQuestRelationTraces:Load()
             -- 5903 "A Plague Upon Thee" https://wowhead.com/forever/quest=5903
             -- already in QuestieDB; Assumption: offered right after 5903 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
             -- [questKeys.preQuestSingle] = {5903},
-            -- 6389 "A Plague Upon Thee" https://wowhead.com/forever/quest=6389
-            -- already in QuestieDB; Assumption: turning it in led straight to 6389 (handoff; medium; <10 characters)
-            -- [questKeys.nextQuestInChain] = 6389,
         -- },
         -- [5921] = { -- Moonglade https://wowhead.com/forever/quest=5921
             -- 5929 "Great Bear Spirit" https://wowhead.com/forever/quest=5929
             -- already in QuestieDB; Assumption: turning it in led straight to 5929 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 5929,
             -- 5923 "Heeding the Call" https://wowhead.com/forever/quest=5923
-            -- already in QuestieDB; Assumption: 5923 is an optional lead-in to it (breadcrumbs; high; 100+ characters)
+            -- already in QuestieDB; Assumption: 5923 is an optional lead-in to it (breadcrumbs; very high; 100+ characters)
             -- [questKeys.breadcrumbs] = {5923},
         -- },
         -- [5922] = { -- Moonglade https://wowhead.com/forever/quest=5922
@@ -11784,10 +11734,10 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: the server completes it and 5924 together (cooccurrence; very high; 100+ characters); offer lists show it and 5925 exclude each other (absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {5924,5925},
             -- 5921 "Moonglade" https://wowhead.com/forever/quest=5921
-            -- already in QuestieDB; Assumption: implied by its breadcrumb to 5921 (high)
+            -- already in QuestieDB; Assumption: implied by its breadcrumb to 5921 (very high)
             -- [questKeys.nextQuestInChain] = 5921,
             -- 5921 "Moonglade" https://wowhead.com/forever/quest=5921
-            -- already in QuestieDB; Assumption: optional lead-in to 5921 (breadcrumbs; high; 100+ characters)
+            -- already in QuestieDB; Assumption: optional lead-in to 5921 (breadcrumbs; very high; 100+ characters)
             -- [questKeys.breadcrumbForQuestId] = 5921,
         -- },
         -- [5924] = { -- Heeding the Call https://wowhead.com/forever/quest=5924
@@ -11883,9 +11833,6 @@ function ForeverQuestRelationTraces:Load()
             -- 6004 "Unfinished Business" https://wowhead.com/forever/quest=6004
             -- already in QuestieDB; Assumption: offered right after 6004 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
             -- [questKeys.preQuestSingle] = {6004},
-            -- 6025 "Unfinished Business" https://wowhead.com/forever/quest=6025
-            -- already in QuestieDB; Assumption: turning it in led straight to 6025 (handoff; medium; 10+ characters)
-            -- [questKeys.nextQuestInChain] = 6025,
         -- },
         -- [6025] = { -- Unfinished Business https://wowhead.com/forever/quest=6025
             -- 6023 "Unfinished Business" https://wowhead.com/forever/quest=6023
@@ -11919,26 +11866,30 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: 6068 is an optional lead-in to it (breadcrumbs, absence; high; 100+ characters); 6069 is an optional lead-in to it (breadcrumbs, absence; medium; 100+ characters)
             -- [questKeys.breadcrumbs] = {6068,6069},
         -- },
-        [6063] = { -- Taming the Beast https://wowhead.com/forever/quest=6063
+        -- [6063] = { -- Taming the Beast https://wowhead.com/forever/quest=6063
             -- 94013 "Taming the Beast" https://wowhead.com/forever/quest=94013
-            -- Assumption: the server completes it and 94013 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {94013},
+            -- already in QuestieDB; Assumption: the server completes it and 94013 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {94013},
             -- 6101 "Taming the Beast" https://wowhead.com/forever/quest=6101
             -- already in QuestieDB; Assumption: turning it in led straight to 6101 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 6101,
             -- 6071 "The Hunter's Path" https://wowhead.com/forever/quest=6071
             -- already in QuestieDB; Assumption: 6071 is an optional lead-in to it (breadcrumbs, absence; very high; 100+ characters)
             -- [questKeys.breadcrumbs] = {6071},
-        },
+        -- },
         -- [6064] = { -- Taming the Beast https://wowhead.com/forever/quest=6064
             -- 6084 "Taming the Beast" https://wowhead.com/forever/quest=6084
-            -- already in QuestieDB; Assumption: turning it in led straight to 6084 (handoff; high; 100+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 6084 (handoff; medium; 100+ characters)
             -- [questKeys.nextQuestInChain] = 6084,
             -- 6074 "The Hunter's Path" https://wowhead.com/forever/quest=6074
             -- already in QuestieDB; Assumption: 6074 is an optional lead-in to it (breadcrumbs, absence; very high; 100+ characters)
             -- [questKeys.breadcrumbs] = {6074},
         -- },
         -- [6065] = { -- The Hunter's Path https://wowhead.com/forever/quest=6065
+            -- 6066 "The Hunter's Path" https://wowhead.com/forever/quest=6066
+            -- 6067 "The Hunter's Path" https://wowhead.com/forever/quest=6067
+            -- already in QuestieDB; Assumption: the server completes it and 6066, 6067 together (cooccurrence; high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {6066,6067},
             -- 6061 "Taming the Beast" https://wowhead.com/forever/quest=6061
             -- already in QuestieDB; Assumption: implied by its breadcrumb to 6061 (high)
             -- [questKeys.nextQuestInChain] = 6061,
@@ -11946,10 +11897,22 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: optional lead-in to 6061 (breadcrumbs, absence; high; 100+ characters)
             -- [questKeys.breadcrumbForQuestId] = 6061,
         -- },
+        -- [6066] = { -- The Hunter's Path https://wowhead.com/forever/quest=6066
+            -- 6065 "The Hunter's Path" https://wowhead.com/forever/quest=6065
+            -- 6067 "The Hunter's Path" https://wowhead.com/forever/quest=6067
+            -- already in QuestieDB; Assumption: the server completes it and 6065, 6067 together (cooccurrence; high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {6065,6067},
+        -- },
+        -- [6067] = { -- The Hunter's Path https://wowhead.com/forever/quest=6067
+            -- 6065 "The Hunter's Path" https://wowhead.com/forever/quest=6065
+            -- 6066 "The Hunter's Path" https://wowhead.com/forever/quest=6066
+            -- already in QuestieDB; Assumption: the server completes it and 6065, 6066 together (cooccurrence; high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {6065,6066},
+        -- },
         -- [6068] = { -- The Hunter's Path https://wowhead.com/forever/quest=6068
             -- 6069 "The Hunter's Path" https://wowhead.com/forever/quest=6069
             -- 6070 "The Hunter's Path" https://wowhead.com/forever/quest=6070
-            -- already in QuestieDB; Assumption: the server completes it and 6069 together (cooccurrence; medium; 100+ characters); the server completes it and 6070 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 6069, 6070 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {6069,6070},
             -- 6062 "Taming the Beast" https://wowhead.com/forever/quest=6062
             -- already in QuestieDB; Assumption: implied by its breadcrumb to 6062 (high)
@@ -11961,7 +11924,7 @@ function ForeverQuestRelationTraces:Load()
         -- [6069] = { -- The Hunter's Path https://wowhead.com/forever/quest=6069
             -- 6068 "The Hunter's Path" https://wowhead.com/forever/quest=6068
             -- 6070 "The Hunter's Path" https://wowhead.com/forever/quest=6070
-            -- already in QuestieDB; Assumption: the server completes it and 6068, 6070 together (cooccurrence; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 6068, 6070 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {6068,6070},
             -- 6062 "Taming the Beast" https://wowhead.com/forever/quest=6062
             -- already in QuestieDB; Assumption: implied by its breadcrumb to 6062 (medium)
@@ -11973,7 +11936,7 @@ function ForeverQuestRelationTraces:Load()
         -- [6070] = { -- The Hunter's Path https://wowhead.com/forever/quest=6070
             -- 6068 "The Hunter's Path" https://wowhead.com/forever/quest=6068
             -- 6069 "The Hunter's Path" https://wowhead.com/forever/quest=6069
-            -- already in QuestieDB; Assumption: the server completes it and 6068 together (cooccurrence; high; 100+ characters); the server completes it and 6069 together (cooccurrence; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 6068, 6069 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {6068,6069},
         -- },
         -- [6071] = { -- The Hunter's Path https://wowhead.com/forever/quest=6071
@@ -11981,7 +11944,7 @@ function ForeverQuestRelationTraces:Load()
             -- 6073 "The Hunter's Path" https://wowhead.com/forever/quest=6073
             -- 6721 "The Hunter's Path" https://wowhead.com/forever/quest=6721
             -- 6722 "The Hunter's Path" https://wowhead.com/forever/quest=6722
-            -- already in QuestieDB; Assumption: the server completes it and 6072, 6073, 6721, 6722 together (cooccurrence; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 6072, 6073, 6721, 6722 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {6072,6073,6721,6722},
             -- 6063 "Taming the Beast" https://wowhead.com/forever/quest=6063
             -- already in QuestieDB; Assumption: turning it in led straight to 6063 (handoff, absence; medium; 100+ characters)
@@ -11995,7 +11958,7 @@ function ForeverQuestRelationTraces:Load()
             -- 6073 "The Hunter's Path" https://wowhead.com/forever/quest=6073
             -- 6721 "The Hunter's Path" https://wowhead.com/forever/quest=6721
             -- 6722 "The Hunter's Path" https://wowhead.com/forever/quest=6722
-            -- already in QuestieDB; Assumption: the server completes it and 6071, 6073, 6721, 6722 together (cooccurrence; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 6071, 6073, 6721, 6722 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {6071,6073,6721,6722},
         -- },
         -- [6073] = { -- The Hunter's Path https://wowhead.com/forever/quest=6073
@@ -12003,13 +11966,13 @@ function ForeverQuestRelationTraces:Load()
             -- 6072 "The Hunter's Path" https://wowhead.com/forever/quest=6072
             -- 6721 "The Hunter's Path" https://wowhead.com/forever/quest=6721
             -- 6722 "The Hunter's Path" https://wowhead.com/forever/quest=6722
-            -- already in QuestieDB; Assumption: the server completes it and 6071, 6072, 6721, 6722 together (cooccurrence; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 6071, 6072, 6721, 6722 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {6071,6072,6721,6722},
         -- },
         -- [6074] = { -- The Hunter's Path https://wowhead.com/forever/quest=6074
             -- 6075 "The Hunter's Path" https://wowhead.com/forever/quest=6075
             -- 6076 "The Hunter's Path" https://wowhead.com/forever/quest=6076
-            -- already in QuestieDB; Assumption: offer lists show it and 6075 exclude each other (absence, cooccurrence; high; 100+ characters); the server completes it and 6076 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: offer lists show it and 6075 exclude each other (absence, cooccurrence; very high; 100+ characters); the server completes it and 6076 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {6075,6076},
             -- 6064 "Taming the Beast" https://wowhead.com/forever/quest=6064
             -- already in QuestieDB; Assumption: implied by its breadcrumb to 6064 (very high)
@@ -12021,13 +11984,13 @@ function ForeverQuestRelationTraces:Load()
         -- [6075] = { -- The Hunter's Path https://wowhead.com/forever/quest=6075
             -- 6074 "The Hunter's Path" https://wowhead.com/forever/quest=6074
             -- 6076 "The Hunter's Path" https://wowhead.com/forever/quest=6076
-            -- already in QuestieDB; Assumption: offer lists show it and 6074 exclude each other (absence, cooccurrence; high; 100+ characters); the server completes it and 6076 together (cooccurrence; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: offer lists show it and 6074 exclude each other (absence, cooccurrence; very high; 100+ characters); the server completes it and 6076 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {6074,6076},
         -- },
         -- [6076] = { -- The Hunter's Path https://wowhead.com/forever/quest=6076
             -- 6074 "The Hunter's Path" https://wowhead.com/forever/quest=6074
             -- 6075 "The Hunter's Path" https://wowhead.com/forever/quest=6075
-            -- already in QuestieDB; Assumption: the server completes it and 6074 together (cooccurrence; high; 100+ characters); the server completes it and 6075 together (cooccurrence; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 6074, 6075 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {6074,6075},
         -- },
         -- [6081] = { -- Training the Beast https://wowhead.com/forever/quest=6081
@@ -12056,7 +12019,7 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 6064 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {6064},
             -- 6085 "Taming the Beast" https://wowhead.com/forever/quest=6085
-            -- already in QuestieDB; Assumption: turning it in led straight to 6085 (handoff; high; 100+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 6085 (handoff; medium; 100+ characters)
             -- [questKeys.nextQuestInChain] = 6085,
         -- },
         -- [6085] = { -- Taming the Beast https://wowhead.com/forever/quest=6085
@@ -12064,7 +12027,7 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 6084 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {6084},
             -- 6086 "Training the Beast" https://wowhead.com/forever/quest=6086
-            -- already in QuestieDB; Assumption: turning it in led straight to 6086 (handoff; high; 100+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 6086 (handoff; medium; 100+ characters)
             -- [questKeys.nextQuestInChain] = 6086,
         -- },
         -- [6086] = { -- Training the Beast https://wowhead.com/forever/quest=6086
@@ -12184,12 +12147,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [6135] = { -- Duskwing, Oh How I Hate Thee... https://wowhead.com/forever/quest=6135
             -- 6133 "The Ranger Lord's Behest" https://wowhead.com/forever/quest=6133
-            -- already in QuestieDB; Assumption: offered right after 6133 was turned in (handoff, offer-set; high; <10 characters)
-            -- [questKeys.preQuestSingle] = {6133},
-        -- },
-        -- [6136] = { -- The Corpulent One https://wowhead.com/forever/quest=6136
-            -- 6133 "The Ranger Lord's Behest" https://wowhead.com/forever/quest=6133
-            -- already in QuestieDB; Assumption: offered right after 6133 was turned in (handoff, offer-set, absence; high; <10 characters)
+            -- already in QuestieDB; Assumption: offered right after 6133 was turned in (handoff, offer-set; medium; <10 characters)
             -- [questKeys.preQuestSingle] = {6133},
         -- },
         -- [6181] = { -- A Swift Message https://wowhead.com/forever/quest=6181
@@ -12197,26 +12155,15 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: turning it in led straight to 6281 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 6281,
         -- },
-        -- [6182] = { -- The First and the Last https://wowhead.com/forever/quest=6182
-            -- 6183 "Honor the Dead" https://wowhead.com/forever/quest=6183
-            -- already in QuestieDB; Assumption: turning it in led straight to 6183 (handoff; medium; 10+ characters)
-            -- [questKeys.nextQuestInChain] = 6183,
-        -- },
         -- [6183] = { -- Honor the Dead https://wowhead.com/forever/quest=6183
             -- 6182 "The First and the Last" https://wowhead.com/forever/quest=6182
             -- already in QuestieDB; Assumption: offered right after 6182 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters)
             -- [questKeys.preQuestSingle] = {6182},
-            -- 6184 "Flint Shadowmore" https://wowhead.com/forever/quest=6184
-            -- already in QuestieDB; Assumption: turning it in led straight to 6184 (handoff; medium; 10+ characters)
-            -- [questKeys.nextQuestInChain] = 6184,
         -- },
         -- [6184] = { -- Flint Shadowmore https://wowhead.com/forever/quest=6184
             -- 6183 "Honor the Dead" https://wowhead.com/forever/quest=6183
             -- already in QuestieDB; Assumption: offered right after 6183 was turned in (handoff, offer-set, absence, cooccurrence; high; 10+ characters)
             -- [questKeys.preQuestSingle] = {6183},
-            -- 6185 "The Eastern Plagues" https://wowhead.com/forever/quest=6185
-            -- already in QuestieDB; Assumption: turning it in led straight to 6185 (handoff; medium; 10+ characters)
-            -- [questKeys.nextQuestInChain] = 6185,
         -- },
         -- [6185] = { -- The Eastern Plagues https://wowhead.com/forever/quest=6185
             -- 6184 "Flint Shadowmore" https://wowhead.com/forever/quest=6184
@@ -12321,7 +12268,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [6344] = { -- Nessa Shadowsong https://wowhead.com/forever/quest=6344
             -- 6341 "The Bounty of Teldrassil" https://wowhead.com/forever/quest=6341
-            -- already in QuestieDB; Assumption: turning it in led straight to 6341 (handoff, absence; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 6341 (handoff, absence; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 6341,
         -- },
         -- [6361] = { -- A Bundle of Hides https://wowhead.com/forever/quest=6361
@@ -12443,14 +12390,11 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 4322 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters)
             -- [questKeys.preQuestSingle] = {4322},
         -- },
-        [6403] = { -- The Great Masquerade https://wowhead.com/forever/quest=6403
-            -- 99435 "The Great Masquerade" https://wowhead.com/forever/quest=99435
-            -- Assumption: offer lists show it and 99435 exclude each other (absence, cooccurrence; medium; 10+ characters)
-            [questKeys.exclusiveTo] = {99435},
+        -- [6403] = { -- The Great Masquerade https://wowhead.com/forever/quest=6403
             -- 6501 "The Dragon's Eye" https://wowhead.com/forever/quest=6501
             -- already in QuestieDB; Assumption: turning it in led straight to 6501 (handoff; medium; <10 characters)
             -- [questKeys.nextQuestInChain] = 6501,
-        },
+        -- },
         -- [6481] = { -- Earthen Arise https://wowhead.com/forever/quest=6481
             -- 6421 "Boulderslide Ravine" https://wowhead.com/forever/quest=6421
             -- already in QuestieDB; Assumption: offered right after 6421 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
@@ -12537,7 +12481,7 @@ function ForeverQuestRelationTraces:Load()
             -- 6072 "The Hunter's Path" https://wowhead.com/forever/quest=6072
             -- 6073 "The Hunter's Path" https://wowhead.com/forever/quest=6073
             -- 6722 "The Hunter's Path" https://wowhead.com/forever/quest=6722
-            -- already in QuestieDB; Assumption: the server completes it and 6071, 6072, 6073, 6722 together (cooccurrence; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 6071, 6072, 6073, 6722 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {6071,6072,6073,6722},
         -- },
         -- [6722] = { -- The Hunter's Path https://wowhead.com/forever/quest=6722
@@ -12545,14 +12489,14 @@ function ForeverQuestRelationTraces:Load()
             -- 6072 "The Hunter's Path" https://wowhead.com/forever/quest=6072
             -- 6073 "The Hunter's Path" https://wowhead.com/forever/quest=6073
             -- 6721 "The Hunter's Path" https://wowhead.com/forever/quest=6721
-            -- already in QuestieDB; Assumption: the server completes it and 6071, 6072, 6073, 6721 together (cooccurrence; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 6071, 6072, 6073, 6721 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {6071,6072,6073,6721},
         -- },
         -- [6761] = { -- The New Frontier https://wowhead.com/forever/quest=6761
             -- 1015 "The New Frontier" https://wowhead.com/forever/quest=1015
             -- 1019 "The New Frontier" https://wowhead.com/forever/quest=1019
             -- 1047 "The New Frontier" https://wowhead.com/forever/quest=1047
-            -- already in QuestieDB; Assumption: offered right after 1015 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters); offered right after 1019, 1047 was turned in (handoff, offer-set, cooccurrence; high; 10+ characters)
+            -- already in QuestieDB; Assumption: offered right after 1015 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters); offered right after 1019, 1047 was turned in (handoff, offer-set, cooccurrence; medium; 10+ characters)
             -- [questKeys.preQuestSingle] = {1015,1019,1047},
             -- 6762 "Rabine Saturna" https://wowhead.com/forever/quest=6762
             -- already in QuestieDB; Assumption: turning it in led straight to 6762 (handoff; medium; 10+ characters)
@@ -12562,71 +12506,63 @@ function ForeverQuestRelationTraces:Load()
             -- 6761 "The New Frontier" https://wowhead.com/forever/quest=6761
             -- already in QuestieDB; Assumption: offered right after 6761 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
             -- [questKeys.preQuestSingle] = {6761},
-            -- 1124 "Wasteland" https://wowhead.com/forever/quest=1124
-            -- already in QuestieDB; Assumption: turning it in led straight to 1124 (handoff; medium; 10+ characters)
-            -- [questKeys.nextQuestInChain] = 1124,
         -- },
         -- [6844] = { -- Umber, Archivist https://wowhead.com/forever/quest=6844
             -- 1126 "Hive in the Tower" https://wowhead.com/forever/quest=1126
             -- already in QuestieDB; Assumption: offered right after 1126 was turned in (handoff, offer-set, absence, cooccurrence; medium; <10 characters)
             -- [questKeys.preQuestSingle] = {1126},
         -- },
-        -- [6845] = { -- Uncovering Past Secrets https://wowhead.com/forever/quest=6845
-            -- 6844 "Umber, Archivist" https://wowhead.com/forever/quest=6844
-            -- already in QuestieDB; Assumption: offered right after 6844 was turned in (handoff, offer-set, cooccurrence; medium; <10 characters)
-            -- [questKeys.preQuestSingle] = {6844},
-        -- },
-        [7029] = { -- Vyletongue Corruption https://wowhead.com/forever/quest=7029
+        -- [7029] = { -- Vyletongue Corruption https://wowhead.com/forever/quest=7029
             -- 7041 "Vyletongue Corruption" https://wowhead.com/forever/quest=7041
-            -- Assumption: the server completes it and 7041 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {7041},
-        },
-        [7041] = { -- Vyletongue Corruption https://wowhead.com/forever/quest=7041
+            -- already in QuestieDB; Assumption: the server completes it and 7041 together (cooccurrence; high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {7041},
+        -- },
+        -- [7041] = { -- Vyletongue Corruption https://wowhead.com/forever/quest=7041
             -- 7029 "Vyletongue Corruption" https://wowhead.com/forever/quest=7029
-            -- Assumption: the server completes it and 7029 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {7029},
-        },
+            -- already in QuestieDB; Assumption: the server completes it and 7029 together (cooccurrence; high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {7029},
+        -- },
         -- [7046] = { -- The Scepter of Celebras https://wowhead.com/forever/quest=7046
             -- 7044 "Legends of Maraudon" https://wowhead.com/forever/quest=7044
             -- already in QuestieDB; Assumption: 7044 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
             -- [questKeys.preQuestSingle] = {7044},
         -- },
-        [7064] = { -- Corruption of Earth and Seed https://wowhead.com/forever/quest=7064
+        -- [7064] = { -- Corruption of Earth and Seed https://wowhead.com/forever/quest=7064
             -- 7065 "Corruption of Earth and Seed" https://wowhead.com/forever/quest=7065
-            -- Assumption: the server completes it and 7065 together (cooccurrence; medium; 100+ characters)
-            [questKeys.exclusiveTo] = {7065},
-        },
-        [7065] = { -- Corruption of Earth and Seed https://wowhead.com/forever/quest=7065
+            -- already in QuestieDB; Assumption: the server completes it and 7065 together (cooccurrence; high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {7065},
+        -- },
+        -- [7065] = { -- Corruption of Earth and Seed https://wowhead.com/forever/quest=7065
             -- 7064 "Corruption of Earth and Seed" https://wowhead.com/forever/quest=7064
-            -- Assumption: the server completes it and 7064 together (cooccurrence; medium; 100+ characters)
-            [questKeys.exclusiveTo] = {7064},
-        },
-        [7068] = { -- Shadowshard Fragments https://wowhead.com/forever/quest=7068
+            -- already in QuestieDB; Assumption: the server completes it and 7064 together (cooccurrence; high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {7064},
+        -- },
+        -- [7068] = { -- Shadowshard Fragments https://wowhead.com/forever/quest=7068
             -- 7070 "Shadowshard Fragments" https://wowhead.com/forever/quest=7070
-            -- Assumption: the server completes it and 7070 together (cooccurrence; medium; 10+ characters)
-            [questKeys.exclusiveTo] = {7070},
-        },
-        [7070] = { -- Shadowshard Fragments https://wowhead.com/forever/quest=7070
+            -- already in QuestieDB; Assumption: the server completes it and 7070 together (cooccurrence; high; 10+ characters)
+            -- [questKeys.exclusiveTo] = {7070},
+        -- },
+        -- [7070] = { -- Shadowshard Fragments https://wowhead.com/forever/quest=7070
             -- 7068 "Shadowshard Fragments" https://wowhead.com/forever/quest=7068
-            -- Assumption: the server completes it and 7068 together (cooccurrence; medium; 10+ characters)
-            [questKeys.exclusiveTo] = {7068},
-        },
-        [7321] = { -- Soothing Turtle Bisque https://wowhead.com/forever/quest=7321
+            -- already in QuestieDB; Assumption: the server completes it and 7068 together (cooccurrence; high; 10+ characters)
+            -- [questKeys.exclusiveTo] = {7068},
+        -- },
+        -- [7321] = { -- Soothing Turtle Bisque https://wowhead.com/forever/quest=7321
             -- 555 "Soothing Turtle Bisque" https://wowhead.com/forever/quest=555
-            -- Assumption: the server completes it and 555 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {555},
-        },
-        [7383] = { -- Crown of the Earth https://wowhead.com/forever/quest=7383
+            -- already in QuestieDB; Assumption: the server completes it and 555 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {555},
+        -- },
+        -- [7383] = { -- Crown of the Earth https://wowhead.com/forever/quest=7383
             -- 933 "Crown of the Earth" https://wowhead.com/forever/quest=933
             -- already in QuestieDB; Assumption: offered right after 933 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {933},
             -- 934 "Crown of the Earth" https://wowhead.com/forever/quest=934
-            -- Assumption: the server completes it and 934 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {934},
+            -- already in QuestieDB; Assumption: the server completes it and 934 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {934},
             -- 935 "Crown of the Earth" https://wowhead.com/forever/quest=935
             -- already in QuestieDB; Assumption: turning it in led straight to 935 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 935,
-        },
+        -- },
         -- [7541] = { -- Service to the Horde https://wowhead.com/forever/quest=7541
             -- 1262 "Report to Zor" https://wowhead.com/forever/quest=1262
             -- already in QuestieDB; Assumption: offered right after 1262 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
@@ -12644,7 +12580,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [7603] = { -- Kroshius' Infernal Core https://wowhead.com/forever/quest=7603
             -- 7602 "Flawless Fel Essence" https://wowhead.com/forever/quest=7602
-            -- already in QuestieDB; Assumption: offered right after 7602 was turned in (handoff, offer-set; high; <10 characters)
+            -- already in QuestieDB; Assumption: offered right after 7602 was turned in (handoff, offer-set; medium; <10 characters)
             -- [questKeys.preQuestSingle] = {7602},
         -- },
         -- [7637] = { -- Emphasis on Sacrifice https://wowhead.com/forever/quest=7637
@@ -12652,19 +12588,14 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 7638 was turned in (handoff, offer-set, absence; medium; <10 characters)
             -- [questKeys.preQuestSingle] = {7638},
         -- },
-        -- [7642] = { -- Collection of Goods https://wowhead.com/forever/quest=7642
-            -- 7641 "The Work of Grimand Elmore" https://wowhead.com/forever/quest=7641
-            -- already in QuestieDB; Assumption: offered right after 7641 was turned in (handoff, offer-set, cooccurrence; medium; <10 characters)
-            -- [questKeys.preQuestSingle] = {7641},
-        -- },
         -- [7653] = { -- Imperial Plate Belt https://wowhead.com/forever/quest=7653
             -- 7652 "A Blue Light Bargain" https://wowhead.com/forever/quest=7652
-            -- already in QuestieDB; Assumption: 7652 was done whenever it was offered (offer-set; high; <10 characters)
+            -- already in QuestieDB; Assumption: 7652 was done whenever it was offered (offer-set; medium; <10 characters)
             -- [questKeys.preQuestSingle] = {7652},
         -- },
         -- [7654] = { -- Imperial Plate Boots https://wowhead.com/forever/quest=7654
             -- 7652 "A Blue Light Bargain" https://wowhead.com/forever/quest=7652
-            -- already in QuestieDB; Assumption: 7652 was done whenever it was offered (offer-set; high; <10 characters)
+            -- already in QuestieDB; Assumption: 7652 was done whenever it was offered (offer-set; medium; <10 characters)
             -- [questKeys.preQuestSingle] = {7652},
         -- },
         -- [7655] = { -- Imperial Plate Bracer https://wowhead.com/forever/quest=7655
@@ -12674,7 +12605,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [7656] = { -- Imperial Plate Chest https://wowhead.com/forever/quest=7656
             -- 7652 "A Blue Light Bargain" https://wowhead.com/forever/quest=7652
-            -- already in QuestieDB; Assumption: 7652 was done whenever it was offered (offer-set; high; <10 characters)
+            -- already in QuestieDB; Assumption: 7652 was done whenever it was offered (offer-set; medium; <10 characters)
             -- [questKeys.preQuestSingle] = {7652},
         -- },
         -- [7657] = { -- Imperial Plate Helm https://wowhead.com/forever/quest=7657
@@ -12694,7 +12625,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [7725] = { -- Again With the Zapped Giants https://wowhead.com/forever/quest=7725
             -- 7003 "Zapped Giants" https://wowhead.com/forever/quest=7003
-            -- already in QuestieDB; Assumption: 7003 was done whenever it was offered (offer-set; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: 7003 was done whenever it was offered (offer-set; high; 100+ characters)
             -- [questKeys.preQuestSingle] = {7003},
         -- },
         -- [7726] = { -- Refuel for the Zapping https://wowhead.com/forever/quest=7726
@@ -12728,16 +12659,16 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 2822 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {2822},
         -- },
-        [7790] = { -- https://wowhead.com/forever/quest=7790
-            -- 8152 https://wowhead.com/forever/quest=8152
-            -- Assumption: turning it in led straight to 8152 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 8152,
-        },
+        -- [7790] = { -- River Ends https://wowhead.com/forever/quest=7790
+            -- 8152 "Rapid Escape" https://wowhead.com/forever/quest=8152
+            -- already in QuestieDB; Assumption: turning it in led straight to 8152 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 8152,
+        -- },
         -- [7795] = { -- A Donation of Runecloth https://wowhead.com/forever/quest=7795
             -- 7791 "A Donation of Wool" https://wowhead.com/forever/quest=7791
             -- 7793 "A Donation of Silk" https://wowhead.com/forever/quest=7793
             -- 7794 "A Donation of Mageweave" https://wowhead.com/forever/quest=7794
-            -- already in QuestieDB; Assumption: offered right after 7791, 7793 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters); offered right after 7794 was turned in (handoff, offer-set, absence, cooccurrence; high; 10+ characters)
+            -- already in QuestieDB; Assumption: offered right after 7791, 7793 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters); offered right after 7794 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
             -- [questKeys.preQuestGroup] = {7791,7793,7794},
         -- },
         -- [7796] = { -- Additional Runecloth https://wowhead.com/forever/quest=7796
@@ -12749,14 +12680,14 @@ function ForeverQuestRelationTraces:Load()
             -- 7792 "A Donation of Wool" https://wowhead.com/forever/quest=7792
             -- 7798 "A Donation of Silk" https://wowhead.com/forever/quest=7798
             -- 7799 "A Donation of Mageweave" https://wowhead.com/forever/quest=7799
-            -- already in QuestieDB; Assumption: offered right after 7792, 7798, 7799 was turned in (handoff, offer-set, absence, cooccurrence; high; 10+ characters)
+            -- already in QuestieDB; Assumption: offered right after 7792, 7798 was turned in (handoff, offer-set, absence, cooccurrence; high; 10+ characters); offered right after 7799 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
             -- [questKeys.preQuestGroup] = {7792,7798,7799},
         -- },
         -- [7805] = { -- A Donation of Runecloth https://wowhead.com/forever/quest=7805
             -- 7802 "A Donation of Wool" https://wowhead.com/forever/quest=7802
             -- 7803 "A Donation of Silk" https://wowhead.com/forever/quest=7803
             -- 7804 "A Donation of Mageweave" https://wowhead.com/forever/quest=7804
-            -- already in QuestieDB; Assumption: offered right after 7802, 7804 was turned in (handoff, offer-set, absence, cooccurrence; high; 10+ characters); 7803 was done whenever it was offered (offer-set, absence, cooccurrence; low; 10+ characters), kept below the min score to complete its accepted AND list
+            -- already in QuestieDB; Assumption: offered right after 7802 was turned in (handoff, offer-set, absence, cooccurrence; high; 10+ characters); 7803 was done whenever it was offered (offer-set, absence, cooccurrence; low; 10+ characters), kept below the min score to complete its accepted AND list; offered right after 7804 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
             -- [questKeys.preQuestGroup] = {7802,7803,7804},
         -- },
         -- [7806] = { -- Additional Runecloth https://wowhead.com/forever/quest=7806
@@ -12768,7 +12699,7 @@ function ForeverQuestRelationTraces:Load()
             -- 7807 "A Donation of Wool" https://wowhead.com/forever/quest=7807
             -- 7808 "A Donation of Silk" https://wowhead.com/forever/quest=7808
             -- 7809 "A Donation of Mageweave" https://wowhead.com/forever/quest=7809
-            -- already in QuestieDB; Assumption: offered right after 7807 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters); offered right after 7808 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters); offered right after 7809 was turned in (handoff, offer-set, absence, cooccurrence; high; 10+ characters)
+            -- already in QuestieDB; Assumption: offered right after 7807 was turned in (handoff, offer-set, cooccurrence; high; 10+ characters); offered right after 7808, 7809 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
             -- [questKeys.preQuestGroup] = {7807,7808,7809},
         -- },
         -- [7812] = { -- Additional Runecloth https://wowhead.com/forever/quest=7812
@@ -12795,12 +12726,12 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [7838] = { -- Arena Grandmaster https://wowhead.com/forever/quest=7838
             -- 7810 "Arena Master" https://wowhead.com/forever/quest=7810
-            -- already in QuestieDB; Assumption: 7810 was done whenever it was offered (offer-set; high; 10+ characters)
+            -- already in QuestieDB; Assumption: 7810 was done whenever it was offered (offer-set; medium; 10+ characters)
             -- [questKeys.preQuestSingle] = {7810},
         -- },
         -- [7841] = { -- Message to the Wildhammer https://wowhead.com/forever/quest=7841
             -- 7842 "Another Message to the Wildhammer" https://wowhead.com/forever/quest=7842
-            -- already in QuestieDB; Assumption: turning it in led straight to 7842 (handoff; high; 100+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 7842 (handoff; medium; 100+ characters)
             -- [questKeys.nextQuestInChain] = 7842,
         -- },
         -- [7842] = { -- Another Message to the Wildhammer https://wowhead.com/forever/quest=7842
@@ -12839,7 +12770,7 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: 7461 was done whenever it was offered (offer-set; high; <10 characters)
             -- [questKeys.preQuestSingle] = {7461},
         -- },
-        [8105] = { -- The Battle for Arathi Basin! https://wowhead.com/forever/quest=8105
+        -- [8105] = { -- The Battle for Arathi Basin! https://wowhead.com/forever/quest=8105
             -- 8120 "The Battle for Arathi Basin!" https://wowhead.com/forever/quest=8120
             -- 8166 "The Battle for Arathi Basin!" https://wowhead.com/forever/quest=8166
             -- 8167 "The Battle for Arathi Basin!" https://wowhead.com/forever/quest=8167
@@ -12847,10 +12778,10 @@ function ForeverQuestRelationTraces:Load()
             -- 8169 "The Battle for Arathi Basin!" https://wowhead.com/forever/quest=8169
             -- 8170 "The Battle for Arathi Basin!" https://wowhead.com/forever/quest=8170
             -- 8171 "The Battle for Arathi Basin!" https://wowhead.com/forever/quest=8171
-            -- Assumption: the server completes it and 8120, 8166, 8167, 8168, 8169, 8170, 8171 together (cooccurrence; medium; 10+ characters)
-            [questKeys.exclusiveTo] = {8120,8166,8167,8168,8169,8170,8171},
-        },
-        [8120] = { -- The Battle for Arathi Basin! https://wowhead.com/forever/quest=8120
+            -- already in QuestieDB; Assumption: the server completes it and 8120, 8166, 8167, 8168, 8169, 8170, 8171 together (cooccurrence; medium; 10+ characters)
+            -- [questKeys.exclusiveTo] = {8120,8166,8167,8168,8169,8170,8171},
+        -- },
+        -- [8120] = { -- The Battle for Arathi Basin! https://wowhead.com/forever/quest=8120
             -- 8105 "The Battle for Arathi Basin!" https://wowhead.com/forever/quest=8105
             -- 8166 "The Battle for Arathi Basin!" https://wowhead.com/forever/quest=8166
             -- 8167 "The Battle for Arathi Basin!" https://wowhead.com/forever/quest=8167
@@ -12858,23 +12789,23 @@ function ForeverQuestRelationTraces:Load()
             -- 8169 "The Battle for Arathi Basin!" https://wowhead.com/forever/quest=8169
             -- 8170 "The Battle for Arathi Basin!" https://wowhead.com/forever/quest=8170
             -- 8171 "The Battle for Arathi Basin!" https://wowhead.com/forever/quest=8171
-            -- Assumption: the server completes it and 8105, 8166, 8167, 8168, 8169, 8170, 8171 together (cooccurrence; medium; 10+ characters)
-            [questKeys.exclusiveTo] = {8105,8166,8167,8168,8169,8170,8171},
-        },
-        [8152] = { -- https://wowhead.com/forever/quest=8152
-            -- 7790 https://wowhead.com/forever/quest=7790
-            -- Assumption: offered right after 7790 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {7790},
+            -- already in QuestieDB; Assumption: the server completes it and 8105, 8166, 8167, 8168, 8169, 8170, 8171 together (cooccurrence; medium; 10+ characters)
+            -- [questKeys.exclusiveTo] = {8105,8166,8167,8168,8169,8170,8171},
+        -- },
+        -- [8152] = { -- Rapid Escape https://wowhead.com/forever/quest=8152
+            -- 7790 "River Ends" https://wowhead.com/forever/quest=7790
+            -- already in QuestieDB; Assumption: offered right after 7790 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {7790},
             -- 97986 "Argent Arbiter" https://wowhead.com/forever/quest=97986
-            -- Assumption: turning it in led straight to 97986 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 97986,
-        },
+            -- already in QuestieDB; Assumption: turning it in led straight to 97986 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 97986,
+        -- },
         -- [8153] = { -- Courser Antlers https://wowhead.com/forever/quest=8153
             -- 8231 "Wavethrashing" https://wowhead.com/forever/quest=8231
             -- already in QuestieDB; Assumption: turning it in led straight to 8231 (handoff; medium; 10+ characters)
             -- [questKeys.nextQuestInChain] = 8231,
         -- },
-        [8166] = { -- The Battle for Arathi Basin! https://wowhead.com/forever/quest=8166
+        -- [8166] = { -- The Battle for Arathi Basin! https://wowhead.com/forever/quest=8166
             -- 8105 "The Battle for Arathi Basin!" https://wowhead.com/forever/quest=8105
             -- 8120 "The Battle for Arathi Basin!" https://wowhead.com/forever/quest=8120
             -- 8167 "The Battle for Arathi Basin!" https://wowhead.com/forever/quest=8167
@@ -12882,10 +12813,10 @@ function ForeverQuestRelationTraces:Load()
             -- 8169 "The Battle for Arathi Basin!" https://wowhead.com/forever/quest=8169
             -- 8170 "The Battle for Arathi Basin!" https://wowhead.com/forever/quest=8170
             -- 8171 "The Battle for Arathi Basin!" https://wowhead.com/forever/quest=8171
-            -- Assumption: the server completes it and 8105, 8120, 8167, 8168, 8169, 8170, 8171 together (cooccurrence; medium; 10+ characters)
-            [questKeys.exclusiveTo] = {8105,8120,8167,8168,8169,8170,8171},
-        },
-        [8167] = { -- The Battle for Arathi Basin! https://wowhead.com/forever/quest=8167
+            -- already in QuestieDB; Assumption: the server completes it and 8105, 8120, 8167, 8168, 8169, 8170, 8171 together (cooccurrence; medium; 10+ characters)
+            -- [questKeys.exclusiveTo] = {8105,8120,8167,8168,8169,8170,8171},
+        -- },
+        -- [8167] = { -- The Battle for Arathi Basin! https://wowhead.com/forever/quest=8167
             -- 8105 "The Battle for Arathi Basin!" https://wowhead.com/forever/quest=8105
             -- 8120 "The Battle for Arathi Basin!" https://wowhead.com/forever/quest=8120
             -- 8166 "The Battle for Arathi Basin!" https://wowhead.com/forever/quest=8166
@@ -12893,10 +12824,10 @@ function ForeverQuestRelationTraces:Load()
             -- 8169 "The Battle for Arathi Basin!" https://wowhead.com/forever/quest=8169
             -- 8170 "The Battle for Arathi Basin!" https://wowhead.com/forever/quest=8170
             -- 8171 "The Battle for Arathi Basin!" https://wowhead.com/forever/quest=8171
-            -- Assumption: the server completes it and 8105, 8120, 8166, 8169 together (cooccurrence; medium; 10+ characters); offer lists show it and 8168 exclude each other (absence, cooccurrence; high; 10+ characters); the server completes it and 8170, 8171 together (cooccurrence; high; 10+ characters)
-            [questKeys.exclusiveTo] = {8105,8120,8166,8168,8169,8170,8171},
-        },
-        [8168] = { -- The Battle for Arathi Basin! https://wowhead.com/forever/quest=8168
+            -- already in QuestieDB; Assumption: the server completes it and 8105, 8120, 8166, 8169, 8170, 8171 together (cooccurrence; medium; 10+ characters); offer lists show it and 8168 exclude each other (absence, cooccurrence; medium; 10+ characters)
+            -- [questKeys.exclusiveTo] = {8105,8120,8166,8168,8169,8170,8171},
+        -- },
+        -- [8168] = { -- The Battle for Arathi Basin! https://wowhead.com/forever/quest=8168
             -- 8105 "The Battle for Arathi Basin!" https://wowhead.com/forever/quest=8105
             -- 8120 "The Battle for Arathi Basin!" https://wowhead.com/forever/quest=8120
             -- 8166 "The Battle for Arathi Basin!" https://wowhead.com/forever/quest=8166
@@ -12904,10 +12835,10 @@ function ForeverQuestRelationTraces:Load()
             -- 8169 "The Battle for Arathi Basin!" https://wowhead.com/forever/quest=8169
             -- 8170 "The Battle for Arathi Basin!" https://wowhead.com/forever/quest=8170
             -- 8171 "The Battle for Arathi Basin!" https://wowhead.com/forever/quest=8171
-            -- Assumption: the server completes it and 8105, 8120, 8166, 8169 together (cooccurrence; medium; 10+ characters); offer lists show it and 8167 exclude each other (absence, cooccurrence; high; 10+ characters); the server completes it and 8170, 8171 together (cooccurrence; high; 10+ characters)
-            [questKeys.exclusiveTo] = {8105,8120,8166,8167,8169,8170,8171},
-        },
-        [8169] = { -- The Battle for Arathi Basin! https://wowhead.com/forever/quest=8169
+            -- already in QuestieDB; Assumption: the server completes it and 8105, 8120, 8166, 8169, 8170, 8171 together (cooccurrence; medium; 10+ characters); offer lists show it and 8167 exclude each other (absence, cooccurrence; medium; 10+ characters)
+            -- [questKeys.exclusiveTo] = {8105,8120,8166,8167,8169,8170,8171},
+        -- },
+        -- [8169] = { -- The Battle for Arathi Basin! https://wowhead.com/forever/quest=8169
             -- 8105 "The Battle for Arathi Basin!" https://wowhead.com/forever/quest=8105
             -- 8120 "The Battle for Arathi Basin!" https://wowhead.com/forever/quest=8120
             -- 8166 "The Battle for Arathi Basin!" https://wowhead.com/forever/quest=8166
@@ -12915,10 +12846,10 @@ function ForeverQuestRelationTraces:Load()
             -- 8168 "The Battle for Arathi Basin!" https://wowhead.com/forever/quest=8168
             -- 8170 "The Battle for Arathi Basin!" https://wowhead.com/forever/quest=8170
             -- 8171 "The Battle for Arathi Basin!" https://wowhead.com/forever/quest=8171
-            -- Assumption: the server completes it and 8105, 8120, 8166, 8167, 8168, 8170, 8171 together (cooccurrence; medium; 10+ characters)
-            [questKeys.exclusiveTo] = {8105,8120,8166,8167,8168,8170,8171},
-        },
-        [8170] = { -- The Battle for Arathi Basin! https://wowhead.com/forever/quest=8170
+            -- already in QuestieDB; Assumption: the server completes it and 8105, 8120, 8166, 8167, 8168, 8170, 8171 together (cooccurrence; medium; 10+ characters)
+            -- [questKeys.exclusiveTo] = {8105,8120,8166,8167,8168,8170,8171},
+        -- },
+        -- [8170] = { -- The Battle for Arathi Basin! https://wowhead.com/forever/quest=8170
             -- 8105 "The Battle for Arathi Basin!" https://wowhead.com/forever/quest=8105
             -- 8120 "The Battle for Arathi Basin!" https://wowhead.com/forever/quest=8120
             -- 8166 "The Battle for Arathi Basin!" https://wowhead.com/forever/quest=8166
@@ -12926,10 +12857,10 @@ function ForeverQuestRelationTraces:Load()
             -- 8168 "The Battle for Arathi Basin!" https://wowhead.com/forever/quest=8168
             -- 8169 "The Battle for Arathi Basin!" https://wowhead.com/forever/quest=8169
             -- 8171 "The Battle for Arathi Basin!" https://wowhead.com/forever/quest=8171
-            -- Assumption: the server completes it and 8105, 8120, 8166, 8169 together (cooccurrence; medium; 10+ characters); the server completes it and 8167, 8168, 8171 together (cooccurrence; high; 10+ characters)
-            [questKeys.exclusiveTo] = {8105,8120,8166,8167,8168,8169,8171},
-        },
-        [8171] = { -- The Battle for Arathi Basin! https://wowhead.com/forever/quest=8171
+            -- already in QuestieDB; Assumption: the server completes it and 8105, 8120, 8166, 8167, 8168, 8169, 8171 together (cooccurrence; medium; 10+ characters)
+            -- [questKeys.exclusiveTo] = {8105,8120,8166,8167,8168,8169,8171},
+        -- },
+        -- [8171] = { -- The Battle for Arathi Basin! https://wowhead.com/forever/quest=8171
             -- 8105 "The Battle for Arathi Basin!" https://wowhead.com/forever/quest=8105
             -- 8120 "The Battle for Arathi Basin!" https://wowhead.com/forever/quest=8120
             -- 8166 "The Battle for Arathi Basin!" https://wowhead.com/forever/quest=8166
@@ -12937,16 +12868,13 @@ function ForeverQuestRelationTraces:Load()
             -- 8168 "The Battle for Arathi Basin!" https://wowhead.com/forever/quest=8168
             -- 8169 "The Battle for Arathi Basin!" https://wowhead.com/forever/quest=8169
             -- 8170 "The Battle for Arathi Basin!" https://wowhead.com/forever/quest=8170
-            -- Assumption: the server completes it and 8105, 8120, 8166, 8169 together (cooccurrence; medium; 10+ characters); the server completes it and 8167, 8168, 8170 together (cooccurrence; high; 10+ characters)
-            [questKeys.exclusiveTo] = {8105,8120,8166,8167,8168,8169,8170},
-        },
+            -- already in QuestieDB; Assumption: the server completes it and 8105, 8120, 8166, 8167, 8168, 8169, 8170 together (cooccurrence; medium; 10+ characters)
+            -- [questKeys.exclusiveTo] = {8105,8120,8166,8167,8168,8169,8170},
+        -- },
         -- [8231] = { -- Wavethrashing https://wowhead.com/forever/quest=8231
             -- 8153 "Courser Antlers" https://wowhead.com/forever/quest=8153
             -- already in QuestieDB; Assumption: offered right after 8153 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
             -- [questKeys.preQuestSingle] = {8153},
-            -- 8232 "The Green Drake" https://wowhead.com/forever/quest=8232
-            -- already in QuestieDB; Assumption: turning it in led straight to 8232 (handoff; medium; 10+ characters)
-            -- [questKeys.nextQuestInChain] = 8232,
         -- },
         -- [8232] = { -- The Green Drake https://wowhead.com/forever/quest=8232
             -- 8231 "Wavethrashing" https://wowhead.com/forever/quest=8231
@@ -12958,14 +12886,11 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: turning it in led straight to 8234 (handoff; medium; <10 characters)
             -- [questKeys.nextQuestInChain] = 8234,
         -- },
-        [8234] = { -- Sealed Azure Bag https://wowhead.com/forever/quest=8234
+        -- [8234] = { -- Sealed Azure Bag https://wowhead.com/forever/quest=8234
             -- 8233 "A Simple Request" https://wowhead.com/forever/quest=8233
-            -- Assumption: offered right after 8233 was turned in (handoff, offer-set; high; <10 characters)
-            [questKeys.preQuestSingle] = {8233},
-            -- 8235 "Encoded Fragments" https://wowhead.com/forever/quest=8235
-            -- already in QuestieDB; Assumption: turning it in led straight to 8235 (handoff; medium; <10 characters)
-            -- [questKeys.nextQuestInChain] = 8235,
-        },
+            -- not applied: QuestieDB has 8233 as breadcrumbs of this quest, optional lead-ins rather than prerequisites; Assumption: offered right after 8233 was turned in (handoff, offer-set; high; <10 characters)
+            -- [questKeys.preQuestSingle] = {8233},
+        -- },
         -- [8235] = { -- Encoded Fragments https://wowhead.com/forever/quest=8235
             -- 8234 "Sealed Azure Bag" https://wowhead.com/forever/quest=8234
             -- already in QuestieDB; Assumption: offered right after 8234 was turned in (handoff, offer-set, absence, cooccurrence; high; 10+ characters)
@@ -13000,9 +12925,6 @@ function ForeverQuestRelationTraces:Load()
             -- 8255 "Of Coursers We Know" https://wowhead.com/forever/quest=8255
             -- already in QuestieDB; Assumption: offered right after 8255 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
             -- [questKeys.preQuestSingle] = {8255},
-            -- 8257 "Blood of Morphaz" https://wowhead.com/forever/quest=8257
-            -- already in QuestieDB; Assumption: turning it in led straight to 8257 (handoff; medium; 10+ characters)
-            -- [questKeys.nextQuestInChain] = 8257,
         -- },
         -- [8257] = { -- Blood of Morphaz https://wowhead.com/forever/quest=8257
             -- 8256 "The Ichor of Undeath" https://wowhead.com/forever/quest=8256
@@ -13014,14 +12936,9 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 2782 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {2782},
         -- },
-        -- [8276] = { -- Taking Back Silithus https://wowhead.com/forever/quest=8276
-            -- 8280 "Securing the Supply Lines" https://wowhead.com/forever/quest=8280
-            -- already in QuestieDB; Assumption: turning it in led straight to 8280 (handoff; medium; <10 characters)
-            -- [questKeys.nextQuestInChain] = 8280,
-        -- },
         -- [8278] = { -- Noggle's Last Hope https://wowhead.com/forever/quest=8278
             -- 8277 "Deadly Desert Venom" https://wowhead.com/forever/quest=8277
-            -- already in QuestieDB; Assumption: offered right after 8277 was turned in (handoff, offer-set; high; <10 characters)
+            -- already in QuestieDB; Assumption: offered right after 8277 was turned in (handoff, offer-set; medium; <10 characters)
             -- [questKeys.preQuestSingle] = {8277},
         -- },
         -- [8280] = { -- Securing the Supply Lines https://wowhead.com/forever/quest=8280
@@ -13031,12 +12948,12 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [8281] = { -- Stepping Up Security https://wowhead.com/forever/quest=8281
             -- 8280 "Securing the Supply Lines" https://wowhead.com/forever/quest=8280
-            -- already in QuestieDB; Assumption: offered right after 8280 was turned in (handoff, offer-set, absence, cooccurrence; high; <10 characters)
+            -- already in QuestieDB; Assumption: offered right after 8280 was turned in (handoff, offer-set, absence, cooccurrence; very high; <10 characters)
             -- [questKeys.preQuestSingle] = {8280},
         -- },
         -- [8285] = { -- The Deserter https://wowhead.com/forever/quest=8285
             -- 8284 "The Twilight Mystery" https://wowhead.com/forever/quest=8284
-            -- already in QuestieDB; Assumption: offered right after 8284 was turned in (handoff, offer-set, absence; high; <10 characters)
+            -- already in QuestieDB; Assumption: offered right after 8284 was turned in (handoff, offer-set, absence; medium; <10 characters)
             -- [questKeys.preQuestSingle] = {8284},
         -- },
         -- [8368] = { -- Battle of Warsong Gulch https://wowhead.com/forever/quest=8368
@@ -13045,7 +12962,7 @@ function ForeverQuestRelationTraces:Load()
             -- 8428 "Battle of Warsong Gulch" https://wowhead.com/forever/quest=8428
             -- 8429 "Battle of Warsong Gulch" https://wowhead.com/forever/quest=8429
             -- 8430 "Battle of Warsong Gulch" https://wowhead.com/forever/quest=8430
-            -- already in QuestieDB; Assumption: offer lists show it and 8426, 8427 exclude each other (absence, cooccurrence; very high; 100+ characters); offer lists show it and 8428 exclude each other (absence, cooccurrence; high; 100+ characters); the server completes it and 8429, 8430 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: offer lists show it and 8426, 8427 exclude each other (absence, cooccurrence; very high; 100+ characters); offer lists show it and 8428 exclude each other (absence, cooccurrence; high; 100+ characters); the server completes it and 8429, 8430 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {8426,8427,8428,8429,8430},
         -- },
         -- [8370] = { -- Conquering Arathi Basin https://wowhead.com/forever/quest=8370
@@ -13062,7 +12979,7 @@ function ForeverQuestRelationTraces:Load()
             -- 8401 "Fight for Warsong Gulch" https://wowhead.com/forever/quest=8401
             -- 8402 "Fight for Warsong Gulch" https://wowhead.com/forever/quest=8402
             -- 8403 "Fight for Warsong Gulch" https://wowhead.com/forever/quest=8403
-            -- already in QuestieDB; Assumption: the server completes it and 8399, 8400, 8401, 8402, 8403 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 8399, 8400, 8401, 8402, 8403 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {8399,8400,8401,8402,8403},
         -- },
         -- [8374] = { -- Claiming Arathi Basin https://wowhead.com/forever/quest=8374
@@ -13070,7 +12987,7 @@ function ForeverQuestRelationTraces:Load()
             -- 8394 "Claiming Arathi Basin" https://wowhead.com/forever/quest=8394
             -- 8395 "Claiming Arathi Basin" https://wowhead.com/forever/quest=8395
             -- 8396 "Claiming Arathi Basin" https://wowhead.com/forever/quest=8396
-            -- already in QuestieDB; Assumption: offer lists show it and 8393 exclude each other (absence, cooccurrence; high; 100+ characters); the server completes it and 8394, 8395 together (cooccurrence; high; 100+ characters); the server completes it and 8396 together (cooccurrence; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: offer lists show it and 8393 exclude each other (absence, cooccurrence; very high; 100+ characters); the server completes it and 8394, 8395, 8396 together (cooccurrence; high; 100+ characters)
             -- [questKeys.exclusiveTo] = {8393,8394,8395,8396},
         -- },
         -- [8384] = { -- Claiming Arathi Basin https://wowhead.com/forever/quest=8384
@@ -13080,12 +12997,12 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [8386] = { -- Fight for Warsong Gulch https://wowhead.com/forever/quest=8386
             -- 8372 "Fight for Warsong Gulch" https://wowhead.com/forever/quest=8372
-            -- already in QuestieDB; Assumption: 8372 was done whenever it was offered (offer-set; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: 8372 was done whenever it was offered (offer-set; high; 100+ characters)
             -- [questKeys.preQuestSingle] = {8372},
         -- },
         -- [8389] = { -- Battle of Warsong Gulch https://wowhead.com/forever/quest=8389
             -- 8368 "Battle of Warsong Gulch" https://wowhead.com/forever/quest=8368
-            -- already in QuestieDB; Assumption: 8368 was done whenever it was offered (offer-set; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: 8368 was done whenever it was offered (offer-set; high; 100+ characters)
             -- [questKeys.preQuestSingle] = {8368},
         -- },
         -- [8390] = { -- Conquering Arathi Basin https://wowhead.com/forever/quest=8390
@@ -13108,7 +13025,7 @@ function ForeverQuestRelationTraces:Load()
             -- 8394 "Claiming Arathi Basin" https://wowhead.com/forever/quest=8394
             -- 8395 "Claiming Arathi Basin" https://wowhead.com/forever/quest=8395
             -- 8396 "Claiming Arathi Basin" https://wowhead.com/forever/quest=8396
-            -- already in QuestieDB; Assumption: offer lists show it and 8374 exclude each other (absence, cooccurrence; high; 100+ characters); the server completes it and 8394, 8395 together (cooccurrence; high; 100+ characters); the server completes it and 8396 together (cooccurrence; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: offer lists show it and 8374 exclude each other (absence, cooccurrence; very high; 100+ characters); the server completes it and 8394, 8395, 8396 together (cooccurrence; high; 100+ characters)
             -- [questKeys.exclusiveTo] = {8374,8394,8395,8396},
         -- },
         -- [8394] = { -- Claiming Arathi Basin https://wowhead.com/forever/quest=8394
@@ -13116,7 +13033,7 @@ function ForeverQuestRelationTraces:Load()
             -- 8393 "Claiming Arathi Basin" https://wowhead.com/forever/quest=8393
             -- 8395 "Claiming Arathi Basin" https://wowhead.com/forever/quest=8395
             -- 8396 "Claiming Arathi Basin" https://wowhead.com/forever/quest=8396
-            -- already in QuestieDB; Assumption: the server completes it and 8374, 8393, 8395 together (cooccurrence; high; 100+ characters); the server completes it and 8396 together (cooccurrence; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 8374, 8393, 8395, 8396 together (cooccurrence; high; 100+ characters)
             -- [questKeys.exclusiveTo] = {8374,8393,8395,8396},
         -- },
         -- [8395] = { -- Claiming Arathi Basin https://wowhead.com/forever/quest=8395
@@ -13124,7 +13041,7 @@ function ForeverQuestRelationTraces:Load()
             -- 8393 "Claiming Arathi Basin" https://wowhead.com/forever/quest=8393
             -- 8394 "Claiming Arathi Basin" https://wowhead.com/forever/quest=8394
             -- 8396 "Claiming Arathi Basin" https://wowhead.com/forever/quest=8396
-            -- already in QuestieDB; Assumption: the server completes it and 8374, 8393, 8394 together (cooccurrence; high; 100+ characters); the server completes it and 8396 together (cooccurrence; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 8374, 8393, 8394, 8396 together (cooccurrence; high; 100+ characters)
             -- [questKeys.exclusiveTo] = {8374,8393,8394,8396},
         -- },
         -- [8396] = { -- Claiming Arathi Basin https://wowhead.com/forever/quest=8396
@@ -13132,7 +13049,7 @@ function ForeverQuestRelationTraces:Load()
             -- 8393 "Claiming Arathi Basin" https://wowhead.com/forever/quest=8393
             -- 8394 "Claiming Arathi Basin" https://wowhead.com/forever/quest=8394
             -- 8395 "Claiming Arathi Basin" https://wowhead.com/forever/quest=8395
-            -- already in QuestieDB; Assumption: the server completes it and 8374, 8393, 8394, 8395 together (cooccurrence; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 8374, 8393, 8394, 8395 together (cooccurrence; high; 100+ characters)
             -- [questKeys.exclusiveTo] = {8374,8393,8394,8395},
         -- },
         -- [8399] = { -- Fight for Warsong Gulch https://wowhead.com/forever/quest=8399
@@ -13141,7 +13058,7 @@ function ForeverQuestRelationTraces:Load()
             -- 8401 "Fight for Warsong Gulch" https://wowhead.com/forever/quest=8401
             -- 8402 "Fight for Warsong Gulch" https://wowhead.com/forever/quest=8402
             -- 8403 "Fight for Warsong Gulch" https://wowhead.com/forever/quest=8403
-            -- already in QuestieDB; Assumption: the server completes it and 8372, 8400, 8401, 8402, 8403 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 8372, 8400, 8401, 8402, 8403 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {8372,8400,8401,8402,8403},
         -- },
         -- [8400] = { -- Fight for Warsong Gulch https://wowhead.com/forever/quest=8400
@@ -13150,7 +13067,7 @@ function ForeverQuestRelationTraces:Load()
             -- 8401 "Fight for Warsong Gulch" https://wowhead.com/forever/quest=8401
             -- 8402 "Fight for Warsong Gulch" https://wowhead.com/forever/quest=8402
             -- 8403 "Fight for Warsong Gulch" https://wowhead.com/forever/quest=8403
-            -- already in QuestieDB; Assumption: the server completes it and 8372, 8399, 8401, 8402, 8403 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 8372, 8399, 8401, 8402, 8403 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {8372,8399,8401,8402,8403},
         -- },
         -- [8401] = { -- Fight for Warsong Gulch https://wowhead.com/forever/quest=8401
@@ -13159,7 +13076,7 @@ function ForeverQuestRelationTraces:Load()
             -- 8400 "Fight for Warsong Gulch" https://wowhead.com/forever/quest=8400
             -- 8402 "Fight for Warsong Gulch" https://wowhead.com/forever/quest=8402
             -- 8403 "Fight for Warsong Gulch" https://wowhead.com/forever/quest=8403
-            -- already in QuestieDB; Assumption: the server completes it and 8372, 8399, 8400, 8402, 8403 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 8372, 8399, 8400, 8402, 8403 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {8372,8399,8400,8402,8403},
         -- },
         -- [8402] = { -- Fight for Warsong Gulch https://wowhead.com/forever/quest=8402
@@ -13168,7 +13085,7 @@ function ForeverQuestRelationTraces:Load()
             -- 8400 "Fight for Warsong Gulch" https://wowhead.com/forever/quest=8400
             -- 8401 "Fight for Warsong Gulch" https://wowhead.com/forever/quest=8401
             -- 8403 "Fight for Warsong Gulch" https://wowhead.com/forever/quest=8403
-            -- already in QuestieDB; Assumption: the server completes it and 8372, 8399, 8400, 8401, 8403 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 8372, 8399, 8400, 8401, 8403 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {8372,8399,8400,8401,8403},
         -- },
         -- [8403] = { -- Fight for Warsong Gulch https://wowhead.com/forever/quest=8403
@@ -13177,7 +13094,7 @@ function ForeverQuestRelationTraces:Load()
             -- 8400 "Fight for Warsong Gulch" https://wowhead.com/forever/quest=8400
             -- 8401 "Fight for Warsong Gulch" https://wowhead.com/forever/quest=8401
             -- 8402 "Fight for Warsong Gulch" https://wowhead.com/forever/quest=8402
-            -- already in QuestieDB; Assumption: the server completes it and 8372, 8399, 8400, 8401, 8402 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 8372, 8399, 8400, 8401, 8402 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {8372,8399,8400,8401,8402},
         -- },
         -- [8404] = { -- Fight for Warsong Gulch https://wowhead.com/forever/quest=8404
@@ -13205,11 +13122,11 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: 8412 was done whenever it was offered (offer-set, absence, cooccurrence; high; 10+ characters)
             -- [questKeys.preQuestSingle] = {8412},
         -- },
-        [8414] = { -- Dispelling Evil https://wowhead.com/forever/quest=8414
+        -- [8414] = { -- Dispelling Evil https://wowhead.com/forever/quest=8414
             -- 8415 "Chillwind Point" https://wowhead.com/forever/quest=8415
-            -- Assumption: offered right after 8415 was turned in (handoff, offer-set; high; 10+ characters)
-            [questKeys.preQuestSingle] = {8415},
-        },
+            -- not applied: QuestieDB has 8415 as breadcrumbs of this quest, optional lead-ins rather than prerequisites; Assumption: offered right after 8415 was turned in (handoff, offer-set; high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {8415},
+        -- },
         -- [8415] = { -- Chillwind Point https://wowhead.com/forever/quest=8415
             -- 8414 "Dispelling Evil" https://wowhead.com/forever/quest=8414
             -- already in QuestieDB; Assumption: turning it in led straight to 8414 (handoff; medium; 10+ characters)
@@ -13238,18 +13155,10 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 8421 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
             -- [questKeys.preQuestSingle] = {8421},
         -- },
-        -- [8423] = { -- Warrior Kinship https://wowhead.com/forever/quest=8423
-            -- 8424 "War on the Shadowsworn" https://wowhead.com/forever/quest=8424
-            -- already in QuestieDB; Assumption: turning it in led straight to 8424 (handoff; medium; 10+ characters)
-            -- [questKeys.nextQuestInChain] = 8424,
-        -- },
         -- [8424] = { -- War on the Shadowsworn https://wowhead.com/forever/quest=8424
             -- 8423 "Warrior Kinship" https://wowhead.com/forever/quest=8423
             -- already in QuestieDB; Assumption: offered right after 8423 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
             -- [questKeys.preQuestSingle] = {8423},
-            -- 8425 "Voodoo Feathers" https://wowhead.com/forever/quest=8425
-            -- already in QuestieDB; Assumption: turning it in led straight to 8425 (handoff; medium; 10+ characters)
-            -- [questKeys.nextQuestInChain] = 8425,
         -- },
         -- [8425] = { -- Voodoo Feathers https://wowhead.com/forever/quest=8425
             -- 8424 "War on the Shadowsworn" https://wowhead.com/forever/quest=8424
@@ -13262,7 +13171,7 @@ function ForeverQuestRelationTraces:Load()
             -- 8428 "Battle of Warsong Gulch" https://wowhead.com/forever/quest=8428
             -- 8429 "Battle of Warsong Gulch" https://wowhead.com/forever/quest=8429
             -- 8430 "Battle of Warsong Gulch" https://wowhead.com/forever/quest=8430
-            -- already in QuestieDB; Assumption: offer lists show it and 8368 exclude each other (absence, cooccurrence; very high; 100+ characters); offer lists show it and 8427 exclude each other (absence, cooccurrence; high; 100+ characters); the server completes it and 8428, 8429, 8430 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: offer lists show it and 8368, 8427 exclude each other (absence, cooccurrence; very high; 100+ characters); the server completes it and 8428, 8429, 8430 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {8368,8427,8428,8429,8430},
         -- },
         -- [8427] = { -- Battle of Warsong Gulch https://wowhead.com/forever/quest=8427
@@ -13271,7 +13180,7 @@ function ForeverQuestRelationTraces:Load()
             -- 8428 "Battle of Warsong Gulch" https://wowhead.com/forever/quest=8428
             -- 8429 "Battle of Warsong Gulch" https://wowhead.com/forever/quest=8429
             -- 8430 "Battle of Warsong Gulch" https://wowhead.com/forever/quest=8430
-            -- already in QuestieDB; Assumption: offer lists show it and 8368 exclude each other (absence, cooccurrence; very high; 100+ characters); offer lists show it and 8426 exclude each other (absence, cooccurrence; high; 100+ characters); the server completes it and 8428, 8429, 8430 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: offer lists show it and 8368, 8426 exclude each other (absence, cooccurrence; very high; 100+ characters); the server completes it and 8428, 8429, 8430 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {8368,8426,8428,8429,8430},
         -- },
         -- [8428] = { -- Battle of Warsong Gulch https://wowhead.com/forever/quest=8428
@@ -13280,7 +13189,7 @@ function ForeverQuestRelationTraces:Load()
             -- 8427 "Battle of Warsong Gulch" https://wowhead.com/forever/quest=8427
             -- 8429 "Battle of Warsong Gulch" https://wowhead.com/forever/quest=8429
             -- 8430 "Battle of Warsong Gulch" https://wowhead.com/forever/quest=8430
-            -- already in QuestieDB; Assumption: offer lists show it and 8368 exclude each other (absence, cooccurrence; high; 100+ characters); the server completes it and 8426, 8427, 8429, 8430 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: offer lists show it and 8368 exclude each other (absence, cooccurrence; high; 100+ characters); the server completes it and 8426, 8427, 8429, 8430 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {8368,8426,8427,8429,8430},
         -- },
         -- [8429] = { -- Battle of Warsong Gulch https://wowhead.com/forever/quest=8429
@@ -13289,7 +13198,7 @@ function ForeverQuestRelationTraces:Load()
             -- 8427 "Battle of Warsong Gulch" https://wowhead.com/forever/quest=8427
             -- 8428 "Battle of Warsong Gulch" https://wowhead.com/forever/quest=8428
             -- 8430 "Battle of Warsong Gulch" https://wowhead.com/forever/quest=8430
-            -- already in QuestieDB; Assumption: the server completes it and 8368, 8426, 8427, 8428, 8430 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 8368, 8426, 8427, 8428, 8430 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {8368,8426,8427,8428,8430},
         -- },
         -- [8430] = { -- Battle of Warsong Gulch https://wowhead.com/forever/quest=8430
@@ -13298,7 +13207,7 @@ function ForeverQuestRelationTraces:Load()
             -- 8427 "Battle of Warsong Gulch" https://wowhead.com/forever/quest=8427
             -- 8428 "Battle of Warsong Gulch" https://wowhead.com/forever/quest=8428
             -- 8429 "Battle of Warsong Gulch" https://wowhead.com/forever/quest=8429
-            -- already in QuestieDB; Assumption: the server completes it and 8368, 8426, 8427, 8428, 8429 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 8368, 8426, 8427, 8428, 8429 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {8368,8426,8427,8428,8429},
         -- },
         -- [8431] = { -- Battle of Warsong Gulch https://wowhead.com/forever/quest=8431
@@ -13378,36 +13287,36 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: 8464 was done whenever it was offered (offer-set; medium; <10 characters)
             -- [questKeys.preQuestSingle] = {8464},
         -- },
-        [8551] = { -- The Captain's Chest https://wowhead.com/forever/quest=8551
+        -- [8551] = { -- The Captain's Chest https://wowhead.com/forever/quest=8551
             -- 614 "The Captain's Chest" https://wowhead.com/forever/quest=614
-            -- Assumption: the server completes it and 614 together (cooccurrence; medium; 100+ characters)
-            [questKeys.exclusiveTo] = {614},
-        },
+            -- already in QuestieDB; Assumption: the server completes it and 614 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {614},
+        -- },
         -- [8552] = { -- The Monogrammed Sash https://wowhead.com/forever/quest=8552
             -- 8553 "The Captain's Cutlass" https://wowhead.com/forever/quest=8553
-            -- already in QuestieDB; Assumption: turning it in led straight to 8553 (handoff; high; 10+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 8553 (handoff; medium; 10+ characters)
             -- [questKeys.nextQuestInChain] = 8553,
         -- },
-        [8553] = { -- The Captain's Cutlass https://wowhead.com/forever/quest=8553
+        -- [8553] = { -- The Captain's Cutlass https://wowhead.com/forever/quest=8553
             -- 8552 "The Monogrammed Sash" https://wowhead.com/forever/quest=8552
             -- already in QuestieDB; Assumption: offered right after 8552 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {8552},
             -- 615 "The Captain's Cutlass" https://wowhead.com/forever/quest=615
-            -- Assumption: the server completes it and 615 together (cooccurrence; medium; 100+ characters)
-            [questKeys.exclusiveTo] = {615},
+            -- already in QuestieDB; Assumption: the server completes it and 615 together (cooccurrence; high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {615},
             -- 8554 "Facing Negolash" https://wowhead.com/forever/quest=8554
             -- already in QuestieDB; Assumption: turning it in led straight to 8554 (handoff; medium; 100+ characters)
             -- [questKeys.nextQuestInChain] = 8554,
-        },
-        [8554] = { -- Facing Negolash https://wowhead.com/forever/quest=8554
+        -- },
+        -- [8554] = { -- Facing Negolash https://wowhead.com/forever/quest=8554
             -- 615 "The Captain's Cutlass" https://wowhead.com/forever/quest=615
             -- 8553 "The Captain's Cutlass" https://wowhead.com/forever/quest=8553
-            -- Assumption: offered right after 615 was turned in (handoff, offer-set, cooccurrence; high; 100+ characters); offered right after 8553 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {615,8553},
+            -- already in QuestieDB; Assumption: offered right after 615 was turned in (handoff, offer-set, cooccurrence; high; 100+ characters); offered right after 8553 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {615,8553},
             -- 618 "Facing Negolash" https://wowhead.com/forever/quest=618
-            -- Assumption: the server completes it and 618 together (cooccurrence; medium; 10+ characters)
-            [questKeys.exclusiveTo] = {618},
-        },
+            -- already in QuestieDB; Assumption: the server completes it and 618 together (cooccurrence; high; 10+ characters)
+            -- [questKeys.exclusiveTo] = {618},
+        -- },
         -- [9051] = { -- Toxic Test https://wowhead.com/forever/quest=9051
             -- 9052 "Bloodpetal Poison" https://wowhead.com/forever/quest=9052
             -- already in QuestieDB; Assumption: offered right after 9052 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters)
@@ -13426,16 +13335,16 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 9051 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
             -- [questKeys.preQuestSingle] = {9051},
         -- },
-        [60860] = { -- Your Reward has Arrived! https://wowhead.com/forever/quest=60860
+        -- [60860] = { -- Your Reward has Arrived! https://wowhead.com/forever/quest=60860
             -- 60870 "A Special Gift" https://wowhead.com/forever/quest=60870
-            -- Assumption: the server completes it and 60870 together (cooccurrence; medium; 100+ characters)
-            [questKeys.exclusiveTo] = {60870},
-        },
-        [60870] = { -- A Special Gift https://wowhead.com/forever/quest=60870
+            -- already in QuestieDB; Assumption: the server completes it and 60870 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {60870},
+        -- },
+        -- [60870] = { -- A Special Gift https://wowhead.com/forever/quest=60870
             -- 60860 "Your Reward has Arrived!" https://wowhead.com/forever/quest=60860
-            -- Assumption: the server completes it and 60860 together (cooccurrence; medium; 100+ characters)
-            [questKeys.exclusiveTo] = {60860},
-        },
+            -- already in QuestieDB; Assumption: the server completes it and 60860 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {60860},
+        -- },
         -- [65593] = { -- Hearts of the Lovers https://wowhead.com/forever/quest=65593
             -- 1472 "Devourer of Souls" https://wowhead.com/forever/quest=1472
             -- already in QuestieDB; Assumption: 1472 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
@@ -13493,57 +13402,47 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 76160 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {76160},
         -- },
-        [78088] = { -- A Strange Artifact https://wowhead.com/forever/quest=78088
+        -- [78088] = { -- A Strange Artifact https://wowhead.com/forever/quest=78088
             -- 78089 "Advice From Stormwind" https://wowhead.com/forever/quest=78089
-            -- Assumption: turning it in led straight to 78089 (handoff; high; 10+ characters)
-            [questKeys.nextQuestInChain] = 78089,
-        },
-        [78089] = { -- Advice From Stormwind https://wowhead.com/forever/quest=78089
+            -- already in QuestieDB; Assumption: turning it in led straight to 78089 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 78089,
+        -- },
+        -- [78089] = { -- Advice From Stormwind https://wowhead.com/forever/quest=78089
             -- 78088 "A Strange Artifact" https://wowhead.com/forever/quest=78088
-            -- Assumption: offered right after 78088 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {78088},
+            -- already in QuestieDB; Assumption: offered right after 78088 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {78088},
             -- 78090 "A Second Opinion" https://wowhead.com/forever/quest=78090
-            -- Assumption: turning it in led straight to 78090 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 78090,
-        },
-        [78090] = { -- A Second Opinion https://wowhead.com/forever/quest=78090
+            -- already in QuestieDB; Assumption: turning it in led straight to 78090 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 78090,
+        -- },
+        -- [78090] = { -- A Second Opinion https://wowhead.com/forever/quest=78090
             -- 78089 "Advice From Stormwind" https://wowhead.com/forever/quest=78089
-            -- Assumption: offered right after 78089 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {78089},
-        },
-        [78091] = { -- Earning Your Salt https://wowhead.com/forever/quest=78091
+            -- already in QuestieDB; Assumption: offered right after 78089 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {78089},
+        -- },
+        -- [78091] = { -- Earning Your Salt https://wowhead.com/forever/quest=78091
             -- 78090 "A Second Opinion" https://wowhead.com/forever/quest=78090
-            -- Assumption: offered right after 78090 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {78090},
+            -- already in QuestieDB; Assumption: offered right after 78090 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {78090},
             -- 78092 "It Must Be Destroyed" https://wowhead.com/forever/quest=78092
-            -- Assumption: turning it in led straight to 78092 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 78092,
-        },
-        [78092] = { -- It Must Be Destroyed https://wowhead.com/forever/quest=78092
+            -- already in QuestieDB; Assumption: turning it in led straight to 78092 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 78092,
+        -- },
+        -- [78092] = { -- It Must Be Destroyed https://wowhead.com/forever/quest=78092
             -- 78091 "Earning Your Salt" https://wowhead.com/forever/quest=78091
-            -- Assumption: offered right after 78091 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {78091},
-        },
-        [78093] = { -- Return to Delgren https://wowhead.com/forever/quest=78093
-            -- 78092 "It Must Be Destroyed" https://wowhead.com/forever/quest=78092
-            -- Assumption: 78092 was done whenever it was offered (offer-set, cooccurrence; medium; 10+ characters)
-            [questKeys.preQuestSingle] = {78092},
-        },
-        [78676] = { -- The Eye of Bhossca https://wowhead.com/forever/quest=78676
-            -- 78307 "The Horn of Xelthos" https://wowhead.com/forever/quest=78307
-            -- Assumption: 78307 was done whenever it was offered (offer-set, cooccurrence; medium; 100+ characters)
-            [questKeys.preQuestSingle] = {78307},
-        },
-        [78823] = { -- Terror of the Desert Skies https://wowhead.com/forever/quest=78823
+            -- already in QuestieDB; Assumption: offered right after 78091 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {78091},
+        -- },
+        -- [78823] = { -- Terror of the Desert Skies https://wowhead.com/forever/quest=78823
             -- 78830 "Terror of the Desert Skies" https://wowhead.com/forever/quest=78830
-            -- Assumption: turning it in led straight to 78830 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 78830,
-        },
-        [78830] = { -- Terror of the Desert Skies https://wowhead.com/forever/quest=78830
+            -- already in QuestieDB; Assumption: turning it in led straight to 78830 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 78830,
+        -- },
+        -- [78830] = { -- Terror of the Desert Skies https://wowhead.com/forever/quest=78830
             -- 78823 "Terror of the Desert Skies" https://wowhead.com/forever/quest=78823
-            -- Assumption: offered right after 78823 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {78823},
-        },
+            -- already in QuestieDB; Assumption: offered right after 78823 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {78823},
+        -- },
         -- [79007] = { -- ... and that note you found https://wowhead.com/forever/quest=79007
             -- 79192 "Stepping Stones" https://wowhead.com/forever/quest=79192
             -- already in QuestieDB; Assumption: turning it in led straight to 79192 (handoff; medium; 10+ characters)
@@ -13563,127 +13462,127 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: turning it in led straight to 79980 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 79980,
         -- },
-        [79229] = { -- Highway Robbery https://wowhead.com/forever/quest=79229
+        -- [79229] = { -- Highway Robbery https://wowhead.com/forever/quest=79229
             -- 79235 "On the Lam" https://wowhead.com/forever/quest=79235
-            -- Assumption: turning it in led straight to 79235 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 79235,
-        },
-        [79235] = { -- On the Lam https://wowhead.com/forever/quest=79235
+            -- already in QuestieDB; Assumption: turning it in led straight to 79235 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 79235,
+        -- },
+        -- [79235] = { -- On the Lam https://wowhead.com/forever/quest=79235
             -- 79229 "Highway Robbery" https://wowhead.com/forever/quest=79229
-            -- Assumption: offered right after 79229 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {79229},
+            -- already in QuestieDB; Assumption: offered right after 79229 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {79229},
             -- 79236 "Cherry for Your Thoughts?" https://wowhead.com/forever/quest=79236
-            -- Assumption: turning it in led straight to 79236 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 79236,
-        },
-        [79236] = { -- Cherry for Your Thoughts? https://wowhead.com/forever/quest=79236
+            -- already in QuestieDB; Assumption: turning it in led straight to 79236 (handoff; medium; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 79236,
+        -- },
+        -- [79236] = { -- Cherry for Your Thoughts? https://wowhead.com/forever/quest=79236
             -- 79235 "On the Lam" https://wowhead.com/forever/quest=79235
-            -- Assumption: offered right after 79235 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {79235},
+            -- already in QuestieDB; Assumption: offered right after 79235 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {79235},
             -- 79242 "No Honor Among Thieves" https://wowhead.com/forever/quest=79242
-            -- Assumption: turning it in led straight to 79242 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 79242,
-        },
-        [79242] = { -- No Honor Among Thieves https://wowhead.com/forever/quest=79242
+            -- already in QuestieDB; Assumption: turning it in led straight to 79242 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 79242,
+        -- },
+        -- [79242] = { -- No Honor Among Thieves https://wowhead.com/forever/quest=79242
             -- 79236 "Cherry for Your Thoughts?" https://wowhead.com/forever/quest=79236
-            -- Assumption: offered right after 79236 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {79236},
-        },
-        [79358] = { -- Storm, Earth, and Fire https://wowhead.com/forever/quest=79358
+            -- already in QuestieDB; Assumption: offered right after 79236 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {79236},
+        -- },
+        -- [79358] = { -- Storm, Earth, and Fire https://wowhead.com/forever/quest=79358
             -- 96264 "Elemental Aid" https://wowhead.com/forever/quest=96264
-            -- Assumption: offered right after 96264 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {96264},
+            -- already in QuestieDB; Assumption: offered right after 96264 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {96264},
             -- 96135 "Heed My Call" https://wowhead.com/forever/quest=96135
-            -- Assumption: turning it in led straight to 96135 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 96135,
-        },
-        [79360] = { -- Elemental Aid https://wowhead.com/forever/quest=79360
+            -- already in QuestieDB; Assumption: turning it in led straight to 96135 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 96135,
+        -- },
+        -- [79360] = { -- Elemental Aid https://wowhead.com/forever/quest=79360
             -- 1531 "Call of Air" https://wowhead.com/forever/quest=1531
             -- 1532 "Call of Air" https://wowhead.com/forever/quest=1532
             -- 96136 "Call of Air" https://wowhead.com/forever/quest=96136
-            -- Assumption: offered right after 1531 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters); offered right after 1532, 96136 was turned in (handoff, offer-set, cooccurrence; high; 100+ characters)
-            [questKeys.preQuestSingle] = {1531,1532,96136},
+            -- already in QuestieDB; Assumption: offered right after 1531 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters); offered right after 1532, 96136 was turned in (handoff, offer-set, cooccurrence; high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {1531,1532,96136},
             -- 79364 "Eyes on the Sky" https://wowhead.com/forever/quest=79364
-            -- Assumption: turning it in led straight to 79364 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 79364,
-        },
-        [79361] = { -- Storm, Earth, and Fire https://wowhead.com/forever/quest=79361
+            -- already in QuestieDB; Assumption: turning it in led straight to 79364 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 79364,
+        -- },
+        -- [79361] = { -- Storm, Earth, and Fire https://wowhead.com/forever/quest=79361
             -- 79364 "Eyes on the Sky" https://wowhead.com/forever/quest=79364
-            -- Assumption: offered right after 79364 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {79364},
+            -- already in QuestieDB; Assumption: offered right after 79364 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {79364},
             -- 79366 "Heed My Call" https://wowhead.com/forever/quest=79366
-            -- Assumption: turning it in led straight to 79366 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 79366,
-        },
-        [79364] = { -- Eyes on the Sky https://wowhead.com/forever/quest=79364
+            -- already in QuestieDB; Assumption: turning it in led straight to 79366 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 79366,
+        -- },
+        -- [79364] = { -- Eyes on the Sky https://wowhead.com/forever/quest=79364
             -- 79360 "Elemental Aid" https://wowhead.com/forever/quest=79360
-            -- Assumption: offered right after 79360 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {79360},
+            -- already in QuestieDB; Assumption: offered right after 79360 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {79360},
             -- 98338 "REUSE ME" https://wowhead.com/forever/quest=98338
-            -- Assumption: the server completes it and 98338 together (cooccurrence; medium; 100+ characters)
-            [questKeys.exclusiveTo] = {98338},
+            -- already in QuestieDB; Assumption: the server completes it and 98338 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {98338},
             -- 79361 "Storm, Earth, and Fire" https://wowhead.com/forever/quest=79361
-            -- Assumption: turning it in led straight to 79361 (handoff; medium; 100+ characters)
-            [questKeys.nextQuestInChain] = 79361,
-        },
-        [79366] = { -- Heed My Call https://wowhead.com/forever/quest=79366
+            -- already in QuestieDB; Assumption: turning it in led straight to 79361 (handoff; medium; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 79361,
+        -- },
+        -- [79366] = { -- Heed My Call https://wowhead.com/forever/quest=79366
             -- 79361 "Storm, Earth, and Fire" https://wowhead.com/forever/quest=79361
-            -- Assumption: offered right after 79361 was turned in (handoff, offer-set, cooccurrence; high; 100+ characters)
-            [questKeys.preQuestSingle] = {79361},
+            -- already in QuestieDB; Assumption: offered right after 79361 was turned in (handoff, offer-set, cooccurrence; high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {79361},
             -- 96135 "Heed My Call" https://wowhead.com/forever/quest=96135
-            -- Assumption: the server completes it and 96135 together (cooccurrence; medium; 100+ characters)
-            [questKeys.exclusiveTo] = {96135},
+            -- already in QuestieDB; Assumption: the server completes it and 96135 together (cooccurrence; high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {96135},
             -- 79442 "The Tempest's Weapons" https://wowhead.com/forever/quest=79442
-            -- Assumption: turning it in led straight to 79442 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 79442,
-        },
-        [79442] = { -- The Tempest's Weapons https://wowhead.com/forever/quest=79442
+            -- already in QuestieDB; Assumption: turning it in led straight to 79442 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 79442,
+        -- },
+        -- [79442] = { -- The Tempest's Weapons https://wowhead.com/forever/quest=79442
             -- 79366 "Heed My Call" https://wowhead.com/forever/quest=79366
             -- 96135 "Heed My Call" https://wowhead.com/forever/quest=96135
-            -- Assumption: offered right after 79366 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters); 96135 was done whenever it was offered (offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {79366,96135},
+            -- already in QuestieDB; Assumption: offered right after 79366 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters); 96135 was done whenever it was offered (offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {79366,96135},
             -- 96016 "The Tempest's Weapons" https://wowhead.com/forever/quest=96016
-            -- Assumption: the server completes it and 96016 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {96016},
-        },
-        [79624] = { -- Anyone Can Cook https://wowhead.com/forever/quest=79624
+            -- already in QuestieDB; Assumption: the server completes it and 96016 together (cooccurrence; high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {96016},
+        -- },
+        -- [79624] = { -- Anyone Can Cook https://wowhead.com/forever/quest=79624
             -- 79677 "A Quick Grocery Run" https://wowhead.com/forever/quest=79677
-            -- Assumption: turning it in led straight to 79677 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 79677,
-        },
-        [79677] = { -- A Quick Grocery Run https://wowhead.com/forever/quest=79677
+            -- already in QuestieDB; Assumption: turning it in led straight to 79677 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 79677,
+        -- },
+        -- [79677] = { -- A Quick Grocery Run https://wowhead.com/forever/quest=79677
             -- 79624 "Anyone Can Cook" https://wowhead.com/forever/quest=79624
-            -- Assumption: offered right after 79624 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {79624},
+            -- already in QuestieDB; Assumption: offered right after 79624 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {79624},
             -- 79678 "Taste Testing" https://wowhead.com/forever/quest=79678
-            -- Assumption: turning it in led straight to 79678 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 79678,
-        },
-        [79678] = { -- Taste Testing https://wowhead.com/forever/quest=79678
+            -- already in QuestieDB; Assumption: turning it in led straight to 79678 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 79678,
+        -- },
+        -- [79678] = { -- Taste Testing https://wowhead.com/forever/quest=79678
             -- 79677 "A Quick Grocery Run" https://wowhead.com/forever/quest=79677
-            -- Assumption: offered right after 79677 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {79677},
-        },
-        [79939] = { -- The Broken Hammer https://wowhead.com/forever/quest=79939
+            -- already in QuestieDB; Assumption: offered right after 79677 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {79677},
+        -- },
+        -- [79939] = { -- The Broken Hammer https://wowhead.com/forever/quest=79939
             -- 79940 "A Lost Brother" https://wowhead.com/forever/quest=79940
-            -- Assumption: turning it in led straight to 79940 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 79940,
-        },
-        [79940] = { -- A Lost Brother https://wowhead.com/forever/quest=79940
+            -- already in QuestieDB; Assumption: turning it in led straight to 79940 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 79940,
+        -- },
+        -- [79940] = { -- A Lost Brother https://wowhead.com/forever/quest=79940
             -- 79939 "The Broken Hammer" https://wowhead.com/forever/quest=79939
-            -- Assumption: offered right after 79939 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {79939},
-        },
-        [79945] = { -- Orders from the Grand Crusader https://wowhead.com/forever/quest=79945
+            -- already in QuestieDB; Assumption: offered right after 79939 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {79939},
+        -- },
+        -- [79945] = { -- Orders from the Grand Crusader https://wowhead.com/forever/quest=79945
             -- 79946 "A Brother In Need" https://wowhead.com/forever/quest=79946
-            -- Assumption: turning it in led straight to 79946 (handoff; medium; <10 characters)
-            [questKeys.nextQuestInChain] = 79946,
-        },
-        [79946] = { -- A Brother In Need https://wowhead.com/forever/quest=79946
+            -- already in QuestieDB; Assumption: turning it in led straight to 79946 (handoff; medium; <10 characters)
+            -- [questKeys.nextQuestInChain] = 79946,
+        -- },
+        -- [79946] = { -- A Brother In Need https://wowhead.com/forever/quest=79946
             -- 79945 "Orders from the Grand Crusader" https://wowhead.com/forever/quest=79945
-            -- Assumption: offered right after 79945 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {79945},
-        },
+            -- already in QuestieDB; Assumption: offered right after 79945 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {79945},
+        -- },
         -- [79974] = { -- Wet Job https://wowhead.com/forever/quest=79974
             -- 79980 "Scramble" https://wowhead.com/forever/quest=79980
             -- already in QuestieDB; Assumption: offered right after 79980 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
@@ -13713,183 +13612,182 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: turning it in led straight to 79974 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 79974,
         -- },
-        [80411] = { -- The Talisman of Kazdor https://wowhead.com/forever/quest=80411
+        -- [80411] = { -- The Talisman of Kazdor https://wowhead.com/forever/quest=80411
             -- 80526 "Fool Me Twice" https://wowhead.com/forever/quest=80526
-            -- Assumption: offered right after 80526 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {80526},
-        },
-        [80526] = { -- Fool Me Twice https://wowhead.com/forever/quest=80526
-            -- 80411 "The Talisman of Kazdor" https://wowhead.com/forever/quest=80411
-            -- Assumption: turning it in led straight to 80411 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 80411,
-        },
-        [81570] = { -- Jarl Needs a Blade https://wowhead.com/forever/quest=81570
+            -- already in QuestieDB; Assumption: offered right after 80526 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {80526},
+        -- },
+        -- [81570] = { -- Jarl Needs a Blade https://wowhead.com/forever/quest=81570
             -- 1203 "Jarl Needs a Blade" https://wowhead.com/forever/quest=1203
-            -- Assumption: the server completes it and 1203 together (cooccurrence; medium; 100+ characters)
-            [questKeys.exclusiveTo] = {1203},
-        },
-        [81900] = { -- The Burning Beast https://wowhead.com/forever/quest=81900
-            -- 81917 "Chains That Bind" https://wowhead.com/forever/quest=81917
-            -- Assumption: turning it in led straight to 81917 (handoff; medium; <10 characters)
-            [questKeys.nextQuestInChain] = 81917,
-        },
-        [81917] = { -- Chains That Bind https://wowhead.com/forever/quest=81917
+            -- already in QuestieDB; Assumption: the server completes it and 1203 together (cooccurrence; high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {1203},
+        -- },
+        -- [81917] = { -- Chains That Bind https://wowhead.com/forever/quest=81917
             -- 81900 "The Burning Beast" https://wowhead.com/forever/quest=81900
-            -- Assumption: offered right after 81900 was turned in (handoff, offer-set, cooccurrence; high; <10 characters)
-            [questKeys.preQuestSingle] = {81900},
+            -- already in QuestieDB; Assumption: offered right after 81900 was turned in (handoff, offer-set, cooccurrence; high; <10 characters)
+            -- [questKeys.preQuestSingle] = {81900},
+        -- },
+        [86611] = { -- Stag Lord's Bauble https://wowhead.com/forever/quest=86611
+            -- 86612 "Stag Lord's Bauble" https://wowhead.com/forever/quest=86612
+            -- Assumption: the server completes it and 86612 together (cooccurrence; medium; 10+ characters)
+            [questKeys.exclusiveTo] = {86612},
         },
-        [86747] = { -- Legashi Horns https://wowhead.com/forever/quest=86747
+        [86612] = { -- Stag Lord's Bauble https://wowhead.com/forever/quest=86612
+            -- 86611 "Stag Lord's Bauble" https://wowhead.com/forever/quest=86611
+            -- Assumption: the server completes it and 86611 together (cooccurrence; medium; 10+ characters)
+            [questKeys.exclusiveTo] = {86611},
+        },
+        -- [86747] = { -- Legashi Horns https://wowhead.com/forever/quest=86747
             -- 86746 "The Legashi Threat" https://wowhead.com/forever/quest=86746
-            -- Assumption: offered right after 86746 was turned in (handoff, offer-set, absence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {86746},
-        },
+            -- already in QuestieDB; Assumption: offered right after 86746 was turned in (handoff, offer-set, absence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {86746},
+        -- },
         -- [87760] = { -- Holy Diver https://wowhead.com/forever/quest=87760
             -- 4727 "Beached Sea Turtle" https://wowhead.com/forever/quest=4727
             -- 4733 "Beached Sea Creature" https://wowhead.com/forever/quest=4733
             -- already in QuestieDB; Assumption: offered right after 4727, 4733 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestGroup] = {4727,4733},
         -- },
-        [88757] = { -- Accessories of the Lost https://wowhead.com/forever/quest=88757
+        -- [88757] = { -- Accessories of the Lost https://wowhead.com/forever/quest=88757
             -- 87318 "Hearts of the Lost" https://wowhead.com/forever/quest=87318
-            -- Assumption: offered right after 87318 was turned in (handoff, offer-set; high; <10 characters)
-            [questKeys.preQuestSingle] = {87318},
-        },
-        [88758] = { -- Sentiments of the Lost https://wowhead.com/forever/quest=88758
+            -- already in QuestieDB; Assumption: offered right after 87318 was turned in (handoff, offer-set; high; <10 characters)
+            -- [questKeys.preQuestSingle] = {87318},
+        -- },
+        -- [88758] = { -- Sentiments of the Lost https://wowhead.com/forever/quest=88758
             -- 88757 "Accessories of the Lost" https://wowhead.com/forever/quest=88757
-            -- Assumption: offered right after 88757 was turned in (handoff, offer-set, absence; high; <10 characters)
-            [questKeys.preQuestSingle] = {88757},
-        },
-        [88809] = { -- Preserving Eldarath https://wowhead.com/forever/quest=88809
+            -- already in QuestieDB; Assumption: offered right after 88757 was turned in (handoff, offer-set, absence; medium; <10 characters)
+            -- [questKeys.preQuestSingle] = {88757},
+        -- },
+        -- [88809] = { -- Preserving Eldarath https://wowhead.com/forever/quest=88809
             -- 88807 "Slay the Spitelash" https://wowhead.com/forever/quest=88807
-            -- Assumption: offered right after 88807 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {88807},
-        },
-        [88812] = { -- Reclaiming Ravencrest https://wowhead.com/forever/quest=88812
+            -- already in QuestieDB; Assumption: offered right after 88807 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {88807},
+        -- },
+        -- [88812] = { -- Reclaiming Ravencrest https://wowhead.com/forever/quest=88812
             -- 88807 "Slay the Spitelash" https://wowhead.com/forever/quest=88807
-            -- Assumption: offered right after 88807 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {88807},
+            -- already in QuestieDB; Assumption: offered right after 88807 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {88807},
             -- 88813 "The Head of the Serpent" https://wowhead.com/forever/quest=88813
             -- not applied: 88813 needs this quest together with 88809 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 88813 (handoff; medium; 10+ characters)
             -- [questKeys.nextQuestInChain] = 88813,
-        },
-        [88813] = { -- The Head of the Serpent https://wowhead.com/forever/quest=88813
+        -- },
+        -- [88813] = { -- The Head of the Serpent https://wowhead.com/forever/quest=88813
             -- 88809 "Preserving Eldarath" https://wowhead.com/forever/quest=88809
             -- 88812 "Reclaiming Ravencrest" https://wowhead.com/forever/quest=88812
-            -- Assumption: offered right after 88809, 88812 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestGroup] = {88809,88812},
-        },
-        [88821] = { -- Making Contact https://wowhead.com/forever/quest=88821
+            -- already in QuestieDB; Assumption: offered right after 88809, 88812 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestGroup] = {88809,88812},
+        -- },
+        -- [88821] = { -- Making Contact https://wowhead.com/forever/quest=88821
             -- 88807 "Slay the Spitelash" https://wowhead.com/forever/quest=88807
-            -- Assumption: offered right after 88807 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {88807},
+            -- already in QuestieDB; Assumption: offered right after 88807 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {88807},
             -- 88917 "Slithering Looters" https://wowhead.com/forever/quest=88917
-            -- Assumption: turning it in led straight to 88917 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 88917,
-        },
-        [88884] = { -- Highborne Tablets https://wowhead.com/forever/quest=88884
+            -- already in QuestieDB; Assumption: turning it in led straight to 88917 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 88917,
+        -- },
+        -- [88884] = { -- Highborne Tablets https://wowhead.com/forever/quest=88884
             -- 88917 "Slithering Looters" https://wowhead.com/forever/quest=88917
-            -- Assumption: offered right after 88917 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {88917},
+            -- already in QuestieDB; Assumption: offered right after 88917 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {88917},
             -- 89037 "Murloc Thieves" https://wowhead.com/forever/quest=89037
-            -- Assumption: turning it in led straight to 89037 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 89037,
-        },
-        [88917] = { -- Slithering Looters https://wowhead.com/forever/quest=88917
+            -- already in QuestieDB; Assumption: turning it in led straight to 89037 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 89037,
+        -- },
+        -- [88917] = { -- Slithering Looters https://wowhead.com/forever/quest=88917
             -- 88821 "Making Contact" https://wowhead.com/forever/quest=88821
-            -- Assumption: offered right after 88821 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {88821},
+            -- already in QuestieDB; Assumption: offered right after 88821 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {88821},
             -- 88884 "Highborne Tablets" https://wowhead.com/forever/quest=88884
-            -- Assumption: turning it in led straight to 88884 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 88884,
+            -- already in QuestieDB; Assumption: turning it in led straight to 88884 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 88884,
+        -- },
+        [89001] = { -- Home on the Range https://wowhead.com/forever/quest=89001
+            -- 91488 "Home on the Range" https://wowhead.com/forever/quest=91488
+            -- Assumption: the server completes it and 91488 together (cooccurrence; high; 100+ characters)
+            [questKeys.exclusiveTo] = {91488},
         },
-        [89013] = { -- Gettin' Buzzed https://wowhead.com/forever/quest=89013
+        -- [89013] = { -- Gettin' Buzzed https://wowhead.com/forever/quest=89013
             -- 89001 "Home on the Range" https://wowhead.com/forever/quest=89001
             -- 91488 "Home on the Range" https://wowhead.com/forever/quest=91488
-            -- Assumption: offered right after 89001 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters); 91488 was done whenever it was offered (offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {89001,91488},
+            -- already in QuestieDB; Assumption: offered right after 89001 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters); 91488 was done whenever it was offered (offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {89001,91488},
             -- 91608 "Gettin' Buzzed" https://wowhead.com/forever/quest=91608
-            -- Assumption: the server completes it and 91608 together (cooccurrence; medium; 100+ characters)
-            [questKeys.exclusiveTo] = {91608},
-        },
-        [89015] = { -- Deadliest Catch https://wowhead.com/forever/quest=89015
+            -- already in QuestieDB; Assumption: the server completes it and 91608 together (cooccurrence; high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {91608},
+        -- },
+        -- [89015] = { -- Deadliest Catch https://wowhead.com/forever/quest=89015
             -- 89228 "Winter Frontier Fishery" https://wowhead.com/forever/quest=89228
             -- 91610 "Winter Frontier Fishery" https://wowhead.com/forever/quest=91610
-            -- Assumption: offered right after 89228 was turned in (handoff, offer-set, cooccurrence; very high; <10 characters); 91610 was done whenever it was offered (offer-set, cooccurrence; high; <10 characters)
-            [questKeys.preQuestSingle] = {89228,91610},
-        },
-        [89037] = { -- Murloc Thieves https://wowhead.com/forever/quest=89037
+            -- already in QuestieDB; Assumption: offered right after 89228 was turned in (handoff, offer-set, cooccurrence; very high; <10 characters); 91610 was done whenever it was offered (offer-set, cooccurrence; high; <10 characters)
+            -- [questKeys.preQuestSingle] = {89228,91610},
+        -- },
+        -- [89037] = { -- Murloc Thieves https://wowhead.com/forever/quest=89037
             -- 88884 "Highborne Tablets" https://wowhead.com/forever/quest=88884
-            -- Assumption: offered right after 88884 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {88884},
+            -- already in QuestieDB; Assumption: offered right after 88884 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {88884},
             -- 89038 "A Monumental Task" https://wowhead.com/forever/quest=89038
-            -- Assumption: turning it in led straight to 89038 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 89038,
-        },
-        [89038] = { -- A Monumental Task https://wowhead.com/forever/quest=89038
+            -- already in QuestieDB; Assumption: turning it in led straight to 89038 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 89038,
+        -- },
+        -- [89038] = { -- A Monumental Task https://wowhead.com/forever/quest=89038
             -- 89037 "Murloc Thieves" https://wowhead.com/forever/quest=89037
-            -- Assumption: offered right after 89037 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {89037},
+            -- already in QuestieDB; Assumption: offered right after 89037 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {89037},
             -- 89053 "Your Final Reward" https://wowhead.com/forever/quest=89053
-            -- Assumption: turning it in led straight to 89053 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 89053,
-        },
-        [89053] = { -- Your Final Reward https://wowhead.com/forever/quest=89053
+            -- already in QuestieDB; Assumption: turning it in led straight to 89053 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 89053,
+        -- },
+        -- [89053] = { -- Your Final Reward https://wowhead.com/forever/quest=89053
             -- 89038 "A Monumental Task" https://wowhead.com/forever/quest=89038
-            -- Assumption: offered right after 89038 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {89038},
-            -- 89470 "Ill Tidings" https://wowhead.com/forever/quest=89470
-            -- Assumption: turning it in led straight to 89470 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 89470,
-        },
-        [89228] = { -- Winter Frontier Fishery https://wowhead.com/forever/quest=89228
+            -- already in QuestieDB; Assumption: offered right after 89038 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {89038},
+        -- },
+        -- [89228] = { -- Winter Frontier Fishery https://wowhead.com/forever/quest=89228
             -- 89001 "Home on the Range" https://wowhead.com/forever/quest=89001
             -- 91488 "Home on the Range" https://wowhead.com/forever/quest=91488
-            -- Assumption: offered right after 89001 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters); 91488 was done whenever it was offered (offer-set, absence, cooccurrence; high; 10+ characters)
-            [questKeys.preQuestSingle] = {89001,91488},
-        },
-        [89470] = { -- Ill Tidings https://wowhead.com/forever/quest=89470
+            -- already in QuestieDB; Assumption: offered right after 89001 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters); 91488 was done whenever it was offered (offer-set, absence, cooccurrence; high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {89001,91488},
+        -- },
+        -- [89470] = { -- Ill Tidings https://wowhead.com/forever/quest=89470
             -- 89053 "Your Final Reward" https://wowhead.com/forever/quest=89053
-            -- Assumption: offered right after 89053 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {89053},
-        },
-        [90487] = { -- Ancient Allies https://wowhead.com/forever/quest=90487
+            -- already in QuestieDB; Assumption: offered right after 89053 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {89053},
+        -- },
+        -- [90487] = { -- Ancient Allies https://wowhead.com/forever/quest=90487
             -- 93747 "Violence Into Verdure" https://wowhead.com/forever/quest=93747
             -- 95611 "Rites of Respect" https://wowhead.com/forever/quest=95611
-            -- Assumption: offered right after 93747 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters); offered right after 95611 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestGroup] = {93747,95611},
-        },
-        [90647] = { -- The Staff of the Mountain https://wowhead.com/forever/quest=90647
+            -- already in QuestieDB; Assumption: offered right after 93747 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters); offered right after 95611 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestGroup] = {93747,95611},
+        -- },
+        -- [90647] = { -- The Staff of the Mountain https://wowhead.com/forever/quest=90647
             -- 92317 "Stolen Life" https://wowhead.com/forever/quest=92317
             -- 92335 "Ashes of the Legion Ascent" https://wowhead.com/forever/quest=92335
             -- 92500 "A Bit of the Sky" https://wowhead.com/forever/quest=92500
-            -- Assumption: offered right after 92317, 92335 was turned in (handoff, offer-set, cooccurrence; very high; <10 characters); offered right after 92500 was turned in (handoff, offer-set, cooccurrence; high; <10 characters)
-            [questKeys.preQuestGroup] = {92317,92335,92500},
-        },
-        [90750] = { -- More Work? https://wowhead.com/forever/quest=90750
+            -- already in QuestieDB; Assumption: offered right after 92317, 92335, 92500 was turned in (handoff, offer-set, cooccurrence; very high; <10 characters)
+            -- [questKeys.preQuestGroup] = {92317,92335,92500},
+        -- },
+        -- [90750] = { -- More Work? https://wowhead.com/forever/quest=90750
             -- 92449 "Blight No More" https://wowhead.com/forever/quest=92449
             -- 95026 "Blight No More" https://wowhead.com/forever/quest=95026
-            -- Assumption: offered right after 92449, 95026 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {92449,95026},
-            -- 95218 "More of the Same" https://wowhead.com/forever/quest=95218
-            -- Assumption: turning it in led straight to 95218 (handoff; medium; <10 characters)
-            [questKeys.nextQuestInChain] = 95218,
-        },
-        [90854] = { -- Leather for Inclement Weather https://wowhead.com/forever/quest=90854
+            -- already in QuestieDB; Assumption: offered right after 92449 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters); 95026 was done whenever it was offered (offer-set, absence, cooccurrence; high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {92449,95026},
+        -- },
+        -- [90854] = { -- Leather for Inclement Weather https://wowhead.com/forever/quest=90854
             -- 92449 "Blight No More" https://wowhead.com/forever/quest=92449
             -- 95026 "Blight No More" https://wowhead.com/forever/quest=95026
-            -- Assumption: offered right after 92449, 95026 was turned in (handoff, offer-set, absence; very high; <10 characters)
-            [questKeys.preQuestSingle] = {92449,95026},
-        },
+            -- already in QuestieDB; Assumption: 92449 was done whenever it was offered (offer-set, absence; medium; <10 characters); offered right after 95026 was turned in (handoff, offer-set, absence; high; <10 characters)
+            -- [questKeys.preQuestSingle] = {92449,95026},
+        -- },
         -- [91208] = { -- Coming to Terms https://wowhead.com/forever/quest=91208
             -- 90902 "Rediscovering the Light" https://wowhead.com/forever/quest=90902
             -- already in QuestieDB; Assumption: offered right after 90902 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {90902},
         -- },
-        [91285] = { -- Murlocs at the Gates https://wowhead.com/forever/quest=91285
+        -- [91285] = { -- Murlocs at the Gates https://wowhead.com/forever/quest=91285
             -- 91294 "Touring the Grounds" https://wowhead.com/forever/quest=91294
-            -- Assumption: turning it in led straight to 91294 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 91294,
-        },
+            -- already in QuestieDB; Assumption: turning it in led straight to 91294 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 91294,
+        -- },
         -- [91294] = { -- Touring the Grounds https://wowhead.com/forever/quest=91294
             -- 91285 "Murlocs at the Gates" https://wowhead.com/forever/quest=91285
             -- already in QuestieDB; Assumption: offered right after 91285 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
@@ -13900,115 +13798,112 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 91294 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {91294},
         -- },
-        [91497] = { -- Seals of the Sin'dorei https://wowhead.com/forever/quest=91497
+        [91488] = { -- Home on the Range https://wowhead.com/forever/quest=91488
+            -- 89001 "Home on the Range" https://wowhead.com/forever/quest=89001
+            -- Assumption: the server completes it and 89001 together (cooccurrence; high; 100+ characters)
+            [questKeys.exclusiveTo] = {89001},
+        },
+        -- [91497] = { -- Seals of the Sin'dorei https://wowhead.com/forever/quest=91497
             -- 3505 "Betrayed" https://wowhead.com/forever/quest=3505
-            -- Assumption: offered right after 3505 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {3505},
+            -- already in QuestieDB; Assumption: offered right after 3505 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {3505},
             -- 91500 "An Explosive Gambit" https://wowhead.com/forever/quest=91500
-            -- Assumption: turning it in led straight to 91500 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 91500,
-        },
-        [91500] = { -- An Explosive Gambit https://wowhead.com/forever/quest=91500
+            -- already in QuestieDB; Assumption: turning it in led straight to 91500 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 91500,
+        -- },
+        -- [91500] = { -- An Explosive Gambit https://wowhead.com/forever/quest=91500
             -- 91497 "Seals of the Sin'dorei" https://wowhead.com/forever/quest=91497
-            -- Assumption: offered right after 91497 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {91497},
+            -- already in QuestieDB; Assumption: offered right after 91497 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {91497},
             -- 91531 "Revenge Exacted" https://wowhead.com/forever/quest=91531
-            -- Assumption: turning it in led straight to 91531 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 91531,
-        },
-        [91531] = { -- Revenge Exacted https://wowhead.com/forever/quest=91531
+            -- already in QuestieDB; Assumption: turning it in led straight to 91531 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 91531,
+        -- },
+        -- [91531] = { -- Revenge Exacted https://wowhead.com/forever/quest=91531
             -- 91500 "An Explosive Gambit" https://wowhead.com/forever/quest=91500
-            -- Assumption: offered right after 91500 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {91500},
-        },
-        [91538] = { -- Sin'dorei Tome of Summoning https://wowhead.com/forever/quest=91538
+            -- already in QuestieDB; Assumption: offered right after 91500 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {91500},
+        -- },
+        -- [91538] = { -- Sin'dorei Tome of Summoning https://wowhead.com/forever/quest=91538
             -- 91497 "Seals of the Sin'dorei" https://wowhead.com/forever/quest=91497
-            -- Assumption: 91497 was done whenever it was offered (offer-set, cooccurrence; high; 10+ characters)
-            [questKeys.preQuestSingle] = {91497},
+            -- already in QuestieDB; Assumption: 91497 was done whenever it was offered (offer-set, cooccurrence; high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {91497},
             -- 91547 "Sin'dorei Tome of Summoning" https://wowhead.com/forever/quest=91547
-            -- Assumption: turning it in led straight to 91547 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 91547,
-        },
-        [91547] = { -- Sin'dorei Tome of Summoning https://wowhead.com/forever/quest=91547
+            -- already in QuestieDB; Assumption: turning it in led straight to 91547 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 91547,
+        -- },
+        -- [91547] = { -- Sin'dorei Tome of Summoning https://wowhead.com/forever/quest=91547
             -- 91538 "Sin'dorei Tome of Summoning" https://wowhead.com/forever/quest=91538
-            -- Assumption: offered right after 91538 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {91538},
-            -- 91548 "Vek'zol" https://wowhead.com/forever/quest=91548
-            -- Assumption: turning it in led straight to 91548 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 91548,
-        },
-        [91548] = { -- Vek'zol https://wowhead.com/forever/quest=91548
+            -- already in QuestieDB; Assumption: offered right after 91538 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {91538},
+        -- },
+        -- [91548] = { -- Vek'zol https://wowhead.com/forever/quest=91548
             -- 91547 "Sin'dorei Tome of Summoning" https://wowhead.com/forever/quest=91547
-            -- Assumption: offered right after 91547 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {91547},
-        },
-        [91569] = { -- Blue Gold https://wowhead.com/forever/quest=91569
+            -- already in QuestieDB; Assumption: offered right after 91547 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {91547},
+        -- },
+        -- [91569] = { -- Blue Gold https://wowhead.com/forever/quest=91569
             -- 91685 "Ley of the Land" https://wowhead.com/forever/quest=91685
-            -- Assumption: turning it in led straight to 91685 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 91685,
-        },
-        [91608] = { -- Gettin' Buzzed https://wowhead.com/forever/quest=91608
+            -- already in QuestieDB; Assumption: turning it in led straight to 91685 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 91685,
+        -- },
+        -- [91608] = { -- Gettin' Buzzed https://wowhead.com/forever/quest=91608
             -- 89001 "Home on the Range" https://wowhead.com/forever/quest=89001
             -- 91488 "Home on the Range" https://wowhead.com/forever/quest=91488
-            -- Assumption: 89001 was done whenever it was offered (offer-set, absence, cooccurrence; very high; 100+ characters); offered right after 91488 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {89001,91488},
+            -- already in QuestieDB; Assumption: 89001 was done whenever it was offered (offer-set, absence, cooccurrence; high; 100+ characters); offered right after 91488 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {89001,91488},
             -- 89013 "Gettin' Buzzed" https://wowhead.com/forever/quest=89013
-            -- Assumption: the server completes it and 89013 together (cooccurrence; medium; 100+ characters)
-            [questKeys.exclusiveTo] = {89013},
-        },
-        [91610] = { -- Winter Frontier Fishery https://wowhead.com/forever/quest=91610
+            -- already in QuestieDB; Assumption: the server completes it and 89013 together (cooccurrence; high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {89013},
+        -- },
+        -- [91610] = { -- Winter Frontier Fishery https://wowhead.com/forever/quest=91610
             -- 89001 "Home on the Range" https://wowhead.com/forever/quest=89001
             -- 91488 "Home on the Range" https://wowhead.com/forever/quest=91488
-            -- Assumption: 89001 was done whenever it was offered (offer-set, absence, cooccurrence; high; 10+ characters); offered right after 91488 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {89001,91488},
-        },
-        [91685] = { -- Ley of the Land https://wowhead.com/forever/quest=91685
+            -- already in QuestieDB; Assumption: 89001 was done whenever it was offered (offer-set, absence, cooccurrence; high; 10+ characters); offered right after 91488 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {89001,91488},
+        -- },
+        -- [91685] = { -- Ley of the Land https://wowhead.com/forever/quest=91685
             -- 91569 "Blue Gold" https://wowhead.com/forever/quest=91569
-            -- Assumption: offered right after 91569 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {91569},
-        },
-        [91688] = { -- To the Summit of Eternity https://wowhead.com/forever/quest=91688
+            -- already in QuestieDB; Assumption: offered right after 91569 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {91569},
+        -- },
+        -- [91688] = { -- To the Summit of Eternity https://wowhead.com/forever/quest=91688
             -- 92449 "Blight No More" https://wowhead.com/forever/quest=92449
             -- 92591 "Final Death" https://wowhead.com/forever/quest=92591
-            -- Assumption: offered right after 92449 was turned in (handoff, offer-set, absence, cooccurrence; medium; 10+ characters); offered right after 92591 was turned in (handoff, offer-set, absence; high; 10+ characters)
-            [questKeys.preQuestGroup] = {92449,92591},
-        },
-        [91696] = { -- Open Season https://wowhead.com/forever/quest=91696
+            -- already in QuestieDB; Assumption: offered right after 92449 was turned in (handoff, offer-set, absence, cooccurrence; high; 10+ characters); offered right after 92591 was turned in (handoff, offer-set, absence; very high; 10+ characters)
+            -- [questKeys.preQuestGroup] = {92449,92591},
+        -- },
+        -- [91696] = { -- Open Season https://wowhead.com/forever/quest=91696
             -- 91698 "Barkskin Breakout" https://wowhead.com/forever/quest=91698
-            -- Assumption: offered right after 91698 was turned in (handoff, offer-set, cooccurrence; high; <10 characters)
-            [questKeys.preQuestSingle] = {91698},
-        },
-        [91697] = { -- Meet the Elders https://wowhead.com/forever/quest=91697
+            -- already in QuestieDB; Assumption: offered right after 91698 was turned in (handoff, offer-set, cooccurrence; very high; <10 characters)
+            -- [questKeys.preQuestSingle] = {91698},
+        -- },
+        -- [91697] = { -- Meet the Elders https://wowhead.com/forever/quest=91697
             -- 93831 "Sweetpaw Jam" https://wowhead.com/forever/quest=93831
-            -- Assumption: offered right after 93831 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {93831},
-        },
-        [91698] = { -- Barkskin Breakout https://wowhead.com/forever/quest=91698
-            -- 91696 "Open Season" https://wowhead.com/forever/quest=91696
-            -- Assumption: turning it in led straight to 91696 (handoff; medium; <10 characters)
-            [questKeys.nextQuestInChain] = 91696,
-        },
-        [91734] = { -- Remote Contact https://wowhead.com/forever/quest=91734
+            -- already in QuestieDB; Assumption: offered right after 93831 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {93831},
+        -- },
+        -- [91734] = { -- Remote Contact https://wowhead.com/forever/quest=91734
             -- 91735 "Remote Contact" https://wowhead.com/forever/quest=91735
             -- 91737 "Remote Contact" https://wowhead.com/forever/quest=91737
-            -- Assumption: offer lists show it and 91735 exclude each other (absence, cooccurrence; medium; 10+ characters); the server completes it and 91737 together (cooccurrence; low; 10+ characters), kept below the min score for its accepted exclusive group
-            [questKeys.exclusiveTo] = {91735,91737},
-        },
-        [91735] = { -- Remote Contact https://wowhead.com/forever/quest=91735
+            -- already in QuestieDB; Assumption: offer lists show it and 91735 exclude each other (absence, cooccurrence; high; 10+ characters); the server completes it and 91737 together (cooccurrence; medium; 10+ characters)
+            -- [questKeys.exclusiveTo] = {91735,91737},
+        -- },
+        -- [91735] = { -- Remote Contact https://wowhead.com/forever/quest=91735
             -- 91734 "Remote Contact" https://wowhead.com/forever/quest=91734
             -- 91737 "Remote Contact" https://wowhead.com/forever/quest=91737
-            -- Assumption: offer lists show it and 91734, 91737 exclude each other (absence, cooccurrence; medium; 10+ characters)
-            [questKeys.exclusiveTo] = {91734,91737},
-        },
-        [91737] = { -- Remote Contact https://wowhead.com/forever/quest=91737
+            -- already in QuestieDB; Assumption: offer lists show it and 91734, 91737 exclude each other (absence, cooccurrence; high; 10+ characters)
+            -- [questKeys.exclusiveTo] = {91734,91737},
+        -- },
+        -- [91737] = { -- Remote Contact https://wowhead.com/forever/quest=91737
             -- 91734 "Remote Contact" https://wowhead.com/forever/quest=91734
             -- 91735 "Remote Contact" https://wowhead.com/forever/quest=91735
-            -- Assumption: the server completes it and 91734 together (cooccurrence; low; 10+ characters), kept below the min score for its accepted exclusive group; offer lists show it and 91735 exclude each other (absence, cooccurrence; medium; 10+ characters)
-            [questKeys.exclusiveTo] = {91734,91735},
-        },
+            -- already in QuestieDB; Assumption: the server completes it and 91734 together (cooccurrence; medium; 10+ characters); offer lists show it and 91735 exclude each other (absence, cooccurrence; high; 10+ characters)
+            -- [questKeys.exclusiveTo] = {91734,91735},
+        -- },
         -- [91743] = { -- Rascally Rodents https://wowhead.com/forever/quest=91743
             -- 91741 "Nibbled-On Book" https://wowhead.com/forever/quest=91741
-            -- not applied: an authored fix sets the prerequisites; Assumption: offered right after 91741 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- not applied: implied, as it comes before 92124, this quest's parent quest or other prerequisites; Assumption: offered right after 91741 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {91741},
             -- 91745 "Mining Consultant" https://wowhead.com/forever/quest=91745
             -- already in QuestieDB; Assumption: turning it in led straight to 91745 (handoff; high; 100+ characters)
@@ -14043,12 +13938,12 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: turning it in led straight to 91772 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 91772,
         -- },
-        [91770] = { -- Bark Bite https://wowhead.com/forever/quest=91770
+        -- [91770] = { -- Bark Bite https://wowhead.com/forever/quest=91770
             -- 91754 "Rub Some Dirt In It" https://wowhead.com/forever/quest=91754
             -- 91755 "Leaves to Ligatures" https://wowhead.com/forever/quest=91755
-            -- Assumption: offered right after 91754, 91755 was turned in (handoff, offer-set, absence, cooccurrence; high; 10+ characters)
-            [questKeys.preQuestGroup] = {91754,91755},
-        },
+            -- already in QuestieDB; Assumption: offered right after 91754 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters); offered right after 91755 was turned in (handoff, offer-set, absence, cooccurrence; high; 10+ characters)
+            -- [questKeys.preQuestGroup] = {91754,91755},
+        -- },
         -- [91772] = { -- Shhh! We're Hunting Kobolds https://wowhead.com/forever/quest=91772
             -- 91758 "Follow That Kobold!" https://wowhead.com/forever/quest=91758
             -- already in QuestieDB; Assumption: offered right after 91758 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
@@ -14107,11 +14002,11 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: turning it in led straight to 96204 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 96204,
         -- },
-        [91881] = { -- The Western Post https://wowhead.com/forever/quest=91881
+        -- [91881] = { -- The Western Post https://wowhead.com/forever/quest=91881
             -- 95316 "The Experimental Method" https://wowhead.com/forever/quest=95316
-            -- Assumption: offered right after 95316 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {95316},
-        },
+            -- already in QuestieDB; Assumption: offered right after 95316 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {95316},
+        -- },
         -- [91920] = { -- Wild Eyes https://wowhead.com/forever/quest=91920
             -- 430 "Return to Quinn" https://wowhead.com/forever/quest=430
             -- already in QuestieDB; Assumption: offered right after 430 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
@@ -14125,55 +14020,41 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 91920 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {91920},
         -- },
-        [92008] = { -- Premiere Parts https://wowhead.com/forever/quest=92008
+        -- [92008] = { -- Premiere Parts https://wowhead.com/forever/quest=92008
             -- 92009 "Crate Expectations" https://wowhead.com/forever/quest=92009
-            -- Assumption: turning it in led straight to 92009 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 92009,
-        },
-        [92009] = { -- Crate Expectations https://wowhead.com/forever/quest=92009
+            -- already in QuestieDB; Assumption: turning it in led straight to 92009 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 92009,
+        -- },
+        -- [92009] = { -- Crate Expectations https://wowhead.com/forever/quest=92009
             -- 92008 "Premiere Parts" https://wowhead.com/forever/quest=92008
-            -- Assumption: offered right after 92008 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {92008},
-            -- 92011 "Rubble Rummage" https://wowhead.com/forever/quest=92011
-            -- Assumption: turning it in led straight to 92011 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 92011,
-        },
-        [92011] = { -- Rubble Rummage https://wowhead.com/forever/quest=92011
+            -- already in QuestieDB; Assumption: offered right after 92008 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {92008},
+        -- },
+        -- [92011] = { -- Rubble Rummage https://wowhead.com/forever/quest=92011
             -- 92009 "Crate Expectations" https://wowhead.com/forever/quest=92009
-            -- Assumption: offered right after 92009 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {92009},
-            -- 92328 "Siegecraft" https://wowhead.com/forever/quest=92328
-            -- Assumption: turning it in led straight to 92328 (handoff; medium; <10 characters)
-            [questKeys.nextQuestInChain] = 92328,
-        },
-        [92014] = { -- Fox Hole https://wowhead.com/forever/quest=92014
+            -- already in QuestieDB; Assumption: offered right after 92009 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {92009},
+        -- },
+        -- [92014] = { -- Fox Hole https://wowhead.com/forever/quest=92014
             -- 92015 "Area Denial Skunks" https://wowhead.com/forever/quest=92015
-            -- Assumption: offered right after 92015 was turned in (handoff, offer-set, absence, cooccurrence; very high; <10 characters)
-            [questKeys.preQuestSingle] = {92015},
-        },
-        [92015] = { -- Area Denial Skunks https://wowhead.com/forever/quest=92015
-            -- 92014 "Fox Hole" https://wowhead.com/forever/quest=92014
-            -- Assumption: turning it in led straight to 92014 (handoff; medium; <10 characters)
-            [questKeys.nextQuestInChain] = 92014,
-        },
-        [92016] = { -- Rootwork https://wowhead.com/forever/quest=92016
+            -- already in QuestieDB; Assumption: offered right after 92015 was turned in (handoff, offer-set, absence, cooccurrence; very high; <10 characters)
+            -- [questKeys.preQuestSingle] = {92015},
+        -- },
+        -- [92016] = { -- Rootwork https://wowhead.com/forever/quest=92016
             -- 92017 "Cleansing Winds" https://wowhead.com/forever/quest=92017
-            -- Assumption: 92017 was done whenever it was offered (offer-set, cooccurrence; high; 10+ characters)
-            [questKeys.preQuestSingle] = {92017},
-        },
-        [92064] = { -- Tree Free https://wowhead.com/forever/quest=92064
+            -- already in QuestieDB; Assumption: 92017 was done whenever it was offered (offer-set, cooccurrence; high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {92017},
+        -- },
+        -- [92064] = { -- Tree Free https://wowhead.com/forever/quest=92064
             -- 92702 "Branch Out" https://wowhead.com/forever/quest=92702
-            -- Assumption: offered right after 92702 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {92702},
-            -- 96559 "Supply Drop" https://wowhead.com/forever/quest=96559
-            -- Assumption: turning it in led straight to 96559 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 96559,
-        },
-        [92101] = { -- Lifted by Legacy https://wowhead.com/forever/quest=92101
+            -- already in QuestieDB; Assumption: offered right after 92702 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {92702},
+        -- },
+        -- [92101] = { -- Lifted by Legacy https://wowhead.com/forever/quest=92101
             -- 96550 "Battle Recall" https://wowhead.com/forever/quest=96550
-            -- Assumption: offered right after 96550 was turned in (handoff, offer-set, absence, cooccurrence; very high; <10 characters)
-            [questKeys.preQuestSingle] = {96550},
-        },
+            -- already in QuestieDB; Assumption: offered right after 96550 was turned in (handoff, offer-set, absence, cooccurrence; very high; <10 characters)
+            -- [questKeys.preQuestSingle] = {96550},
+        -- },
         -- [92109] = { -- My First Alchemy Set https://wowhead.com/forever/quest=92109
             -- 92110 "My First Real Potion" https://wowhead.com/forever/quest=92110
             -- already in QuestieDB; Assumption: turning it in led straight to 92110 (handoff; high; 100+ characters)
@@ -14184,122 +14065,119 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 92109 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {92109},
         -- },
-        [92111] = { -- Of Friend and Fur https://wowhead.com/forever/quest=92111
+        -- [92111] = { -- Of Friend and Fur https://wowhead.com/forever/quest=92111
             -- 93952 "Balance Through Strength" https://wowhead.com/forever/quest=93952
-            -- Assumption: offered right after 93952 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {93952},
-            -- 93831 "Sweetpaw Jam" https://wowhead.com/forever/quest=93831
-            -- Assumption: turning it in led straight to 93831 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 93831,
-        },
+            -- already in QuestieDB; Assumption: offered right after 93952 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {93952},
+        -- },
         -- [92124] = { -- Book Inventory https://wowhead.com/forever/quest=92124
             -- 91741 "Nibbled-On Book" https://wowhead.com/forever/quest=91741
             -- already in QuestieDB; Assumption: offered right after 91741 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {91741},
         -- },
-        [92169] = { -- Paying Back the Pact https://wowhead.com/forever/quest=92169
+        -- [92169] = { -- Paying Back the Pact https://wowhead.com/forever/quest=92169
             -- 90647 "The Staff of the Mountain" https://wowhead.com/forever/quest=90647
-            -- Assumption: offered right after 90647 was turned in (handoff, offer-set, absence, cooccurrence; high; <10 characters)
-            [questKeys.preQuestSingle] = {90647},
-        },
-        [92171] = { -- Taking to New Heights https://wowhead.com/forever/quest=92171
+            -- already in QuestieDB; Assumption: offered right after 90647 was turned in (handoff, offer-set, absence, cooccurrence; high; <10 characters)
+            -- [questKeys.preQuestSingle] = {90647},
+        -- },
+        -- [92171] = { -- Taking to New Heights https://wowhead.com/forever/quest=92171
             -- 93773 "The Pact" https://wowhead.com/forever/quest=93773
-            -- Assumption: offered right after 93773 was turned in (handoff, offer-set, absence, cooccurrence; high; 10+ characters)
-            [questKeys.preQuestSingle] = {93773},
-            -- 92500 "A Bit of the Sky" https://wowhead.com/forever/quest=92500
-            -- Assumption: turning it in led straight to 92500 (handoff; medium; <10 characters)
-            [questKeys.nextQuestInChain] = 92500,
-        },
-        [92317] = { -- Stolen Life https://wowhead.com/forever/quest=92317
+            -- already in QuestieDB; Assumption: offered right after 93773 was turned in (handoff, offer-set, absence, cooccurrence; high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {93773},
+        -- },
+        -- [92317] = { -- Stolen Life https://wowhead.com/forever/quest=92317
             -- 96939 "The Balance of Life and Death" https://wowhead.com/forever/quest=96939
-            -- Assumption: offered right after 96939 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {96939},
-        },
-        [92328] = { -- Siegecraft https://wowhead.com/forever/quest=92328
+            -- already in QuestieDB; Assumption: offered right after 96939 was turned in (handoff, offer-set, absence, cooccurrence; high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {96939},
+        -- },
+        -- [92328] = { -- Siegecraft https://wowhead.com/forever/quest=92328
             -- 92011 "Rubble Rummage" https://wowhead.com/forever/quest=92011
-            -- Assumption: offered right after 92011 was turned in (handoff, offer-set, absence, cooccurrence; very high; <10 characters)
-            [questKeys.preQuestSingle] = {92011},
-            -- 92329 "Drum Up Trouble" https://wowhead.com/forever/quest=92329
-            -- Assumption: turning it in led straight to 92329 (handoff; medium; <10 characters)
-            [questKeys.nextQuestInChain] = 92329,
-        },
-        [92329] = { -- Drum Up Trouble https://wowhead.com/forever/quest=92329
+            -- already in QuestieDB; Assumption: offered right after 92011 was turned in (handoff, offer-set, absence, cooccurrence; very high; <10 characters)
+            -- [questKeys.preQuestSingle] = {92011},
+        -- },
+        -- [92329] = { -- Drum Up Trouble https://wowhead.com/forever/quest=92329
             -- 92328 "Siegecraft" https://wowhead.com/forever/quest=92328
-            -- Assumption: offered right after 92328 was turned in (handoff, offer-set, absence, cooccurrence; very high; <10 characters)
-            [questKeys.preQuestSingle] = {92328},
-        },
-        [92335] = { -- Ashes of the Legion Ascent https://wowhead.com/forever/quest=92335
+            -- already in QuestieDB; Assumption: offered right after 92328 was turned in (handoff, offer-set, absence, cooccurrence; very high; <10 characters)
+            -- [questKeys.preQuestSingle] = {92328},
+        -- },
+        -- [92335] = { -- Ashes of the Legion Ascent https://wowhead.com/forever/quest=92335
             -- 96964 "A Clever Creature" https://wowhead.com/forever/quest=96964
-            -- Assumption: offered right after 96964 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {96964},
-        },
-        [92343] = { -- Get to the Roots of It https://wowhead.com/forever/quest=92343
+            -- already in QuestieDB; Assumption: offered right after 96964 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {96964},
+        -- },
+        -- [92343] = { -- Get to the Roots of It https://wowhead.com/forever/quest=92343
             -- 92345 "Beneath Nordrassil" https://wowhead.com/forever/quest=92345
             -- 92346 "Beneath Nordrassil" https://wowhead.com/forever/quest=92346
-            -- Assumption: 92345 was done whenever it was offered (offer-set, absence, cooccurrence; high; 10+ characters); offered right after 92346 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {92345,92346},
-        },
-        [92344] = { -- Get to the Roots of It https://wowhead.com/forever/quest=92344
+            -- already in QuestieDB; Assumption: 92345 was done whenever it was offered (offer-set, absence, cooccurrence; high; 10+ characters); offered right after 92346 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {92345,92346},
+        -- },
+        -- [92344] = { -- Get to the Roots of It https://wowhead.com/forever/quest=92344
             -- 92345 "Beneath Nordrassil" https://wowhead.com/forever/quest=92345
             -- 92346 "Beneath Nordrassil" https://wowhead.com/forever/quest=92346
-            -- Assumption: offered right after 92345 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters); 92346 was done whenever it was offered (offer-set, absence, cooccurrence; high; 10+ characters)
-            [questKeys.preQuestSingle] = {92345,92346},
-        },
+            -- already in QuestieDB; Assumption: offered right after 92345 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters); 92346 was done whenever it was offered (offer-set, absence, cooccurrence; high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {92345,92346},
+        -- },
         [92345] = { -- Beneath Nordrassil https://wowhead.com/forever/quest=92345
+            -- 92346 "Beneath Nordrassil" https://wowhead.com/forever/quest=92346
+            -- Assumption: the server completes it and 92346 together (cooccurrence; high; 100+ characters)
+            [questKeys.exclusiveTo] = {92346},
             -- 92344 "Get to the Roots of It" https://wowhead.com/forever/quest=92344
-            -- Assumption: turning it in led straight to 92344 (handoff; high; 10+ characters)
-            [questKeys.nextQuestInChain] = 92344,
+            -- already in QuestieDB; Assumption: turning it in led straight to 92344 (handoff; high; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 92344,
         },
         [92346] = { -- Beneath Nordrassil https://wowhead.com/forever/quest=92346
+            -- 92345 "Beneath Nordrassil" https://wowhead.com/forever/quest=92345
+            -- Assumption: the server completes it and 92345 together (cooccurrence; high; 100+ characters)
+            [questKeys.exclusiveTo] = {92345},
             -- 92343 "Get to the Roots of It" https://wowhead.com/forever/quest=92343
-            -- Assumption: turning it in led straight to 92343 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 92343,
+            -- already in QuestieDB; Assumption: turning it in led straight to 92343 (handoff; high; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 92343,
         },
         -- [92415] = { -- Remember That I Love You https://wowhead.com/forever/quest=92415
             -- 95161 "Remember That I Love You" https://wowhead.com/forever/quest=95161
             -- already in QuestieDB; Assumption: turning it in led straight to 95161 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 95161,
         -- },
-        [92432] = { -- An Alarming Request https://wowhead.com/forever/quest=92432
+        -- [92432] = { -- An Alarming Request https://wowhead.com/forever/quest=92432
             -- 92458 "Heart of Disruption" https://wowhead.com/forever/quest=92458
-            -- Assumption: turning it in led straight to 92458 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 92458,
-        },
-        [92434] = { -- Blood in the Streets https://wowhead.com/forever/quest=92434
+            -- already in QuestieDB; Assumption: turning it in led straight to 92458 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 92458,
+        -- },
+        -- [92434] = { -- Blood in the Streets https://wowhead.com/forever/quest=92434
             -- 545 "Dalaran Patrols" https://wowhead.com/forever/quest=545
-            -- Assumption: offered right after 545 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {545},
+            -- already in QuestieDB; Assumption: offered right after 545 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {545},
             -- 96984 "Heart of Disruption" https://wowhead.com/forever/quest=96984
-            -- Assumption: turning it in led straight to 96984 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 96984,
-        },
-        [92446] = { -- Head Scratcher https://wowhead.com/forever/quest=92446
+            -- already in QuestieDB; Assumption: turning it in led straight to 96984 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 96984,
+        -- },
+        -- [92446] = { -- Head Scratcher https://wowhead.com/forever/quest=92446
             -- 92609 "Feathers in Flight" https://wowhead.com/forever/quest=92609
-            -- Assumption: offered right after 92609 was turned in (handoff, offer-set, absence, cooccurrence; medium; <10 characters)
-            [questKeys.preQuestSingle] = {92609},
-        },
-        [92457] = { -- Starving Arcane https://wowhead.com/forever/quest=92457
+            -- already in QuestieDB; Assumption: offered right after 92609 was turned in (handoff, offer-set, absence, cooccurrence; medium; <10 characters)
+            -- [questKeys.preQuestSingle] = {92609},
+        -- },
+        -- [92457] = { -- Starving Arcane https://wowhead.com/forever/quest=92457
             -- 92432 "An Alarming Request" https://wowhead.com/forever/quest=92432
-            -- Assumption: offered right after 92432 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {92432},
-        },
-        [92458] = { -- Heart of Disruption https://wowhead.com/forever/quest=92458
+            -- already in QuestieDB; Assumption: offered right after 92432 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {92432},
+        -- },
+        -- [92458] = { -- Heart of Disruption https://wowhead.com/forever/quest=92458
             -- 92432 "An Alarming Request" https://wowhead.com/forever/quest=92432
-            -- Assumption: offered right after 92432 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {92432},
+            -- already in QuestieDB; Assumption: offered right after 92432 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {92432},
             -- 96984 "Heart of Disruption" https://wowhead.com/forever/quest=96984
-            -- Assumption: the server completes it and 96984 together (cooccurrence; very high; 100+ characters)
-            [questKeys.exclusiveTo] = {96984},
+            -- already in QuestieDB; Assumption: the server completes it and 96984 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {96984},
             -- 92459 "Friend of the Kirin Tor" https://wowhead.com/forever/quest=92459
-            -- Assumption: turning it in led straight to 92459 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 92459,
-        },
-        [92459] = { -- Friend of the Kirin Tor https://wowhead.com/forever/quest=92459
+            -- already in QuestieDB; Assumption: turning it in led straight to 92459 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 92459,
+        -- },
+        -- [92459] = { -- Friend of the Kirin Tor https://wowhead.com/forever/quest=92459
             -- 92458 "Heart of Disruption" https://wowhead.com/forever/quest=92458
             -- 96984 "Heart of Disruption" https://wowhead.com/forever/quest=96984
-            -- Assumption: offered right after 92458 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters); 96984 was done whenever it was offered (offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {92458,96984},
-        },
+            -- already in QuestieDB; Assumption: offered right after 92458 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters); 96984 was done whenever it was offered (offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {92458,96984},
+        -- },
         -- [92460] = { -- Coming of Age https://wowhead.com/forever/quest=92460
             -- 92461 "Harmony in Balance" https://wowhead.com/forever/quest=92461
             -- already in QuestieDB; Assumption: turning it in led straight to 92461 (handoff; high; 100+ characters)
@@ -14328,10 +14206,10 @@ function ForeverQuestRelationTraces:Load()
         -- [92466] = { -- Call of Earth https://wowhead.com/forever/quest=92466
             -- 1516 "Call of Earth" https://wowhead.com/forever/quest=1516
             -- 1519 "Call of Earth" https://wowhead.com/forever/quest=1519
-            -- already in QuestieDB; Assumption: the server completes it and 1516, 1519 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 1516, 1519 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {1516,1519},
             -- 92467 "Call of Earth" https://wowhead.com/forever/quest=92467
-            -- already in QuestieDB; Assumption: turning it in led straight to 92467 (handoff; high; 100+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 92467 (handoff; medium; 100+ characters)
             -- [questKeys.nextQuestInChain] = 92467,
         -- },
         -- [92467] = { -- Call of Earth https://wowhead.com/forever/quest=92467
@@ -14341,7 +14219,7 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: 1516, 1519 was done whenever it was offered (offer-set, cooccurrence; medium; 100+ characters); offered right after 92466 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {1516,1519,92466},
             -- 92468 "Call of Earth" https://wowhead.com/forever/quest=92468
-            -- already in QuestieDB; Assumption: turning it in led straight to 92468 (handoff; high; 100+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 92468 (handoff; medium; 100+ characters)
             -- [questKeys.nextQuestInChain] = 92468,
         -- },
         -- [92468] = { -- Call of Earth https://wowhead.com/forever/quest=92468
@@ -14354,19 +14232,19 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 92465 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {92465},
         -- },
-        [92470] = { -- Foul Matriarch https://wowhead.com/forever/quest=92470
+        -- [92470] = { -- Foul Matriarch https://wowhead.com/forever/quest=92470
             -- 92471 "Aetheen of the Gales" https://wowhead.com/forever/quest=92471
             -- already in QuestieDB; Assumption: offered right after 92471 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {92471},
             -- 92472 "The Next Step" https://wowhead.com/forever/quest=92472
-            -- Assumption: turning it in led straight to 92472 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 92472,
-        },
-        [92471] = { -- Aetheen of the Gales https://wowhead.com/forever/quest=92471
+            -- already in QuestieDB; Assumption: turning it in led straight to 92472 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 92472,
+        -- },
+        -- [92471] = { -- Aetheen of the Gales https://wowhead.com/forever/quest=92471
             -- 92470 "Foul Matriarch" https://wowhead.com/forever/quest=92470
-            -- Assumption: turning it in led straight to 92470 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 92470,
-        },
+            -- already in QuestieDB; Assumption: turning it in led straight to 92470 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 92470,
+        -- },
         -- [92472] = { -- The Next Step https://wowhead.com/forever/quest=92472
             -- 92470 "Foul Matriarch" https://wowhead.com/forever/quest=92470
             -- already in QuestieDB; Assumption: offered right after 92470 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
@@ -14402,20 +14280,21 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 92461 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {92461},
         -- },
-        [92500] = { -- A Bit of the Sky https://wowhead.com/forever/quest=92500
+        -- [92500] = { -- A Bit of the Sky https://wowhead.com/forever/quest=92500
             -- 92171 "Taking to New Heights" https://wowhead.com/forever/quest=92171
-            -- Assumption: offered right after 92171 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {92171},
-        },
-        [92514] = { -- Welcome to Shen'dar Village https://wowhead.com/forever/quest=92514
+            -- already in QuestieDB; Assumption: offered right after 92171 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {92171},
+        -- },
+        -- [92514] = { -- Welcome to Shen'dar Village https://wowhead.com/forever/quest=92514
             -- 92517 "The Criminal Element" https://wowhead.com/forever/quest=92517
-            -- Assumption: turning it in led straight to 92517 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 92517,
-        },
+            -- not applied: an authored fix sets this field; Assumption: turning it in led straight to 92517 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 92517,
+        -- },
         -- [92515] = { -- The Problem With Prideclaws https://wowhead.com/forever/quest=92515
+            -- 92514 "Welcome to Shen'dar Village" https://wowhead.com/forever/quest=92514
             -- 93461 "Welcome to Shen'dar Village" https://wowhead.com/forever/quest=93461
-            -- already in QuestieDB; Assumption: 93461 was done whenever it was offered (offer-set, absence, cooccurrence; medium; 100+ characters)
-            -- [questKeys.preQuestSingle] = {93461},
+            -- already in QuestieDB; Assumption: 92514, 93461 was done whenever it was offered (offer-set, absence, cooccurrence; medium; 100+ characters)
+            -- [questKeys.preQuestSingle] = {92514,93461},
         -- },
         -- [92517] = { -- The Criminal Element https://wowhead.com/forever/quest=92517
             -- 92514 "Welcome to Shen'dar Village" https://wowhead.com/forever/quest=92514
@@ -14423,19 +14302,19 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 92514, 93461 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {92514,93461},
         -- },
-        [92519] = { -- Ward Restocking https://wowhead.com/forever/quest=92519
+        -- [92519] = { -- Ward Restocking https://wowhead.com/forever/quest=92519
             -- 97539 "Silky Sutures" https://wowhead.com/forever/quest=97539
-            -- Assumption: offered right after 97539 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {97539},
-        },
-        [92528] = { -- Among the Faithful https://wowhead.com/forever/quest=92528
+            -- already in QuestieDB; Assumption: offered right after 97539 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {97539},
+        -- },
+        -- [92528] = { -- Among the Faithful https://wowhead.com/forever/quest=92528
             -- 92529 "Falaath Village" https://wowhead.com/forever/quest=92529
             -- already in QuestieDB; Assumption: offered right after 92529 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {92529},
             -- 92550 "Havoc in the Highlands" https://wowhead.com/forever/quest=92550
-            -- Assumption: turning it in led straight to 92550 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 92550,
-        },
+            -- already in QuestieDB; Assumption: turning it in led straight to 92550 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 92550,
+        -- },
         -- [92529] = { -- Falaath Village https://wowhead.com/forever/quest=92529
             -- 93036 "Infiltrating the Cult" https://wowhead.com/forever/quest=93036
             -- already in QuestieDB; Assumption: offered right after 93036 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
@@ -14451,10 +14330,10 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [92550] = { -- Havoc in the Highlands https://wowhead.com/forever/quest=92550
             -- 92528 "Among the Faithful" https://wowhead.com/forever/quest=92528
-            -- already in QuestieDB; Assumption: offered right after 92528 was turned in (handoff, offer-set, absence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: offered right after 92528 was turned in (handoff, offer-set, absence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {92528},
             -- 92579 "To Valanaar" https://wowhead.com/forever/quest=92579
-            -- not applied: 92579 needs this quest together with 93927 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 92579 (handoff; high; 100+ characters)
+            -- not applied: 92579 needs this quest together with 93927 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 92579 (handoff; medium; 100+ characters)
             -- [questKeys.nextQuestInChain] = 92579,
         -- },
         -- [92579] = { -- To Valanaar https://wowhead.com/forever/quest=92579
@@ -14463,19 +14342,16 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 92550, 93927 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestGroup] = {92550,93927},
         -- },
-        [92593] = { -- Avalanche of Corruption https://wowhead.com/forever/quest=92593
+        -- [92593] = { -- Avalanche of Corruption https://wowhead.com/forever/quest=92593
             -- 96992 "Resupply" https://wowhead.com/forever/quest=96992
-            -- Assumption: offered right after 96992 was turned in (handoff, offer-set, absence, cooccurrence; very high; <10 characters)
-            [questKeys.preQuestSingle] = {96992},
-        },
-        [92612] = { -- Aid from Moonglade https://wowhead.com/forever/quest=92612
+            -- already in QuestieDB; Assumption: offered right after 96992 was turned in (handoff, offer-set, absence, cooccurrence; very high; <10 characters)
+            -- [questKeys.preQuestSingle] = {96992},
+        -- },
+        -- [92612] = { -- Aid from Moonglade https://wowhead.com/forever/quest=92612
             -- 96131 "An Oldstone But An Old Friend" https://wowhead.com/forever/quest=96131
-            -- Assumption: offered right after 96131 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {96131},
-            -- 96209 "The Ancient, Orokai" https://wowhead.com/forever/quest=96209
-            -- Assumption: turning it in led straight to 96209 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 96209,
-        },
+            -- already in QuestieDB; Assumption: offered right after 96131 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {96131},
+        -- },
         -- [92640] = { -- Desperate Times https://wowhead.com/forever/quest=92640
             -- 94568 "The Cult's True Plans" https://wowhead.com/forever/quest=94568
             -- already in QuestieDB; Assumption: offered right after 94568 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
@@ -14510,22 +14386,22 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 93320 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {93320},
         -- },
-        [92646] = { -- Confront Lorthuna https://wowhead.com/forever/quest=92646
+        -- [92646] = { -- Confront Lorthuna https://wowhead.com/forever/quest=92646
             -- 93958 "The Inner Sanctum" https://wowhead.com/forever/quest=93958
             -- already in QuestieDB; Assumption: offered right after 93958 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {93958},
             -- 93835 "Confront Lorthuna" https://wowhead.com/forever/quest=93835
-            -- Assumption: the server completes it and 93835 together (cooccurrence; very high; 100+ characters)
-            [questKeys.exclusiveTo] = {93835},
+            -- already in QuestieDB; Assumption: the server completes it and 93835 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {93835},
             -- 93836 "The Fate of Zephras" https://wowhead.com/forever/quest=93836
             -- already in QuestieDB; Assumption: turning it in led straight to 93836 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 93836,
-        },
-        [92679] = { -- Blood Tithe https://wowhead.com/forever/quest=92679
+        -- },
+        -- [92679] = { -- Blood Tithe https://wowhead.com/forever/quest=92679
             -- 92682 "Make Yourself Useful" https://wowhead.com/forever/quest=92682
-            -- Assumption: turning it in led straight to 92682 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 92682,
-        },
+            -- not applied: an authored fix sets this field; Assumption: turning it in led straight to 92682 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 92682,
+        -- },
         -- [92682] = { -- Make Yourself Useful https://wowhead.com/forever/quest=92682
             -- 92679 "Blood Tithe" https://wowhead.com/forever/quest=92679
             -- already in QuestieDB; Assumption: offered right after 92679 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
@@ -14544,7 +14420,7 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 92679 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {92679},
             -- 92685 "The Hills Have Eyes" https://wowhead.com/forever/quest=92685
-            -- not applied: 92685 needs this quest together with 92682, 92683 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 92685 (handoff; high; 100+ characters)
+            -- not applied: 92685 needs this quest together with 92682, 92683 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 92685 (handoff; medium; 100+ characters)
             -- [questKeys.nextQuestInChain] = 92685,
         -- },
         -- [92685] = { -- The Hills Have Eyes https://wowhead.com/forever/quest=92685
@@ -14586,11 +14462,11 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 92550, 93927 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestGroup] = {92550,93927},
         -- },
-        [92702] = { -- Branch Out https://wowhead.com/forever/quest=92702
+        -- [92702] = { -- Branch Out https://wowhead.com/forever/quest=92702
             -- 92064 "Tree Free" https://wowhead.com/forever/quest=92064
-            -- Assumption: turning it in led straight to 92064 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 92064,
-        },
+            -- already in QuestieDB; Assumption: turning it in led straight to 92064 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 92064,
+        -- },
         -- [92703] = { -- Deliver the News https://wowhead.com/forever/quest=92703
             -- 92693 "Standing Our Ground" https://wowhead.com/forever/quest=92693
             -- already in QuestieDB; Assumption: offered right after 92693 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
@@ -14614,14 +14490,11 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: turning it in led straight to 92849 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 92849,
         -- },
-        [92743] = { -- A Conqueror's Crown https://wowhead.com/forever/quest=92743
+        -- [92743] = { -- A Conqueror's Crown https://wowhead.com/forever/quest=92743
             -- 1369 "Broken Tears" https://wowhead.com/forever/quest=1369
-            -- Assumption: offered right after 1369 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {1369},
-            -- 92841 "Valley of Bones" https://wowhead.com/forever/quest=92841
-            -- Assumption: turning it in led straight to 92841 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 92841,
-        },
+            -- already in QuestieDB; Assumption: offered right after 1369 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {1369},
+        -- },
         -- [92745] = { -- The State of the Mines https://wowhead.com/forever/quest=92745
             -- 92742 "Testing the Wells" https://wowhead.com/forever/quest=92742
             -- 92744 "Murloc Gills" https://wowhead.com/forever/quest=92744
@@ -14656,7 +14529,7 @@ function ForeverQuestRelationTraces:Load()
         -- [92752] = { -- Explosive Consultation https://wowhead.com/forever/quest=92752
             -- 92749 "A Dynamite Plan" https://wowhead.com/forever/quest=92749
             -- 92751 "Detonation at a Distance" https://wowhead.com/forever/quest=92751
-            -- already in QuestieDB; Assumption: offered right after 92749 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters); offered right after 92751 was turned in (handoff, offer-set, absence, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: offered right after 92749, 92751 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestGroup] = {92749,92751},
         -- },
         -- [92753] = { -- Destruction in Deadmines https://wowhead.com/forever/quest=92753
@@ -14667,99 +14540,83 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: turning it in led straight to 92819 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 92819,
         -- },
-        [92754] = { -- A New Need for Shadow Protection https://wowhead.com/forever/quest=92754
-            -- 1369 "Broken Tears" https://wowhead.com/forever/quest=1369
-            -- Assumption: 1369 was done whenever it was offered (offer-set, cooccurrence; medium; 10+ characters)
-            [questKeys.preQuestSingle] = {1369},
-        },
-        [92755] = { -- Mysterious Mysticism https://wowhead.com/forever/quest=92755
+        -- [92755] = { -- Mysterious Mysticism https://wowhead.com/forever/quest=92755
             -- 1370 "Stealing Supplies" https://wowhead.com/forever/quest=1370
-            -- Assumption: 1370 was done whenever it was offered (offer-set, cooccurrence; medium; 100+ characters)
-            [questKeys.preQuestSingle] = {1370},
-        },
-        [92811] = { -- Economic Warfare https://wowhead.com/forever/quest=92811
+            -- already in QuestieDB; Assumption: 1370 was done whenever it was offered (offer-set, cooccurrence; medium; 100+ characters)
+            -- [questKeys.preQuestSingle] = {1370},
+        -- },
+        -- [92811] = { -- Economic Warfare https://wowhead.com/forever/quest=92811
             -- 93226 "Buying Friendship: Magram" https://wowhead.com/forever/quest=93226
             -- 94872 "Buying Friendship: Magram" https://wowhead.com/forever/quest=94872
-            -- Assumption: offered right after 93226, 94872 was turned in (handoff, offer-set, absence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {93226,94872},
-        },
-        [92812] = { -- Economic Warfare https://wowhead.com/forever/quest=92812
+            -- already in QuestieDB; Assumption: 93226, 94872 was done whenever it was offered (offer-set; high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {93226,94872},
+        -- },
+        -- [92812] = { -- Economic Warfare https://wowhead.com/forever/quest=92812
             -- 93227 "Buying Friendship: Gelkis" https://wowhead.com/forever/quest=93227
             -- 94873 "Buying Friendship: Gelkis" https://wowhead.com/forever/quest=94873
-            -- Assumption: offered right after 93227, 94873 was turned in (handoff, offer-set, absence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {93227,94873},
-        },
-        [92814] = { -- I Need a Tailor https://wowhead.com/forever/quest=92814
+            -- already in QuestieDB; Assumption: 93227, 94873 was done whenever it was offered (offer-set; high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {93227,94873},
+        -- },
+        -- [92814] = { -- I Need a Tailor https://wowhead.com/forever/quest=92814
             -- 1370 "Stealing Supplies" https://wowhead.com/forever/quest=1370
-            -- Assumption: 1370 was done whenever it was offered (offer-set, cooccurrence; medium; 100+ characters)
-            [questKeys.preQuestSingle] = {1370},
-        },
-        [92817] = { -- Leather Technique https://wowhead.com/forever/quest=92817
+            -- already in QuestieDB; Assumption: 1370 was done whenever it was offered (offer-set, cooccurrence; medium; 100+ characters)
+            -- [questKeys.preQuestSingle] = {1370},
+        -- },
+        -- [92817] = { -- Leather Technique https://wowhead.com/forever/quest=92817
             -- 1370 "Stealing Supplies" https://wowhead.com/forever/quest=1370
-            -- Assumption: 1370 was done whenever it was offered (offer-set, cooccurrence; medium; 100+ characters)
-            [questKeys.preQuestSingle] = {1370},
-        },
-        [92818] = { -- Big, No, MASSIVE Iron Axes https://wowhead.com/forever/quest=92818
-            -- 1369 "Broken Tears" https://wowhead.com/forever/quest=1369
-            -- Assumption: 1369 was done whenever it was offered (offer-set, cooccurrence; medium; 10+ characters)
-            [questKeys.preQuestSingle] = {1369},
-        },
+            -- already in QuestieDB; Assumption: 1370 was done whenever it was offered (offer-set, cooccurrence; medium; 100+ characters)
+            -- [questKeys.preQuestSingle] = {1370},
+        -- },
         -- [92819] = { -- Destruction in Deadmines https://wowhead.com/forever/quest=92819
             -- 92753 "Destruction in Deadmines" https://wowhead.com/forever/quest=92753
             -- already in QuestieDB; Assumption: offered right after 92753 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {92753},
         -- },
-        [92833] = { -- Ve'han's Fall https://wowhead.com/forever/quest=92833
+        -- [92833] = { -- Ve'han's Fall https://wowhead.com/forever/quest=92833
             -- 92169 "Paying Back the Pact" https://wowhead.com/forever/quest=92169
-            -- Assumption: offered right after 92169 was turned in (handoff, offer-set, absence, cooccurrence; very high; <10 characters)
-            [questKeys.preQuestSingle] = {92169},
-        },
+            -- already in QuestieDB; Assumption: offered right after 92169 was turned in (handoff, offer-set, absence, cooccurrence; very high; <10 characters)
+            -- [questKeys.preQuestSingle] = {92169},
+        -- },
         -- [92834] = { -- Avenged Tenfold https://wowhead.com/forever/quest=92834
             -- 92840 "Catching Wind" https://wowhead.com/forever/quest=92840
             -- already in QuestieDB; Assumption: offered right after 92840 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {92840},
         -- },
-        [92840] = { -- Catching Wind https://wowhead.com/forever/quest=92840
+        -- [92840] = { -- Catching Wind https://wowhead.com/forever/quest=92840
             -- 92850 "The Missing Scholar" https://wowhead.com/forever/quest=92850
-            -- not applied: an authored fix sets the prerequisites; Assumption: 92850 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
+            -- not applied: implied, as it comes before 99260, this quest's parent quest or other prerequisites; Assumption: 92850 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
             -- [questKeys.preQuestSingle] = {92850},
             -- 92834 "Avenged Tenfold" https://wowhead.com/forever/quest=92834
-            -- Assumption: turning it in led straight to 92834 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 92834,
-        },
-        [92841] = { -- Valley of Bones https://wowhead.com/forever/quest=92841
+            -- not applied: an authored fix sets this field; Assumption: turning it in led straight to 92834 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 92834,
+        -- },
+        -- [92841] = { -- Valley of Bones https://wowhead.com/forever/quest=92841
             -- 92743 "A Conqueror's Crown" https://wowhead.com/forever/quest=92743
-            -- Assumption: offered right after 92743 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {92743},
+            -- already in QuestieDB; Assumption: offered right after 92743 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {92743},
             -- 92844 "Mountain of Bones" https://wowhead.com/forever/quest=92844
-            -- Assumption: turning it in led straight to 92844 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 92844,
-        },
-        [92844] = { -- Mountain of Bones https://wowhead.com/forever/quest=92844
-            -- 92841 "Valley of Bones" https://wowhead.com/forever/quest=92841
-            -- Assumption: offered right after 92841 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {92841},
+            -- already in QuestieDB; Assumption: turning it in led straight to 92844 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 92844,
+        -- },
+        -- [92844] = { -- Mountain of Bones https://wowhead.com/forever/quest=92844
             -- 92847 "Corrupting Tears" https://wowhead.com/forever/quest=92847
             -- not applied: 92847 needs this quest together with 92846 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 92847 (handoff; medium; 10+ characters)
             -- [questKeys.nextQuestInChain] = 92847,
-        },
-        [92846] = { -- Outcast Necromancers https://wowhead.com/forever/quest=92846
+        -- },
+        -- [92846] = { -- Outcast Necromancers https://wowhead.com/forever/quest=92846
             -- 92841 "Valley of Bones" https://wowhead.com/forever/quest=92841
-            -- Assumption: 92841 was done whenever it was offered (offer-set, cooccurrence; high; 10+ characters)
-            [questKeys.preQuestSingle] = {92841},
+            -- already in QuestieDB; Assumption: 92841 was done whenever it was offered (offer-set, cooccurrence; high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {92841},
             -- 92847 "Corrupting Tears" https://wowhead.com/forever/quest=92847
             -- not applied: 92847 needs this quest together with 92844 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 92847 (handoff; medium; 10+ characters)
             -- [questKeys.nextQuestInChain] = 92847,
-        },
-        [92847] = { -- Corrupting Tears https://wowhead.com/forever/quest=92847
+        -- },
+        -- [92847] = { -- Corrupting Tears https://wowhead.com/forever/quest=92847
             -- 92844 "Mountain of Bones" https://wowhead.com/forever/quest=92844
             -- 92846 "Outcast Necromancers" https://wowhead.com/forever/quest=92846
-            -- Assumption: offered right after 92844, 92846 was turned in (handoff, offer-set, absence, cooccurrence; high; 10+ characters)
-            [questKeys.preQuestGroup] = {92844,92846},
-            -- 92873 "Proof of Concept" https://wowhead.com/forever/quest=92873
-            -- Assumption: turning it in led straight to 92873 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 92873,
-        },
+            -- already in QuestieDB; Assumption: offered right after 92844 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters); offered right after 92846 was turned in (handoff, absence, cooccurrence; low; 10+ characters), kept below the min score to complete its accepted AND list
+            -- [questKeys.preQuestGroup] = {92844,92846},
+        -- },
         -- [92849] = { -- The Missing Scholar https://wowhead.com/forever/quest=92849
             -- 92727 "The Missing Scholar" https://wowhead.com/forever/quest=92727
             -- already in QuestieDB; Assumption: offered right after 92727 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
@@ -14786,18 +14643,15 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 93746 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {93746},
         -- },
-        [92873] = { -- Proof of Concept https://wowhead.com/forever/quest=92873
+        -- [92873] = { -- Proof of Concept https://wowhead.com/forever/quest=92873
             -- 92847 "Corrupting Tears" https://wowhead.com/forever/quest=92847
-            -- Assumption: offered right after 92847 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {92847},
-            -- 92894 "Bone Raising" https://wowhead.com/forever/quest=92894
-            -- Assumption: turning it in led straight to 92894 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 92894,
-        },
+            -- already in QuestieDB; Assumption: offered right after 92847 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {92847},
+        -- },
         -- [92880] = { -- Return to Valanaar https://wowhead.com/forever/quest=92880
             -- 92642 "Disrupting Logistics" https://wowhead.com/forever/quest=92642
             -- 92645 "Breaking the Breaker" https://wowhead.com/forever/quest=92645
-            -- already in QuestieDB; Assumption: offered right after 92642 was turned in (handoff, offer-set, absence, cooccurrence; high; 100+ characters); offered right after 92645 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- already in QuestieDB; Assumption: offered right after 92642, 92645 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestGroup] = {92642,92645},
         -- },
         -- [92881] = { -- The High Elder's Request https://wowhead.com/forever/quest=92881
@@ -14808,70 +14662,65 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: turning it in led straight to 92643 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 92643,
         -- },
-        [92893] = { -- No Mercy for the Weak https://wowhead.com/forever/quest=92893
+        -- [92893] = { -- No Mercy for the Weak https://wowhead.com/forever/quest=92893
             -- 92873 "Proof of Concept" https://wowhead.com/forever/quest=92873
-            -- Assumption: 92873 was done whenever it was offered (offer-set, absence, cooccurrence; high; 10+ characters)
-            [questKeys.preQuestSingle] = {92873},
-        },
-        [92894] = { -- Bone Raising https://wowhead.com/forever/quest=92894
+            -- already in QuestieDB; Assumption: 92873 was done whenever it was offered (offer-set, absence, cooccurrence; high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {92873},
+        -- },
+        -- [92894] = { -- Bone Raising https://wowhead.com/forever/quest=92894
             -- 92873 "Proof of Concept" https://wowhead.com/forever/quest=92873
-            -- Assumption: offered right after 92873 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {92873},
-        },
-        -- [92909] = { -- Harvesting the Harvesters https://wowhead.com/forever/quest=92909
-            -- 92911 "Harvesting the Harvesters" https://wowhead.com/forever/quest=92911
-            -- not applied: 92911 requires 92910, not this quest, and Questie hides a quest once its next quest is done or in the log; Assumption: turning it in led straight to 92911 (handoff; medium; 10+ characters)
-            -- [questKeys.nextQuestInChain] = 92911,
+            -- already in QuestieDB; Assumption: offered right after 92873 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {92873},
         -- },
         -- [92911] = { -- Harvesting the Harvesters https://wowhead.com/forever/quest=92911
             -- 92910 "Harvesting the Harvesters" https://wowhead.com/forever/quest=92910
             -- already in QuestieDB; Assumption: offered right after 92910 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {92910},
         -- },
-        [92914] = { -- Strange Pylons https://wowhead.com/forever/quest=92914
+        -- [92914] = { -- Strange Pylons https://wowhead.com/forever/quest=92914
             -- 96010 "Fragments of the Pylons" https://wowhead.com/forever/quest=96010
-            -- Assumption: turning it in led straight to 96010 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 96010,
-        },
+            -- already in QuestieDB; Assumption: turning it in led straight to 96010 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 96010,
+        -- },
         -- [92947] = { -- Making Our Move https://wowhead.com/forever/quest=92947
             -- 93065 "Prepare for Battle" https://wowhead.com/forever/quest=93065
             -- already in QuestieDB; Assumption: offered right after 93065 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {93065},
         -- },
-        [92959] = { -- The Dying Ancients https://wowhead.com/forever/quest=92959
+        -- [92959] = { -- The Dying Ancients https://wowhead.com/forever/quest=92959
             -- 91770 "Bark Bite" https://wowhead.com/forever/quest=91770
-            -- Assumption: offered right after 91770 was turned in (handoff, offer-set, absence, cooccurrence; high; 10+ characters)
-            [questKeys.preQuestSingle] = {91770},
-        },
-        [92960] = { -- Siphoned Ephemeral Essence https://wowhead.com/forever/quest=92960
+            -- already in QuestieDB; Assumption: offered right after 91770 was turned in (handoff, offer-set, absence, cooccurrence; high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {91770},
+        -- },
+        -- [92960] = { -- Siphoned Ephemeral Essence https://wowhead.com/forever/quest=92960
             -- 96003 "Drawing Down the Malevolent" https://wowhead.com/forever/quest=96003
-            -- Assumption: turning it in led straight to 96003 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 96003,
-        },
-        [93016] = { -- A Brief History Lesson https://wowhead.com/forever/quest=93016
+            -- already in QuestieDB; Assumption: turning it in led straight to 96003 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 96003,
+        -- },
+        -- [93016] = { -- A Brief History Lesson https://wowhead.com/forever/quest=93016
             -- 96018 "Powering the Pylons" https://wowhead.com/forever/quest=96018
-            -- Assumption: offered right after 96018 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {96018},
+            -- already in QuestieDB; Assumption: offered right after 96018 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {96018},
             -- 93394 "Meeting the Magister" https://wowhead.com/forever/quest=93394
-            -- Assumption: turning it in led straight to 93394 (handoff; medium; 100+ characters)
-            [questKeys.nextQuestInChain] = 93394,
-        },
-        [93034] = { -- Valley of Bones https://wowhead.com/forever/quest=93034
+            -- already in QuestieDB; Assumption: turning it in led straight to 93394 (handoff; medium; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 93394,
+        -- },
+        -- [93034] = { -- Valley of Bones https://wowhead.com/forever/quest=93034
             -- 1373 "Ongeku" https://wowhead.com/forever/quest=1373
-            -- Assumption: offered right after 1373 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {1373},
+            -- already in QuestieDB; Assumption: offered right after 1373 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {1373},
             -- 93035 "Ravaging Ravagers" https://wowhead.com/forever/quest=93035
-            -- Assumption: turning it in led straight to 93035 (handoff; high; 10+ characters)
-            [questKeys.nextQuestInChain] = 93035,
-        },
-        [93035] = { -- Ravaging Ravagers https://wowhead.com/forever/quest=93035
+            -- already in QuestieDB; Assumption: turning it in led straight to 93035 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 93035,
+        -- },
+        -- [93035] = { -- Ravaging Ravagers https://wowhead.com/forever/quest=93035
             -- 93034 "Valley of Bones" https://wowhead.com/forever/quest=93034
-            -- Assumption: offered right after 93034 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {93034},
+            -- already in QuestieDB; Assumption: offered right after 93034 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {93034},
             -- 93041 "Facing the Truth" https://wowhead.com/forever/quest=93041
             -- not applied: 93041 needs this quest together with 93037 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 93041 (handoff; medium; 10+ characters)
             -- [questKeys.nextQuestInChain] = 93041,
-        },
+        -- },
         -- [93036] = { -- Infiltrating the Cult https://wowhead.com/forever/quest=93036
             -- 92517 "The Criminal Element" https://wowhead.com/forever/quest=92517
             -- already in QuestieDB; Assumption: offered right after 92517 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
@@ -14880,46 +14729,41 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: turning it in led straight to 92529 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 92529,
         -- },
-        [93037] = { -- Outing Outcasts https://wowhead.com/forever/quest=93037
+        -- [93037] = { -- Outing Outcasts https://wowhead.com/forever/quest=93037
             -- 93034 "Valley of Bones" https://wowhead.com/forever/quest=93034
-            -- Assumption: 93034 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
-            [questKeys.preQuestSingle] = {93034},
+            -- already in QuestieDB; Assumption: 93034 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {93034},
             -- 93041 "Facing the Truth" https://wowhead.com/forever/quest=93041
-            -- not applied: 93041 needs this quest together with 93035 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 93041 (handoff; medium; 10+ characters)
+            -- not applied: 93041 needs this quest together with 93035 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 93041 (handoff; high; 10+ characters)
             -- [questKeys.nextQuestInChain] = 93041,
-        },
-        [93041] = { -- Facing the Truth https://wowhead.com/forever/quest=93041
+        -- },
+        -- [93041] = { -- Facing the Truth https://wowhead.com/forever/quest=93041
             -- 93035 "Ravaging Ravagers" https://wowhead.com/forever/quest=93035
             -- 93037 "Outing Outcasts" https://wowhead.com/forever/quest=93037
-            -- Assumption: offered right after 93035 was turned in (handoff, offer-set, absence, cooccurrence; high; 100+ characters); offered right after 93037 was turned in (handoff, offer-set, absence, cooccurrence; medium; 100+ characters)
-            [questKeys.preQuestGroup] = {93035,93037},
+            -- already in QuestieDB; Assumption: offered right after 93035 was turned in (handoff, offer-set, absence, cooccurrence; high; 100+ characters); offered right after 93037 was turned in (handoff, offer-set, absence, cooccurrence; medium; 100+ characters)
+            -- [questKeys.preQuestGroup] = {93035,93037},
             -- 93044 "A Cleansing Cry" https://wowhead.com/forever/quest=93044
-            -- Assumption: turning it in led straight to 93044 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 93044,
-        },
-        [93044] = { -- A Cleansing Cry https://wowhead.com/forever/quest=93044
+            -- already in QuestieDB; Assumption: turning it in led straight to 93044 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 93044,
+        -- },
+        -- [93044] = { -- A Cleansing Cry https://wowhead.com/forever/quest=93044
             -- 93041 "Facing the Truth" https://wowhead.com/forever/quest=93041
-            -- Assumption: offered right after 93041 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {93041},
+            -- already in QuestieDB; Assumption: offered right after 93041 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {93041},
             -- 93045 "Test Your Theory" https://wowhead.com/forever/quest=93045
-            -- Assumption: turning it in led straight to 93045 (handoff; high; 10+ characters)
-            [questKeys.nextQuestInChain] = 93045,
-        },
-        [93045] = { -- Test Your Theory https://wowhead.com/forever/quest=93045
-            -- 93044 "A Cleansing Cry" https://wowhead.com/forever/quest=93044
-            -- Assumption: offered right after 93044 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {93044},
-        },
-        [93058] = { -- Saving Our Own https://wowhead.com/forever/quest=93058
+            -- already in QuestieDB; Assumption: turning it in led straight to 93045 (handoff; high; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 93045,
+        -- },
+        -- [93058] = { -- Saving Our Own https://wowhead.com/forever/quest=93058
             -- 93045 "Test Your Theory" https://wowhead.com/forever/quest=93045
-            -- Assumption: 93045 was done whenever it was offered (offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {93045},
-        },
-        [93062] = { -- Bone Burying https://wowhead.com/forever/quest=93062
+            -- already in QuestieDB; Assumption: 93045 was done whenever it was offered (offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {93045},
+        -- },
+        -- [93062] = { -- Bone Burying https://wowhead.com/forever/quest=93062
             -- 93045 "Test Your Theory" https://wowhead.com/forever/quest=93045
-            -- Assumption: 93045 was done whenever it was offered (offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {93045},
-        },
+            -- already in QuestieDB; Assumption: 93045 was done whenever it was offered (offer-set, absence, cooccurrence; high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {93045},
+        -- },
         -- [93065] = { -- Prepare for Battle https://wowhead.com/forever/quest=93065
             -- 92640 "Desperate Times" https://wowhead.com/forever/quest=92640
             -- already in QuestieDB; Assumption: offered right after 92640 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
@@ -14928,20 +14772,17 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: turning it in led straight to 92947 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 92947,
         -- },
-        [93066] = { -- Bristleback Retreat https://wowhead.com/forever/quest=93066
+        -- [93066] = { -- Bristleback Retreat https://wowhead.com/forever/quest=93066
             -- 92893 "No Mercy for the Weak" https://wowhead.com/forever/quest=92893
             -- 92894 "Bone Raising" https://wowhead.com/forever/quest=92894
-            -- Assumption: offered right after 92893, 92894 was turned in (handoff, offer-set, absence, cooccurrence; high; 10+ characters)
-            [questKeys.preQuestGroup] = {92893,92894},
-            -- 93072 "Long-Term Solutions" https://wowhead.com/forever/quest=93072
-            -- Assumption: turning it in led straight to 93072 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 93072,
-        },
-        [93072] = { -- Long-Term Solutions https://wowhead.com/forever/quest=93072
+            -- already in QuestieDB; Assumption: offered right after 92893, 92894 was turned in (handoff, offer-set, absence, cooccurrence; high; 10+ characters)
+            -- [questKeys.preQuestGroup] = {92893,92894},
+        -- },
+        -- [93072] = { -- Long-Term Solutions https://wowhead.com/forever/quest=93072
             -- 93066 "Bristleback Retreat" https://wowhead.com/forever/quest=93066
-            -- Assumption: offered right after 93066 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {93066},
-        },
+            -- already in QuestieDB; Assumption: offered right after 93066 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {93066},
+        -- },
         -- [93089] = { -- What Comes Next https://wowhead.com/forever/quest=93089
             -- 94369 "The Fate of Zephras" https://wowhead.com/forever/quest=94369
             -- already in QuestieDB; Assumption: offered right after 94369 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
@@ -14958,30 +14799,30 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: turning it in led straight to 95349 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 95349,
         -- },
-        [93122] = { -- Checking Things Out https://wowhead.com/forever/quest=93122
+        -- [93122] = { -- Checking Things Out https://wowhead.com/forever/quest=93122
             -- 93058 "Saving Our Own" https://wowhead.com/forever/quest=93058
             -- 93062 "Bone Burying" https://wowhead.com/forever/quest=93062
-            -- Assumption: offered right after 93058 was turned in (handoff, offer-set, absence, cooccurrence; medium; 10+ characters); offered right after 93062 was turned in (handoff, offer-set, absence, cooccurrence; high; 10+ characters)
-            [questKeys.preQuestGroup] = {93058,93062},
+            -- already in QuestieDB; Assumption: offered right after 93058 was turned in (handoff, offer-set, absence, cooccurrence; medium; 10+ characters); offered right after 93062 was turned in (handoff, offer-set, absence, cooccurrence; high; 10+ characters)
+            -- [questKeys.preQuestGroup] = {93058,93062},
             -- 93128 "Khan Jehn" https://wowhead.com/forever/quest=93128
-            -- Assumption: turning it in led straight to 93128 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 93128,
-        },
-        [93127] = { -- Summit Sentries https://wowhead.com/forever/quest=93127
+            -- already in QuestieDB; Assumption: turning it in led straight to 93128 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 93128,
+        -- },
+        -- [93127] = { -- Summit Sentries https://wowhead.com/forever/quest=93127
             -- 93407 "A Thorn in the Paw" https://wowhead.com/forever/quest=93407
-            -- Assumption: 93407 was done whenever it was offered (offer-set, absence, cooccurrence; high; 10+ characters)
-            [questKeys.preQuestSingle] = {93407},
-        },
-        [93128] = { -- Khan Jehn https://wowhead.com/forever/quest=93128
+            -- already in QuestieDB; Assumption: 93407 was done whenever it was offered (offer-set, absence, cooccurrence; medium; 10+ characters)
+            -- [questKeys.preQuestSingle] = {93407},
+        -- },
+        -- [93128] = { -- Khan Jehn https://wowhead.com/forever/quest=93128
             -- 93122 "Checking Things Out" https://wowhead.com/forever/quest=93122
-            -- Assumption: offered right after 93122 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {93122},
-        },
-        [93129] = { -- Threat of Starvation https://wowhead.com/forever/quest=93129
+            -- already in QuestieDB; Assumption: offered right after 93122 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {93122},
+        -- },
+        -- [93129] = { -- Threat of Starvation https://wowhead.com/forever/quest=93129
             -- 93066 "Bristleback Retreat" https://wowhead.com/forever/quest=93066
-            -- Assumption: 93066 was done whenever it was offered (offer-set, cooccurrence; high; 10+ characters)
-            [questKeys.preQuestSingle] = {93066},
-        },
+            -- already in QuestieDB; Assumption: 93066 was done whenever it was offered (offer-set, cooccurrence; high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {93066},
+        -- },
         -- [93160] = { -- The Forest's Bounty https://wowhead.com/forever/quest=93160
             -- 93159 "The Strange Hermit" https://wowhead.com/forever/quest=93159
             -- already in QuestieDB; Assumption: offered right after 93159 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
@@ -14992,240 +14833,227 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 93159 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {93159},
         -- },
-        [93188] = { -- Return to Orgrul https://wowhead.com/forever/quest=93188
+        -- [93188] = { -- Return to Orgrul https://wowhead.com/forever/quest=93188
             -- 93072 "Long-Term Solutions" https://wowhead.com/forever/quest=93072
             -- 93129 "Threat of Starvation" https://wowhead.com/forever/quest=93129
-            -- Assumption: offered right after 93072 was turned in (handoff, offer-set, absence, cooccurrence; medium; 10+ characters); offered right after 93129 was turned in (handoff, offer-set, absence, cooccurrence; low; 10+ characters), kept below the min score to complete its accepted AND list
-            [questKeys.preQuestGroup] = {93072,93129},
-            -- 93196 "Khan Jehn" https://wowhead.com/forever/quest=93196
-            -- Assumption: turning it in led straight to 93196 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 93196,
-        },
-        [93196] = { -- Khan Jehn https://wowhead.com/forever/quest=93196
+            -- already in QuestieDB; Assumption: offered right after 93072 was turned in (handoff, offer-set, absence, cooccurrence; high; 10+ characters); offered right after 93129 was turned in (handoff, offer-set, absence, cooccurrence; low; 10+ characters), kept below the min score to complete its accepted AND list
+            -- [questKeys.preQuestGroup] = {93072,93129},
+        -- },
+        -- [93196] = { -- Khan Jehn https://wowhead.com/forever/quest=93196
             -- 93188 "Return to Orgrul" https://wowhead.com/forever/quest=93188
-            -- Assumption: offered right after 93188 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {93188},
-        },
-        [93197] = { -- Mending Communications https://wowhead.com/forever/quest=93197
+            -- already in QuestieDB; Assumption: offered right after 93188 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {93188},
+        -- },
+        -- [93197] = { -- Mending Communications https://wowhead.com/forever/quest=93197
             -- 93406 "Unfrozen Deliveries" https://wowhead.com/forever/quest=93406
-            -- Assumption: turning it in led straight to 93406 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 93406,
-        },
-        [93224] = { -- Carved Centaur Totems https://wowhead.com/forever/quest=93224
+            -- already in QuestieDB; Assumption: turning it in led straight to 93406 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 93406,
+        -- },
+        -- [93224] = { -- Carved Centaur Totems https://wowhead.com/forever/quest=93224
             -- 93225 "Carved Centaur Totems" https://wowhead.com/forever/quest=93225
-            -- Assumption: the server completes it and 93225 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {93225},
-        },
-        [93225] = { -- Carved Centaur Totems https://wowhead.com/forever/quest=93225
+            -- already in QuestieDB; Assumption: the server completes it and 93225 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {93225},
+        -- },
+        -- [93225] = { -- Carved Centaur Totems https://wowhead.com/forever/quest=93225
             -- 93224 "Carved Centaur Totems" https://wowhead.com/forever/quest=93224
-            -- Assumption: the server completes it and 93224 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {93224},
-        },
-        [93226] = { -- Buying Friendship: Magram https://wowhead.com/forever/quest=93226
+            -- already in QuestieDB; Assumption: the server completes it and 93224 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {93224},
+        -- },
+        -- [93226] = { -- Buying Friendship: Magram https://wowhead.com/forever/quest=93226
             -- 93224 "Carved Centaur Totems" https://wowhead.com/forever/quest=93224
             -- 93225 "Carved Centaur Totems" https://wowhead.com/forever/quest=93225
-            -- Assumption: offered right after 93224 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters); 93225 was done whenever it was offered (offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {93224,93225},
+            -- already in QuestieDB; Assumption: offered right after 93224 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters); 93225 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {93224,93225},
             -- 93227 "Buying Friendship: Gelkis" https://wowhead.com/forever/quest=93227
             -- 94872 "Buying Friendship: Magram" https://wowhead.com/forever/quest=94872
             -- 94873 "Buying Friendship: Gelkis" https://wowhead.com/forever/quest=94873
-            -- Assumption: offer lists show it and 93227 exclude each other (absence, cooccurrence; high; 100+ characters); the server completes it and 94872, 94873 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {93227,94872,94873},
-        },
-        [93227] = { -- Buying Friendship: Gelkis https://wowhead.com/forever/quest=93227
+            -- already in QuestieDB; Assumption: offer lists show it and 93227 exclude each other (absence, cooccurrence; very high; 100+ characters); the server completes it and 94872, 94873 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {93227,94872,94873},
+        -- },
+        -- [93227] = { -- Buying Friendship: Gelkis https://wowhead.com/forever/quest=93227
             -- 93224 "Carved Centaur Totems" https://wowhead.com/forever/quest=93224
             -- 93225 "Carved Centaur Totems" https://wowhead.com/forever/quest=93225
-            -- Assumption: offered right after 93224 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters); 93225 was done whenever it was offered (offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {93224,93225},
+            -- already in QuestieDB; Assumption: offered right after 93224 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters); 93225 was done whenever it was offered (offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {93224,93225},
             -- 93226 "Buying Friendship: Magram" https://wowhead.com/forever/quest=93226
             -- 94872 "Buying Friendship: Magram" https://wowhead.com/forever/quest=94872
             -- 94873 "Buying Friendship: Gelkis" https://wowhead.com/forever/quest=94873
-            -- Assumption: offer lists show it and 93226 exclude each other (absence, cooccurrence; high; 100+ characters); the server completes it and 94872, 94873 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {93226,94872,94873},
-        },
-        [93269] = { -- Top of the Post https://wowhead.com/forever/quest=93269
+            -- already in QuestieDB; Assumption: offer lists show it and 93226 exclude each other (absence, cooccurrence; very high; 100+ characters); the server completes it and 94872, 94873 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {93226,94872,94873},
+        -- },
+        -- [93269] = { -- Top of the Post https://wowhead.com/forever/quest=93269
             -- 93406 "Unfrozen Deliveries" https://wowhead.com/forever/quest=93406
-            -- Assumption: offered right after 93406 was turned in (handoff, offer-set, absence, cooccurrence; very high; <10 characters)
-            [questKeys.preQuestSingle] = {93406},
-        },
+            -- already in QuestieDB; Assumption: offered right after 93406 was turned in (handoff, offer-set, absence, cooccurrence; very high; <10 characters)
+            -- [questKeys.preQuestSingle] = {93406},
+        -- },
         -- [93320] = { -- Tower Defense https://wowhead.com/forever/quest=93320
             -- 92860 "In Service of Zephras" https://wowhead.com/forever/quest=92860
             -- 92871 "In Service of Zephras" https://wowhead.com/forever/quest=92871
-            -- already in QuestieDB; Assumption: offered right after 92860, 92871 was turned in (handoff, offer-set, absence, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: offered right after 92860, 92871 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {92860,92871},
         -- },
-        [93341] = { -- Forlorn Gardens https://wowhead.com/forever/quest=93341
+        -- [93341] = { -- Forlorn Gardens https://wowhead.com/forever/quest=93341
             -- 93394 "Meeting the Magister" https://wowhead.com/forever/quest=93394
-            -- Assumption: 93394 was done whenever it was offered (offer-set, cooccurrence; medium; 100+ characters)
-            [questKeys.preQuestSingle] = {93394},
-        },
-        [93362] = { -- What They've Done to My Peonies https://wowhead.com/forever/quest=93362
+            -- already in QuestieDB; Assumption: 93394 was done whenever it was offered (offer-set, cooccurrence; medium; 100+ characters)
+            -- [questKeys.preQuestSingle] = {93394},
+        -- },
+        -- [93362] = { -- What They've Done to My Peonies https://wowhead.com/forever/quest=93362
             -- 93341 "Forlorn Gardens" https://wowhead.com/forever/quest=93341
-            -- Assumption: offered right after 93341 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {93341},
-        },
-        [93383] = { -- Contents Under Pressure https://wowhead.com/forever/quest=93383
+            -- already in QuestieDB; Assumption: offered right after 93341 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {93341},
+        -- },
+        -- [93383] = { -- Contents Under Pressure https://wowhead.com/forever/quest=93383
             -- 96559 "Supply Drop" https://wowhead.com/forever/quest=96559
-            -- Assumption: offered right after 96559 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {96559},
-        },
-        [93394] = { -- Meeting the Magister https://wowhead.com/forever/quest=93394
+            -- already in QuestieDB; Assumption: offered right after 96559 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {96559},
+        -- },
+        -- [93394] = { -- Meeting the Magister https://wowhead.com/forever/quest=93394
             -- 93016 "A Brief History Lesson" https://wowhead.com/forever/quest=93016
-            -- Assumption: offered right after 93016 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {93016},
-        },
-        [93404] = { -- Rot and Regret https://wowhead.com/forever/quest=93404
+            -- already in QuestieDB; Assumption: offered right after 93016 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {93016},
+        -- },
+        -- [93404] = { -- Rot and Regret https://wowhead.com/forever/quest=93404
             -- 93594 "Word of the Woods" https://wowhead.com/forever/quest=93594
-            -- Assumption: offered right after 93594 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {93594},
+            -- already in QuestieDB; Assumption: offered right after 93594 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {93594},
             -- 93601 "Passing the Blame" https://wowhead.com/forever/quest=93601
-            -- Assumption: turning it in led straight to 93601 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 93601,
-        },
-        [93406] = { -- Unfrozen Deliveries https://wowhead.com/forever/quest=93406
+            -- already in QuestieDB; Assumption: turning it in led straight to 93601 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 93601,
+        -- },
+        -- [93406] = { -- Unfrozen Deliveries https://wowhead.com/forever/quest=93406
             -- 93197 "Mending Communications" https://wowhead.com/forever/quest=93197
-            -- Assumption: offered right after 93197 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {93197},
-        },
-        [93407] = { -- A Thorn in the Paw https://wowhead.com/forever/quest=93407
+            -- already in QuestieDB; Assumption: offered right after 93197 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {93197},
+        -- },
+        -- [93407] = { -- A Thorn in the Paw https://wowhead.com/forever/quest=93407
             -- 93547 "A Thorny Solution" https://wowhead.com/forever/quest=93547
-            -- Assumption: turning it in led straight to 93547 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 93547,
-        },
-        [93443] = { -- Lost Shipping Crate https://wowhead.com/forever/quest=93443
+            -- already in QuestieDB; Assumption: turning it in led straight to 93547 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 93547,
+        -- },
+        -- [93443] = { -- Lost Shipping Crate https://wowhead.com/forever/quest=93443
             -- 94841 "Lost Shipping Crate" https://wowhead.com/forever/quest=94841
             -- 94895 "Lost Shipping Crate" https://wowhead.com/forever/quest=94895
             -- 94930 "Lost Shipping Crate" https://wowhead.com/forever/quest=94930
-            -- Assumption: offer lists show it and 94841 exclude each other (absence, cooccurrence; very high; 100+ characters); the server completes it and 94895, 94930 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {94841,94895,94930},
-        },
-        [93444] = { -- Bait the Beast https://wowhead.com/forever/quest=93444
+            -- already in QuestieDB; Assumption: offer lists show it and 94841 exclude each other (absence, cooccurrence; very high; 100+ characters); the server completes it and 94895, 94930 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {94841,94895,94930},
+        -- },
+        -- [93444] = { -- Bait the Beast https://wowhead.com/forever/quest=93444
             -- 92329 "Drum Up Trouble" https://wowhead.com/forever/quest=92329
             -- 92533 "Twisted Tools" https://wowhead.com/forever/quest=92533
             -- 93407 "A Thorn in the Paw" https://wowhead.com/forever/quest=93407
-            -- Assumption: 92329, 92533 was done whenever it was offered (offer-set, cooccurrence; low; <10 characters), kept below the min score to complete its accepted AND list; 93407 was done whenever it was offered (offer-set, cooccurrence; medium; <10 characters)
-            [questKeys.preQuestGroup] = {92329,92533,93407},
-        },
-        [93450] = { -- Phantasmal Problems https://wowhead.com/forever/quest=93450
-            -- 93394 "Meeting the Magister" https://wowhead.com/forever/quest=93394
-            -- Assumption: 93394 was done whenever it was offered (offer-set, cooccurrence; medium; 100+ characters)
-            [questKeys.preQuestSingle] = {93394},
+            -- already in QuestieDB; Assumption: 92329, 92533 was done whenever it was offered (offer-set, cooccurrence; low; <10 characters), kept below the min score to complete its accepted AND list; 93407 was done whenever it was offered (offer-set, cooccurrence; high; <10 characters)
+            -- [questKeys.preQuestGroup] = {92329,92533,93407},
+        -- },
+        -- [93450] = { -- Phantasmal Problems https://wowhead.com/forever/quest=93450
             -- 93546 "Spectral Iron Ore" https://wowhead.com/forever/quest=93546
-            -- Assumption: turning it in led straight to 93546 (handoff; high; 10+ characters)
-            [questKeys.nextQuestInChain] = 93546,
-        },
-        [93461] = { -- Welcome to Shen'dar Village https://wowhead.com/forever/quest=93461
+            -- already in QuestieDB; Assumption: turning it in led straight to 93546 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 93546,
+        -- },
+        -- [93461] = { -- Welcome to Shen'dar Village https://wowhead.com/forever/quest=93461
             -- 92517 "The Criminal Element" https://wowhead.com/forever/quest=92517
-            -- Assumption: turning it in led straight to 92517 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 92517,
-        },
-        [93464] = { -- The Visiting Mage https://wowhead.com/forever/quest=93464
+            -- not applied: an authored fix sets this field; Assumption: turning it in led straight to 92517 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 92517,
+        -- },
+        -- [93464] = { -- The Visiting Mage https://wowhead.com/forever/quest=93464
             -- 1389 "Draenethyst Crystals" https://wowhead.com/forever/quest=1389
-            -- Assumption: offered right after 1389 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {1389},
+            -- already in QuestieDB; Assumption: offered right after 1389 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {1389},
             -- 93465 "Notes on Draenethyst" https://wowhead.com/forever/quest=93465
-            -- Assumption: turning it in led straight to 93465 (handoff; medium; 100+ characters)
-            [questKeys.nextQuestInChain] = 93465,
-        },
-        [93465] = { -- Notes on Draenethyst https://wowhead.com/forever/quest=93465
+            -- already in QuestieDB; Assumption: turning it in led straight to 93465 (handoff; medium; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 93465,
+        -- },
+        -- [93465] = { -- Notes on Draenethyst https://wowhead.com/forever/quest=93465
             -- 93464 "The Visiting Mage" https://wowhead.com/forever/quest=93464
-            -- Assumption: offered right after 93464 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {93464},
+            -- already in QuestieDB; Assumption: offered right after 93464 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {93464},
             -- 93678 "Abridged Notes on Draenethyst" https://wowhead.com/forever/quest=93678
-            -- Assumption: turning it in led straight to 93678 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 93678,
-        },
-        [93510] = { -- Wake Memories https://wowhead.com/forever/quest=93510
+            -- already in QuestieDB; Assumption: turning it in led straight to 93678 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 93678,
+        -- },
+        -- [93510] = { -- Wake Memories https://wowhead.com/forever/quest=93510
             -- 96550 "Battle Recall" https://wowhead.com/forever/quest=96550
-            -- Assumption: offered right after 96550 was turned in (handoff, offer-set, absence, cooccurrence; very high; <10 characters)
-            [questKeys.preQuestSingle] = {96550},
-        },
-        [93546] = { -- Spectral Iron Ore https://wowhead.com/forever/quest=93546
+            -- already in QuestieDB; Assumption: offered right after 96550 was turned in (handoff, offer-set, absence, cooccurrence; very high; <10 characters)
+            -- [questKeys.preQuestSingle] = {96550},
+        -- },
+        -- [93546] = { -- Spectral Iron Ore https://wowhead.com/forever/quest=93546
             -- 93450 "Phantasmal Problems" https://wowhead.com/forever/quest=93450
-            -- Assumption: offered right after 93450 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {93450},
+            -- already in QuestieDB; Assumption: offered right after 93450 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {93450},
             -- 96060 "Tempered Expectations" https://wowhead.com/forever/quest=96060
-            -- Assumption: turning it in led straight to 96060 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 96060,
-        },
-        [93547] = { -- A Thorny Solution https://wowhead.com/forever/quest=93547
+            -- already in QuestieDB; Assumption: turning it in led straight to 96060 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 96060,
+        -- },
+        -- [93547] = { -- A Thorny Solution https://wowhead.com/forever/quest=93547
             -- 93407 "A Thorn in the Paw" https://wowhead.com/forever/quest=93407
-            -- Assumption: offered right after 93407 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {93407},
-        },
-        [93567] = { -- Ends Meet https://wowhead.com/forever/quest=93567
+            -- already in QuestieDB; Assumption: offered right after 93407 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {93407},
+        -- },
+        -- [93567] = { -- Ends Meet https://wowhead.com/forever/quest=93567
             -- 92102 "Praise" https://wowhead.com/forever/quest=92102
-            -- Assumption: offered right after 92102 was turned in (handoff, offer-set; high; <10 characters)
-            [questKeys.preQuestSingle] = {92102},
+            -- already in QuestieDB; Assumption: offered right after 92102 was turned in (handoff, offer-set; medium; <10 characters)
+            -- [questKeys.preQuestSingle] = {92102},
+        -- },
+        [93572] = { -- To Serve The Draenei https://wowhead.com/forever/quest=93572
+            -- 93685 "To Serve Kum'isha" https://wowhead.com/forever/quest=93685
+            -- Assumption: offered right after 93685 was turned in (handoff, absence; medium; <10 characters)
+            [questKeys.preQuestSingle] = {93685},
         },
-        [93594] = { -- Word of the Woods https://wowhead.com/forever/quest=93594
+        -- [93594] = { -- Word of the Woods https://wowhead.com/forever/quest=93594
             -- 93341 "Forlorn Gardens" https://wowhead.com/forever/quest=93341
-            -- Assumption: offered right after 93341 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {93341},
+            -- already in QuestieDB; Assumption: offered right after 93341 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {93341},
             -- 93404 "Rot and Regret" https://wowhead.com/forever/quest=93404
-            -- Assumption: turning it in led straight to 93404 (handoff; medium; 100+ characters)
-            [questKeys.nextQuestInChain] = 93404,
-        },
-        [93601] = { -- Passing the Blame https://wowhead.com/forever/quest=93601
+            -- already in QuestieDB; Assumption: turning it in led straight to 93404 (handoff; medium; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 93404,
+        -- },
+        -- [93601] = { -- Passing the Blame https://wowhead.com/forever/quest=93601
             -- 93404 "Rot and Regret" https://wowhead.com/forever/quest=93404
-            -- Assumption: offered right after 93404 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {93404},
+            -- already in QuestieDB; Assumption: offered right after 93404 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {93404},
             -- 93604 "Agamaggan's Blood" https://wowhead.com/forever/quest=93604
-            -- Assumption: turning it in led straight to 93604 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 93604,
-        },
-        [93604] = { -- Agamaggan's Blood https://wowhead.com/forever/quest=93604
+            -- already in QuestieDB; Assumption: turning it in led straight to 93604 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 93604,
+        -- },
+        -- [93604] = { -- Agamaggan's Blood https://wowhead.com/forever/quest=93604
             -- 93601 "Passing the Blame" https://wowhead.com/forever/quest=93601
-            -- Assumption: offered right after 93601 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {93601},
-            -- 93606 "Not on Squealing Terms" https://wowhead.com/forever/quest=93606
-            -- Assumption: turning it in led straight to 93606 (handoff; medium; <10 characters)
-            [questKeys.nextQuestInChain] = 93606,
-        },
-        [93606] = { -- Not on Squealing Terms https://wowhead.com/forever/quest=93606
+            -- already in QuestieDB; Assumption: offered right after 93601 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {93601},
+        -- },
+        -- [93606] = { -- Not on Squealing Terms https://wowhead.com/forever/quest=93606
             -- 93604 "Agamaggan's Blood" https://wowhead.com/forever/quest=93604
-            -- Assumption: offered right after 93604 was turned in (handoff, offer-set, cooccurrence; high; <10 characters)
-            [questKeys.preQuestSingle] = {93604},
-        },
-        [93617] = { -- Prey and Predator https://wowhead.com/forever/quest=93617
+            -- already in QuestieDB; Assumption: offered right after 93604 was turned in (handoff, offer-set, cooccurrence; high; <10 characters)
+            -- [questKeys.preQuestSingle] = {93604},
+        -- },
+        -- [93617] = { -- Prey and Predator https://wowhead.com/forever/quest=93617
             -- 96978 "Violent Venison" https://wowhead.com/forever/quest=96978
-            -- Assumption: offered right after 96978 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {96978},
-        },
-        [93678] = { -- Abridged Notes on Draenethyst https://wowhead.com/forever/quest=93678
+            -- already in QuestieDB; Assumption: offered right after 96978 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {96978},
+        -- },
+        -- [93678] = { -- Abridged Notes on Draenethyst https://wowhead.com/forever/quest=93678
             -- 93465 "Notes on Draenethyst" https://wowhead.com/forever/quest=93465
-            -- Assumption: offered right after 93465 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {93465},
-            -- 93679 "Visions of Another" https://wowhead.com/forever/quest=93679
-            -- Assumption: turning it in led straight to 93679 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 93679,
-        },
-        [93679] = { -- Visions of Another https://wowhead.com/forever/quest=93679
+            -- already in QuestieDB; Assumption: offered right after 93465 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {93465},
+        -- },
+        -- [93679] = { -- Visions of Another https://wowhead.com/forever/quest=93679
             -- 93678 "Abridged Notes on Draenethyst" https://wowhead.com/forever/quest=93678
-            -- Assumption: offered right after 93678 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {93678},
-            -- 93684 "The Found One" https://wowhead.com/forever/quest=93684
-            -- Assumption: turning it in led straight to 93684 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 93684,
-        },
+            -- already in QuestieDB; Assumption: offered right after 93678 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {93678},
+        -- },
         -- [93680] = { -- Key to the City https://wowhead.com/forever/quest=93680
             -- 545 "Dalaran Patrols" https://wowhead.com/forever/quest=545
             -- not applied: 545 needs this quest together with 544 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 545 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 545,
         -- },
-        [93684] = { -- The Found One https://wowhead.com/forever/quest=93684
+        -- [93684] = { -- The Found One https://wowhead.com/forever/quest=93684
             -- 93679 "Visions of Another" https://wowhead.com/forever/quest=93679
-            -- Assumption: offered right after 93679 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {93679},
-            -- 93685 "To Serve Kum'isha" https://wowhead.com/forever/quest=93685
-            -- Assumption: turning it in led straight to 93685 (handoff; medium; <10 characters)
-            [questKeys.nextQuestInChain] = 93685,
-        },
-        [93685] = { -- To Serve Kum'isha https://wowhead.com/forever/quest=93685
+            -- already in QuestieDB; Assumption: offered right after 93679 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {93679},
+        -- },
+        -- [93685] = { -- To Serve Kum'isha https://wowhead.com/forever/quest=93685
             -- 93684 "The Found One" https://wowhead.com/forever/quest=93684
-            -- Assumption: offered right after 93684 was turned in (handoff, offer-set, cooccurrence; very high; <10 characters)
-            [questKeys.preQuestSingle] = {93684},
-        },
+            -- already in QuestieDB; Assumption: offered right after 93684 was turned in (handoff, offer-set, cooccurrence; very high; <10 characters)
+            -- [questKeys.preQuestSingle] = {93684},
+        -- },
         -- [93735] = { -- The Broken Construct https://wowhead.com/forever/quest=93735
             -- 92700 "The Grand Skyseer" https://wowhead.com/forever/quest=92700
             -- already in QuestieDB; Assumption: offered right after 92700 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
@@ -15261,21 +15089,18 @@ function ForeverQuestRelationTraces:Load()
             -- Assumption: offered right after 95568 was turned in (handoff, offer-set, absence, cooccurrence; high; 10+ characters)
             [questKeys.preQuestSingle] = {95568},
         },
-        [93759] = { -- The Bounty of Nature https://wowhead.com/forever/quest=93759
+        -- [93759] = { -- The Bounty of Nature https://wowhead.com/forever/quest=93759
             -- 94479 "One Person's Trash" https://wowhead.com/forever/quest=94479
             -- 95568 "Seeds for a New Season" https://wowhead.com/forever/quest=95568
             -- 95569 "Hope for Hatchlings" https://wowhead.com/forever/quest=95569
-            -- Assumption: 94479 was done whenever it was offered (offer-set, absence, cooccurrence; medium; 10+ characters); offered right after 95568, 95569 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestGroup] = {94479,95568,95569},
-        },
-        [93773] = { -- The Pact https://wowhead.com/forever/quest=93773
+            -- already in QuestieDB; Assumption: 94479 was done whenever it was offered (offer-set, absence, cooccurrence; high; 10+ characters); offered right after 95568, 95569 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestGroup] = {94479,95568,95569},
+        -- },
+        -- [93773] = { -- The Pact https://wowhead.com/forever/quest=93773
             -- 95006 "Stolen Power" https://wowhead.com/forever/quest=95006
-            -- Assumption: offered right after 95006 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {95006},
-            -- 96930 "The Capricious Corvid" https://wowhead.com/forever/quest=96930
-            -- Assumption: turning it in led straight to 96930 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 96930,
-        },
+            -- already in QuestieDB; Assumption: offered right after 95006 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {95006},
+        -- },
         -- [93791] = { -- Speak with Belann https://wowhead.com/forever/quest=93791
             -- 93797 "Boughs in the Wind" https://wowhead.com/forever/quest=93797
             -- already in QuestieDB; Assumption: turning it in led straight to 93797 (handoff; high; 100+ characters)
@@ -15286,37 +15111,32 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 93791 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {93791},
         -- },
-        [93825] = { -- Barkbound Blessings https://wowhead.com/forever/quest=93825
+        -- [93826] = { -- Deal Dread to Deadwood https://wowhead.com/forever/quest=93826
             -- 91697 "Meet the Elders" https://wowhead.com/forever/quest=91697
-            -- Assumption: 91697 was done whenever it was offered (offer-set, cooccurrence; medium; 10+ characters)
-            [questKeys.preQuestSingle] = {91697},
-        },
-        [93826] = { -- Deal Dread to Deadwood https://wowhead.com/forever/quest=93826
+            -- already in QuestieDB; Assumption: offered right after 91697 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {91697},
+        -- },
+        -- [93827] = { -- Windswept Wards https://wowhead.com/forever/quest=93827
             -- 91697 "Meet the Elders" https://wowhead.com/forever/quest=91697
-            -- Assumption: offered right after 91697 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {91697},
-        },
-        [93827] = { -- Windswept Wards https://wowhead.com/forever/quest=93827
-            -- 91697 "Meet the Elders" https://wowhead.com/forever/quest=91697
-            -- Assumption: 91697 was done whenever it was offered (offer-set, cooccurrence; medium; 10+ characters)
-            [questKeys.preQuestSingle] = {91697},
-        },
-        [93831] = { -- Sweetpaw Jam https://wowhead.com/forever/quest=93831
+            -- already in QuestieDB; Assumption: 91697 was done whenever it was offered (offer-set, cooccurrence; medium; 10+ characters)
+            -- [questKeys.preQuestSingle] = {91697},
+        -- },
+        -- [93831] = { -- Sweetpaw Jam https://wowhead.com/forever/quest=93831
             -- 92111 "Of Friend and Fur" https://wowhead.com/forever/quest=92111
-            -- Assumption: offered right after 92111 was turned in (handoff, offer-set, absence, cooccurrence; high; 10+ characters)
-            [questKeys.preQuestSingle] = {92111},
-        },
-        [93835] = { -- Confront Lorthuna https://wowhead.com/forever/quest=93835
+            -- already in QuestieDB; Assumption: offered right after 92111 was turned in (handoff, offer-set, absence, cooccurrence; high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {92111},
+        -- },
+        -- [93835] = { -- Confront Lorthuna https://wowhead.com/forever/quest=93835
             -- 93958 "The Inner Sanctum" https://wowhead.com/forever/quest=93958
             -- already in QuestieDB; Assumption: offered right after 93958 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {93958},
             -- 92646 "Confront Lorthuna" https://wowhead.com/forever/quest=92646
-            -- Assumption: the server completes it and 92646 together (cooccurrence; very high; 100+ characters)
-            [questKeys.exclusiveTo] = {92646},
+            -- already in QuestieDB; Assumption: the server completes it and 92646 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {92646},
             -- 94369 "The Fate of Zephras" https://wowhead.com/forever/quest=94369
             -- already in QuestieDB; Assumption: turning it in led straight to 94369 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 94369,
-        },
+        -- },
         -- [93836] = { -- The Fate of Zephras https://wowhead.com/forever/quest=93836
             -- 92646 "Confront Lorthuna" https://wowhead.com/forever/quest=92646
             -- 93835 "Confront Lorthuna" https://wowhead.com/forever/quest=93835
@@ -15326,16 +15146,16 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: turning it in led straight to 93090 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 93090,
         -- },
-        [93848] = { -- Work Well Done https://wowhead.com/forever/quest=93848
+        -- [93848] = { -- Work Well Done https://wowhead.com/forever/quest=93848
             -- 92833 "Ve'han's Fall" https://wowhead.com/forever/quest=92833
-            -- Assumption: offered right after 92833 was turned in (handoff, offer-set, absence, cooccurrence; very high; <10 characters)
-            [questKeys.preQuestSingle] = {92833},
-        },
-        [93925] = { -- Beads for Brerufa https://wowhead.com/forever/quest=93925
+            -- already in QuestieDB; Assumption: offered right after 92833 was turned in (handoff, offer-set, absence, cooccurrence; very high; <10 characters)
+            -- [questKeys.preQuestSingle] = {92833},
+        -- },
+        -- [93925] = { -- Beads for Brerufa https://wowhead.com/forever/quest=93925
             -- 93952 "Balance Through Strength" https://wowhead.com/forever/quest=93952
-            -- Assumption: offered right after 93952 was turned in (handoff, offer-set, absence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {93952},
-        },
+            -- already in QuestieDB; Assumption: offered right after 93952 was turned in (handoff, offer-set, absence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {93952},
+        -- },
         -- [93926] = { -- The Western Watch https://wowhead.com/forever/quest=93926
             -- 92528 "Among the Faithful" https://wowhead.com/forever/quest=92528
             -- already in QuestieDB; Assumption: offered right after 92528 was turned in (handoff, offer-set, absence; medium; 100+ characters)
@@ -15370,19 +15190,19 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 94947 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {94947},
         -- },
-        [93976] = { -- The Goblin Trader https://wowhead.com/forever/quest=93976
+        -- [93976] = { -- The Goblin Trader https://wowhead.com/forever/quest=93976
             -- 93788 "Borrowed Blades" https://wowhead.com/forever/quest=93788
-            -- Assumption: offered right after 93788 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {93788},
+            -- already in QuestieDB; Assumption: offered right after 93788 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {93788},
             -- 95288 "Smuggler's Paradise" https://wowhead.com/forever/quest=95288
-            -- Assumption: turning it in led straight to 95288 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 95288,
-        },
-        [94013] = { -- Taming the Beast https://wowhead.com/forever/quest=94013
+            -- already in QuestieDB; Assumption: turning it in led straight to 95288 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 95288,
+        -- },
+        -- [94013] = { -- Taming the Beast https://wowhead.com/forever/quest=94013
             -- 6063 "Taming the Beast" https://wowhead.com/forever/quest=6063
-            -- Assumption: the server completes it and 6063 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {6063},
-        },
+            -- already in QuestieDB; Assumption: the server completes it and 6063 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {6063},
+        -- },
         -- [94050] = { -- Training the Beast https://wowhead.com/forever/quest=94050
             -- 6063 "Taming the Beast" https://wowhead.com/forever/quest=6063
             -- 94013 "Taming the Beast" https://wowhead.com/forever/quest=94013
@@ -15502,50 +15322,58 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 94467 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {94467},
         -- },
+        -- [94472] = { -- Earth Sapta https://wowhead.com/forever/quest=94472
+            -- 94373 "Call of Earth" https://wowhead.com/forever/quest=94373
+            -- already in QuestieDB; Assumption: 94373 was done whenever it was offered (offer-set; medium; 100+ characters)
+            -- [questKeys.preQuestSingle] = {94373},
+        -- },
         -- [94473] = { -- Fire Sapta https://wowhead.com/forever/quest=94473
             -- 94466 "Call of Fire" https://wowhead.com/forever/quest=94466
             -- already in QuestieDB; Assumption: 94466 was done whenever it was offered (offer-set; medium; <10 characters)
             -- [questKeys.preQuestSingle] = {94466},
         -- },
-        [94479] = { -- One Person's Trash https://wowhead.com/forever/quest=94479
+        -- [94479] = { -- One Person's Trash https://wowhead.com/forever/quest=94479
             -- 96796 "Woods Workshop" https://wowhead.com/forever/quest=96796
-            -- Assumption: turning it in led straight to 96796 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 96796,
-        },
-        [94480] = { -- A Gift From Our Enemies https://wowhead.com/forever/quest=94480
+            -- already in QuestieDB; Assumption: turning it in led straight to 96796 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 96796,
+        -- },
+        -- [94480] = { -- A Gift From Our Enemies https://wowhead.com/forever/quest=94480
             -- 93787 "Food for the Taking" https://wowhead.com/forever/quest=93787
-            -- Assumption: offered right after 93787 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {93787},
+            -- already in QuestieDB; Assumption: offered right after 93787 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {93787},
             -- 94481 "A Serving of Strength" https://wowhead.com/forever/quest=94481
-            -- Assumption: turning it in led straight to 94481 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 94481,
-        },
-        [94481] = { -- A Serving of Strength https://wowhead.com/forever/quest=94481
+            -- already in QuestieDB; Assumption: turning it in led straight to 94481 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 94481,
+        -- },
+        -- [94481] = { -- A Serving of Strength https://wowhead.com/forever/quest=94481
             -- 94480 "A Gift From Our Enemies" https://wowhead.com/forever/quest=94480
-            -- Assumption: offered right after 94480 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {94480},
-        },
-        [94483] = { -- Show Them How It's Done https://wowhead.com/forever/quest=94483
+            -- already in QuestieDB; Assumption: offered right after 94480 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {94480},
+        -- },
+        -- [94483] = { -- Show Them How It's Done https://wowhead.com/forever/quest=94483
             -- 93786 "A Message in Blood" https://wowhead.com/forever/quest=93786
             -- 93787 "Food for the Taking" https://wowhead.com/forever/quest=93787
-            -- Assumption: offered right after 93786, 93787 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestGroup] = {93786,93787},
-        },
+            -- already in QuestieDB; Assumption: offered right after 93786, 93787 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestGroup] = {93786,93787},
+        -- },
         -- [94488] = { -- The Ties That Bind https://wowhead.com/forever/quest=94488
             -- 94485 "Tears of the Lady" https://wowhead.com/forever/quest=94485
             -- 94486 "Feathers for Binding" https://wowhead.com/forever/quest=94486
             -- 94487 "Unwanted and Unworthy" https://wowhead.com/forever/quest=94487
-            -- already in QuestieDB; Assumption: offered right after 94485, 94487 was turned in (handoff, offer-set, absence, cooccurrence; high; 100+ characters); offered right after 94486 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- already in QuestieDB; Assumption: offered right after 94485, 94486, 94487 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestGroup] = {94485,94486,94487},
         -- },
         -- [94489] = { -- The Wounds of Betrayal https://wowhead.com/forever/quest=94489
             -- 94485 "Tears of the Lady" https://wowhead.com/forever/quest=94485
             -- 94486 "Feathers for Binding" https://wowhead.com/forever/quest=94486
             -- 94487 "Unwanted and Unworthy" https://wowhead.com/forever/quest=94487
-            -- already in QuestieDB; Assumption: offered right after 94485, 94486, 94487 was turned in (handoff, offer-set, absence, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: offered right after 94485, 94486, 94487 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestGroup] = {94485,94486,94487},
         -- },
         -- [94490] = { -- Ripped Missive https://wowhead.com/forever/quest=94490
+            -- 94486 "Feathers for Binding" https://wowhead.com/forever/quest=94486
+            -- already in QuestieDB; Assumption: 94486 was done whenever it was offered (offer-set, cooccurrence; medium; 100+ characters)
+            -- [questKeys.preQuestSingle] = {94486},
             -- 94491 "The Fate of the Den" https://wowhead.com/forever/quest=94491
             -- already in QuestieDB; Assumption: turning it in led straight to 94491 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 94491,
@@ -15581,7 +15409,7 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 94499 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {94499},
             -- 94501 "Call of Water" https://wowhead.com/forever/quest=94501
-            -- already in QuestieDB; Assumption: turning it in led straight to 94501 (handoff; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 94501 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 94501,
         -- },
         -- [94501] = { -- Call of Water https://wowhead.com/forever/quest=94501
@@ -15589,7 +15417,7 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 94500 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {94500},
             -- 94502 "Call of Water" https://wowhead.com/forever/quest=94502
-            -- already in QuestieDB; Assumption: turning it in led straight to 94502 (handoff; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 94502 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 94502,
         -- },
         -- [94502] = { -- Call of Water https://wowhead.com/forever/quest=94502
@@ -15613,27 +15441,27 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 94503 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {94503},
         -- },
-        [94532] = { -- Gnoll Infestation https://wowhead.com/forever/quest=94532
+        -- [94532] = { -- Gnoll Infestation https://wowhead.com/forever/quest=94532
             -- 96109 "A Hunter's Quiver" https://wowhead.com/forever/quest=96109
-            -- Assumption: offered right after 96109 was turned in (handoff, offer-set, absence; high; 100+ characters)
-            [questKeys.preQuestSingle] = {96109},
+            -- already in QuestieDB; Assumption: offered right after 96109 was turned in (handoff, offer-set, absence; high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {96109},
             -- 94678 "Gnoll Infestation" https://wowhead.com/forever/quest=94678
-            -- Assumption: the server completes it and 94678 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {94678},
-        },
-        [94533] = { -- Snargl's Snout https://wowhead.com/forever/quest=94533
+            -- already in QuestieDB; Assumption: the server completes it and 94678 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {94678},
+        -- },
+        -- [94533] = { -- Snargl's Snout https://wowhead.com/forever/quest=94533
             -- 96109 "A Hunter's Quiver" https://wowhead.com/forever/quest=96109
-            -- Assumption: offered right after 96109 was turned in (handoff, offer-set, absence; high; 100+ characters)
-            [questKeys.preQuestSingle] = {96109},
+            -- already in QuestieDB; Assumption: offered right after 96109 was turned in (handoff, offer-set, absence; high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {96109},
             -- 94679 "Snargl's Snout" https://wowhead.com/forever/quest=94679
-            -- Assumption: the server completes it and 94679 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {94679},
-        },
-        [94535] = { -- Bristle Hills Bandits https://wowhead.com/forever/quest=94535
+            -- already in QuestieDB; Assumption: the server completes it and 94679 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {94679},
+        -- },
+        -- [94535] = { -- Bristle Hills Bandits https://wowhead.com/forever/quest=94535
             -- 96109 "A Hunter's Quiver" https://wowhead.com/forever/quest=96109
-            -- Assumption: 96109 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
-            [questKeys.preQuestSingle] = {96109},
-        },
+            -- already in QuestieDB; Assumption: 96109 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {96109},
+        -- },
         -- [94568] = { -- The Cult's True Plans https://wowhead.com/forever/quest=94568
             -- 92644 "Unfortunate News" https://wowhead.com/forever/quest=92644
             -- already in QuestieDB; Assumption: offered right after 92644 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
@@ -15642,162 +15470,162 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: turning it in led straight to 92640 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 92640,
         -- },
-        [94613] = { -- My Kingdom for a Horse https://wowhead.com/forever/quest=94613
+        -- [94613] = { -- My Kingdom for a Horse https://wowhead.com/forever/quest=94613
             -- 94615 "Foal Play" https://wowhead.com/forever/quest=94615
-            -- Assumption: turning it in led straight to 94615 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 94615,
-        },
-        [94615] = { -- Foal Play https://wowhead.com/forever/quest=94615
+            -- already in QuestieDB; Assumption: turning it in led straight to 94615 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 94615,
+        -- },
+        -- [94615] = { -- Foal Play https://wowhead.com/forever/quest=94615
             -- 94613 "My Kingdom for a Horse" https://wowhead.com/forever/quest=94613
-            -- Assumption: offered right after 94613 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {94613},
+            -- already in QuestieDB; Assumption: offered right after 94613 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {94613},
             -- 94617 "Coyote Huntin'" https://wowhead.com/forever/quest=94617
-            -- Assumption: turning it in led straight to 94617 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 94617,
-        },
+            -- already in QuestieDB; Assumption: turning it in led straight to 94617 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 94617,
+        -- },
         -- [94616] = { -- Water Sapta https://wowhead.com/forever/quest=94616
             -- 94501 "Call of Water" https://wowhead.com/forever/quest=94501
             -- already in QuestieDB; Assumption: 94501 was done whenever it was offered (offer-set; medium; 100+ characters)
             -- [questKeys.preQuestSingle] = {94501},
         -- },
-        [94617] = { -- Coyote Huntin' https://wowhead.com/forever/quest=94617
+        -- [94617] = { -- Coyote Huntin' https://wowhead.com/forever/quest=94617
             -- 94615 "Foal Play" https://wowhead.com/forever/quest=94615
-            -- Assumption: offered right after 94615 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {94615},
-        },
-        [94618] = { -- Wheeler's Fleeing Steeds https://wowhead.com/forever/quest=94618
+            -- already in QuestieDB; Assumption: offered right after 94615 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {94615},
+        -- },
+        -- [94618] = { -- Wheeler's Fleeing Steeds https://wowhead.com/forever/quest=94618
             -- 94615 "Foal Play" https://wowhead.com/forever/quest=94615
-            -- Assumption: offered right after 94615 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {94615},
+            -- already in QuestieDB; Assumption: offered right after 94615 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {94615},
             -- 94992 "Rescue Roundup" https://wowhead.com/forever/quest=94992
-            -- Assumption: turning it in led straight to 94992 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 94992,
-        },
+            -- already in QuestieDB; Assumption: turning it in led straight to 94992 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 94992,
+        -- },
         -- [94638] = { -- Strength and Mercy https://wowhead.com/forever/quest=94638
             -- 94006 "The Great Ursera Spirit" https://wowhead.com/forever/quest=94006
             -- already in QuestieDB; Assumption: offered right after 94006 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {94006},
         -- },
-        [94668] = { -- Bloodmaster's Ring https://wowhead.com/forever/quest=94668
+        -- [94668] = { -- Bloodmaster's Ring https://wowhead.com/forever/quest=94668
             -- 95424 "Might Makes Right" https://wowhead.com/forever/quest=95424
             -- 95425 "Unworthy Champion" https://wowhead.com/forever/quest=95425
-            -- Assumption: offered right after 95424, 95425 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestGroup] = {95424,95425},
+            -- already in QuestieDB; Assumption: offered right after 95424, 95425 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestGroup] = {95424,95425},
             -- 94669 "Pay to Play" https://wowhead.com/forever/quest=94669
-            -- Assumption: turning it in led straight to 94669 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 94669,
-        },
-        [94669] = { -- Pay to Play https://wowhead.com/forever/quest=94669
+            -- already in QuestieDB; Assumption: turning it in led straight to 94669 (handoff; medium; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 94669,
+        -- },
+        -- [94669] = { -- Pay to Play https://wowhead.com/forever/quest=94669
             -- 94668 "Bloodmaster's Ring" https://wowhead.com/forever/quest=94668
-            -- Assumption: offered right after 94668 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {94668},
+            -- already in QuestieDB; Assumption: offered right after 94668 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {94668},
             -- 94670 "Bloodmaster's Ring" https://wowhead.com/forever/quest=94670
-            -- Assumption: turning it in led straight to 94670 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 94670,
-        },
-        [94670] = { -- Bloodmaster's Ring https://wowhead.com/forever/quest=94670
+            -- already in QuestieDB; Assumption: turning it in led straight to 94670 (handoff; medium; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 94670,
+        -- },
+        -- [94670] = { -- Bloodmaster's Ring https://wowhead.com/forever/quest=94670
             -- 94669 "Pay to Play" https://wowhead.com/forever/quest=94669
-            -- Assumption: offered right after 94669 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {94669},
+            -- already in QuestieDB; Assumption: offered right after 94669 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {94669},
             -- 94739 "Bloodmaster's Ring" https://wowhead.com/forever/quest=94739
-            -- Assumption: turning it in led straight to 94739 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 94739,
-        },
-        [94672] = { -- Encroaching Twilight https://wowhead.com/forever/quest=94672
+            -- already in QuestieDB; Assumption: turning it in led straight to 94739 (handoff; medium; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 94739,
+        -- },
+        -- [94672] = { -- Encroaching Twilight https://wowhead.com/forever/quest=94672
             -- 94483 "Show Them How It's Done" https://wowhead.com/forever/quest=94483
-            -- Assumption: offered right after 94483 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {94483},
-        },
-        [94678] = { -- Gnoll Infestation https://wowhead.com/forever/quest=94678
+            -- already in QuestieDB; Assumption: offered right after 94483 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {94483},
+        -- },
+        -- [94678] = { -- Gnoll Infestation https://wowhead.com/forever/quest=94678
             -- 94532 "Gnoll Infestation" https://wowhead.com/forever/quest=94532
-            -- Assumption: the server completes it and 94532 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {94532},
-        },
-        [94679] = { -- Snargl's Snout https://wowhead.com/forever/quest=94679
+            -- already in QuestieDB; Assumption: the server completes it and 94532 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {94532},
+        -- },
+        -- [94679] = { -- Snargl's Snout https://wowhead.com/forever/quest=94679
             -- 94533 "Snargl's Snout" https://wowhead.com/forever/quest=94533
-            -- Assumption: the server completes it and 94533 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {94533},
-        },
-        [94680] = { -- Twilight Missives https://wowhead.com/forever/quest=94680
+            -- already in QuestieDB; Assumption: the server completes it and 94533 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {94533},
+        -- },
+        -- [94680] = { -- Twilight Missives https://wowhead.com/forever/quest=94680
             -- 94483 "Show Them How It's Done" https://wowhead.com/forever/quest=94483
-            -- Assumption: 94483 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
-            [questKeys.preQuestSingle] = {94483},
+            -- already in QuestieDB; Assumption: 94483 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {94483},
             -- 94727 "Digging for Answers" https://wowhead.com/forever/quest=94727
             -- not applied: 94727 needs this quest together with 94672 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 94727 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 94727,
-        },
-        [94727] = { -- Digging for Answers https://wowhead.com/forever/quest=94727
+        -- },
+        -- [94727] = { -- Digging for Answers https://wowhead.com/forever/quest=94727
             -- 94672 "Encroaching Twilight" https://wowhead.com/forever/quest=94672
             -- 94680 "Twilight Missives" https://wowhead.com/forever/quest=94680
-            -- Assumption: offered right after 94672 was turned in (handoff, offer-set, absence, cooccurrence; medium; 100+ characters); offered right after 94680 was turned in (handoff, offer-set, absence, cooccurrence; high; 100+ characters)
-            [questKeys.preQuestGroup] = {94672,94680},
-        },
-        [94733] = { -- Our Ogre Friend https://wowhead.com/forever/quest=94733
+            -- already in QuestieDB; Assumption: offered right after 94672 was turned in (handoff, offer-set, absence, cooccurrence; low; 100+ characters), kept below the min score to complete its accepted AND list; offered right after 94680 was turned in (handoff, offer-set, absence, cooccurrence; high; 100+ characters)
+            -- [questKeys.preQuestGroup] = {94672,94680},
+        -- },
+        -- [94733] = { -- Our Ogre Friend https://wowhead.com/forever/quest=94733
             -- 94964 "Bloodmaster's Ring" https://wowhead.com/forever/quest=94964
-            -- Assumption: offered right after 94964 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {94964},
+            -- already in QuestieDB; Assumption: offered right after 94964 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {94964},
             -- 94734 "A Boar's Delight" https://wowhead.com/forever/quest=94734
-            -- Assumption: turning it in led straight to 94734 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 94734,
-        },
-        [94734] = { -- A Boar's Delight https://wowhead.com/forever/quest=94734
+            -- already in QuestieDB; Assumption: turning it in led straight to 94734 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 94734,
+        -- },
+        -- [94734] = { -- A Boar's Delight https://wowhead.com/forever/quest=94734
             -- 94733 "Our Ogre Friend" https://wowhead.com/forever/quest=94733
-            -- Assumption: offered right after 94733 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {94733},
+            -- already in QuestieDB; Assumption: offered right after 94733 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {94733},
             -- 94737 "A Treat for a Friend" https://wowhead.com/forever/quest=94737
-            -- Assumption: turning it in led straight to 94737 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 94737,
-        },
-        [94737] = { -- A Treat for a Friend https://wowhead.com/forever/quest=94737
+            -- already in QuestieDB; Assumption: turning it in led straight to 94737 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 94737,
+        -- },
+        -- [94737] = { -- A Treat for a Friend https://wowhead.com/forever/quest=94737
             -- 94734 "A Boar's Delight" https://wowhead.com/forever/quest=94734
-            -- Assumption: offered right after 94734 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {94734},
+            -- already in QuestieDB; Assumption: offered right after 94734 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {94734},
             -- 94965 "Bloodmaster's Ring" https://wowhead.com/forever/quest=94965
-            -- Assumption: turning it in led straight to 94965 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 94965,
-        },
-        [94739] = { -- Bloodmaster's Ring https://wowhead.com/forever/quest=94739
+            -- already in QuestieDB; Assumption: turning it in led straight to 94965 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 94965,
+        -- },
+        -- [94739] = { -- Bloodmaster's Ring https://wowhead.com/forever/quest=94739
             -- 94670 "Bloodmaster's Ring" https://wowhead.com/forever/quest=94670
-            -- Assumption: offered right after 94670 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {94670},
+            -- already in QuestieDB; Assumption: offered right after 94670 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {94670},
             -- 94962 "Bloodmaster's Ring" https://wowhead.com/forever/quest=94962
-            -- Assumption: turning it in led straight to 94962 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 94962,
-        },
-        [94744] = { -- The Wayward Warrior https://wowhead.com/forever/quest=94744
+            -- already in QuestieDB; Assumption: turning it in led straight to 94962 (handoff; medium; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 94962,
+        -- },
+        -- [94744] = { -- The Wayward Warrior https://wowhead.com/forever/quest=94744
             -- 95428 "Clugfist's Decree" https://wowhead.com/forever/quest=95428
-            -- Assumption: offered right after 95428 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95428},
-        },
-        [94745] = { -- Carving a Path https://wowhead.com/forever/quest=94745
+            -- already in QuestieDB; Assumption: offered right after 95428 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95428},
+        -- },
+        -- [94745] = { -- Carving a Path https://wowhead.com/forever/quest=94745
             -- 94744 "The Wayward Warrior" https://wowhead.com/forever/quest=94744
-            -- Assumption: 94744 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
-            [questKeys.preQuestSingle] = {94744},
+            -- already in QuestieDB; Assumption: 94744 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {94744},
             -- 94768 "Bring Me His Head" https://wowhead.com/forever/quest=94768
             -- not applied: 94768 needs this quest together with 94748 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 94768 (handoff; high; 10+ characters)
             -- [questKeys.nextQuestInChain] = 94768,
-        },
-        [94748] = { -- Break Their Chains https://wowhead.com/forever/quest=94748
+        -- },
+        -- [94748] = { -- Break Their Chains https://wowhead.com/forever/quest=94748
             -- 94744 "The Wayward Warrior" https://wowhead.com/forever/quest=94744
-            -- Assumption: 94744 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
-            [questKeys.preQuestSingle] = {94744},
+            -- already in QuestieDB; Assumption: 94744 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {94744},
             -- 94768 "Bring Me His Head" https://wowhead.com/forever/quest=94768
             -- not applied: 94768 needs this quest together with 94745 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 94768 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 94768,
-        },
-        [94768] = { -- Bring Me His Head https://wowhead.com/forever/quest=94768
+        -- },
+        -- [94768] = { -- Bring Me His Head https://wowhead.com/forever/quest=94768
             -- 94745 "Carving a Path" https://wowhead.com/forever/quest=94745
             -- 94748 "Break Their Chains" https://wowhead.com/forever/quest=94748
-            -- Assumption: offered right after 94745, 94748 was turned in (handoff, offer-set, absence, cooccurrence; medium; 100+ characters)
-            [questKeys.preQuestGroup] = {94745,94748},
-        },
+            -- already in QuestieDB; Assumption: offered right after 94745 was turned in (handoff, offer-set, absence, cooccurrence; medium; 100+ characters); offered right after 94748 was turned in (handoff, offer-set, absence, cooccurrence; low; 100+ characters), kept below the min score to complete its accepted AND list
+            -- [questKeys.preQuestGroup] = {94745,94748},
+        -- },
         -- [94774] = { -- Divine Grace https://wowhead.com/forever/quest=94774
             -- 94775 "Divine Grace" https://wowhead.com/forever/quest=94775
             -- 94776 "Divine Grace" https://wowhead.com/forever/quest=94776
             -- 94777 "Divine Grace" https://wowhead.com/forever/quest=94777
             -- 94778 "Divine Grace" https://wowhead.com/forever/quest=94778
             -- 94779 "Divine Grace" https://wowhead.com/forever/quest=94779
-            -- already in QuestieDB; Assumption: the server completes it and 94775, 94778, 94779 together (cooccurrence; high; 100+ characters); offer lists show it and 94776 exclude each other (absence, cooccurrence; high; 100+ characters); offer lists show it and 94777 exclude each other (absence, cooccurrence; very high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 94775, 94778, 94779 together (cooccurrence; very high; 100+ characters); offer lists show it and 94776, 94777 exclude each other (absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {94775,94776,94777,94778,94779},
         -- },
         -- [94775] = { -- Divine Grace https://wowhead.com/forever/quest=94775
@@ -15806,7 +15634,7 @@ function ForeverQuestRelationTraces:Load()
             -- 94777 "Divine Grace" https://wowhead.com/forever/quest=94777
             -- 94778 "Divine Grace" https://wowhead.com/forever/quest=94778
             -- 94779 "Divine Grace" https://wowhead.com/forever/quest=94779
-            -- already in QuestieDB; Assumption: the server completes it and 94774, 94776, 94777, 94778 together (cooccurrence; high; 100+ characters); offer lists show it and 94779 exclude each other (absence, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 94774, 94776, 94777, 94778 together (cooccurrence; very high; 100+ characters); offer lists show it and 94779 exclude each other (absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {94774,94776,94777,94778,94779},
         -- },
         -- [94776] = { -- Divine Grace https://wowhead.com/forever/quest=94776
@@ -15815,7 +15643,7 @@ function ForeverQuestRelationTraces:Load()
             -- 94777 "Divine Grace" https://wowhead.com/forever/quest=94777
             -- 94778 "Divine Grace" https://wowhead.com/forever/quest=94778
             -- 94779 "Divine Grace" https://wowhead.com/forever/quest=94779
-            -- already in QuestieDB; Assumption: offer lists show it and 94774, 94778 exclude each other (absence, cooccurrence; high; 100+ characters); the server completes it and 94775, 94777, 94779 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: offer lists show it and 94774, 94778 exclude each other (absence, cooccurrence; very high; 100+ characters); the server completes it and 94775, 94777, 94779 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {94774,94775,94777,94778,94779},
         -- },
         -- [94777] = { -- Divine Grace https://wowhead.com/forever/quest=94777
@@ -15824,7 +15652,7 @@ function ForeverQuestRelationTraces:Load()
             -- 94776 "Divine Grace" https://wowhead.com/forever/quest=94776
             -- 94778 "Divine Grace" https://wowhead.com/forever/quest=94778
             -- 94779 "Divine Grace" https://wowhead.com/forever/quest=94779
-            -- already in QuestieDB; Assumption: offer lists show it and 94774 exclude each other (absence, cooccurrence; very high; 100+ characters); the server completes it and 94775, 94776, 94778, 94779 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: offer lists show it and 94774 exclude each other (absence, cooccurrence; very high; 100+ characters); the server completes it and 94775, 94776, 94778, 94779 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {94774,94775,94776,94778,94779},
         -- },
         -- [94778] = { -- Divine Grace https://wowhead.com/forever/quest=94778
@@ -15833,7 +15661,7 @@ function ForeverQuestRelationTraces:Load()
             -- 94776 "Divine Grace" https://wowhead.com/forever/quest=94776
             -- 94777 "Divine Grace" https://wowhead.com/forever/quest=94777
             -- 94779 "Divine Grace" https://wowhead.com/forever/quest=94779
-            -- already in QuestieDB; Assumption: the server completes it and 94774, 94775, 94777, 94779 together (cooccurrence; high; 100+ characters); offer lists show it and 94776 exclude each other (absence, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 94774, 94775, 94777, 94779 together (cooccurrence; very high; 100+ characters); offer lists show it and 94776 exclude each other (absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {94774,94775,94776,94777,94779},
         -- },
         -- [94779] = { -- Divine Grace https://wowhead.com/forever/quest=94779
@@ -15842,22 +15670,22 @@ function ForeverQuestRelationTraces:Load()
             -- 94776 "Divine Grace" https://wowhead.com/forever/quest=94776
             -- 94777 "Divine Grace" https://wowhead.com/forever/quest=94777
             -- 94778 "Divine Grace" https://wowhead.com/forever/quest=94778
-            -- already in QuestieDB; Assumption: the server completes it and 94774, 94776, 94777, 94778 together (cooccurrence; high; 100+ characters); offer lists show it and 94775 exclude each other (absence, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 94774, 94776, 94777, 94778 together (cooccurrence; very high; 100+ characters); offer lists show it and 94775 exclude each other (absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {94774,94775,94776,94777,94778},
         -- },
-        [94782] = { -- The Western Post https://wowhead.com/forever/quest=94782
+        -- [94782] = { -- The Western Post https://wowhead.com/forever/quest=94782
             -- 95316 "The Experimental Method" https://wowhead.com/forever/quest=95316
-            -- Assumption: offered right after 95316 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {95316},
-        },
-        [94789] = { -- Call of Air https://wowhead.com/forever/quest=94789
+            -- already in QuestieDB; Assumption: offered right after 95316 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {95316},
+        -- },
+        -- [94789] = { -- Call of Air https://wowhead.com/forever/quest=94789
             -- 96264 "Elemental Aid" https://wowhead.com/forever/quest=96264
-            -- Assumption: turning it in led straight to 96264 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 96264,
-        },
+            -- already in QuestieDB; Assumption: turning it in led straight to 96264 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 96264,
+        -- },
         -- [94792] = { -- Taming the Beast https://wowhead.com/forever/quest=94792
             -- 94863 "Taming the Beast" https://wowhead.com/forever/quest=94863
-            -- already in QuestieDB; Assumption: turning it in led straight to 94863 (handoff; high; 100+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 94863 (handoff; medium; 100+ characters)
             -- [questKeys.nextQuestInChain] = 94863,
         -- },
         -- [94793] = { -- Training the Beast https://wowhead.com/forever/quest=94793
@@ -15872,27 +15700,27 @@ function ForeverQuestRelationTraces:Load()
             -- 94824 "Confounding Flash" https://wowhead.com/forever/quest=94824
             -- 94825 "Confounding Flash" https://wowhead.com/forever/quest=94825
             -- 94826 "Confounding Flash" https://wowhead.com/forever/quest=94826
-            -- already in QuestieDB; Assumption: the server completes it and 94821, 94822, 94823, 94824, 94825, 94826 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 94821, 94822, 94823, 94824, 94825, 94826 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {94821,94822,94823,94824,94825,94826},
         -- },
-        [94818] = { -- Contingency Plan https://wowhead.com/forever/quest=94818
+        -- [94818] = { -- Contingency Plan https://wowhead.com/forever/quest=94818
             -- 94819 "Contingency Plan" https://wowhead.com/forever/quest=94819
             -- 94820 "Contingency Plan" https://wowhead.com/forever/quest=94820
-            -- Assumption: the server completes it and 94819, 94820 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {94819,94820},
-        },
-        [94819] = { -- Contingency Plan https://wowhead.com/forever/quest=94819
+            -- already in QuestieDB; Assumption: the server completes it and 94819, 94820 together (cooccurrence; high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {94819,94820},
+        -- },
+        -- [94819] = { -- Contingency Plan https://wowhead.com/forever/quest=94819
             -- 94818 "Contingency Plan" https://wowhead.com/forever/quest=94818
             -- 94820 "Contingency Plan" https://wowhead.com/forever/quest=94820
-            -- Assumption: the server completes it and 94818 together (cooccurrence; high; 100+ characters); offer lists show it and 94820 exclude each other (absence, cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {94818,94820},
-        },
-        [94820] = { -- Contingency Plan https://wowhead.com/forever/quest=94820
+            -- already in QuestieDB; Assumption: the server completes it and 94818 together (cooccurrence; high; 100+ characters); offer lists show it and 94820 exclude each other (absence, cooccurrence; high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {94818,94820},
+        -- },
+        -- [94820] = { -- Contingency Plan https://wowhead.com/forever/quest=94820
             -- 94818 "Contingency Plan" https://wowhead.com/forever/quest=94818
             -- 94819 "Contingency Plan" https://wowhead.com/forever/quest=94819
-            -- Assumption: the server completes it and 94818 together (cooccurrence; high; 100+ characters); offer lists show it and 94819 exclude each other (absence, cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {94818,94819},
-        },
+            -- already in QuestieDB; Assumption: the server completes it and 94818 together (cooccurrence; high; 100+ characters); offer lists show it and 94819 exclude each other (absence, cooccurrence; high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {94818,94819},
+        -- },
         -- [94821] = { -- Confounding Flash https://wowhead.com/forever/quest=94821
             -- 94817 "Confounding Flash" https://wowhead.com/forever/quest=94817
             -- 94822 "Confounding Flash" https://wowhead.com/forever/quest=94822
@@ -15900,7 +15728,7 @@ function ForeverQuestRelationTraces:Load()
             -- 94824 "Confounding Flash" https://wowhead.com/forever/quest=94824
             -- 94825 "Confounding Flash" https://wowhead.com/forever/quest=94825
             -- 94826 "Confounding Flash" https://wowhead.com/forever/quest=94826
-            -- already in QuestieDB; Assumption: the server completes it and 94817, 94823, 94825, 94826 together (cooccurrence; high; 100+ characters); offer lists show it and 94822, 94824 exclude each other (absence, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 94817, 94823, 94825, 94826 together (cooccurrence; very high; 100+ characters); offer lists show it and 94822, 94824 exclude each other (absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {94817,94822,94823,94824,94825,94826},
         -- },
         -- [94822] = { -- Confounding Flash https://wowhead.com/forever/quest=94822
@@ -15910,7 +15738,7 @@ function ForeverQuestRelationTraces:Load()
             -- 94824 "Confounding Flash" https://wowhead.com/forever/quest=94824
             -- 94825 "Confounding Flash" https://wowhead.com/forever/quest=94825
             -- 94826 "Confounding Flash" https://wowhead.com/forever/quest=94826
-            -- already in QuestieDB; Assumption: the server completes it and 94817, 94823, 94825, 94826 together (cooccurrence; high; 100+ characters); offer lists show it and 94821, 94824 exclude each other (absence, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 94817, 94823, 94825, 94826 together (cooccurrence; very high; 100+ characters); offer lists show it and 94821, 94824 exclude each other (absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {94817,94821,94823,94824,94825,94826},
         -- },
         -- [94823] = { -- Confounding Flash https://wowhead.com/forever/quest=94823
@@ -15920,7 +15748,7 @@ function ForeverQuestRelationTraces:Load()
             -- 94824 "Confounding Flash" https://wowhead.com/forever/quest=94824
             -- 94825 "Confounding Flash" https://wowhead.com/forever/quest=94825
             -- 94826 "Confounding Flash" https://wowhead.com/forever/quest=94826
-            -- already in QuestieDB; Assumption: the server completes it and 94817, 94821, 94822, 94824, 94825, 94826 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 94817, 94821, 94822, 94824, 94825, 94826 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {94817,94821,94822,94824,94825,94826},
         -- },
         -- [94824] = { -- Confounding Flash https://wowhead.com/forever/quest=94824
@@ -15930,7 +15758,7 @@ function ForeverQuestRelationTraces:Load()
             -- 94823 "Confounding Flash" https://wowhead.com/forever/quest=94823
             -- 94825 "Confounding Flash" https://wowhead.com/forever/quest=94825
             -- 94826 "Confounding Flash" https://wowhead.com/forever/quest=94826
-            -- already in QuestieDB; Assumption: the server completes it and 94817, 94823, 94825, 94826 together (cooccurrence; high; 100+ characters); offer lists show it and 94821, 94822 exclude each other (absence, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 94817, 94823, 94825, 94826 together (cooccurrence; very high; 100+ characters); offer lists show it and 94821, 94822 exclude each other (absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {94817,94821,94822,94823,94825,94826},
         -- },
         -- [94825] = { -- Confounding Flash https://wowhead.com/forever/quest=94825
@@ -15940,7 +15768,7 @@ function ForeverQuestRelationTraces:Load()
             -- 94823 "Confounding Flash" https://wowhead.com/forever/quest=94823
             -- 94824 "Confounding Flash" https://wowhead.com/forever/quest=94824
             -- 94826 "Confounding Flash" https://wowhead.com/forever/quest=94826
-            -- already in QuestieDB; Assumption: the server completes it and 94817, 94821, 94822, 94823, 94824, 94826 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 94817, 94821, 94822, 94823, 94824, 94826 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {94817,94821,94822,94823,94824,94826},
         -- },
         -- [94826] = { -- Confounding Flash https://wowhead.com/forever/quest=94826
@@ -15950,60 +15778,57 @@ function ForeverQuestRelationTraces:Load()
             -- 94823 "Confounding Flash" https://wowhead.com/forever/quest=94823
             -- 94824 "Confounding Flash" https://wowhead.com/forever/quest=94824
             -- 94825 "Confounding Flash" https://wowhead.com/forever/quest=94825
-            -- already in QuestieDB; Assumption: the server completes it and 94817, 94821, 94822, 94823, 94824, 94825 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 94817, 94821, 94822, 94823, 94824, 94825 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {94817,94821,94822,94823,94824,94825},
         -- },
-        [94829] = { -- What We Lost https://wowhead.com/forever/quest=94829
+        -- [94829] = { -- What We Lost https://wowhead.com/forever/quest=94829
             -- 94858 "All That's Left" https://wowhead.com/forever/quest=94858
-            -- Assumption: turning it in led straight to 94858 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 94858,
-        },
-        [94832] = { -- Belle's Ring https://wowhead.com/forever/quest=94832
+            -- already in QuestieDB; Assumption: turning it in led straight to 94858 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 94858,
+        -- },
+        -- [94832] = { -- Belle's Ring https://wowhead.com/forever/quest=94832
             -- 95218 "More of the Same" https://wowhead.com/forever/quest=95218
-            -- Assumption: offered right after 95218 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {95218},
-            -- 96077 "Belle's Ring" https://wowhead.com/forever/quest=96077
-            -- Assumption: turning it in led straight to 96077 (handoff; medium; <10 characters)
-            [questKeys.nextQuestInChain] = 96077,
-        },
-        [94841] = { -- Lost Shipping Crate https://wowhead.com/forever/quest=94841
+            -- already in QuestieDB; Assumption: offered right after 95218 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {95218},
+        -- },
+        -- [94841] = { -- Lost Shipping Crate https://wowhead.com/forever/quest=94841
             -- 93443 "Lost Shipping Crate" https://wowhead.com/forever/quest=93443
             -- 94895 "Lost Shipping Crate" https://wowhead.com/forever/quest=94895
             -- 94930 "Lost Shipping Crate" https://wowhead.com/forever/quest=94930
-            -- Assumption: offer lists show it and 93443 exclude each other (absence, cooccurrence; very high; 100+ characters); the server completes it and 94895, 94930 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {93443,94895,94930},
-        },
-        [94842] = { -- Unsavory Plant Food https://wowhead.com/forever/quest=94842
+            -- already in QuestieDB; Assumption: offer lists show it and 93443 exclude each other (absence, cooccurrence; very high; 100+ characters); the server completes it and 94895, 94930 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {93443,94895,94930},
+        -- },
+        -- [94842] = { -- Unsavory Plant Food https://wowhead.com/forever/quest=94842
             -- 94843 "From Seed to Sprout" https://wowhead.com/forever/quest=94843
-            -- Assumption: turning it in led straight to 94843 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 94843,
-        },
-        [94843] = { -- From Seed to Sprout https://wowhead.com/forever/quest=94843
+            -- already in QuestieDB; Assumption: turning it in led straight to 94843 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 94843,
+        -- },
+        -- [94843] = { -- From Seed to Sprout https://wowhead.com/forever/quest=94843
             -- 94842 "Unsavory Plant Food" https://wowhead.com/forever/quest=94842
-            -- Assumption: offered right after 94842 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {94842},
-        },
-        [94857] = { -- If a Tree Falls, and No One Hears... https://wowhead.com/forever/quest=94857
+            -- already in QuestieDB; Assumption: offered right after 94842 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {94842},
+        -- },
+        -- [94857] = { -- If a Tree Falls, and No One Hears... https://wowhead.com/forever/quest=94857
             -- 94861 "Helping Hands" https://wowhead.com/forever/quest=94861
-            -- Assumption: turning it in led straight to 94861 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 94861,
-        },
-        [94858] = { -- All That's Left https://wowhead.com/forever/quest=94858
+            -- already in QuestieDB; Assumption: turning it in led straight to 94861 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 94861,
+        -- },
+        -- [94858] = { -- All That's Left https://wowhead.com/forever/quest=94858
             -- 94829 "What We Lost" https://wowhead.com/forever/quest=94829
-            -- Assumption: offered right after 94829 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {94829},
-        },
-        [94861] = { -- Helping Hands https://wowhead.com/forever/quest=94861
+            -- already in QuestieDB; Assumption: offered right after 94829 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {94829},
+        -- },
+        -- [94861] = { -- Helping Hands https://wowhead.com/forever/quest=94861
             -- 94857 "If a Tree Falls, and No One Hears..." https://wowhead.com/forever/quest=94857
-            -- Assumption: offered right after 94857 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {94857},
-        },
+            -- already in QuestieDB; Assumption: offered right after 94857 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {94857},
+        -- },
         -- [94863] = { -- Taming the Beast https://wowhead.com/forever/quest=94863
             -- 94792 "Taming the Beast" https://wowhead.com/forever/quest=94792
             -- already in QuestieDB; Assumption: offered right after 94792 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {94792},
             -- 94864 "Taming the Beast" https://wowhead.com/forever/quest=94864
-            -- already in QuestieDB; Assumption: turning it in led straight to 94864 (handoff; high; 100+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 94864 (handoff; medium; 100+ characters)
             -- [questKeys.nextQuestInChain] = 94864,
         -- },
         -- [94864] = { -- Taming the Beast https://wowhead.com/forever/quest=94864
@@ -16011,149 +15836,149 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 94863 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {94863},
             -- 94793 "Training the Beast" https://wowhead.com/forever/quest=94793
-            -- already in QuestieDB; Assumption: turning it in led straight to 94793 (handoff; high; 100+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 94793 (handoff; medium; 100+ characters)
             -- [questKeys.nextQuestInChain] = 94793,
         -- },
-        [94872] = { -- Buying Friendship: Magram https://wowhead.com/forever/quest=94872
+        -- [94872] = { -- Buying Friendship: Magram https://wowhead.com/forever/quest=94872
             -- 93224 "Carved Centaur Totems" https://wowhead.com/forever/quest=93224
             -- 93225 "Carved Centaur Totems" https://wowhead.com/forever/quest=93225
-            -- Assumption: 93224 was done whenever it was offered (offer-set, absence, cooccurrence; very high; 100+ characters); offered right after 93225 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {93224,93225},
+            -- already in QuestieDB; Assumption: 93224 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters); offered right after 93225 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {93224,93225},
             -- 93226 "Buying Friendship: Magram" https://wowhead.com/forever/quest=93226
             -- 93227 "Buying Friendship: Gelkis" https://wowhead.com/forever/quest=93227
             -- 94873 "Buying Friendship: Gelkis" https://wowhead.com/forever/quest=94873
-            -- Assumption: the server completes it and 93226, 93227 together (cooccurrence; high; 100+ characters); offer lists show it and 94873 exclude each other (absence, cooccurrence; very high; 100+ characters)
-            [questKeys.exclusiveTo] = {93226,93227,94873},
-        },
-        [94873] = { -- Buying Friendship: Gelkis https://wowhead.com/forever/quest=94873
+            -- already in QuestieDB; Assumption: the server completes it and 93226, 93227 together (cooccurrence; very high; 100+ characters); offer lists show it and 94873 exclude each other (absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {93226,93227,94873},
+        -- },
+        -- [94873] = { -- Buying Friendship: Gelkis https://wowhead.com/forever/quest=94873
             -- 93224 "Carved Centaur Totems" https://wowhead.com/forever/quest=93224
             -- 93225 "Carved Centaur Totems" https://wowhead.com/forever/quest=93225
-            -- Assumption: 93224 was done whenever it was offered (offer-set, absence, cooccurrence; very high; 100+ characters); offered right after 93225 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {93224,93225},
+            -- already in QuestieDB; Assumption: 93224 was done whenever it was offered (offer-set, cooccurrence; very high; 100+ characters); offered right after 93225 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {93224,93225},
             -- 93226 "Buying Friendship: Magram" https://wowhead.com/forever/quest=93226
             -- 93227 "Buying Friendship: Gelkis" https://wowhead.com/forever/quest=93227
             -- 94872 "Buying Friendship: Magram" https://wowhead.com/forever/quest=94872
-            -- Assumption: the server completes it and 93226, 93227 together (cooccurrence; high; 100+ characters); offer lists show it and 94872 exclude each other (absence, cooccurrence; very high; 100+ characters)
-            [questKeys.exclusiveTo] = {93226,93227,94872},
-        },
-        [94877] = { -- Saving Sunnyglade https://wowhead.com/forever/quest=94877
+            -- already in QuestieDB; Assumption: the server completes it and 93226, 93227 together (cooccurrence; very high; 100+ characters); offer lists show it and 94872 exclude each other (absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {93226,93227,94872},
+        -- },
+        -- [94877] = { -- Saving Sunnyglade https://wowhead.com/forever/quest=94877
             -- 95329 "Out in the Field" https://wowhead.com/forever/quest=95329
-            -- Assumption: turning it in led straight to 95329 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 95329,
-        },
-        [94884] = { -- An Unsettling Discovery https://wowhead.com/forever/quest=94884
+            -- already in QuestieDB; Assumption: turning it in led straight to 95329 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 95329,
+        -- },
+        -- [94884] = { -- An Unsettling Discovery https://wowhead.com/forever/quest=94884
             -- 95562 "Cut Off the Heads" https://wowhead.com/forever/quest=95562
-            -- Assumption: offered right after 95562 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95562},
-        },
-        [94885] = { -- Field Marshal's Log https://wowhead.com/forever/quest=94885
+            -- already in QuestieDB; Assumption: offered right after 95562 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95562},
+        -- },
+        -- [94885] = { -- Field Marshal's Log https://wowhead.com/forever/quest=94885
             -- 94887 "Saving Marshal Ryan" https://wowhead.com/forever/quest=94887
-            -- Assumption: turning it in led straight to 94887 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 94887,
-        },
-        [94886] = { -- The Western Front https://wowhead.com/forever/quest=94886
+            -- already in QuestieDB; Assumption: turning it in led straight to 94887 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 94887,
+        -- },
+        -- [94886] = { -- The Western Front https://wowhead.com/forever/quest=94886
             -- 94879 "Scraps of Knowledge" https://wowhead.com/forever/quest=94879
-            -- Assumption: 94879 was done whenever it was offered (offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {94879},
-        },
-        [94887] = { -- Saving Marshal Ryan https://wowhead.com/forever/quest=94887
+            -- already in QuestieDB; Assumption: 94879 was done whenever it was offered (offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {94879},
+        -- },
+        -- [94887] = { -- Saving Marshal Ryan https://wowhead.com/forever/quest=94887
             -- 94885 "Field Marshal's Log" https://wowhead.com/forever/quest=94885
-            -- Assumption: offered right after 94885 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {94885},
+            -- already in QuestieDB; Assumption: offered right after 94885 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {94885},
             -- 94892 "Dying Wish" https://wowhead.com/forever/quest=94892
-            -- Assumption: turning it in led straight to 94892 (handoff; medium; 100+ characters)
-            [questKeys.nextQuestInChain] = 94892,
-        },
-        [94888] = { -- No Soldier Left Behind https://wowhead.com/forever/quest=94888
+            -- already in QuestieDB; Assumption: turning it in led straight to 94892 (handoff; medium; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 94892,
+        -- },
+        -- [94888] = { -- No Soldier Left Behind https://wowhead.com/forever/quest=94888
             -- 94886 "The Western Front" https://wowhead.com/forever/quest=94886
-            -- Assumption: 94886 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
-            [questKeys.preQuestSingle] = {94886},
+            -- already in QuestieDB; Assumption: 94886 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {94886},
             -- 94890 "Bring Me His Head" https://wowhead.com/forever/quest=94890
             -- not applied: 94890 needs this quest together with 94889 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 94890 (handoff; medium; 10+ characters)
             -- [questKeys.nextQuestInChain] = 94890,
-        },
-        [94889] = { -- Carving a Path https://wowhead.com/forever/quest=94889
+        -- },
+        -- [94889] = { -- Carving a Path https://wowhead.com/forever/quest=94889
             -- 94886 "The Western Front" https://wowhead.com/forever/quest=94886
-            -- Assumption: 94886 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
-            [questKeys.preQuestSingle] = {94886},
-        },
-        [94890] = { -- Bring Me His Head https://wowhead.com/forever/quest=94890
+            -- already in QuestieDB; Assumption: 94886 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {94886},
+        -- },
+        -- [94890] = { -- Bring Me His Head https://wowhead.com/forever/quest=94890
             -- 94888 "No Soldier Left Behind" https://wowhead.com/forever/quest=94888
             -- 94889 "Carving a Path" https://wowhead.com/forever/quest=94889
-            -- Assumption: offered right after 94888, 94889 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestGroup] = {94888,94889},
+            -- already in QuestieDB; Assumption: offered right after 94888, 94889 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestGroup] = {94888,94889},
             -- 94891 "News to Farholde" https://wowhead.com/forever/quest=94891
-            -- Assumption: turning it in led straight to 94891 (handoff; medium; 100+ characters)
-            [questKeys.nextQuestInChain] = 94891,
-        },
-        [94891] = { -- News to Farholde https://wowhead.com/forever/quest=94891
+            -- already in QuestieDB; Assumption: turning it in led straight to 94891 (handoff; medium; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 94891,
+        -- },
+        -- [94891] = { -- News to Farholde https://wowhead.com/forever/quest=94891
             -- 94890 "Bring Me His Head" https://wowhead.com/forever/quest=94890
-            -- Assumption: offered right after 94890 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {94890},
-        },
-        [94892] = { -- Dying Wish https://wowhead.com/forever/quest=94892
+            -- already in QuestieDB; Assumption: offered right after 94890 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {94890},
+        -- },
+        -- [94892] = { -- Dying Wish https://wowhead.com/forever/quest=94892
             -- 94887 "Saving Marshal Ryan" https://wowhead.com/forever/quest=94887
-            -- Assumption: offered right after 94887 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {94887},
+            -- already in QuestieDB; Assumption: offered right after 94887 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {94887},
             -- 94893 "Delivering Closure" https://wowhead.com/forever/quest=94893
-            -- Assumption: turning it in led straight to 94893 (handoff; medium; 100+ characters)
-            [questKeys.nextQuestInChain] = 94893,
-        },
-        [94893] = { -- Delivering Closure https://wowhead.com/forever/quest=94893
+            -- already in QuestieDB; Assumption: turning it in led straight to 94893 (handoff; medium; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 94893,
+        -- },
+        -- [94893] = { -- Delivering Closure https://wowhead.com/forever/quest=94893
             -- 94892 "Dying Wish" https://wowhead.com/forever/quest=94892
-            -- Assumption: offered right after 94892 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {94892},
-        },
-        [94894] = { -- The Twilight Threat https://wowhead.com/forever/quest=94894
+            -- already in QuestieDB; Assumption: offered right after 94892 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {94892},
+        -- },
+        -- [94894] = { -- The Twilight Threat https://wowhead.com/forever/quest=94894
             -- 94891 "News to Farholde" https://wowhead.com/forever/quest=94891
-            -- Assumption: 94891 was done whenever it was offered (offer-set, absence, cooccurrence; high; 100+ characters)
-            [questKeys.preQuestSingle] = {94891},
-        },
-        [94895] = { -- Lost Shipping Crate https://wowhead.com/forever/quest=94895
+            -- already in QuestieDB; Assumption: 94891 was done whenever it was offered (offer-set, absence, cooccurrence; high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {94891},
+        -- },
+        -- [94895] = { -- Lost Shipping Crate https://wowhead.com/forever/quest=94895
             -- 93443 "Lost Shipping Crate" https://wowhead.com/forever/quest=93443
             -- 94841 "Lost Shipping Crate" https://wowhead.com/forever/quest=94841
             -- 94930 "Lost Shipping Crate" https://wowhead.com/forever/quest=94930
-            -- Assumption: the server completes it and 93443, 94841 together (cooccurrence; high; 100+ characters); offer lists show it and 94930 exclude each other (absence, cooccurrence; very high; 100+ characters)
-            [questKeys.exclusiveTo] = {93443,94841,94930},
-        },
-        [94907] = { -- A Small Favor https://wowhead.com/forever/quest=94907
+            -- already in QuestieDB; Assumption: the server completes it and 93443, 94841 together (cooccurrence; very high; 100+ characters); offer lists show it and 94930 exclude each other (absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {93443,94841,94930},
+        -- },
+        -- [94907] = { -- A Small Favor https://wowhead.com/forever/quest=94907
             -- 94881 "Curious Trinkets" https://wowhead.com/forever/quest=94881
-            -- Assumption: offered right after 94881 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {94881},
+            -- already in QuestieDB; Assumption: offered right after 94881 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {94881},
             -- 94984 "Tome of Twilight" https://wowhead.com/forever/quest=94984
-            -- Assumption: turning it in led straight to 94984 (handoff; medium; 100+ characters)
-            [questKeys.nextQuestInChain] = 94984,
-        },
-        [94925] = { -- A Fur Trade https://wowhead.com/forever/quest=94925
+            -- already in QuestieDB; Assumption: turning it in led straight to 94984 (handoff; medium; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 94984,
+        -- },
+        -- [94925] = { -- A Fur Trade https://wowhead.com/forever/quest=94925
             -- 94928 "A Few Furs for Friz" https://wowhead.com/forever/quest=94928
-            -- Assumption: turning it in led straight to 94928 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 94928,
-        },
-        [94927] = { -- Dunston Checks Out https://wowhead.com/forever/quest=94927
+            -- already in QuestieDB; Assumption: turning it in led straight to 94928 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 94928,
+        -- },
+        -- [94927] = { -- Dunston Checks Out https://wowhead.com/forever/quest=94927
             -- 96126 "An Ogre's Captive" https://wowhead.com/forever/quest=96126
-            -- Assumption: offered right after 96126 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {96126},
-        },
-        [94928] = { -- A Few Furs for Friz https://wowhead.com/forever/quest=94928
+            -- already in QuestieDB; Assumption: offered right after 96126 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {96126},
+        -- },
+        -- [94928] = { -- A Few Furs for Friz https://wowhead.com/forever/quest=94928
             -- 94925 "A Fur Trade" https://wowhead.com/forever/quest=94925
-            -- Assumption: offered right after 94925 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {94925},
+            -- already in QuestieDB; Assumption: offered right after 94925 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {94925},
             -- 95288 "Smuggler's Paradise" https://wowhead.com/forever/quest=95288
-            -- Assumption: turning it in led straight to 95288 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 95288,
-        },
-        [94929] = { -- Deliver the Second Shipment https://wowhead.com/forever/quest=94929
+            -- already in QuestieDB; Assumption: turning it in led straight to 95288 (handoff; medium; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 95288,
+        -- },
+        -- [94929] = { -- Deliver the Second Shipment https://wowhead.com/forever/quest=94929
             -- 1398 "Driftwood" https://wowhead.com/forever/quest=1398
-            -- Assumption: offered right after 1398 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {1398},
-        },
-        [94930] = { -- Lost Shipping Crate https://wowhead.com/forever/quest=94930
+            -- already in QuestieDB; Assumption: offered right after 1398 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {1398},
+        -- },
+        -- [94930] = { -- Lost Shipping Crate https://wowhead.com/forever/quest=94930
             -- 93443 "Lost Shipping Crate" https://wowhead.com/forever/quest=93443
             -- 94841 "Lost Shipping Crate" https://wowhead.com/forever/quest=94841
             -- 94895 "Lost Shipping Crate" https://wowhead.com/forever/quest=94895
-            -- Assumption: the server completes it and 93443, 94841 together (cooccurrence; high; 100+ characters); offer lists show it and 94895 exclude each other (absence, cooccurrence; very high; 100+ characters)
-            [questKeys.exclusiveTo] = {93443,94841,94895},
-        },
+            -- already in QuestieDB; Assumption: the server completes it and 93443, 94841 together (cooccurrence; very high; 100+ characters); offer lists show it and 94895 exclude each other (absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {93443,94841,94895},
+        -- },
         -- [94946] = { -- The Magical City of Dalaran https://wowhead.com/forever/quest=94946
             -- 93089 "What Comes Next" https://wowhead.com/forever/quest=93089
             -- already in QuestieDB; Assumption: offered right after 93089 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
@@ -16164,125 +15989,122 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: turning it in led straight to 93963 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 93963,
         -- },
-        [94961] = { -- Biting the Hand https://wowhead.com/forever/quest=94961
+        -- [94961] = { -- Biting the Hand https://wowhead.com/forever/quest=94961
             -- 94963 "Biting the Hand" https://wowhead.com/forever/quest=94963
-            -- Assumption: turning it in led straight to 94963 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 94963,
-        },
-        [94962] = { -- Bloodmaster's Ring https://wowhead.com/forever/quest=94962
+            -- already in QuestieDB; Assumption: turning it in led straight to 94963 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 94963,
+        -- },
+        -- [94962] = { -- Bloodmaster's Ring https://wowhead.com/forever/quest=94962
             -- 94739 "Bloodmaster's Ring" https://wowhead.com/forever/quest=94739
-            -- Assumption: offered right after 94739 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {94739},
+            -- already in QuestieDB; Assumption: offered right after 94739 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {94739},
             -- 94964 "Bloodmaster's Ring" https://wowhead.com/forever/quest=94964
-            -- Assumption: turning it in led straight to 94964 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 94964,
-        },
-        [94963] = { -- Biting the Hand https://wowhead.com/forever/quest=94963
+            -- already in QuestieDB; Assumption: turning it in led straight to 94964 (handoff; medium; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 94964,
+        -- },
+        -- [94963] = { -- Biting the Hand https://wowhead.com/forever/quest=94963
             -- 94961 "Biting the Hand" https://wowhead.com/forever/quest=94961
-            -- Assumption: offered right after 94961 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {94961},
-        },
-        [94964] = { -- Bloodmaster's Ring https://wowhead.com/forever/quest=94964
+            -- already in QuestieDB; Assumption: offered right after 94961 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {94961},
+        -- },
+        -- [94964] = { -- Bloodmaster's Ring https://wowhead.com/forever/quest=94964
             -- 94962 "Bloodmaster's Ring" https://wowhead.com/forever/quest=94962
-            -- Assumption: offered right after 94962 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {94962},
+            -- already in QuestieDB; Assumption: offered right after 94962 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {94962},
             -- 94733 "Our Ogre Friend" https://wowhead.com/forever/quest=94733
-            -- Assumption: turning it in led straight to 94733 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 94733,
-        },
-        [94965] = { -- Bloodmaster's Ring https://wowhead.com/forever/quest=94965
+            -- already in QuestieDB; Assumption: turning it in led straight to 94733 (handoff; medium; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 94733,
+        -- },
+        -- [94965] = { -- Bloodmaster's Ring https://wowhead.com/forever/quest=94965
             -- 94737 "A Treat for a Friend" https://wowhead.com/forever/quest=94737
-            -- Assumption: offered right after 94737 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {94737},
+            -- already in QuestieDB; Assumption: offered right after 94737 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {94737},
             -- 95063 "Bloodmaster's Ring" https://wowhead.com/forever/quest=95063
-            -- Assumption: turning it in led straight to 95063 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 95063,
-        },
-        [94968] = { -- Eye of Mugg https://wowhead.com/forever/quest=94968
+            -- already in QuestieDB; Assumption: turning it in led straight to 95063 (handoff; medium; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 95063,
+        -- },
+        -- [94968] = { -- Eye of Mugg https://wowhead.com/forever/quest=94968
             -- 95278 "It Is Time, Brother..." https://wowhead.com/forever/quest=95278
-            -- Assumption: offered right after 95278 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95278},
-        },
-        [94972] = { -- Tome of Twilight https://wowhead.com/forever/quest=94972
+            -- already in QuestieDB; Assumption: offered right after 95278 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95278},
+        -- },
+        -- [94972] = { -- Tome of Twilight https://wowhead.com/forever/quest=94972
             -- 95278 "It Is Time, Brother..." https://wowhead.com/forever/quest=95278
-            -- Assumption: 95278 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
-            [questKeys.preQuestSingle] = {95278},
-        },
-        [94973] = { -- Krol'dok Moulding https://wowhead.com/forever/quest=94973
+            -- already in QuestieDB; Assumption: 95278 was done whenever it was offered (offer-set, cooccurrence; medium; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95278},
+        -- },
+        -- [94973] = { -- Krol'dok Moulding https://wowhead.com/forever/quest=94973
             -- 94974 "Key Ingredients" https://wowhead.com/forever/quest=94974
-            -- Assumption: turning it in led straight to 94974 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 94974,
-        },
-        [94974] = { -- Key Ingredients https://wowhead.com/forever/quest=94974
+            -- already in QuestieDB; Assumption: turning it in led straight to 94974 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 94974,
+        -- },
+        -- [94974] = { -- Key Ingredients https://wowhead.com/forever/quest=94974
             -- 94973 "Krol'dok Moulding" https://wowhead.com/forever/quest=94973
-            -- Assumption: offered right after 94973 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {94973},
-        },
-        [94975] = { -- A Token of Vengeance https://wowhead.com/forever/quest=94975
+            -- already in QuestieDB; Assumption: offered right after 94973 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {94973},
+        -- },
+        -- [94975] = { -- A Token of Vengeance https://wowhead.com/forever/quest=94975
             -- 94768 "Bring Me His Head" https://wowhead.com/forever/quest=94768
-            -- Assumption: offered right after 94768 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {94768},
-        },
+            -- already in QuestieDB; Assumption: offered right after 94768 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {94768},
+        -- },
         -- [94979] = { -- Taming the Beast https://wowhead.com/forever/quest=94979
             -- 94978 "Taming the Beast" https://wowhead.com/forever/quest=94978
             -- already in QuestieDB; Assumption: offered right after 94978 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {94978},
         -- },
-        [94980] = { -- Krol'dok Moulding https://wowhead.com/forever/quest=94980
+        -- [94980] = { -- Krol'dok Moulding https://wowhead.com/forever/quest=94980
             -- 94981 "Key Ingredients" https://wowhead.com/forever/quest=94981
-            -- Assumption: turning it in led straight to 94981 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 94981,
-        },
-        [94981] = { -- Key Ingredients https://wowhead.com/forever/quest=94981
+            -- already in QuestieDB; Assumption: turning it in led straight to 94981 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 94981,
+        -- },
+        -- [94981] = { -- Key Ingredients https://wowhead.com/forever/quest=94981
             -- 94980 "Krol'dok Moulding" https://wowhead.com/forever/quest=94980
-            -- Assumption: offered right after 94980 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {94980},
-        },
-        [94983] = { -- Twilight Mementos https://wowhead.com/forever/quest=94983
+            -- already in QuestieDB; Assumption: offered right after 94980 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {94980},
+        -- },
+        -- [94983] = { -- Twilight Mementos https://wowhead.com/forever/quest=94983
             -- 94890 "Bring Me His Head" https://wowhead.com/forever/quest=94890
-            -- Assumption: offered right after 94890 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {94890},
+            -- already in QuestieDB; Assumption: offered right after 94890 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {94890},
             -- 94997 "Lingering Essence" https://wowhead.com/forever/quest=94997
-            -- Assumption: turning it in led straight to 94997 (handoff; medium; 100+ characters)
-            [questKeys.nextQuestInChain] = 94997,
-        },
-        [94984] = { -- Tome of Twilight https://wowhead.com/forever/quest=94984
+            -- already in QuestieDB; Assumption: turning it in led straight to 94997 (handoff; medium; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 94997,
+        -- },
+        -- [94984] = { -- Tome of Twilight https://wowhead.com/forever/quest=94984
             -- 94907 "A Small Favor" https://wowhead.com/forever/quest=94907
-            -- Assumption: offered right after 94907 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {94907},
-        },
-        [94992] = { -- Rescue Roundup https://wowhead.com/forever/quest=94992
+            -- already in QuestieDB; Assumption: offered right after 94907 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {94907},
+        -- },
+        -- [94992] = { -- Rescue Roundup https://wowhead.com/forever/quest=94992
             -- 94618 "Wheeler's Fleeing Steeds" https://wowhead.com/forever/quest=94618
-            -- Assumption: offered right after 94618 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {94618},
-        },
-        [94997] = { -- Lingering Essence https://wowhead.com/forever/quest=94997
+            -- already in QuestieDB; Assumption: offered right after 94618 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {94618},
+        -- },
+        -- [94997] = { -- Lingering Essence https://wowhead.com/forever/quest=94997
             -- 94983 "Twilight Mementos" https://wowhead.com/forever/quest=94983
-            -- Assumption: offered right after 94983 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {94983},
+            -- already in QuestieDB; Assumption: offered right after 94983 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {94983},
             -- 94998 "Curios of Curiosity" https://wowhead.com/forever/quest=94998
-            -- Assumption: turning it in led straight to 94998 (handoff; medium; 100+ characters)
-            [questKeys.nextQuestInChain] = 94998,
-        },
-        [94998] = { -- Curios of Curiosity https://wowhead.com/forever/quest=94998
+            -- already in QuestieDB; Assumption: turning it in led straight to 94998 (handoff; medium; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 94998,
+        -- },
+        -- [94998] = { -- Curios of Curiosity https://wowhead.com/forever/quest=94998
             -- 94997 "Lingering Essence" https://wowhead.com/forever/quest=94997
-            -- Assumption: offered right after 94997 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {94997},
-        },
-        [95006] = { -- Stolen Power https://wowhead.com/forever/quest=95006
+            -- already in QuestieDB; Assumption: offered right after 94997 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {94997},
+        -- },
+        -- [95006] = { -- Stolen Power https://wowhead.com/forever/quest=95006
             -- 96209 "The Ancient, Orokai" https://wowhead.com/forever/quest=96209
-            -- Assumption: offered right after 96209 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {96209},
-            -- 93773 "The Pact" https://wowhead.com/forever/quest=93773
-            -- Assumption: turning it in led straight to 93773 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 93773,
-        },
+            -- already in QuestieDB; Assumption: offered right after 96209 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {96209},
+        -- },
         -- [95034] = { -- The Debt https://wowhead.com/forever/quest=95034
             -- 96204 "The Windshaper's Wrath" https://wowhead.com/forever/quest=96204
             -- already in QuestieDB; Assumption: offered right after 96204 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {96204},
             -- 95036 "A Moon-Kissed Blade" https://wowhead.com/forever/quest=95036
-            -- already in QuestieDB; Assumption: turning it in led straight to 95036 (handoff; high; 100+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 95036 (handoff; medium; 100+ characters)
             -- [questKeys.nextQuestInChain] = 95036,
         -- },
         -- [95036] = { -- A Moon-Kissed Blade https://wowhead.com/forever/quest=95036
@@ -16293,25 +16115,25 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: turning it in led straight to 95111 (handoff; medium; 100+ characters)
             -- [questKeys.nextQuestInChain] = 95111,
         -- },
-        [95063] = { -- Bloodmaster's Ring https://wowhead.com/forever/quest=95063
+        -- [95063] = { -- Bloodmaster's Ring https://wowhead.com/forever/quest=95063
             -- 94965 "Bloodmaster's Ring" https://wowhead.com/forever/quest=94965
-            -- Assumption: offered right after 94965 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {94965},
-        },
-        [95064] = { -- Preventative Measures https://wowhead.com/forever/quest=95064
+            -- already in QuestieDB; Assumption: offered right after 94965 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {94965},
+        -- },
+        -- [95064] = { -- Preventative Measures https://wowhead.com/forever/quest=95064
             -- 94924 "Hunting the Hunters" https://wowhead.com/forever/quest=94924
-            -- Assumption: offered right after 94924 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {94924},
+            -- already in QuestieDB; Assumption: offered right after 94924 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {94924},
             -- 95066 "The Rog'mar Situation" https://wowhead.com/forever/quest=95066
             -- not applied: 95066 needs this quest together with 95426 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 95066 (handoff; medium; 10+ characters)
             -- [questKeys.nextQuestInChain] = 95066,
-        },
-        [95066] = { -- The Rog'mar Situation https://wowhead.com/forever/quest=95066
+        -- },
+        -- [95066] = { -- The Rog'mar Situation https://wowhead.com/forever/quest=95066
             -- 95064 "Preventative Measures" https://wowhead.com/forever/quest=95064
             -- 95426 "Rog'mar Supplies" https://wowhead.com/forever/quest=95426
-            -- Assumption: offered right after 95064, 95426 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestGroup] = {95064,95426},
-        },
+            -- already in QuestieDB; Assumption: offered right after 95064, 95426 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestGroup] = {95064,95426},
+        -- },
         -- [95111] = { -- An Underrated Talent https://wowhead.com/forever/quest=95111
             -- 95036 "A Moon-Kissed Blade" https://wowhead.com/forever/quest=95036
             -- already in QuestieDB; Assumption: offered right after 95036 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
@@ -16320,21 +16142,21 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: turning it in led straight to 95125 (handoff; medium; 100+ characters)
             -- [questKeys.nextQuestInChain] = 95125,
         -- },
-        [95122] = { -- Unchecked Expansion https://wowhead.com/forever/quest=95122
+        -- [95122] = { -- Unchecked Expansion https://wowhead.com/forever/quest=95122
             -- 95119 "Unfriendly Competition" https://wowhead.com/forever/quest=95119
-            -- Assumption: offered right after 95119 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95119},
-        },
-        [95123] = { -- A Blast Ye Scurvy Dogs! https://wowhead.com/forever/quest=95123
+            -- already in QuestieDB; Assumption: offered right after 95119 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95119},
+        -- },
+        -- [95123] = { -- A Blast Ye Scurvy Dogs! https://wowhead.com/forever/quest=95123
             -- 95119 "Unfriendly Competition" https://wowhead.com/forever/quest=95119
-            -- Assumption: offered right after 95119 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95119},
-        },
-        [95124] = { -- Admiral Lamora https://wowhead.com/forever/quest=95124
+            -- already in QuestieDB; Assumption: offered right after 95119 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95119},
+        -- },
+        -- [95124] = { -- Admiral Lamora https://wowhead.com/forever/quest=95124
             -- 95123 "A Blast Ye Scurvy Dogs!" https://wowhead.com/forever/quest=95123
-            -- Assumption: offered right after 95123 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95123},
-        },
+            -- already in QuestieDB; Assumption: offered right after 95123 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95123},
+        -- },
         -- [95125] = { -- Ott's Masterwork https://wowhead.com/forever/quest=95125
             -- 95111 "An Underrated Talent" https://wowhead.com/forever/quest=95111
             -- already in QuestieDB; Assumption: offered right after 95111 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
@@ -16353,72 +16175,75 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: 95126 was done whenever it was offered (offer-set, absence, cooccurrence; high; 100+ characters)
             -- [questKeys.preQuestSingle] = {95126},
         -- },
-        [95147] = { -- The Lost Scout https://wowhead.com/forever/quest=95147
+        -- [95147] = { -- The Lost Scout https://wowhead.com/forever/quest=95147
             -- 95148 "Southern Watch Gnoll Report" https://wowhead.com/forever/quest=95148
-            -- Assumption: turning it in led straight to 95148 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 95148,
-        },
-        [95148] = { -- Southern Watch Gnoll Report https://wowhead.com/forever/quest=95148
+            -- already in QuestieDB; Assumption: turning it in led straight to 95148 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 95148,
+        -- },
+        -- [95148] = { -- Southern Watch Gnoll Report https://wowhead.com/forever/quest=95148
             -- 95147 "The Lost Scout" https://wowhead.com/forever/quest=95147
-            -- Assumption: offered right after 95147 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95147},
-        },
-        [95156] = { -- Stuff 'Em and Stick 'Em https://wowhead.com/forever/quest=95156
+            -- already in QuestieDB; Assumption: offered right after 95147 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95147},
+        -- },
+        -- [95156] = { -- Stuff 'Em and Stick 'Em https://wowhead.com/forever/quest=95156
             -- 95184 "The Sharpest of Blades" https://wowhead.com/forever/quest=95184
-            -- Assumption: turning it in led straight to 95184 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 95184,
-        },
+            -- already in QuestieDB; Assumption: turning it in led straight to 95184 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 95184,
+        -- },
         -- [95161] = { -- Remember That I Love You https://wowhead.com/forever/quest=95161
             -- 92415 "Remember That I Love You" https://wowhead.com/forever/quest=92415
             -- already in QuestieDB; Assumption: offered right after 92415 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {92415},
         -- },
-        [95165] = { -- See Ya, Scallywags! https://wowhead.com/forever/quest=95165
+        -- [95165] = { -- See Ya, Scallywags! https://wowhead.com/forever/quest=95165
             -- 95123 "A Blast Ye Scurvy Dogs!" https://wowhead.com/forever/quest=95123
-            -- Assumption: offered right after 95123 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95123},
-        },
+            -- already in QuestieDB; Assumption: offered right after 95123 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95123},
+        -- },
         [95183] = { -- Step One: Rock https://wowhead.com/forever/quest=95183
+            -- 95424 "Might Makes Right" https://wowhead.com/forever/quest=95424
+            -- Assumption: 95424 was done whenever it was offered (offer-set, cooccurrence; medium; 100+ characters)
+            [questKeys.preQuestSingle] = {95424},
             -- 96026 "Step Two: More Rock" https://wowhead.com/forever/quest=96026
-            -- Assumption: turning it in led straight to 96026 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 96026,
+            -- already in QuestieDB; Assumption: turning it in led straight to 96026 (handoff; medium; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 96026,
         },
-        [95184] = { -- The Sharpest of Blades https://wowhead.com/forever/quest=95184
+        -- [95184] = { -- The Sharpest of Blades https://wowhead.com/forever/quest=95184
             -- 95156 "Stuff 'Em and Stick 'Em" https://wowhead.com/forever/quest=95156
-            -- Assumption: offered right after 95156 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95156},
-        },
-        [95189] = { -- Crest of Lordaeron https://wowhead.com/forever/quest=95189
+            -- already in QuestieDB; Assumption: offered right after 95156 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95156},
+        -- },
+        -- [95189] = { -- Crest of Lordaeron https://wowhead.com/forever/quest=95189
             -- 95204 "Crest of Lordaeron" https://wowhead.com/forever/quest=95204
-            -- Assumption: the server completes it and 95204 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {95204},
-        },
-        [95194] = { -- Our Man in Theramore https://wowhead.com/forever/quest=95194
+            -- already in QuestieDB; Assumption: the server completes it and 95204 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {95204},
+        -- },
+        -- [95194] = { -- Our Man in Theramore https://wowhead.com/forever/quest=95194
             -- 95196 "Watch Yer Back" https://wowhead.com/forever/quest=95196
-            -- Assumption: turning it in led straight to 95196 (handoff; high; 10+ characters)
-            [questKeys.nextQuestInChain] = 95196,
-        },
-        [95196] = { -- Watch Yer Back https://wowhead.com/forever/quest=95196
+            -- already in QuestieDB; Assumption: turning it in led straight to 95196 (handoff; high; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 95196,
+        -- },
+        -- [95196] = { -- Watch Yer Back https://wowhead.com/forever/quest=95196
             -- 95194 "Our Man in Theramore" https://wowhead.com/forever/quest=95194
-            -- Assumption: offered right after 95194 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95194},
+            -- already in QuestieDB; Assumption: offered right after 95194 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95194},
             -- 95198 "The Return of the King?" https://wowhead.com/forever/quest=95198
-            -- Assumption: turning it in led straight to 95198 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 95198,
-        },
-        [95198] = { -- The Return of the King? https://wowhead.com/forever/quest=95198
+            -- already in QuestieDB; Assumption: turning it in led straight to 95198 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 95198,
+        -- },
+        -- [95198] = { -- The Return of the King? https://wowhead.com/forever/quest=95198
             -- 95196 "Watch Yer Back" https://wowhead.com/forever/quest=95196
-            -- Assumption: offered right after 95196 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95196},
+            -- already in QuestieDB; Assumption: offered right after 95196 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95196},
             -- 95262 "The Secret Prison" https://wowhead.com/forever/quest=95262
-            -- Assumption: turning it in led straight to 95262 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 95262,
-        },
-        [95204] = { -- Crest of Lordaeron https://wowhead.com/forever/quest=95204
+            -- already in QuestieDB; Assumption: turning it in led straight to 95262 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 95262,
+        -- },
+        -- [95204] = { -- Crest of Lordaeron https://wowhead.com/forever/quest=95204
             -- 95189 "Crest of Lordaeron" https://wowhead.com/forever/quest=95189
-            -- Assumption: the server completes it and 95189 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {95189},
-        },
+            -- already in QuestieDB; Assumption: the server completes it and 95189 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {95189},
+        -- },
         -- [95213] = { -- Stolen Blasting Powder https://wowhead.com/forever/quest=95213
             -- 95214 "Stolen Blasting Powder" https://wowhead.com/forever/quest=95214
             -- already in QuestieDB; Assumption: turning it in led straight to 95214 (handoff; high; 100+ characters)
@@ -16429,186 +16254,183 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 95213 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {95213},
         -- },
-        [95218] = { -- More of the Same https://wowhead.com/forever/quest=95218
+        -- [95218] = { -- More of the Same https://wowhead.com/forever/quest=95218
             -- 90750 "More Work?" https://wowhead.com/forever/quest=90750
-            -- Assumption: offered right after 90750 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {90750},
+            -- already in QuestieDB; Assumption: offered right after 90750 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {90750},
             -- 94832 "Belle's Ring" https://wowhead.com/forever/quest=94832
-            -- Assumption: turning it in led straight to 94832 (handoff; medium; <10 characters)
-            [questKeys.nextQuestInChain] = 94832,
-        },
-        [95248] = { -- To the Summit of Eternity https://wowhead.com/forever/quest=95248
+            -- already in QuestieDB; Assumption: turning it in led straight to 94832 (handoff; medium; <10 characters)
+            -- [questKeys.nextQuestInChain] = 94832,
+        -- },
+        -- [95248] = { -- To the Summit of Eternity https://wowhead.com/forever/quest=95248
             -- 92592 "Final Death" https://wowhead.com/forever/quest=92592
             -- 94782 "The Western Post" https://wowhead.com/forever/quest=94782
             -- 95026 "Blight No More" https://wowhead.com/forever/quest=95026
-            -- Assumption: offered right after 92592 was turned in (handoff, offer-set, absence; high; <10 characters); 94782 was done whenever it was offered (offer-set, cooccurrence; low; 10+ characters), kept below the min score to complete its accepted AND list; offered right after 95026 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestGroup] = {92592,94782,95026},
-        },
-        [95260] = { -- Terrors From the Deep https://wowhead.com/forever/quest=95260
+            -- already in QuestieDB; Assumption: offered right after 92592 was turned in (handoff, offer-set, absence; very high; <10 characters); 94782 was done whenever it was offered (offer-set, cooccurrence; low; 10+ characters), kept below the min score to complete its accepted AND list; offered right after 95026 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestGroup] = {92592,94782,95026},
+        -- },
+        -- [95260] = { -- Terrors From the Deep https://wowhead.com/forever/quest=95260
             -- 95261 "It Takes Guts" https://wowhead.com/forever/quest=95261
-            -- Assumption: turning it in led straight to 95261 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 95261,
-        },
-        [95261] = { -- It Takes Guts https://wowhead.com/forever/quest=95261
+            -- already in QuestieDB; Assumption: turning it in led straight to 95261 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 95261,
+        -- },
+        -- [95261] = { -- It Takes Guts https://wowhead.com/forever/quest=95261
             -- 95260 "Terrors From the Deep" https://wowhead.com/forever/quest=95260
-            -- Assumption: offered right after 95260 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95260},
+            -- already in QuestieDB; Assumption: offered right after 95260 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95260},
             -- 95267 "The Monster Surfaces" https://wowhead.com/forever/quest=95267
-            -- Assumption: turning it in led straight to 95267 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 95267,
-        },
-        [95262] = { -- The Secret Prison https://wowhead.com/forever/quest=95262
+            -- already in QuestieDB; Assumption: turning it in led straight to 95267 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 95267,
+        -- },
+        -- [95262] = { -- The Secret Prison https://wowhead.com/forever/quest=95262
             -- 95198 "The Return of the King?" https://wowhead.com/forever/quest=95198
-            -- Assumption: offered right after 95198 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95198},
-        },
-        [95263] = { -- Somber News https://wowhead.com/forever/quest=95263
+            -- already in QuestieDB; Assumption: offered right after 95198 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95198},
+        -- },
+        -- [95263] = { -- Somber News https://wowhead.com/forever/quest=95263
             -- 95262 "The Secret Prison" https://wowhead.com/forever/quest=95262
-            -- Assumption: 95262 was done whenever it was offered (offer-set, cooccurrence; medium; 100+ characters)
-            [questKeys.preQuestSingle] = {95262},
-        },
-        [95264] = { -- Shaw Needs To Know https://wowhead.com/forever/quest=95264
+            -- already in QuestieDB; Assumption: 95262 was done whenever it was offered (offer-set, cooccurrence; medium; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95262},
+        -- },
+        -- [95264] = { -- Shaw Needs To Know https://wowhead.com/forever/quest=95264
             -- 95263 "Somber News" https://wowhead.com/forever/quest=95263
-            -- Assumption: offered right after 95263 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95263},
-        },
-        [95267] = { -- The Monster Surfaces https://wowhead.com/forever/quest=95267
+            -- already in QuestieDB; Assumption: offered right after 95263 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95263},
+        -- },
+        -- [95267] = { -- The Monster Surfaces https://wowhead.com/forever/quest=95267
             -- 95261 "It Takes Guts" https://wowhead.com/forever/quest=95261
-            -- Assumption: offered right after 95261 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95261},
-        },
-        [95278] = { -- It Is Time, Brother... https://wowhead.com/forever/quest=95278
+            -- already in QuestieDB; Assumption: offered right after 95261 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95261},
+        -- },
+        -- [95278] = { -- It Is Time, Brother... https://wowhead.com/forever/quest=95278
             -- 94768 "Bring Me His Head" https://wowhead.com/forever/quest=94768
-            -- Assumption: offered right after 94768 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {94768},
+            -- already in QuestieDB; Assumption: offered right after 94768 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {94768},
             -- 94968 "Eye of Mugg" https://wowhead.com/forever/quest=94968
-            -- Assumption: turning it in led straight to 94968 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 94968,
-        },
-        [95284] = { -- The Elite of the Elite https://wowhead.com/forever/quest=95284
+            -- already in QuestieDB; Assumption: turning it in led straight to 94968 (handoff; medium; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 94968,
+        -- },
+        -- [95284] = { -- The Elite of the Elite https://wowhead.com/forever/quest=95284
             -- 95285 "Right Place, Wrong Time" https://wowhead.com/forever/quest=95285
-            -- Assumption: turning it in led straight to 95285 (handoff; high; 10+ characters)
-            [questKeys.nextQuestInChain] = 95285,
-        },
-        [95285] = { -- Right Place, Wrong Time https://wowhead.com/forever/quest=95285
+            -- already in QuestieDB; Assumption: turning it in led straight to 95285 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 95285,
+        -- },
+        -- [95285] = { -- Right Place, Wrong Time https://wowhead.com/forever/quest=95285
             -- 95284 "The Elite of the Elite" https://wowhead.com/forever/quest=95284
-            -- Assumption: offered right after 95284 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95284},
+            -- already in QuestieDB; Assumption: offered right after 95284 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95284},
             -- 95309 "No Orc Left Behind" https://wowhead.com/forever/quest=95309
-            -- Assumption: turning it in led straight to 95309 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 95309,
-        },
-        [95288] = { -- Smuggler's Paradise https://wowhead.com/forever/quest=95288
+            -- already in QuestieDB; Assumption: turning it in led straight to 95309 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 95309,
+        -- },
+        -- [95288] = { -- Smuggler's Paradise https://wowhead.com/forever/quest=95288
             -- 95293 "Smuggler's Special" https://wowhead.com/forever/quest=95293
-            -- Assumption: turning it in led straight to 95293 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 95293,
-        },
-        [95293] = { -- Smuggler's Special https://wowhead.com/forever/quest=95293
+            -- already in QuestieDB; Assumption: turning it in led straight to 95293 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 95293,
+        -- },
+        -- [95293] = { -- Smuggler's Special https://wowhead.com/forever/quest=95293
             -- 95288 "Smuggler's Paradise" https://wowhead.com/forever/quest=95288
-            -- Assumption: offered right after 95288 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95288},
-            -- 95294 "Smuggler's Bargain" https://wowhead.com/forever/quest=95294
-            -- Assumption: turning it in led straight to 95294 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 95294,
-        },
-        [95294] = { -- Smuggler's Bargain https://wowhead.com/forever/quest=95294
+            -- already in QuestieDB; Assumption: offered right after 95288 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95288},
+        -- },
+        -- [95294] = { -- Smuggler's Bargain https://wowhead.com/forever/quest=95294
             -- 95293 "Smuggler's Special" https://wowhead.com/forever/quest=95293
-            -- Assumption: offered right after 95293 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95293},
+            -- already in QuestieDB; Assumption: offered right after 95293 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95293},
             -- 95296 "Shipping and Handling" https://wowhead.com/forever/quest=95296
-            -- Assumption: turning it in led straight to 95296 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 95296,
-        },
-        [95295] = { -- I Know a Guy https://wowhead.com/forever/quest=95295
+            -- already in QuestieDB; Assumption: turning it in led straight to 95296 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 95296,
+        -- },
+        -- [95295] = { -- I Know a Guy https://wowhead.com/forever/quest=95295
             -- 95294 "Smuggler's Bargain" https://wowhead.com/forever/quest=95294
-            -- Assumption: offered right after 95294 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95294},
+            -- already in QuestieDB; Assumption: offered right after 95294 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95294},
             -- 95322 "Get the Goods" https://wowhead.com/forever/quest=95322
-            -- Assumption: turning it in led straight to 95322 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 95322,
-        },
-        [95296] = { -- Shipping and Handling https://wowhead.com/forever/quest=95296
+            -- already in QuestieDB; Assumption: turning it in led straight to 95322 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 95322,
+        -- },
+        -- [95296] = { -- Shipping and Handling https://wowhead.com/forever/quest=95296
             -- 95294 "Smuggler's Bargain" https://wowhead.com/forever/quest=95294
-            -- Assumption: offered right after 95294 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95294},
+            -- already in QuestieDB; Assumption: offered right after 95294 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95294},
             -- 95383 "Shipping and Handling" https://wowhead.com/forever/quest=95383
-            -- Assumption: turning it in led straight to 95383 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 95383,
-        },
-        [95309] = { -- No Orc Left Behind https://wowhead.com/forever/quest=95309
+            -- already in QuestieDB; Assumption: turning it in led straight to 95383 (handoff; medium; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 95383,
+        -- },
+        -- [95309] = { -- No Orc Left Behind https://wowhead.com/forever/quest=95309
             -- 95285 "Right Place, Wrong Time" https://wowhead.com/forever/quest=95285
-            -- Assumption: offered right after 95285 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95285},
-        },
-        [95312] = { -- Coming to Collect https://wowhead.com/forever/quest=95312
+            -- already in QuestieDB; Assumption: offered right after 95285 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95285},
+        -- },
+        -- [95312] = { -- Coming to Collect https://wowhead.com/forever/quest=95312
             -- 95383 "Shipping and Handling" https://wowhead.com/forever/quest=95383
-            -- Assumption: offered right after 95383 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95383},
+            -- already in QuestieDB; Assumption: offered right after 95383 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95383},
             -- 95321 "Tazzik's Dues" https://wowhead.com/forever/quest=95321
-            -- Assumption: turning it in led straight to 95321 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 95321,
-        },
-        [95316] = { -- The Experimental Method https://wowhead.com/forever/quest=95316
+            -- already in QuestieDB; Assumption: turning it in led straight to 95321 (handoff; medium; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 95321,
+        -- },
+        -- [95316] = { -- The Experimental Method https://wowhead.com/forever/quest=95316
             -- 95380 "A Prolific Source" https://wowhead.com/forever/quest=95380
             -- 96262 "Prickly Pinecones" https://wowhead.com/forever/quest=96262
-            -- Assumption: offered right after 95380, 96262 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestGroup] = {95380,96262},
-        },
-        [95318] = { -- Taste of Ash https://wowhead.com/forever/quest=95318
+            -- already in QuestieDB; Assumption: offered right after 95380, 96262 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestGroup] = {95380,96262},
+        -- },
+        -- [95318] = { -- Taste of Ash https://wowhead.com/forever/quest=95318
             -- 95320 "A Curious Question" https://wowhead.com/forever/quest=95320
-            -- Assumption: offered right after 95320 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {95320},
+            -- already in QuestieDB; Assumption: offered right after 95320 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {95320},
             -- 95319 "Crystalline Collection" https://wowhead.com/forever/quest=95319
-            -- Assumption: turning it in led straight to 95319 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 95319,
-        },
-        [95319] = { -- Crystalline Collection https://wowhead.com/forever/quest=95319
+            -- already in QuestieDB; Assumption: turning it in led straight to 95319 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 95319,
+        -- },
+        -- [95319] = { -- Crystalline Collection https://wowhead.com/forever/quest=95319
             -- 95318 "Taste of Ash" https://wowhead.com/forever/quest=95318
-            -- Assumption: offered right after 95318 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {95318},
-        },
-        [95321] = { -- Tazzik's Dues https://wowhead.com/forever/quest=95321
+            -- already in QuestieDB; Assumption: offered right after 95318 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {95318},
+        -- },
+        -- [95321] = { -- Tazzik's Dues https://wowhead.com/forever/quest=95321
             -- 95312 "Coming to Collect" https://wowhead.com/forever/quest=95312
-            -- Assumption: offered right after 95312 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95312},
+            -- already in QuestieDB; Assumption: offered right after 95312 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95312},
             -- 95472 "Consolation Prize" https://wowhead.com/forever/quest=95472
-            -- Assumption: turning it in led straight to 95472 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 95472,
-        },
-        [95322] = { -- Get the Goods https://wowhead.com/forever/quest=95322
+            -- already in QuestieDB; Assumption: turning it in led straight to 95472 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 95472,
+        -- },
+        -- [95322] = { -- Get the Goods https://wowhead.com/forever/quest=95322
             -- 95295 "I Know a Guy" https://wowhead.com/forever/quest=95295
-            -- Assumption: offered right after 95295 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95295},
+            -- already in QuestieDB; Assumption: offered right after 95295 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95295},
             -- 95325 "We've Been Robbed!" https://wowhead.com/forever/quest=95325
-            -- Assumption: turning it in led straight to 95325 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 95325,
-        },
-        [95325] = { -- We've Been Robbed! https://wowhead.com/forever/quest=95325
+            -- already in QuestieDB; Assumption: turning it in led straight to 95325 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 95325,
+        -- },
+        -- [95325] = { -- We've Been Robbed! https://wowhead.com/forever/quest=95325
             -- 95322 "Get the Goods" https://wowhead.com/forever/quest=95322
-            -- Assumption: offered right after 95322 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95322},
+            -- already in QuestieDB; Assumption: offered right after 95322 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95322},
             -- 95326 "The Big Payback" https://wowhead.com/forever/quest=95326
-            -- Assumption: turning it in led straight to 95326 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 95326,
-        },
-        [95326] = { -- The Big Payback https://wowhead.com/forever/quest=95326
+            -- already in QuestieDB; Assumption: turning it in led straight to 95326 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 95326,
+        -- },
+        -- [95326] = { -- The Big Payback https://wowhead.com/forever/quest=95326
             -- 95325 "We've Been Robbed!" https://wowhead.com/forever/quest=95325
-            -- Assumption: offered right after 95325 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95325},
+            -- already in QuestieDB; Assumption: offered right after 95325 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95325},
             -- 95327 "All's Well That Ends Well" https://wowhead.com/forever/quest=95327
-            -- Assumption: turning it in led straight to 95327 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 95327,
-        },
-        [95327] = { -- All's Well That Ends Well https://wowhead.com/forever/quest=95327
+            -- already in QuestieDB; Assumption: turning it in led straight to 95327 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 95327,
+        -- },
+        -- [95327] = { -- All's Well That Ends Well https://wowhead.com/forever/quest=95327
             -- 95326 "The Big Payback" https://wowhead.com/forever/quest=95326
-            -- Assumption: offered right after 95326 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95326},
-        },
-        [95329] = { -- Out in the Field https://wowhead.com/forever/quest=95329
+            -- already in QuestieDB; Assumption: offered right after 95326 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95326},
+        -- },
+        -- [95329] = { -- Out in the Field https://wowhead.com/forever/quest=95329
             -- 94877 "Saving Sunnyglade" https://wowhead.com/forever/quest=94877
-            -- Assumption: offered right after 94877 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {94877},
-        },
+            -- already in QuestieDB; Assumption: offered right after 94877 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {94877},
+        -- },
         -- [95349] = { -- The Earthen Ring https://wowhead.com/forever/quest=95349
             -- 93090 "What Comes Next" https://wowhead.com/forever/quest=93090
             -- already in QuestieDB; Assumption: offered right after 93090 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
@@ -16619,150 +16441,140 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: turning it in led straight to 93739 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 93739,
         -- },
-        [95378] = { -- The Hydra's Head https://wowhead.com/forever/quest=95378
+        -- [95378] = { -- The Hydra's Head https://wowhead.com/forever/quest=95378
             -- 95319 "Crystalline Collection" https://wowhead.com/forever/quest=95319
-            -- Assumption: offered right after 95319 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {95319},
-        },
-        [95379] = { -- A Revenge So Sweet https://wowhead.com/forever/quest=95379
+            -- already in QuestieDB; Assumption: offered right after 95319 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {95319},
+        -- },
+        -- [95379] = { -- A Revenge So Sweet https://wowhead.com/forever/quest=95379
             -- 95319 "Crystalline Collection" https://wowhead.com/forever/quest=95319
-            -- Assumption: offered right after 95319 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {95319},
-        },
-        [95380] = { -- A Prolific Source https://wowhead.com/forever/quest=95380
+            -- already in QuestieDB; Assumption: offered right after 95319 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {95319},
+        -- },
+        -- [95380] = { -- A Prolific Source https://wowhead.com/forever/quest=95380
             -- 95317 "Notation, Notation, Notation" https://wowhead.com/forever/quest=95317
-            -- Assumption: offered right after 95317 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {95317},
-        },
-        [95383] = { -- Shipping and Handling https://wowhead.com/forever/quest=95383
+            -- already in QuestieDB; Assumption: offered right after 95317 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {95317},
+        -- },
+        -- [95383] = { -- Shipping and Handling https://wowhead.com/forever/quest=95383
             -- 95296 "Shipping and Handling" https://wowhead.com/forever/quest=95296
-            -- Assumption: offered right after 95296 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95296},
+            -- already in QuestieDB; Assumption: offered right after 95296 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95296},
             -- 95312 "Coming to Collect" https://wowhead.com/forever/quest=95312
-            -- Assumption: turning it in led straight to 95312 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 95312,
-        },
-        [95417] = { -- The Purple Ones https://wowhead.com/forever/quest=95417
+            -- already in QuestieDB; Assumption: turning it in led straight to 95312 (handoff; medium; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 95312,
+        -- },
+        -- [95417] = { -- The Purple Ones https://wowhead.com/forever/quest=95417
             -- 94727 "Digging for Answers" https://wowhead.com/forever/quest=94727
-            -- Assumption: offered right after 94727 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {94727},
+            -- already in QuestieDB; Assumption: offered right after 94727 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {94727},
             -- 95601 "The Purple Ones" https://wowhead.com/forever/quest=95601
-            -- Assumption: turning it in led straight to 95601 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 95601,
-        },
-        [95418] = { -- Spread the Word https://wowhead.com/forever/quest=95418
+            -- already in QuestieDB; Assumption: turning it in led straight to 95601 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 95601,
+        -- },
+        -- [95418] = { -- Spread the Word https://wowhead.com/forever/quest=95418
             -- 95427 "Twilight No More!" https://wowhead.com/forever/quest=95427
-            -- Assumption: offered right after 95427 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95427},
+            -- already in QuestieDB; Assumption: offered right after 95427 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95427},
             -- 95420 "Land of Giants" https://wowhead.com/forever/quest=95420
-            -- Assumption: turning it in led straight to 95420 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 95420,
-        },
-        [95420] = { -- Land of Giants https://wowhead.com/forever/quest=95420
+            -- already in QuestieDB; Assumption: turning it in led straight to 95420 (handoff; medium; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 95420,
+        -- },
+        -- [95420] = { -- Land of Giants https://wowhead.com/forever/quest=95420
             -- 95418 "Spread the Word" https://wowhead.com/forever/quest=95418
-            -- Assumption: offered right after 95418 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95418},
-        },
-        [95424] = { -- Might Makes Right https://wowhead.com/forever/quest=95424
+            -- already in QuestieDB; Assumption: offered right after 95418 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95418},
+        -- },
+        -- [95424] = { -- Might Makes Right https://wowhead.com/forever/quest=95424
             -- 95420 "Land of Giants" https://wowhead.com/forever/quest=95420
-            -- Assumption: offered right after 95420 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95420},
-        },
-        [95425] = { -- Unworthy Champion https://wowhead.com/forever/quest=95425
+            -- already in QuestieDB; Assumption: offered right after 95420 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95420},
+        -- },
+        -- [95425] = { -- Unworthy Champion https://wowhead.com/forever/quest=95425
             -- 95420 "Land of Giants" https://wowhead.com/forever/quest=95420
-            -- Assumption: offered right after 95420 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95420},
-        },
-        [95426] = { -- Rog'mar Supplies https://wowhead.com/forever/quest=95426
+            -- already in QuestieDB; Assumption: offered right after 95420 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95420},
+        -- },
+        -- [95426] = { -- Rog'mar Supplies https://wowhead.com/forever/quest=95426
             -- 94924 "Hunting the Hunters" https://wowhead.com/forever/quest=94924
-            -- Assumption: offered right after 94924 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {94924},
+            -- already in QuestieDB; Assumption: offered right after 94924 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {94924},
             -- 95066 "The Rog'mar Situation" https://wowhead.com/forever/quest=95066
             -- not applied: 95066 needs this quest together with 95064 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 95066 (handoff; medium; 100+ characters)
             -- [questKeys.nextQuestInChain] = 95066,
-        },
-        [95427] = { -- Twilight No More! https://wowhead.com/forever/quest=95427
+        -- },
+        -- [95427] = { -- Twilight No More! https://wowhead.com/forever/quest=95427
             -- 95601 "The Purple Ones" https://wowhead.com/forever/quest=95601
             -- 95602 "Sickening Lights" https://wowhead.com/forever/quest=95602
-            -- Assumption: offered right after 95601, 95602 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestGroup] = {95601,95602},
+            -- already in QuestieDB; Assumption: offered right after 95601, 95602 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestGroup] = {95601,95602},
             -- 95418 "Spread the Word" https://wowhead.com/forever/quest=95418
-            -- Assumption: turning it in led straight to 95418 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 95418,
-        },
-        [95428] = { -- Clugfist's Decree https://wowhead.com/forever/quest=95428
+            -- already in QuestieDB; Assumption: turning it in led straight to 95418 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 95418,
+        -- },
+        -- [95428] = { -- Clugfist's Decree https://wowhead.com/forever/quest=95428
             -- 95424 "Might Makes Right" https://wowhead.com/forever/quest=95424
             -- 95425 "Unworthy Champion" https://wowhead.com/forever/quest=95425
-            -- Assumption: offered right after 95424, 95425 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestGroup] = {95424,95425},
+            -- already in QuestieDB; Assumption: offered right after 95424, 95425 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestGroup] = {95424,95425},
             -- 94744 "The Wayward Warrior" https://wowhead.com/forever/quest=94744
-            -- Assumption: turning it in led straight to 94744 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 94744,
-        },
-        [95431] = { -- Rumblings of Discontent https://wowhead.com/forever/quest=95431
+            -- already in QuestieDB; Assumption: turning it in led straight to 94744 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 94744,
+        -- },
+        -- [95431] = { -- Rumblings of Discontent https://wowhead.com/forever/quest=95431
             -- 94744 "The Wayward Warrior" https://wowhead.com/forever/quest=94744
-            -- Assumption: 94744 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
-            [questKeys.preQuestSingle] = {94744},
+            -- already in QuestieDB; Assumption: 94744 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {94744},
             -- 95432 "Rise Up!" https://wowhead.com/forever/quest=95432
-            -- Assumption: turning it in led straight to 95432 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 95432,
-        },
-        [95432] = { -- Rise Up! https://wowhead.com/forever/quest=95432
+            -- already in QuestieDB; Assumption: turning it in led straight to 95432 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 95432,
+        -- },
+        -- [95432] = { -- Rise Up! https://wowhead.com/forever/quest=95432
             -- 95431 "Rumblings of Discontent" https://wowhead.com/forever/quest=95431
-            -- Assumption: offered right after 95431 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95431},
+            -- already in QuestieDB; Assumption: offered right after 95431 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95431},
             -- 95433 "Death to the Executioner" https://wowhead.com/forever/quest=95433
-            -- Assumption: turning it in led straight to 95433 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 95433,
-        },
-        [95433] = { -- Death to the Executioner https://wowhead.com/forever/quest=95433
+            -- already in QuestieDB; Assumption: turning it in led straight to 95433 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 95433,
+        -- },
+        -- [95433] = { -- Death to the Executioner https://wowhead.com/forever/quest=95433
             -- 95432 "Rise Up!" https://wowhead.com/forever/quest=95432
-            -- Assumption: offered right after 95432 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95432},
-        },
-        [95454] = { -- The Honor of the Kor'kron https://wowhead.com/forever/quest=95454
-            -- 95309 "No Orc Left Behind" https://wowhead.com/forever/quest=95309
-            -- Assumption: 95309 was done whenever it was offered (offer-set, cooccurrence; medium; 10+ characters)
-            [questKeys.preQuestSingle] = {95309},
-        },
-        [95472] = { -- Consolation Prize https://wowhead.com/forever/quest=95472
+            -- already in QuestieDB; Assumption: offered right after 95432 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95432},
+        -- },
+        -- [95472] = { -- Consolation Prize https://wowhead.com/forever/quest=95472
             -- 95321 "Tazzik's Dues" https://wowhead.com/forever/quest=95321
-            -- Assumption: offered right after 95321 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95321},
-        },
-        [95483] = { -- Thrall Needs to Know https://wowhead.com/forever/quest=95483
-            -- 96369 "Bad News for Folkar" https://wowhead.com/forever/quest=96369
-            -- Assumption: 96369 was done whenever it was offered (offer-set, cooccurrence; medium; 10+ characters)
-            [questKeys.preQuestSingle] = {96369},
-        },
+            -- already in QuestieDB; Assumption: offered right after 95321 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95321},
+        -- },
         -- [95494] = { -- Bruised Pride and Lion Hides https://wowhead.com/forever/quest=95494
             -- 95495 "The Hermit Tanner" https://wowhead.com/forever/quest=95495
-            -- already in QuestieDB; Assumption: turning it in led straight to 95495 (handoff; high; 100+ characters)
+            -- not applied: an authored fix sets this field; Assumption: turning it in led straight to 95495 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 95495,
         -- },
-        [95495] = { -- The Hermit Tanner https://wowhead.com/forever/quest=95495
+        -- [95495] = { -- The Hermit Tanner https://wowhead.com/forever/quest=95495
             -- 95494 "Bruised Pride and Lion Hides" https://wowhead.com/forever/quest=95494
             -- 95507 "Vrang's Game" https://wowhead.com/forever/quest=95507
-            -- already in QuestieDB; Assumption: offered right after 95494 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters); offered right after 95507 was turned in (handoff, offer-set, absence, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: offered right after 95494, 95507 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestGroup] = {95494,95507},
             -- 95621 "Trouble in the Valley" https://wowhead.com/forever/quest=95621
-            -- Assumption: turning it in led straight to 95621 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 95621,
-        },
+            -- already in QuestieDB; Assumption: turning it in led straight to 95621 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 95621,
+        -- },
         -- [95507] = { -- Vrang's Game https://wowhead.com/forever/quest=95507
             -- 95495 "The Hermit Tanner" https://wowhead.com/forever/quest=95495
-            -- not applied: 95495 needs this quest together with 95494 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 95495 (handoff; high; 100+ characters)
+            -- not applied: an authored fix sets this field; Assumption: turning it in led straight to 95495 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 95495,
         -- },
-        [95508] = { -- Unwelcome Guests https://wowhead.com/forever/quest=95508
+        -- [95508] = { -- Unwelcome Guests https://wowhead.com/forever/quest=95508
             -- 95621 "Trouble in the Valley" https://wowhead.com/forever/quest=95621
-            -- Assumption: offered right after 95621 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95621},
-        },
-        [95511] = { -- Your First Feline Friend https://wowhead.com/forever/quest=95511
+            -- already in QuestieDB; Assumption: offered right after 95621 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95621},
+        -- },
+        -- [95511] = { -- Your First Feline Friend https://wowhead.com/forever/quest=95511
             -- 97074 "Learning to Ride" https://wowhead.com/forever/quest=97074
-            -- Assumption: offered right after 97074 was turned in (handoff, offer-set, absence; high; 10+ characters)
-            [questKeys.preQuestSingle] = {97074},
+            -- already in QuestieDB; Assumption: offered right after 97074 was turned in (handoff, offer-set, absence; high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {97074},
             -- 96982 "Your First Riding Kodo" https://wowhead.com/forever/quest=96982
             -- 96989 "Your First Riding Raptor" https://wowhead.com/forever/quest=96989
             -- 96994 "Your First Riding Wolf" https://wowhead.com/forever/quest=96994
@@ -16775,65 +16587,65 @@ function ForeverQuestRelationTraces:Load()
             -- 97446 "Your First Riding Kodo" https://wowhead.com/forever/quest=97446
             -- 98166 "Your First Horse" https://wowhead.com/forever/quest=98166
             -- 99326 "Your First Horse" https://wowhead.com/forever/quest=99326
-            -- Assumption: the server completes it and 96982, 96989, 96994, 96996, 96997, 97017, 97045, 97046, 97171, 97446, 98166, 99326 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {96982,96989,96994,96996,96997,97017,97045,97046,97171,97446,98166,99326},
-        },
-        [95561] = { -- Apple of My Eye https://wowhead.com/forever/quest=95561
+            -- already in QuestieDB; Assumption: the server completes it and 96982, 96989, 96994, 96996, 96997, 97017, 97045, 97046, 97171, 97446, 98166, 99326 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {96982,96989,96994,96996,96997,97017,97045,97046,97171,97446,98166,99326},
+        -- },
+        -- [95561] = { -- Apple of My Eye https://wowhead.com/forever/quest=95561
             -- 94877 "Saving Sunnyglade" https://wowhead.com/forever/quest=94877
-            -- Assumption: 94877 was done whenever it was offered (offer-set, cooccurrence; medium; 100+ characters)
-            [questKeys.preQuestSingle] = {94877},
+            -- already in QuestieDB; Assumption: 94877 was done whenever it was offered (offer-set, cooccurrence; medium; 100+ characters)
+            -- [questKeys.preQuestSingle] = {94877},
             -- 95913 "Fit for a Princess" https://wowhead.com/forever/quest=95913
-            -- Assumption: turning it in led straight to 95913 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 95913,
-        },
-        [95562] = { -- Cut Off the Heads https://wowhead.com/forever/quest=95562
+            -- already in QuestieDB; Assumption: turning it in led straight to 95913 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 95913,
+        -- },
+        -- [95562] = { -- Cut Off the Heads https://wowhead.com/forever/quest=95562
             -- 95642 "Abominable Magics" https://wowhead.com/forever/quest=95642
             -- 95643 "Indiscriminate Purge" https://wowhead.com/forever/quest=95643
-            -- Assumption: offered right after 95642 was turned in (handoff, offer-set, absence, cooccurrence; high; 100+ characters); offered right after 95643 was turned in (handoff, offer-set, absence, cooccurrence; medium; 100+ characters)
-            [questKeys.preQuestGroup] = {95642,95643},
+            -- already in QuestieDB; Assumption: offered right after 95642 was turned in (handoff, offer-set, absence, cooccurrence; high; 100+ characters); offered right after 95643 was turned in (handoff, offer-set, absence, cooccurrence; medium; 100+ characters)
+            -- [questKeys.preQuestGroup] = {95642,95643},
             -- 94884 "An Unsettling Discovery" https://wowhead.com/forever/quest=94884
-            -- Assumption: turning it in led straight to 94884 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 94884,
-        },
-        [95601] = { -- The Purple Ones https://wowhead.com/forever/quest=95601
+            -- already in QuestieDB; Assumption: turning it in led straight to 94884 (handoff; medium; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 94884,
+        -- },
+        -- [95601] = { -- The Purple Ones https://wowhead.com/forever/quest=95601
             -- 95417 "The Purple Ones" https://wowhead.com/forever/quest=95417
-            -- Assumption: offered right after 95417 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95417},
+            -- already in QuestieDB; Assumption: offered right after 95417 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95417},
             -- 95427 "Twilight No More!" https://wowhead.com/forever/quest=95427
             -- not applied: 95427 needs this quest together with 95602 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 95427 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 95427,
-        },
-        [95602] = { -- Sickening Lights https://wowhead.com/forever/quest=95602
+        -- },
+        -- [95602] = { -- Sickening Lights https://wowhead.com/forever/quest=95602
             -- 94727 "Digging for Answers" https://wowhead.com/forever/quest=94727
-            -- Assumption: offered right after 94727 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {94727},
+            -- already in QuestieDB; Assumption: offered right after 94727 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {94727},
             -- 95427 "Twilight No More!" https://wowhead.com/forever/quest=95427
             -- not applied: 95427 needs this quest together with 95601 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 95427 (handoff; medium; 100+ characters)
             -- [questKeys.nextQuestInChain] = 95427,
-        },
-        [95603] = { -- Bats in the Belfry https://wowhead.com/forever/quest=95603
+        -- },
+        -- [95603] = { -- Bats in the Belfry https://wowhead.com/forever/quest=95603
             -- 95613 "Keeping the Light On" https://wowhead.com/forever/quest=95613
-            -- Assumption: turning it in led straight to 95613 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 95613,
-        },
-        [95611] = { -- Rites of Respect https://wowhead.com/forever/quest=95611
+            -- already in QuestieDB; Assumption: turning it in led straight to 95613 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 95613,
+        -- },
+        -- [95611] = { -- Rites of Respect https://wowhead.com/forever/quest=95611
             -- 93759 "The Bounty of Nature" https://wowhead.com/forever/quest=93759
-            -- Assumption: offered right after 93759 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {93759},
-        },
-        [95613] = { -- Keeping the Light On https://wowhead.com/forever/quest=95613
+            -- already in QuestieDB; Assumption: offered right after 93759 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {93759},
+        -- },
+        -- [95613] = { -- Keeping the Light On https://wowhead.com/forever/quest=95613
             -- 95603 "Bats in the Belfry" https://wowhead.com/forever/quest=95603
-            -- Assumption: offered right after 95603 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95603},
+            -- already in QuestieDB; Assumption: offered right after 95603 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95603},
             -- 95615 "In Memoriam" https://wowhead.com/forever/quest=95615
-            -- Assumption: turning it in led straight to 95615 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 95615,
-        },
-        [95615] = { -- In Memoriam https://wowhead.com/forever/quest=95615
+            -- already in QuestieDB; Assumption: turning it in led straight to 95615 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 95615,
+        -- },
+        -- [95615] = { -- In Memoriam https://wowhead.com/forever/quest=95615
             -- 95613 "Keeping the Light On" https://wowhead.com/forever/quest=95613
-            -- Assumption: offered right after 95613 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95613},
-        },
+            -- already in QuestieDB; Assumption: offered right after 95613 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95613},
+        -- },
         -- [95621] = { -- Trouble in the Valley https://wowhead.com/forever/quest=95621
             -- 95495 "The Hermit Tanner" https://wowhead.com/forever/quest=95495
             -- already in QuestieDB; Assumption: offered right after 95495 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
@@ -16849,92 +16661,92 @@ function ForeverQuestRelationTraces:Load()
             -- not applied: 95562 needs this quest together with 95642 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 95562 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 95562,
         -- },
-        [95646] = { -- Horrors in the Highland https://wowhead.com/forever/quest=95646
+        -- [95646] = { -- Horrors in the Highland https://wowhead.com/forever/quest=95646
             -- 275 "Blisters on The Land" https://wowhead.com/forever/quest=275
-            -- Assumption: offered right after 275 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {275},
-        },
-        [95663] = { -- Dragonmaw Rumors https://wowhead.com/forever/quest=95663
+            -- already in QuestieDB; Assumption: offered right after 275 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {275},
+        -- },
+        -- [95663] = { -- Dragonmaw Rumors https://wowhead.com/forever/quest=95663
             -- 95682 "Open the Maw" https://wowhead.com/forever/quest=95682
-            -- Assumption: turning it in led straight to 95682 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 95682,
-        },
-        [95664] = { -- Elder Knowledge https://wowhead.com/forever/quest=95664
+            -- already in QuestieDB; Assumption: turning it in led straight to 95682 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 95682,
+        -- },
+        -- [95664] = { -- Elder Knowledge https://wowhead.com/forever/quest=95664
             -- 98823 "Earthen Echo" https://wowhead.com/forever/quest=98823
-            -- Assumption: turning it in led straight to 98823 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 98823,
-        },
-        [95682] = { -- Open the Maw https://wowhead.com/forever/quest=95682
+            -- already in QuestieDB; Assumption: turning it in led straight to 98823 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 98823,
+        -- },
+        -- [95682] = { -- Open the Maw https://wowhead.com/forever/quest=95682
             -- 95663 "Dragonmaw Rumors" https://wowhead.com/forever/quest=95663
-            -- Assumption: offered right after 95663 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95663},
-        },
-        [95748] = { -- The Gurubashi Legends of Old https://wowhead.com/forever/quest=95748
+            -- already in QuestieDB; Assumption: offered right after 95663 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95663},
+        -- },
+        -- [95748] = { -- The Gurubashi Legends of Old https://wowhead.com/forever/quest=95748
             -- 629 "The Vile Reef" https://wowhead.com/forever/quest=629
-            -- Assumption: offered right after 629 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {629},
-        },
-        [95766] = { -- Fine Feathered Friend https://wowhead.com/forever/quest=95766
+            -- already in QuestieDB; Assumption: offered right after 629 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {629},
+        -- },
+        -- [95766] = { -- Fine Feathered Friend https://wowhead.com/forever/quest=95766
             -- 91770 "Bark Bite" https://wowhead.com/forever/quest=91770
-            -- Assumption: offered right after 91770 was turned in (handoff, offer-set, absence, cooccurrence; high; 10+ characters)
-            [questKeys.preQuestSingle] = {91770},
-        },
-        [95770] = { -- Locating the Lost City https://wowhead.com/forever/quest=95770
+            -- already in QuestieDB; Assumption: offered right after 91770 was turned in (handoff, offer-set, absence, cooccurrence; high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {91770},
+        -- },
+        -- [95770] = { -- Locating the Lost City https://wowhead.com/forever/quest=95770
             -- 95748 "The Gurubashi Legends of Old" https://wowhead.com/forever/quest=95748
-            -- Assumption: offered right after 95748 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95748},
-        },
-        [95773] = { -- Enemies in the Water https://wowhead.com/forever/quest=95773
+            -- already in QuestieDB; Assumption: offered right after 95748 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95748},
+        -- },
+        -- [95773] = { -- Enemies in the Water https://wowhead.com/forever/quest=95773
             -- 95748 "The Gurubashi Legends of Old" https://wowhead.com/forever/quest=95748
-            -- Assumption: 95748 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
-            [questKeys.preQuestSingle] = {95748},
-        },
-        [95774] = { -- Her Name Is Olgra https://wowhead.com/forever/quest=95774
+            -- already in QuestieDB; Assumption: 95748 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95748},
+        -- },
+        -- [95774] = { -- Her Name Is Olgra https://wowhead.com/forever/quest=95774
             -- 4921 "Lost in Battle" https://wowhead.com/forever/quest=4921
-            -- Assumption: offered right after 4921 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {4921},
-        },
-        [95775] = { -- The Drowned City https://wowhead.com/forever/quest=95775
+            -- already in QuestieDB; Assumption: offered right after 4921 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {4921},
+        -- },
+        -- [95775] = { -- The Drowned City https://wowhead.com/forever/quest=95775
             -- 95770 "Locating the Lost City" https://wowhead.com/forever/quest=95770
-            -- Assumption: offered right after 95770 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95770},
-        },
-        [95776] = { -- The Only Good Brinescale... https://wowhead.com/forever/quest=95776
+            -- already in QuestieDB; Assumption: offered right after 95770 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95770},
+        -- },
+        -- [95776] = { -- The Only Good Brinescale... https://wowhead.com/forever/quest=95776
             -- 95770 "Locating the Lost City" https://wowhead.com/forever/quest=95770
             -- 95773 "Enemies in the Water" https://wowhead.com/forever/quest=95773
-            -- Assumption: 95770 was done whenever it was offered (offer-set, absence, cooccurrence; high; 100+ characters); offered right after 95773 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestGroup] = {95770,95773},
-        },
-        [95786] = { -- An Acquaintance in Southshore https://wowhead.com/forever/quest=95786
+            -- already in QuestieDB; Assumption: 95770 was done whenever it was offered (offer-set, absence, cooccurrence; very high; 100+ characters); offered right after 95773 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestGroup] = {95770,95773},
+        -- },
+        -- [95786] = { -- An Acquaintance in Southshore https://wowhead.com/forever/quest=95786
             -- 205 "Troll Witchery" https://wowhead.com/forever/quest=205
-            -- Assumption: offered right after 205 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {205},
-        },
-        [95787] = { -- Take Two With Water https://wowhead.com/forever/quest=95787
+            -- already in QuestieDB; Assumption: offered right after 205 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {205},
+        -- },
+        -- [95787] = { -- Take Two With Water https://wowhead.com/forever/quest=95787
             -- 95786 "An Acquaintance in Southshore" https://wowhead.com/forever/quest=95786
-            -- Assumption: offered right after 95786 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95786},
-        },
-        [95788] = { -- Magics of the Drowned City https://wowhead.com/forever/quest=95788
+            -- already in QuestieDB; Assumption: offered right after 95786 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95786},
+        -- },
+        -- [95788] = { -- Magics of the Drowned City https://wowhead.com/forever/quest=95788
             -- 95786 "An Acquaintance in Southshore" https://wowhead.com/forever/quest=95786
-            -- Assumption: offered right after 95786 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95786},
-        },
-        [95795] = { -- Fallen in the Fen https://wowhead.com/forever/quest=95795
+            -- already in QuestieDB; Assumption: offered right after 95786 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95786},
+        -- },
+        -- [95795] = { -- Fallen in the Fen https://wowhead.com/forever/quest=95795
             -- 95772 "Songblade Search" https://wowhead.com/forever/quest=95772
-            -- Assumption: 95772 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
-            [questKeys.preQuestSingle] = {95772},
-        },
-        [95798] = { -- The Web of Magic https://wowhead.com/forever/quest=95798
+            -- already in QuestieDB; Assumption: 95772 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95772},
+        -- },
+        -- [95798] = { -- The Web of Magic https://wowhead.com/forever/quest=95798
             -- 95788 "Magics of the Drowned City" https://wowhead.com/forever/quest=95788
-            -- Assumption: offered right after 95788 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95788},
-        },
-        [95799] = { -- Findings for the Explorer's League https://wowhead.com/forever/quest=95799
+            -- already in QuestieDB; Assumption: offered right after 95788 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95788},
+        -- },
+        -- [95799] = { -- Findings for the Explorer's League https://wowhead.com/forever/quest=95799
             -- 95787 "Take Two With Water" https://wowhead.com/forever/quest=95787
-            -- Assumption: offered right after 95787 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95787},
-        },
+            -- already in QuestieDB; Assumption: offered right after 95787 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95787},
+        -- },
         -- [95803] = { -- A Token of Good Faith https://wowhead.com/forever/quest=95803
             -- 91317 "The Tarnished" https://wowhead.com/forever/quest=91317
             -- already in QuestieDB; Assumption: offered right after 91317 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
@@ -16945,11 +16757,11 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: 755 was done whenever it was offered (offer-set, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {755},
         -- },
-        [95810] = { -- Lost Relic Carry https://wowhead.com/forever/quest=95810
+        -- [95810] = { -- Lost Relic Carry https://wowhead.com/forever/quest=95810
             -- 98824 "Prehistoric Prism" https://wowhead.com/forever/quest=98824
-            -- Assumption: turning it in led straight to 98824 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 98824,
-        },
+            -- already in QuestieDB; Assumption: turning it in led straight to 98824 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 98824,
+        -- },
         -- [95883] = { -- The Tortured Soul https://wowhead.com/forever/quest=95883
             -- 95884 "The Offering Stone" https://wowhead.com/forever/quest=95884
             -- already in QuestieDB; Assumption: offered right after 95884 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
@@ -16968,47 +16780,47 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 95883 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {95883},
         -- },
-        [95913] = { -- Fit for a Princess https://wowhead.com/forever/quest=95913
+        -- [95913] = { -- Fit for a Princess https://wowhead.com/forever/quest=95913
             -- 95561 "Apple of My Eye" https://wowhead.com/forever/quest=95561
-            -- Assumption: offered right after 95561 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95561},
+            -- already in QuestieDB; Assumption: offered right after 95561 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95561},
             -- 95961 "Stepped Out" https://wowhead.com/forever/quest=95961
-            -- Assumption: turning it in led straight to 95961 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 95961,
-        },
-        [95943] = { -- Foreman's Plight https://wowhead.com/forever/quest=95943
+            -- already in QuestieDB; Assumption: turning it in led straight to 95961 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 95961,
+        -- },
+        -- [95943] = { -- Foreman's Plight https://wowhead.com/forever/quest=95943
             -- 96009 "High Stakes" https://wowhead.com/forever/quest=96009
-            -- Assumption: turning it in led straight to 96009 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 96009,
-        },
-        [95951] = { -- Fetch 'n' Fletch https://wowhead.com/forever/quest=95951
+            -- already in QuestieDB; Assumption: turning it in led straight to 96009 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 96009,
+        -- },
+        -- [95951] = { -- Fetch 'n' Fletch https://wowhead.com/forever/quest=95951
             -- 95955 "Stick 'Em" https://wowhead.com/forever/quest=95955
-            -- Assumption: turning it in led straight to 95955 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 95955,
-        },
-        [95955] = { -- Stick 'Em https://wowhead.com/forever/quest=95955
+            -- already in QuestieDB; Assumption: turning it in led straight to 95955 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 95955,
+        -- },
+        -- [95955] = { -- Stick 'Em https://wowhead.com/forever/quest=95955
             -- 95951 "Fetch 'n' Fletch" https://wowhead.com/forever/quest=95951
-            -- Assumption: offered right after 95951 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95951},
-        },
-        [95957] = { -- Drink Up! https://wowhead.com/forever/quest=95957
+            -- already in QuestieDB; Assumption: offered right after 95951 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95951},
+        -- },
+        -- [95957] = { -- Drink Up! https://wowhead.com/forever/quest=95957
             -- 95988 "Goes Down Smooth" https://wowhead.com/forever/quest=95988
-            -- Assumption: offered right after 95988 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95988},
+            -- already in QuestieDB; Assumption: offered right after 95988 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95988},
             -- 95975 "Her World" https://wowhead.com/forever/quest=95975
-            -- Assumption: turning it in led straight to 95975 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 95975,
-        },
-        [95961] = { -- Stepped Out https://wowhead.com/forever/quest=95961
+            -- already in QuestieDB; Assumption: turning it in led straight to 95975 (handoff; medium; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 95975,
+        -- },
+        -- [95961] = { -- Stepped Out https://wowhead.com/forever/quest=95961
             -- 95913 "Fit for a Princess" https://wowhead.com/forever/quest=95913
-            -- Assumption: offered right after 95913 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95913},
-        },
-        [95975] = { -- Her World https://wowhead.com/forever/quest=95975
+            -- already in QuestieDB; Assumption: offered right after 95913 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95913},
+        -- },
+        -- [95975] = { -- Her World https://wowhead.com/forever/quest=95975
             -- 95957 "Drink Up!" https://wowhead.com/forever/quest=95957
-            -- Assumption: offered right after 95957 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95957},
-        },
+            -- already in QuestieDB; Assumption: offered right after 95957 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95957},
+        -- },
         -- [95981] = { -- Watching the Roads https://wowhead.com/forever/quest=95981
             -- 482 "Dalaran's Intentions" https://wowhead.com/forever/quest=482
             -- already in QuestieDB; Assumption: offered right after 482 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
@@ -17017,32 +16829,32 @@ function ForeverQuestRelationTraces:Load()
             -- not applied: 480 needs this quest together with 479 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 480 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 480,
         -- },
-        [95983] = { -- A Feast for Buzzards https://wowhead.com/forever/quest=95983
+        -- [95983] = { -- A Feast for Buzzards https://wowhead.com/forever/quest=95983
             -- 95984 "Song of the Strider" https://wowhead.com/forever/quest=95984
-            -- Assumption: turning it in led straight to 95984 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 95984,
-        },
-        [95984] = { -- Song of the Strider https://wowhead.com/forever/quest=95984
+            -- already in QuestieDB; Assumption: turning it in led straight to 95984 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 95984,
+        -- },
+        -- [95984] = { -- Song of the Strider https://wowhead.com/forever/quest=95984
             -- 95983 "A Feast for Buzzards" https://wowhead.com/forever/quest=95983
-            -- Assumption: offered right after 95983 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95983},
+            -- already in QuestieDB; Assumption: offered right after 95983 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95983},
             -- 95986 "King of the Wild Plains" https://wowhead.com/forever/quest=95986
-            -- Assumption: turning it in led straight to 95986 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 95986,
-        },
-        [95986] = { -- King of the Wild Plains https://wowhead.com/forever/quest=95986
+            -- already in QuestieDB; Assumption: turning it in led straight to 95986 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 95986,
+        -- },
+        -- [95986] = { -- King of the Wild Plains https://wowhead.com/forever/quest=95986
             -- 95984 "Song of the Strider" https://wowhead.com/forever/quest=95984
-            -- Assumption: offered right after 95984 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95984},
-        },
-        [95988] = { -- Goes Down Smooth https://wowhead.com/forever/quest=95988
+            -- already in QuestieDB; Assumption: offered right after 95984 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95984},
+        -- },
+        -- [95988] = { -- Goes Down Smooth https://wowhead.com/forever/quest=95988
             -- 95961 "Stepped Out" https://wowhead.com/forever/quest=95961
-            -- Assumption: 95961 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
-            [questKeys.preQuestSingle] = {95961},
+            -- already in QuestieDB; Assumption: 95961 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95961},
             -- 95957 "Drink Up!" https://wowhead.com/forever/quest=95957
-            -- Assumption: turning it in led straight to 95957 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 95957,
-        },
+            -- already in QuestieDB; Assumption: turning it in led straight to 95957 (handoff; medium; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 95957,
+        -- },
         -- [95998] = { -- The Great Outdoors https://wowhead.com/forever/quest=95998
             -- 96101 "The Great Outdoors" https://wowhead.com/forever/quest=96101
             -- 96604 "The Great Outdoors" https://wowhead.com/forever/quest=96604
@@ -17053,59 +16865,59 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: the server completes it and 96101, 96604, 96605, 96606, 96607, 96608 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {96101,96604,96605,96606,96607,96608},
         -- },
-        [96003] = { -- Drawing Down the Malevolent https://wowhead.com/forever/quest=96003
+        -- [96003] = { -- Drawing Down the Malevolent https://wowhead.com/forever/quest=96003
             -- 92960 "Siphoned Ephemeral Essence" https://wowhead.com/forever/quest=92960
-            -- Assumption: offered right after 92960 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {92960},
+            -- already in QuestieDB; Assumption: offered right after 92960 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {92960},
             -- 96025 "As the Crow Flies" https://wowhead.com/forever/quest=96025
-            -- Assumption: turning it in led straight to 96025 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 96025,
-        },
-        [96009] = { -- High Stakes https://wowhead.com/forever/quest=96009
+            -- already in QuestieDB; Assumption: turning it in led straight to 96025 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 96025,
+        -- },
+        -- [96009] = { -- High Stakes https://wowhead.com/forever/quest=96009
             -- 95943 "Foreman's Plight" https://wowhead.com/forever/quest=95943
-            -- Assumption: offered right after 95943 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95943},
-        },
-        [96010] = { -- Fragments of the Pylons https://wowhead.com/forever/quest=96010
+            -- already in QuestieDB; Assumption: offered right after 95943 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95943},
+        -- },
+        -- [96010] = { -- Fragments of the Pylons https://wowhead.com/forever/quest=96010
             -- 92914 "Strange Pylons" https://wowhead.com/forever/quest=92914
-            -- Assumption: offered right after 92914 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {92914},
+            -- already in QuestieDB; Assumption: offered right after 92914 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {92914},
             -- 96018 "Powering the Pylons" https://wowhead.com/forever/quest=96018
-            -- Assumption: turning it in led straight to 96018 (handoff; medium; 100+ characters)
-            [questKeys.nextQuestInChain] = 96018,
-        },
-        [96015] = { -- A Miner Problem https://wowhead.com/forever/quest=96015
+            -- already in QuestieDB; Assumption: turning it in led straight to 96018 (handoff; medium; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 96018,
+        -- },
+        -- [96015] = { -- A Miner Problem https://wowhead.com/forever/quest=96015
             -- 94886 "The Western Front" https://wowhead.com/forever/quest=94886
-            -- Assumption: 94886 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
-            [questKeys.preQuestSingle] = {94886},
-        },
-        [96016] = { -- The Tempest's Weapons https://wowhead.com/forever/quest=96016
+            -- already in QuestieDB; Assumption: 94886 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {94886},
+        -- },
+        -- [96016] = { -- The Tempest's Weapons https://wowhead.com/forever/quest=96016
             -- 79366 "Heed My Call" https://wowhead.com/forever/quest=79366
             -- 96135 "Heed My Call" https://wowhead.com/forever/quest=96135
-            -- Assumption: 79366 was done whenever it was offered (offer-set, absence, cooccurrence; very high; 100+ characters); offered right after 96135 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {79366,96135},
+            -- already in QuestieDB; Assumption: 79366 was done whenever it was offered (offer-set, absence, cooccurrence; very high; 100+ characters); offered right after 96135 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {79366,96135},
             -- 79442 "The Tempest's Weapons" https://wowhead.com/forever/quest=79442
-            -- Assumption: the server completes it and 79442 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {79442},
-        },
-        [96018] = { -- Powering the Pylons https://wowhead.com/forever/quest=96018
+            -- already in QuestieDB; Assumption: the server completes it and 79442 together (cooccurrence; high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {79442},
+        -- },
+        -- [96018] = { -- Powering the Pylons https://wowhead.com/forever/quest=96018
             -- 96010 "Fragments of the Pylons" https://wowhead.com/forever/quest=96010
-            -- Assumption: offered right after 96010 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {96010},
+            -- already in QuestieDB; Assumption: offered right after 96010 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {96010},
             -- 93016 "A Brief History Lesson" https://wowhead.com/forever/quest=93016
-            -- Assumption: turning it in led straight to 93016 (handoff; medium; 100+ characters)
-            [questKeys.nextQuestInChain] = 93016,
-        },
-        [96025] = { -- As the Crow Flies https://wowhead.com/forever/quest=96025
+            -- already in QuestieDB; Assumption: turning it in led straight to 93016 (handoff; medium; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 93016,
+        -- },
+        -- [96025] = { -- As the Crow Flies https://wowhead.com/forever/quest=96025
             -- 96003 "Drawing Down the Malevolent" https://wowhead.com/forever/quest=96003
-            -- Assumption: offered right after 96003 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {96003},
-        },
-        [96026] = { -- Step Two: More Rock https://wowhead.com/forever/quest=96026
+            -- already in QuestieDB; Assumption: offered right after 96003 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {96003},
+        -- },
+        -- [96026] = { -- Step Two: More Rock https://wowhead.com/forever/quest=96026
             -- 95183 "Step One: Rock" https://wowhead.com/forever/quest=95183
-            -- Assumption: offered right after 95183 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95183},
-        },
+            -- already in QuestieDB; Assumption: offered right after 95183 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95183},
+        -- },
         -- [96031] = { -- Camping 101: Leatherworking https://wowhead.com/forever/quest=96031
             -- 95998 "The Great Outdoors" https://wowhead.com/forever/quest=95998
             -- 96101 "The Great Outdoors" https://wowhead.com/forever/quest=96101
@@ -17114,7 +16926,7 @@ function ForeverQuestRelationTraces:Load()
             -- 96606 "The Great Outdoors" https://wowhead.com/forever/quest=96606
             -- 96607 "The Great Outdoors" https://wowhead.com/forever/quest=96607
             -- 96608 "The Great Outdoors" https://wowhead.com/forever/quest=96608
-            -- already in QuestieDB; Assumption: offered right after 95998, 96608 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters); 96101, 96604, 96605, 96606, 96607 was done whenever it was offered (offer-set, cooccurrence; very high; 100+ characters)
+            -- already in QuestieDB; Assumption: offered right after 95998, 96101, 96606, 96608 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters); 96604, 96605, 96607 was done whenever it was offered (offer-set, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
             -- 97906 "Camping 101: Leatherworking" https://wowhead.com/forever/quest=97906
             -- 97922 "Camping 101: Leatherworking" https://wowhead.com/forever/quest=97922
@@ -17122,7 +16934,7 @@ function ForeverQuestRelationTraces:Load()
             -- 97946 "Camping 101: Leatherworking" https://wowhead.com/forever/quest=97946
             -- 97958 "Camping 101: Leatherworking" https://wowhead.com/forever/quest=97958
             -- 97969 "Camping 101: Leatherworking" https://wowhead.com/forever/quest=97969
-            -- already in QuestieDB; Assumption: the server completes it and 97906, 97934, 97958, 97969 together (cooccurrence; very high; 100+ characters); offer lists show it and 97922 exclude each other (absence, cooccurrence; very high; 100+ characters); the server completes it and 97946 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 97906, 97934, 97946, 97958, 97969 together (cooccurrence; very high; 100+ characters); offer lists show it and 97922 exclude each other (absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {97906,97922,97934,97946,97958,97969},
         -- },
         -- [96044] = { -- Camping 101: Blacksmithing https://wowhead.com/forever/quest=96044
@@ -17157,7 +16969,7 @@ function ForeverQuestRelationTraces:Load()
             -- 97938 "Camping 101: Alchemy" https://wowhead.com/forever/quest=97938
             -- 97951 "Camping 101: Alchemy" https://wowhead.com/forever/quest=97951
             -- 97963 "Camping 101: Alchemy" https://wowhead.com/forever/quest=97963
-            -- already in QuestieDB; Assumption: the server completes it and 97899, 97927, 97938, 97951, 97963 together (cooccurrence; high; 100+ characters); offer lists show it and 97915 exclude each other (absence, cooccurrence; very high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 97899, 97927, 97938, 97951, 97963 together (cooccurrence; very high; 100+ characters); offer lists show it and 97915 exclude each other (absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {97899,97915,97927,97938,97951,97963},
         -- },
         -- [96046] = { -- Camping 101: Mining https://wowhead.com/forever/quest=96046
@@ -17214,7 +17026,7 @@ function ForeverQuestRelationTraces:Load()
             -- 97943 "Camping 101: Fishing" https://wowhead.com/forever/quest=97943
             -- 97956 "Camping 101: Fishing" https://wowhead.com/forever/quest=97956
             -- 97967 "Camping 101: Fishing" https://wowhead.com/forever/quest=97967
-            -- already in QuestieDB; Assumption: the server completes it and 97904, 97932, 97943, 97956 together (cooccurrence; very high; 100+ characters); offer lists show it and 97920 exclude each other (absence, cooccurrence; very high; 100+ characters); offer lists show it and 97967 exclude each other (absence, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 97904, 97932, 97943, 97956 together (cooccurrence; very high; 100+ characters); offer lists show it and 97920, 97967 exclude each other (absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {97904,97920,97932,97943,97956,97967},
         -- },
         -- [96055] = { -- Camping 101: Herbalism https://wowhead.com/forever/quest=96055
@@ -17283,7 +17095,7 @@ function ForeverQuestRelationTraces:Load()
             -- 96606 "The Great Outdoors" https://wowhead.com/forever/quest=96606
             -- 96607 "The Great Outdoors" https://wowhead.com/forever/quest=96607
             -- 96608 "The Great Outdoors" https://wowhead.com/forever/quest=96608
-            -- already in QuestieDB; Assumption: offered right after 95998, 96608 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters); 96101, 96604, 96605, 96606, 96607 was done whenever it was offered (offer-set, cooccurrence; very high; 100+ characters)
+            -- already in QuestieDB; Assumption: offered right after 95998, 96101, 96606, 96608 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters); 96604, 96605, 96607 was done whenever it was offered (offer-set, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
             -- 97902 "Camping 101: Engineering" https://wowhead.com/forever/quest=97902
             -- 97918 "Camping 101: Engineering" https://wowhead.com/forever/quest=97918
@@ -17292,7 +17104,7 @@ function ForeverQuestRelationTraces:Load()
             -- 97954 "Camping 101: Engineering" https://wowhead.com/forever/quest=97954
             -- 98285 "Camping 101: Engineering" https://wowhead.com/forever/quest=98285
             -- 98287 "Camping 101: Engineering" https://wowhead.com/forever/quest=98287
-            -- already in QuestieDB; Assumption: the server completes it and 97902, 97930, 97941, 97954, 98285, 98287 together (cooccurrence; high; 100+ characters); offer lists show it and 97918 exclude each other (absence, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 97902, 97930, 97941, 97954, 98285, 98287 together (cooccurrence; very high; 100+ characters); offer lists show it and 97918 exclude each other (absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {97902,97918,97930,97941,97954,98285,98287},
         -- },
         -- [96059] = { -- Camping 101: Enchanting https://wowhead.com/forever/quest=96059
@@ -17309,71 +17121,71 @@ function ForeverQuestRelationTraces:Load()
             -- 97953 "Camping 101: Enchanting" https://wowhead.com/forever/quest=97953
             -- 98284 "Camping 101: Enchanting" https://wowhead.com/forever/quest=98284
             -- 98286 "Camping 101: Enchanting" https://wowhead.com/forever/quest=98286
-            -- already in QuestieDB; Assumption: the server completes it and 97901, 97953, 98286 together (cooccurrence; very high; 100+ characters); offer lists show it and 97917, 97940 exclude each other (absence, cooccurrence; very high; 100+ characters); the server completes it and 97929, 98284 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 97901, 97929, 97953, 98284, 98286 together (cooccurrence; very high; 100+ characters); offer lists show it and 97917, 97940 exclude each other (absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {97901,97917,97929,97940,97953,98284,98286},
         -- },
-        [96060] = { -- Tempered Expectations https://wowhead.com/forever/quest=96060
+        -- [96060] = { -- Tempered Expectations https://wowhead.com/forever/quest=96060
             -- 93546 "Spectral Iron Ore" https://wowhead.com/forever/quest=93546
-            -- Assumption: offered right after 93546 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {93546},
-        },
-        [96063] = { -- Gaseous Gold https://wowhead.com/forever/quest=96063
+            -- already in QuestieDB; Assumption: offered right after 93546 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {93546},
+        -- },
+        -- [96063] = { -- Gaseous Gold https://wowhead.com/forever/quest=96063
             -- 96067 "Rock 'em and Sock 'em" https://wowhead.com/forever/quest=96067
-            -- Assumption: turning it in led straight to 96067 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 96067,
-        },
-        [96067] = { -- Rock 'em and Sock 'em https://wowhead.com/forever/quest=96067
+            -- already in QuestieDB; Assumption: turning it in led straight to 96067 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 96067,
+        -- },
+        -- [96067] = { -- Rock 'em and Sock 'em https://wowhead.com/forever/quest=96067
             -- 96063 "Gaseous Gold" https://wowhead.com/forever/quest=96063
-            -- Assumption: offered right after 96063 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {96063},
-        },
-        [96077] = { -- Belle's Ring https://wowhead.com/forever/quest=96077
+            -- already in QuestieDB; Assumption: offered right after 96063 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {96063},
+        -- },
+        -- [96077] = { -- Belle's Ring https://wowhead.com/forever/quest=96077
             -- 94832 "Belle's Ring" https://wowhead.com/forever/quest=94832
-            -- Assumption: offered right after 94832 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {94832},
-        },
-        [96078] = { -- A Tale Spun Around the Fire https://wowhead.com/forever/quest=96078
+            -- already in QuestieDB; Assumption: offered right after 94832 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {94832},
+        -- },
+        -- [96078] = { -- A Tale Spun Around the Fire https://wowhead.com/forever/quest=96078
             -- 95775 "The Drowned City" https://wowhead.com/forever/quest=95775
-            -- Assumption: offered right after 95775 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95775},
-        },
-        [96081] = { -- Wound Dressings https://wowhead.com/forever/quest=96081
+            -- already in QuestieDB; Assumption: offered right after 95775 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95775},
+        -- },
+        -- [96081] = { -- Wound Dressings https://wowhead.com/forever/quest=96081
             -- 94877 "Saving Sunnyglade" https://wowhead.com/forever/quest=94877
-            -- Assumption: 94877 was done whenever it was offered (offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {94877},
+            -- already in QuestieDB; Assumption: 94877 was done whenever it was offered (offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {94877},
             -- 96082 "Doctor's Orderly" https://wowhead.com/forever/quest=96082
-            -- Assumption: turning it in led straight to 96082 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 96082,
-        },
-        [96082] = { -- Doctor's Orderly https://wowhead.com/forever/quest=96082
+            -- already in QuestieDB; Assumption: turning it in led straight to 96082 (handoff; medium; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 96082,
+        -- },
+        -- [96082] = { -- Doctor's Orderly https://wowhead.com/forever/quest=96082
             -- 96081 "Wound Dressings" https://wowhead.com/forever/quest=96081
-            -- Assumption: offered right after 96081 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {96081},
+            -- already in QuestieDB; Assumption: offered right after 96081 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {96081},
             -- 96083 "Clerical Quarantine" https://wowhead.com/forever/quest=96083
-            -- Assumption: turning it in led straight to 96083 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 96083,
-        },
-        [96083] = { -- Clerical Quarantine https://wowhead.com/forever/quest=96083
+            -- already in QuestieDB; Assumption: turning it in led straight to 96083 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 96083,
+        -- },
+        -- [96083] = { -- Clerical Quarantine https://wowhead.com/forever/quest=96083
             -- 96082 "Doctor's Orderly" https://wowhead.com/forever/quest=96082
-            -- Assumption: offered right after 96082 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {96082},
+            -- already in QuestieDB; Assumption: offered right after 96082 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {96082},
             -- 96084 "Something's in the Water" https://wowhead.com/forever/quest=96084
-            -- Assumption: turning it in led straight to 96084 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 96084,
-        },
-        [96084] = { -- Something's in the Water https://wowhead.com/forever/quest=96084
+            -- already in QuestieDB; Assumption: turning it in led straight to 96084 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 96084,
+        -- },
+        -- [96084] = { -- Something's in the Water https://wowhead.com/forever/quest=96084
             -- 96083 "Clerical Quarantine" https://wowhead.com/forever/quest=96083
-            -- Assumption: offered right after 96083 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {96083},
+            -- already in QuestieDB; Assumption: offered right after 96083 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {96083},
             -- 96085 "Upstream Contamination" https://wowhead.com/forever/quest=96085
-            -- Assumption: turning it in led straight to 96085 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 96085,
-        },
-        [96085] = { -- Upstream Contamination https://wowhead.com/forever/quest=96085
+            -- already in QuestieDB; Assumption: turning it in led straight to 96085 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 96085,
+        -- },
+        -- [96085] = { -- Upstream Contamination https://wowhead.com/forever/quest=96085
             -- 96084 "Something's in the Water" https://wowhead.com/forever/quest=96084
-            -- Assumption: offered right after 96084 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {96084},
-        },
+            -- already in QuestieDB; Assumption: offered right after 96084 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {96084},
+        -- },
         -- [96101] = { -- The Great Outdoors https://wowhead.com/forever/quest=96101
             -- 95998 "The Great Outdoors" https://wowhead.com/forever/quest=95998
             -- 96604 "The Great Outdoors" https://wowhead.com/forever/quest=96604
@@ -17404,87 +17216,84 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: the server completes it and 96057, 97925, 97937, 97950, 97972, 97973 together (cooccurrence; very high; 100+ characters); offer lists show it and 97961 exclude each other (absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {96057,97925,97937,97950,97961,97972,97973},
         -- },
-        [96103] = { -- A Feast for Buzzards https://wowhead.com/forever/quest=96103
+        -- [96103] = { -- A Feast for Buzzards https://wowhead.com/forever/quest=96103
             -- 96104 "Song of the Strider" https://wowhead.com/forever/quest=96104
-            -- Assumption: turning it in led straight to 96104 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 96104,
-        },
-        [96104] = { -- Song of the Strider https://wowhead.com/forever/quest=96104
+            -- already in QuestieDB; Assumption: turning it in led straight to 96104 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 96104,
+        -- },
+        -- [96104] = { -- Song of the Strider https://wowhead.com/forever/quest=96104
             -- 96103 "A Feast for Buzzards" https://wowhead.com/forever/quest=96103
-            -- Assumption: offered right after 96103 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {96103},
+            -- already in QuestieDB; Assumption: offered right after 96103 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {96103},
             -- 96105 "King of the Wild Plains" https://wowhead.com/forever/quest=96105
-            -- Assumption: turning it in led straight to 96105 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 96105,
-        },
-        [96105] = { -- King of the Wild Plains https://wowhead.com/forever/quest=96105
+            -- already in QuestieDB; Assumption: turning it in led straight to 96105 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 96105,
+        -- },
+        -- [96105] = { -- King of the Wild Plains https://wowhead.com/forever/quest=96105
             -- 96104 "Song of the Strider" https://wowhead.com/forever/quest=96104
-            -- Assumption: offered right after 96104 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {96104},
-        },
-        [96107] = { -- Feathers for Fletching https://wowhead.com/forever/quest=96107
+            -- already in QuestieDB; Assumption: offered right after 96104 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {96104},
+        -- },
+        -- [96107] = { -- Feathers for Fletching https://wowhead.com/forever/quest=96107
             -- 96108 "Poison Tips" https://wowhead.com/forever/quest=96108
-            -- Assumption: turning it in led straight to 96108 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 96108,
-        },
-        [96108] = { -- Poison Tips https://wowhead.com/forever/quest=96108
+            -- already in QuestieDB; Assumption: turning it in led straight to 96108 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 96108,
+        -- },
+        -- [96108] = { -- Poison Tips https://wowhead.com/forever/quest=96108
             -- 96107 "Feathers for Fletching" https://wowhead.com/forever/quest=96107
-            -- Assumption: offered right after 96107 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {96107},
+            -- already in QuestieDB; Assumption: offered right after 96107 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {96107},
             -- 96109 "A Hunter's Quiver" https://wowhead.com/forever/quest=96109
-            -- Assumption: turning it in led straight to 96109 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 96109,
-        },
-        [96109] = { -- A Hunter's Quiver https://wowhead.com/forever/quest=96109
+            -- already in QuestieDB; Assumption: turning it in led straight to 96109 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 96109,
+        -- },
+        -- [96109] = { -- A Hunter's Quiver https://wowhead.com/forever/quest=96109
             -- 96108 "Poison Tips" https://wowhead.com/forever/quest=96108
-            -- Assumption: offered right after 96108 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {96108},
-        },
-        [96125] = { -- In Need of Relief https://wowhead.com/forever/quest=96125
+            -- already in QuestieDB; Assumption: offered right after 96108 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {96108},
+        -- },
+        -- [96125] = { -- In Need of Relief https://wowhead.com/forever/quest=96125
             -- 94924 "Hunting the Hunters" https://wowhead.com/forever/quest=94924
             -- 94925 "A Fur Trade" https://wowhead.com/forever/quest=94925
-            -- Assumption: offered right after 94924, 94925 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestGroup] = {94924,94925},
+            -- already in QuestieDB; Assumption: offered right after 94924, 94925 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestGroup] = {94924,94925},
             -- 96126 "An Ogre's Captive" https://wowhead.com/forever/quest=96126
-            -- Assumption: turning it in led straight to 96126 (handoff; medium; 100+ characters)
-            [questKeys.nextQuestInChain] = 96126,
-        },
-        [96126] = { -- An Ogre's Captive https://wowhead.com/forever/quest=96126
+            -- already in QuestieDB; Assumption: turning it in led straight to 96126 (handoff; medium; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 96126,
+        -- },
+        -- [96126] = { -- An Ogre's Captive https://wowhead.com/forever/quest=96126
             -- 96125 "In Need of Relief" https://wowhead.com/forever/quest=96125
-            -- Assumption: offered right after 96125 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {96125},
+            -- already in QuestieDB; Assumption: offered right after 96125 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {96125},
             -- 94927 "Dunston Checks Out" https://wowhead.com/forever/quest=94927
-            -- Assumption: turning it in led straight to 94927 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 94927,
-        },
-        [96131] = { -- An Oldstone But An Old Friend https://wowhead.com/forever/quest=96131
+            -- already in QuestieDB; Assumption: turning it in led straight to 94927 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 94927,
+        -- },
+        -- [96131] = { -- An Oldstone But An Old Friend https://wowhead.com/forever/quest=96131
             -- 96321 "The Dying God" https://wowhead.com/forever/quest=96321
-            -- Assumption: offered right after 96321 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {96321},
-            -- 92612 "Aid from Moonglade" https://wowhead.com/forever/quest=92612
-            -- Assumption: turning it in led straight to 92612 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 92612,
-        },
-        [96135] = { -- Heed My Call https://wowhead.com/forever/quest=96135
+            -- already in QuestieDB; Assumption: offered right after 96321 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {96321},
+        -- },
+        -- [96135] = { -- Heed My Call https://wowhead.com/forever/quest=96135
             -- 79358 "Storm, Earth, and Fire" https://wowhead.com/forever/quest=79358
-            -- Assumption: offered right after 79358 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {79358},
+            -- already in QuestieDB; Assumption: offered right after 79358 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {79358},
             -- 79366 "Heed My Call" https://wowhead.com/forever/quest=79366
-            -- Assumption: the server completes it and 79366 together (cooccurrence; medium; 100+ characters)
-            [questKeys.exclusiveTo] = {79366},
+            -- already in QuestieDB; Assumption: the server completes it and 79366 together (cooccurrence; high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {79366},
             -- 96016 "The Tempest's Weapons" https://wowhead.com/forever/quest=96016
-            -- Assumption: turning it in led straight to 96016 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 96016,
-        },
-        [96136] = { -- Call of Air https://wowhead.com/forever/quest=96136
+            -- already in QuestieDB; Assumption: turning it in led straight to 96016 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 96016,
+        -- },
+        -- [96136] = { -- Call of Air https://wowhead.com/forever/quest=96136
             -- 1531 "Call of Air" https://wowhead.com/forever/quest=1531
             -- 1532 "Call of Air" https://wowhead.com/forever/quest=1532
-            -- Assumption: the server completes it and 1531, 1532 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {1531,1532},
+            -- already in QuestieDB; Assumption: the server completes it and 1531, 1532 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {1531,1532},
             -- 79360 "Elemental Aid" https://wowhead.com/forever/quest=79360
-            -- Assumption: turning it in led straight to 79360 (handoff; medium; <10 characters)
-            [questKeys.nextQuestInChain] = 79360,
-        },
+            -- already in QuestieDB; Assumption: turning it in led straight to 79360 (handoff; medium; <10 characters)
+            -- [questKeys.nextQuestInChain] = 79360,
+        -- },
         -- [96204] = { -- The Windshaper's Wrath https://wowhead.com/forever/quest=96204
             -- 91862 "Lumina Windsinger" https://wowhead.com/forever/quest=91862
             -- already in QuestieDB; Assumption: offered right after 91862 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
@@ -17493,95 +17302,102 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: turning it in led straight to 95034 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 95034,
         -- },
-        [96209] = { -- The Ancient, Orokai https://wowhead.com/forever/quest=96209
+        -- [96209] = { -- The Ancient, Orokai https://wowhead.com/forever/quest=96209
             -- 92612 "Aid from Moonglade" https://wowhead.com/forever/quest=92612
-            -- Assumption: offered right after 92612 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {92612},
-            -- 95006 "Stolen Power" https://wowhead.com/forever/quest=95006
-            -- Assumption: turning it in led straight to 95006 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 95006,
-        },
-        [96246] = { -- Blackmaw Pouches https://wowhead.com/forever/quest=96246
+            -- already in QuestieDB; Assumption: offered right after 92612 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {92612},
+        -- },
+        -- [96246] = { -- Blackmaw Pouches https://wowhead.com/forever/quest=96246
             -- 97327 "Blackmaw Pouches" https://wowhead.com/forever/quest=97327
-            -- Assumption: offered right after 97327 was turned in (handoff, offer-set, absence; high; <10 characters)
-            [questKeys.preQuestSingle] = {97327},
-        },
-        [96255] = { -- Amalgamated Marrow https://wowhead.com/forever/quest=96255
+            -- already in QuestieDB; Assumption: offered right after 97327 was turned in (handoff, offer-set, absence; very high; <10 characters)
+            -- [questKeys.preQuestSingle] = {97327},
+        -- },
+        -- [96255] = { -- Amalgamated Marrow https://wowhead.com/forever/quest=96255
             -- 96435 "A Fitting End" https://wowhead.com/forever/quest=96435
-            -- Assumption: offered right after 96435 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {96435},
+            -- already in QuestieDB; Assumption: offered right after 96435 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {96435},
             -- 96322 "A Revenge Now Bitter" https://wowhead.com/forever/quest=96322
-            -- Assumption: turning it in led straight to 96322 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 96322,
-        },
-        [96262] = { -- Prickly Pinecones https://wowhead.com/forever/quest=96262
+            -- already in QuestieDB; Assumption: turning it in led straight to 96322 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 96322,
+        -- },
+        -- [96262] = { -- Prickly Pinecones https://wowhead.com/forever/quest=96262
             -- 95317 "Notation, Notation, Notation" https://wowhead.com/forever/quest=95317
-            -- Assumption: offered right after 95317 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {95317},
-        },
-        [96264] = { -- Elemental Aid https://wowhead.com/forever/quest=96264
+            -- already in QuestieDB; Assumption: offered right after 95317 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {95317},
+        -- },
+        -- [96264] = { -- Elemental Aid https://wowhead.com/forever/quest=96264
             -- 94789 "Call of Air" https://wowhead.com/forever/quest=94789
-            -- Assumption: offered right after 94789 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {94789},
+            -- already in QuestieDB; Assumption: offered right after 94789 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {94789},
             -- 79358 "Storm, Earth, and Fire" https://wowhead.com/forever/quest=79358
-            -- Assumption: turning it in led straight to 79358 (handoff; medium; 100+ characters)
-            [questKeys.nextQuestInChain] = 79358,
-        },
-        [96302] = { -- Arch Absolution https://wowhead.com/forever/quest=96302
+            -- already in QuestieDB; Assumption: turning it in led straight to 79358 (handoff; medium; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 79358,
+        -- },
+        -- [96302] = { -- Arch Absolution https://wowhead.com/forever/quest=96302
             -- 92017 "Cleansing Winds" https://wowhead.com/forever/quest=92017
-            -- Assumption: 92017 was done whenever it was offered (offer-set, cooccurrence; high; 10+ characters)
-            [questKeys.preQuestSingle] = {92017},
-        },
-        [96303] = { -- Memory Mist https://wowhead.com/forever/quest=96303
+            -- already in QuestieDB; Assumption: 92017 was done whenever it was offered (offer-set, cooccurrence; high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {92017},
+        -- },
+        -- [96303] = { -- Memory Mist https://wowhead.com/forever/quest=96303
             -- 93584 "Cult Closure" https://wowhead.com/forever/quest=93584
-            -- Assumption: offered right after 93584 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {93584},
-        },
-        [96321] = { -- The Dying God https://wowhead.com/forever/quest=96321
+            -- already in QuestieDB; Assumption: offered right after 93584 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {93584},
+        -- },
+        -- [96321] = { -- The Dying God https://wowhead.com/forever/quest=96321
             -- 96131 "An Oldstone But An Old Friend" https://wowhead.com/forever/quest=96131
-            -- Assumption: turning it in led straight to 96131 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 96131,
-        },
-        [96322] = { -- A Revenge Now Bitter https://wowhead.com/forever/quest=96322
+            -- already in QuestieDB; Assumption: turning it in led straight to 96131 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 96131,
+        -- },
+        -- [96322] = { -- A Revenge Now Bitter https://wowhead.com/forever/quest=96322
             -- 96255 "Amalgamated Marrow" https://wowhead.com/forever/quest=96255
-            -- Assumption: offered right after 96255 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {96255},
-        },
-        [96332] = { -- A Little Payback https://wowhead.com/forever/quest=96332
+            -- already in QuestieDB; Assumption: offered right after 96255 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {96255},
+        -- },
+        -- [96332] = { -- A Little Payback https://wowhead.com/forever/quest=96332
             -- 95285 "Right Place, Wrong Time" https://wowhead.com/forever/quest=95285
-            -- Assumption: offered right after 95285 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95285},
-        },
-        [96334] = { -- Blood Red Bandanas https://wowhead.com/forever/quest=96334
+            -- already in QuestieDB; Assumption: offered right after 95285 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95285},
+        -- },
+        -- [96334] = { -- Blood Red Bandanas https://wowhead.com/forever/quest=96334
             -- 95285 "Right Place, Wrong Time" https://wowhead.com/forever/quest=95285
-            -- Assumption: offered right after 95285 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95285},
-        },
-        [96337] = { -- More Valuable Than Gold https://wowhead.com/forever/quest=96337
+            -- already in QuestieDB; Assumption: offered right after 95285 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95285},
+        -- },
+        -- [96337] = { -- More Valuable Than Gold https://wowhead.com/forever/quest=96337
             -- 96335 "The Man in the Iron Chains" https://wowhead.com/forever/quest=96335
-            -- Assumption: 96335 was done whenever it was offered (offer-set, cooccurrence; medium; 100+ characters)
-            [questKeys.preQuestSingle] = {96335},
-        },
-        [96369] = { -- Bad News for Folkar https://wowhead.com/forever/quest=96369
+            -- already in QuestieDB; Assumption: 96335 was done whenever it was offered (offer-set, cooccurrence; medium; 100+ characters)
+            -- [questKeys.preQuestSingle] = {96335},
+        -- },
+        -- [96369] = { -- Bad News for Folkar https://wowhead.com/forever/quest=96369
             -- 95454 "The Honor of the Kor'kron" https://wowhead.com/forever/quest=95454
-            -- Assumption: 95454 was done whenever it was offered (offer-set, cooccurrence; medium; 10+ characters)
-            [questKeys.preQuestSingle] = {95454},
+            -- already in QuestieDB; Assumption: 95454 was done whenever it was offered (offer-set, cooccurrence; medium; 10+ characters)
+            -- [questKeys.preQuestSingle] = {95454},
+        -- },
+        [96376] = { -- State Secrets https://wowhead.com/forever/quest=96376
+            -- 96379 "State Secrets" https://wowhead.com/forever/quest=96379
+            -- Assumption: the server completes it and 96379 together (cooccurrence; medium; 10+ characters)
+            [questKeys.exclusiveTo] = {96379},
         },
-        [96381] = { -- A Bit of Wet Work https://wowhead.com/forever/quest=96381
+        [96379] = { -- State Secrets https://wowhead.com/forever/quest=96379
+            -- 96376 "State Secrets" https://wowhead.com/forever/quest=96376
+            -- Assumption: the server completes it and 96376 together (cooccurrence; medium; 10+ characters)
+            [questKeys.exclusiveTo] = {96376},
+        },
+        -- [96381] = { -- A Bit of Wet Work https://wowhead.com/forever/quest=96381
             -- 95198 "The Return of the King?" https://wowhead.com/forever/quest=95198
-            -- Assumption: offered right after 95198 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95198},
-        },
+            -- already in QuestieDB; Assumption: offered right after 95198 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95198},
+        -- },
         -- [96390] = { -- Nip 'Em in the Bud https://wowhead.com/forever/quest=96390
             -- 96392 "Farsen's Watch" https://wowhead.com/forever/quest=96392
             -- already in QuestieDB; Assumption: offered right after 96392 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {96392},
         -- },
-        [96391] = { -- Underground Map https://wowhead.com/forever/quest=96391
+        -- [96391] = { -- Underground Map https://wowhead.com/forever/quest=96391
             -- 96393 "Old Ironforge Incursion" https://wowhead.com/forever/quest=96393
-            -- Assumption: turning it in led straight to 96393 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 96393,
-        },
+            -- already in QuestieDB; Assumption: turning it in led straight to 96393 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 96393,
+        -- },
         -- [96392] = { -- Farsen's Watch https://wowhead.com/forever/quest=96392
             -- 96390 "Nip 'Em in the Bud" https://wowhead.com/forever/quest=96390
             -- already in QuestieDB; Assumption: turning it in led straight to 96390 (handoff; high; 100+ characters)
@@ -17594,50 +17410,44 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [96408] = { -- A Visitor to Dun Morogh https://wowhead.com/forever/quest=96408
             -- 96392 "Farsen's Watch" https://wowhead.com/forever/quest=96392
-            -- already in QuestieDB; Assumption: turning it in led straight to 96392 (handoff, absence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 96392 (handoff, absence; very high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 96392,
         -- },
-        [96435] = { -- A Fitting End https://wowhead.com/forever/quest=96435
+        -- [96435] = { -- A Fitting End https://wowhead.com/forever/quest=96435
             -- 95378 "The Hydra's Head" https://wowhead.com/forever/quest=95378
-            -- Assumption: offered right after 95378 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {95378},
-            -- 96255 "Amalgamated Marrow" https://wowhead.com/forever/quest=96255
-            -- Assumption: turning it in led straight to 96255 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 96255,
-        },
-        [96494] = { -- Gathering Storm https://wowhead.com/forever/quest=96494
+            -- already in QuestieDB; Assumption: offered right after 95378 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {95378},
+        -- },
+        -- [96494] = { -- Gathering Storm https://wowhead.com/forever/quest=96494
             -- 92593 "Avalanche of Corruption" https://wowhead.com/forever/quest=92593
-            -- Assumption: offered right after 92593 was turned in (handoff, offer-set, absence, cooccurrence; very high; <10 characters)
-            [questKeys.preQuestSingle] = {92593},
-        },
-        [96529] = { -- A Shaw Deal https://wowhead.com/forever/quest=96529
+            -- already in QuestieDB; Assumption: offered right after 92593 was turned in (handoff, offer-set, absence, cooccurrence; very high; <10 characters)
+            -- [questKeys.preQuestSingle] = {92593},
+        -- },
+        -- [96529] = { -- A Shaw Deal https://wowhead.com/forever/quest=96529
             -- 96494 "Gathering Storm" https://wowhead.com/forever/quest=96494
-            -- Assumption: offered right after 96494 was turned in (handoff, offer-set, absence, cooccurrence; high; <10 characters)
-            [questKeys.preQuestSingle] = {96494},
-        },
-        [96550] = { -- Battle Recall https://wowhead.com/forever/quest=96550
+            -- already in QuestieDB; Assumption: offered right after 96494 was turned in (handoff, offer-set, absence, cooccurrence; high; <10 characters)
+            -- [questKeys.preQuestSingle] = {96494},
+        -- },
+        -- [96550] = { -- Battle Recall https://wowhead.com/forever/quest=96550
             -- 92100 "Anywhere But Here" https://wowhead.com/forever/quest=92100
-            -- Assumption: offered right after 92100 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {92100},
-        },
-        [96558] = { -- Soldier's Solace https://wowhead.com/forever/quest=96558
+            -- already in QuestieDB; Assumption: offered right after 92100 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {92100},
+        -- },
+        -- [96558] = { -- Soldier's Solace https://wowhead.com/forever/quest=96558
             -- 93567 "Ends Meet" https://wowhead.com/forever/quest=93567
-            -- Assumption: offered right after 93567 was turned in (handoff, offer-set, absence; medium; <10 characters)
-            [questKeys.preQuestSingle] = {93567},
-        },
-        [96559] = { -- Supply Drop https://wowhead.com/forever/quest=96559
+            -- already in QuestieDB; Assumption: offered right after 93567 was turned in (handoff, offer-set, absence; medium; <10 characters)
+            -- [questKeys.preQuestSingle] = {93567},
+        -- },
+        -- [96559] = { -- Supply Drop https://wowhead.com/forever/quest=96559
             -- 92064 "Tree Free" https://wowhead.com/forever/quest=92064
-            -- Assumption: offered right after 92064 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {92064},
-            -- 93383 "Contents Under Pressure" https://wowhead.com/forever/quest=93383
-            -- Assumption: turning it in led straight to 93383 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 93383,
-        },
-        [96602] = { -- More Unstable Magic https://wowhead.com/forever/quest=96602
+            -- already in QuestieDB; Assumption: offered right after 92064 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {92064},
+        -- },
+        -- [96602] = { -- More Unstable Magic https://wowhead.com/forever/quest=96602
             -- 96603 "Unstable Magic" https://wowhead.com/forever/quest=96603
-            -- Assumption: offered right after 96603 was turned in (handoff, offer-set, absence; high; 10+ characters)
-            [questKeys.preQuestSingle] = {96603},
-        },
+            -- already in QuestieDB; Assumption: offered right after 96603 was turned in (handoff, offer-set, absence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {96603},
+        -- },
         -- [96604] = { -- The Great Outdoors https://wowhead.com/forever/quest=96604
             -- 95998 "The Great Outdoors" https://wowhead.com/forever/quest=95998
             -- 96101 "The Great Outdoors" https://wowhead.com/forever/quest=96101
@@ -17688,11 +17498,11 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: the server completes it and 95998, 96101, 96604, 96605, 96606, 96607 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {95998,96101,96604,96605,96606,96607},
         -- },
-        [96622] = { -- A Rest Without Pain https://wowhead.com/forever/quest=96622
+        -- [96622] = { -- A Rest Without Pain https://wowhead.com/forever/quest=96622
             -- 96616 "Herbs for the Bruised and Weary" https://wowhead.com/forever/quest=96616
-            -- Assumption: offered right after 96616 was turned in (handoff, offer-set, absence, cooccurrence; very high; <10 characters)
-            [questKeys.preQuestSingle] = {96616},
-        },
+            -- already in QuestieDB; Assumption: offered right after 96616 was turned in (handoff, offer-set, absence, cooccurrence; very high; <10 characters)
+            -- [questKeys.preQuestSingle] = {96616},
+        -- },
         -- [96626] = { -- Camping 101: Cooking https://wowhead.com/forever/quest=96626
             -- 96629 "Camping 101: Cooking" https://wowhead.com/forever/quest=96629
             -- 96634 "Camping 101: Cooking" https://wowhead.com/forever/quest=96634
@@ -17713,7 +17523,7 @@ function ForeverQuestRelationTraces:Load()
             -- 96652 "The Adventurer" https://wowhead.com/forever/quest=96652
             -- 96656 "The Adventurer" https://wowhead.com/forever/quest=96656
             -- 96659 "The Adventurer" https://wowhead.com/forever/quest=96659
-            -- already in QuestieDB; Assumption: the server completes it and 96628, 96630, 96656 together (cooccurrence; high; 100+ characters); the server completes it and 96638, 96652, 96659 together (cooccurrence; very high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 96628, 96630, 96638, 96652, 96656, 96659 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {96628,96630,96638,96652,96656,96659},
         -- },
         -- [96628] = { -- The Adventurer https://wowhead.com/forever/quest=96628
@@ -17723,7 +17533,7 @@ function ForeverQuestRelationTraces:Load()
             -- 96652 "The Adventurer" https://wowhead.com/forever/quest=96652
             -- 96656 "The Adventurer" https://wowhead.com/forever/quest=96656
             -- 96659 "The Adventurer" https://wowhead.com/forever/quest=96659
-            -- already in QuestieDB; Assumption: the server completes it and 96627, 96630, 96638, 96652, 96656, 96659 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 96627, 96630, 96638, 96652, 96656, 96659 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {96627,96630,96638,96652,96656,96659},
         -- },
         -- [96629] = { -- Camping 101: Cooking https://wowhead.com/forever/quest=96629
@@ -17743,7 +17553,7 @@ function ForeverQuestRelationTraces:Load()
             -- 96652 "The Adventurer" https://wowhead.com/forever/quest=96652
             -- 96656 "The Adventurer" https://wowhead.com/forever/quest=96656
             -- 96659 "The Adventurer" https://wowhead.com/forever/quest=96659
-            -- already in QuestieDB; Assumption: the server completes it and 96627, 96628, 96638, 96652, 96656, 96659 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 96627, 96628, 96638, 96652, 96656, 96659 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {96627,96628,96638,96652,96656,96659},
         -- },
         -- [96634] = { -- Camping 101: Cooking https://wowhead.com/forever/quest=96634
@@ -17763,7 +17573,7 @@ function ForeverQuestRelationTraces:Load()
             -- 96652 "The Adventurer" https://wowhead.com/forever/quest=96652
             -- 96656 "The Adventurer" https://wowhead.com/forever/quest=96656
             -- 96659 "The Adventurer" https://wowhead.com/forever/quest=96659
-            -- already in QuestieDB; Assumption: the server completes it and 96627, 96652, 96659 together (cooccurrence; very high; 100+ characters); the server completes it and 96628, 96630, 96656 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 96627, 96628, 96630, 96652, 96656, 96659 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {96627,96628,96630,96652,96656,96659},
         -- },
         -- [96646] = { -- Camping 101: Cooking https://wowhead.com/forever/quest=96646
@@ -17783,7 +17593,7 @@ function ForeverQuestRelationTraces:Load()
             -- 96638 "The Adventurer" https://wowhead.com/forever/quest=96638
             -- 96656 "The Adventurer" https://wowhead.com/forever/quest=96656
             -- 96659 "The Adventurer" https://wowhead.com/forever/quest=96659
-            -- already in QuestieDB; Assumption: the server completes it and 96627, 96638, 96659 together (cooccurrence; very high; 100+ characters); the server completes it and 96628, 96630, 96656 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 96627, 96628, 96630, 96638, 96656, 96659 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {96627,96628,96630,96638,96656,96659},
         -- },
         -- [96655] = { -- Camping 101: Cooking https://wowhead.com/forever/quest=96655
@@ -17803,7 +17613,7 @@ function ForeverQuestRelationTraces:Load()
             -- 96638 "The Adventurer" https://wowhead.com/forever/quest=96638
             -- 96652 "The Adventurer" https://wowhead.com/forever/quest=96652
             -- 96659 "The Adventurer" https://wowhead.com/forever/quest=96659
-            -- already in QuestieDB; Assumption: the server completes it and 96627, 96628, 96630, 96638, 96652, 96659 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 96627, 96628, 96630, 96638, 96652, 96659 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {96627,96628,96630,96638,96652,96659},
         -- },
         -- [96658] = { -- Camping 101: Cooking https://wowhead.com/forever/quest=96658
@@ -17826,7 +17636,7 @@ function ForeverQuestRelationTraces:Load()
             -- 96638 "The Adventurer" https://wowhead.com/forever/quest=96638
             -- 96652 "The Adventurer" https://wowhead.com/forever/quest=96652
             -- 96656 "The Adventurer" https://wowhead.com/forever/quest=96656
-            -- already in QuestieDB; Assumption: the server completes it and 96627, 96638, 96652 together (cooccurrence; very high; 100+ characters); the server completes it and 96628, 96630, 96656 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 96627, 96628, 96630, 96638, 96652, 96656 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {96627,96628,96630,96638,96652,96656},
         -- },
         -- [96661] = { -- Camping 101: Cooking https://wowhead.com/forever/quest=96661
@@ -17839,97 +17649,97 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: the server completes it and 96626, 96629, 96634, 96646, 96655 together (cooccurrence; very high; 100+ characters); offer lists show it and 96658 exclude each other (absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {96626,96629,96634,96646,96655,96658},
         -- },
-        [96676] = { -- Unsealing Blackthorne Pact https://wowhead.com/forever/quest=96676
+        -- [96676] = { -- Unsealing Blackthorne Pact https://wowhead.com/forever/quest=96676
             -- 96529 "A Shaw Deal" https://wowhead.com/forever/quest=96529
-            -- Assumption: offered right after 96529 was turned in (handoff, offer-set; high; <10 characters)
-            [questKeys.preQuestSingle] = {96529},
-        },
-        [96779] = { -- Syndicate Sabotage https://wowhead.com/forever/quest=96779
+            -- already in QuestieDB; Assumption: offered right after 96529 was turned in (handoff, offer-set; high; <10 characters)
+            -- [questKeys.preQuestSingle] = {96529},
+        -- },
+        -- [96779] = { -- Syndicate Sabotage https://wowhead.com/forever/quest=96779
             -- 6681 "The Manor, Ravenholdt" https://wowhead.com/forever/quest=6681
-            -- Assumption: 6681 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
-            [questKeys.preQuestSingle] = {6681},
-        },
-        [96781] = { -- What's the Big Idea? https://wowhead.com/forever/quest=96781
+            -- already in QuestieDB; Assumption: 6681 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {6681},
+        -- },
+        -- [96781] = { -- What's the Big Idea? https://wowhead.com/forever/quest=96781
             -- 6681 "The Manor, Ravenholdt" https://wowhead.com/forever/quest=6681
-            -- Assumption: 6681 was done whenever it was offered (offer-set, cooccurrence; medium; 100+ characters)
-            [questKeys.preQuestSingle] = {6681},
+            -- already in QuestieDB; Assumption: 6681 was done whenever it was offered (offer-set, cooccurrence; medium; 100+ characters)
+            -- [questKeys.preQuestSingle] = {6681},
             -- 96782 "Covert Extraction" https://wowhead.com/forever/quest=96782
-            -- Assumption: turning it in led straight to 96782 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 96782,
-        },
-        [96782] = { -- Covert Extraction https://wowhead.com/forever/quest=96782
+            -- already in QuestieDB; Assumption: turning it in led straight to 96782 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 96782,
+        -- },
+        -- [96782] = { -- Covert Extraction https://wowhead.com/forever/quest=96782
             -- 96781 "What's the Big Idea?" https://wowhead.com/forever/quest=96781
-            -- Assumption: offered right after 96781 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {96781},
-        },
-        [96783] = { -- A Way In https://wowhead.com/forever/quest=96783
+            -- already in QuestieDB; Assumption: offered right after 96781 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {96781},
+        -- },
+        -- [96783] = { -- A Way In https://wowhead.com/forever/quest=96783
             -- 6681 "The Manor, Ravenholdt" https://wowhead.com/forever/quest=6681
-            -- Assumption: 6681 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
-            [questKeys.preQuestSingle] = {6681},
+            -- already in QuestieDB; Assumption: 6681 was done whenever it was offered (offer-set, cooccurrence; medium; 100+ characters)
+            -- [questKeys.preQuestSingle] = {6681},
             -- 96784 "Master of Disguise" https://wowhead.com/forever/quest=96784
-            -- Assumption: turning it in led straight to 96784 (handoff; medium; 100+ characters)
-            [questKeys.nextQuestInChain] = 96784,
-        },
-        [96784] = { -- Master of Disguise https://wowhead.com/forever/quest=96784
+            -- already in QuestieDB; Assumption: turning it in led straight to 96784 (handoff; medium; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 96784,
+        -- },
+        -- [96784] = { -- Master of Disguise https://wowhead.com/forever/quest=96784
             -- 96783 "A Way In" https://wowhead.com/forever/quest=96783
-            -- Assumption: offered right after 96783 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {96783},
+            -- already in QuestieDB; Assumption: offered right after 96783 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {96783},
             -- 96785 "Ain't No Telling" https://wowhead.com/forever/quest=96785
-            -- Assumption: turning it in led straight to 96785 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 96785,
-        },
-        [96785] = { -- Ain't No Telling https://wowhead.com/forever/quest=96785
+            -- already in QuestieDB; Assumption: turning it in led straight to 96785 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 96785,
+        -- },
+        -- [96785] = { -- Ain't No Telling https://wowhead.com/forever/quest=96785
             -- 96784 "Master of Disguise" https://wowhead.com/forever/quest=96784
-            -- Assumption: offered right after 96784 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {96784},
+            -- already in QuestieDB; Assumption: offered right after 96784 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {96784},
             -- 96786 "The Syndicate Sting" https://wowhead.com/forever/quest=96786
-            -- Assumption: turning it in led straight to 96786 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 96786,
-        },
-        [96786] = { -- The Syndicate Sting https://wowhead.com/forever/quest=96786
+            -- already in QuestieDB; Assumption: turning it in led straight to 96786 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 96786,
+        -- },
+        -- [96786] = { -- The Syndicate Sting https://wowhead.com/forever/quest=96786
             -- 96785 "Ain't No Telling" https://wowhead.com/forever/quest=96785
-            -- Assumption: offered right after 96785 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {96785},
-        },
-        [96796] = { -- Woods Workshop https://wowhead.com/forever/quest=96796
+            -- already in QuestieDB; Assumption: offered right after 96785 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {96785},
+        -- },
+        -- [96796] = { -- Woods Workshop https://wowhead.com/forever/quest=96796
             -- 94479 "One Person's Trash" https://wowhead.com/forever/quest=94479
-            -- Assumption: offered right after 94479 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {94479},
-        },
-        [96797] = { -- The Orphan https://wowhead.com/forever/quest=96797
+            -- already in QuestieDB; Assumption: offered right after 94479 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {94479},
+        -- },
+        -- [96797] = { -- The Orphan https://wowhead.com/forever/quest=96797
             -- 96798 "Into the Darkness" https://wowhead.com/forever/quest=96798
-            -- Assumption: turning it in led straight to 96798 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 96798,
-        },
-        [96798] = { -- Into the Darkness https://wowhead.com/forever/quest=96798
+            -- already in QuestieDB; Assumption: turning it in led straight to 96798 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 96798,
+        -- },
+        -- [96798] = { -- Into the Darkness https://wowhead.com/forever/quest=96798
             -- 96797 "The Orphan" https://wowhead.com/forever/quest=96797
-            -- Assumption: offered right after 96797 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {96797},
+            -- already in QuestieDB; Assumption: offered right after 96797 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {96797},
             -- 96811 "Escaping the Shadows" https://wowhead.com/forever/quest=96811
-            -- Assumption: turning it in led straight to 96811 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 96811,
-        },
-        [96799] = { -- A Heavy Responsibility https://wowhead.com/forever/quest=96799
+            -- already in QuestieDB; Assumption: turning it in led straight to 96811 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 96811,
+        -- },
+        -- [96799] = { -- A Heavy Responsibility https://wowhead.com/forever/quest=96799
             -- 96811 "Escaping the Shadows" https://wowhead.com/forever/quest=96811
-            -- Assumption: offered right after 96811 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {96811},
+            -- already in QuestieDB; Assumption: offered right after 96811 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {96811},
             -- 96812 "Thicker Than Water" https://wowhead.com/forever/quest=96812
-            -- Assumption: turning it in led straight to 96812 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 96812,
-        },
-        [96811] = { -- Escaping the Shadows https://wowhead.com/forever/quest=96811
+            -- already in QuestieDB; Assumption: turning it in led straight to 96812 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 96812,
+        -- },
+        -- [96811] = { -- Escaping the Shadows https://wowhead.com/forever/quest=96811
             -- 96798 "Into the Darkness" https://wowhead.com/forever/quest=96798
-            -- Assumption: offered right after 96798 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {96798},
+            -- already in QuestieDB; Assumption: offered right after 96798 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {96798},
             -- 96799 "A Heavy Responsibility" https://wowhead.com/forever/quest=96799
-            -- Assumption: turning it in led straight to 96799 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 96799,
-        },
-        [96812] = { -- Thicker Than Water https://wowhead.com/forever/quest=96812
+            -- already in QuestieDB; Assumption: turning it in led straight to 96799 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 96799,
+        -- },
+        -- [96812] = { -- Thicker Than Water https://wowhead.com/forever/quest=96812
             -- 96799 "A Heavy Responsibility" https://wowhead.com/forever/quest=96799
-            -- Assumption: offered right after 96799 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {96799},
-        },
+            -- already in QuestieDB; Assumption: offered right after 96799 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {96799},
+        -- },
         -- [96896] = { -- A Righteous Cause https://wowhead.com/forever/quest=96896
             -- 96899 "Bandarion Keep" https://wowhead.com/forever/quest=96899
             -- already in QuestieDB; Assumption: offered right after 96899 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
@@ -17940,7 +17750,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [96897] = { -- The Cult of the Damned https://wowhead.com/forever/quest=96897
             -- 96895 "The Argent Emissary" https://wowhead.com/forever/quest=96895
-            -- already in QuestieDB; Assumption: offered right after 96895 was turned in (handoff, offer-set, absence; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: offered right after 96895 was turned in (handoff, offer-set, absence; high; 100+ characters)
             -- [questKeys.preQuestSingle] = {96895},
         -- },
         -- [96898] = { -- Remnants of War https://wowhead.com/forever/quest=96898
@@ -17951,67 +17761,56 @@ function ForeverQuestRelationTraces:Load()
         -- [96899] = { -- Bandarion Keep https://wowhead.com/forever/quest=96899
             -- 96897 "The Cult of the Damned" https://wowhead.com/forever/quest=96897
             -- 96898 "Remnants of War" https://wowhead.com/forever/quest=96898
-            -- already in QuestieDB; Assumption: offered right after 96897 was turned in (handoff, offer-set, absence, cooccurrence; high; 100+ characters); offered right after 96898 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- already in QuestieDB; Assumption: offered right after 96897, 96898 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestGroup] = {96897,96898},
             -- 96896 "A Righteous Cause" https://wowhead.com/forever/quest=96896
             -- already in QuestieDB; Assumption: turning it in led straight to 96896 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 96896,
         -- },
-        [96930] = { -- The Capricious Corvid https://wowhead.com/forever/quest=96930
+        -- [96930] = { -- The Capricious Corvid https://wowhead.com/forever/quest=96930
             -- 93773 "The Pact" https://wowhead.com/forever/quest=93773
-            -- Assumption: offered right after 93773 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {93773},
-            -- 96931 "Heading Up the Mountain" https://wowhead.com/forever/quest=96931
-            -- Assumption: turning it in led straight to 96931 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 96931,
-        },
-        [96931] = { -- Heading Up the Mountain https://wowhead.com/forever/quest=96931
+            -- already in QuestieDB; Assumption: offered right after 93773 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {93773},
+        -- },
+        -- [96931] = { -- Heading Up the Mountain https://wowhead.com/forever/quest=96931
             -- 96930 "The Capricious Corvid" https://wowhead.com/forever/quest=96930
-            -- Assumption: offered right after 96930 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {96930},
-        },
-        [96939] = { -- The Balance of Life and Death https://wowhead.com/forever/quest=96939
+            -- already in QuestieDB; Assumption: offered right after 96930 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {96930},
+        -- },
+        -- [96939] = { -- The Balance of Life and Death https://wowhead.com/forever/quest=96939
             -- 96931 "Heading Up the Mountain" https://wowhead.com/forever/quest=96931
-            -- Assumption: offered right after 96931 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {96931},
+            -- already in QuestieDB; Assumption: offered right after 96931 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {96931},
             -- 92317 "Stolen Life" https://wowhead.com/forever/quest=92317
-            -- Assumption: turning it in led straight to 92317 (handoff; medium; <10 characters)
-            [questKeys.nextQuestInChain] = 92317,
-        },
-        [96957] = { -- Bone Sweet Bone https://wowhead.com/forever/quest=96957
-            -- 96939 "The Balance of Life and Death" https://wowhead.com/forever/quest=96939
-            -- Assumption: 96939 was done whenever it was offered (offer-set, absence, cooccurrence; medium; 10+ characters)
-            [questKeys.preQuestSingle] = {96939},
-        },
-        [96959] = { -- Blademaster's Bonfires https://wowhead.com/forever/quest=96959
+            -- already in QuestieDB; Assumption: turning it in led straight to 92317 (handoff; medium; <10 characters)
+            -- [questKeys.nextQuestInChain] = 92317,
+        -- },
+        -- [96959] = { -- Blademaster's Bonfires https://wowhead.com/forever/quest=96959
             -- 96983 "Yashiro's Windwalk" https://wowhead.com/forever/quest=96983
-            -- Assumption: turning it in led straight to 96983 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 96983,
-        },
-        [96964] = { -- A Clever Creature https://wowhead.com/forever/quest=96964
+            -- already in QuestieDB; Assumption: turning it in led straight to 96983 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 96983,
+        -- },
+        -- [96964] = { -- A Clever Creature https://wowhead.com/forever/quest=96964
             -- 96931 "Heading Up the Mountain" https://wowhead.com/forever/quest=96931
-            -- Assumption: offered right after 96931 was turned in (handoff, offer-set, absence, cooccurrence; high; 10+ characters)
-            [questKeys.preQuestSingle] = {96931},
-            -- 92335 "Ashes of the Legion Ascent" https://wowhead.com/forever/quest=92335
-            -- Assumption: turning it in led straight to 92335 (handoff; medium; <10 characters)
-            [questKeys.nextQuestInChain] = 92335,
-        },
-        [96971] = { -- To Outfox a Demon https://wowhead.com/forever/quest=96971
+            -- already in QuestieDB; Assumption: offered right after 96931 was turned in (handoff, offer-set, absence, cooccurrence; high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {96931},
+        -- },
+        -- [96971] = { -- To Outfox a Demon https://wowhead.com/forever/quest=96971
             -- 96964 "A Clever Creature" https://wowhead.com/forever/quest=96964
-            -- Assumption: offered right after 96964 was turned in (handoff, offer-set, absence, cooccurrence; high; 10+ characters)
-            [questKeys.preQuestSingle] = {96964},
-        },
-        [96978] = { -- Violent Venison https://wowhead.com/forever/quest=96978
+            -- already in QuestieDB; Assumption: offered right after 96964 was turned in (handoff, offer-set, absence, cooccurrence; medium; 10+ characters)
+            -- [questKeys.preQuestSingle] = {96964},
+        -- },
+        -- [96978] = { -- Violent Venison https://wowhead.com/forever/quest=96978
             -- 96931 "Heading Up the Mountain" https://wowhead.com/forever/quest=96931
-            -- Assumption: offered right after 96931 was turned in (handoff, offer-set, absence, cooccurrence; high; 10+ characters)
-            [questKeys.preQuestSingle] = {96931},
-        },
-        [96979] = { -- Sacred Refreshment https://wowhead.com/forever/quest=96979
+            -- already in QuestieDB; Assumption: offered right after 96931 was turned in (handoff, offer-set, absence, cooccurrence; high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {96931},
+        -- },
+        -- [96979] = { -- Sacred Refreshment https://wowhead.com/forever/quest=96979
             -- 96991 "Trail Assist" https://wowhead.com/forever/quest=96991
-            -- Assumption: turning it in led straight to 96991 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 96991,
-        },
-        [96982] = { -- Your First Riding Kodo https://wowhead.com/forever/quest=96982
+            -- already in QuestieDB; Assumption: turning it in led straight to 96991 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 96991,
+        -- },
+        -- [96982] = { -- Your First Riding Kodo https://wowhead.com/forever/quest=96982
             -- 95511 "Your First Feline Friend" https://wowhead.com/forever/quest=95511
             -- 96989 "Your First Riding Raptor" https://wowhead.com/forever/quest=96989
             -- 96994 "Your First Riding Wolf" https://wowhead.com/forever/quest=96994
@@ -18024,26 +17823,26 @@ function ForeverQuestRelationTraces:Load()
             -- 97446 "Your First Riding Kodo" https://wowhead.com/forever/quest=97446
             -- 98166 "Your First Horse" https://wowhead.com/forever/quest=98166
             -- 99326 "Your First Horse" https://wowhead.com/forever/quest=99326
-            -- Assumption: the server completes it and 95511, 96989, 96994, 96996, 96997, 97017, 97045, 97046, 97171, 97446, 98166, 99326 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {95511,96989,96994,96996,96997,97017,97045,97046,97171,97446,98166,99326},
-        },
-        [96983] = { -- Yashiro's Windwalk https://wowhead.com/forever/quest=96983
+            -- already in QuestieDB; Assumption: the server completes it and 95511, 96989, 96994, 96996, 96997, 97017, 97045, 97046, 97171, 97446, 98166, 99326 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {95511,96989,96994,96996,96997,97017,97045,97046,97171,97446,98166,99326},
+        -- },
+        -- [96983] = { -- Yashiro's Windwalk https://wowhead.com/forever/quest=96983
             -- 96959 "Blademaster's Bonfires" https://wowhead.com/forever/quest=96959
-            -- Assumption: offered right after 96959 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {96959},
-        },
-        [96984] = { -- Heart of Disruption https://wowhead.com/forever/quest=96984
+            -- already in QuestieDB; Assumption: offered right after 96959 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {96959},
+        -- },
+        -- [96984] = { -- Heart of Disruption https://wowhead.com/forever/quest=96984
             -- 92434 "Blood in the Streets" https://wowhead.com/forever/quest=92434
-            -- Assumption: offered right after 92434 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {92434},
+            -- already in QuestieDB; Assumption: offered right after 92434 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {92434},
             -- 92458 "Heart of Disruption" https://wowhead.com/forever/quest=92458
-            -- Assumption: the server completes it and 92458 together (cooccurrence; very high; 100+ characters)
-            [questKeys.exclusiveTo] = {92458},
+            -- already in QuestieDB; Assumption: the server completes it and 92458 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {92458},
             -- 97287 "Shrewd Negotiations" https://wowhead.com/forever/quest=97287
-            -- Assumption: turning it in led straight to 97287 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 97287,
-        },
-        [96989] = { -- Your First Riding Raptor https://wowhead.com/forever/quest=96989
+            -- already in QuestieDB; Assumption: turning it in led straight to 97287 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 97287,
+        -- },
+        -- [96989] = { -- Your First Riding Raptor https://wowhead.com/forever/quest=96989
             -- 95511 "Your First Feline Friend" https://wowhead.com/forever/quest=95511
             -- 96982 "Your First Riding Kodo" https://wowhead.com/forever/quest=96982
             -- 96994 "Your First Riding Wolf" https://wowhead.com/forever/quest=96994
@@ -18056,20 +17855,20 @@ function ForeverQuestRelationTraces:Load()
             -- 97446 "Your First Riding Kodo" https://wowhead.com/forever/quest=97446
             -- 98166 "Your First Horse" https://wowhead.com/forever/quest=98166
             -- 99326 "Your First Horse" https://wowhead.com/forever/quest=99326
-            -- Assumption: the server completes it and 95511, 96982, 96994, 96996, 96997, 97017, 97045, 97046, 97171, 97446, 98166, 99326 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {95511,96982,96994,96996,96997,97017,97045,97046,97171,97446,98166,99326},
-        },
-        [96991] = { -- Trail Assist https://wowhead.com/forever/quest=96991
+            -- already in QuestieDB; Assumption: the server completes it and 95511, 96982, 96994, 96996, 96997, 97017, 97045, 97046, 97171, 97446, 98166, 99326 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {95511,96982,96994,96996,96997,97017,97045,97046,97171,97446,98166,99326},
+        -- },
+        -- [96991] = { -- Trail Assist https://wowhead.com/forever/quest=96991
             -- 96979 "Sacred Refreshment" https://wowhead.com/forever/quest=96979
-            -- Assumption: offered right after 96979 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {96979},
-        },
-        [96992] = { -- Resupply https://wowhead.com/forever/quest=96992
+            -- already in QuestieDB; Assumption: offered right after 96979 was turned in (handoff, offer-set, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {96979},
+        -- },
+        -- [96992] = { -- Resupply https://wowhead.com/forever/quest=96992
             -- 92014 "Fox Hole" https://wowhead.com/forever/quest=92014
-            -- Assumption: offered right after 92014 was turned in (handoff, offer-set, absence, cooccurrence; very high; <10 characters)
-            [questKeys.preQuestSingle] = {92014},
-        },
-        [96994] = { -- Your First Riding Wolf https://wowhead.com/forever/quest=96994
+            -- already in QuestieDB; Assumption: offered right after 92014 was turned in (handoff, offer-set, absence, cooccurrence; very high; <10 characters)
+            -- [questKeys.preQuestSingle] = {92014},
+        -- },
+        -- [96994] = { -- Your First Riding Wolf https://wowhead.com/forever/quest=96994
             -- 95511 "Your First Feline Friend" https://wowhead.com/forever/quest=95511
             -- 96982 "Your First Riding Kodo" https://wowhead.com/forever/quest=96982
             -- 96989 "Your First Riding Raptor" https://wowhead.com/forever/quest=96989
@@ -18082,10 +17881,10 @@ function ForeverQuestRelationTraces:Load()
             -- 97446 "Your First Riding Kodo" https://wowhead.com/forever/quest=97446
             -- 98166 "Your First Horse" https://wowhead.com/forever/quest=98166
             -- 99326 "Your First Horse" https://wowhead.com/forever/quest=99326
-            -- Assumption: the server completes it and 95511, 96982, 96989, 96996, 96997, 97017, 97045, 97046, 97171, 97446, 98166, 99326 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {95511,96982,96989,96996,96997,97017,97045,97046,97171,97446,98166,99326},
-        },
-        [96996] = { -- Your First Riding Galestrider https://wowhead.com/forever/quest=96996
+            -- already in QuestieDB; Assumption: the server completes it and 95511, 96982, 96989, 96996, 96997, 97017, 97045, 97046, 97171, 97446, 98166, 99326 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {95511,96982,96989,96996,96997,97017,97045,97046,97171,97446,98166,99326},
+        -- },
+        -- [96996] = { -- Your First Riding Galestrider https://wowhead.com/forever/quest=96996
             -- 95511 "Your First Feline Friend" https://wowhead.com/forever/quest=95511
             -- 96982 "Your First Riding Kodo" https://wowhead.com/forever/quest=96982
             -- 96989 "Your First Riding Raptor" https://wowhead.com/forever/quest=96989
@@ -18098,10 +17897,10 @@ function ForeverQuestRelationTraces:Load()
             -- 97446 "Your First Riding Kodo" https://wowhead.com/forever/quest=97446
             -- 98166 "Your First Horse" https://wowhead.com/forever/quest=98166
             -- 99326 "Your First Horse" https://wowhead.com/forever/quest=99326
-            -- Assumption: the server completes it and 95511, 96982, 96989, 96994, 96997, 97017, 97045, 97046, 97171, 97446, 98166, 99326 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {95511,96982,96989,96994,96997,97017,97045,97046,97171,97446,98166,99326},
-        },
-        [96997] = { -- A Steed in Death as They Were in Life https://wowhead.com/forever/quest=96997
+            -- already in QuestieDB; Assumption: the server completes it and 95511, 96982, 96989, 96994, 96997, 97017, 97045, 97046, 97171, 97446, 98166, 99326 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {95511,96982,96989,96994,96997,97017,97045,97046,97171,97446,98166,99326},
+        -- },
+        -- [96997] = { -- A Steed in Death as They Were in Life https://wowhead.com/forever/quest=96997
             -- 95511 "Your First Feline Friend" https://wowhead.com/forever/quest=95511
             -- 96982 "Your First Riding Kodo" https://wowhead.com/forever/quest=96982
             -- 96989 "Your First Riding Raptor" https://wowhead.com/forever/quest=96989
@@ -18114,30 +17913,30 @@ function ForeverQuestRelationTraces:Load()
             -- 97446 "Your First Riding Kodo" https://wowhead.com/forever/quest=97446
             -- 98166 "Your First Horse" https://wowhead.com/forever/quest=98166
             -- 99326 "Your First Horse" https://wowhead.com/forever/quest=99326
-            -- Assumption: the server completes it and 95511, 96982, 96989, 96994, 96996, 97017, 97045, 97046, 97171, 97446, 98166, 99326 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {95511,96982,96989,96994,96996,97017,97045,97046,97171,97446,98166,99326},
-        },
-        [96998] = { -- Tribal Colors https://wowhead.com/forever/quest=96998
+            -- already in QuestieDB; Assumption: the server completes it and 95511, 96982, 96989, 96994, 96996, 97017, 97045, 97046, 97171, 97446, 98166, 99326 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {95511,96982,96989,96994,96996,97017,97045,97046,97171,97446,98166,99326},
+        -- },
+        -- [96998] = { -- Tribal Colors https://wowhead.com/forever/quest=96998
             -- 96999 "Wrap Return" https://wowhead.com/forever/quest=96999
-            -- Assumption: turning it in led straight to 96999 (handoff; medium; <10 characters)
-            [questKeys.nextQuestInChain] = 96999,
-        },
-        [96999] = { -- Wrap Return https://wowhead.com/forever/quest=96999
+            -- already in QuestieDB; Assumption: turning it in led straight to 96999 (handoff; medium; <10 characters)
+            -- [questKeys.nextQuestInChain] = 96999,
+        -- },
+        -- [96999] = { -- Wrap Return https://wowhead.com/forever/quest=96999
             -- 96998 "Tribal Colors" https://wowhead.com/forever/quest=96998
-            -- Assumption: offered right after 96998 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {96998},
-        },
-        [97009] = { -- Maerion's Misery https://wowhead.com/forever/quest=97009
+            -- already in QuestieDB; Assumption: offered right after 96998 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {96998},
+        -- },
+        -- [97009] = { -- Maerion's Misery https://wowhead.com/forever/quest=97009
             -- 97010 "Blind Vengeance" https://wowhead.com/forever/quest=97010
-            -- Assumption: turning it in led straight to 97010 (handoff; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 97010,
-        },
-        [97010] = { -- Blind Vengeance https://wowhead.com/forever/quest=97010
+            -- already in QuestieDB; Assumption: turning it in led straight to 97010 (handoff; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 97010,
+        -- },
+        -- [97010] = { -- Blind Vengeance https://wowhead.com/forever/quest=97010
             -- 97009 "Maerion's Misery" https://wowhead.com/forever/quest=97009
-            -- Assumption: offered right after 97009 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {97009},
-        },
-        [97017] = { -- Your First Riding Ram https://wowhead.com/forever/quest=97017
+            -- already in QuestieDB; Assumption: offered right after 97009 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {97009},
+        -- },
+        -- [97017] = { -- Your First Riding Ram https://wowhead.com/forever/quest=97017
             -- 95511 "Your First Feline Friend" https://wowhead.com/forever/quest=95511
             -- 96982 "Your First Riding Kodo" https://wowhead.com/forever/quest=96982
             -- 96989 "Your First Riding Raptor" https://wowhead.com/forever/quest=96989
@@ -18150,10 +17949,10 @@ function ForeverQuestRelationTraces:Load()
             -- 97446 "Your First Riding Kodo" https://wowhead.com/forever/quest=97446
             -- 98166 "Your First Horse" https://wowhead.com/forever/quest=98166
             -- 99326 "Your First Horse" https://wowhead.com/forever/quest=99326
-            -- Assumption: the server completes it and 95511, 96982, 96989, 96994, 96996, 96997, 97045, 97046, 97171, 97446, 98166, 99326 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {95511,96982,96989,96994,96996,96997,97045,97046,97171,97446,98166,99326},
-        },
-        [97018] = { -- Learning to Ride https://wowhead.com/forever/quest=97018
+            -- already in QuestieDB; Assumption: the server completes it and 95511, 96982, 96989, 96994, 96996, 96997, 97045, 97046, 97171, 97446, 98166, 99326 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {95511,96982,96989,96994,96996,96997,97045,97046,97171,97446,98166,99326},
+        -- },
+        -- [97018] = { -- Learning to Ride https://wowhead.com/forever/quest=97018
             -- 97074 "Learning to Ride" https://wowhead.com/forever/quest=97074
             -- 97170 "Learning to Ride" https://wowhead.com/forever/quest=97170
             -- 97188 "Learning to Ride" https://wowhead.com/forever/quest=97188
@@ -18162,20 +17961,20 @@ function ForeverQuestRelationTraces:Load()
             -- 97203 "Learning to Ride" https://wowhead.com/forever/quest=97203
             -- 97204 "Learning to Ride" https://wowhead.com/forever/quest=97204
             -- 97205 "Learning to Ride" https://wowhead.com/forever/quest=97205
-            -- Assumption: the server completes it and 97074, 97170, 97188, 97194, 97200, 97203, 97204, 97205 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {97074,97170,97188,97194,97200,97203,97204,97205},
-        },
-        [97022] = { -- Report to Danitha https://wowhead.com/forever/quest=97022
+            -- already in QuestieDB; Assumption: the server completes it and 97074, 97170, 97188, 97194, 97200, 97203, 97204, 97205 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {97074,97170,97188,97194,97200,97203,97204,97205},
+        -- },
+        -- [97022] = { -- Report to Danitha https://wowhead.com/forever/quest=97022
             -- 94971 "A Paladin's Steed" https://wowhead.com/forever/quest=94971
-            -- Assumption: turning it in led straight to 94971 (handoff, absence; medium; 10+ characters)
-            [questKeys.nextQuestInChain] = 94971,
-        },
-        [97029] = { -- Eluvi'ana https://wowhead.com/forever/quest=97029
+            -- already in QuestieDB; Assumption: turning it in led straight to 94971 (handoff, absence; medium; 10+ characters)
+            -- [questKeys.nextQuestInChain] = 94971,
+        -- },
+        -- [97029] = { -- Eluvi'ana https://wowhead.com/forever/quest=97029
             -- 93161 "The Ancient Hilt" https://wowhead.com/forever/quest=93161
-            -- Assumption: offered right after 93161 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {93161},
-        },
-        [97045] = { -- Your First Horse https://wowhead.com/forever/quest=97045
+            -- already in QuestieDB; Assumption: offered right after 93161 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {93161},
+        -- },
+        -- [97045] = { -- Your First Horse https://wowhead.com/forever/quest=97045
             -- 95511 "Your First Feline Friend" https://wowhead.com/forever/quest=95511
             -- 96982 "Your First Riding Kodo" https://wowhead.com/forever/quest=96982
             -- 96989 "Your First Riding Raptor" https://wowhead.com/forever/quest=96989
@@ -18188,10 +17987,10 @@ function ForeverQuestRelationTraces:Load()
             -- 97446 "Your First Riding Kodo" https://wowhead.com/forever/quest=97446
             -- 98166 "Your First Horse" https://wowhead.com/forever/quest=98166
             -- 99326 "Your First Horse" https://wowhead.com/forever/quest=99326
-            -- Assumption: the server completes it and 95511, 96982, 96989, 96994, 96996, 96997, 97017, 97046, 97171, 97446, 98166, 99326 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {95511,96982,96989,96994,96996,96997,97017,97046,97171,97446,98166,99326},
-        },
-        [97046] = { -- Your First Mechanostrider https://wowhead.com/forever/quest=97046
+            -- already in QuestieDB; Assumption: the server completes it and 95511, 96982, 96989, 96994, 96996, 96997, 97017, 97046, 97171, 97446, 98166, 99326 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {95511,96982,96989,96994,96996,96997,97017,97046,97171,97446,98166,99326},
+        -- },
+        -- [97046] = { -- Your First Mechanostrider https://wowhead.com/forever/quest=97046
             -- 95511 "Your First Feline Friend" https://wowhead.com/forever/quest=95511
             -- 96982 "Your First Riding Kodo" https://wowhead.com/forever/quest=96982
             -- 96989 "Your First Riding Raptor" https://wowhead.com/forever/quest=96989
@@ -18204,20 +18003,20 @@ function ForeverQuestRelationTraces:Load()
             -- 97446 "Your First Riding Kodo" https://wowhead.com/forever/quest=97446
             -- 98166 "Your First Horse" https://wowhead.com/forever/quest=98166
             -- 99326 "Your First Horse" https://wowhead.com/forever/quest=99326
-            -- Assumption: the server completes it and 95511, 96982, 96989, 96994, 96996, 96997, 97017, 97045, 97171, 97446, 98166, 99326 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {95511,96982,96989,96994,96996,96997,97017,97045,97171,97446,98166,99326},
-        },
-        [97047] = { -- The Cook in the Cage https://wowhead.com/forever/quest=97047
+            -- already in QuestieDB; Assumption: the server completes it and 95511, 96982, 96989, 96994, 96996, 96997, 97017, 97045, 97171, 97446, 98166, 99326 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {95511,96982,96989,96994,96996,96997,97017,97045,97171,97446,98166,99326},
+        -- },
+        -- [97047] = { -- The Cook in the Cage https://wowhead.com/forever/quest=97047
             -- 97048 "Returning to Port" https://wowhead.com/forever/quest=97048
-            -- Assumption: turning it in led straight to 97048 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 97048,
-        },
-        [97048] = { -- Returning to Port https://wowhead.com/forever/quest=97048
+            -- already in QuestieDB; Assumption: turning it in led straight to 97048 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 97048,
+        -- },
+        -- [97048] = { -- Returning to Port https://wowhead.com/forever/quest=97048
             -- 97047 "The Cook in the Cage" https://wowhead.com/forever/quest=97047
-            -- Assumption: offered right after 97047 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {97047},
-        },
-        [97074] = { -- Learning to Ride https://wowhead.com/forever/quest=97074
+            -- already in QuestieDB; Assumption: offered right after 97047 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {97047},
+        -- },
+        -- [97074] = { -- Learning to Ride https://wowhead.com/forever/quest=97074
             -- 97018 "Learning to Ride" https://wowhead.com/forever/quest=97018
             -- 97170 "Learning to Ride" https://wowhead.com/forever/quest=97170
             -- 97188 "Learning to Ride" https://wowhead.com/forever/quest=97188
@@ -18226,10 +18025,10 @@ function ForeverQuestRelationTraces:Load()
             -- 97203 "Learning to Ride" https://wowhead.com/forever/quest=97203
             -- 97204 "Learning to Ride" https://wowhead.com/forever/quest=97204
             -- 97205 "Learning to Ride" https://wowhead.com/forever/quest=97205
-            -- Assumption: the server completes it and 97018, 97170, 97188, 97194, 97200, 97203, 97204, 97205 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {97018,97170,97188,97194,97200,97203,97204,97205},
-        },
-        [97170] = { -- Learning to Ride https://wowhead.com/forever/quest=97170
+            -- already in QuestieDB; Assumption: the server completes it and 97018, 97170, 97188, 97194, 97200, 97203, 97204, 97205 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {97018,97170,97188,97194,97200,97203,97204,97205},
+        -- },
+        -- [97170] = { -- Learning to Ride https://wowhead.com/forever/quest=97170
             -- 97018 "Learning to Ride" https://wowhead.com/forever/quest=97018
             -- 97074 "Learning to Ride" https://wowhead.com/forever/quest=97074
             -- 97188 "Learning to Ride" https://wowhead.com/forever/quest=97188
@@ -18238,10 +18037,10 @@ function ForeverQuestRelationTraces:Load()
             -- 97203 "Learning to Ride" https://wowhead.com/forever/quest=97203
             -- 97204 "Learning to Ride" https://wowhead.com/forever/quest=97204
             -- 97205 "Learning to Ride" https://wowhead.com/forever/quest=97205
-            -- Assumption: the server completes it and 97018, 97074, 97188, 97194, 97200, 97203, 97204, 97205 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {97018,97074,97188,97194,97200,97203,97204,97205},
-        },
-        [97171] = { -- Your First Horse https://wowhead.com/forever/quest=97171
+            -- already in QuestieDB; Assumption: the server completes it and 97018, 97074, 97188, 97194, 97200, 97203, 97204, 97205 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {97018,97074,97188,97194,97200,97203,97204,97205},
+        -- },
+        -- [97171] = { -- Your First Horse https://wowhead.com/forever/quest=97171
             -- 95511 "Your First Feline Friend" https://wowhead.com/forever/quest=95511
             -- 96982 "Your First Riding Kodo" https://wowhead.com/forever/quest=96982
             -- 96989 "Your First Riding Raptor" https://wowhead.com/forever/quest=96989
@@ -18254,10 +18053,10 @@ function ForeverQuestRelationTraces:Load()
             -- 97446 "Your First Riding Kodo" https://wowhead.com/forever/quest=97446
             -- 98166 "Your First Horse" https://wowhead.com/forever/quest=98166
             -- 99326 "Your First Horse" https://wowhead.com/forever/quest=99326
-            -- Assumption: the server completes it and 95511, 96982, 96989, 96994, 96996, 96997, 97017, 97045, 97046, 97446, 98166, 99326 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {95511,96982,96989,96994,96996,96997,97017,97045,97046,97446,98166,99326},
-        },
-        [97188] = { -- Learning to Ride https://wowhead.com/forever/quest=97188
+            -- already in QuestieDB; Assumption: the server completes it and 95511, 96982, 96989, 96994, 96996, 96997, 97017, 97045, 97046, 97446, 98166, 99326 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {95511,96982,96989,96994,96996,96997,97017,97045,97046,97446,98166,99326},
+        -- },
+        -- [97188] = { -- Learning to Ride https://wowhead.com/forever/quest=97188
             -- 97018 "Learning to Ride" https://wowhead.com/forever/quest=97018
             -- 97074 "Learning to Ride" https://wowhead.com/forever/quest=97074
             -- 97170 "Learning to Ride" https://wowhead.com/forever/quest=97170
@@ -18266,10 +18065,10 @@ function ForeverQuestRelationTraces:Load()
             -- 97203 "Learning to Ride" https://wowhead.com/forever/quest=97203
             -- 97204 "Learning to Ride" https://wowhead.com/forever/quest=97204
             -- 97205 "Learning to Ride" https://wowhead.com/forever/quest=97205
-            -- Assumption: the server completes it and 97018, 97074, 97170, 97194, 97200, 97203, 97204, 97205 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {97018,97074,97170,97194,97200,97203,97204,97205},
-        },
-        [97194] = { -- Learning to Ride https://wowhead.com/forever/quest=97194
+            -- already in QuestieDB; Assumption: the server completes it and 97018, 97074, 97170, 97194, 97200, 97203, 97204, 97205 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {97018,97074,97170,97194,97200,97203,97204,97205},
+        -- },
+        -- [97194] = { -- Learning to Ride https://wowhead.com/forever/quest=97194
             -- 97018 "Learning to Ride" https://wowhead.com/forever/quest=97018
             -- 97074 "Learning to Ride" https://wowhead.com/forever/quest=97074
             -- 97170 "Learning to Ride" https://wowhead.com/forever/quest=97170
@@ -18278,10 +18077,10 @@ function ForeverQuestRelationTraces:Load()
             -- 97203 "Learning to Ride" https://wowhead.com/forever/quest=97203
             -- 97204 "Learning to Ride" https://wowhead.com/forever/quest=97204
             -- 97205 "Learning to Ride" https://wowhead.com/forever/quest=97205
-            -- Assumption: the server completes it and 97018, 97074, 97170, 97188, 97200, 97203, 97204, 97205 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {97018,97074,97170,97188,97200,97203,97204,97205},
-        },
-        [97200] = { -- Learning to Ride https://wowhead.com/forever/quest=97200
+            -- already in QuestieDB; Assumption: the server completes it and 97018, 97074, 97170, 97188, 97200, 97203, 97204, 97205 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {97018,97074,97170,97188,97200,97203,97204,97205},
+        -- },
+        -- [97200] = { -- Learning to Ride https://wowhead.com/forever/quest=97200
             -- 97018 "Learning to Ride" https://wowhead.com/forever/quest=97018
             -- 97074 "Learning to Ride" https://wowhead.com/forever/quest=97074
             -- 97170 "Learning to Ride" https://wowhead.com/forever/quest=97170
@@ -18290,10 +18089,10 @@ function ForeverQuestRelationTraces:Load()
             -- 97203 "Learning to Ride" https://wowhead.com/forever/quest=97203
             -- 97204 "Learning to Ride" https://wowhead.com/forever/quest=97204
             -- 97205 "Learning to Ride" https://wowhead.com/forever/quest=97205
-            -- Assumption: the server completes it and 97018, 97074, 97170, 97188, 97194, 97203, 97204, 97205 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {97018,97074,97170,97188,97194,97203,97204,97205},
-        },
-        [97203] = { -- Learning to Ride https://wowhead.com/forever/quest=97203
+            -- already in QuestieDB; Assumption: the server completes it and 97018, 97074, 97170, 97188, 97194, 97203, 97204, 97205 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {97018,97074,97170,97188,97194,97203,97204,97205},
+        -- },
+        -- [97203] = { -- Learning to Ride https://wowhead.com/forever/quest=97203
             -- 97018 "Learning to Ride" https://wowhead.com/forever/quest=97018
             -- 97074 "Learning to Ride" https://wowhead.com/forever/quest=97074
             -- 97170 "Learning to Ride" https://wowhead.com/forever/quest=97170
@@ -18302,10 +18101,10 @@ function ForeverQuestRelationTraces:Load()
             -- 97200 "Learning to Ride" https://wowhead.com/forever/quest=97200
             -- 97204 "Learning to Ride" https://wowhead.com/forever/quest=97204
             -- 97205 "Learning to Ride" https://wowhead.com/forever/quest=97205
-            -- Assumption: the server completes it and 97018, 97074, 97170, 97188, 97194, 97200, 97204, 97205 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {97018,97074,97170,97188,97194,97200,97204,97205},
-        },
-        [97204] = { -- Learning to Ride https://wowhead.com/forever/quest=97204
+            -- already in QuestieDB; Assumption: the server completes it and 97018, 97074, 97170, 97188, 97194, 97200, 97204, 97205 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {97018,97074,97170,97188,97194,97200,97204,97205},
+        -- },
+        -- [97204] = { -- Learning to Ride https://wowhead.com/forever/quest=97204
             -- 97018 "Learning to Ride" https://wowhead.com/forever/quest=97018
             -- 97074 "Learning to Ride" https://wowhead.com/forever/quest=97074
             -- 97170 "Learning to Ride" https://wowhead.com/forever/quest=97170
@@ -18314,10 +18113,10 @@ function ForeverQuestRelationTraces:Load()
             -- 97200 "Learning to Ride" https://wowhead.com/forever/quest=97200
             -- 97203 "Learning to Ride" https://wowhead.com/forever/quest=97203
             -- 97205 "Learning to Ride" https://wowhead.com/forever/quest=97205
-            -- Assumption: the server completes it and 97018, 97074, 97170, 97188, 97194, 97200, 97203, 97205 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {97018,97074,97170,97188,97194,97200,97203,97205},
-        },
-        [97205] = { -- Learning to Ride https://wowhead.com/forever/quest=97205
+            -- already in QuestieDB; Assumption: the server completes it and 97018, 97074, 97170, 97188, 97194, 97200, 97203, 97205 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {97018,97074,97170,97188,97194,97200,97203,97205},
+        -- },
+        -- [97205] = { -- Learning to Ride https://wowhead.com/forever/quest=97205
             -- 97018 "Learning to Ride" https://wowhead.com/forever/quest=97018
             -- 97074 "Learning to Ride" https://wowhead.com/forever/quest=97074
             -- 97170 "Learning to Ride" https://wowhead.com/forever/quest=97170
@@ -18326,9 +18125,9 @@ function ForeverQuestRelationTraces:Load()
             -- 97200 "Learning to Ride" https://wowhead.com/forever/quest=97200
             -- 97203 "Learning to Ride" https://wowhead.com/forever/quest=97203
             -- 97204 "Learning to Ride" https://wowhead.com/forever/quest=97204
-            -- Assumption: the server completes it and 97018, 97074, 97170, 97188, 97194, 97200, 97203, 97204 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {97018,97074,97170,97188,97194,97200,97203,97204},
-        },
+            -- already in QuestieDB; Assumption: the server completes it and 97018, 97074, 97170, 97188, 97194, 97200, 97203, 97204 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {97018,97074,97170,97188,97194,97200,97203,97204},
+        -- },
         -- [97220] = { -- Philmor's Favor https://wowhead.com/forever/quest=97220
             -- 97222 "Gatehouse Goods" https://wowhead.com/forever/quest=97222
             -- already in QuestieDB; Assumption: turning it in led straight to 97222 (handoff; high; 100+ characters)
@@ -18349,14 +18148,14 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 97234 was turned in (handoff, offer-set, absence; high; 100+ characters)
             -- [questKeys.preQuestSingle] = {97234},
         -- },
-        [97243] = { -- Call of Fire https://wowhead.com/forever/quest=97243
+        -- [97243] = { -- Call of Fire https://wowhead.com/forever/quest=97243
             -- 1524 "Call of Fire" https://wowhead.com/forever/quest=1524
-            -- Assumption: the server completes it and 1524 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {1524},
+            -- already in QuestieDB; Assumption: the server completes it and 1524 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {1524},
             -- 97244 "Call of Fire" https://wowhead.com/forever/quest=97244
-            -- already in QuestieDB; Assumption: turning it in led straight to 97244 (handoff; high; 100+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 97244 (handoff; medium; 100+ characters)
             -- [questKeys.nextQuestInChain] = 97244,
-        },
+        -- },
         -- [97244] = { -- Call of Fire https://wowhead.com/forever/quest=97244
             -- 97243 "Call of Fire" https://wowhead.com/forever/quest=97243
             -- already in QuestieDB; Assumption: offered right after 97243 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
@@ -18382,9 +18181,6 @@ function ForeverQuestRelationTraces:Load()
             -- 97246 "Meal Appeal" https://wowhead.com/forever/quest=97246
             -- already in QuestieDB; Assumption: offered right after 97246 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {97246},
-            -- 97326 "Rocks to Rests" https://wowhead.com/forever/quest=97326
-            -- already in QuestieDB; Assumption: turning it in led straight to 97326 (handoff; medium; 10+ characters)
-            -- [questKeys.nextQuestInChain] = 97326,
         -- },
         -- [97257] = { -- Call of Fire https://wowhead.com/forever/quest=97257
             -- 97245 "Call of Fire" https://wowhead.com/forever/quest=97245
@@ -18401,17 +18197,17 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 97281 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {97281},
         -- },
-        [97284] = { -- Vahlarriel's Vengeance https://wowhead.com/forever/quest=97284
+        -- [97284] = { -- Vahlarriel's Vengeance https://wowhead.com/forever/quest=97284
             -- 1465 "Vahlarriel's Search" https://wowhead.com/forever/quest=1465
-            -- Assumption: 1465 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
-            [questKeys.preQuestSingle] = {1465},
-        },
-        [97287] = { -- Shrewd Negotiations https://wowhead.com/forever/quest=97287
+            -- already in QuestieDB; Assumption: 1465 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {1465},
+        -- },
+        -- [97287] = { -- Shrewd Negotiations https://wowhead.com/forever/quest=97287
             -- 92458 "Heart of Disruption" https://wowhead.com/forever/quest=92458
             -- 96984 "Heart of Disruption" https://wowhead.com/forever/quest=96984
-            -- Assumption: 92458 was done whenever it was offered (offer-set, absence, cooccurrence; high; 100+ characters); offered right after 96984 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {92458,96984},
-        },
+            -- already in QuestieDB; Assumption: 92458 was done whenever it was offered (offer-set, absence, cooccurrence; high; 100+ characters); offered right after 96984 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {92458,96984},
+        -- },
         -- [97288] = { -- Unending Torment https://wowhead.com/forever/quest=97288
             -- 97289 "Unending Torment" https://wowhead.com/forever/quest=97289
             -- already in QuestieDB; Assumption: turning it in led straight to 97289 (handoff; high; 100+ characters)
@@ -18456,41 +18252,41 @@ function ForeverQuestRelationTraces:Load()
             -- not applied: 97332 needs this quest together with 97331 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 97332 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 97332,
         -- },
-        [97329] = { -- Where's the Key? https://wowhead.com/forever/quest=97329
+        -- [97329] = { -- Where's the Key? https://wowhead.com/forever/quest=97329
             -- 97331 "Zimmix's Great Escape" https://wowhead.com/forever/quest=97331
-            -- Assumption: turning it in led straight to 97331 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 97331,
-        },
-        [97331] = { -- Zimmix's Great Escape https://wowhead.com/forever/quest=97331
+            -- already in QuestieDB; Assumption: turning it in led straight to 97331 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 97331,
+        -- },
+        -- [97331] = { -- Zimmix's Great Escape https://wowhead.com/forever/quest=97331
             -- 97329 "Where's the Key?" https://wowhead.com/forever/quest=97329
-            -- Assumption: offered right after 97329 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {97329},
+            -- already in QuestieDB; Assumption: offered right after 97329 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {97329},
             -- 97332 "Twice Misplaced Trust" https://wowhead.com/forever/quest=97332
             -- not applied: 97332 needs this quest together with 97328 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 97332 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 97332,
-        },
-        [97332] = { -- Twice Misplaced Trust https://wowhead.com/forever/quest=97332
+        -- },
+        -- [97332] = { -- Twice Misplaced Trust https://wowhead.com/forever/quest=97332
             -- 97328 "Anything of Value" https://wowhead.com/forever/quest=97328
             -- 97331 "Zimmix's Great Escape" https://wowhead.com/forever/quest=97331
-            -- Assumption: offered right after 97328, 97331 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestGroup] = {97328,97331},
-        },
-        [97378] = { -- Mirrorscale https://wowhead.com/forever/quest=97378
+            -- already in QuestieDB; Assumption: offered right after 97328, 97331 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestGroup] = {97328,97331},
+        -- },
+        -- [97378] = { -- Mirrorscale https://wowhead.com/forever/quest=97378
             -- 1205 "Deadmire" https://wowhead.com/forever/quest=1205
-            -- Assumption: offered right after 1205 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {1205},
-        },
-        [97386] = { -- The Offense of Grom'gol https://wowhead.com/forever/quest=97386
+            -- already in QuestieDB; Assumption: offered right after 1205 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {1205},
+        -- },
+        -- [97386] = { -- The Offense of Grom'gol https://wowhead.com/forever/quest=97386
             -- 569 "The Defense of Grom'gol" https://wowhead.com/forever/quest=569
-            -- Assumption: offered right after 569 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {569},
-        },
-        [97404] = { -- Too Bad to Bear https://wowhead.com/forever/quest=97404
+            -- already in QuestieDB; Assumption: offered right after 569 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {569},
+        -- },
+        -- [97404] = { -- Too Bad to Bear https://wowhead.com/forever/quest=97404
             -- 97264 "Shardtooth Pulling" https://wowhead.com/forever/quest=97264
-            -- Assumption: offered right after 97264 was turned in (handoff, offer-set, cooccurrence; medium; <10 characters)
-            [questKeys.preQuestSingle] = {97264},
-        },
-        [97446] = { -- Your First Riding Kodo https://wowhead.com/forever/quest=97446
+            -- already in QuestieDB; Assumption: offered right after 97264 was turned in (handoff, offer-set, cooccurrence; medium; <10 characters)
+            -- [questKeys.preQuestSingle] = {97264},
+        -- },
+        -- [97446] = { -- Your First Riding Kodo https://wowhead.com/forever/quest=97446
             -- 95511 "Your First Feline Friend" https://wowhead.com/forever/quest=95511
             -- 96982 "Your First Riding Kodo" https://wowhead.com/forever/quest=96982
             -- 96989 "Your First Riding Raptor" https://wowhead.com/forever/quest=96989
@@ -18503,27 +18299,27 @@ function ForeverQuestRelationTraces:Load()
             -- 97171 "Your First Horse" https://wowhead.com/forever/quest=97171
             -- 98166 "Your First Horse" https://wowhead.com/forever/quest=98166
             -- 99326 "Your First Horse" https://wowhead.com/forever/quest=99326
-            -- Assumption: the server completes it and 95511, 96982, 96989, 96994, 96996, 96997, 97017, 97045, 97046, 97171, 98166, 99326 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {95511,96982,96989,96994,96996,96997,97017,97045,97046,97171,98166,99326},
-        },
-        [97534] = { -- Gritty Business https://wowhead.com/forever/quest=97534
+            -- already in QuestieDB; Assumption: the server completes it and 95511, 96982, 96989, 96994, 96996, 96997, 97017, 97045, 97046, 97171, 98166, 99326 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {95511,96982,96989,96994,96996,96997,97017,97045,97046,97171,98166,99326},
+        -- },
+        -- [97534] = { -- Gritty Business https://wowhead.com/forever/quest=97534
             -- 97536 "Gnomish Garbage" https://wowhead.com/forever/quest=97536
-            -- Assumption: the server completes it and 97536 together (cooccurrence; medium; 100+ characters)
-            [questKeys.exclusiveTo] = {97536},
-        },
-        [97536] = { -- Gnomish Garbage https://wowhead.com/forever/quest=97536
+            -- already in QuestieDB; Assumption: the server completes it and 97536 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {97536},
+        -- },
+        -- [97536] = { -- Gnomish Garbage https://wowhead.com/forever/quest=97536
             -- 97534 "Gritty Business" https://wowhead.com/forever/quest=97534
-            -- Assumption: the server completes it and 97534 together (cooccurrence; medium; 100+ characters)
-            [questKeys.exclusiveTo] = {97534},
-        },
-        [97539] = { -- Silky Sutures https://wowhead.com/forever/quest=97539
+            -- already in QuestieDB; Assumption: the server completes it and 97534 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {97534},
+        -- },
+        -- [97539] = { -- Silky Sutures https://wowhead.com/forever/quest=97539
             -- 92519 "Ward Restocking" https://wowhead.com/forever/quest=92519
-            -- Assumption: turning it in led straight to 92519 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 92519,
-        },
+            -- already in QuestieDB; Assumption: turning it in led straight to 92519 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 92519,
+        -- },
         -- [97894] = { -- Business in Auberdine https://wowhead.com/forever/quest=97894
             -- 982 "Deep Ocean, Vast Sea" https://wowhead.com/forever/quest=982
-            -- already in QuestieDB; Assumption: turning it in led straight to 982 (handoff, absence; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 982 (handoff, absence; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 982,
         -- },
         -- [97899] = { -- Camping 101: Alchemy https://wowhead.com/forever/quest=97899
@@ -18542,7 +18338,7 @@ function ForeverQuestRelationTraces:Load()
             -- 97938 "Camping 101: Alchemy" https://wowhead.com/forever/quest=97938
             -- 97951 "Camping 101: Alchemy" https://wowhead.com/forever/quest=97951
             -- 97963 "Camping 101: Alchemy" https://wowhead.com/forever/quest=97963
-            -- already in QuestieDB; Assumption: the server completes it and 96045, 97915, 97927, 97938, 97963 together (cooccurrence; high; 100+ characters); offer lists show it and 97951 exclude each other (absence, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 96045, 97915, 97927, 97938, 97963 together (cooccurrence; very high; 100+ characters); offer lists show it and 97951 exclude each other (absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {96045,97915,97927,97938,97951,97963},
         -- },
         -- [97900] = { -- Camping 101: Blacksmithing https://wowhead.com/forever/quest=97900
@@ -18561,7 +18357,7 @@ function ForeverQuestRelationTraces:Load()
             -- 97939 "Camping 101: Blacksmithing" https://wowhead.com/forever/quest=97939
             -- 97952 "Camping 101: Blacksmithing" https://wowhead.com/forever/quest=97952
             -- 97964 "Camping 101: Blacksmithing" https://wowhead.com/forever/quest=97964
-            -- already in QuestieDB; Assumption: the server completes it and 96044, 97928, 97939, 97964 together (cooccurrence; very high; 100+ characters); the server completes it and 97916 together (cooccurrence; high; 100+ characters); offer lists show it and 97952 exclude each other (absence, cooccurrence; very high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 96044, 97916, 97928, 97939, 97964 together (cooccurrence; very high; 100+ characters); offer lists show it and 97952 exclude each other (absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {96044,97916,97928,97939,97952,97964},
         -- },
         -- [97901] = { -- Camping 101: Enchanting https://wowhead.com/forever/quest=97901
@@ -18581,7 +18377,7 @@ function ForeverQuestRelationTraces:Load()
             -- 97953 "Camping 101: Enchanting" https://wowhead.com/forever/quest=97953
             -- 98284 "Camping 101: Enchanting" https://wowhead.com/forever/quest=98284
             -- 98286 "Camping 101: Enchanting" https://wowhead.com/forever/quest=98286
-            -- already in QuestieDB; Assumption: the server completes it and 96059, 97917, 97940, 98286 together (cooccurrence; very high; 100+ characters); the server completes it and 97929, 98284 together (cooccurrence; high; 100+ characters); offer lists show it and 97953 exclude each other (absence, cooccurrence; very high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 96059, 97917, 97929, 97940, 98284, 98286 together (cooccurrence; very high; 100+ characters); offer lists show it and 97953 exclude each other (absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {96059,97917,97929,97940,97953,98284,98286},
         -- },
         -- [97902] = { -- Camping 101: Engineering https://wowhead.com/forever/quest=97902
@@ -18592,7 +18388,7 @@ function ForeverQuestRelationTraces:Load()
             -- 96606 "The Great Outdoors" https://wowhead.com/forever/quest=96606
             -- 96607 "The Great Outdoors" https://wowhead.com/forever/quest=96607
             -- 96608 "The Great Outdoors" https://wowhead.com/forever/quest=96608
-            -- already in QuestieDB; Assumption: 95998, 96606, 96608 was done whenever it was offered (offer-set, cooccurrence; very high; 100+ characters); offered right after 96101, 96604, 96605, 96607 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- already in QuestieDB; Assumption: 95998, 96606, 96608 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters); offered right after 96101, 96604, 96605, 96607 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
             -- 96058 "Camping 101: Engineering" https://wowhead.com/forever/quest=96058
             -- 97918 "Camping 101: Engineering" https://wowhead.com/forever/quest=97918
@@ -18601,7 +18397,7 @@ function ForeverQuestRelationTraces:Load()
             -- 97954 "Camping 101: Engineering" https://wowhead.com/forever/quest=97954
             -- 98285 "Camping 101: Engineering" https://wowhead.com/forever/quest=98285
             -- 98287 "Camping 101: Engineering" https://wowhead.com/forever/quest=98287
-            -- already in QuestieDB; Assumption: the server completes it and 96058, 97918, 97930, 97941, 97954, 98285, 98287 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 96058, 97918, 97930, 97941, 97954, 98285, 98287 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {96058,97918,97930,97941,97954,98285,98287},
         -- },
         -- [97903] = { -- Camping 101: First Aid https://wowhead.com/forever/quest=97903
@@ -18639,7 +18435,7 @@ function ForeverQuestRelationTraces:Load()
             -- 97943 "Camping 101: Fishing" https://wowhead.com/forever/quest=97943
             -- 97956 "Camping 101: Fishing" https://wowhead.com/forever/quest=97956
             -- 97967 "Camping 101: Fishing" https://wowhead.com/forever/quest=97967
-            -- already in QuestieDB; Assumption: the server completes it and 96050, 97920, 97943 together (cooccurrence; very high; 100+ characters); offer lists show it and 97932 exclude each other (absence, cooccurrence; high; 100+ characters); offer lists show it and 97956, 97967 exclude each other (absence, cooccurrence; very high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 96050, 97920, 97943 together (cooccurrence; very high; 100+ characters); offer lists show it and 97932, 97956, 97967 exclude each other (absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {96050,97920,97932,97943,97956,97967},
         -- },
         -- [97905] = { -- Camping 101: Herbalism https://wowhead.com/forever/quest=97905
@@ -18677,7 +18473,7 @@ function ForeverQuestRelationTraces:Load()
             -- 97946 "Camping 101: Leatherworking" https://wowhead.com/forever/quest=97946
             -- 97958 "Camping 101: Leatherworking" https://wowhead.com/forever/quest=97958
             -- 97969 "Camping 101: Leatherworking" https://wowhead.com/forever/quest=97969
-            -- already in QuestieDB; Assumption: the server completes it and 96031, 97922, 97934, 97958, 97969 together (cooccurrence; very high; 100+ characters); the server completes it and 97946 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 96031, 97922, 97934, 97946, 97958, 97969 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {96031,97922,97934,97946,97958,97969},
         -- },
         -- [97907] = { -- Camping 101: Mining https://wowhead.com/forever/quest=97907
@@ -18731,7 +18527,7 @@ function ForeverQuestRelationTraces:Load()
             -- 96606 "The Great Outdoors" https://wowhead.com/forever/quest=96606
             -- 96607 "The Great Outdoors" https://wowhead.com/forever/quest=96607
             -- 96608 "The Great Outdoors" https://wowhead.com/forever/quest=96608
-            -- already in QuestieDB; Assumption: offered right after 95998, 96101, 96606, 96608 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters); 96604, 96605, 96607 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: offered right after 95998, 96101, 96606, 96608 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters); 96604, 96605, 96607 was done whenever it was offered (offer-set, cooccurrence; medium; 100+ characters)
             -- [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
             -- 96045 "Camping 101: Alchemy" https://wowhead.com/forever/quest=96045
             -- 97899 "Camping 101: Alchemy" https://wowhead.com/forever/quest=97899
@@ -18739,7 +18535,7 @@ function ForeverQuestRelationTraces:Load()
             -- 97938 "Camping 101: Alchemy" https://wowhead.com/forever/quest=97938
             -- 97951 "Camping 101: Alchemy" https://wowhead.com/forever/quest=97951
             -- 97963 "Camping 101: Alchemy" https://wowhead.com/forever/quest=97963
-            -- already in QuestieDB; Assumption: offer lists show it and 96045 exclude each other (absence, cooccurrence; very high; 100+ characters); the server completes it and 97899, 97927, 97938, 97951, 97963 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: offer lists show it and 96045 exclude each other (absence, cooccurrence; very high; 100+ characters); the server completes it and 97899, 97927, 97938, 97951, 97963 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {96045,97899,97927,97938,97951,97963},
         -- },
         -- [97916] = { -- Camping 101: Blacksmithing https://wowhead.com/forever/quest=97916
@@ -18750,7 +18546,7 @@ function ForeverQuestRelationTraces:Load()
             -- 96606 "The Great Outdoors" https://wowhead.com/forever/quest=96606
             -- 96607 "The Great Outdoors" https://wowhead.com/forever/quest=96607
             -- 96608 "The Great Outdoors" https://wowhead.com/forever/quest=96608
-            -- already in QuestieDB; Assumption: offered right after 95998, 96606 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters); 96101, 96604, 96605, 96607, 96608 was done whenever it was offered (offer-set, cooccurrence; very high; 100+ characters)
+            -- already in QuestieDB; Assumption: offered right after 95998, 96101, 96606, 96608 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters); 96604, 96605, 96607 was done whenever it was offered (offer-set, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
             -- 96044 "Camping 101: Blacksmithing" https://wowhead.com/forever/quest=96044
             -- 97900 "Camping 101: Blacksmithing" https://wowhead.com/forever/quest=97900
@@ -18758,7 +18554,7 @@ function ForeverQuestRelationTraces:Load()
             -- 97939 "Camping 101: Blacksmithing" https://wowhead.com/forever/quest=97939
             -- 97952 "Camping 101: Blacksmithing" https://wowhead.com/forever/quest=97952
             -- 97964 "Camping 101: Blacksmithing" https://wowhead.com/forever/quest=97964
-            -- already in QuestieDB; Assumption: offer lists show it and 96044, 97939 exclude each other (absence, cooccurrence; very high; 100+ characters); the server completes it and 97900, 97928, 97952, 97964 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: offer lists show it and 96044, 97939 exclude each other (absence, cooccurrence; very high; 100+ characters); the server completes it and 97900, 97928, 97952, 97964 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {96044,97900,97928,97939,97952,97964},
         -- },
         -- [97917] = { -- Camping 101: Enchanting https://wowhead.com/forever/quest=97917
@@ -18778,7 +18574,7 @@ function ForeverQuestRelationTraces:Load()
             -- 97953 "Camping 101: Enchanting" https://wowhead.com/forever/quest=97953
             -- 98284 "Camping 101: Enchanting" https://wowhead.com/forever/quest=98284
             -- 98286 "Camping 101: Enchanting" https://wowhead.com/forever/quest=98286
-            -- already in QuestieDB; Assumption: offer lists show it and 96059, 97940 exclude each other (absence, cooccurrence; very high; 100+ characters); the server completes it and 97901, 97953, 98286 together (cooccurrence; very high; 100+ characters); the server completes it and 97929, 98284 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: offer lists show it and 96059, 97940 exclude each other (absence, cooccurrence; very high; 100+ characters); the server completes it and 97901, 97929, 97953, 98284, 98286 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {96059,97901,97929,97940,97953,98284,98286},
         -- },
         -- [97918] = { -- Camping 101: Engineering https://wowhead.com/forever/quest=97918
@@ -18798,7 +18594,7 @@ function ForeverQuestRelationTraces:Load()
             -- 97954 "Camping 101: Engineering" https://wowhead.com/forever/quest=97954
             -- 98285 "Camping 101: Engineering" https://wowhead.com/forever/quest=98285
             -- 98287 "Camping 101: Engineering" https://wowhead.com/forever/quest=98287
-            -- already in QuestieDB; Assumption: offer lists show it and 96058, 97941 exclude each other (absence, cooccurrence; high; 100+ characters); the server completes it and 97902, 97930, 97954, 98285, 98287 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: offer lists show it and 96058, 97941 exclude each other (absence, cooccurrence; very high; 100+ characters); the server completes it and 97902, 97930, 97954, 98285, 98287 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {96058,97902,97930,97941,97954,98285,98287},
         -- },
         -- [97919] = { -- Camping 101: First Aid https://wowhead.com/forever/quest=97919
@@ -18833,7 +18629,7 @@ function ForeverQuestRelationTraces:Load()
             -- 97943 "Camping 101: Fishing" https://wowhead.com/forever/quest=97943
             -- 97956 "Camping 101: Fishing" https://wowhead.com/forever/quest=97956
             -- 97967 "Camping 101: Fishing" https://wowhead.com/forever/quest=97967
-            -- already in QuestieDB; Assumption: offer lists show it and 96050 exclude each other (absence, cooccurrence; very high; 100+ characters); the server completes it and 97904, 97932, 97956 together (cooccurrence; very high; 100+ characters); offer lists show it and 97943, 97967 exclude each other (absence, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: offer lists show it and 96050, 97943, 97967 exclude each other (absence, cooccurrence; very high; 100+ characters); the server completes it and 97904, 97932, 97956 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {96050,97904,97932,97943,97956,97967},
         -- },
         -- [97921] = { -- Camping 101: Herbalism https://wowhead.com/forever/quest=97921
@@ -18877,10 +18673,13 @@ function ForeverQuestRelationTraces:Load()
         -- [97923] = { -- Camping 101: Mining https://wowhead.com/forever/quest=97923
             -- 95998 "The Great Outdoors" https://wowhead.com/forever/quest=95998
             -- 96101 "The Great Outdoors" https://wowhead.com/forever/quest=96101
+            -- 96604 "The Great Outdoors" https://wowhead.com/forever/quest=96604
+            -- 96605 "The Great Outdoors" https://wowhead.com/forever/quest=96605
             -- 96606 "The Great Outdoors" https://wowhead.com/forever/quest=96606
+            -- 96607 "The Great Outdoors" https://wowhead.com/forever/quest=96607
             -- 96608 "The Great Outdoors" https://wowhead.com/forever/quest=96608
-            -- already in QuestieDB; Assumption: offered right after 95998 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters); offered right after 96101, 96606, 96608 was turned in (handoff, offer-set, cooccurrence; high; 100+ characters)
-            -- [questKeys.preQuestSingle] = {95998,96101,96606,96608},
+            -- already in QuestieDB; Assumption: offered right after 95998 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters); offered right after 96101, 96606, 96608 was turned in (handoff, offer-set, cooccurrence; high; 100+ characters); 96604, 96605, 96607 was done whenever it was offered (offer-set, cooccurrence; medium; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
             -- 96046 "Camping 101: Mining" https://wowhead.com/forever/quest=96046
             -- 97907 "Camping 101: Mining" https://wowhead.com/forever/quest=97907
             -- 97935 "Camping 101: Mining" https://wowhead.com/forever/quest=97935
@@ -18941,7 +18740,7 @@ function ForeverQuestRelationTraces:Load()
             -- 97938 "Camping 101: Alchemy" https://wowhead.com/forever/quest=97938
             -- 97951 "Camping 101: Alchemy" https://wowhead.com/forever/quest=97951
             -- 97963 "Camping 101: Alchemy" https://wowhead.com/forever/quest=97963
-            -- already in QuestieDB; Assumption: the server completes it and 96045, 97899, 97915, 97938, 97951, 97963 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 96045, 97899, 97915, 97938, 97951, 97963 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {96045,97899,97915,97938,97951,97963},
         -- },
         -- [97928] = { -- Camping 101: Blacksmithing https://wowhead.com/forever/quest=97928
@@ -18960,7 +18759,7 @@ function ForeverQuestRelationTraces:Load()
             -- 97939 "Camping 101: Blacksmithing" https://wowhead.com/forever/quest=97939
             -- 97952 "Camping 101: Blacksmithing" https://wowhead.com/forever/quest=97952
             -- 97964 "Camping 101: Blacksmithing" https://wowhead.com/forever/quest=97964
-            -- already in QuestieDB; Assumption: the server completes it and 96044, 97900, 97939, 97952, 97964 together (cooccurrence; very high; 100+ characters); the server completes it and 97916 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 96044, 97900, 97916, 97939, 97952, 97964 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {96044,97900,97916,97939,97952,97964},
         -- },
         -- [97929] = { -- Camping 101: Enchanting https://wowhead.com/forever/quest=97929
@@ -18980,7 +18779,7 @@ function ForeverQuestRelationTraces:Load()
             -- 97953 "Camping 101: Enchanting" https://wowhead.com/forever/quest=97953
             -- 98284 "Camping 101: Enchanting" https://wowhead.com/forever/quest=98284
             -- 98286 "Camping 101: Enchanting" https://wowhead.com/forever/quest=98286
-            -- already in QuestieDB; Assumption: the server completes it and 96059, 97901, 97917, 97940, 97953, 98284, 98286 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 96059, 97901, 97917, 97940, 97953, 98284, 98286 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {96059,97901,97917,97940,97953,98284,98286},
         -- },
         -- [97930] = { -- Camping 101: Engineering https://wowhead.com/forever/quest=97930
@@ -19000,7 +18799,7 @@ function ForeverQuestRelationTraces:Load()
             -- 97954 "Camping 101: Engineering" https://wowhead.com/forever/quest=97954
             -- 98285 "Camping 101: Engineering" https://wowhead.com/forever/quest=98285
             -- 98287 "Camping 101: Engineering" https://wowhead.com/forever/quest=98287
-            -- already in QuestieDB; Assumption: the server completes it and 96058, 97902, 97918, 97941, 97954, 98285, 98287 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 96058, 97902, 97918, 97941, 97954, 98285, 98287 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {96058,97902,97918,97941,97954,98285,98287},
         -- },
         -- [97931] = { -- Camping 101: First Aid https://wowhead.com/forever/quest=97931
@@ -19019,7 +18818,7 @@ function ForeverQuestRelationTraces:Load()
             -- 97942 "Camping 101: First Aid" https://wowhead.com/forever/quest=97942
             -- 97955 "Camping 101: First Aid" https://wowhead.com/forever/quest=97955
             -- 97965 "Camping 101: First Aid" https://wowhead.com/forever/quest=97965
-            -- already in QuestieDB; Assumption: the server completes it and 96047, 97919, 97942 together (cooccurrence; very high; 100+ characters); offer lists show it and 97903 exclude each other (absence, cooccurrence; very high; 100+ characters); offer lists show it and 97955, 97965 exclude each other (absence, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 96047, 97919, 97942 together (cooccurrence; very high; 100+ characters); offer lists show it and 97903, 97955, 97965 exclude each other (absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {96047,97903,97919,97942,97955,97965},
         -- },
         -- [97932] = { -- Camping 101: Fishing https://wowhead.com/forever/quest=97932
@@ -19038,7 +18837,7 @@ function ForeverQuestRelationTraces:Load()
             -- 97943 "Camping 101: Fishing" https://wowhead.com/forever/quest=97943
             -- 97956 "Camping 101: Fishing" https://wowhead.com/forever/quest=97956
             -- 97967 "Camping 101: Fishing" https://wowhead.com/forever/quest=97967
-            -- already in QuestieDB; Assumption: the server completes it and 96050, 97920, 97943, 97956, 97967 together (cooccurrence; very high; 100+ characters); offer lists show it and 97904 exclude each other (absence, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 96050, 97920, 97943, 97956, 97967 together (cooccurrence; very high; 100+ characters); offer lists show it and 97904 exclude each other (absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {96050,97904,97920,97943,97956,97967},
         -- },
         -- [97933] = { -- Camping 101: Herbalism https://wowhead.com/forever/quest=97933
@@ -19076,7 +18875,7 @@ function ForeverQuestRelationTraces:Load()
             -- 97946 "Camping 101: Leatherworking" https://wowhead.com/forever/quest=97946
             -- 97958 "Camping 101: Leatherworking" https://wowhead.com/forever/quest=97958
             -- 97969 "Camping 101: Leatherworking" https://wowhead.com/forever/quest=97969
-            -- already in QuestieDB; Assumption: the server completes it and 96031, 97906, 97922, 97958, 97969 together (cooccurrence; very high; 100+ characters); the server completes it and 97946 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 96031, 97906, 97922, 97946, 97958, 97969 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {96031,97906,97922,97946,97958,97969},
         -- },
         -- [97935] = { -- Camping 101: Mining https://wowhead.com/forever/quest=97935
@@ -19099,15 +18898,12 @@ function ForeverQuestRelationTraces:Load()
             -- [questKeys.exclusiveTo] = {96046,97907,97923,97948,97959,97970},
         -- },
         -- [97936] = { -- Camping 101: Skinning https://wowhead.com/forever/quest=97936
-            -- 95998 "The Great Outdoors" https://wowhead.com/forever/quest=95998
             -- 96101 "The Great Outdoors" https://wowhead.com/forever/quest=96101
             -- 96604 "The Great Outdoors" https://wowhead.com/forever/quest=96604
             -- 96605 "The Great Outdoors" https://wowhead.com/forever/quest=96605
-            -- 96606 "The Great Outdoors" https://wowhead.com/forever/quest=96606
             -- 96607 "The Great Outdoors" https://wowhead.com/forever/quest=96607
-            -- 96608 "The Great Outdoors" https://wowhead.com/forever/quest=96608
-            -- already in QuestieDB; Assumption: everyone who took it had done 95998, 96606, 96608 (cooccurrence; medium; 100+ characters); offered right after 96101 was turned in (handoff, offer-set, cooccurrence; high; 100+ characters); offered right after 96604, 96607 was turned in (handoff, cooccurrence; high; 100+ characters); offered right after 96605 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            -- [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            -- already in QuestieDB; Assumption: offered right after 96101, 96604, 96607 was turned in (handoff, cooccurrence; high; 100+ characters); offered right after 96605 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {96101,96604,96605,96607},
             -- 96056 "Camping 101: Skinning" https://wowhead.com/forever/quest=96056
             -- 97908 "Camping 101: Skinning" https://wowhead.com/forever/quest=97908
             -- 97924 "Camping 101: Skinning" https://wowhead.com/forever/quest=97924
@@ -19153,7 +18949,7 @@ function ForeverQuestRelationTraces:Load()
             -- 97927 "Camping 101: Alchemy" https://wowhead.com/forever/quest=97927
             -- 97951 "Camping 101: Alchemy" https://wowhead.com/forever/quest=97951
             -- 97963 "Camping 101: Alchemy" https://wowhead.com/forever/quest=97963
-            -- already in QuestieDB; Assumption: the server completes it and 96045, 97899, 97915, 97927, 97951, 97963 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 96045, 97899, 97915, 97927, 97951, 97963 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {96045,97899,97915,97927,97951,97963},
         -- },
         -- [97939] = { -- Camping 101: Blacksmithing https://wowhead.com/forever/quest=97939
@@ -19192,7 +18988,7 @@ function ForeverQuestRelationTraces:Load()
             -- 97953 "Camping 101: Enchanting" https://wowhead.com/forever/quest=97953
             -- 98284 "Camping 101: Enchanting" https://wowhead.com/forever/quest=98284
             -- 98286 "Camping 101: Enchanting" https://wowhead.com/forever/quest=98286
-            -- already in QuestieDB; Assumption: offer lists show it and 96059, 97917 exclude each other (absence, cooccurrence; very high; 100+ characters); the server completes it and 97901, 97953, 98286 together (cooccurrence; very high; 100+ characters); the server completes it and 97929, 98284 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: offer lists show it and 96059, 97917 exclude each other (absence, cooccurrence; very high; 100+ characters); the server completes it and 97901, 97929, 97953, 98284, 98286 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {96059,97901,97917,97929,97953,98284,98286},
         -- },
         -- [97941] = { -- Camping 101: Engineering https://wowhead.com/forever/quest=97941
@@ -19212,26 +19008,23 @@ function ForeverQuestRelationTraces:Load()
             -- 97954 "Camping 101: Engineering" https://wowhead.com/forever/quest=97954
             -- 98285 "Camping 101: Engineering" https://wowhead.com/forever/quest=98285
             -- 98287 "Camping 101: Engineering" https://wowhead.com/forever/quest=98287
-            -- already in QuestieDB; Assumption: the server completes it and 96058, 97902, 97930, 97954, 98285, 98287 together (cooccurrence; high; 100+ characters); offer lists show it and 97918 exclude each other (absence, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 96058, 97902, 97930, 97954, 98285, 98287 together (cooccurrence; very high; 100+ characters); offer lists show it and 97918 exclude each other (absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {96058,97902,97918,97930,97954,98285,98287},
         -- },
         -- [97942] = { -- Camping 101: First Aid https://wowhead.com/forever/quest=97942
             -- 95998 "The Great Outdoors" https://wowhead.com/forever/quest=95998
             -- 96101 "The Great Outdoors" https://wowhead.com/forever/quest=96101
-            -- 96604 "The Great Outdoors" https://wowhead.com/forever/quest=96604
-            -- 96605 "The Great Outdoors" https://wowhead.com/forever/quest=96605
             -- 96606 "The Great Outdoors" https://wowhead.com/forever/quest=96606
-            -- 96607 "The Great Outdoors" https://wowhead.com/forever/quest=96607
             -- 96608 "The Great Outdoors" https://wowhead.com/forever/quest=96608
-            -- already in QuestieDB; Assumption: offered right after 95998 was turned in (handoff, cooccurrence; very high; 100+ characters); offered right after 96101, 96606, 96608 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters); everyone who took it had done 96604, 96605, 96607 (cooccurrence; medium; 100+ characters)
-            -- [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            -- already in QuestieDB; Assumption: offered right after 95998, 96101 was turned in (handoff, cooccurrence; very high; 100+ characters); offered right after 96606, 96608 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95998,96101,96606,96608},
             -- 96047 "Camping 101: First Aid" https://wowhead.com/forever/quest=96047
             -- 97903 "Camping 101: First Aid" https://wowhead.com/forever/quest=97903
             -- 97919 "Camping 101: First Aid" https://wowhead.com/forever/quest=97919
             -- 97931 "Camping 101: First Aid" https://wowhead.com/forever/quest=97931
             -- 97955 "Camping 101: First Aid" https://wowhead.com/forever/quest=97955
             -- 97965 "Camping 101: First Aid" https://wowhead.com/forever/quest=97965
-            -- already in QuestieDB; Assumption: offer lists show it and 96047, 97919 exclude each other (absence, cooccurrence; very high; 100+ characters); the server completes it and 97903, 97931, 97955 together (cooccurrence; very high; 100+ characters); offer lists show it and 97965 exclude each other (absence, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: offer lists show it and 96047, 97919, 97965 exclude each other (absence, cooccurrence; very high; 100+ characters); the server completes it and 97903, 97931, 97955 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {96047,97903,97919,97931,97955,97965},
         -- },
         -- [97943] = { -- Camping 101: Fishing https://wowhead.com/forever/quest=97943
@@ -19250,7 +19043,7 @@ function ForeverQuestRelationTraces:Load()
             -- 97932 "Camping 101: Fishing" https://wowhead.com/forever/quest=97932
             -- 97956 "Camping 101: Fishing" https://wowhead.com/forever/quest=97956
             -- 97967 "Camping 101: Fishing" https://wowhead.com/forever/quest=97967
-            -- already in QuestieDB; Assumption: the server completes it and 96050, 97904, 97932, 97956, 97967 together (cooccurrence; very high; 100+ characters); offer lists show it and 97920 exclude each other (absence, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 96050, 97904, 97932, 97956, 97967 together (cooccurrence; very high; 100+ characters); offer lists show it and 97920 exclude each other (absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {96050,97904,97920,97932,97956,97967},
         -- },
         -- [97944] = { -- Camping 101: Herbalism https://wowhead.com/forever/quest=97944
@@ -19258,7 +19051,7 @@ function ForeverQuestRelationTraces:Load()
             -- 96101 "The Great Outdoors" https://wowhead.com/forever/quest=96101
             -- 96606 "The Great Outdoors" https://wowhead.com/forever/quest=96606
             -- 96608 "The Great Outdoors" https://wowhead.com/forever/quest=96608
-            -- already in QuestieDB; Assumption: offered right after 95998 was turned in (handoff, cooccurrence; high; 100+ characters); offered right after 96101, 96606, 96608 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- already in QuestieDB; Assumption: offered right after 95998, 96101 was turned in (handoff, cooccurrence; high; 100+ characters); offered right after 96606, 96608 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {95998,96101,96606,96608},
             -- 96055 "Camping 101: Herbalism" https://wowhead.com/forever/quest=96055
             -- 97905 "Camping 101: Herbalism" https://wowhead.com/forever/quest=97905
@@ -19272,20 +19065,16 @@ function ForeverQuestRelationTraces:Load()
         -- [97946] = { -- Camping 101: Leatherworking https://wowhead.com/forever/quest=97946
             -- 95998 "The Great Outdoors" https://wowhead.com/forever/quest=95998
             -- 96101 "The Great Outdoors" https://wowhead.com/forever/quest=96101
-            -- 96604 "The Great Outdoors" https://wowhead.com/forever/quest=96604
-            -- 96605 "The Great Outdoors" https://wowhead.com/forever/quest=96605
             -- 96606 "The Great Outdoors" https://wowhead.com/forever/quest=96606
-            -- 96607 "The Great Outdoors" https://wowhead.com/forever/quest=96607
-            -- 96608 "The Great Outdoors" https://wowhead.com/forever/quest=96608
-            -- already in QuestieDB; Assumption: offered right after 95998, 96101, 96606, 96608 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters); 96604, 96605, 96607 was done whenever it was offered (offer-set, cooccurrence; medium; 100+ characters)
-            -- [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
+            -- already in QuestieDB; Assumption: offered right after 95998, 96101, 96606 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95998,96101,96606},
             -- 96031 "Camping 101: Leatherworking" https://wowhead.com/forever/quest=96031
             -- 97906 "Camping 101: Leatherworking" https://wowhead.com/forever/quest=97906
             -- 97922 "Camping 101: Leatherworking" https://wowhead.com/forever/quest=97922
             -- 97934 "Camping 101: Leatherworking" https://wowhead.com/forever/quest=97934
             -- 97958 "Camping 101: Leatherworking" https://wowhead.com/forever/quest=97958
             -- 97969 "Camping 101: Leatherworking" https://wowhead.com/forever/quest=97969
-            -- already in QuestieDB; Assumption: the server completes it and 96031, 97906, 97934, 97958, 97969 together (cooccurrence; high; 100+ characters); offer lists show it and 97922 exclude each other (absence, cooccurrence; very high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 96031, 97906, 97934, 97958, 97969 together (cooccurrence; very high; 100+ characters); offer lists show it and 97922 exclude each other (absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {96031,97906,97922,97934,97958,97969},
         -- },
         -- [97948] = { -- Camping 101: Mining https://wowhead.com/forever/quest=97948
@@ -19362,7 +19151,7 @@ function ForeverQuestRelationTraces:Load()
             -- 97927 "Camping 101: Alchemy" https://wowhead.com/forever/quest=97927
             -- 97938 "Camping 101: Alchemy" https://wowhead.com/forever/quest=97938
             -- 97963 "Camping 101: Alchemy" https://wowhead.com/forever/quest=97963
-            -- already in QuestieDB; Assumption: the server completes it and 96045, 97915, 97927, 97938, 97963 together (cooccurrence; high; 100+ characters); offer lists show it and 97899 exclude each other (absence, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 96045, 97915, 97927, 97938, 97963 together (cooccurrence; very high; 100+ characters); offer lists show it and 97899 exclude each other (absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {96045,97899,97915,97927,97938,97963},
         -- },
         -- [97952] = { -- Camping 101: Blacksmithing https://wowhead.com/forever/quest=97952
@@ -19381,7 +19170,7 @@ function ForeverQuestRelationTraces:Load()
             -- 97928 "Camping 101: Blacksmithing" https://wowhead.com/forever/quest=97928
             -- 97939 "Camping 101: Blacksmithing" https://wowhead.com/forever/quest=97939
             -- 97964 "Camping 101: Blacksmithing" https://wowhead.com/forever/quest=97964
-            -- already in QuestieDB; Assumption: the server completes it and 96044, 97928, 97939, 97964 together (cooccurrence; very high; 100+ characters); offer lists show it and 97900 exclude each other (absence, cooccurrence; very high; 100+ characters); the server completes it and 97916 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 96044, 97916, 97928, 97939, 97964 together (cooccurrence; very high; 100+ characters); offer lists show it and 97900 exclude each other (absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {96044,97900,97916,97928,97939,97964},
         -- },
         -- [97953] = { -- Camping 101: Enchanting https://wowhead.com/forever/quest=97953
@@ -19401,7 +19190,7 @@ function ForeverQuestRelationTraces:Load()
             -- 97940 "Camping 101: Enchanting" https://wowhead.com/forever/quest=97940
             -- 98284 "Camping 101: Enchanting" https://wowhead.com/forever/quest=98284
             -- 98286 "Camping 101: Enchanting" https://wowhead.com/forever/quest=98286
-            -- already in QuestieDB; Assumption: the server completes it and 96059, 97917, 97940, 98286 together (cooccurrence; very high; 100+ characters); offer lists show it and 97901 exclude each other (absence, cooccurrence; very high; 100+ characters); the server completes it and 97929, 98284 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 96059, 97917, 97929, 97940, 98284, 98286 together (cooccurrence; very high; 100+ characters); offer lists show it and 97901 exclude each other (absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {96059,97901,97917,97929,97940,98284,98286},
         -- },
         -- [97954] = { -- Camping 101: Engineering https://wowhead.com/forever/quest=97954
@@ -19421,7 +19210,7 @@ function ForeverQuestRelationTraces:Load()
             -- 97941 "Camping 101: Engineering" https://wowhead.com/forever/quest=97941
             -- 98285 "Camping 101: Engineering" https://wowhead.com/forever/quest=98285
             -- 98287 "Camping 101: Engineering" https://wowhead.com/forever/quest=98287
-            -- already in QuestieDB; Assumption: the server completes it and 96058, 97902, 97918, 97930, 97941, 98285, 98287 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 96058, 97902, 97918, 97930, 97941, 98285, 98287 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {96058,97902,97918,97930,97941,98285,98287},
         -- },
         -- [97955] = { -- Camping 101: First Aid https://wowhead.com/forever/quest=97955
@@ -19440,7 +19229,7 @@ function ForeverQuestRelationTraces:Load()
             -- 97931 "Camping 101: First Aid" https://wowhead.com/forever/quest=97931
             -- 97942 "Camping 101: First Aid" https://wowhead.com/forever/quest=97942
             -- 97965 "Camping 101: First Aid" https://wowhead.com/forever/quest=97965
-            -- already in QuestieDB; Assumption: the server completes it and 96047, 97919, 97942, 97965 together (cooccurrence; very high; 100+ characters); offer lists show it and 97903 exclude each other (absence, cooccurrence; very high; 100+ characters); offer lists show it and 97931 exclude each other (absence, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 96047, 97919, 97942, 97965 together (cooccurrence; very high; 100+ characters); offer lists show it and 97903, 97931 exclude each other (absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {96047,97903,97919,97931,97942,97965},
         -- },
         -- [97956] = { -- Camping 101: Fishing https://wowhead.com/forever/quest=97956
@@ -19497,16 +19286,19 @@ function ForeverQuestRelationTraces:Load()
             -- 97934 "Camping 101: Leatherworking" https://wowhead.com/forever/quest=97934
             -- 97946 "Camping 101: Leatherworking" https://wowhead.com/forever/quest=97946
             -- 97969 "Camping 101: Leatherworking" https://wowhead.com/forever/quest=97969
-            -- already in QuestieDB; Assumption: the server completes it and 96031, 97906, 97922, 97934 together (cooccurrence; very high; 100+ characters); the server completes it and 97946 together (cooccurrence; high; 100+ characters); offer lists show it and 97969 exclude each other (absence, cooccurrence; very high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 96031, 97906, 97922, 97934, 97946 together (cooccurrence; very high; 100+ characters); offer lists show it and 97969 exclude each other (absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {96031,97906,97922,97934,97946,97969},
         -- },
         -- [97959] = { -- Camping 101: Mining https://wowhead.com/forever/quest=97959
+            -- 95998 "The Great Outdoors" https://wowhead.com/forever/quest=95998
             -- 96101 "The Great Outdoors" https://wowhead.com/forever/quest=96101
             -- 96604 "The Great Outdoors" https://wowhead.com/forever/quest=96604
             -- 96605 "The Great Outdoors" https://wowhead.com/forever/quest=96605
+            -- 96606 "The Great Outdoors" https://wowhead.com/forever/quest=96606
             -- 96607 "The Great Outdoors" https://wowhead.com/forever/quest=96607
-            -- already in QuestieDB; Assumption: offered right after 96101, 96604, 96605 was turned in (handoff, offer-set, cooccurrence; high; 100+ characters); offered right after 96607 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            -- [questKeys.preQuestSingle] = {96101,96604,96605,96607},
+            -- 96608 "The Great Outdoors" https://wowhead.com/forever/quest=96608
+            -- already in QuestieDB; Assumption: 95998, 96606, 96608 was done whenever it was offered (offer-set, cooccurrence; medium; 100+ characters); offered right after 96101, 96604, 96605 was turned in (handoff, offer-set, cooccurrence; high; 100+ characters); offered right after 96607 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
             -- 96046 "Camping 101: Mining" https://wowhead.com/forever/quest=96046
             -- 97907 "Camping 101: Mining" https://wowhead.com/forever/quest=97907
             -- 97923 "Camping 101: Mining" https://wowhead.com/forever/quest=97923
@@ -19536,12 +19328,15 @@ function ForeverQuestRelationTraces:Load()
             -- [questKeys.exclusiveTo] = {96056,97908,97924,97936,97949,97971},
         -- },
         -- [97961] = { -- Camping 101: Tailoring https://wowhead.com/forever/quest=97961
+            -- 95998 "The Great Outdoors" https://wowhead.com/forever/quest=95998
             -- 96101 "The Great Outdoors" https://wowhead.com/forever/quest=96101
             -- 96604 "The Great Outdoors" https://wowhead.com/forever/quest=96604
             -- 96605 "The Great Outdoors" https://wowhead.com/forever/quest=96605
+            -- 96606 "The Great Outdoors" https://wowhead.com/forever/quest=96606
             -- 96607 "The Great Outdoors" https://wowhead.com/forever/quest=96607
-            -- already in QuestieDB; Assumption: offered right after 96101, 96604, 96605 was turned in (handoff, offer-set, cooccurrence; high; 100+ characters); offered right after 96607 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            -- [questKeys.preQuestSingle] = {96101,96604,96605,96607},
+            -- 96608 "The Great Outdoors" https://wowhead.com/forever/quest=96608
+            -- already in QuestieDB; Assumption: 95998, 96606, 96608 was done whenever it was offered (offer-set, cooccurrence; medium; 100+ characters); offered right after 96101, 96604, 96605 was turned in (handoff, offer-set, cooccurrence; high; 100+ characters); offered right after 96607 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
             -- 96057 "Camping 101: Tailoring" https://wowhead.com/forever/quest=96057
             -- 96102 "Camping 101: Tailoring" https://wowhead.com/forever/quest=96102
             -- 97925 "Camping 101: Tailoring" https://wowhead.com/forever/quest=97925
@@ -19568,7 +19363,7 @@ function ForeverQuestRelationTraces:Load()
             -- 97927 "Camping 101: Alchemy" https://wowhead.com/forever/quest=97927
             -- 97938 "Camping 101: Alchemy" https://wowhead.com/forever/quest=97938
             -- 97951 "Camping 101: Alchemy" https://wowhead.com/forever/quest=97951
-            -- already in QuestieDB; Assumption: the server completes it and 96045, 97899, 97915, 97927, 97938, 97951 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 96045, 97899, 97915, 97927, 97938, 97951 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {96045,97899,97915,97927,97938,97951},
         -- },
         -- [97964] = { -- Camping 101: Blacksmithing https://wowhead.com/forever/quest=97964
@@ -19587,7 +19382,7 @@ function ForeverQuestRelationTraces:Load()
             -- 97928 "Camping 101: Blacksmithing" https://wowhead.com/forever/quest=97928
             -- 97939 "Camping 101: Blacksmithing" https://wowhead.com/forever/quest=97939
             -- 97952 "Camping 101: Blacksmithing" https://wowhead.com/forever/quest=97952
-            -- already in QuestieDB; Assumption: the server completes it and 96044, 97900, 97928, 97939, 97952 together (cooccurrence; very high; 100+ characters); the server completes it and 97916 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 96044, 97900, 97916, 97928, 97939, 97952 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {96044,97900,97916,97928,97939,97952},
         -- },
         -- [97965] = { -- Camping 101: First Aid https://wowhead.com/forever/quest=97965
@@ -19606,7 +19401,7 @@ function ForeverQuestRelationTraces:Load()
             -- 97931 "Camping 101: First Aid" https://wowhead.com/forever/quest=97931
             -- 97942 "Camping 101: First Aid" https://wowhead.com/forever/quest=97942
             -- 97955 "Camping 101: First Aid" https://wowhead.com/forever/quest=97955
-            -- already in QuestieDB; Assumption: offer lists show it and 96047 exclude each other (absence, cooccurrence; very high; 100+ characters); the server completes it and 97903, 97919, 97955 together (cooccurrence; very high; 100+ characters); offer lists show it and 97931, 97942 exclude each other (absence, cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: offer lists show it and 96047, 97931, 97942 exclude each other (absence, cooccurrence; very high; 100+ characters); the server completes it and 97903, 97919, 97955 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {96047,97903,97919,97931,97942,97955},
         -- },
         -- [97967] = { -- Camping 101: Fishing https://wowhead.com/forever/quest=97967
@@ -19625,7 +19420,7 @@ function ForeverQuestRelationTraces:Load()
             -- 97932 "Camping 101: Fishing" https://wowhead.com/forever/quest=97932
             -- 97943 "Camping 101: Fishing" https://wowhead.com/forever/quest=97943
             -- 97956 "Camping 101: Fishing" https://wowhead.com/forever/quest=97956
-            -- already in QuestieDB; Assumption: offer lists show it and 96050, 97920 exclude each other (absence, cooccurrence; high; 100+ characters); offer lists show it and 97904 exclude each other (absence, cooccurrence; very high; 100+ characters); the server completes it and 97932, 97943, 97956 together (cooccurrence; very high; 100+ characters)
+            -- already in QuestieDB; Assumption: offer lists show it and 96050, 97904, 97920 exclude each other (absence, cooccurrence; very high; 100+ characters); the server completes it and 97932, 97943, 97956 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {96050,97904,97920,97932,97943,97956},
         -- },
         -- [97968] = { -- Camping 101: Herbalism https://wowhead.com/forever/quest=97968
@@ -19663,7 +19458,7 @@ function ForeverQuestRelationTraces:Load()
             -- 97934 "Camping 101: Leatherworking" https://wowhead.com/forever/quest=97934
             -- 97946 "Camping 101: Leatherworking" https://wowhead.com/forever/quest=97946
             -- 97958 "Camping 101: Leatherworking" https://wowhead.com/forever/quest=97958
-            -- already in QuestieDB; Assumption: the server completes it and 96031, 97906, 97922, 97934 together (cooccurrence; very high; 100+ characters); the server completes it and 97946 together (cooccurrence; high; 100+ characters); offer lists show it and 97958 exclude each other (absence, cooccurrence; very high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 96031, 97906, 97922, 97934, 97946 together (cooccurrence; very high; 100+ characters); offer lists show it and 97958 exclude each other (absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {96031,97906,97922,97934,97946,97958},
         -- },
         -- [97970] = { -- Camping 101: Mining https://wowhead.com/forever/quest=97970
@@ -19754,26 +19549,21 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: 456 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
             -- [questKeys.preQuestSingle] = {456},
         -- },
-        [97986] = { -- Argent Arbiter https://wowhead.com/forever/quest=97986
-            -- 8152 https://wowhead.com/forever/quest=8152
-            -- Assumption: offered right after 8152 was turned in (handoff, offer-set, absence, cooccurrence; high; 10+ characters)
-            [questKeys.preQuestSingle] = {8152},
-        },
-        [97987] = { -- Stormwind's High Order https://wowhead.com/forever/quest=97987
+        -- [97986] = { -- Argent Arbiter https://wowhead.com/forever/quest=97986
+            -- 8152 "Rapid Escape" https://wowhead.com/forever/quest=8152
+            -- already in QuestieDB; Assumption: offered right after 8152 was turned in (handoff, offer-set, absence, cooccurrence; high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {8152},
+        -- },
+        -- [97987] = { -- Stormwind's High Order https://wowhead.com/forever/quest=97987
             -- 98109 "Bleeding Edge" https://wowhead.com/forever/quest=98109
-            -- Assumption: offered right after 98109 was turned in (handoff, offer-set, cooccurrence; high; <10 characters)
-            [questKeys.preQuestSingle] = {98109},
-        },
-        [97988] = { -- Orgrimmar's Windshapers https://wowhead.com/forever/quest=97988
-            -- 98109 "Bleeding Edge" https://wowhead.com/forever/quest=98109
-            -- Assumption: offered right after 98109 was turned in (handoff, offer-set, cooccurrence; medium; <10 characters)
-            [questKeys.preQuestSingle] = {98109},
-        },
-        [98013] = { -- Swelling Forces https://wowhead.com/forever/quest=98013
+            -- already in QuestieDB; Assumption: offered right after 98109 was turned in (handoff, offer-set, cooccurrence; very high; <10 characters)
+            -- [questKeys.preQuestSingle] = {98109},
+        -- },
+        -- [98013] = { -- Swelling Forces https://wowhead.com/forever/quest=98013
             -- 950 "Return to Onu" https://wowhead.com/forever/quest=950
-            -- Assumption: offered right after 950 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {950},
-        },
+            -- already in QuestieDB; Assumption: offered right after 950 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {950},
+        -- },
         -- [98021] = { -- Journey to Sentinel Hill https://wowhead.com/forever/quest=98021
             -- 94947 "Welcome to Azeroth" https://wowhead.com/forever/quest=94947
             -- already in QuestieDB; Assumption: offered right after 94947 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
@@ -19784,11 +19574,11 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 95350 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {95350},
         -- },
-        [98042] = { -- It's All Fun and Games Until... https://wowhead.com/forever/quest=98042
+        -- [98042] = { -- It's All Fun and Games Until... https://wowhead.com/forever/quest=98042
             -- 949 "The Twilight Camp" https://wowhead.com/forever/quest=949
-            -- Assumption: 949 was done whenever it was offered (offer-set, absence, cooccurrence; high; 100+ characters)
-            [questKeys.preQuestSingle] = {949},
-        },
+            -- already in QuestieDB; Assumption: 949 was done whenever it was offered (offer-set, absence, cooccurrence; high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {949},
+        -- },
         -- [98046] = { -- Crown of the Earth https://wowhead.com/forever/quest=98046
             -- 935 "Crown of the Earth" https://wowhead.com/forever/quest=935
             -- already in QuestieDB; Assumption: offered right after 935 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
@@ -19802,48 +19592,48 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 98046 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {98046},
         -- },
-        [98072] = { -- Crocs of the Sky https://wowhead.com/forever/quest=98072
+        -- [98072] = { -- Crocs of the Sky https://wowhead.com/forever/quest=98072
             -- 471 "Apprentice's Duties" https://wowhead.com/forever/quest=471
-            -- Assumption: offered right after 471 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {471},
+            -- already in QuestieDB; Assumption: offered right after 471 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {471},
             -- 98240 "Crimson Crate Delivery" https://wowhead.com/forever/quest=98240
-            -- Assumption: turning it in led straight to 98240 (handoff; medium; 100+ characters)
-            [questKeys.nextQuestInChain] = 98240,
-        },
-        [98094] = { -- Scout Support https://wowhead.com/forever/quest=98094
+            -- already in QuestieDB; Assumption: turning it in led straight to 98240 (handoff; medium; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 98240,
+        -- },
+        -- [98094] = { -- Scout Support https://wowhead.com/forever/quest=98094
             -- 528 "Battle of Hillsbrad" https://wowhead.com/forever/quest=528
-            -- Assumption: offered right after 528 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {528},
+            -- already in QuestieDB; Assumption: offered right after 528 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {528},
             -- 98095 "Valuable Vantages" https://wowhead.com/forever/quest=98095
-            -- Assumption: turning it in led straight to 98095 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 98095,
-        },
-        [98095] = { -- Valuable Vantages https://wowhead.com/forever/quest=98095
+            -- already in QuestieDB; Assumption: turning it in led straight to 98095 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 98095,
+        -- },
+        -- [98095] = { -- Valuable Vantages https://wowhead.com/forever/quest=98095
             -- 98094 "Scout Support" https://wowhead.com/forever/quest=98094
-            -- Assumption: offered right after 98094 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {98094},
-        },
-        [98096] = { -- Sisters In Duty https://wowhead.com/forever/quest=98096
+            -- already in QuestieDB; Assumption: offered right after 98094 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {98094},
+        -- },
+        -- [98096] = { -- Sisters In Duty https://wowhead.com/forever/quest=98096
             -- 98067 "Eyes of the Sentinels" https://wowhead.com/forever/quest=98067
-            -- Assumption: offered right after 98067 was turned in (handoff, offer-set, cooccurrence; high; 10+ characters)
-            [questKeys.preQuestSingle] = {98067},
-        },
-        [98109] = { -- Bleeding Edge https://wowhead.com/forever/quest=98109
+            -- already in QuestieDB; Assumption: offered right after 98067 was turned in (handoff, offer-set, cooccurrence; high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {98067},
+        -- },
+        -- [98109] = { -- Bleeding Edge https://wowhead.com/forever/quest=98109
             -- 97986 "Argent Arbiter" https://wowhead.com/forever/quest=97986
-            -- Assumption: offered right after 97986 was turned in (handoff, offer-set, absence, cooccurrence; high; <10 characters)
-            [questKeys.preQuestSingle] = {97986},
-        },
-        [98155] = { -- Pristine Pesterhide Pelts https://wowhead.com/forever/quest=98155
+            -- already in QuestieDB; Assumption: offered right after 97986 was turned in (handoff, offer-set, absence, cooccurrence; high; <10 characters)
+            -- [questKeys.preQuestSingle] = {97986},
+        -- },
+        -- [98155] = { -- Pristine Pesterhide Pelts https://wowhead.com/forever/quest=98155
             -- 98156 "Packaged Pristine Pelts" https://wowhead.com/forever/quest=98156
-            -- Assumption: turning it in led straight to 98156 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 98156,
-        },
-        [98156] = { -- Packaged Pristine Pelts https://wowhead.com/forever/quest=98156
+            -- already in QuestieDB; Assumption: turning it in led straight to 98156 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 98156,
+        -- },
+        -- [98156] = { -- Packaged Pristine Pelts https://wowhead.com/forever/quest=98156
             -- 98155 "Pristine Pesterhide Pelts" https://wowhead.com/forever/quest=98155
-            -- Assumption: offered right after 98155 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {98155},
-        },
-        [98166] = { -- Your First Horse https://wowhead.com/forever/quest=98166
+            -- already in QuestieDB; Assumption: offered right after 98155 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {98155},
+        -- },
+        -- [98166] = { -- Your First Horse https://wowhead.com/forever/quest=98166
             -- 95511 "Your First Feline Friend" https://wowhead.com/forever/quest=95511
             -- 96982 "Your First Riding Kodo" https://wowhead.com/forever/quest=96982
             -- 96989 "Your First Riding Raptor" https://wowhead.com/forever/quest=96989
@@ -19856,9 +19646,9 @@ function ForeverQuestRelationTraces:Load()
             -- 97171 "Your First Horse" https://wowhead.com/forever/quest=97171
             -- 97446 "Your First Riding Kodo" https://wowhead.com/forever/quest=97446
             -- 99326 "Your First Horse" https://wowhead.com/forever/quest=99326
-            -- Assumption: the server completes it and 95511, 96982, 96989, 96994, 96996, 96997, 97017, 97045, 97046, 97171, 97446, 99326 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {95511,96982,96989,96994,96996,96997,97017,97045,97046,97171,97446,99326},
-        },
+            -- already in QuestieDB; Assumption: the server completes it and 95511, 96982, 96989, 96994, 96996, 96997, 97017, 97045, 97046, 97171, 97446, 99326 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {95511,96982,96989,96994,96996,96997,97017,97045,97046,97171,97446,99326},
+        -- },
         -- [98189] = { -- Return the Statuette https://wowhead.com/forever/quest=98189
             -- 286 "Return the Statuette" https://wowhead.com/forever/quest=286
             -- already in QuestieDB; Assumption: offered right after 286 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
@@ -19880,29 +19670,29 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 98190 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {98190},
         -- },
-        [98208] = { -- Bloom of the Heavens https://wowhead.com/forever/quest=98208
+        -- [98208] = { -- Bloom of the Heavens https://wowhead.com/forever/quest=98208
             -- 98209 "Bloom of the Heavens" https://wowhead.com/forever/quest=98209
-            -- Assumption: turning it in led straight to 98209 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 98209,
-        },
-        [98209] = { -- Bloom of the Heavens https://wowhead.com/forever/quest=98209
+            -- already in QuestieDB; Assumption: turning it in led straight to 98209 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 98209,
+        -- },
+        -- [98209] = { -- Bloom of the Heavens https://wowhead.com/forever/quest=98209
             -- 98208 "Bloom of the Heavens" https://wowhead.com/forever/quest=98208
-            -- Assumption: offered right after 98208 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {98208},
-        },
-        [98216] = { -- Understanding Our Present https://wowhead.com/forever/quest=98216
+            -- already in QuestieDB; Assumption: offered right after 98208 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {98208},
+        -- },
+        -- [98216] = { -- Understanding Our Present https://wowhead.com/forever/quest=98216
             -- 299 "Uncovering the Past" https://wowhead.com/forever/quest=299
-            -- Assumption: offered right after 299 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {299},
+            -- already in QuestieDB; Assumption: offered right after 299 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {299},
             -- 98310 "Gleaning Our Future" https://wowhead.com/forever/quest=98310
-            -- Assumption: turning it in led straight to 98310 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 98310,
-        },
-        [98219] = { -- The Shamed Lieutenant https://wowhead.com/forever/quest=98219
+            -- already in QuestieDB; Assumption: turning it in led straight to 98310 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 98310,
+        -- },
+        -- [98219] = { -- The Shamed Lieutenant https://wowhead.com/forever/quest=98219
             -- 98191 "A Friend of the Family" https://wowhead.com/forever/quest=98191
-            -- Assumption: offered right after 98191 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {98191},
-        },
+            -- already in QuestieDB; Assumption: offered right after 98191 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {98191},
+        -- },
         -- [98221] = { -- From the Ashes https://wowhead.com/forever/quest=98221
             -- 465 "Nek'rosh's Gambit" https://wowhead.com/forever/quest=465
             -- not applied: 465 needs this quest together with 464 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 465 (handoff; high; 100+ characters)
@@ -19913,50 +19703,50 @@ function ForeverQuestRelationTraces:Load()
             -- not applied: 98230 needs this quest together with 474 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 98230 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 98230,
         -- },
-        [98230] = { -- This Land Was Their Land https://wowhead.com/forever/quest=98230
+        -- [98230] = { -- This Land Was Their Land https://wowhead.com/forever/quest=98230
             -- 474 "Defeat Nek'rosh" https://wowhead.com/forever/quest=474
             -- 98223 "Old Habits" https://wowhead.com/forever/quest=98223
-            -- Assumption: offered right after 474, 98223 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestGroup] = {474,98223},
-        },
-        [98240] = { -- Crimson Crate Delivery https://wowhead.com/forever/quest=98240
+            -- already in QuestieDB; Assumption: offered right after 474, 98223 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestGroup] = {474,98223},
+        -- },
+        -- [98240] = { -- Crimson Crate Delivery https://wowhead.com/forever/quest=98240
             -- 98072 "Crocs of the Sky" https://wowhead.com/forever/quest=98072
-            -- Assumption: offered right after 98072 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {98072},
+            -- already in QuestieDB; Assumption: offered right after 98072 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {98072},
             -- 98245 "Razormaw Needling" https://wowhead.com/forever/quest=98245
-            -- Assumption: turning it in led straight to 98245 (handoff, absence; medium; 100+ characters)
-            [questKeys.nextQuestInChain] = 98245,
-        },
+            -- already in QuestieDB; Assumption: turning it in led straight to 98245 (handoff, absence; medium; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 98245,
+        -- },
         -- [98246] = { -- Trying Times https://wowhead.com/forever/quest=98246
             -- 98291 "Death to the Dragonmaw" https://wowhead.com/forever/quest=98291
             -- not applied: 98291 needs this quest together with 98245 (preQuestGroup), and chains only lead into a single or OR prerequisite; Assumption: turning it in led straight to 98291 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 98291,
         -- },
-        [98247] = { -- Shipping Label https://wowhead.com/forever/quest=98247
+        -- [98247] = { -- Shipping Label https://wowhead.com/forever/quest=98247
             -- 98248 "Shipping Label" https://wowhead.com/forever/quest=98248
-            -- Assumption: the server completes it and 98248 together (cooccurrence; very high; 100+ characters)
-            [questKeys.exclusiveTo] = {98248},
-        },
-        [98248] = { -- Shipping Label https://wowhead.com/forever/quest=98248
+            -- already in QuestieDB; Assumption: the server completes it and 98248 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {98248},
+        -- },
+        -- [98248] = { -- Shipping Label https://wowhead.com/forever/quest=98248
             -- 98247 "Shipping Label" https://wowhead.com/forever/quest=98247
-            -- Assumption: the server completes it and 98247 together (cooccurrence; very high; 100+ characters)
-            [questKeys.exclusiveTo] = {98247},
-        },
-        [98251] = { -- Never Coming Back https://wowhead.com/forever/quest=98251
+            -- already in QuestieDB; Assumption: the server completes it and 98247 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {98247},
+        -- },
+        -- [98251] = { -- Never Coming Back https://wowhead.com/forever/quest=98251
             -- 98252 "A Void Path" https://wowhead.com/forever/quest=98252
-            -- Assumption: turning it in led straight to 98252 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 98252,
-        },
-        [98252] = { -- A Void Path https://wowhead.com/forever/quest=98252
+            -- already in QuestieDB; Assumption: turning it in led straight to 98252 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 98252,
+        -- },
+        -- [98252] = { -- A Void Path https://wowhead.com/forever/quest=98252
             -- 98251 "Never Coming Back" https://wowhead.com/forever/quest=98251
-            -- Assumption: offered right after 98251 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {98251},
-        },
-        [98283] = { -- Carnage https://wowhead.com/forever/quest=98283
+            -- already in QuestieDB; Assumption: offered right after 98251 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {98251},
+        -- },
+        -- [98283] = { -- Carnage https://wowhead.com/forever/quest=98283
             -- 275 "Blisters on The Land" https://wowhead.com/forever/quest=275
-            -- Assumption: offered right after 275 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {275},
-        },
+            -- already in QuestieDB; Assumption: offered right after 275 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {275},
+        -- },
         -- [98284] = { -- Camping 101: Enchanting https://wowhead.com/forever/quest=98284
             -- 95998 "The Great Outdoors" https://wowhead.com/forever/quest=95998
             -- 96101 "The Great Outdoors" https://wowhead.com/forever/quest=96101
@@ -19965,7 +19755,7 @@ function ForeverQuestRelationTraces:Load()
             -- 96606 "The Great Outdoors" https://wowhead.com/forever/quest=96606
             -- 96607 "The Great Outdoors" https://wowhead.com/forever/quest=96607
             -- 96608 "The Great Outdoors" https://wowhead.com/forever/quest=96608
-            -- already in QuestieDB; Assumption: 95998, 96606, 96608 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters); offered right after 96101, 96604, 96605, 96607 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- already in QuestieDB; Assumption: 95998, 96606, 96608 was done whenever it was offered (offer-set, cooccurrence; very high; 100+ characters); offered right after 96101, 96604, 96605, 96607 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {95998,96101,96604,96605,96606,96607,96608},
             -- 96059 "Camping 101: Enchanting" https://wowhead.com/forever/quest=96059
             -- 97901 "Camping 101: Enchanting" https://wowhead.com/forever/quest=97901
@@ -19974,17 +19764,16 @@ function ForeverQuestRelationTraces:Load()
             -- 97940 "Camping 101: Enchanting" https://wowhead.com/forever/quest=97940
             -- 97953 "Camping 101: Enchanting" https://wowhead.com/forever/quest=97953
             -- 98286 "Camping 101: Enchanting" https://wowhead.com/forever/quest=98286
-            -- already in QuestieDB; Assumption: the server completes it and 96059, 97901, 97917, 97929, 97940, 97953, 98286 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 96059, 97901, 97917, 97929, 97940, 97953, 98286 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {96059,97901,97917,97929,97940,97953,98286},
         -- },
         -- [98285] = { -- Camping 101: Engineering https://wowhead.com/forever/quest=98285
-            -- 95998 "The Great Outdoors" https://wowhead.com/forever/quest=95998
             -- 96101 "The Great Outdoors" https://wowhead.com/forever/quest=96101
             -- 96604 "The Great Outdoors" https://wowhead.com/forever/quest=96604
             -- 96605 "The Great Outdoors" https://wowhead.com/forever/quest=96605
             -- 96607 "The Great Outdoors" https://wowhead.com/forever/quest=96607
-            -- already in QuestieDB; Assumption: offered right after 95998, 96101, 96604, 96605, 96607 was turned in (handoff, cooccurrence; high; 100+ characters)
-            -- [questKeys.preQuestSingle] = {95998,96101,96604,96605,96607},
+            -- already in QuestieDB; Assumption: offered right after 96101, 96604, 96605, 96607 was turned in (handoff, cooccurrence; high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {96101,96604,96605,96607},
             -- 96058 "Camping 101: Engineering" https://wowhead.com/forever/quest=96058
             -- 97902 "Camping 101: Engineering" https://wowhead.com/forever/quest=97902
             -- 97918 "Camping 101: Engineering" https://wowhead.com/forever/quest=97918
@@ -19992,7 +19781,7 @@ function ForeverQuestRelationTraces:Load()
             -- 97941 "Camping 101: Engineering" https://wowhead.com/forever/quest=97941
             -- 97954 "Camping 101: Engineering" https://wowhead.com/forever/quest=97954
             -- 98287 "Camping 101: Engineering" https://wowhead.com/forever/quest=98287
-            -- already in QuestieDB; Assumption: the server completes it and 96058, 97902, 97918, 97930, 97941, 97954, 98287 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 96058, 97902, 97918, 97930, 97941, 97954, 98287 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {96058,97902,97918,97930,97941,97954,98287},
         -- },
         -- [98286] = { -- Camping 101: Enchanting https://wowhead.com/forever/quest=98286
@@ -20012,7 +19801,7 @@ function ForeverQuestRelationTraces:Load()
             -- 97940 "Camping 101: Enchanting" https://wowhead.com/forever/quest=97940
             -- 97953 "Camping 101: Enchanting" https://wowhead.com/forever/quest=97953
             -- 98284 "Camping 101: Enchanting" https://wowhead.com/forever/quest=98284
-            -- already in QuestieDB; Assumption: the server completes it and 96059, 97901, 97917, 97940, 97953 together (cooccurrence; very high; 100+ characters); the server completes it and 97929, 98284 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 96059, 97901, 97917, 97929, 97940, 97953, 98284 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {96059,97901,97917,97929,97940,97953,98284},
         -- },
         -- [98287] = { -- Camping 101: Engineering https://wowhead.com/forever/quest=98287
@@ -20032,57 +19821,54 @@ function ForeverQuestRelationTraces:Load()
             -- 97941 "Camping 101: Engineering" https://wowhead.com/forever/quest=97941
             -- 97954 "Camping 101: Engineering" https://wowhead.com/forever/quest=97954
             -- 98285 "Camping 101: Engineering" https://wowhead.com/forever/quest=98285
-            -- already in QuestieDB; Assumption: the server completes it and 96058, 97902, 97918, 97930, 97941, 97954, 98285 together (cooccurrence; high; 100+ characters)
+            -- already in QuestieDB; Assumption: the server completes it and 96058, 97902, 97918, 97930, 97941, 97954, 98285 together (cooccurrence; very high; 100+ characters)
             -- [questKeys.exclusiveTo] = {96058,97902,97918,97930,97941,97954,98285},
         -- },
-        [98291] = { -- Death to the Dragonmaw https://wowhead.com/forever/quest=98291
+        -- [98291] = { -- Death to the Dragonmaw https://wowhead.com/forever/quest=98291
             -- 98245 "Razormaw Needling" https://wowhead.com/forever/quest=98245
             -- 98246 "Trying Times" https://wowhead.com/forever/quest=98246
-            -- Assumption: offered right after 98245, 98246 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestGroup] = {98245,98246},
+            -- already in QuestieDB; Assumption: offered right after 98245, 98246 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestGroup] = {98245,98246},
             -- 98297 "Stopping the Cycle" https://wowhead.com/forever/quest=98297
-            -- Assumption: turning it in led straight to 98297 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 98297,
-        },
-        [98297] = { -- Stopping the Cycle https://wowhead.com/forever/quest=98297
+            -- already in QuestieDB; Assumption: turning it in led straight to 98297 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 98297,
+        -- },
+        -- [98297] = { -- Stopping the Cycle https://wowhead.com/forever/quest=98297
             -- 98291 "Death to the Dragonmaw" https://wowhead.com/forever/quest=98291
-            -- Assumption: offered right after 98291 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {98291},
+            -- already in QuestieDB; Assumption: offered right after 98291 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {98291},
             -- 98300 "Word to Ironforge" https://wowhead.com/forever/quest=98300
-            -- Assumption: turning it in led straight to 98300 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 98300,
-        },
+            -- already in QuestieDB; Assumption: turning it in led straight to 98300 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 98300,
+        -- },
         -- [98298] = { -- Arugal's Folly https://wowhead.com/forever/quest=98298
             -- 99 "Arugal's Folly" https://wowhead.com/forever/quest=99
             -- already in QuestieDB; Assumption: offered right after 99 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {99},
-            -- 98299 "Stop the Spread" https://wowhead.com/forever/quest=98299
-            -- not applied: handoff saw it contradicted more often than supported; Assumption: turning it in led straight to 98299 (handoff; medium; <10 characters)
-            -- [questKeys.nextQuestInChain] = 98299,
         -- },
         -- [98299] = { -- Stop the Spread https://wowhead.com/forever/quest=98299
             -- 99 "Arugal's Folly" https://wowhead.com/forever/quest=99
             -- already in QuestieDB; Assumption: offered right after 99 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {99},
         -- },
-        [98300] = { -- Word to Ironforge https://wowhead.com/forever/quest=98300
+        -- [98300] = { -- Word to Ironforge https://wowhead.com/forever/quest=98300
             -- 98297 "Stopping the Cycle" https://wowhead.com/forever/quest=98297
-            -- Assumption: offered right after 98297 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {98297},
-        },
-        [98310] = { -- Gleaning Our Future https://wowhead.com/forever/quest=98310
+            -- already in QuestieDB; Assumption: offered right after 98297 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {98297},
+        -- },
+        -- [98310] = { -- Gleaning Our Future https://wowhead.com/forever/quest=98310
             -- 98216 "Understanding Our Present" https://wowhead.com/forever/quest=98216
-            -- Assumption: offered right after 98216 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {98216},
+            -- already in QuestieDB; Assumption: offered right after 98216 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {98216},
             -- 98313 "For Further Study" https://wowhead.com/forever/quest=98313
-            -- Assumption: turning it in led straight to 98313 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 98313,
-        },
-        [98313] = { -- For Further Study https://wowhead.com/forever/quest=98313
+            -- already in QuestieDB; Assumption: turning it in led straight to 98313 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 98313,
+        -- },
+        -- [98313] = { -- For Further Study https://wowhead.com/forever/quest=98313
             -- 98310 "Gleaning Our Future" https://wowhead.com/forever/quest=98310
-            -- Assumption: offered right after 98310 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {98310},
-        },
+            -- already in QuestieDB; Assumption: offered right after 98310 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {98310},
+        -- },
         -- [98319] = { -- Secure the Mountain https://wowhead.com/forever/quest=98319
             -- 98322 "Secure the Mountain" https://wowhead.com/forever/quest=98322
             -- already in QuestieDB; Assumption: offered right after 98322 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
@@ -20104,57 +19890,56 @@ function ForeverQuestRelationTraces:Load()
             -- not applied: handoff saw it contradicted more often than supported; Assumption: turning it in led straight to 291 (handoff; medium; 100+ characters)
             -- [questKeys.nextQuestInChain] = 291,
         -- },
-        [98338] = { -- REUSE ME https://wowhead.com/forever/quest=98338
+        -- [98338] = { -- REUSE ME https://wowhead.com/forever/quest=98338
             -- 79360 "Elemental Aid" https://wowhead.com/forever/quest=79360
-            -- Assumption: everyone who took it had done 79360 (cooccurrence; medium; 100+ characters)
-            [questKeys.preQuestSingle] = {79360},
+            -- already in QuestieDB; Assumption: everyone who took it had done 79360 (cooccurrence; medium; 100+ characters)
+            -- [questKeys.preQuestSingle] = {79360},
             -- 79364 "Eyes on the Sky" https://wowhead.com/forever/quest=79364
-            -- Assumption: the server completes it and 79364 together (cooccurrence; medium; 100+ characters)
-            [questKeys.exclusiveTo] = {79364},
-        },
-        [98340] = { -- The Great Cat Spirit https://wowhead.com/forever/quest=98340
+            -- already in QuestieDB; Assumption: the server completes it and 79364 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {79364},
+        -- },
+        -- [98340] = { -- The Great Cat Spirit https://wowhead.com/forever/quest=98340
             -- 98393 "The Great Cat Spirit" https://wowhead.com/forever/quest=98393
-            -- Assumption: the server completes it and 98393 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {98393},
+            -- already in QuestieDB; Assumption: the server completes it and 98393 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {98393},
             -- 98341 "The Great Windborne Cat Spirit" https://wowhead.com/forever/quest=98341
-            -- Assumption: turning it in led straight to 98341 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 98341,
-        },
-        [98341] = { -- The Great Windborne Cat Spirit https://wowhead.com/forever/quest=98341
+            -- already in QuestieDB; Assumption: turning it in led straight to 98341 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 98341,
+        -- },
+        -- [98341] = { -- The Great Windborne Cat Spirit https://wowhead.com/forever/quest=98341
             -- 98340 "The Great Cat Spirit" https://wowhead.com/forever/quest=98340
             -- 98393 "The Great Cat Spirit" https://wowhead.com/forever/quest=98393
-            -- Assumption: offered right after 98340, 98393 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {98340,98393},
+            -- already in QuestieDB; Assumption: offered right after 98340 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters); offered right after 98393 was turned in (handoff, offer-set, absence, cooccurrence; high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {98340,98393},
             -- 98394 "The Great Cat Spirit" https://wowhead.com/forever/quest=98394
             -- 98405 "The Great Cat Spirit" https://wowhead.com/forever/quest=98405
-            -- Assumption: the server completes it and 98394, 98405 together (cooccurrence; very high; 100+ characters)
-            [questKeys.exclusiveTo] = {98394,98405},
+            -- already in QuestieDB; Assumption: the server completes it and 98394, 98405 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {98394,98405},
             -- 98404 "The Great Windborne Cat Spirit" https://wowhead.com/forever/quest=98404
-            -- Assumption: turning it in led straight to 98404 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 98404,
-        },
-        [98342] = { -- The Great Cat Spirit https://wowhead.com/forever/quest=98342
+            -- already in QuestieDB; Assumption: turning it in led straight to 98404 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 98404,
+        -- },
+        -- [98342] = { -- The Great Cat Spirit https://wowhead.com/forever/quest=98342
             -- 98405 "The Great Cat Spirit" https://wowhead.com/forever/quest=98405
-            -- Assumption: offered right after 98405 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {98405},
+            -- already in QuestieDB; Assumption: offered right after 98405 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {98405},
             -- 98396 "The Great Cat Spirit" https://wowhead.com/forever/quest=98396
             -- 98404 "The Great Windborne Cat Spirit" https://wowhead.com/forever/quest=98404
-            -- Assumption: the server completes it and 98396, 98404 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {98396,98404},
+            -- already in QuestieDB; Assumption: the server completes it and 98396, 98404 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {98396,98404},
             -- 98739 "Blessings of the Great Cat Spirit" https://wowhead.com/forever/quest=98739
-            -- Assumption: turning it in led straight to 98739 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 98739,
-        },
-        [98362] = { -- To Thunder Bluff https://wowhead.com/forever/quest=98362
-            -- 98731 "Blessings of the Great Cat Spirit" https://wowhead.com/forever/quest=98731
+            -- already in QuestieDB; Assumption: turning it in led straight to 98739 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 98739,
+        -- },
+        -- [98362] = { -- To Thunder Bluff https://wowhead.com/forever/quest=98362
             -- 98738 "Blessings of the Great Windborne Cat Spirit" https://wowhead.com/forever/quest=98738
             -- 98739 "Blessings of the Great Cat Spirit" https://wowhead.com/forever/quest=98739
-            -- Assumption: left off complete offer lists until 98731 was done (absence, cooccurrence; medium; 100+ characters); offered right after 98738, 98739 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {98731,98738,98739},
+            -- already in QuestieDB; Assumption: offered right after 98738, 98739 was turned in (handoff, offer-set, absence, cooccurrence; high; 100+ characters)
+            -- [questKeys.preQuestGroup] = {98738,98739},
             -- 98397 "To Darnassus" https://wowhead.com/forever/quest=98397
-            -- Assumption: the server completes it and 98397 together (cooccurrence; very high; 100+ characters)
-            [questKeys.exclusiveTo] = {98397},
-        },
+            -- already in QuestieDB; Assumption: the server completes it and 98397 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {98397},
+        -- },
         -- [98386] = { -- Alther's Mill https://wowhead.com/forever/quest=98386
             -- 89 "The Everstill Bridge" https://wowhead.com/forever/quest=89
             -- already in QuestieDB; Assumption: offered right after 89 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
@@ -20172,7 +19957,7 @@ function ForeverQuestRelationTraces:Load()
         -- },
         -- [98391] = { -- The Sisterhood of Elune https://wowhead.com/forever/quest=98391
             -- 2519 "The Temple of the Moon" https://wowhead.com/forever/quest=2519
-            -- already in QuestieDB; Assumption: turning it in led straight to 2519 (handoff, absence; medium; 100+ characters)
+            -- already in QuestieDB; Assumption: turning it in led straight to 2519 (handoff, absence; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 2519,
         -- },
         -- [98392] = { -- Darkness in the Glade https://wowhead.com/forever/quest=98392
@@ -20183,49 +19968,47 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: turning it in led straight to 98398 (handoff; high; 100+ characters)
             -- [questKeys.nextQuestInChain] = 98398,
         -- },
-        [98393] = { -- The Great Cat Spirit https://wowhead.com/forever/quest=98393
+        -- [98393] = { -- The Great Cat Spirit https://wowhead.com/forever/quest=98393
             -- 98340 "The Great Cat Spirit" https://wowhead.com/forever/quest=98340
-            -- Assumption: the server completes it and 98340 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {98340},
+            -- already in QuestieDB; Assumption: the server completes it and 98340 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {98340},
             -- 98394 "The Great Cat Spirit" https://wowhead.com/forever/quest=98394
-            -- Assumption: turning it in led straight to 98394 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 98394,
-        },
-        [98394] = { -- The Great Cat Spirit https://wowhead.com/forever/quest=98394
-            -- 98340 "The Great Cat Spirit" https://wowhead.com/forever/quest=98340
+            -- already in QuestieDB; Assumption: turning it in led straight to 98394 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 98394,
+        -- },
+        -- [98394] = { -- The Great Cat Spirit https://wowhead.com/forever/quest=98394
             -- 98393 "The Great Cat Spirit" https://wowhead.com/forever/quest=98393
-            -- Assumption: left off complete offer lists until 98340 was done (absence, cooccurrence; medium; 100+ characters); offered right after 98393 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {98340,98393},
+            -- already in QuestieDB; Assumption: offered right after 98393 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {98393},
             -- 98341 "The Great Windborne Cat Spirit" https://wowhead.com/forever/quest=98341
             -- 98405 "The Great Cat Spirit" https://wowhead.com/forever/quest=98405
-            -- Assumption: the server completes it and 98341, 98405 together (cooccurrence; very high; 100+ characters)
-            [questKeys.exclusiveTo] = {98341,98405},
+            -- already in QuestieDB; Assumption: the server completes it and 98341, 98405 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {98341,98405},
             -- 98396 "The Great Cat Spirit" https://wowhead.com/forever/quest=98396
-            -- Assumption: turning it in led straight to 98396 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 98396,
-        },
-        [98396] = { -- The Great Cat Spirit https://wowhead.com/forever/quest=98396
+            -- already in QuestieDB; Assumption: turning it in led straight to 98396 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 98396,
+        -- },
+        -- [98396] = { -- The Great Cat Spirit https://wowhead.com/forever/quest=98396
             -- 98394 "The Great Cat Spirit" https://wowhead.com/forever/quest=98394
-            -- Assumption: offered right after 98394 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {98394},
+            -- already in QuestieDB; Assumption: offered right after 98394 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {98394},
             -- 98342 "The Great Cat Spirit" https://wowhead.com/forever/quest=98342
             -- 98404 "The Great Windborne Cat Spirit" https://wowhead.com/forever/quest=98404
-            -- Assumption: the server completes it and 98342, 98404 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {98342,98404},
+            -- already in QuestieDB; Assumption: the server completes it and 98342, 98404 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {98342,98404},
             -- 98731 "Blessings of the Great Cat Spirit" https://wowhead.com/forever/quest=98731
-            -- Assumption: turning it in led straight to 98731 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 98731,
-        },
-        [98397] = { -- To Darnassus https://wowhead.com/forever/quest=98397
+            -- already in QuestieDB; Assumption: turning it in led straight to 98731 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 98731,
+        -- },
+        -- [98397] = { -- To Darnassus https://wowhead.com/forever/quest=98397
             -- 98731 "Blessings of the Great Cat Spirit" https://wowhead.com/forever/quest=98731
             -- 98738 "Blessings of the Great Windborne Cat Spirit" https://wowhead.com/forever/quest=98738
-            -- 98739 "Blessings of the Great Cat Spirit" https://wowhead.com/forever/quest=98739
-            -- Assumption: offered right after 98731, 98738 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters); left off complete offer lists until 98739 was done (absence, cooccurrence; medium; 100+ characters)
-            [questKeys.preQuestSingle] = {98731,98738,98739},
+            -- already in QuestieDB; Assumption: offered right after 98731, 98738 was turned in (handoff, offer-set, absence, cooccurrence; high; 100+ characters)
+            -- [questKeys.preQuestGroup] = {98731,98738},
             -- 98362 "To Thunder Bluff" https://wowhead.com/forever/quest=98362
-            -- Assumption: the server completes it and 98362 together (cooccurrence; very high; 100+ characters)
-            [questKeys.exclusiveTo] = {98362},
-        },
+            -- already in QuestieDB; Assumption: the server completes it and 98362 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {98362},
+        -- },
         -- [98398] = { -- The Oracle Tree https://wowhead.com/forever/quest=98398
             -- 98392 "Darkness in the Glade" https://wowhead.com/forever/quest=98392
             -- already in QuestieDB; Assumption: offered right after 98392 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
@@ -20239,46 +20022,46 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 932 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {932},
         -- },
-        [98404] = { -- The Great Windborne Cat Spirit https://wowhead.com/forever/quest=98404
+        -- [98404] = { -- The Great Windborne Cat Spirit https://wowhead.com/forever/quest=98404
             -- 98341 "The Great Windborne Cat Spirit" https://wowhead.com/forever/quest=98341
-            -- Assumption: offered right after 98341 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {98341},
+            -- already in QuestieDB; Assumption: offered right after 98341 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {98341},
             -- 98342 "The Great Cat Spirit" https://wowhead.com/forever/quest=98342
             -- 98396 "The Great Cat Spirit" https://wowhead.com/forever/quest=98396
-            -- Assumption: the server completes it and 98342, 98396 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {98342,98396},
+            -- already in QuestieDB; Assumption: the server completes it and 98342, 98396 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {98342,98396},
             -- 98738 "Blessings of the Great Windborne Cat Spirit" https://wowhead.com/forever/quest=98738
-            -- Assumption: turning it in led straight to 98738 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 98738,
-        },
-        [98405] = { -- The Great Cat Spirit https://wowhead.com/forever/quest=98405
+            -- already in QuestieDB; Assumption: turning it in led straight to 98738 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 98738,
+        -- },
+        -- [98405] = { -- The Great Cat Spirit https://wowhead.com/forever/quest=98405
             -- 98340 "The Great Cat Spirit" https://wowhead.com/forever/quest=98340
             -- 98393 "The Great Cat Spirit" https://wowhead.com/forever/quest=98393
-            -- Assumption: offered right after 98340 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters); 98393 was done whenever it was offered (offer-set, absence, cooccurrence; high; 100+ characters)
-            [questKeys.preQuestSingle] = {98340,98393},
+            -- already in QuestieDB; Assumption: offered right after 98340 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters); 98393 was done whenever it was offered (offer-set, absence, cooccurrence; medium; 100+ characters)
+            -- [questKeys.preQuestSingle] = {98340,98393},
             -- 98341 "The Great Windborne Cat Spirit" https://wowhead.com/forever/quest=98341
             -- 98394 "The Great Cat Spirit" https://wowhead.com/forever/quest=98394
-            -- Assumption: the server completes it and 98341, 98394 together (cooccurrence; very high; 100+ characters)
-            [questKeys.exclusiveTo] = {98341,98394},
+            -- already in QuestieDB; Assumption: the server completes it and 98341, 98394 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {98341,98394},
             -- 98342 "The Great Cat Spirit" https://wowhead.com/forever/quest=98342
-            -- Assumption: turning it in led straight to 98342 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 98342,
-        },
-        [98407] = { -- Show of Force https://wowhead.com/forever/quest=98407
+            -- already in QuestieDB; Assumption: turning it in led straight to 98342 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 98342,
+        -- },
+        -- [98407] = { -- Show of Force https://wowhead.com/forever/quest=98407
             -- 244 "Encroaching Gnolls" https://wowhead.com/forever/quest=244
-            -- Assumption: 244 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
-            [questKeys.preQuestSingle] = {244},
-        },
-        [98417] = { -- Vengeful Trail https://wowhead.com/forever/quest=98417
+            -- already in QuestieDB; Assumption: 244 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {244},
+        -- },
+        -- [98417] = { -- Vengeful Trail https://wowhead.com/forever/quest=98417
             -- 98418 "Shared Fury" https://wowhead.com/forever/quest=98418
-            -- Assumption: turning it in led straight to 98418 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 98418,
-        },
-        [98418] = { -- Shared Fury https://wowhead.com/forever/quest=98418
+            -- already in QuestieDB; Assumption: turning it in led straight to 98418 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 98418,
+        -- },
+        -- [98418] = { -- Shared Fury https://wowhead.com/forever/quest=98418
             -- 98417 "Vengeful Trail" https://wowhead.com/forever/quest=98417
-            -- Assumption: offered right after 98417 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {98417},
-        },
+            -- already in QuestieDB; Assumption: offered right after 98417 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {98417},
+        -- },
         -- [98424] = { -- Fizsprocket's Notes https://wowhead.com/forever/quest=98424
             -- 98427 "Ceasing Operations" https://wowhead.com/forever/quest=98427
             -- already in QuestieDB; Assumption: turning it in led straight to 98427 (handoff; high; 100+ characters)
@@ -20294,21 +20077,21 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 760 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {760},
         -- },
-        [98461] = { -- Unrequited Love https://wowhead.com/forever/quest=98461
+        -- [98461] = { -- Unrequited Love https://wowhead.com/forever/quest=98461
             -- 305 "In Search of The Excavation Team" https://wowhead.com/forever/quest=305
-            -- Assumption: turning it in led straight to 305 (handoff, absence; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 305,
-        },
-        [98462] = { -- Shroud of the Winter Wilds https://wowhead.com/forever/quest=98462
+            -- already in QuestieDB; Assumption: turning it in led straight to 305 (handoff, absence; very high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 305,
+        -- },
+        -- [98462] = { -- Shroud of the Winter Wilds https://wowhead.com/forever/quest=98462
             -- 92859 "Shroud of the Winter Wilds" https://wowhead.com/forever/quest=92859
-            -- Assumption: offered right after 92859 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {92859},
-        },
-        [98476] = { -- More Unstable Magic https://wowhead.com/forever/quest=98476
+            -- already in QuestieDB; Assumption: offered right after 92859 was turned in (handoff, offer-set, absence, cooccurrence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {92859},
+        -- },
+        -- [98476] = { -- More Unstable Magic https://wowhead.com/forever/quest=98476
             -- 98477 "Unstable Magic" https://wowhead.com/forever/quest=98477
-            -- Assumption: offered right after 98477 was turned in (handoff, offer-set, absence; very high; 10+ characters)
-            [questKeys.preQuestSingle] = {98477},
-        },
+            -- already in QuestieDB; Assumption: offered right after 98477 was turned in (handoff, offer-set, absence; very high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {98477},
+        -- },
         -- [98545] = { -- Leonid's Letter https://wowhead.com/forever/quest=98545
             -- 96896 "A Righteous Cause" https://wowhead.com/forever/quest=96896
             -- already in QuestieDB; Assumption: offered right after 96896 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
@@ -20339,90 +20122,136 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 364 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {364},
         -- },
-        [98731] = { -- Blessings of the Great Cat Spirit https://wowhead.com/forever/quest=98731
+        -- [98731] = { -- Blessings of the Great Cat Spirit https://wowhead.com/forever/quest=98731
             -- 98396 "The Great Cat Spirit" https://wowhead.com/forever/quest=98396
-            -- Assumption: offered right after 98396 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {98396},
+            -- already in QuestieDB; Assumption: offered right after 98396 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {98396},
             -- 98738 "Blessings of the Great Windborne Cat Spirit" https://wowhead.com/forever/quest=98738
             -- 98739 "Blessings of the Great Cat Spirit" https://wowhead.com/forever/quest=98739
-            -- Assumption: the server completes it and 98738, 98739 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {98738,98739},
+            -- already in QuestieDB; Assumption: the server completes it and 98738, 98739 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {98738,98739},
             -- 98397 "To Darnassus" https://wowhead.com/forever/quest=98397
-            -- Assumption: turning it in led straight to 98397 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 98397,
-        },
-        [98738] = { -- Blessings of the Great Windborne Cat Spirit https://wowhead.com/forever/quest=98738
+            -- already in QuestieDB; Assumption: turning it in led straight to 98397 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 98397,
+        -- },
+        -- [98738] = { -- Blessings of the Great Windborne Cat Spirit https://wowhead.com/forever/quest=98738
             -- 98404 "The Great Windborne Cat Spirit" https://wowhead.com/forever/quest=98404
-            -- Assumption: offered right after 98404 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {98404},
+            -- already in QuestieDB; Assumption: offered right after 98404 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {98404},
             -- 98731 "Blessings of the Great Cat Spirit" https://wowhead.com/forever/quest=98731
             -- 98739 "Blessings of the Great Cat Spirit" https://wowhead.com/forever/quest=98739
-            -- Assumption: the server completes it and 98731, 98739 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {98731,98739},
-        },
-        [98739] = { -- Blessings of the Great Cat Spirit https://wowhead.com/forever/quest=98739
+            -- already in QuestieDB; Assumption: the server completes it and 98731, 98739 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {98731,98739},
+        -- },
+        -- [98739] = { -- Blessings of the Great Cat Spirit https://wowhead.com/forever/quest=98739
             -- 98342 "The Great Cat Spirit" https://wowhead.com/forever/quest=98342
-            -- Assumption: offered right after 98342 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {98342},
+            -- already in QuestieDB; Assumption: offered right after 98342 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {98342},
             -- 98731 "Blessings of the Great Cat Spirit" https://wowhead.com/forever/quest=98731
             -- 98738 "Blessings of the Great Windborne Cat Spirit" https://wowhead.com/forever/quest=98738
-            -- Assumption: the server completes it and 98731, 98738 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {98731,98738},
+            -- already in QuestieDB; Assumption: the server completes it and 98731, 98738 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {98731,98738},
             -- 98362 "To Thunder Bluff" https://wowhead.com/forever/quest=98362
-            -- Assumption: turning it in led straight to 98362 (handoff; high; 100+ characters)
-            [questKeys.nextQuestInChain] = 98362,
-        },
-        [98815] = { -- Highland Hides https://wowhead.com/forever/quest=98815
+            -- already in QuestieDB; Assumption: turning it in led straight to 98362 (handoff; high; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 98362,
+        -- },
+        -- [98815] = { -- Highland Hides https://wowhead.com/forever/quest=98815
             -- 484 "Young Crocolisk Skins" https://wowhead.com/forever/quest=484
-            -- Assumption: 484 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
-            [questKeys.preQuestSingle] = {484},
-        },
-        [98823] = { -- Earthen Echo https://wowhead.com/forever/quest=98823
+            -- already in QuestieDB; Assumption: 484 was done whenever it was offered (offer-set, cooccurrence; high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {484},
+        -- },
+        -- [98823] = { -- Earthen Echo https://wowhead.com/forever/quest=98823
             -- 95664 "Elder Knowledge" https://wowhead.com/forever/quest=95664
-            -- Assumption: offered right after 95664 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95664},
-        },
-        [98824] = { -- Prehistoric Prism https://wowhead.com/forever/quest=98824
+            -- already in QuestieDB; Assumption: offered right after 95664 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95664},
+        -- },
+        -- [98824] = { -- Prehistoric Prism https://wowhead.com/forever/quest=98824
             -- 95810 "Lost Relic Carry" https://wowhead.com/forever/quest=95810
-            -- Assumption: offered right after 95810 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {95810},
-        },
-        [98887] = { -- Conflict at Darkspear Islands https://wowhead.com/forever/quest=98887
+            -- already in QuestieDB; Assumption: offered right after 95810 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {95810},
+        -- },
+        -- [98887] = { -- Conflict at Darkspear Islands https://wowhead.com/forever/quest=98887
             -- 98889 "Conflict at Darkspear Islands" https://wowhead.com/forever/quest=98889
-            -- Assumption: offer lists show it and 98889 exclude each other (absence, cooccurrence; medium; 10+ characters)
-            [questKeys.exclusiveTo] = {98889},
-        },
-        [98888] = { -- Conflict at Darkspear Islands https://wowhead.com/forever/quest=98888
+            -- 98891 "Conflict at Darkspear Islands" https://wowhead.com/forever/quest=98891
+            -- 98893 "Conflict at Darkspear Islands" https://wowhead.com/forever/quest=98893
+            -- already in QuestieDB; Assumption: offer lists show it and 98889 exclude each other (absence, cooccurrence; high; 10+ characters); the server completes it and 98891, 98893 together (cooccurrence; medium; 10+ characters)
+            -- [questKeys.exclusiveTo] = {98889,98891,98893},
+        -- },
+        -- [98888] = { -- Conflict at Darkspear Islands https://wowhead.com/forever/quest=98888
             -- 98887 "Conflict at Darkspear Islands" https://wowhead.com/forever/quest=98887
             -- 98889 "Conflict at Darkspear Islands" https://wowhead.com/forever/quest=98889
             -- 98891 "Conflict at Darkspear Islands" https://wowhead.com/forever/quest=98891
             -- 98893 "Conflict at Darkspear Islands" https://wowhead.com/forever/quest=98893
-            -- Assumption: offered right after 98887 was turned in (handoff, offer-set, absence; very high; 100+ characters); 98889, 98891, 98893 was done whenever it was offered (offer-set, absence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {98887,98889,98891,98893},
-        },
-        [98889] = { -- Conflict at Darkspear Islands https://wowhead.com/forever/quest=98889
+            -- already in QuestieDB; Assumption: 98887, 98889, 98891, 98893 was done whenever it was offered (offer-set; high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {98887,98889,98891,98893},
+        -- },
+        -- [98889] = { -- Conflict at Darkspear Islands https://wowhead.com/forever/quest=98889
             -- 98887 "Conflict at Darkspear Islands" https://wowhead.com/forever/quest=98887
-            -- Assumption: offer lists show it and 98887 exclude each other (absence, cooccurrence; medium; 10+ characters)
-            [questKeys.exclusiveTo] = {98887},
-        },
-        [98890] = { -- Conflict at Darkspear Islands https://wowhead.com/forever/quest=98890
+            -- 98891 "Conflict at Darkspear Islands" https://wowhead.com/forever/quest=98891
+            -- 98893 "Conflict at Darkspear Islands" https://wowhead.com/forever/quest=98893
+            -- already in QuestieDB; Assumption: offer lists show it and 98887 exclude each other (absence, cooccurrence; high; 10+ characters); the server completes it and 98891, 98893 together (cooccurrence; medium; 10+ characters)
+            -- [questKeys.exclusiveTo] = {98887,98891,98893},
+        -- },
+        -- [98890] = { -- Conflict at Darkspear Islands https://wowhead.com/forever/quest=98890
             -- 8368 "Battle of Warsong Gulch" https://wowhead.com/forever/quest=8368
             -- 8426 "Battle of Warsong Gulch" https://wowhead.com/forever/quest=8426
             -- 8427 "Battle of Warsong Gulch" https://wowhead.com/forever/quest=8427
             -- 8428 "Battle of Warsong Gulch" https://wowhead.com/forever/quest=8428
             -- 8429 "Battle of Warsong Gulch" https://wowhead.com/forever/quest=8429
             -- 8430 "Battle of Warsong Gulch" https://wowhead.com/forever/quest=8430
-            -- Assumption: 8368, 8426, 8427, 8428, 8429, 8430 was done whenever it was offered (offer-set; high; <10 characters)
-            [questKeys.preQuestSingle] = {8368,8426,8427,8428,8429,8430},
-        },
-        [98896] = { -- Darkspear Islands Clash https://wowhead.com/forever/quest=98896
+            -- not applied: an authored fix sets the prerequisites; Assumption: 8368, 8426, 8427, 8428, 8429, 8430 was done whenever it was offered (offer-set; high; <10 characters)
+            -- [questKeys.preQuestSingle] = {8368,8426,8427,8428,8429,8430},
+        -- },
+        -- [98891] = { -- Conflict at Darkspear Islands https://wowhead.com/forever/quest=98891
+            -- 98887 "Conflict at Darkspear Islands" https://wowhead.com/forever/quest=98887
+            -- 98889 "Conflict at Darkspear Islands" https://wowhead.com/forever/quest=98889
+            -- 98893 "Conflict at Darkspear Islands" https://wowhead.com/forever/quest=98893
+            -- already in QuestieDB; Assumption: the server completes it and 98887, 98889, 98893 together (cooccurrence; medium; 10+ characters)
+            -- [questKeys.exclusiveTo] = {98887,98889,98893},
+        -- },
+        -- [98893] = { -- Conflict at Darkspear Islands https://wowhead.com/forever/quest=98893
+            -- 98887 "Conflict at Darkspear Islands" https://wowhead.com/forever/quest=98887
+            -- 98889 "Conflict at Darkspear Islands" https://wowhead.com/forever/quest=98889
+            -- 98891 "Conflict at Darkspear Islands" https://wowhead.com/forever/quest=98891
+            -- already in QuestieDB; Assumption: the server completes it and 98887, 98889, 98891 together (cooccurrence; medium; 10+ characters)
+            -- [questKeys.exclusiveTo] = {98887,98889,98891},
+        -- },
+        -- [98895] = { -- Darkspear Islands Clash https://wowhead.com/forever/quest=98895
+            -- 98897 "Darkspear Islands Clash" https://wowhead.com/forever/quest=98897
+            -- 98899 "Darkspear Islands Clash" https://wowhead.com/forever/quest=98899
+            -- 98901 "Darkspear Islands Clash" https://wowhead.com/forever/quest=98901
+            -- already in QuestieDB; Assumption: the server completes it and 98897, 98899 together (cooccurrence; low; 10+ characters), kept below the min score for its accepted exclusive group; the server completes it and 98901 together (cooccurrence; medium; 10+ characters)
+            -- [questKeys.exclusiveTo] = {98897,98899,98901},
+        -- },
+        -- [98896] = { -- Darkspear Islands Clash https://wowhead.com/forever/quest=98896
             -- 98895 "Darkspear Islands Clash" https://wowhead.com/forever/quest=98895
             -- 98897 "Darkspear Islands Clash" https://wowhead.com/forever/quest=98897
             -- 98899 "Darkspear Islands Clash" https://wowhead.com/forever/quest=98899
             -- 98901 "Darkspear Islands Clash" https://wowhead.com/forever/quest=98901
-            -- Assumption: offered right after 98895 was turned in (handoff, offer-set, absence; very high; 10+ characters); 98897, 98899, 98901 was done whenever it was offered (offer-set, absence; high; 10+ characters)
-            [questKeys.preQuestSingle] = {98895,98897,98899,98901},
-        },
+            -- already in QuestieDB; Assumption: 98895, 98897, 98899, 98901 was done whenever it was offered (offer-set; high; <10 characters)
+            -- [questKeys.preQuestSingle] = {98895,98897,98899,98901},
+        -- },
+        -- [98897] = { -- Darkspear Islands Clash https://wowhead.com/forever/quest=98897
+            -- 98895 "Darkspear Islands Clash" https://wowhead.com/forever/quest=98895
+            -- 98899 "Darkspear Islands Clash" https://wowhead.com/forever/quest=98899
+            -- 98901 "Darkspear Islands Clash" https://wowhead.com/forever/quest=98901
+            -- already in QuestieDB; Assumption: the server completes it and 98895, 98899 together (cooccurrence; low; 10+ characters), kept below the min score for its accepted exclusive group; the server completes it and 98901 together (cooccurrence; medium; 10+ characters)
+            -- [questKeys.exclusiveTo] = {98895,98899,98901},
+        -- },
+        -- [98899] = { -- Darkspear Islands Clash https://wowhead.com/forever/quest=98899
+            -- 98895 "Darkspear Islands Clash" https://wowhead.com/forever/quest=98895
+            -- 98897 "Darkspear Islands Clash" https://wowhead.com/forever/quest=98897
+            -- 98901 "Darkspear Islands Clash" https://wowhead.com/forever/quest=98901
+            -- already in QuestieDB; Assumption: the server completes it and 98895, 98897 together (cooccurrence; low; 10+ characters), kept below the min score for its accepted exclusive group; the server completes it and 98901 together (cooccurrence; medium; 10+ characters)
+            -- [questKeys.exclusiveTo] = {98895,98897,98901},
+        -- },
+        -- [98901] = { -- Darkspear Islands Clash https://wowhead.com/forever/quest=98901
+            -- 98895 "Darkspear Islands Clash" https://wowhead.com/forever/quest=98895
+            -- 98897 "Darkspear Islands Clash" https://wowhead.com/forever/quest=98897
+            -- 98899 "Darkspear Islands Clash" https://wowhead.com/forever/quest=98899
+            -- already in QuestieDB; Assumption: the server completes it and 98895, 98897, 98899 together (cooccurrence; medium; 10+ characters)
+            -- [questKeys.exclusiveTo] = {98895,98897,98899},
+        -- },
         -- [99047] = { -- Not Dead Yet https://wowhead.com/forever/quest=99047
             -- 99050 "The Great Tree Provides" https://wowhead.com/forever/quest=99050
             -- already in QuestieDB; Assumption: turning it in led straight to 99050 (handoff; high; 100+ characters)
@@ -20558,25 +20387,25 @@ function ForeverQuestRelationTraces:Load()
             -- already in QuestieDB; Assumption: offered right after 99160 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {99160},
         -- },
-        [99257] = { -- A Heart of Crystal https://wowhead.com/forever/quest=99257
+        -- [99257] = { -- A Heart of Crystal https://wowhead.com/forever/quest=99257
             -- 93394 "Meeting the Magister" https://wowhead.com/forever/quest=93394
-            -- Assumption: offered right after 93394 was turned in (handoff, offer-set, absence, cooccurrence; high; 100+ characters)
-            [questKeys.preQuestSingle] = {93394},
+            -- already in QuestieDB; Assumption: offered right after 93394 was turned in (handoff, offer-set, absence, cooccurrence; high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {93394},
             -- 99258 "Mana Mania" https://wowhead.com/forever/quest=99258
-            -- Assumption: turning it in led straight to 99258 (handoff; medium; 100+ characters)
-            [questKeys.nextQuestInChain] = 99258,
-        },
-        [99258] = { -- Mana Mania https://wowhead.com/forever/quest=99258
+            -- already in QuestieDB; Assumption: turning it in led straight to 99258 (handoff; medium; 100+ characters)
+            -- [questKeys.nextQuestInChain] = 99258,
+        -- },
+        -- [99258] = { -- Mana Mania https://wowhead.com/forever/quest=99258
             -- 99257 "A Heart of Crystal" https://wowhead.com/forever/quest=99257
-            -- Assumption: offered right after 99257 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
-            [questKeys.preQuestSingle] = {99257},
-        },
+            -- already in QuestieDB; Assumption: offered right after 99257 was turned in (handoff, offer-set, absence, cooccurrence; very high; 100+ characters)
+            -- [questKeys.preQuestSingle] = {99257},
+        -- },
         -- [99260] = { -- Fillion's Mission https://wowhead.com/forever/quest=99260
             -- 92850 "The Missing Scholar" https://wowhead.com/forever/quest=92850
             -- already in QuestieDB; Assumption: offered right after 92850 was turned in (handoff, offer-set, cooccurrence; very high; 100+ characters)
             -- [questKeys.preQuestSingle] = {92850},
         -- },
-        [99326] = { -- Your First Horse https://wowhead.com/forever/quest=99326
+        -- [99326] = { -- Your First Horse https://wowhead.com/forever/quest=99326
             -- 95511 "Your First Feline Friend" https://wowhead.com/forever/quest=95511
             -- 96982 "Your First Riding Kodo" https://wowhead.com/forever/quest=96982
             -- 96989 "Your First Riding Raptor" https://wowhead.com/forever/quest=96989
@@ -20589,16 +20418,13 @@ function ForeverQuestRelationTraces:Load()
             -- 97171 "Your First Horse" https://wowhead.com/forever/quest=97171
             -- 97446 "Your First Riding Kodo" https://wowhead.com/forever/quest=97446
             -- 98166 "Your First Horse" https://wowhead.com/forever/quest=98166
-            -- Assumption: the server completes it and 95511, 96982, 96989, 96994, 96996, 96997, 97017, 97045, 97046, 97171, 97446, 98166 together (cooccurrence; high; 100+ characters)
-            [questKeys.exclusiveTo] = {95511,96982,96989,96994,96996,96997,97017,97045,97046,97171,97446,98166},
-        },
-        [99435] = { -- The Great Masquerade https://wowhead.com/forever/quest=99435
+            -- already in QuestieDB; Assumption: the server completes it and 95511, 96982, 96989, 96994, 96996, 96997, 97017, 97045, 97046, 97171, 97446, 98166 together (cooccurrence; very high; 100+ characters)
+            -- [questKeys.exclusiveTo] = {95511,96982,96989,96994,96996,96997,97017,97045,97046,97171,97446,98166},
+        -- },
+        -- [99435] = { -- The Great Masquerade https://wowhead.com/forever/quest=99435
             -- 6402 "Stormwind Rendezvous" https://wowhead.com/forever/quest=6402
-            -- Assumption: offered right after 6402 was turned in (handoff, offer-set, absence, cooccurrence; high; 10+ characters)
-            [questKeys.preQuestSingle] = {6402},
-            -- 6403 "The Great Masquerade" https://wowhead.com/forever/quest=6403
-            -- Assumption: offer lists show it and 6403 exclude each other (absence, cooccurrence; medium; 10+ characters)
-            [questKeys.exclusiveTo] = {6403},
-        },
+            -- already in QuestieDB; Assumption: offered right after 6402 was turned in (handoff, offer-set, absence, cooccurrence; high; 10+ characters)
+            -- [questKeys.preQuestSingle] = {6402},
+        -- },
     }
 end
