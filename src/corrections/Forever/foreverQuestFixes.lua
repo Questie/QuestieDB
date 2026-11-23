@@ -1057,24 +1057,6 @@ function ForeverQuestFixes:Load()
             [questKeys.objectivesText] = {"You will need to hand in 25 books to complete this quest, however you can hand 1 in at any time."},
             [questKeys.preQuestSingle] = {79536},
         },
-        [82656] = { -- Wild Leather Vest (Horde)
-            [questKeys.zoneOrSort] = sortKeys.LEATHERWORKING,
-            [questKeys.requiredSkill] = {profKeys.LEATHERWORKING,225}, -- SoD value, need to find out Forever value
-        },
-        [82657] = { -- Wild Leather Vest (Alliance)
-            [questKeys.zoneOrSort] = sortKeys.LEATHERWORKING,
-            [questKeys.requiredSkill] = {profKeys.LEATHERWORKING,225}, -- SoD value, need to find out Forever value
-        },
-        [82662] = { -- The Way of the Weaponsmith (Alliance)
-            [questKeys.zoneOrSort] = sortKeys.BLACKSMITHING,
-            [questKeys.requiredSkill] = {profKeys.BLACKSMITHING,200}, -- SoD value, need to find out Forever value
-            [questKeys.requiredSpecialization] = specKeys.BLACKSMITHING,
-        },
-        [82665] = { -- The Way of the Weaponsmith (Horde)
-            [questKeys.zoneOrSort] = sortKeys.BLACKSMITHING,
-            [questKeys.requiredSkill] = {profKeys.BLACKSMITHING,200}, -- SoD value, need to find out Forever value
-            [questKeys.requiredSpecialization] = specKeys.BLACKSMITHING,
-        },
         [84135] = {
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
