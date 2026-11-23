@@ -2469,7 +2469,10 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {96978},
         },
         [93644] = { -- Tattered Journal
-            [questKeys.requiredRaces] = raceIDs.NONE, -- wowhead
+            [questKeys.startedBy] = {nil,nil,{260347}},
+            [questKeys.requiredLevel] = 35,
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.zoneOrSort] = zoneIDs.SHEN_DRALAS,
         },
         [93678] = { -- Abridged Notes on Draenethyst
             [questKeys.preQuestSingle] = {93465},
