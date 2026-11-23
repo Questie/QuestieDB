@@ -2499,6 +2499,7 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {95350},
             [questKeys.objectives] = {{{3230,nil,Questie.ICON_TYPE_TALK},{10540,nil,Questie.ICON_TYPE_TALK},{3057,nil,Questie.ICON_TYPE_TALK},{10181,nil,Questie.ICON_TYPE_TALK}}},
             [questKeys.requiredSourceItems] = {285357},
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_HORDE,
         },
         [93740] = { -- Blood for Blood
             [questKeys.preQuestSingle] = {93746},
