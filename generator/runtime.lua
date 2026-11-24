@@ -37,6 +37,7 @@ function runtime.build()
     "src/meta/itemMeta.lua",
     "src/meta/objectMeta.lua",
     "src/corrections/tablePatch.lua",
+    "src/corrections/conditionBuilder.lua",
     "src/corrections/registry.lua",
   }
   for _, path in ipairs(files) do
