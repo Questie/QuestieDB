@@ -23,6 +23,7 @@ QuestieCorrections.killCreditObjectiveFirst[10503] = true -- The Bladespire Thre
 
 function QuestieTBCQuestFixes:Load()
     local questKeys = QuestieDB.questKeys
+    local eventKeys = QuestieDB.eventKeys
     local raceIDs = QuestieDB.raceKeys
     local classIDs = QuestieDB.classKeys
     local factionIDs = QuestieDB.factionIDs
@@ -7103,6 +7104,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.breadcrumbs] = {12318},
         },
         [12133] = { -- Smash the Pumpkin
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Smash the Pumpkin",
             [questKeys.startedBy] = {nil,{186887}},
             [questKeys.finishedBy] = {{24519}},
@@ -7116,6 +7118,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.questFlags] = 4224,
         },
         [12135] = { -- "Let the Fires Come!"
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "\"Let the Fires Come!\"",
             [questKeys.startedBy] = {{24519}},
             [questKeys.finishedBy] = {{24519}},
@@ -7132,6 +7135,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.exclusiveTo] = {11131},
         },
         [12139] = { -- "Let the Fires Come!"
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "\"Let the Fires Come!\"",
             [questKeys.startedBy] = {{23973}},
             [questKeys.finishedBy] = {{23973}},
@@ -7148,6 +7152,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.exclusiveTo] = {11219},
         },
         [12155] = { -- Smash the Pumpkin
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Smash the Pumpkin",
             [questKeys.startedBy] = {nil,{186887}},
             [questKeys.finishedBy] = {{23973}},
@@ -7181,6 +7186,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.preQuestSingle] = {11409},
         },
         [12286] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{189303}},
             [questKeys.finishedBy] = {nil,{189303}},
@@ -7196,6 +7202,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.breadcrumbForQuestId] = 12062,
         },
         [12331] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190034}},
             [questKeys.finishedBy] = {nil,{190034}},
@@ -7205,6 +7212,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12332] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190036}},
             [questKeys.finishedBy] = {nil,{190036}},
@@ -7214,6 +7222,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12333] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190037}},
             [questKeys.finishedBy] = {nil,{190037}},
@@ -7223,6 +7232,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12334] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190038}},
             [questKeys.finishedBy] = {nil,{190038}},
@@ -7232,6 +7242,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12335] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190039}},
             [questKeys.finishedBy] = {nil,{190039}},
@@ -7241,6 +7252,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12336] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190040}},
             [questKeys.finishedBy] = {nil,{190040}},
@@ -7250,6 +7262,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12337] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190041}},
             [questKeys.finishedBy] = {nil,{190041}},
@@ -7259,6 +7272,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12338] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190042}},
             [questKeys.finishedBy] = {nil,{190042}},
@@ -7268,6 +7282,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12339] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190043}},
             [questKeys.finishedBy] = {nil,{190043}},
@@ -7277,6 +7292,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12340] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190047}},
             [questKeys.finishedBy] = {nil,{190047}},
@@ -7286,6 +7302,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12341] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190045}},
             [questKeys.finishedBy] = {nil,{190045}},
@@ -7295,6 +7312,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12342] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190046}},
             [questKeys.finishedBy] = {nil,{190046}},
@@ -7304,6 +7322,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12343] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190044}},
             [questKeys.finishedBy] = {nil,{190044}},
@@ -7313,6 +7332,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12344] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190048}},
             [questKeys.finishedBy] = {nil,{190048}},
@@ -7322,6 +7342,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12345] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190035}},
             [questKeys.finishedBy] = {nil,{190035}},
@@ -7331,6 +7352,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12346] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190049}},
             [questKeys.finishedBy] = {nil,{190049}},
@@ -7340,6 +7362,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12347] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190050}},
             [questKeys.finishedBy] = {nil,{190050}},
@@ -7349,6 +7372,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12348] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190051}},
             [questKeys.finishedBy] = {nil,{190051}},
@@ -7358,6 +7382,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12349] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190052}},
             [questKeys.finishedBy] = {nil,{190052}},
@@ -7367,6 +7392,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12350] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190053}},
             [questKeys.finishedBy] = {nil,{190053}},
@@ -7376,6 +7402,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12351] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190054}},
             [questKeys.finishedBy] = {nil,{190054}},
@@ -7385,6 +7412,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12352] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190055}},
             [questKeys.finishedBy] = {nil,{190055}},
@@ -7394,6 +7422,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12353] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190056}},
             [questKeys.finishedBy] = {nil,{190056}},
@@ -7403,6 +7432,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12354] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190057}},
             [questKeys.finishedBy] = {nil,{190057}},
@@ -7412,6 +7442,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12355] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190058}},
             [questKeys.finishedBy] = {nil,{190058}},
@@ -7421,6 +7452,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12356] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190059}},
             [questKeys.finishedBy] = {nil,{190059}},
@@ -7430,6 +7462,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12357] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190060}},
             [questKeys.finishedBy] = {nil,{190060}},
@@ -7439,6 +7472,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12358] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190061}},
             [questKeys.finishedBy] = {nil,{190061}},
@@ -7448,6 +7482,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12359] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190062}},
             [questKeys.finishedBy] = {nil,{190062}},
@@ -7457,6 +7492,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12360] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190063}},
             [questKeys.finishedBy] = {nil,{190063}},
@@ -7466,6 +7502,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12361] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190064}},
             [questKeys.finishedBy] = {nil,{190064}},
@@ -7475,6 +7512,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12362] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190065}},
             [questKeys.finishedBy] = {nil,{190065}},
@@ -7484,6 +7522,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12363] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190066}},
             [questKeys.finishedBy] = {nil,{190066}},
@@ -7493,6 +7532,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12364] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190067}},
             [questKeys.finishedBy] = {nil,{190067}},
@@ -7502,6 +7542,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12365] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190068}},
             [questKeys.finishedBy] = {nil,{190068}},
@@ -7511,6 +7552,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12366] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190069}},
             [questKeys.finishedBy] = {nil,{190069}},
@@ -7520,6 +7562,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12367] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190070}},
             [questKeys.finishedBy] = {nil,{190070}},
@@ -7529,6 +7572,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12368] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190071}},
             [questKeys.finishedBy] = {nil,{190071}},
@@ -7538,6 +7582,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12369] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190072}},
             [questKeys.finishedBy] = {nil,{190072}},
@@ -7547,6 +7592,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12370] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190073}},
             [questKeys.finishedBy] = {nil,{190073}},
@@ -7556,6 +7602,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12371] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190074}},
             [questKeys.finishedBy] = {nil,{190074}},
@@ -7565,6 +7612,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12373] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190075}},
             [questKeys.finishedBy] = {nil,{190075}},
@@ -7574,6 +7622,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12374] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190076}},
             [questKeys.finishedBy] = {nil,{190076}},
@@ -7583,6 +7632,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12375] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190077}},
             [questKeys.finishedBy] = {nil,{190077}},
@@ -7592,6 +7642,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12376] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190078}},
             [questKeys.finishedBy] = {nil,{190078}},
@@ -7601,6 +7652,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12377] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190079}},
             [questKeys.finishedBy] = {nil,{190079}},
@@ -7610,6 +7662,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12378] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190080}},
             [questKeys.finishedBy] = {nil,{190080}},
@@ -7619,6 +7672,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12379] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190081}},
             [questKeys.finishedBy] = {nil,{190081}},
@@ -7628,6 +7682,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12380] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190082}},
             [questKeys.finishedBy] = {nil,{190082}},
@@ -7637,6 +7692,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12381] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190083}},
             [questKeys.finishedBy] = {nil,{190083}},
@@ -7646,6 +7702,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12382] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190084}},
             [questKeys.finishedBy] = {nil,{190084}},
@@ -7655,6 +7712,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12383] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190085}},
             [questKeys.finishedBy] = {nil,{190085}},
@@ -7664,6 +7722,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12384] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190086}},
             [questKeys.finishedBy] = {nil,{190086}},
@@ -7673,6 +7732,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12385] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190087}},
             [questKeys.finishedBy] = {nil,{190087}},
@@ -7682,6 +7742,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12386] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190088}},
             [questKeys.finishedBy] = {nil,{190088}},
@@ -7691,6 +7752,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12387] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190089}},
             [questKeys.finishedBy] = {nil,{190089}},
@@ -7700,6 +7762,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12388] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190090}},
             [questKeys.finishedBy] = {nil,{190090}},
@@ -7709,6 +7772,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12389] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190091}},
             [questKeys.finishedBy] = {nil,{190091}},
@@ -7718,6 +7782,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12390] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190096}},
             [questKeys.finishedBy] = {nil,{190096}},
@@ -7727,6 +7792,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12391] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190097}},
             [questKeys.finishedBy] = {nil,{190097}},
@@ -7736,6 +7802,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12392] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190098}},
             [questKeys.finishedBy] = {nil,{190098}},
@@ -7745,6 +7812,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12393] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190099}},
             [questKeys.finishedBy] = {nil,{190099}},
@@ -7754,6 +7822,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12394] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190100}},
             [questKeys.finishedBy] = {nil,{190100}},
@@ -7763,6 +7832,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12395] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190101}},
             [questKeys.finishedBy] = {nil,{190101}},
@@ -7772,6 +7842,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12396] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190102}},
             [questKeys.finishedBy] = {nil,{190102}},
@@ -7781,6 +7852,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12397] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190103}},
             [questKeys.finishedBy] = {nil,{190103}},
@@ -7790,6 +7862,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12398] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190104}},
             [questKeys.finishedBy] = {nil,{190104}},
@@ -7799,6 +7872,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12399] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190105}},
             [questKeys.finishedBy] = {nil,{190105}},
@@ -7808,6 +7882,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12400] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190106}},
             [questKeys.finishedBy] = {nil,{190106}},
@@ -7817,6 +7892,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12401] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190107}},
             [questKeys.finishedBy] = {nil,{190107}},
@@ -7826,6 +7902,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12402] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190108}},
             [questKeys.finishedBy] = {nil,{190108}},
@@ -7835,6 +7912,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12403] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190109}},
             [questKeys.finishedBy] = {nil,{190109}},
@@ -7844,6 +7922,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12404] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190110,190111}},
             [questKeys.finishedBy] = {nil,{190110,190111}},
@@ -7853,6 +7932,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12406] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190112}},
             [questKeys.finishedBy] = {nil,{190112}},
@@ -7862,6 +7942,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12407] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190113}},
             [questKeys.finishedBy] = {nil,{190113}},
@@ -7871,6 +7952,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12408] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190114}},
             [questKeys.finishedBy] = {nil,{190114}},
@@ -7880,6 +7962,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12409] = { -- Candy Bucket
+            [questKeys.eventIds] = {eventKeys.HALLOWS_END},
             [questKeys.name] = "Candy Bucket",
             [questKeys.startedBy] = {nil,{190115,190116}},
             [questKeys.finishedBy] = {nil,{190115,190116}},

@@ -50,7 +50,10 @@ rows no longer carry `npcFlags`.
 `npcFlags` stays readable for existing consumers: a Derived Pass rebuilds it from `services` with
 each expansion's bit values. Bits no service names are dropped. A Static Correction that still
 sets `npcFlags`, as generated imports and older Corrections do, is honoured by the same pass: the
-mask replaces the services a flag can express in that flavor and keeps the rest. A Dynamic
+mask replaces the services a flag can express in that flavor and keeps the rest. When one row
+carries both a mask and a `services` Correction, the mask wins for those services whatever the
+layer order, so a row should use one or the other. A mask written as a number means different
+flags in different flavors; Corrections shared across flavors name the flags. A Dynamic
 Correction applies after the pass, so one that sets `npcFlags` must set `services` too.
 
 ### 4. Trainer detail
@@ -79,9 +82,14 @@ would break those releases at load. Nothing in QuestieDB reads them.
 Object `factionID` remains a promised name. It becomes a deprecated constant `0` through
 `constantValues`, as the NPC health fields did. Reads on every path (`Get`, `GetByIndex`, `GetRaw`,
 `GetAll`, named getter) print a deprecation message once per calling addon per session; the caller
-is found by walking `debugstack()` for the first addon folder that is not QuestieDB's. Only the
-first 32 reads of the field per session inspect the stack, so a consumer that reads it for every
-object does not pay for a stack string on each call. `minSupportedContract` does not change.
+is found by walking `debugstack()` for the first addon folder that is not QuestieDB's. The first
+32 reads of the field per session inspect the stack; after that at most one read per second does,
+so a consumer that reads it for every object does not pay for a stack string on each call and an
+addon that starts reading it later is still found. `minSupportedContract` does not change.
+
+Consumers written before contract 5 that read `factionID` see every object as unrestricted. For
+Questie releases that predate its services migration, that means every mailbox is shown to both
+factions until Questie is updated.
 
 ### 6. `eventIds` on quests and NPCs
 
@@ -94,7 +102,9 @@ object does not pay for a stack string on each call. `minSupportedContract` does
 Event IDs come from two sources:
 
 - Blizzard Holidays IDs, used as-is where a Holidays row exists (for example Hallow's End 324).
-  Darkmoon Faire has one Holidays ID per location, which expresses location-dependent quests.
+  Darkmoon Faire has one Holidays ID per location before Cataclysm, which expresses
+  location-dependent quests, and one for Darkmoon Island afterwards. Classic Era's client has no
+  Holidays rows for these events; the same IDs serve as stable keys there.
 - QuestieDB-defined IDs from 100000 upward for events without a Holidays row, such as the
   Ahn'Qiraj war effort and the Scourge invasion.
 
@@ -117,6 +127,10 @@ The Presence mask caps a schema at 52 fields, which leaves room for the expected
 - `NpcDB.GetServices(id)` and `ObjectDB.GetServices(id)` return the entity's services as a lookup
   set, or `nil` when it has none, matching how empty list fields read.
 
+Correction files receive the fact enums as views that raise on an unknown name. A misspelled
+constant would otherwise evaluate to nil and silently shorten the list, and as the last element
+it leaves no gap for Generation's list check to notice.
+
 `HasServices` and `HasAny` read QuestieDB's internal cached value and return a boolean, so they
 allocate nothing per call; use them when scanning many entities. `GetServices` returns a fresh
 Caller-owned set on every call. The named getter `services(id)` still returns the stored list.
@@ -136,8 +150,7 @@ New fields and helpers are added under contract 5. Nothing is removed.
 
 ## Open questions
 
-- Confirm Holidays IDs are the same in Classic Era, Cata and MoP clients. Only the Wotlk export
-  has been checked. Cata may add an ID for Darkmoon Island.
-- Map Holidays IDs to names from a `HolidayNames` export, including which Darkmoon Faire ID
-  (374, 375, 376) is which location.
+- Which Darkmoon Faire Holidays ID (374, 375, 376) is which location is inferred from the calendar
+  texture order and not confirmed in game. IDs and names were checked against the Mists Classic
+  Holidays and HolidayNames exports.
 - Decide whether `eventIds` is needed on objects.

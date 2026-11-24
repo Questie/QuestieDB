@@ -124,8 +124,9 @@ QuestDB.HasAny(10, "exclusiveTo", wanted)    --> true when quest 10 is exclusive
 
 The check runs over a list QuestieDB retains, so it allocates nothing per call. Prefer it to
 reading the list when scanning many entities. Matching is exact: a signed ID matches only the
-same sign. It returns `false` for an unknown entity, an entity without the list, a scalar field,
-an unknown field, or a missing `wanted`. Corrections and cache invalidation are honoured like any
+same sign. It returns `false` for an unknown entity, an entity without the list, a field that is
+not a flat list (scalars and structured fields such as `spawns`), an unknown field, or a missing
+`wanted`. Corrections and cache invalidation are honoured like any
 other read. Contract 5 guarantees `HasAny` and `LibQuestieDB.Set`.
 
 ### Services and faction restriction
@@ -169,6 +170,49 @@ mask from `services` with the active flavor's bit values, so the two always agre
 data. Bits no service names are no longer served. In a Correction, author `services`. A Static
 Correction that still sets `npcFlags` is honoured: the mask replaces the services a flag can
 express and keeps the rest. A Dynamic Correction that sets `npcFlags` must set `services` too.
+
+### Event membership
+
+`eventIds` on quests and NPCs is a list of signed `Enum.eventKeys` values:
+
+- a **positive** ID means the entity is available only while that event is active; with several
+  positive IDs, any one active event is enough;
+- a **negative** ID means the entity is unavailable while that event is active.
+
+```lua
+local eventKeys = LibQuestieDB.Enum.eventKeys
+
+QuestDB.eventIds(1658)     --> { 324 }        Hallow's End only
+QuestDB.eventIds(7905)     --> { 374, 376 }   Darkmoon Faire in Elwynn or Terokkar, not Mulgore
+NpcDB.eventIds(13418)      --> { 141 }        a Winter Veil vendor
+QuestDB.eventIds(2)        --> nil            no event gates this quest
+```
+
+QuestieDB stores membership only. Which events are active is the consumer's to decide, because it
+changes during a session. A consumer keeps a set of active event IDs and applies the rule:
+
+```lua
+local active = LibQuestieDB.Set(eventKeys.HALLOWS_END)   -- rebuilt when the calendar changes
+
+local function IsAvailable(eventIds)
+    if not eventIds then return true end
+    local needsEvent, hasEvent = false, false
+    for i = 1, #eventIds do
+        local id = eventIds[i]
+        if id < 0 then
+            if active[-id] then return false end
+        else
+            needsEvent = true
+            if active[id] then hasEvent = true end
+        end
+    end
+    return hasEvent or not needsEvent
+end
+```
+
+Darkmoon Faire has one event ID per location before Cataclysm (`DARKMOON_FAIRE_ELWYNN`,
+`_MULGORE`, `_TEROKKAR`) and `DARKMOON_FAIRE_ISLAND` from Cataclysm. Contract 5 guarantees the
+field on both entity types.
 
 ### `Entity.IdsByName(name) -> list | nil`
 
@@ -944,8 +988,8 @@ Contract 5 adds the entity-fact enums (`Enum.serviceKeys`, `Enum.eventKeys`, `En
 `Enum.weaponSkillKeys`), `LibQuestieDB.Set`, and `Entity.HasAny`. It adds Object `services` and
 `requiredFaction` with `ObjectDB.HasServices` and `ObjectDB.GetServices`, and deprecates Object
 `factionID`, which now always reads `0`. It adds NPC `services`, `trainerClass` and
-`trainerSkills` with `NpcDB.HasServices` and `NpcDB.GetServices`. Contracts 1 to 4 remain
-supported.
+`trainerSkills` with `NpcDB.HasServices` and `NpcDB.GetServices`, and the signed `eventIds` list
+on quests and NPCs. Contracts 1 to 4 remain supported.
 
 The check is a **range**: `RequireContract(v)` passes for any
 `minSupportedContract <= v <= contractVersion`, so a consumer built against an older

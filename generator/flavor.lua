@@ -47,8 +47,11 @@ function flavorLoader.load(flavor, typeFilter, applyCorrections)
     stats.applied, stats.corrections = corrections.applyStatic(loaded, flavor)
     -- Derived Passes run after corrections and before normalization or encoding, matching
     -- Questie's transform order while preserving their calculated raw coordinates (ADR 0006).
-    stats.derived = derived.run(loaded, flavor)
     -- A malformed fact list would ship as a service no consumer recognises; stop here instead.
+    -- Checked before the Derived Passes, which rebuild NPC services from a corrected npcFlags
+    -- mask and would erase a malformed authored list, and again on what they produce.
+    facts.assertValid(loaded)
+    stats.derived = derived.run(loaded, flavor)
     facts.assertValid(loaded)
   end
 

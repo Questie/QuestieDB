@@ -33,10 +33,12 @@ local type, rawget, setmetatable, ipairs = type, rawget, setmetatable, ipairs
 -- not break. The first reads name the calling addon in chat, once per addon, so its author
 -- learns the field is going away (ADR 0017).
 
---- How many reads of one deprecated field inspect the call stack per session. `debugstack`
+--- How many reads of one deprecated field inspect the call stack unconditionally. `debugstack`
 --- builds a string, so a consumer reading the field for every entity must not pay for it on
---- every call. An addon that reads the field at all is seen within its first reads.
+--- every call. Past the budget a read inspects the stack at most once per
+--- `deprecationSampleSeconds`, so an addon that starts reading the field later is still found.
 shared.deprecationStackBudget = 32
+shared.deprecationSampleSeconds = 1
 
 --- Name the first addon on the call stack that is not QuestieDB.
 ---@return string? addon Nil without `debugstack` (offline tooling); "unknown" when no addon frame is found.
@@ -169,14 +171,20 @@ function shared.CreateEntity(meta, backend)
   -- fieldIndex -> replacement field name. Nil for every entity type without a deprecated
   -- field, so the public read paths below pay one nil check.
   local deprecated = meta.deprecatedFields
-  local deprecationReads, deprecationReported = {}, {}
+  local deprecationReads, deprecationReported, deprecationSampledAt = {}, {}, {}
 
   ---Report a deprecated field read in chat, once per calling addon, within the stack budget.
   ---@param fieldIndex number
   local function noteDeprecatedRead(fieldIndex)
-    local reads = (deprecationReads[fieldIndex] or 0) + 1
-    if reads > shared.deprecationStackBudget then return end
-    deprecationReads[fieldIndex] = reads
+    local reads = deprecationReads[fieldIndex] or 0
+    if reads >= shared.deprecationStackBudget then
+      local now = rawget(_G, "GetTime")
+      now = now and now()
+      if not now or now - (deprecationSampledAt[fieldIndex] or 0) < shared.deprecationSampleSeconds then return end
+      deprecationSampledAt[fieldIndex] = now
+    else
+      deprecationReads[fieldIndex] = reads + 1
+    end
     local caller = shared.CallingAddon()
     if not caller then return end
     local reported = deprecationReported[fieldIndex]
@@ -525,36 +533,42 @@ function shared.CreateEntity(meta, backend)
   ------------------------------------------------------------------------------------------
   --
   -- Membership checks run over a list the database retains, so a scan across every entity
-  -- allocates one list per entity touched and nothing per call. The retained list is the
-  -- composed value `get` returns and is never handed out; `false` records "no list".
+  -- keeps one list per entity that has one and allocates nothing per call. The retained list
+  -- is the composed value `get` returns and is never handed out; `false` records "no list",
+  -- which costs one slot rather than a table per entity.
 
+  -- fieldIndex -> id -> list | false. Only flat list fields are eligible: retaining a deep
+  -- structure such as spawns for every entity would hold the whole database in memory.
   local retainedLists = {}
+  local structures = meta.structures or {}
+  local listStructures = { idarray = true, stringarray = true }
 
-  ---Return the retained composed list for one field, reading it on first use.
+  ---Return the retained composed list for one flat list field, reading it on first use.
   ---@param id number Entity ID.
   ---@param fieldIndex number
   ---@return table|false list
   local function retainedList(id, fieldIndex)
-    local byId = retainedLists[id]
+    local byId = retainedLists[fieldIndex]
     if not byId then
       byId = {}
-      retainedLists[id] = byId
+      retainedLists[fieldIndex] = byId
     end
-    local list = byId[fieldIndex]
+    local list = byId[id]
     if list == nil then
       list = get(id, fieldIndex) or false
-      byId[fieldIndex] = list
+      byId[id] = list
     end
     return list
   end
 
   --- Whether a list field holds any value that is a key of `wanted`. Build `wanted` once with
   --- `LibQuestieDB.Set(...)`. Matching is exact, so signed IDs match only with the same sign.
-  --- Returns false for an unknown entity, an empty or scalar field, or a non-table `wanted`.
+  --- Returns false for an unknown entity, an empty field, a field that is not a flat list, or a
+  --- non-table `wanted`.
   function entity.HasAny(id, key, wanted)
     if type(id) ~= "number" or type(wanted) ~= "table" then return false end
     local fieldIndex = keys[key] or (type(key) == "number" and key or nil)
-    if not fieldIndex or types[fieldIndex] ~= "table" then return false end
+    if not fieldIndex or not listStructures[structures[fieldIndex]] then return false end
     local list = retainedList(id, fieldIndex)
     if not list then return false end
     for index = 1, #list do
@@ -698,7 +712,7 @@ function shared.CreateEntity(meta, backend)
       for key in pairs(retainedLists) do retainedLists[key] = nil end
     else
       cache[id] = nil
-      retainedLists[id] = nil
+      for _, byId in pairs(retainedLists) do byId[id] = nil end
     end
   end
 

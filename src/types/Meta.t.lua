@@ -50,6 +50,7 @@
 ---@field availableStartingWith integer Quest that starts availability while active or completed.
 ---@field requiredRanks integer Alternative profession rank requirements.
 ---@field disabledByQuest integer Quest that temporarily disables this quest while active.
+---@field eventIds integer Signed `Enum.eventKeys` values gating availability by world event.
 
 ---@class QuestieDBNpcKeys
 ---@field name integer Localized NPC name.
@@ -70,6 +71,7 @@
 ---@field services integer Services the NPC provides, as `Enum.serviceKeys` values.
 ---@field trainerClass integer `Enum.classIDs` value of the class the NPC trains.
 ---@field trainerSkills integer Skill line IDs the NPC trains.
+---@field eventIds integer Signed `Enum.eventKeys` values gating presence by world event.
 
 ---@class QuestieDBItemKeys
 ---@field name integer Localized item name.
@@ -174,6 +176,8 @@
 ---@field requiredRanks_remove integer Correction-only remove; table-valued fields only.
 ---@field disabledByQuest_add integer Correction-only add; table-valued fields only.
 ---@field disabledByQuest_remove integer Correction-only remove; table-valued fields only.
+---@field eventIds_add integer Correction-only add; table-valued fields only.
+---@field eventIds_remove integer Correction-only remove; table-valued fields only.
 
 ---@class QuestieDBNpcCorrectionKeys: QuestieDBNpcKeys
 ---@field name_add integer Correction-only add; table-valued fields only.
@@ -212,6 +216,8 @@
 ---@field trainerClass_remove integer Correction-only remove; table-valued fields only.
 ---@field trainerSkills_add integer Correction-only add; table-valued fields only.
 ---@field trainerSkills_remove integer Correction-only remove; table-valued fields only.
+---@field eventIds_add integer Correction-only add; table-valued fields only.
+---@field eventIds_remove integer Correction-only remove; table-valued fields only.
 
 ---@class QuestieDBItemCorrectionKeys: QuestieDBItemKeys
 ---@field name_add integer Correction-only add; table-valued fields only.

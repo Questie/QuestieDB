@@ -558,8 +558,11 @@ suite("fact-validation", "shared", function()
     { "Object 7: services repeats FORGE" }, "a repeated service is reported")
   equal(problems({ [keys.services] = services.MAILBOX }), { "Object 7: services is not a list" },
     "a scalar where a list belongs is reported")
-  equal(problems({ [keys.requiredFaction] = "AH" }),
-    { 'Object 7: requiredFaction must be "A" or "H", got AH' }, "an unrestricted spelling is reported")
+  -- A Correction clears a restriction with `{}`; "" and "AH" read back as none too.
+  equal(problems({ [keys.requiredFaction] = {} }), {}, "clearing a faction restriction is accepted")
+  equal(problems({ [keys.requiredFaction] = "AH" }), {}, "an unrestricted spelling is accepted")
+  equal(problems({ [keys.requiredFaction] = "Alliance" }),
+    { 'Object 7: requiredFaction must be "A", "H" or cleared, got Alliance' }, "an unknown faction spelling is reported")
   local npcMeta = dofile("src/meta/npcMeta.lua")
   local npcKeys = npcMeta.keys
   local function npcProblems(row)
@@ -568,15 +571,56 @@ suite("fact-validation", "shared", function()
   equal(npcProblems({ [npcKeys.trainerClass] = 8, [npcKeys.trainerSkills] = { 171, 45 } }), {},
     "a class ID, a profession skill and a weapon skill are accepted")
   equal(npcProblems({ [npcKeys.trainerClass] = 0 }), {}, "trainerClass 0 means no class and is accepted")
+  equal(npcProblems({ [npcKeys.trainerClass] = {} }), {}, "clearing trainerClass is accepted")
   -- 128 is the MAGE mask bit from classKeys, the likeliest wrong constant to reach for.
   equal(npcProblems({ [npcKeys.trainerClass] = 128 }), { "Npc 9: trainerClass holds unknown class ID 128" },
     "a class mask bit where a class ID belongs is reported")
   equal(npcProblems({ [npcKeys.trainerSkills] = { 99999 } }), { "Npc 9: trainerSkills holds unknown ID 99999" },
     "an unknown skill line is reported")
+  local questMeta = dofile("src/meta/questMeta.lua")
+  local eventField = questMeta.keys.eventIds
+  local function questProblems(events)
+    return facts.problems({ Quest = { meta = questMeta, entities = { [3] = { [eventField] = events } } } })
+  end
+  equal(questProblems({ 324 }), {}, "a Holidays event ID is accepted")
+  equal(questProblems({ 374, 376, -100001 }), {}, "several events and a negated QuestieDB event are accepted")
+  equal(questProblems({ 5 }), { "Quest 3: eventIds holds unknown event ID 5" }, "an unknown event is reported")
+  equal(questProblems({ -5 }), { "Quest 3: eventIds holds unknown event ID -5" }, "an unknown negated event is reported")
+  equal(questProblems({ 324, -324 }), { "Quest 3: eventIds lists HALLOWS_END twice" },
+    "an event listed as both required and excluded is reported")
+  equal(questProblems({ 0 }), { "Quest 3: eventIds holds a value that is not a signed event ID: 0" },
+    "zero carries no sign and is reported")
+  equal(questProblems({ nil, 324 }), { "Quest 3: eventIds has a gap, usually a misspelled constant" },
+    "a misspelled event constant is reported")
+  -- A misspelled constant as the last or only element leaves no gap for the checks above, so
+  -- the enum views correction files receive must raise on the unknown name itself.
+  client.reset()
+  client.install({ expansion = "Classic" })
+  local loaded = emulator.loadAddon(config.addonName .. ".toc", config.addonName)
+  local previousLoader = rawget(_G, "QuestieLoader")
+  local remove = loaded.CorrectionCompat.Install(config.flavorByName.Vanilla)
+  local authoring = QuestieLoader:ImportModule("QuestieDB")
+  local okName, nameError = pcall(function() return { authoring.serviceKeys.MAILBOXX } end)
+  local okEvent = pcall(function() return { authoring.eventKeys.HALOWS_END } end)
+  local okClass = pcall(function() return authoring.classIDs.MAGEE end)
+  local okSkill = pcall(function() return authoring.weaponSkillKeys.BOWZ end)
+  local mailbox, hallowsEnd = authoring.serviceKeys.MAILBOX, authoring.eventKeys.HALLOWS_END
+  remove()
+  _G.QuestieLoader = previousLoader
+  client.reset()
+  equal(okName, false, "a misspelled service constant raises in a correction file")
+  check(tostring(nameError):find("serviceKeys.MAILBOXX", 1, true) ~= nil, "the error names the misspelled constant")
+  equal({ okEvent, okClass, okSkill }, { false, false, false }, "misspelled event, class and skill constants raise too")
+  equal({ mailbox, hallowsEnd }, { 25, 324 }, "correctly spelled constants read their IDs")
+
   local ok, message = pcall(facts.assertValid, { Object = { meta = meta, entities = { [7] = { [keys.services] = { 9999 } } } } })
   equal(ok, false, "Generation stops on a malformed fact field")
   check(tostring(message):find("Object 7: services holds unknown ID 9999", 1, true) ~= nil,
     "the failure names the entity and the problem")
+end)
+
+suite("event-ids", "shared", function()
+  dofile("tools/validation/event-ids.test.lua")(check, equal)
 end)
 
 suite("npc-services", "shared", function()
@@ -3112,7 +3156,7 @@ suite("api", "Vanilla", function()
   equal(Lib.Meta.ObjectMeta.objectKeys.name, 1, "Meta.ObjectMeta.objectKeys")
   equal(Lib.Meta.Quest.names[1], "name", "Meta.Quest.names")
   equal(Lib.Meta.Quest.types[1], "string", "Meta.Quest.types")
-  equal(Lib.Meta.Quest.fieldCount, 36, "Meta.Quest.fieldCount")
+  equal(Lib.Meta.Quest.fieldCount, 37, "Meta.Quest.fieldCount")
 
   -- Keep LuaLS key-class fields in runtime positional order so declaration drift fails here.
   local metaTypeSource = lib.readAll("src/types/Meta.t.lua")

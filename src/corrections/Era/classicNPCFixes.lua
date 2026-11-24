@@ -2183,10 +2183,10 @@ function QuestieNPCFixes:Load()
             [npcKeys.spawns] = {[zoneIDs.MARAUDON] = {{-1,-1}}},
         },
         [11798] = { -- Bunthen Plainswind <Thunder Bluff Flight Master>
-            [npcKeys.npcFlags] = 11,
+            [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.QUEST_GIVER + npcFlags.FLIGHT_MASTER,
         },
         [11800] = { -- Silva Fil'naveth <Darnassus Flight Master>
-            [npcKeys.npcFlags] = 11,
+            [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.QUEST_GIVER + npcFlags.FLIGHT_MASTER,
         },
         [11807] = { -- Tristane Shadowstone
             [npcKeys.questStarts] = {6075},
@@ -2239,7 +2239,7 @@ function QuestieNPCFixes:Load()
             [npcKeys.zoneID] = zoneIDs.WESTERN_PLAGUELANDS,
         },
         [12196] = { -- Innkeeper Kaylisk <Innkeeper>
-            [npcKeys.npcFlags] = 128,
+            [npcKeys.npcFlags] = npcFlags.INNKEEPER,
         },
         [12238] = { -- Zaetar's Spirit
             [npcKeys.spawns] = {[zoneIDs.MARAUDON] = {{-1,-1}}},

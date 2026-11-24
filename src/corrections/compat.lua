@@ -103,6 +103,27 @@ local function pick(name, flavor)
   return value
 end
 
+---Wraps an entity-fact enum so a misspelled name raises instead of evaluating to nil. A nil in
+---a list constructor silently shortens the list, and as its last element leaves no gap for
+---Generation to notice, so `{serviceKeys.MAILBOXX}` would ship an object without its service.
+---@param name string Enum name, for the error message.
+---@param values table<string, integer>
+---@return table<string, integer> view Read-only view for correction authoring.
+local function strictEnum(name, values)
+  return setmetatable({}, {
+    __index = function(_, key)
+      local value = values[key]
+      if value == nil then
+        error(("correction compat: unknown constant `%s.%s`"):format(name, tostring(key)), 2)
+      end
+      return value
+    end,
+    __newindex = function(_, key)
+      error(("correction compat: `%s.%s` is read-only"):format(name, tostring(key)), 2)
+    end,
+  })
+end
+
 ---Builds the QuestieDB stand-in with constants selected for one explicit flavor.
 ---@param flavor table Validated supported flavor.
 ---@return table QuestieDB
@@ -121,10 +142,10 @@ local function buildQuestieDB(flavor)
     questFlags = pick("questFlags", flavor),
     npcFlags = pick("npcFlags", flavor),
     npcRanks = pick("npcRanks", flavor),
-    serviceKeys = pick("serviceKeys", flavor),
-    eventKeys = pick("eventKeys", flavor),
-    classIDs = pick("classIDs", flavor),
-    weaponSkillKeys = pick("weaponSkillKeys", flavor),
+    serviceKeys = strictEnum("serviceKeys", pick("serviceKeys", flavor)),
+    eventKeys = strictEnum("eventKeys", pick("eventKeys", flavor)),
+    classIDs = strictEnum("classIDs", pick("classIDs", flavor)),
+    weaponSkillKeys = strictEnum("weaponSkillKeys", pick("weaponSkillKeys", flavor)),
     itemClasses = pick("itemClasses", flavor),
     waypointPresets = pick("waypointPresets", flavor),
   }
