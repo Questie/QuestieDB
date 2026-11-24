@@ -108,6 +108,9 @@ function ForeverNpcFixes:Load()
         [2428] = { -- Jailor Marlgen
             [npcKeys.spawns_add] = {[zoneIDs.HILLSBRAD_FOOTHILLS] = {{78,40.16}}},
         },
+        [2543] = { -- Archmage Ansirem Runeweaver
+            [npcKeys.spawns] = {[zoneIDs.ALTERAC_MOUNTAINS] = {{14.16,59.73}}},
+        },
         [2556] = { -- Witherbark Headhunter
             [npcKeys.spawns_remove] = {[zoneIDs.ARATHI_HIGHLANDS] = {{74.16,45.89}}},
         },
