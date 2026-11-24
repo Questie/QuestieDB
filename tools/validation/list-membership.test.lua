@@ -42,6 +42,8 @@ return function(check, equal)
       check(quest.HasAny(12, "exclusiveTo", db.Set(7)) == false, label .. "an entity without the list")
       check(quest.HasAny(999, "exclusiveTo", db.Set(7)) == false, label .. "an unknown entity")
       check(quest.HasAny(10, "name", db.Set("Two members")) == false, label .. "a scalar field")
+      -- Structured fields are not flat lists; retaining them per entity would hold the database.
+      check(quest.HasAny(10, "objectives", db.Set(7)) == false, label .. "a structured table field")
       check(quest.HasAny(10, "noSuchField", db.Set(7)) == false, label .. "an unknown field")
       check(quest.HasAny(10, "exclusiveTo", nil) == false, label .. "a missing set")
       check(quest.HasAny("10", "exclusiveTo", db.Set(7)) == false, label .. "a non-numeric ID")

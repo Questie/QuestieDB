@@ -124,8 +124,9 @@ QuestDB.HasAny(10, "exclusiveTo", wanted)    --> true when quest 10 is exclusive
 
 The check runs over a list QuestieDB retains, so it allocates nothing per call. Prefer it to
 reading the list when scanning many entities. Matching is exact: a signed ID matches only the
-same sign. It returns `false` for an unknown entity, an entity without the list, a scalar field,
-an unknown field, or a missing `wanted`. Corrections and cache invalidation are honoured like any
+same sign. It returns `false` for an unknown entity, an entity without the list, a field that is
+not a flat list (scalars and structured fields such as `spawns`), an unknown field, or a missing
+`wanted`. Corrections and cache invalidation are honoured like any
 other read. Contract 5 guarantees `HasAny` and `LibQuestieDB.Set`.
 
 ### Services and faction restriction

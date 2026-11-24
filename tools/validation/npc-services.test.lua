@@ -23,7 +23,7 @@ return function(check, equal)
 
   -- Literal masks: the flavor's own flag values, independent of the pass's tables.
   local vendorRepair = { services.VENDOR, services.REPAIR }
-  equal(apply("Classic", { [keys.services] = { services.VENDOR, services.REPAIR } })[keys.npcFlags], 4 + 16384,
+  equal(apply("Classic", { [keys.services] = vendorRepair })[keys.npcFlags], 4 + 16384,
     "Classic builds the mask with Era flag values")
   equal(apply("TBC", { [keys.services] = { services.VENDOR, services.REPAIR } })[keys.npcFlags], 128 + 4096,
     "TBC builds the mask with its renumbered flag values")

@@ -26,8 +26,12 @@ return function(check, equal)
       },
     }
     local metadata = fixture.write(root .. "/fixture.toc", entities, {})
-    equal(metadata["X-Object-2-S"] and metadata["X-Object-2-S"]:find("AH", 1, true), nil,
-      "an unrestricted object stores no faction text")
+    -- What Generation stores, before any reader's defaults could hide a stale value.
+    local rows = dofile("generator/rows.lua")
+    local meta = namespace.Meta.Object
+    equal(rows.build(meta, entities.Object[2])[keys.requiredFaction], nil, "an unrestricted object stores no faction")
+    equal(rows.build(meta, entities.Object[1])[keys.requiredFaction], "A", "a restricted object stores its faction")
+    equal(rows.build(meta, entities.Object[4])[keys.factionID], nil, "the retired factionID column is never stored")
 
     for _, mode in ipairs({ "source", "baked" }) do
       local db = fixture.load(mode, entities, metadata)
@@ -105,11 +109,26 @@ return function(check, equal)
       equal(#messages, 3, label .. "repeated reads stay silent")
       stack = "[Interface/AddOns/LateAddon/Core.lua]:1: in function <q>"
       fresh.factionID(4)
-      equal(#messages, 3, label .. "no report after the budget is spent")
+      equal(#messages, 3, label .. "without a clock, nothing is inspected after the budget is spent")
+
+      -- With the client clock, a read past the budget is sampled at most once per second, so an
+      -- addon that starts reading the field later is still found.
+      local now = 100
+      _G.GetTime = function() return now end
+      local callsBefore = stackCalls
+      for _ = 1, 500 do fresh.factionID(4) end
+      equal(stackCalls - callsBefore, 1, label .. "one stack inspection per sampling interval")
+      equal(#messages, 4, label .. "a late addon is reported once it is sampled")
+      check(messages[4]:find("LateAddon", 1, true) ~= nil, label .. "the late report names that addon")
+      now = 102
+      fresh.factionID(4)
+      equal(stackCalls - callsBefore, 2, label .. "the next interval inspects again")
+      equal(#messages, 4, label .. "an addon already reported stays reported once")
+      _G.GetTime = nil
 
       fresh.requiredFaction(4)
       fresh.services(1)
-      equal(#messages, 3, label .. "current fields never report")
+      equal(#messages, 4, label .. "current fields never report")
 
       -- Offline tooling has no debugstack and must stay silent.
       _G.debugstack = nil

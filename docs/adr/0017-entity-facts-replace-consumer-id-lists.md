@@ -50,7 +50,10 @@ rows no longer carry `npcFlags`.
 `npcFlags` stays readable for existing consumers: a Derived Pass rebuilds it from `services` with
 each expansion's bit values. Bits no service names are dropped. A Static Correction that still
 sets `npcFlags`, as generated imports and older Corrections do, is honoured by the same pass: the
-mask replaces the services a flag can express in that flavor and keeps the rest. A Dynamic
+mask replaces the services a flag can express in that flavor and keeps the rest. When one row
+carries both a mask and a `services` Correction, the mask wins for those services whatever the
+layer order, so a row should use one or the other. A mask written as a number means different
+flags in different flavors; Corrections shared across flavors name the flags. A Dynamic
 Correction applies after the pass, so one that sets `npcFlags` must set `services` too.
 
 ### 4. Trainer detail
@@ -79,9 +82,14 @@ would break those releases at load. Nothing in QuestieDB reads them.
 Object `factionID` remains a promised name. It becomes a deprecated constant `0` through
 `constantValues`, as the NPC health fields did. Reads on every path (`Get`, `GetByIndex`, `GetRaw`,
 `GetAll`, named getter) print a deprecation message once per calling addon per session; the caller
-is found by walking `debugstack()` for the first addon folder that is not QuestieDB's. Only the
-first 32 reads of the field per session inspect the stack, so a consumer that reads it for every
-object does not pay for a stack string on each call. `minSupportedContract` does not change.
+is found by walking `debugstack()` for the first addon folder that is not QuestieDB's. The first
+32 reads of the field per session inspect the stack; after that at most one read per second does,
+so a consumer that reads it for every object does not pay for a stack string on each call and an
+addon that starts reading it later is still found. `minSupportedContract` does not change.
+
+Consumers written before contract 5 that read `factionID` see every object as unrestricted. For
+Questie releases that predate its services migration, that means every mailbox is shown to both
+factions until Questie is updated.
 
 ### 6. `eventIds` on quests and NPCs
 

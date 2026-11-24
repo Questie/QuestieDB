@@ -27,6 +27,12 @@ local eventNames = invert(constants.eventKeys)
 
 --- A list must be a gapless array of known IDs with no repeats. `pairs` rather than `ipairs`,
 --- so a hole left by a nil constant is seen instead of ending the walk early.
+---@param value any
+---@return boolean @True for `{}`, the Correction spelling for "clear this field"
+local function isCleared(value)
+  return type(value) == "table" and next(value) == nil
+end
+
 ---@param list any
 ---@param known table<integer, string>
 ---@return string? problem
@@ -88,13 +94,15 @@ function facts.problems(loaded)
               problems[#problems + 1] = ("%s %d: services %s"):format(typeName, id, problem)
             end
           end
+          -- `{}`, "" and "AH" all read back as "no restriction", so a Correction can clear one.
           local faction = requiredFaction and row[requiredFaction]
-          if faction ~= nil and faction ~= "A" and faction ~= "H" then
-            problems[#problems + 1] = ("%s %d: requiredFaction must be \"A\" or \"H\", got %s")
+          if faction ~= nil and faction ~= "A" and faction ~= "H" and faction ~= "AH" and faction ~= ""
+             and not isCleared(faction) then
+            problems[#problems + 1] = ("%s %d: requiredFaction must be \"A\", \"H\" or cleared, got %s")
               :format(typeName, id, tostring(faction))
           end
           local class = trainerClass and row[trainerClass]
-          if class ~= nil and class ~= 0 and not classNames[class] then
+          if class ~= nil and class ~= 0 and not classNames[class] and not isCleared(class) then
             problems[#problems + 1] = ("%s %d: trainerClass holds unknown class ID %s")
               :format(typeName, id, tostring(class))
           end
