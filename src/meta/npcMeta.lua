@@ -13,7 +13,7 @@ local _, LibQuestieDB = ...
 local meta = {
   entity = 'Npc',
   metaPrefix = 'Npc-',
-  fieldCount = 15,
+  fieldCount = 18,
 
   --- fieldName -> fieldIndex. The Database Key Enum.
   keys = {
@@ -45,33 +45,40 @@ local meta = {
     ['friendlyToFaction'] = 13,
     -- Localized NPC title or function, such as Weapon Vendor.
     ['subName'] = 14,
-    -- Bitmask describing NPC functions such as vendor, trainer, or flight master.
+    -- Legacy bitmask of NPC functions, rebuilt from services with the flavor's flag values.
+    -- Author services instead.
     ['npcFlags'] = 15,
+    -- Services this NPC provides, as Enum.serviceKeys values (vendor, innkeeper, class trainer, ...).
+    ['services'] = 16,
+    -- Enum.classIDs value of the class this NPC trains; 0 when it trains none.
+    ['trainerClass'] = 17,
+    -- Skill line IDs this NPC trains: Enum.professionKeys and Enum.weaponSkillKeys values.
+    ['trainerSkills'] = 18,
   },
 
   --- fieldIndex -> fieldName
   names = {
-[1]='name', [2]='minLevelHealth', [3]='maxLevelHealth', [4]='minLevel', [5]='maxLevel', [6]='rank', [7]='spawns', [8]='waypoints', [9]='zoneID', [10]='questStarts', [11]='questEnds', [12]='factionID', [13]='friendlyToFaction', [14]='subName', [15]='npcFlags'
+[1]='name', [2]='minLevelHealth', [3]='maxLevelHealth', [4]='minLevel', [5]='maxLevel', [6]='rank', [7]='spawns', [8]='waypoints', [9]='zoneID', [10]='questStarts', [11]='questEnds', [12]='factionID', [13]='friendlyToFaction', [14]='subName', [15]='npcFlags', [16]='services', [17]='trainerClass', [18]='trainerSkills'
   },
 
   --- fieldIndex -> storage type: number | string | table
   types = {
-[1]='string', [2]='number', [3]='number', [4]='number', [5]='number', [6]='number', [7]='table', [8]='table', [9]='number', [10]='table', [11]='table', [12]='number', [13]='string', [14]='string', [15]='number'
+[1]='string', [2]='number', [3]='number', [4]='number', [5]='number', [6]='number', [7]='table', [8]='table', [9]='number', [10]='table', [11]='table', [12]='number', [13]='string', [14]='string', [15]='number', [16]='table', [17]='number', [18]='table'
   },
 
   --- fieldIndex -> structural shape, for validators. nil for scalars.
   structures = {
-[7]='spawnlist', [8]='waypointlist', [10]='idarray', [11]='idarray'
+[7]='spawnlist', [8]='waypointlist', [10]='idarray', [11]='idarray', [16]='idarray', [18]='idarray'
   },
 
   --- fieldIndex -> Questie compiler type. Materialized provenance.
   compilerTypes = {
-[1]='u8string', [2]='u32', [3]='u32', [4]='u8', [5]='u8', [6]='u8', [7]='spawnlist', [8]='waypointlist', [9]='u16', [10]='u8u24array', [11]='u8u24array', [12]='u16', [13]='faction', [14]='u8string', [15]='u32'
+[1]='u8string', [2]='u32', [3]='u32', [4]='u8', [5]='u8', [6]='u8', [7]='spawnlist', [8]='waypointlist', [9]='u16', [10]='u8u24array', [11]='u8u24array', [12]='u16', [13]='faction', [14]='u8string', [15]='u32', [16]='u8u24array', [17]='u8', [18]='u8u24array'
   },
 
   --- fieldIndex -> true when an empty table must read back as nil
   emptyIsNil = {
-[7]=true, [8]=true, [10]=true, [11]=true
+[7]=true, [8]=true, [10]=true, [11]=true, [16]=true, [18]=true
   },
 
   --- fieldIndex -> true when {0,0} must read back as nil

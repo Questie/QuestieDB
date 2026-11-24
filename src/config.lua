@@ -271,6 +271,7 @@ config.derivedFiles = {
   "src/derived/RamerDouglasPeucker.lua",
   "src/derived/requiredRaces.lua",
   "src/derived/waypoints.lua",
+  "src/derived/npcServices.lua",
   "src/derived/_end.lua",
 }
 

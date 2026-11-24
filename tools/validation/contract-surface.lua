@@ -131,6 +131,8 @@ end
 add(5, "function", {
   "LibQuestieDB.Object.services", "LibQuestieDB.Object.requiredFaction",
   "LibQuestieDB.Object.HasServices", "LibQuestieDB.Object.GetServices",
+  "LibQuestieDB.Npc.services", "LibQuestieDB.Npc.trainerClass", "LibQuestieDB.Npc.trainerSkills",
+  "LibQuestieDB.Npc.HasServices", "LibQuestieDB.Npc.GetServices",
 })
 
 return entries

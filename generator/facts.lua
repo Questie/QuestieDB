@@ -19,6 +19,10 @@ local function invert(enum)
 end
 
 local serviceNames = invert(constants.serviceKeys)
+local classNames = invert(constants.classIDs)
+-- Profession, riding and weapon skills share the SkillLine ID space.
+local skillNames = invert(constants.professionKeys)
+for value, name in pairs(invert(constants.weaponSkillKeys)) do skillNames[value] = name end
 
 --- A list must be a gapless array of known IDs with no repeats. `pairs` rather than `ipairs`,
 --- so a hole left by a nil constant is seen instead of ending the walk early.
@@ -49,7 +53,8 @@ function facts.problems(loaded)
   for typeName, entry in pairs(loaded) do
     local keys = entry.meta.keys
     local services, requiredFaction = keys.services, keys.requiredFaction
-    if services or requiredFaction then
+    local trainerClass, trainerSkills = keys.trainerClass, keys.trainerSkills
+    if services or requiredFaction or trainerClass or trainerSkills then
       for id, row in pairs(entry.entities) do
         if type(id) == "number" and type(row) == "table" then
           local list = services and row[services]
@@ -63,6 +68,18 @@ function facts.problems(loaded)
           if faction ~= nil and faction ~= "A" and faction ~= "H" then
             problems[#problems + 1] = ("%s %d: requiredFaction must be \"A\" or \"H\", got %s")
               :format(typeName, id, tostring(faction))
+          end
+          local class = trainerClass and row[trainerClass]
+          if class ~= nil and class ~= 0 and not classNames[class] then
+            problems[#problems + 1] = ("%s %d: trainerClass holds unknown class ID %s")
+              :format(typeName, id, tostring(class))
+          end
+          local skills = trainerSkills and row[trainerSkills]
+          if skills ~= nil then
+            local problem = listProblem(skills, skillNames)
+            if problem then
+              problems[#problems + 1] = ("%s %d: trainerSkills %s"):format(typeName, id, problem)
+            end
           end
         end
       end

@@ -66,7 +66,10 @@
 ---@field factionID integer FactionTemplate ID.
 ---@field friendlyToFaction integer Friendly player factions: A, H, AH, or nil when hostile to both.
 ---@field subName integer Localized NPC title or function.
----@field npcFlags integer NPC function bitmask, such as vendor, trainer, or flight master.
+---@field npcFlags integer Legacy NPC function bitmask, rebuilt from `services`; author `services` instead.
+---@field services integer Services the NPC provides, as `Enum.serviceKeys` values.
+---@field trainerClass integer `Enum.classIDs` value of the class the NPC trains.
+---@field trainerSkills integer Skill line IDs the NPC trains.
 
 ---@class QuestieDBItemKeys
 ---@field name integer Localized item name.
@@ -203,6 +206,12 @@
 ---@field subName_remove integer Correction-only remove; table-valued fields only.
 ---@field npcFlags_add integer Correction-only add; table-valued fields only.
 ---@field npcFlags_remove integer Correction-only remove; table-valued fields only.
+---@field services_add integer Correction-only add; table-valued fields only.
+---@field services_remove integer Correction-only remove; table-valued fields only.
+---@field trainerClass_add integer Correction-only add; table-valued fields only.
+---@field trainerClass_remove integer Correction-only remove; table-valued fields only.
+---@field trainerSkills_add integer Correction-only add; table-valued fields only.
+---@field trainerSkills_remove integer Correction-only remove; table-valued fields only.
 
 ---@class QuestieDBItemCorrectionKeys: QuestieDBItemKeys
 ---@field name_add integer Correction-only add; table-valued fields only.

@@ -44,13 +44,19 @@ covers every `npcFlags` meaning (vendor, repair, banker, innkeeper, flight maste
 trainer kinds (class, profession, weapon master, portal, pet, demon, battle pet) and object kinds
 (mailbox, meeting stone, anvil, forge, alchemy lab, moonwell).
 
-Values are converted once from `npcFlags` and Questie's lists, then authored directly.
+Values are converted once from `npcFlags` and Questie's lists, then authored directly. Base data
+rows no longer carry `npcFlags`.
+
 `npcFlags` stays readable for existing consumers: a Derived Pass rebuilds it from `services` with
-each expansion's bit values, so authors edit only `services`.
+each expansion's bit values. Bits no service names are dropped. A Static Correction that still
+sets `npcFlags`, as generated imports and older Corrections do, is honoured by the same pass: the
+mask replaces the services a flag can express in that flavor and keeps the rest. A Dynamic
+Correction applies after the pass, so one that sets `npcFlags` must set `services` too.
 
 ### 4. Trainer detail
 
-- `trainerClass`: the class ID a class trainer teaches.
+- `trainerClass`: the class ID a class trainer teaches, from `Enum.classIDs`. Pet and demon
+  trainers carry their class too and are told apart by service.
 - `trainerSkills`: a list of skill line IDs for profession, weapon and riding trainers. Weapon
   masters teach several skills, hence a list.
 

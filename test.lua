@@ -560,10 +560,27 @@ suite("fact-validation", "shared", function()
     "a scalar where a list belongs is reported")
   equal(problems({ [keys.requiredFaction] = "AH" }),
     { 'Object 7: requiredFaction must be "A" or "H", got AH' }, "an unrestricted spelling is reported")
+  local npcMeta = dofile("src/meta/npcMeta.lua")
+  local npcKeys = npcMeta.keys
+  local function npcProblems(row)
+    return facts.problems({ Npc = { meta = npcMeta, entities = { [9] = row } } })
+  end
+  equal(npcProblems({ [npcKeys.trainerClass] = 8, [npcKeys.trainerSkills] = { 171, 45 } }), {},
+    "a class ID, a profession skill and a weapon skill are accepted")
+  equal(npcProblems({ [npcKeys.trainerClass] = 0 }), {}, "trainerClass 0 means no class and is accepted")
+  -- 128 is the MAGE mask bit from classKeys, the likeliest wrong constant to reach for.
+  equal(npcProblems({ [npcKeys.trainerClass] = 128 }), { "Npc 9: trainerClass holds unknown class ID 128" },
+    "a class mask bit where a class ID belongs is reported")
+  equal(npcProblems({ [npcKeys.trainerSkills] = { 99999 } }), { "Npc 9: trainerSkills holds unknown ID 99999" },
+    "an unknown skill line is reported")
   local ok, message = pcall(facts.assertValid, { Object = { meta = meta, entities = { [7] = { [keys.services] = { 9999 } } } } })
   equal(ok, false, "Generation stops on a malformed fact field")
   check(tostring(message):find("Object 7: services holds unknown ID 9999", 1, true) ~= nil,
     "the failure names the entity and the problem")
+end)
+
+suite("npc-services", "shared", function()
+  dofile("tools/validation/npc-services.test.lua")(check, equal)
 end)
 
 suite("object-facts", "shared", function()
