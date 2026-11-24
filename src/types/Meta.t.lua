@@ -7,7 +7,7 @@
 ---@alias QuestieDBMetadataStorageType "number"|"string"|"table"
 ---@alias QuestieDBMetadataStructure "questgivers"|"stringarray"|"trigger"|"objectives"|"idarray"|"pair"|"pairs"|"reputationpairs"|"extraobjectives"|"spawnlist"|"waypointlist"
 ---@alias QuestieDBMetadataCompilerType "u8string"|"questgivers"|"u8"|"s16"|"u32"|"u16"|"u8u16stringarray"|"trigger"|"objectives"|"u24"|"u8s24array"|"u8u24array"|"u12pair"|"s24pair"|"u8s24pairs"|"extraobjectives"|"s24"|"spawnlist"|"waypointlist"|"faction"|"u16u24array"
----@alias QuestieDBMetadataNormalizer "faction"
+---@alias QuestieDBMetadataNormalizer "faction"|"requiredFaction"
 
 --------------------------------------------------------------------------------
 -- Positional field keys
@@ -92,8 +92,10 @@
 ---@field questEnds integer Quests finished at this object.
 ---@field spawns integer Spawn coordinates grouped by zone.
 ---@field zoneID integer Best estimate of the object's most common zone.
----@field factionID integer Faction restriction mask used by spawn data.
+---@field factionID integer Deprecated faction template ID; reads return the placeholder `0`.
 ---@field waypoints integer Movement paths for objects attached to transports.
+---@field services integer Services the object provides, as `Enum.serviceKeys` values.
+---@field requiredFaction integer `"A"` or `"H"` when only that faction can use the object.
 
 -- Correction enums extend authoring keys only. Schema keys and getters remain canonical.
 ---@class QuestieDBQuestCorrectionKeys: QuestieDBQuestKeys
@@ -251,6 +253,10 @@
 ---@field factionID_remove integer Correction-only remove; table-valued fields only.
 ---@field waypoints_add integer Correction-only add; table-valued fields only.
 ---@field waypoints_remove integer Correction-only remove; table-valued fields only.
+---@field services_add integer Correction-only add; table-valued fields only.
+---@field services_remove integer Correction-only remove; table-valued fields only.
+---@field requiredFaction_add integer Correction-only add; table-valued fields only.
+---@field requiredFaction_remove integer Correction-only remove; table-valued fields only.
 
 --------------------------------------------------------------------------------
 -- Complete generated schemas
@@ -311,6 +317,8 @@
 ---@field emptyIsNil table<integer, true> Fields whose empty table normalizes to nil.
 ---@field zeroPairIsNil table<integer, true> Pair fields whose `{0, 0}` normalizes to nil.
 ---@field normalize table<integer, QuestieDBMetadataNormalizer> Sparse named-normalizer map.
+---@field constantValues table<integer, number> Deprecated field placeholders returned without per-entity metadata.
+---@field deprecatedFields table<integer, string> Deprecated field index to the replacement field named in the once-per-caller chat message.
 ---@field l10nFields integer[] Field indices carrying translations.
 
 ---@alias QuestieDBEntitySchema QuestieDBQuestSchema|QuestieDBNpcSchema|QuestieDBItemSchema|QuestieDBObjectSchema

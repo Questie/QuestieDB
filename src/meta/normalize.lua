@@ -230,8 +230,18 @@ function normalize.faction(value)
   return "AH"
 end
 
+--- `requiredFaction` records a restriction only: "A" or "H". Every other spelling, including
+--- "AH" and "", means no restriction and reads back as nil, so unrestricted entities store
+--- nothing (ADR 0017).
+function normalize.requiredFaction(value)
+  if value == "A" then return "A" end
+  if value == "H" then return "H" end
+  return nil
+end
+
 normalize.byName = {
   faction = normalize.faction,
+  requiredFaction = normalize.requiredFaction,
 }
 
 --------------------------------------------------------------------------------------------

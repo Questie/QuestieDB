@@ -19,11 +19,38 @@
 -- Producer. Scalars are immutable. In Baked mode, the first field read installs the entity's
 -- decoded Scalar row as its cache row.
 
-local _, LibQuestieDB = ...
+local ADDON_NAME, LibQuestieDB = ...
 
 local shared = {}
 
 local type, rawget, setmetatable, ipairs = type, rawget, setmetatable, ipairs
+
+--------------------------------------------------------------------------------------------
+-- Deprecated field reads
+--------------------------------------------------------------------------------------------
+--
+-- A deprecated field keeps its getter and returns a schema placeholder, so old consumers do
+-- not break. The first reads name the calling addon in chat, once per addon, so its author
+-- learns the field is going away (ADR 0017).
+
+--- How many reads of one deprecated field inspect the call stack per session. `debugstack`
+--- builds a string, so a consumer reading the field for every entity must not pay for it on
+--- every call. An addon that reads the field at all is seen within its first reads.
+shared.deprecationStackBudget = 32
+
+--- Name the first addon on the call stack that is not QuestieDB.
+---@return string? addon Nil without `debugstack` (offline tooling); "unknown" when no addon frame is found.
+function shared.CallingAddon()
+  local debugstack = rawget(_G, "debugstack")
+  if not debugstack then return nil end
+  local stack = debugstack(2, 20, 0)
+  if type(stack) ~= "string" then return "unknown" end
+  -- Clients print `Interface/AddOns/Name/File.lua` with either slash and varying case.
+  for name in stack:gmatch("[Ii]nterface[/\\][Aa]dd[Oo]ns[/\\]([^/\\]+)[/\\]") do
+    if name ~= ADDON_NAME then return name end
+  end
+  return "unknown"
+end
 
 --------------------------------------------------------------------------------------------
 -- Freezing
@@ -138,6 +165,33 @@ function shared.CreateEntity(meta, backend)
     meta = meta,
     backend = backend,
   }
+
+  -- fieldIndex -> replacement field name. Nil for every entity type without a deprecated
+  -- field, so the public read paths below pay one nil check.
+  local deprecated = meta.deprecatedFields
+  local deprecationReads, deprecationReported = {}, {}
+
+  ---Report a deprecated field read in chat, once per calling addon, within the stack budget.
+  ---@param fieldIndex number
+  local function noteDeprecatedRead(fieldIndex)
+    local reads = (deprecationReads[fieldIndex] or 0) + 1
+    if reads > shared.deprecationStackBudget then return end
+    deprecationReads[fieldIndex] = reads
+    local caller = shared.CallingAddon()
+    if not caller then return end
+    local reported = deprecationReported[fieldIndex]
+    if not reported then
+      reported = {}
+      deprecationReported[fieldIndex] = reported
+    end
+    if reported[caller] then return end
+    reported[caller] = true
+    local printer = rawget(_G, "print")
+    if printer then
+      printer(("QuestieDB: %sDB.%s is deprecated and always returns its placeholder. Use %sDB.%s instead. Called by: %s")
+        :format(meta.entity, meta.names[fieldIndex], meta.entity, deprecated[fieldIndex], caller))
+    end
+  end
 
   -- Decoded field cache. Source mode creates an empty row and fills fields on demand. Baked
   -- mode adopts the decoded scalar row itself, avoiding a copy and a second table per entity.
@@ -396,6 +450,7 @@ function shared.CreateEntity(meta, backend)
   --- reaching the Source normalizer and raising (ADR 0003 parity).
   function entity.GetByIndex(id, fieldIndex)
     if type(fieldIndex) ~= "number" or fieldIndex < 1 or fieldIndex > fieldCount then return nil end
+    if deprecated and deprecated[fieldIndex] then noteDeprecatedRead(fieldIndex) end
     return get(id, fieldIndex)
   end
 
@@ -403,6 +458,7 @@ function shared.CreateEntity(meta, backend)
   function entity.Get(id, key)
     local fieldIndex = keys[key] or (type(key) == "number" and key or nil)
     if not fieldIndex or fieldIndex < 1 or fieldIndex > fieldCount then return nil end
+    if deprecated and deprecated[fieldIndex] then noteDeprecatedRead(fieldIndex) end
     return get(id, fieldIndex)
   end
 
@@ -417,6 +473,7 @@ function shared.CreateEntity(meta, backend)
       local key = requestedKeys[i]
       local fieldIndex = keys[key] or (type(key) == "number" and key or nil)
       if fieldIndex and fieldIndex >= 1 and fieldIndex <= fieldCount then
+        if deprecated and deprecated[fieldIndex] then noteDeprecatedRead(fieldIndex) end
         values[i] = get(id, fieldIndex)
       end
     end
@@ -430,6 +487,7 @@ function shared.CreateEntity(meta, backend)
     if type(id) ~= "number" then return nil end
     local fieldIndex = keys[key] or (type(key) == "number" and key or nil)
     if not fieldIndex or fieldIndex < 1 or fieldIndex > fieldCount then return nil end
+    if deprecated and deprecated[fieldIndex] then noteDeprecatedRead(fieldIndex) end
     local value = backend.readField(id, fieldIndex)
     if value == nil then
       -- Same defaults, but GetRaw's existence gate is the backend alone: it bypasses the
@@ -503,6 +561,32 @@ function shared.CreateEntity(meta, backend)
       if wanted[list[index]] then return true end
     end
     return false
+  end
+
+  local servicesFieldIndex = keys.services
+  if servicesFieldIndex then
+    --- Whether the entity provides any service that is a key of `wanted`, a set of
+    --- `Enum.serviceKeys` values built with `LibQuestieDB.Set`. Allocates nothing per call.
+    function entity.HasServices(id, wanted)
+      if type(id) ~= "number" or type(wanted) ~= "table" then return false end
+      local list = retainedList(id, servicesFieldIndex)
+      if not list then return false end
+      for index = 1, #list do
+        if wanted[list[index]] then return true end
+      end
+      return false
+    end
+
+    --- The entity's services as a lookup set `{ [serviceKey] = true }`, or nil when it has
+    --- none. A fresh table per call that the caller owns; use `HasServices` when scanning.
+    function entity.GetServices(id)
+      if type(id) ~= "number" then return nil end
+      local list = retainedList(id, servicesFieldIndex)
+      if not list then return nil end
+      local set = {}
+      for index = 1, #list do set[list[index]] = true end
+      return set
+    end
   end
 
   ------------------------------------------------------------------------------------------
@@ -650,7 +734,12 @@ function shared.CreateEntity(meta, backend)
   -- Named getters, generated from the schema. `QuestDB.name(2)` reads field 1 of quest 2.
   for fieldIndex = 1, fieldCount do
     local name = meta.names[fieldIndex]
-    if name then
+    if name and deprecated and deprecated[fieldIndex] then
+      entity[name] = function(id)
+        noteDeprecatedRead(fieldIndex)
+        return get(id, fieldIndex)
+      end
+    elseif name then
       entity[name] = function(id) return get(id, fieldIndex) end
     end
   end
