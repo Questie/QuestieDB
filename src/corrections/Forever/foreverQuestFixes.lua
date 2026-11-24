@@ -5295,6 +5295,7 @@ function ForeverQuestFixes:Load()
         },
         [96994] = { -- Your First Riding Wolf
             [questKeys.exclusiveTo] = {95511,96982,96989,96996,96997,97017,97045,97046,97171,97446,98166,99326},
+            [questKeys.requiredRaces] = raceIDs.ORC,
         },
         [96996] = { -- Your First Riding Galestrider
             [questKeys.exclusiveTo] = {95511,96982,96989,96994,96997,97017,97045,97046,97171,97446,98166,99326},
@@ -5318,6 +5319,7 @@ function ForeverQuestFixes:Load()
         },
         [97017] = { -- Your First Riding Ram
             [questKeys.exclusiveTo] = {95511,96982,96989,96994,96996,96997,97045,97046,97171,97446,98166,99326},
+            [questKeys.requiredRaces] = raceIDs.DWARF,
         },
         [97018] = { -- Learning to Ride
             [questKeys.exclusiveTo] = {97074,97170,97188,97194,97200,97203,97204,97205},
@@ -5337,6 +5339,7 @@ function ForeverQuestFixes:Load()
         },
         [97046] = { -- Your First Mechanostrider
             [questKeys.exclusiveTo] = {95511,96982,96989,96994,96996,96997,97017,97045,97171,97446,98166,99326},
+            [questKeys.requiredRaces] = raceIDs.GNOME,
         },
         [97047] = { -- The Cook in the Cage
             [questKeys.nextQuestInChain] = 97048,
