@@ -13,6 +13,7 @@ local ZoneDB = QuestieLoader:ImportModule("ZoneDB")
 
 function QuestieObjectFixes:Load()
     local objectKeys = QuestieDB.objectKeys
+    local serviceKeys = QuestieDB.serviceKeys
     local zoneIDs = ZoneDB.zoneIDs
 
     return {
@@ -569,6 +570,7 @@ function QuestieObjectFixes:Load()
         },
         [400010] = { -- Moonwell
             [objectKeys.name] = "Moonwell",
+            [objectKeys.services] = {serviceKeys.MOONWELL},
             [objectKeys.questStarts] = {},
             [objectKeys.questEnds] = {},
             [objectKeys.spawns] = {[zoneIDs.MOONGLADE] = {{68,60.2}}},
