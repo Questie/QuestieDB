@@ -7,10 +7,15 @@ local QuestieDB = QuestieLoader:ImportModule("QuestieDB")
 local ZoneDB = QuestieLoader:ImportModule("ZoneDB")
 ---@type Phasing
 local Phasing = QuestieLoader:ImportModule("Phasing")
+---@type QuestieProfessions
+local QuestieProfessions = QuestieLoader:ImportModule("QuestieProfessions")
 
 -- Static Corrections: shared by all characters and folded in during Generation.
 function ForeverNpcFixes:Load()
     local npcKeys = QuestieDB.npcKeys
+    local serviceKeys = QuestieDB.serviceKeys
+    local classIDs = QuestieDB.classIDs
+    local professionKeys = QuestieProfessions.professionKeys
     local zoneIDs = ZoneDB.zoneIDs
     local npcFlags = QuestieDB.npcFlags
     local waypointPresets = QuestieDB.waypointPresets
@@ -317,6 +322,8 @@ function ForeverNpcFixes:Load()
             [npcKeys.name] = "Incubus",
         },
         [205729] = { -- Boarton Shadetotem
+            [npcKeys.services_add] = {serviceKeys.CLASS_TRAINER},
+            [npcKeys.trainerClass] = classIDs.ROGUE,
             [npcKeys.spawns] = {[zoneIDs.THUNDER_BLUFF] = {{39.44,65.82}}},
         },
         [209797] = { -- Bruuz
@@ -414,6 +421,8 @@ function ForeverNpcFixes:Load()
             [npcKeys.spawns] = {[zoneIDs.TIRISFAL_GLADES] = {{22.09,44.66}}},
         },
         [246389] = { -- Hilda the Breaker
+            [npcKeys.services_add] = {serviceKeys.CLASS_TRAINER},
+            [npcKeys.trainerClass] = classIDs.PALADIN,
             [npcKeys.spawns] = {[zoneIDs.TIRISFAL_GLADES] = {{21.96,47.25}}},
         },
         [246393] = { -- Jorin Croge
@@ -428,12 +437,18 @@ function ForeverNpcFixes:Load()
             [npcKeys.zoneID] = zoneIDs.CITY_OF_DALARAN,
         },
         [247223] = { -- Nancy Songflower
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.HERBALISM},
             [npcKeys.spawns] = {[zoneIDs.ELWYNN_FOREST] = {{52.41,43.87}}},
         },
         [247226] = { -- Kelsey Fargo
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.MINING},
             [npcKeys.spawns] = {[zoneIDs.ELWYNN_FOREST] = {{47.18,32.16}}},
         },
         [247227] = { -- Riley Peltskinner
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.SKINNING},
             [npcKeys.spawns] = {[zoneIDs.ELWYNN_FOREST] = {{46.96,39.92}}},
         },
         [247229] = { -- Daniel
@@ -461,6 +476,8 @@ function ForeverNpcFixes:Load()
             [npcKeys.spawns] = {[zoneIDs.ELWYNN_FOREST] = {{49.22,28.01}}},
         },
         [248415] = { -- Tordrin Sternblade
+            [npcKeys.services_add] = {serviceKeys.CLASS_TRAINER},
+            [npcKeys.trainerClass] = classIDs.HUNTER,
             [npcKeys.spawns] = {[zoneIDs.ELWYNN_FOREST] = {{51.21,40.8}}},
         },
         [248464] = { -- Nimsy
@@ -470,6 +487,8 @@ function ForeverNpcFixes:Load()
             [npcKeys.spawns] = {[zoneIDs.ELWYNN_FOREST] = {{61.38,48.93}}},
         },
         [249713] = { -- Odd Child
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.ALCHEMY},
             [npcKeys.spawns] = {[zoneIDs.WESTFALL] = {{42.83,72.76}}},
         },
         [250483] = { -- Witherfang
@@ -560,15 +579,21 @@ function ForeverNpcFixes:Load()
             [npcKeys.friendlyToFaction] = {}, -- Clear incorrect trace data. These are hostile
         },
         [251507] = { -- Josephine Carson
+            [npcKeys.services_add] = {serviceKeys.CLASS_TRAINER},
+            [npcKeys.trainerClass] = classIDs.HUNTER,
             [npcKeys.spawns] = {[zoneIDs.ELWYNN_FOREST] = {{41.15,66.23}}},
         },
         [251537] = { -- Uualia Suncrest
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{42.75,24.49}}},
         },
         [251684] = { -- Strange Hermit
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.ENGINEERING},
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{53.96,38.9}}},
         },
         [251905] = { -- Zerril Softbreeze
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.COOKING},
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{43.85,43.84}}},
         },
         [251953] = { -- Talia Softglen
@@ -585,36 +610,52 @@ function ForeverNpcFixes:Load()
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{59.15,79.78}}},
         },
         [251977] = { -- Angelique Butler
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.FIRST_AID},
             [npcKeys.friendlyToFaction] = "A",
         },
         [251993] = { -- Indari Sunseam
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.LEATHERWORKING},
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{44.68,44.52}}},
         },
         [252068] = { -- Al'Aketh Stormcaller
             [npcKeys.friendlyToFaction] = {}, -- Clear incorrect trace data. These are hostile
         },
         [252084] = { -- Katherine Lee
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.COOKING},
             [npcKeys.spawns] = {[zoneIDs.ALTERAC_MOUNTAINS] = {{12.62,65.8}}},
         },
         [252172] = { -- Danarii Bellowveil
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{45.24,45.18}}},
         },
         [252373] = { -- Anathamaas Aetherwind
+            [npcKeys.services_add] = {serviceKeys.CLASS_TRAINER},
+            [npcKeys.trainerClass] = classIDs.MAGE,
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{65.91,80.57}}},
         },
         [252376] = { -- Emerii Tallgust
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.LEATHERWORKING},
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{63.73,80.68}}},
         },
         [252379] = { -- Eltheen Nightbreeze
+            [npcKeys.services_add] = {serviceKeys.CLASS_TRAINER},
+            [npcKeys.trainerClass] = classIDs.ROGUE,
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{59.9,72.48}}},
         },
         [252380] = { -- Othesia Evengale
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.TAILORING},
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{64.41,81.17}}},
         },
         [252383] = { -- Valennia Stormfist
             [npcKeys.questEnds_remove] = {93948},
         },
         [252388] = { -- Halavuul Cragwind
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.MINING},
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{65.44,80.47}}},
         },
         [252390] = { -- Antelariaa Cloudgaze
@@ -634,6 +675,8 @@ function ForeverNpcFixes:Load()
             [npcKeys.questEnds_remove] = {92579},
         },
         [252479] = { -- Daeann Steelwind
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.BLACKSMITHING},
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{65.47,80.28}}},
         },
         [252664] = { -- Al'Aketh Stormchaser
@@ -664,6 +707,8 @@ function ForeverNpcFixes:Load()
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{46.7,81.95}}},
         },
         [253004] = { -- Iaadaria Bitterwind
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.ALCHEMY},
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{66.34,79.5}}},
         },
         [253092] = { -- Alba Fairmoon
@@ -704,22 +749,34 @@ function ForeverNpcFixes:Load()
             [npcKeys.friendlyToFaction] = "H", -- blizzard totally forgot to readd this barber after the exchange
         },
         [254081] = { -- Naeluna Swiftmend
+            [npcKeys.services_add] = {serviceKeys.CLASS_TRAINER},
+            [npcKeys.trainerClass] = classIDs.DRUID,
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{45.16,44.22}}},
         },
         [254082] = { -- Aarnor Galestrike
+            [npcKeys.services_add] = {serviceKeys.CLASS_TRAINER},
+            [npcKeys.trainerClass] = classIDs.SHAMAN,
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{43.45,44.87}}},
             [npcKeys.questStarts] = {97243},
         },
         [254084] = { -- Elayaa Easewind
+            [npcKeys.services_add] = {serviceKeys.CLASS_TRAINER},
+            [npcKeys.trainerClass] = classIDs.HUNTER,
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{45.26,44.24}}},
         },
         [254086] = { -- Shenaan Spellwind
+            [npcKeys.services_add] = {serviceKeys.CLASS_TRAINER},
+            [npcKeys.trainerClass] = classIDs.MAGE,
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{45.1,45.87}}},
         },
         [254087] = { -- Miriaan Mistblade
+            [npcKeys.services_add] = {serviceKeys.CLASS_TRAINER},
+            [npcKeys.trainerClass] = classIDs.ROGUE,
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{43.15,43.26}}},
         },
         [254088] = { -- Corsan Earthrazer
+            [npcKeys.services_add] = {serviceKeys.CLASS_TRAINER},
+            [npcKeys.trainerClass] = classIDs.WARRIOR,
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{44.95,45.1}}},
         },
         [254089] = { -- Coriella Calmbreeze
@@ -732,6 +789,8 @@ function ForeverNpcFixes:Load()
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{58.13,78.3}}},
         },
         [254345] = { -- Syriel Nightrain
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.HERBALISM},
             [npcKeys.questEnds_remove] = {97968},
         },
         [254358] = { -- Veena Vericloud
@@ -797,24 +856,38 @@ function ForeverNpcFixes:Load()
             [npcKeys.friendlyToFaction] = {}, -- Clear incorrect trace data. These are hostile
         },
         [257003] = { -- Ishlee Breezewhisper
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.SKINNING},
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{59.63,76.06}}},
         },
         [257004] = { -- Eaysaa Brightgust
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.ENCHANTING},
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{59.19,76.4}}},
         },
         [257005] = { -- Valiena Swiftgale
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.ALCHEMY},
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{59.25,76.32}}},
         },
         [257006] = { -- Nyalah Brightfire
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.COOKING},
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{60.64,72.66}}},
         },
         [257007] = { -- Melasa Fairmend
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.FIRST_AID},
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{63.17,72.56}}},
         },
         [257008] = { -- Baelann Swiftcurrent
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.FISHING},
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{63.27,75.72}}},
         },
         [257021] = { -- Halassa Fernbreeze
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.HERBALISM},
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{42.96,43.54}}},
             [npcKeys.questEnds_add] = {97968},
         },
@@ -835,6 +908,8 @@ function ForeverNpcFixes:Load()
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{58.98,75.46}}},
         },
         [257446] = { -- Teo Hammerstorm
+            [npcKeys.services_add] = {serviceKeys.CLASS_TRAINER},
+            [npcKeys.trainerClass] = classIDs.SHAMAN,
             [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{28.79,66.18}}},
             [npcKeys.questStarts_add] = {94375},
         },
@@ -851,6 +926,8 @@ function ForeverNpcFixes:Load()
             [npcKeys.spawns] = {[zoneIDs.LOCH_MODAN] = {{32.17,65.97}}},
         },
         [258113] = { -- Ingrid Dunwald
+            [npcKeys.services_add] = {serviceKeys.CLASS_TRAINER},
+            [npcKeys.trainerClass] = classIDs.SHAMAN,
             [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{47.58,51.95}}},
         },
         [258130] = { -- Jorel Windsinger
@@ -890,6 +967,8 @@ function ForeverNpcFixes:Load()
             [npcKeys.npcFlags] = npcFlags.BANKER,
         },
         [258930] = { -- Isaac Chan
+            [npcKeys.services_add] = {serviceKeys.PET_TRAINER},
+            [npcKeys.trainerClass] = classIDs.HUNTER,
             [npcKeys.spawns] = {[zoneIDs.ELWYNN_FOREST] = {{41.79,66.37}}},
         },
         [259012] = { -- Ealaane Nimbuswalker
@@ -997,6 +1076,8 @@ function ForeverNpcFixes:Load()
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{61.14,76.74}}},
         },
         [265756] = { -- Genn Fairweather
+            [npcKeys.services_add] = {serviceKeys.RIDING_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.RIDING},
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{53.83,81.33}}},
         },
         [265810] = { -- Kaga Wildhoof
@@ -1015,6 +1096,8 @@ function ForeverNpcFixes:Load()
             [npcKeys.spawns] = {[zoneIDs.DUROTAR] = {{53.95,42.59}}},
         },
         [267000] = { -- Paige
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.COOKING},
             [npcKeys.spawns] = {[zoneIDs.ALTERAC_MOUNTAINS] = {{20.82,74.69}}},
             [npcKeys.friendlyToFaction] = "A",
         },
@@ -1028,48 +1111,78 @@ function ForeverNpcFixes:Load()
             [npcKeys.spawns] = {[zoneIDs.THE_BARRENS] = {{57.53,27.06}}},
         },
         [267324] = { -- Margaret Weaver
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.SKINNING},
             [npcKeys.spawns] = {[zoneIDs.TIRISFAL_GLADES] = {{32.6,65.81}}},
         },
         [267325] = { -- Walter Mason
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.MINING},
             [npcKeys.spawns] = {[zoneIDs.TIRISFAL_GLADES] = {{32.22,65.82}}},
         },
         [267326] = { -- Florence Nightshade
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.HERBALISM},
             [npcKeys.spawns] = {[zoneIDs.TIRISFAL_GLADES] = {{32.46,65.14}}},
         },
         [267327] = { -- Kagil
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.SKINNING},
             [npcKeys.spawns] = {[zoneIDs.DUROTAR] = {{40.78,67.86}}},
         },
         [267328] = { -- Norzsh
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.MINING},
             [npcKeys.spawns] = {[zoneIDs.DUROTAR] = {{40.53,68.14}}},
         },
         [267329] = { -- Zor'la
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.HERBALISM},
             [npcKeys.spawns] = {[zoneIDs.DUROTAR] = {{42.66,67.39}}},
         },
         [267330] = { -- Nawka Wildsong
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.SKINNING},
             [npcKeys.spawns] = {[zoneIDs.MULGORE] = {{44.49,76.69}}},
         },
         [267331] = { -- Vartha Rockmane
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.MINING},
             [npcKeys.spawns] = {[zoneIDs.MULGORE] = {{44.29,78.36}}},
         },
         [267332] = { -- Garan Sunstrider
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.HERBALISM},
             [npcKeys.spawns] = {[zoneIDs.MULGORE] = {{44.13,77.97}}},
         },
         [267333] = { -- Terunne Bearshaper
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.SKINNING},
             [npcKeys.spawns] = {[zoneIDs.TELDRASSIL] = {{59.39,38.63}}},
         },
         [267334] = { -- Fanorran Stilloak
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.MINING},
             [npcKeys.spawns] = {[zoneIDs.TELDRASSIL] = {{58.16,41.42}}},
         },
         [267335] = { -- Eleyna Duskbreeze
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.HERBALISM},
             [npcKeys.spawns] = {[zoneIDs.TELDRASSIL] = {{59.86,41.31}}},
         },
         [267336] = { -- Brighid Stormflayer
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.SKINNING},
             [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{29.19,67.73}}},
         },
         [267337] = { -- Sally Swiftwrench
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.MINING},
             [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{28.93,67.72}}},
         },
         [267338] = { -- Emrys Flintbeard
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.HERBALISM},
             [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{28.95,66.59}}},
         },
         [267806] = { -- "Flipfin"
@@ -1134,18 +1247,24 @@ function ForeverNpcFixes:Load()
             [npcKeys.friendlyToFaction] = {}, -- Clear incorrect trace data. These are hostile
         },
         [270263] = { -- Farseer Maret Firetend
+            [npcKeys.services_add] = {serviceKeys.CLASS_TRAINER},
+            [npcKeys.trainerClass] = classIDs.SHAMAN,
             [npcKeys.spawns] = {[zoneIDs.THE_HINTERLANDS] = {{14.4,42.6}}},
             [npcKeys.zoneID] = zoneIDs.THE_HINTERLANDS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.npcFlags] = npcFlags.TRAINER,
         },
         [270278] = { -- Bordolf Axegrim
+            [npcKeys.services_add] = {serviceKeys.CLASS_TRAINER},
+            [npcKeys.trainerClass] = classIDs.WARRIOR,
             [npcKeys.spawns] = {[zoneIDs.THE_HINTERLANDS] = {{14.4,43.0}}},
             [npcKeys.zoneID] = zoneIDs.THE_HINTERLANDS,
             [npcKeys.friendlyToFaction] = "A",
             [npcKeys.npcFlags] = npcFlags.TRAINER,
         },
         [270280] = { -- Torin Treehame
+            [npcKeys.services_add] = {serviceKeys.CLASS_TRAINER},
+            [npcKeys.trainerClass] = classIDs.HUNTER,
             [npcKeys.spawns] = {[zoneIDs.THE_HINTERLANDS] = {{14.6,43.0}}},
             [npcKeys.zoneID] = zoneIDs.THE_HINTERLANDS,
             [npcKeys.friendlyToFaction] = "A",
@@ -1331,6 +1450,8 @@ function ForeverNpcFixes:Load()
             [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{58.34,42.06}}},
         },
         [276067] = { -- Angus Hammerhand
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.BLACKSMITHING},
             [npcKeys.spawns] = {[zoneIDs.TIRISFAL_GLADES] = {{21.16,45.72}}},
         },
         [276170] = { -- Belanaa Windveil
@@ -1416,6 +1537,192 @@ function ForeverNpcFixes:Load()
             [npcKeys.zoneID] = zoneIDs.ALTERAC_MOUNTAINS,
             [npcKeys.npcFlags] = npcFlags.BARBER,
             [npcKeys.friendlyToFaction] = "A",
+        },
+
+        -- Trainer facts for NPCs the generated delta-base adds, from Questie's trainer lists.
+        [28694] = { -- Alard Schmied
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.BLACKSMITHING},
+        },
+        [244808] = { -- Aramis Hammerhand
+            [npcKeys.services_add] = {serviceKeys.CLASS_TRAINER},
+            [npcKeys.trainerClass] = classIDs.PALADIN,
+        },
+        [246152] = { -- Shari Stilwell
+            [npcKeys.services_add] = {serviceKeys.CLASS_TRAINER},
+            [npcKeys.trainerClass] = classIDs.PALADIN,
+        },
+        [246344] = { -- Alodan the Hopeful
+            [npcKeys.services_add] = {serviceKeys.CLASS_TRAINER},
+            [npcKeys.trainerClass] = classIDs.PALADIN,
+        },
+        [246795] = { -- Linzy Blackbolt
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.ALCHEMY},
+        },
+        [246797] = { -- Jessa Weaver
+            [npcKeys.services_add] = {serviceKeys.CLASS_TRAINER},
+            [npcKeys.trainerClass] = classIDs.MAGE,
+        },
+        [249968] = { -- Hnaz Blunderflame
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.COOKING},
+        },
+        [251373] = { -- Xyton Silverwind
+            [npcKeys.services_add] = {serviceKeys.CLASS_TRAINER},
+            [npcKeys.trainerClass] = classIDs.DRUID,
+        },
+        [251374] = { -- Windshaper Boro
+            [npcKeys.services_add] = {serviceKeys.CLASS_TRAINER},
+            [npcKeys.trainerClass] = classIDs.SHAMAN,
+        },
+        [251376] = { -- Tai'ree Farsight
+            [npcKeys.services_add] = {serviceKeys.CLASS_TRAINER},
+            [npcKeys.trainerClass] = classIDs.HUNTER,
+        },
+        [251379] = { -- Dorii Brightwhisper
+            [npcKeys.services_add] = {serviceKeys.CLASS_TRAINER},
+            [npcKeys.trainerClass] = classIDs.MAGE,
+        },
+        [251389] = { -- Akeri Duskblade
+            [npcKeys.services_add] = {serviceKeys.CLASS_TRAINER},
+            [npcKeys.trainerClass] = classIDs.ROGUE,
+        },
+        [251913] = { -- Aedi Thriceforged
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.BLACKSMITHING},
+        },
+        [251964] = { -- Blademaster Ren
+            [npcKeys.services_add] = {serviceKeys.CLASS_TRAINER},
+            [npcKeys.trainerClass] = classIDs.WARRIOR,
+        },
+        [251972] = { -- Charles Worth
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.TAILORING},
+        },
+        [251978] = { -- Vanessa Sellers
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.ENCHANTING},
+        },
+        [251991] = { -- Taleen Shimmerthread
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.TAILORING},
+        },
+        [251992] = { -- Fenn Fairweather
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.FISHING},
+        },
+        [252359] = { -- Lotheluum Starbreeze
+            [npcKeys.services_add] = {serviceKeys.CLASS_TRAINER},
+            [npcKeys.trainerClass] = classIDs.DRUID,
+        },
+        [252377] = { -- Seena Skybreaker
+            [npcKeys.services_add] = {serviceKeys.CLASS_TRAINER},
+            [npcKeys.trainerClass] = classIDs.WARRIOR,
+        },
+        [252382] = { -- Sessaria Skystride
+            [npcKeys.services_add] = {serviceKeys.CLASS_TRAINER},
+            [npcKeys.trainerClass] = classIDs.SHAMAN,
+        },
+        [252389] = { -- Quel'ana Quickgale
+            [npcKeys.services_add] = {serviceKeys.CLASS_TRAINER},
+            [npcKeys.trainerClass] = classIDs.HUNTER,
+        },
+        [254411] = { -- Quel'dora Quickgale
+            [npcKeys.services_add] = {serviceKeys.PET_TRAINER},
+            [npcKeys.trainerClass] = classIDs.HUNTER,
+        },
+        [255877] = { -- Hunter Moore
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.FISHING},
+        },
+        [255891] = { -- Grungle
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.MINING},
+        },
+        [256655] = { -- Gorg
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.COOKING},
+        },
+        [256658] = { -- Gur'dok
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.BLACKSMITHING},
+        },
+        [257018] = { -- Naleeia Tattermend
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.FIRST_AID},
+        },
+        [257019] = { -- Nyassa Swiftdraught
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.ALCHEMY},
+        },
+        [257020] = { -- Nasalanna Windsinger
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.ENCHANTING},
+        },
+        [257022] = { -- Messana Crestwind
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.MINING},
+        },
+        [257024] = { -- Mendalass Tattermend
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.SKINNING},
+        },
+        [258098] = { -- Eldrun Stormbreaker
+            [npcKeys.services_add] = {serviceKeys.CLASS_TRAINER},
+            [npcKeys.trainerClass] = classIDs.SHAMAN,
+        },
+        [258785] = { -- High Priestess Mims
+            [npcKeys.services_add] = {serviceKeys.CLASS_TRAINER},
+            [npcKeys.trainerClass] = classIDs.PRIEST,
+        },
+        [259250] = { -- Alphonse Dumas
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.BLACKSMITHING},
+        },
+        [259585] = { -- Master Mycologist Shurome
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.ALCHEMY},
+        },
+        [260093] = { -- Garen Largo
+            [npcKeys.services_add] = {serviceKeys.CLASS_TRAINER},
+            [npcKeys.trainerClass] = classIDs.PALADIN,
+        },
+        [260558] = { -- Krix
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.FISHING},
+        },
+        [260562] = { -- Melbin Powderfuse
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.ENGINEERING},
+        },
+        [262558] = { -- Palah Thunderhoof
+            [npcKeys.services_add] = {serviceKeys.CLASS_TRAINER},
+            [npcKeys.trainerClass] = classIDs.SHAMAN,
+        },
+        [262560] = { -- Hana Lighthoof
+            [npcKeys.services_add] = {serviceKeys.CLASS_TRAINER},
+            [npcKeys.trainerClass] = classIDs.DRUID,
+        },
+        [265944] = { -- William Pickman
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.COOKING},
+        },
+        [266881] = { -- Pa'zula
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.ENCHANTING},
+        },
+        [270459] = { -- Alfina Nightgaze
+            [npcKeys.services_add] = {serviceKeys.CLASS_TRAINER},
+            [npcKeys.trainerClass] = classIDs.DRUID,
+        },
+        [275321] = { -- Edward Egan
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.HERBALISM},
+        },
+        [275322] = { -- Patricia Egan
+            [npcKeys.services_add] = {serviceKeys.PROFESSION_TRAINER},
+            [npcKeys.trainerSkills] = {professionKeys.ALCHEMY},
         },
     }
 end

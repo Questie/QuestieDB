@@ -3207,6 +3207,7 @@ function CataNpcFixes.Load()
             [npcKeys.questEnds] = {10513,10514,10515,10519,10523,10541,10579},
         },
         [21209] = { -- Dumphry
+            [npcKeys.npcFlags] = npcFlags.TRAINER + npcFlags.TRAINER_PROFESSION + npcFlags.QUEST_GIVER,
             [npcKeys.questStarts] = {10055,10078,10763,10764},
             [npcKeys.spawns] = {[zoneIDs.HELLFIRE_PENINSULA] = {{51.29,60.31}}},
         },

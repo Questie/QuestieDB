@@ -130,7 +130,9 @@ other read. Contract 5 guarantees `HasAny` and `LibQuestieDB.Set`.
 
 ### Services and faction restriction
 
-`services` is a list of `Enum.serviceKeys` values saying what an entity provides. Objects carry
+`services` is a list of `Enum.serviceKeys` values saying what an entity provides. NPCs carry
+everything the legacy `npcFlags` mask says (vendor, repair, innkeeper, flight master, ...) plus
+trainer kinds no flag expresses (weapon master, portal trainer, pet trainer, ...). Objects carry
 it for mailboxes, meeting stones, anvils, forges, alchemy labs and moonwells:
 
 ```lua
@@ -147,6 +149,26 @@ Use `HasServices` when scanning many entities: it allocates nothing per call, wh
 `GetServices` builds a fresh set the caller owns on every call. `requiredFaction` records a
 restriction only, like `requiredRaces` on quests: an object both factions can use stores nothing
 and reads `nil`. Contract 5 guarantees these fields and helpers.
+
+Service IDs are the same in every flavor, unlike `npcFlags` bit values. Two NPC fields say what
+a trainer teaches:
+
+```lua
+local classIDs = LibQuestieDB.Enum.classIDs
+
+NpcDB.HasServices(384, LibQuestieDB.Set(serviceKeys.VENDOR, serviceKeys.REPAIR))  --> true
+NpcDB.trainerClass(198)       --> 8  (classIDs.MAGE); 0 when the NPC trains no class
+NpcDB.trainerSkills(2704)     --> { 44, 45, 136, 172, 176 }  skill line IDs, or nil
+```
+
+`trainerSkills` holds `Enum.professionKeys` values for profession and riding trainers and
+`Enum.weaponSkillKeys` values for weapon masters.
+
+`NpcDB.npcFlags(id)` remains for consumers written before contract 5. QuestieDB rebuilds the
+mask from `services` with the active flavor's bit values, so the two always agree for Static
+data. Bits no service names are no longer served. In a Correction, author `services`. A Static
+Correction that still sets `npcFlags` is honoured: the mask replaces the services a flag can
+express and keeps the rest. A Dynamic Correction that sets `npcFlags` must set `services` too.
 
 ### `Entity.IdsByName(name) -> list | nil`
 
@@ -921,7 +943,9 @@ provider fails the version check before the lookup.
 Contract 5 adds the entity-fact enums (`Enum.serviceKeys`, `Enum.eventKeys`, `Enum.classIDs`,
 `Enum.weaponSkillKeys`), `LibQuestieDB.Set`, and `Entity.HasAny`. It adds Object `services` and
 `requiredFaction` with `ObjectDB.HasServices` and `ObjectDB.GetServices`, and deprecates Object
-`factionID`, which now always reads `0`. Contracts 1 to 4 remain supported.
+`factionID`, which now always reads `0`. It adds NPC `services`, `trainerClass` and
+`trainerSkills` with `NpcDB.HasServices` and `NpcDB.GetServices`. Contracts 1 to 4 remain
+supported.
 
 The check is a **range**: `RequireContract(v)` passes for any
 `minSupportedContract <= v <= contractVersion`, so a consumer built against an older

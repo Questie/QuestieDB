@@ -7,6 +7,7 @@ local ZoneDB = QuestieLoader:ImportModule("ZoneDB")
 
 function SeasonOfDiscovery:LoadNPCs()
     local npcKeys = QuestieDB.npcKeys
+    local serviceKeys = QuestieDB.serviceKeys
     local zoneIDs = ZoneDB.zoneIDs
     local npcFlags = QuestieDB.npcFlags
     local waypointPresets = QuestieDB.waypointPresets
@@ -2699,6 +2700,7 @@ function SeasonOfDiscovery:LoadNPCs()
             [npcKeys.questStarts] = {89255,89256,89257,89258,89259,89260,89261,89262},
             [npcKeys.questEnds] = {89255,89256,89257,89258,89259,89260,89261,89262},
             [npcKeys.npcFlags] = npcFlags.REPAIR,
+            [npcKeys.services] = {serviceKeys.REPAIR},
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Repair",
         },
@@ -2715,6 +2717,7 @@ function SeasonOfDiscovery:LoadNPCs()
             [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
             [npcKeys.spawns] = {[zoneIDs.EASTERN_PLAGUELANDS] = {{94.69, 83.54}}},
             [npcKeys.npcFlags] = npcFlags.VENDOR,
+            [npcKeys.services] = {serviceKeys.VENDOR},
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Tailoring Supplies",
         },
@@ -2722,6 +2725,7 @@ function SeasonOfDiscovery:LoadNPCs()
             [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
             [npcKeys.spawns] = {[zoneIDs.EASTERN_PLAGUELANDS] = {{94.24,93.38}}},
             [npcKeys.npcFlags] = npcFlags.VENDOR,
+            [npcKeys.services] = {serviceKeys.VENDOR},
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Leatherworking Supplies",
         },
@@ -2740,6 +2744,7 @@ function SeasonOfDiscovery:LoadNPCs()
             [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
             [npcKeys.spawns] = {[zoneIDs.EASTERN_PLAGUELANDS] = {{94.911,91.356}}},
             [npcKeys.npcFlags] = npcFlags.VENDOR,
+            [npcKeys.services] = {serviceKeys.VENDOR},
             [npcKeys.minLevel] = 60,
             [npcKeys.maxLevel] = 60,
         },
@@ -2763,6 +2768,7 @@ function SeasonOfDiscovery:LoadNPCs()
             [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
             [npcKeys.spawns] = {[zoneIDs.EASTERN_PLAGUELANDS] = {{95.29,78.80}}},
             [npcKeys.npcFlags] = npcFlags.VENDOR,
+            [npcKeys.services] = {serviceKeys.VENDOR},
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Food & Drink",
         },
@@ -2790,6 +2796,7 @@ function SeasonOfDiscovery:LoadNPCs()
             [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
             [npcKeys.spawns] = {[zoneIDs.EASTERN_PLAGUELANDS] = {{98.75,82.25},{98.51,82.57}}},
             [npcKeys.npcFlags] = npcFlags.BANKER,
+            [npcKeys.services] = {serviceKeys.BANKER},
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Banker",
         },
@@ -2826,6 +2833,7 @@ function SeasonOfDiscovery:LoadNPCs()
             [npcKeys.zoneID] = zoneIDs.EASTERN_KINGDOMS,
             [npcKeys.spawns] = {[zoneIDs.EASTERN_KINGDOMS] = {{62.8376,26.2241}}},
             [npcKeys.npcFlags] = npcFlags.AUCTIONEER,
+            [npcKeys.services] = {serviceKeys.AUCTIONEER},
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Seafaring Auctioneer",
         },
@@ -2837,6 +2845,7 @@ function SeasonOfDiscovery:LoadNPCs()
             [npcKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
             [npcKeys.spawns] = {[zoneIDs.EASTERN_PLAGUELANDS] = {{99.57,77.84}}},
             [npcKeys.npcFlags] = npcFlags.REPAIR,
+            [npcKeys.services] = {serviceKeys.REPAIR},
             [npcKeys.friendlyToFaction] = "AH",
             [npcKeys.subName] = "Repair",
         },

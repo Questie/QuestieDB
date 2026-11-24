@@ -18,6 +18,7 @@ LibQuestieDB.__derivedModules = nil
 local derived = LibQuestieDB.Derived
 local requiredRaces = LibQuestieDB.DerivedRequiredRaces
 local waypoints = LibQuestieDB.DerivedWaypoints
+local npcServices = LibQuestieDB.DerivedNpcServices
 
 -- Questie's Initialize infers requiredRaces before MinimalInit and PreCompile. Register only
 -- the exact compatibility transcription; ApplyCorrectedInference documents a safer policy but
@@ -28,6 +29,16 @@ derived.Register({
   reads = { "Quest", "Npc" },
   order = 50,
   run = requiredRaces.ApplyQuestieCompatibility,
+})
+
+-- Folds a corrected npcFlags mask into services and rebuilds the mask (ADR 0017). The other
+-- passes read neither field, so its position among them changes no result.
+derived.Register({
+  name = "npcServices:syncFlags",
+  writes = "Npc",
+  reads = { "Npc" },
+  order = 40,
+  run = npcServices.Apply,
 })
 
 -- Upstream's PreCompile walks npcData then objectData. Objects only carry waypoints from Cata
