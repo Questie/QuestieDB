@@ -17,6 +17,7 @@ QuestieCorrections.eventObjectiveFirst[89567] = true
 
 function SeasonOfDiscovery:LoadQuests()
     local questKeys = QuestieDB.questKeys
+    local eventKeys = QuestieDB.eventKeys
     local zoneIDs = ZoneDB.zoneIDs
     local raceIDs = QuestieDB.raceKeys
     local classIDs = QuestieDB.classKeys
@@ -828,50 +829,60 @@ function SeasonOfDiscovery:LoadQuests()
             [questKeys.zoneOrSort] = zoneIDs.ALTERAC_MOUNTAINS,
         },
         [79482] = { -- Stolen Winter Veil Treats (Alliance)
+            [questKeys.eventIds] = {eventKeys.WINTER_VEIL},
             [questKeys.startedBy] = {{216902}},
             [questKeys.finishedBy] = {{216915}},
             [questKeys.questFlags] = questFlags.RAID,
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [79483] = { -- Stolen Winter Veil Treats (Horde)
+            [questKeys.eventIds] = {eventKeys.WINTER_VEIL},
             [questKeys.questFlags] = questFlags.RAID,
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [79484] = { -- You're a Mean One... (Alliance)
+            [questKeys.eventIds] = {eventKeys.WINTER_VEIL},
             [questKeys.preQuestSingle] = {79482},
             [questKeys.questFlags] = questFlags.RAID,
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [79485] = { -- You're a Mean One... (Horde)
+            [questKeys.eventIds] = {eventKeys.WINTER_VEIL},
             [questKeys.preQuestSingle] = {79483},
             [questKeys.questFlags] = questFlags.RAID,
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [79486] = { -- A Smokywood Pastures' Thank You! (Alliance)
+            [questKeys.eventIds] = {eventKeys.WINTER_VEIL},
             [questKeys.preQuestSingle] = {79484},
             [questKeys.questFlags] = questFlags.RAID,
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [79487] = { -- A Smokywood Pastures' Thank You! (Horde)
+            [questKeys.eventIds] = {eventKeys.WINTER_VEIL},
             [questKeys.preQuestSingle] = {79485},
             [questKeys.questFlags] = questFlags.RAID,
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [79492] = { -- Metzen the Reindeer (Alliance)
+            [questKeys.eventIds] = {eventKeys.WINTER_VEIL},
             [questKeys.objectives] = {{{15664,"Find Metzen the Reindeer and rescue him"}},nil,{{21211}}},
             [questKeys.questFlags] = questFlags.RAID,
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [79495] = { -- Metzen the Reindeer (Horde)
+            [questKeys.eventIds] = {eventKeys.WINTER_VEIL},
             [questKeys.objectives] = {{{15664,"Find Metzen the Reindeer and rescue him"}},nil,{{21211}}},
             [questKeys.questFlags] = questFlags.RAID,
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [79501] = { -- The Hero of the Day
+            [questKeys.eventIds] = {eventKeys.WINTER_VEIL},
             [questKeys.preQuestSingle] = {79492},
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [79502] = { -- The Hero of the Day
+            [questKeys.eventIds] = {eventKeys.WINTER_VEIL},
             [questKeys.startedBy] = {{216924}},
             [questKeys.preQuestSingle] = {79495},
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
@@ -885,48 +896,56 @@ function SeasonOfDiscovery:LoadQuests()
             [questKeys.preQuestSingle] = {78150},
         },
         [79588] = { -- Small Furry Paws
+            [questKeys.eventIds] = {eventKeys.DARKMOON_FAIRE_ELWYNN, eventKeys.DARKMOON_FAIRE_MULGORE, eventKeys.DARKMOON_FAIRE_TEROKKAR},
             [questKeys.requiredMaxRep] = {factionIDs.DARKMOON_FAIRE, 500},
             [questKeys.zoneOrSort] = sortKeys.DARKMOON_FAIRE,
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
             [questKeys.reputationReward] = {{factionIDs.DARKMOON_FAIRE, 100}},
         },
         [79589] = { -- Torn Bear Pelts
+            [questKeys.eventIds] = {eventKeys.DARKMOON_FAIRE_ELWYNN, eventKeys.DARKMOON_FAIRE_MULGORE, eventKeys.DARKMOON_FAIRE_TEROKKAR},
             [questKeys.requiredMaxRep] = {factionIDs.DARKMOON_FAIRE, 1100},
             [questKeys.zoneOrSort] = sortKeys.DARKMOON_FAIRE,
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
             [questKeys.reputationReward] = {{factionIDs.DARKMOON_FAIRE, 100}},
         },
         [79590] = { -- Heavy Grinding Stone
+            [questKeys.eventIds] = {eventKeys.DARKMOON_FAIRE_ELWYNN, eventKeys.DARKMOON_FAIRE_MULGORE, eventKeys.DARKMOON_FAIRE_TEROKKAR},
             [questKeys.requiredMaxRep] = {factionIDs.DARKMOON_FAIRE, 1100},
             [questKeys.zoneOrSort] = sortKeys.DARKMOON_FAIRE,
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
             [questKeys.reputationReward] = {{factionIDs.DARKMOON_FAIRE, 250}},
         },
         [79591] = { -- Whirring Bronze Gizmo
+            [questKeys.eventIds] = {eventKeys.DARKMOON_FAIRE_ELWYNN, eventKeys.DARKMOON_FAIRE_MULGORE, eventKeys.DARKMOON_FAIRE_TEROKKAR},
             [questKeys.requiredMaxRep] = {factionIDs.DARKMOON_FAIRE, 1100},
             [questKeys.zoneOrSort] = sortKeys.DARKMOON_FAIRE,
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
             [questKeys.reputationReward] = {{factionIDs.DARKMOON_FAIRE, 100}},
         },
         [79592] = { -- Carnival Jerkins
+            [questKeys.eventIds] = {eventKeys.DARKMOON_FAIRE_ELWYNN, eventKeys.DARKMOON_FAIRE_MULGORE, eventKeys.DARKMOON_FAIRE_TEROKKAR},
             [questKeys.requiredMaxRep] = {factionIDs.DARKMOON_FAIRE, 1100},
             [questKeys.zoneOrSort] = sortKeys.DARKMOON_FAIRE,
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
             [questKeys.reputationReward] = {{factionIDs.DARKMOON_FAIRE, 250}},
         },
         [79593] = { -- Coarse Weightstone
+            [questKeys.eventIds] = {eventKeys.DARKMOON_FAIRE_ELWYNN, eventKeys.DARKMOON_FAIRE_MULGORE, eventKeys.DARKMOON_FAIRE_TEROKKAR},
             [questKeys.requiredMaxRep] = {factionIDs.DARKMOON_FAIRE, 500},
             [questKeys.zoneOrSort] = sortKeys.DARKMOON_FAIRE,
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
             [questKeys.reputationReward] = {{factionIDs.DARKMOON_FAIRE, 100}},
         },
         [79594] = { -- Copper Modulator
+            [questKeys.eventIds] = {eventKeys.DARKMOON_FAIRE_ELWYNN, eventKeys.DARKMOON_FAIRE_MULGORE, eventKeys.DARKMOON_FAIRE_TEROKKAR},
             [questKeys.requiredMaxRep] = {factionIDs.DARKMOON_FAIRE, 500},
             [questKeys.zoneOrSort] = sortKeys.DARKMOON_FAIRE,
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
             [questKeys.reputationReward] = {{factionIDs.DARKMOON_FAIRE, 100}},
         },
         [79595] = { -- Carnival Boots
+            [questKeys.eventIds] = {eventKeys.DARKMOON_FAIRE_ELWYNN, eventKeys.DARKMOON_FAIRE_MULGORE, eventKeys.DARKMOON_FAIRE_TEROKKAR},
             [questKeys.requiredMaxRep] = {factionIDs.DARKMOON_FAIRE, 500},
             [questKeys.zoneOrSort] = sortKeys.DARKMOON_FAIRE,
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
@@ -941,6 +960,7 @@ function SeasonOfDiscovery:LoadQuests()
             [questKeys.questFlags] = questFlags.RAID,
         },
         [79637] = { -- A Ticking Present
+            [questKeys.eventIds] = {eventKeys.WINTER_VEIL},
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [79677] = { -- A Quick Grocery Run
@@ -1241,22 +1261,27 @@ function SeasonOfDiscovery:LoadQuests()
             [questKeys.questFlags] = questFlags.RAID,
         },
         [80164] = { -- Large Cluster Rockets
+            [questKeys.eventIds] = {eventKeys.LUNAR_FESTIVAL},
             [questKeys.zoneOrSort] = sortKeys.LUNAR_FESTIVAL,
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
         },
         [80165] = { -- Cluster Rockets
+            [questKeys.eventIds] = {eventKeys.LUNAR_FESTIVAL},
             [questKeys.zoneOrSort] = sortKeys.LUNAR_FESTIVAL,
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
         },
         [80166] = { -- Small Rockets
+            [questKeys.eventIds] = {eventKeys.LUNAR_FESTIVAL},
             [questKeys.zoneOrSort] = sortKeys.LUNAR_FESTIVAL,
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
         },
         [80167] = { -- Large Rockets
+            [questKeys.eventIds] = {eventKeys.LUNAR_FESTIVAL},
             [questKeys.zoneOrSort] = sortKeys.LUNAR_FESTIVAL,
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
         },
         [80168] = { -- Large Rockets
+            [questKeys.eventIds] = {eventKeys.LUNAR_FESTIVAL},
             [questKeys.zoneOrSort] = sortKeys.LUNAR_FESTIVAL,
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
         },
@@ -1304,24 +1329,28 @@ function SeasonOfDiscovery:LoadQuests()
             [questKeys.nextQuestInChain] = 80453,
         },
         [80417] = { -- Soft Bushy Tails
+            [questKeys.eventIds] = {eventKeys.DARKMOON_FAIRE_ELWYNN, eventKeys.DARKMOON_FAIRE_MULGORE, eventKeys.DARKMOON_FAIRE_TEROKKAR},
             [questKeys.requiredMaxRep] = {factionIDs.DARKMOON_FAIRE, 1700},
             [questKeys.zoneOrSort] = sortKeys.DARKMOON_FAIRE,
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
             [questKeys.reputationReward] = {{factionIDs.DARKMOON_FAIRE, 100}},
         },
         [80421] = { -- Green Iron Bracers
+            [questKeys.eventIds] = {eventKeys.DARKMOON_FAIRE_ELWYNN, eventKeys.DARKMOON_FAIRE_MULGORE, eventKeys.DARKMOON_FAIRE_TEROKKAR},
             [questKeys.requiredMaxRep] = {factionIDs.DARKMOON_FAIRE, 1700},
             [questKeys.zoneOrSort] = sortKeys.DARKMOON_FAIRE,
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
             [questKeys.reputationReward] = {{factionIDs.DARKMOON_FAIRE, 100}},
         },
         [80422] = { -- Green Fireworks
+            [questKeys.eventIds] = {eventKeys.DARKMOON_FAIRE_ELWYNN, eventKeys.DARKMOON_FAIRE_MULGORE, eventKeys.DARKMOON_FAIRE_TEROKKAR},
             [questKeys.requiredMaxRep] = {factionIDs.DARKMOON_FAIRE, 1700},
             [questKeys.zoneOrSort] = sortKeys.DARKMOON_FAIRE,
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
             [questKeys.reputationReward] = {{factionIDs.DARKMOON_FAIRE, 100}},
         },
         [80423] = { -- The World's Largest Gnome!
+            [questKeys.eventIds] = {eventKeys.DARKMOON_FAIRE_ELWYNN, eventKeys.DARKMOON_FAIRE_MULGORE, eventKeys.DARKMOON_FAIRE_TEROKKAR},
             [questKeys.requiredMaxRep] = {factionIDs.DARKMOON_FAIRE, 1700},
             [questKeys.zoneOrSort] = sortKeys.DARKMOON_FAIRE,
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
@@ -2261,73 +2290,86 @@ function SeasonOfDiscovery:LoadQuests()
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
         },
         [82271] = { -- More Glowing Scorpid Blood
+            [questKeys.eventIds] = {eventKeys.DARKMOON_FAIRE_ELWYNN, eventKeys.DARKMOON_FAIRE_MULGORE, eventKeys.DARKMOON_FAIRE_TEROKKAR},
             [questKeys.preQuestSingle] = {82272},
             [questKeys.zoneOrSort] = sortKeys.DARKMOON_FAIRE,
             [questKeys.requiredMaxRep] = {factionIDs.DARKMOON_FAIRE, 5500},
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
         },
         [82272] = { -- Glowing Scorpid Blood
+            [questKeys.eventIds] = {eventKeys.DARKMOON_FAIRE_ELWYNN, eventKeys.DARKMOON_FAIRE_MULGORE, eventKeys.DARKMOON_FAIRE_TEROKKAR},
             [questKeys.zoneOrSort] = sortKeys.DARKMOON_FAIRE,
             [questKeys.requiredMaxRep] = {factionIDs.DARKMOON_FAIRE, 5500},
             [questKeys.reputationReward] = {{factionIDs.DARKMOON_FAIRE, 100}},
         },
         [82273] = { -- More Bat Eyes
+            [questKeys.eventIds] = {eventKeys.DARKMOON_FAIRE_ELWYNN, eventKeys.DARKMOON_FAIRE_MULGORE, eventKeys.DARKMOON_FAIRE_TEROKKAR},
             [questKeys.preQuestSingle] = {82274},
             [questKeys.zoneOrSort] = sortKeys.DARKMOON_FAIRE,
             [questKeys.requiredMaxRep] = {factionIDs.DARKMOON_FAIRE, 5500},
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
         },
         [82274] = { -- Evil Bat Eyes
+            [questKeys.eventIds] = {eventKeys.DARKMOON_FAIRE_ELWYNN, eventKeys.DARKMOON_FAIRE_MULGORE, eventKeys.DARKMOON_FAIRE_TEROKKAR},
             [questKeys.zoneOrSort] = sortKeys.DARKMOON_FAIRE,
             [questKeys.requiredMaxRep] = {factionIDs.DARKMOON_FAIRE, 5500},
             [questKeys.reputationReward] = {{factionIDs.DARKMOON_FAIRE, 100}},
         },
         [82275] = { -- Big Black Mace
+            [questKeys.eventIds] = {eventKeys.DARKMOON_FAIRE_ELWYNN, eventKeys.DARKMOON_FAIRE_MULGORE, eventKeys.DARKMOON_FAIRE_TEROKKAR},
             [questKeys.zoneOrSort] = sortKeys.DARKMOON_FAIRE,
             [questKeys.requiredMaxRep] = {factionIDs.DARKMOON_FAIRE, 2500},
             [questKeys.reputationReward] = {{factionIDs.DARKMOON_FAIRE, 100}},
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
         },
         [82276] = { -- Rituals of Strength
+            [questKeys.eventIds] = {eventKeys.DARKMOON_FAIRE_ELWYNN, eventKeys.DARKMOON_FAIRE_MULGORE, eventKeys.DARKMOON_FAIRE_TEROKKAR},
             [questKeys.zoneOrSort] = sortKeys.DARKMOON_FAIRE,
             [questKeys.requiredMaxRep] = {factionIDs.DARKMOON_FAIRE, 5500},
             [questKeys.reputationReward] = {{factionIDs.DARKMOON_FAIRE, 100}},
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
         },
         [82277] = { -- More Dense Grinding Stones
+            [questKeys.eventIds] = {eventKeys.DARKMOON_FAIRE_ELWYNN, eventKeys.DARKMOON_FAIRE_MULGORE, eventKeys.DARKMOON_FAIRE_TEROKKAR},
             [questKeys.zoneOrSort] = sortKeys.DARKMOON_FAIRE,
             [questKeys.requiredMaxRep] = {factionIDs.DARKMOON_FAIRE, 5500},
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
         },
         [82278] = { -- More Thorium Widgets
+            [questKeys.eventIds] = {eventKeys.DARKMOON_FAIRE_ELWYNN, eventKeys.DARKMOON_FAIRE_MULGORE, eventKeys.DARKMOON_FAIRE_TEROKKAR},
             [questKeys.preQuestSingle] = {82279},
             [questKeys.zoneOrSort] = sortKeys.DARKMOON_FAIRE,
             [questKeys.requiredMaxRep] = {factionIDs.DARKMOON_FAIRE, 5500},
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
         },
         [82279] = { -- Thorium Widget
+            [questKeys.eventIds] = {eventKeys.DARKMOON_FAIRE_ELWYNN, eventKeys.DARKMOON_FAIRE_MULGORE, eventKeys.DARKMOON_FAIRE_TEROKKAR},
             [questKeys.zoneOrSort] = sortKeys.DARKMOON_FAIRE,
             [questKeys.requiredMaxRep] = {factionIDs.DARKMOON_FAIRE, 5500},
             [questKeys.reputationReward] = {{factionIDs.DARKMOON_FAIRE, 100}},
         },
         [82280] = { -- Mechanical Repair Kits
+            [questKeys.eventIds] = {eventKeys.DARKMOON_FAIRE_ELWYNN, eventKeys.DARKMOON_FAIRE_MULGORE, eventKeys.DARKMOON_FAIRE_TEROKKAR},
             [questKeys.zoneOrSort] = sortKeys.DARKMOON_FAIRE,
             [questKeys.requiredMaxRep] = {factionIDs.DARKMOON_FAIRE, 2500},
             [questKeys.reputationReward] = {{factionIDs.DARKMOON_FAIRE, 100}},
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
         },
         [82281] = { -- More Armor Kits
+            [questKeys.eventIds] = {eventKeys.DARKMOON_FAIRE_ELWYNN, eventKeys.DARKMOON_FAIRE_MULGORE, eventKeys.DARKMOON_FAIRE_TEROKKAR},
             [questKeys.preQuestSingle] = {82282},
             [questKeys.zoneOrSort] = sortKeys.DARKMOON_FAIRE,
             [questKeys.requiredMaxRep] = {factionIDs.DARKMOON_FAIRE, 5500},
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
         },
         [82282] = { -- Armor Kits
+            [questKeys.eventIds] = {eventKeys.DARKMOON_FAIRE_ELWYNN, eventKeys.DARKMOON_FAIRE_MULGORE, eventKeys.DARKMOON_FAIRE_TEROKKAR},
             [questKeys.zoneOrSort] = sortKeys.DARKMOON_FAIRE,
             [questKeys.requiredMaxRep] = {factionIDs.DARKMOON_FAIRE, 5500},
             [questKeys.reputationReward] = {{factionIDs.DARKMOON_FAIRE, 100}},
         },
         [82283] = { -- Crocolisk Boy and the Bearded Murloc
+            [questKeys.eventIds] = {eventKeys.DARKMOON_FAIRE_ELWYNN, eventKeys.DARKMOON_FAIRE_MULGORE, eventKeys.DARKMOON_FAIRE_TEROKKAR},
             [questKeys.zoneOrSort] = sortKeys.DARKMOON_FAIRE,
             [questKeys.requiredMaxRep] = {factionIDs.DARKMOON_FAIRE, 2500},
             [questKeys.reputationReward] = {{factionIDs.DARKMOON_FAIRE, 100}},
@@ -9243,6 +9285,17 @@ function SeasonOfDiscovery:LoadQuests()
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.requiredClasses] = classIDs.NONE,
             [questKeys.zoneOrSort] = sortKeys.SPECIAL,
+        },
+
+        -- Event membership for Season of Discovery quests.
+        [80169] = { -- SoD event quest
+            [questKeys.eventIds] = {eventKeys.LUNAR_FESTIVAL},
+        },
+        [80170] = { -- SoD event quest
+            [questKeys.eventIds] = {eventKeys.LUNAR_FESTIVAL},
+        },
+        [82323] = { -- SoD event quest
+            [questKeys.eventIds] = {eventKeys.DARKMOON_FAIRE_ELWYNN, eventKeys.DARKMOON_FAIRE_MULGORE, eventKeys.DARKMOON_FAIRE_TEROKKAR},
         },
     }
 end

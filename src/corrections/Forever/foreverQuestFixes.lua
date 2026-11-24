@@ -22,6 +22,7 @@ QuestieCorrections.killCreditObjectiveFirst[98386] = true
 -- Static Corrections: shared by all characters and folded in during Generation.
 function ForeverQuestFixes:Load()
     local questKeys = QuestieDB.questKeys
+    local eventKeys = QuestieDB.eventKeys
     local zoneIDs = ZoneDB.zoneIDs
     local raceIDs = QuestieDB.raceKeys
     local classIDs = QuestieDB.classKeys
@@ -7101,6 +7102,23 @@ function ForeverQuestFixes:Load()
         },
         [99670] = { -- Return to Jereman
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
+
+        -- Event membership for quests the generated delta-base adds.
+        [79482] = { -- Stolen Winter Veil Treats
+            [questKeys.eventIds] = {eventKeys.WINTER_VEIL},
+        },
+        [79483] = { -- Stolen Winter Veil Treats
+            [questKeys.eventIds] = {eventKeys.WINTER_VEIL},
+        },
+        [79492] = { -- Metzen the Reindeer
+            [questKeys.eventIds] = {eventKeys.WINTER_VEIL},
+        },
+        [79495] = { -- Metzen the Reindeer
+            [questKeys.eventIds] = {eventKeys.WINTER_VEIL},
+        },
+        [79637] = { -- A Ticking Present
+            [questKeys.eventIds] = {eventKeys.WINTER_VEIL},
         },
     }
 end
