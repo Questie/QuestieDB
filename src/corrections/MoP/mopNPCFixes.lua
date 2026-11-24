@@ -3687,7 +3687,7 @@ function MopNpcFixes.Load()
         [64058] = { -- Jorunga Stonehoof
             [npcKeys.spawns] = {[zoneIDs.SHRINE_OF_TWO_MOONS] = {{25.86,43.85}}},
             [npcKeys.zoneID] = zoneIDs.SHRINE_OF_TWO_MOONS,
-            [npcKeys.npcFlags] = npcFlags.VENDOR + npcFlags.TRAINER,
+            [npcKeys.npcFlags] = npcFlags.VENDOR + npcFlags.TRAINER + npcFlags.TRAINER_PROFESSION,
         },
         [64085] = { -- Cullen Hammerblow
             [npcKeys.name] = "Cullen Hammerblow",
@@ -3697,7 +3697,7 @@ function MopNpcFixes.Load()
             [npcKeys.spawns] = {[zoneIDs.SHRINE_OF_SEVEN_STARS] = {{71.31,50.4}}},
             [npcKeys.zoneID] = zoneIDs.SHRINE_OF_SEVEN_STARS,
             [npcKeys.friendlyToFaction] = "A",
-            [npcKeys.npcFlags] = npcFlags.VENDOR + npcFlags.REPAIR + npcFlags.TRAINER,
+            [npcKeys.npcFlags] = npcFlags.VENDOR + npcFlags.REPAIR + npcFlags.TRAINER + npcFlags.TRAINER_PROFESSION,
         },
         [64090] = { -- Missy M
             [npcKeys.name] = "Cullen Hammerblow",
