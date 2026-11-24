@@ -17,6 +17,7 @@
 ---@field BuildNameIndex fun() Build the Name index now (a no-op when it exists) instead of on the first IdsByName call; a full pass over every object name.
 ---@field BuildNameIndexAsync fun(iterationsPerCycle?: integer) Build the complete Name index inside a caller-owned coroutine; yield between positive-sized ID batches (default 250), restart after invalidation, return when ready.
 ---@field IdsByName fun(name: string): ObjectId[]? Every composed object ID whose current name equals `name` exactly, ascending, or nil; shared and read-only.
+---@field HasAny fun(id: ObjectId, key: QuestieDBObjectField|integer, wanted: table<any, boolean>): boolean Whether a list field holds any value that is a key of `wanted`; false for an unknown ID or a scalar field. Allocates nothing per call.
 ObjectDB = {}
 
 ---Returns the composed ID list, or a read-only lookup map when `hashmap` is true.

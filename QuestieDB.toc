@@ -26,7 +26,7 @@
 ## Category-zhCN: 任务
 ## Category-zhTW: 任務
 ## IconTexture: Interface\AddOns\QuestieDB\icons\QuestieTDB_64x64.png
-## X-Contract-Version: 4
+## X-Contract-Version: 5
 ## X-Mode: source
 
 # =============================================================================
@@ -108,6 +108,8 @@ src\corrections\enum\constants.lua
 src\corrections\enum\items.lua
 src\corrections\enum\quests.lua
 src\corrections\enum\npcs.lua
+src\corrections\enum\services.lua
+src\corrections\enum\events.lua
 src\corrections\enum\professions.lua
 src\corrections\enum\factions.lua
 src\corrections\enum\zones.lua

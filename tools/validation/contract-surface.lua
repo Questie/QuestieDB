@@ -119,4 +119,14 @@ add(3, "table", {
 add(3, "number", { "LibQuestieDB.Enum.factionRaceMasks.Alliance", "LibQuestieDB.Enum.factionRaceMasks.Horde" })
 add(4, "table", { "LibQuestieDB.Enum.classKeys", "LibQuestieDB.Enum.npcFlags" })
 
+-- Contract 5: entity facts (ADR 0017).
+add(5, "table", {
+  "LibQuestieDB.Enum.serviceKeys", "LibQuestieDB.Enum.eventKeys", "LibQuestieDB.Enum.classIDs",
+  "LibQuestieDB.Enum.weaponSkillKeys",
+})
+add(5, "function", { "LibQuestieDB.Set" })
+for _, entity in ipairs({ "Quest", "Npc", "Item", "Object" }) do
+  add(5, "function", { "LibQuestieDB." .. entity .. ".HasAny" })
+end
+
 return entries

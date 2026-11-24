@@ -576,7 +576,7 @@ class PackageTest(unittest.TestCase):
         releases = {entry["filename"]: entry for entry in document["releases"]}
         self.assertEqual("https://github.com/Questie/QuestieDB", manifest["repository"])
         self.assertEqual("0" * 40, manifest["producerCommit"])
-        self.assertEqual(4, manifest["contractVersion"])
+        self.assertEqual(5, manifest["contractVersion"])
         self.assertEqual(1, manifest["minSupportedContract"])
         self.assertEqual("1.2.3-dev.abcdef0", manifest["version"])
         self.assertEqual("2023-11-14T22:13:20Z", manifest["builtAt"])
@@ -973,7 +973,7 @@ class PackageTest(unittest.TestCase):
         self.assertEqual(0, result.returncode, result.stderr)
         manifest = json.loads((self.root / ".out/dist/release.json").read_text())["questiedb"]
         self.assertEqual(2, manifest["minSupportedContract"])
-        self.assertEqual(4, manifest["contractVersion"])
+        self.assertEqual(5, manifest["contractVersion"])
 
     def test_mixed_versions_preserve_previous_output(self):
         self.preserve_previous_output()

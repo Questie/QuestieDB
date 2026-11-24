@@ -121,6 +121,10 @@ local function buildQuestieDB(flavor)
     questFlags = pick("questFlags", flavor),
     npcFlags = pick("npcFlags", flavor),
     npcRanks = pick("npcRanks", flavor),
+    serviceKeys = pick("serviceKeys", flavor),
+    eventKeys = pick("eventKeys", flavor),
+    classIDs = pick("classIDs", flavor),
+    weaponSkillKeys = pick("weaponSkillKeys", flavor),
     itemClasses = pick("itemClasses", flavor),
     waypointPresets = pick("waypointPresets", flavor),
   }
