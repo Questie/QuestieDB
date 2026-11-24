@@ -5413,6 +5413,7 @@ function ForeverQuestFixes:Load()
             [questKeys.exclusiveTo] = {97018,97074,97170,97188,97194,97203,97204,97205},
         },
         [97203] = { -- Learning to Ride
+            [questKeys.requiredRaces] = raceIDs.UNDEAD,
             [questKeys.exclusiveTo] = {97018,97074,97170,97188,97194,97200,97204,97205},
         },
         [97204] = { -- Learning to Ride
@@ -5420,6 +5421,7 @@ function ForeverQuestFixes:Load()
         },
         [97205] = { -- Learning to Ride
             [questKeys.exclusiveTo] = {97018,97074,97170,97188,97194,97200,97203,97204},
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
         },
         [97220] = { -- Philmor's Favor
             [questKeys.nextQuestInChain] = 97222,
@@ -7039,32 +7041,8 @@ function ForeverQuestFixes:Load()
             [questKeys.objectives] = {nil,nil,{{14047}}},
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
         },
-        [99201] = {
-            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
-        },
-        [99202] = {
-            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
-        },
-        [99203] = {
-            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
-        },
-        [99204] = {
-            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
-        },
-        [99206] = {
-            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
-        },
-        [99213] = {
-            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
-        },
-        [99214] = {
-            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
-        },
-        [99215] = {
-            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
-        },
-        [99216] = {
-            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        [99203] = { -- Swift as the Wind
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
         },
         [99233] = {
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
@@ -7136,6 +7114,9 @@ function ForeverQuestFixes:LoadDynamic()
     local questFixesHorde = {
         [652] = { -- Breaking the Keystone
             [questKeys.nextQuestInChain] = 688,
+        },
+        [687] = { -- Theldurin the Lost
+            [questKeys.preQuestSingle] = {688},
         },
         [2945] = { -- Grime-Encrusted Ring
             [questKeys.nextQuestInChain] = 2949,
@@ -7436,6 +7417,9 @@ function ForeverQuestFixes:LoadDynamic()
     local questFixesAlliance = {
         [652] = { -- Breaking the Keystone
             [questKeys.nextQuestInChain] = 653,
+        },
+        [687] = { -- Theldurin the Lost
+            [questKeys.preQuestSingle] = {653},
         },
         [2945] = { -- Grime-Encrusted Ring
             [questKeys.nextQuestInChain] = 2947,
