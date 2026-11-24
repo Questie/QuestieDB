@@ -80,6 +80,11 @@ The same placeholders apply through `Get`, `GetByIndex`, `GetRaw`, and `GetAll`.
 Corrections cannot replace or delete them. Unknown NPC IDs still return `nil`; these values are
 compatibility placeholders, not health estimates.
 
+Object `factionID` is deprecated the same way. `ObjectDB.factionID(id)` returns the placeholder
+`0` for a known object on every read path, and Corrections cannot replace it. Use
+`ObjectDB.requiredFaction(id)` instead. In the client, the first reads print one chat line per
+calling addon naming the addon, so its author learns the field is going away.
+
 ### `Entity.GetAll(id, keys) -> values | nil`
 
 Bulk access. Values come back in the order the keys were requested, in a **packed** table
@@ -122,6 +127,26 @@ reading the list when scanning many entities. Matching is exact: a signed ID mat
 same sign. It returns `false` for an unknown entity, an entity without the list, a scalar field,
 an unknown field, or a missing `wanted`. Corrections and cache invalidation are honoured like any
 other read. Contract 5 guarantees `HasAny` and `LibQuestieDB.Set`.
+
+### Services and faction restriction
+
+`services` is a list of `Enum.serviceKeys` values saying what an entity provides. Objects carry
+it for mailboxes, meeting stones, anvils, forges, alchemy labs and moonwells:
+
+```lua
+local serviceKeys = LibQuestieDB.Enum.serviceKeys
+local mailboxes = LibQuestieDB.Set(serviceKeys.MAILBOX)
+
+ObjectDB.services(142075)                    --> { 25 }           the stored list, or nil
+ObjectDB.HasServices(142075, mailboxes)      --> true             any wanted service; no allocation
+ObjectDB.GetServices(142075)                 --> { [25] = true }  a fresh lookup set, or nil
+ObjectDB.requiredFaction(142075)             --> "A"              "A", "H", or nil for no restriction
+```
+
+Use `HasServices` when scanning many entities: it allocates nothing per call, while
+`GetServices` builds a fresh set the caller owns on every call. `requiredFaction` records a
+restriction only, like `requiredRaces` on quests: an object both factions can use stores nothing
+and reads `nil`. Contract 5 guarantees these fields and helpers.
 
 ### `Entity.IdsByName(name) -> list | nil`
 
@@ -894,8 +919,9 @@ Contract 4 adds the active-flavor `Enum.classKeys` and `Enum.npcFlags` tables. C
 provider fails the version check before the lookup.
 
 Contract 5 adds the entity-fact enums (`Enum.serviceKeys`, `Enum.eventKeys`, `Enum.classIDs`,
-`Enum.weaponSkillKeys`), `LibQuestieDB.Set`, and `Entity.HasAny`. Contracts 1 to 4 remain
-supported.
+`Enum.weaponSkillKeys`), `LibQuestieDB.Set`, and `Entity.HasAny`. It adds Object `services` and
+`requiredFaction` with `ObjectDB.HasServices` and `ObjectDB.GetServices`, and deprecates Object
+`factionID`, which now always reads `0`. Contracts 1 to 4 remain supported.
 
 The check is a **range**: `RequireContract(v)` passes for any
 `minSupportedContract <= v <= contractVersion`, so a consumer built against an older

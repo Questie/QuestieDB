@@ -128,5 +128,9 @@ add(5, "function", { "LibQuestieDB.Set" })
 for _, entity in ipairs({ "Quest", "Npc", "Item", "Object" }) do
   add(5, "function", { "LibQuestieDB." .. entity .. ".HasAny" })
 end
+add(5, "function", {
+  "LibQuestieDB.Object.services", "LibQuestieDB.Object.requiredFaction",
+  "LibQuestieDB.Object.HasServices", "LibQuestieDB.Object.GetServices",
+})
 
 return entries

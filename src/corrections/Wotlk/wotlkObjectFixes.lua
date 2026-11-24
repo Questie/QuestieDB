@@ -134,7 +134,7 @@ function QuestieWotlkObjectFixes:Load()
             [objectKeys.zoneID] = zoneIDs.BOREAN_TUNDRA,
         },
         [188123] = { -- Mailbox
-            [objectKeys.factionID] = 1732,
+            [objectKeys.requiredFaction] = "A",
         },
         [188287] = { -- Drakuru's Brazier
             [objectKeys.spawns] = {[zoneIDs.GRIZZLY_HILLS] = {{13.24,60.87}}},

@@ -539,6 +539,37 @@ suite("list-membership", "shared", function()
   dofile("tools/validation/list-membership.test.lua")(check, equal)
 end)
 
+suite("fact-validation", "shared", function()
+  local facts = dofile("generator/facts.lua")
+  local meta = dofile("src/meta/objectMeta.lua")
+  local keys, services = meta.keys, dofile("src/corrections/enum/constants.lua").serviceKeys
+  local function problems(row)
+    return facts.problems({ Object = { meta = meta, entities = { [7] = row } } })
+  end
+  equal(problems({ [keys.services] = { services.MAILBOX, services.ANVIL }, [keys.requiredFaction] = "A" }), {},
+    "known services and a faction restriction are accepted")
+  equal(problems({ [keys.name] = "No facts" }), {}, "an entity without fact fields is accepted")
+  -- `serviceKeys.MAILBOXX` evaluates to nil and leaves a hole the walk must not skip.
+  equal(problems({ [keys.services] = { nil, services.ANVIL } }),
+    { "Object 7: services has a gap, usually a misspelled constant" }, "a misspelled constant is reported")
+  equal(problems({ [keys.services] = { 9999 } }), { "Object 7: services holds unknown ID 9999" },
+    "an unknown service ID is reported")
+  equal(problems({ [keys.services] = { services.FORGE, services.FORGE } }),
+    { "Object 7: services repeats FORGE" }, "a repeated service is reported")
+  equal(problems({ [keys.services] = services.MAILBOX }), { "Object 7: services is not a list" },
+    "a scalar where a list belongs is reported")
+  equal(problems({ [keys.requiredFaction] = "AH" }),
+    { 'Object 7: requiredFaction must be "A" or "H", got AH' }, "an unrestricted spelling is reported")
+  local ok, message = pcall(facts.assertValid, { Object = { meta = meta, entities = { [7] = { [keys.services] = { 9999 } } } } })
+  equal(ok, false, "Generation stops on a malformed fact field")
+  check(tostring(message):find("Object 7: services holds unknown ID 9999", 1, true) ~= nil,
+    "the failure names the entity and the problem")
+end)
+
+suite("object-facts", "shared", function()
+  dofile("tools/validation/object-facts.test.lua")(check, equal)
+end)
+
 suite("rows", "shared", function()
   local meta = {
     entity = "Fixture",
@@ -2559,6 +2590,8 @@ suite("lua-types", "shared", function()
     BuildNameIndexAsync = true,
     IdsByName = true,
     HasAny = true,
+    HasServices = true,
+    GetServices = true,
   }
   local typeFiles = testFiles.list("src/types", false, { ".t.lua" })
 

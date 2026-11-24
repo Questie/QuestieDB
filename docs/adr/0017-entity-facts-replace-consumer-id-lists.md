@@ -65,14 +65,17 @@ neither faction. One name with opposite nil meanings would break shared consumer
 
 `requiredFaction` is converted once from `factionID` and the faction template tables: hostile to
 Horde gives `"A"`, hostile to Alliance gives `"H"`, anything else stores nothing. Templates
-missing from a table and Forever mailboxes are resolved by hand. The faction template support
-tables are then removed; nothing else reads them.
+missing from a flavor's table use a later flavor's table. Forever mailboxes added by the
+generated delta-base have no faction data and stay unrestricted until authored. The faction
+template support tables stay until no supported Questie release reads them; removing them now
+would break those releases at load. Nothing in QuestieDB reads them.
 
 Object `factionID` remains a promised name. It becomes a deprecated constant `0` through
 `constantValues`, as the NPC health fields did. Reads on every path (`Get`, `GetByIndex`, `GetRaw`,
 `GetAll`, named getter) print a deprecation message once per calling addon per session; the caller
-is found by walking `debugstack()` for the first addon folder that is not QuestieDB's.
-`minSupportedContract` does not change.
+is found by walking `debugstack()` for the first addon folder that is not QuestieDB's. Only the
+first 32 reads of the field per session inspect the stack, so a consumer that reads it for every
+object does not pay for a stack string on each call. `minSupportedContract` does not change.
 
 ### 6. `eventIds` on quests and NPCs
 

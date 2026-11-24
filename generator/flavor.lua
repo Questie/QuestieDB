@@ -12,6 +12,7 @@ local loader = dofile("generator/loader.lua")
 local schema = dofile("generator/schema.lua")
 local corrections = dofile("generator/corrections.lua")
 local derived = dofile("generator/derived.lua")
+local facts = dofile("generator/facts.lua")
 
 local flavorLoader = {}
 
@@ -47,6 +48,8 @@ function flavorLoader.load(flavor, typeFilter, applyCorrections)
     -- Derived Passes run after corrections and before normalization or encoding, matching
     -- Questie's transform order while preserving their calculated raw coordinates (ADR 0006).
     stats.derived = derived.run(loaded, flavor)
+    -- A malformed fact list would ship as a service no consumer recognises; stop here instead.
+    facts.assertValid(loaded)
   end
 
   -- Dependency-only tables have done their job. Returning them would make generate.lua emit

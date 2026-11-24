@@ -8,6 +8,7 @@ local ZoneDB = QuestieLoader:ImportModule("ZoneDB")
 
 function MopObjectFixes.Load()
     local objectKeys = QuestieDB.objectKeys
+    local serviceKeys = QuestieDB.serviceKeys
     local zoneIDs = ZoneDB.zoneIDs
 
     ---@format disable
@@ -321,6 +322,7 @@ function MopObjectFixes.Load()
         },
         [211006] = { -- Sunsong Ranch Mailbox
             [objectKeys.name] = "Sunsong Ranch Mailbox",
+            [objectKeys.services] = {serviceKeys.MAILBOX},
             [objectKeys.spawns] = {[zoneIDs.VALLEY_OF_THE_FOUR_WINDS] = {{51.29,48.83}}},
             [objectKeys.zoneID] = zoneIDs.VALLEY_OF_THE_FOUR_WINDS,
         },
@@ -358,10 +360,10 @@ function MopObjectFixes.Load()
             [objectKeys.zoneID] = zoneIDs.KRASARANG_WILDS,
         },
         [211220] = { -- Mailbox
-            [objectKeys.factionID] = 1732, -- alliance only
+            [objectKeys.requiredFaction] = "A", -- alliance only
         },
         [211226] = { -- Mailbox
-            [objectKeys.factionID] = 1735, -- horde only
+            [objectKeys.requiredFaction] = "H", -- horde only
         },
         [211266] = { -- Stolen Supplies
             [objectKeys.spawns] = {[zoneIDs.HOWLINGWIND_CAVERN] = {{30.94,50.39},{28.8,77.02},{30.8,76.19},{33.45,77.75},{34.94,72.1},{35.64,71.28},{36.54,68.73},{35.99,42.81},{41.63,43.68},{41.71,42.15},{41.27,41.48},{23.72,49.43},{30.95,34.37},{35.29,23.36},{44.28,19.98},{46.86,21.57},{47.13,22.92},{46.02,23.1},{46,23.45},{48.66,23.55},{48.29,21.85},{50.19,22.64},{53.66,26.6},{55.62,28.49},{56.42,31.29},{56.25,33.12},{55.63,33.91},{55.72,34.51},{66.03,50.95},{66,47.8},{70.95,52.33},{70.83,52.04},{71.3,51.24},{66.49,40.91},{65.58,40.32},{48.45,49.58},{48.6,49.3},{54.62,55.68},{53.8,56.71},{46.04,58},{46.52,63.34},{45.45,60.85},{45.23,61.9},{45.6,63.45},{52.64,73.67},{66.31,83.3},{66.21,85.9},{66.81,85.69}}},
@@ -445,7 +447,7 @@ function MopObjectFixes.Load()
             [objectKeys.zoneID] = zoneIDs.KUN_LAI_SUMMIT,
         },
         [211574] = { -- Mailbox
-            [objectKeys.factionID] = 1732, -- alliance only
+            [objectKeys.requiredFaction] = "A", -- alliance only
         },
         [211596] = { -- Goblin Fishing Raft
             [objectKeys.spawns] = {[zoneIDs.KRASARANG_WILDS] = {{67.43,44.77}}},
@@ -522,39 +524,39 @@ function MopObjectFixes.Load()
         [212106] = { -- Mailbox
             [objectKeys.spawns] = {[zoneIDs.SHRINE_OF_SEVEN_STARS_TOP_FLOOR] = {{74.23,51.42}}},
             [objectKeys.zoneID] = zoneIDs.SHRINE_OF_SEVEN_STARS,
-            [objectKeys.factionID] = 1732, -- alliance only
+            [objectKeys.requiredFaction] = "A", -- alliance only
         },
         [212113] = { -- Mailbox
             [objectKeys.spawns] = {[zoneIDs.SHRINE_OF_SEVEN_STARS] = {{61.97,38.44}}},
             [objectKeys.zoneID] = zoneIDs.SHRINE_OF_SEVEN_STARS,
-            [objectKeys.factionID] = 1732, -- alliance only
+            [objectKeys.requiredFaction] = "A", -- alliance only
         },
         [212115] = { -- Mailbox
             [objectKeys.spawns] = {[zoneIDs.SHRINE_OF_SEVEN_STARS] = {{29.92,63.18}}},
             [objectKeys.zoneID] = zoneIDs.SHRINE_OF_SEVEN_STARS,
-            [objectKeys.factionID] = 1732, -- alliance only
+            [objectKeys.requiredFaction] = "A", -- alliance only
         },
         [212117] = { -- Mailbox
             [objectKeys.spawns] = {[zoneIDs.SHRINE_OF_SEVEN_STARS_TOP_FLOOR] = {{64.5,33.89}}},
             [objectKeys.zoneID] = zoneIDs.SHRINE_OF_SEVEN_STARS,
-            [objectKeys.factionID] = 1732, -- alliance only
+            [objectKeys.requiredFaction] = "A", -- alliance only
         },
         [212118] = { -- Mailbox
             [objectKeys.spawns] = {[zoneIDs.SHRINE_OF_SEVEN_STARS_TOP_FLOOR] = {{39.26,61.48}}},
             [objectKeys.zoneID] = zoneIDs.SHRINE_OF_SEVEN_STARS,
-            [objectKeys.factionID] = 1732, -- alliance only
+            [objectKeys.requiredFaction] = "A", -- alliance only
         },
         [212119] = { -- Mailbox
             [objectKeys.spawns] = {[zoneIDs.SHRINE_OF_SEVEN_STARS_TOP_FLOOR] = {{44.49,84.11}}},
             [objectKeys.zoneID] = zoneIDs.SHRINE_OF_SEVEN_STARS,
-            [objectKeys.factionID] = 1732, -- alliance only
+            [objectKeys.requiredFaction] = "A", -- alliance only
         },
         [212131] = { -- Niuzao Food Supply
             [objectKeys.spawns] = {[zoneIDs.TOWNLONG_STEPPES] = {{41.58,61.5},{42.34,62.04},{39.82,63.39},{38.99,64.1},{38.3,63.61},{37.61,64.03},{37.57,63.98},{40.13,56.89},{40.32,58.7},{42.66,58.73},{41.35,62.11},{39.28,61.58},{39.27,61.6},{37.74,62.45},{37.85,61.03},{39.65,57.7},{42.44,57.99},{41.79,61.62},{43.26,58.19},{41.4,63.08},{40.94,63.59},{40.32,64.19},{39.72,64.67},{39.81,60.92},{38.69,60.97},{38.62,61.45},{39.01,60.13}}},
             [objectKeys.zoneID] = zoneIDs.TOWNLONG_STEPPES,
         },
         [212159] = { -- Mailbox
-            [objectKeys.factionID] = 1735, -- horde only
+            [objectKeys.requiredFaction] = "H", -- horde only
         },
         [212294] = { -- Ocean-Worn Rocks
             [objectKeys.spawns] = {[zoneIDs.DREAD_WASTES] = {{43.3,63.49}}},
@@ -600,7 +602,7 @@ function MopObjectFixes.Load()
             [objectKeys.zoneID] = zoneIDs.DREAD_WASTES,
         },
         [213004] = { -- Mailbox
-            [objectKeys.factionID] = 1735, -- horde only
+            [objectKeys.requiredFaction] = "H", -- horde only
         },
         [213250] = { -- Silent Beacon
             [objectKeys.spawns] = {[zoneIDs.DREAD_WASTES] = {{48.16,49.71}}},
@@ -642,40 +644,40 @@ function MopObjectFixes.Load()
             [objectKeys.spawns] = {[zoneIDs.DREAD_WASTES] = {{46.28,67.93},{46.7,80.5},{46.8,74.4},{47.55,70.64},{47.8,72.17},{47.9,75.1},{49.1,76}}},
         },
         [213654] = { -- Mailbox
-            [objectKeys.factionID] = 1732, -- alliance only
+            [objectKeys.requiredFaction] = "A", -- alliance only
         },
         [213655] = { -- Mailbox
-            [objectKeys.factionID] = 1732, -- alliance only
+            [objectKeys.requiredFaction] = "A", -- alliance only
         },
         [213682] = { -- Mailbox
             [objectKeys.spawns] = {[zoneIDs.SHRINE_OF_TWO_MOONS_TOP_FLOOR] = {{22.79,39.05}}},
             [objectKeys.zoneID] = zoneIDs.SHRINE_OF_TWO_MOONS,
-            [objectKeys.factionID] = 1735, -- horde only
+            [objectKeys.requiredFaction] = "H", -- horde only
         },
         [213683] = { -- Mailbox
             [objectKeys.spawns] = {[zoneIDs.SHRINE_OF_TWO_MOONS_TOP_FLOOR] = {{71.36,28.72}}},
             [objectKeys.zoneID] = zoneIDs.SHRINE_OF_TWO_MOONS,
-            [objectKeys.factionID] = 1735, -- horde only
+            [objectKeys.requiredFaction] = "H", -- horde only
         },
         [213698] = { -- Mailbox
             [objectKeys.spawns] = {[zoneIDs.SHRINE_OF_TWO_MOONS] = {{66.96,52.17}}},
             [objectKeys.zoneID] = zoneIDs.SHRINE_OF_TWO_MOONS,
-            [objectKeys.factionID] = 1735, -- horde only
+            [objectKeys.requiredFaction] = "H", -- horde only
         },
         [213708] = { -- Mailbox
             [objectKeys.spawns] = {[zoneIDs.SHRINE_OF_TWO_MOONS_TOP_FLOOR] = {{62.83,74.39}}},
             [objectKeys.zoneID] = zoneIDs.SHRINE_OF_TWO_MOONS,
-            [objectKeys.factionID] = 1735, -- horde only
+            [objectKeys.requiredFaction] = "H", -- horde only
         },
         [213727] = { -- Mailbox
             [objectKeys.spawns] = {[zoneIDs.SHRINE_OF_TWO_MOONS_TOP_FLOOR] = {{39.23,79.06}}},
             [objectKeys.zoneID] = zoneIDs.SHRINE_OF_TWO_MOONS,
-            [objectKeys.factionID] = 1735, -- horde only
+            [objectKeys.requiredFaction] = "H", -- horde only
         },
         [213728] = { -- Mailbox
             [objectKeys.spawns] = {[zoneIDs.SHRINE_OF_TWO_MOONS] = {{33.9,59.07}}},
             [objectKeys.zoneID] = zoneIDs.SHRINE_OF_TWO_MOONS,
-            [objectKeys.factionID] = 1735, -- horde only
+            [objectKeys.requiredFaction] = "H", -- horde only
         },
         [213744] = { -- Serpent Rod
             [objectKeys.name] = "Serpent Rod",
@@ -747,12 +749,12 @@ function MopObjectFixes.Load()
         [214176] = { -- Mailbox
             [objectKeys.spawns] = {[zoneIDs.SHRINE_OF_TWO_MOONS] = {{59.45,50.62}}},
             [objectKeys.zoneID] = zoneIDs.SHRINE_OF_TWO_MOONS,
-            [objectKeys.factionID] = 1735, -- horde only
+            [objectKeys.requiredFaction] = "H", -- horde only
         },
         [214260] = { -- Mailbox
             [objectKeys.spawns] = {[zoneIDs.SHRINE_OF_SEVEN_STARS] = {{57.95,52.91}}},
             [objectKeys.zoneID] = zoneIDs.SHRINE_OF_SEVEN_STARS,
-            [objectKeys.factionID] = 1732, -- alliance only
+            [objectKeys.requiredFaction] = "A", -- alliance only
         },
         [214277] = { -- The Dark Grimoire
             [objectKeys.spawns] = {
@@ -840,6 +842,7 @@ function MopObjectFixes.Load()
         },
         [214978] = { -- Meeting Stone (Heart of Fear)
             [objectKeys.name] = "Meeting Stone",
+            [objectKeys.services] = {serviceKeys.MEETING_STONE},
             [objectKeys.spawns] = {[zoneIDs.DREAD_WASTES] = {{40.6,33.6}}},
             [objectKeys.zoneID] = zoneIDs.DREAD_WASTES,
         },
@@ -848,7 +851,7 @@ function MopObjectFixes.Load()
             [objectKeys.zoneID] = zoneIDs.VALLEY_OF_THE_FOUR_WINDS,
         },
         [214988] = { -- Mailbox
-            [objectKeys.factionID] = 1735, -- horde only
+            [objectKeys.requiredFaction] = "H", -- horde only
         },
         [215126] = { -- Silvermoon (Portal)
             [objectKeys.name] = "Silvermoon",
@@ -988,13 +991,13 @@ function MopObjectFixes.Load()
         [215973] = { -- Mailbox
             [objectKeys.spawns] = {[zoneIDs.THE_JADE_FOREST] = {{44.83,84.61}}},
             [objectKeys.zoneID] = zoneIDs.THE_JADE_FOREST,
-            [objectKeys.factionID] = 1732, -- alliance only
+            [objectKeys.requiredFaction] = "A", -- alliance only
         },
         [216100] = { -- Mailbox
-            [objectKeys.factionID] = 1735, -- horde only
+            [objectKeys.requiredFaction] = "H", -- horde only
         },
         [216106] = { -- Mailbox
-            [objectKeys.factionID] = 1735, -- horde only
+            [objectKeys.requiredFaction] = "H", -- horde only
         },
         [216160] = { -- Chunk of Stone
             [objectKeys.spawns] = {[zoneIDs.KRASARANG_WILDS] = {{77.1,20.4},{77.3,18.3},{77.4,17.2},{77.4,19.1},{77.4,20.5},{77.5,20.5},{77.9,19.1},{78,18},{78.2,16.9},{78.4,19.9},{78.5,17.9},{78.5,18.6},{78.5,19.9},{79.1,17}}},
@@ -1122,7 +1125,7 @@ function MopObjectFixes.Load()
         [216734] = { -- Mailbox
             [objectKeys.spawns] = {[zoneIDs.ISLE_OF_THUNDER] = {{33.3,32.83}}},
             [objectKeys.zoneID] = zoneIDs.ISLE_OF_THUNDER,
-            [objectKeys.factionID] = 1735, -- horde only
+            [objectKeys.requiredFaction] = "H", -- horde only
         },
         [216743] = { -- Goblin Explosives Crate
             [objectKeys.name] = "Goblin Explosives Crate",
@@ -1145,14 +1148,15 @@ function MopObjectFixes.Load()
         },
         [216885] = { -- Mailbox
             [objectKeys.name] = "Mailbox",
+            [objectKeys.services] = {serviceKeys.MAILBOX},
             [objectKeys.spawns] = {[zoneIDs.KRASARANG_WILDS] = {{86.72,30.65}}},
             [objectKeys.zoneID] = zoneIDs.KRASARANG_WILDS,
-            [objectKeys.factionID] = 1732, -- alliance only
+            [objectKeys.requiredFaction] = "A", -- alliance only
         },
         [216886] = { -- Mailbox
             [objectKeys.spawns] = {[zoneIDs.KRASARANG_WILDS] = {{88.67,34.48}}},
             [objectKeys.zoneID] = zoneIDs.KRASARANG_WILDS,
-            [objectKeys.factionID] = 1732, -- alliance only
+            [objectKeys.requiredFaction] = "A", -- alliance only
         },
         [216991] = { -- Zandalari Offering
             [objectKeys.spawns] = {[zoneIDs.ISLE_OF_THUNDER] = {{33,73.5},{33.1,76.1},{33.5,75.1},{33.6,67.3},{33.7,68.2},{33.7,70.7},{33.7,76.7},{33.9,72.7},{34,68.5},{34,75.8},{34.9,67.2},{35.4,67.5},{35.7,74.4},{36.2,76},{36.4,68},{36.4,70},{36.5,68},{36.5,69.9},{37.4,69.2},{38.6,78.8},{38.7,76.2},{38.9,78.4},{39.1,76.7},{39.2,65.3},{39.3,65.5},{39.4,73.3},{39.4,73.9},{39.6,73.9},{39.7,65.6},{39.9,65.4},{39.9,72.2},{40,73.4},{40.6,74.9},{40.9,72.8},{41,74.3},{41.8,70.7}}},
@@ -1235,7 +1239,7 @@ function MopObjectFixes.Load()
         [218229] = { -- Mailbox
             [objectKeys.spawns] = {[zoneIDs.SHRINE_OF_TWO_MOONS] = {{49.54,83.26}}},
             [objectKeys.zoneID] = zoneIDs.SHRINE_OF_TWO_MOONS,
-            [objectKeys.factionID] = 1735, -- horde only
+            [objectKeys.requiredFaction] = "H", -- horde only
         },
         [218372] = { -- Saur Fetish
             [objectKeys.spawns] = {[zoneIDs.ISLE_OF_THUNDER] = {{48.1,42.4},{48.1,42.5},{49,39.9},{50.1,44.2},{50.4,43.1},{51,43.1},{51.3,33.4},{51.4,33.6},{51.4,40.3},{51.4,40.5},{51.5,39.4},{51.5,39.5},{51.5,40.5},{52.4,36.9},{52.5,37},{52.8,45},{52.9,42.1},{52.9,45.6},{53.4,44.4},{53.5,42.2},{53.5,44.3}}},
@@ -1248,7 +1252,7 @@ function MopObjectFixes.Load()
         [218378] = { -- Mailbox
             [objectKeys.spawns] = {[zoneIDs.ISLE_OF_THUNDER] = {{63.08,72.4}}},
             [objectKeys.zoneID] = zoneIDs.ISLE_OF_THUNDER,
-            [objectKeys.factionID] = 1732, -- alliance only
+            [objectKeys.requiredFaction] = "A", -- alliance only
         },
         [218593] = { -- Trove of the Thunder King
             [objectKeys.name] = "Trove of the Thunder King",
@@ -1311,6 +1315,7 @@ function MopObjectFixes.Load()
         },
         [219216] = { -- Meeting Stone (Throne of Thunder)
             [objectKeys.name] = "Meeting Stone",
+            [objectKeys.services] = {serviceKeys.MEETING_STONE},
             [objectKeys.spawns] = {[zoneIDs.ISLE_OF_THUNDER] = {{63.27,33.73}}},
             [objectKeys.zoneID] = zoneIDs.ISLE_OF_THUNDER,
         },
@@ -1343,12 +1348,12 @@ function MopObjectFixes.Load()
         [227893] = { -- Mailbox
             [objectKeys.spawns] = {[zoneIDs.TIMELESS_ISLE] = {{22.18,41.39}}},
             [objectKeys.zoneID] = zoneIDs.TIMELESS_ISLE,
-            [objectKeys.factionID] = 1735, -- horde only
+            [objectKeys.requiredFaction] = "H", -- horde only
         },
         [227894] = { -- Mailbox
             [objectKeys.spawns] = {[zoneIDs.TIMELESS_ISLE] = {{22.94,71.35}}},
             [objectKeys.zoneID] = zoneIDs.TIMELESS_ISLE,
-            [objectKeys.factionID] = 1732, -- alliance only
+            [objectKeys.requiredFaction] = "A", -- alliance only
         },
 
         -- Below are fake objects

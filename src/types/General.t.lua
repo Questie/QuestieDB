@@ -20,7 +20,7 @@
 ---@alias QuestieDBQuestField "name"|"startedBy"|"finishedBy"|"requiredLevel"|"questLevel"|"requiredRaces"|"requiredClasses"|"objectivesText"|"triggerEnd"|"objectives"|"sourceItemId"|"preQuestGroup"|"preQuestSingle"|"childQuests"|"inGroupWith"|"exclusiveTo"|"zoneOrSort"|"requiredSkill"|"requiredMinRep"|"requiredMaxRep"|"requiredSourceItems"|"nextQuestInChain"|"questFlags"|"specialFlags"|"parentQuest"|"reputationReward"|"breadcrumbForQuestId"|"breadcrumbs"|"extraObjectives"|"requiredSpell"|"requiredSpecialization"|"requiredMaxLevel"|"availableUntilCompleted"|"availableStartingWith"|"requiredRanks"|"disabledByQuest"
 ---@alias QuestieDBNpcField "name"|"minLevelHealth"|"maxLevelHealth"|"minLevel"|"maxLevel"|"rank"|"spawns"|"waypoints"|"zoneID"|"questStarts"|"questEnds"|"factionID"|"friendlyToFaction"|"subName"|"npcFlags"
 ---@alias QuestieDBItemField "name"|"npcDrops"|"objectDrops"|"itemDrops"|"startQuest"|"questRewards"|"flags"|"foodType"|"itemLevel"|"requiredLevel"|"ammoType"|"class"|"subClass"|"vendors"|"relatedQuests"|"teachesSpell"
----@alias QuestieDBObjectField "name"|"questStarts"|"questEnds"|"spawns"|"zoneID"|"factionID"|"waypoints"
+---@alias QuestieDBObjectField "name"|"questStarts"|"questEnds"|"spawns"|"zoneID"|"factionID"|"waypoints"|"services"|"requiredFaction"
 
 --------------------------------------------------------------------------------
 -- Shared read shapes

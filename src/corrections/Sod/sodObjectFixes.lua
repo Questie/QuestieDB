@@ -7,6 +7,7 @@ local ZoneDB = QuestieLoader:ImportModule("ZoneDB")
 
 function SeasonOfDiscovery:LoadObjects()
     local objectKeys = QuestieDB.objectKeys
+    local serviceKeys = QuestieDB.serviceKeys
     local zoneIDs = ZoneDB.zoneIDs
 
     return {
@@ -972,6 +973,7 @@ function SeasonOfDiscovery:LoadObjects()
         },
         [529383] = { -- Unattended Pile of Mail, SoD New Avalon Mailbox
             [objectKeys.name] = "Unattended Pile of Mail",
+            [objectKeys.services] = {serviceKeys.MAILBOX},
             [objectKeys.zoneID] = zoneIDs.EASTERN_PLAGUELANDS,
             [objectKeys.spawns] = {
                 [zoneIDs.EASTERN_PLAGUELANDS] = {{90.32,81.98}},

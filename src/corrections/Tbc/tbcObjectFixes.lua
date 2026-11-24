@@ -8,6 +8,7 @@ local ZoneDB = QuestieLoader:ImportModule("ZoneDB")
 
 function QuestieTBCObjectFixes:Load()
     local objectKeys = QuestieDB.objectKeys
+    local serviceKeys = QuestieDB.serviceKeys
     local zoneIDs = ZoneDB.zoneIDs
 
     return {
@@ -146,7 +147,7 @@ function QuestieTBCObjectFixes:Load()
             [objectKeys.zoneID] = zoneIDs.NAGRAND,
         },
         [182950] = { -- Mailbox
-            [objectKeys.factionID] = 80,
+            [objectKeys.requiredFaction] = "A",
         },
         [183050] = { -- The Saga of Terokk
             [objectKeys.spawns] = {[zoneIDs.SETHEKK_HALLS_HALLS_OF_MOURNING] = {{-1,-1}},[zoneIDs.SETHEKK_HALLS] = {{-1,-1}}},
@@ -1014,6 +1015,7 @@ function QuestieTBCObjectFixes:Load()
         -- For TBC fixes 410001-419999
         [410001] = { -- Mailbox
             [objectKeys.name] = "Mailbox",
+            [objectKeys.services] = {serviceKeys.MAILBOX},
             [objectKeys.spawns] = {[zoneIDs.BLOODMYST_ISLE] = {{55.2,59.2}}},
             [objectKeys.zoneID] = zoneIDs.BLOODMYST_ISLE,
         },
@@ -1114,6 +1116,7 @@ function QuestieTBCObjectFixes:Load()
         },
         [410021] = { -- Cenarion Thicket Moonwell
             [objectKeys.name] = "Moonwell",
+            [objectKeys.services] = {serviceKeys.MOONWELL},
             [objectKeys.questStarts] = {},
             [objectKeys.questEnds] = {},
             [objectKeys.spawns] = {[zoneIDs.TEROKKAR_FOREST] = {{45.1, 23.6}}},
@@ -1121,6 +1124,7 @@ function QuestieTBCObjectFixes:Load()
         },
         [410022] = { -- Evergrove Moonwell
             [objectKeys.name] = "Moonwell",
+            [objectKeys.services] = {serviceKeys.MOONWELL},
             [objectKeys.questStarts] = {},
             [objectKeys.questEnds] = {},
             [objectKeys.spawns] = {[zoneIDs.BLADES_EDGE_MOUNTAINS] = {{62.0, 39.2}}},
@@ -1128,6 +1132,7 @@ function QuestieTBCObjectFixes:Load()
         },
         [410023] = { -- Ghostlands Moonwell
             [objectKeys.name] = "Moonwell",
+            [objectKeys.services] = {serviceKeys.MOONWELL},
             [objectKeys.questStarts] = {},
             [objectKeys.questEnds] = {},
             [objectKeys.spawns] = {[zoneIDs.GHOSTLANDS] = {{13.17,26.59}}},

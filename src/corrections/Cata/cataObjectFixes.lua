@@ -119,16 +119,16 @@ function CataObjectFixes.Load()
             [objectKeys.name] = "Sandsorrow Watch Water Hole",
         },
         [144128] = { -- Mailbox
-            [objectKeys.factionID] = 1732,
+            [objectKeys.requiredFaction] = "A",
         },
         [144129] = { -- Mailbox
-            [objectKeys.factionID] = 1732,
+            [objectKeys.requiredFaction] = "A",
         },
         [144131] = { -- Mailbox
-            [objectKeys.factionID] = 1732,
+            [objectKeys.requiredFaction] = "A",
         },
         [195603] = { -- Mailbox
-            [objectKeys.factionID] = 1732,
+            [objectKeys.requiredFaction] = "A",
         },
         [147557] = { -- Stolen Silver
             [objectKeys.spawns] = {[zoneIDs.THE_BARRENS] = {{63.72,58.80}}},
@@ -502,7 +502,7 @@ function CataObjectFixes.Load()
             [objectKeys.zoneID] = zoneIDs.THE_MECHANAR,
         }, 
         [185471] = { -- Mailbox
-            [objectKeys.factionID] = 1604,
+            [objectKeys.requiredFaction] = "H",
         }, 
         [185519] = { -- Mana-Tombs Stasis Chamber
             [objectKeys.spawns] = {[zoneIDs.MANA_TOMBS] = {{60.7,14.98},{-1,-1}}},
@@ -870,84 +870,84 @@ function CataObjectFixes.Load()
             [objectKeys.spawns] = {[zoneIDs.AZSHARA] = {{46.6,16.4},{47.4,16.7},{47.8,17.4},{48.1,17.9},{48.3,18.5},{48.6,18.4},{49.1,18.8},{49.4,19.6},{49.5,19.3},{49.9,19.9},{50.9,20.5},{51.3,20.2},{51.5,20.2},{52.5,20.3},{52.9,20.8},{53.7,21.1},{53.7,21.5}}},
         },
         [195604] = { -- Mailbox
-            [objectKeys.factionID] = 1732,
+            [objectKeys.requiredFaction] = "A",
         },
         [195605] = { -- Mailbox
-            [objectKeys.factionID] = 1732,
+            [objectKeys.requiredFaction] = "A",
         },
         [195606] = { -- Mailbox
-            [objectKeys.factionID] = 1732,
+            [objectKeys.requiredFaction] = "A",
         },
         [195607] = { -- Mailbox
-            [objectKeys.factionID] = 1732,
+            [objectKeys.requiredFaction] = "A",
         },
         [195608] = { -- Mailbox
-            [objectKeys.factionID] = 1732,
+            [objectKeys.requiredFaction] = "A",
         },
         [195609] = { -- Mailbox
-            [objectKeys.factionID] = 1732,
+            [objectKeys.requiredFaction] = "A",
         },
         [195610] = { -- Mailbox
-            [objectKeys.factionID] = 1732,
+            [objectKeys.requiredFaction] = "A",
         },
         [195611] = { -- Mailbox
-            [objectKeys.factionID] = 1732,
+            [objectKeys.requiredFaction] = "A",
         },
         [195612] = { -- Mailbox
-            [objectKeys.factionID] = 1732,
+            [objectKeys.requiredFaction] = "A",
         },
         [195613] = { -- Mailbox
-            [objectKeys.factionID] = 1732,
+            [objectKeys.requiredFaction] = "A",
         },
         [195614] = { -- Mailbox
-            [objectKeys.factionID] = 1732,
+            [objectKeys.requiredFaction] = "A",
         },
         [195615] = { -- Mailbox
-            [objectKeys.factionID] = 1732,
+            [objectKeys.requiredFaction] = "A",
         },
         [195616] = { -- Mailbox
-            [objectKeys.factionID] = 1732,
+            [objectKeys.requiredFaction] = "A",
         },
         [195617] = { -- Mailbox
-            [objectKeys.factionID] = 1732,
+            [objectKeys.requiredFaction] = "A",
         },
         [195618] = { -- Mailbox
-            [objectKeys.factionID] = 1732,
+            [objectKeys.requiredFaction] = "A",
         },
         [195619] = { -- Mailbox
-            [objectKeys.factionID] = 1732,
+            [objectKeys.requiredFaction] = "A",
         },
         [195620] = { -- Mailbox
-            [objectKeys.factionID] = 1732,
+            [objectKeys.requiredFaction] = "A",
         },
         [195622] = { -- Kaja'mite Ore
             [objectKeys.spawns] = {[zoneIDs.THE_LOST_ISLES] = {{31.76,73.52}}},
         },
         [195624] = { -- Mailbox
-            [objectKeys.factionID] = 1735,
+            [objectKeys.requiredFaction] = "H",
         },
         [195625] = { -- Mailbox
-            [objectKeys.factionID] = 1735,
+            [objectKeys.requiredFaction] = "H",
             [objectKeys.spawns] = {[zoneIDs.UNDERCITY] = {{69.7,51.7}}},
             [objectKeys.zoneID] = zoneIDs.UNDERCITY,
         },
         [195626] = { -- Mailbox
-            [objectKeys.factionID] = 1735,
+            [objectKeys.requiredFaction] = "H",
             [objectKeys.spawns] = {[zoneIDs.UNDERCITY] = {{62.16,51.64}}},
             [objectKeys.zoneID] = zoneIDs.UNDERCITY,
         },
         [195627] = { -- Mailbox
-            [objectKeys.factionID] = 1735,
+            [objectKeys.requiredFaction] = "H",
             [objectKeys.spawns] = {[zoneIDs.UNDERCITY] = {{62.22,36.41}}},
             [objectKeys.zoneID] = zoneIDs.UNDERCITY,
         },
         [195628] = { -- Mailbox
-            [objectKeys.factionID] = 1735,
+            [objectKeys.requiredFaction] = "H",
             [objectKeys.spawns] = {[zoneIDs.UNDERCITY] = {{69.76,36.49}}},
             [objectKeys.zoneID] = zoneIDs.UNDERCITY,
         },
         [195629] = { -- Mailbox
-            [objectKeys.factionID] = 1735,
+            [objectKeys.requiredFaction] = "H",
         },
         [196393] = { -- Broken Relic
             [objectKeys.spawns] = {[zoneIDs.DESOLACE] = {{27.22,63.35}}},
@@ -977,7 +977,7 @@ function CataObjectFixes.Load()
             [objectKeys.name] = "Dweller's Crate",
         },
         [202176] = { -- Mailbox
-            [objectKeys.factionID] = 1735,
+            [objectKeys.requiredFaction] = "H",
         },
         [202418] = { -- Quilboar Restraint -- needs locale translations
             [objectKeys.name] = "Quilboar Restraint",

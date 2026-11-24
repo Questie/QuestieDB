@@ -13,7 +13,7 @@ local _, LibQuestieDB = ...
 local meta = {
   entity = 'Object',
   metaPrefix = 'Object-',
-  fieldCount = 7,
+  fieldCount = 9,
 
   --- fieldName -> fieldIndex. The Database Key Enum.
   keys = {
@@ -27,35 +27,40 @@ local meta = {
     ['spawns'] = 4,
     -- Best estimate of the zone where this object is most common.
     ['zoneID'] = 5,
-    -- Faction restriction mask used by spawn data.
+    -- Deprecated faction template ID; known objects return the compatibility placeholder 0.
+    -- Use requiredFaction.
     ['factionID'] = 6,
     -- Movement paths for objects attached to transports such as ships or zeppelins.
     ['waypoints'] = 7,
+    -- Services this object provides, as Enum.serviceKeys values (mailbox, meeting stone, anvil, ...).
+    ['services'] = 8,
+    -- "A" or "H" when only that faction can use the object; absent means no restriction.
+    ['requiredFaction'] = 9,
   },
 
   --- fieldIndex -> fieldName
   names = {
-[1]='name', [2]='questStarts', [3]='questEnds', [4]='spawns', [5]='zoneID', [6]='factionID', [7]='waypoints'
+[1]='name', [2]='questStarts', [3]='questEnds', [4]='spawns', [5]='zoneID', [6]='factionID', [7]='waypoints', [8]='services', [9]='requiredFaction'
   },
 
   --- fieldIndex -> storage type: number | string | table
   types = {
-[1]='string', [2]='table', [3]='table', [4]='table', [5]='number', [6]='number', [7]='table'
+[1]='string', [2]='table', [3]='table', [4]='table', [5]='number', [6]='number', [7]='table', [8]='table', [9]='string'
   },
 
   --- fieldIndex -> structural shape, for validators. nil for scalars.
   structures = {
-[2]='idarray', [3]='idarray', [4]='spawnlist', [7]='waypointlist'
+[2]='idarray', [3]='idarray', [4]='spawnlist', [7]='waypointlist', [8]='idarray'
   },
 
   --- fieldIndex -> Questie compiler type. Materialized provenance.
   compilerTypes = {
-[1]='u8string', [2]='u8u24array', [3]='u8u24array', [4]='spawnlist', [5]='u16', [6]='u16', [7]='waypointlist'
+[1]='u8string', [2]='u8u24array', [3]='u8u24array', [4]='spawnlist', [5]='u16', [6]='u16', [7]='waypointlist', [8]='u8u24array', [9]='u8string'
   },
 
   --- fieldIndex -> true when an empty table must read back as nil
   emptyIsNil = {
-[2]=true, [3]=true, [4]=true, [7]=true
+[2]=true, [3]=true, [4]=true, [7]=true, [8]=true
   },
 
   --- fieldIndex -> true when {0,0} must read back as nil
@@ -65,7 +70,17 @@ local meta = {
 
   --- fieldIndex -> named normalizer
   normalize = {
+[9]='requiredFaction'
+  },
 
+  --- fieldIndex -> placeholder returned without storing per-entity metadata
+  constantValues = {
+[6]=0
+  },
+
+  --- fieldIndex -> replacement named in the once-per-caller deprecation message
+  deprecatedFields = {
+[6]='requiredFaction'
   },
 
   --- field indices carrying translations
