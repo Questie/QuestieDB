@@ -127,6 +127,10 @@ The Presence mask caps a schema at 52 fields, which leaves room for the expected
 - `NpcDB.GetServices(id)` and `ObjectDB.GetServices(id)` return the entity's services as a lookup
   set, or `nil` when it has none, matching how empty list fields read.
 
+Correction files receive the fact enums as views that raise on an unknown name. A misspelled
+constant would otherwise evaluate to nil and silently shorten the list, and as the last element
+it leaves no gap for Generation's list check to notice.
+
 `HasServices` and `HasAny` read QuestieDB's internal cached value and return a boolean, so they
 allocate nothing per call; use them when scanning many entities. `GetServices` returns a fresh
 Caller-owned set on every call. The named getter `services(id)` still returns the stored list.
