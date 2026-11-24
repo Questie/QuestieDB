@@ -150,6 +150,23 @@ character or game facts such as expansion and season. Its locale may be generate
 but must be a non-empty string other than `enUS`. It cannot create an entity.
 _Avoid_: Localized entity correction, runtime translation override
 
+### Entity facts
+
+**Service**:
+Something an NPC or object provides to players, named by one ID that is the same in every flavor:
+vendor, innkeeper, class trainer, mailbox, anvil. An entity's services are a list.
+_Avoid_: NPC flag (the legacy per-flavor bitmask), townsfolk type (a consumer's menu category)
+
+**Event membership**:
+The signed list of world events that gate an entity. A positive event means "only during", a
+negative one "not during". QuestieDB stores membership; a consumer decides which events are active.
+_Avoid_: Holiday quest list, event blacklist, active event
+
+**Faction restriction**:
+The single player faction that can use an object, stored only when one exists. Distinct from an
+NPC's friendliness, where a missing value means friendly to neither faction.
+_Avoid_: Faction ID (the retired faction template reference), friendly faction
+
 ### Access
 
 **Entity global**:

@@ -573,10 +573,29 @@ suite("fact-validation", "shared", function()
     "a class mask bit where a class ID belongs is reported")
   equal(npcProblems({ [npcKeys.trainerSkills] = { 99999 } }), { "Npc 9: trainerSkills holds unknown ID 99999" },
     "an unknown skill line is reported")
+  local questMeta = dofile("src/meta/questMeta.lua")
+  local eventField = questMeta.keys.eventIds
+  local function questProblems(events)
+    return facts.problems({ Quest = { meta = questMeta, entities = { [3] = { [eventField] = events } } } })
+  end
+  equal(questProblems({ 324 }), {}, "a Holidays event ID is accepted")
+  equal(questProblems({ 374, 376, -100001 }), {}, "several events and a negated QuestieDB event are accepted")
+  equal(questProblems({ 5 }), { "Quest 3: eventIds holds unknown event ID 5" }, "an unknown event is reported")
+  equal(questProblems({ -5 }), { "Quest 3: eventIds holds unknown event ID -5" }, "an unknown negated event is reported")
+  equal(questProblems({ 324, -324 }), { "Quest 3: eventIds lists HALLOWS_END twice" },
+    "an event listed as both required and excluded is reported")
+  equal(questProblems({ 0 }), { "Quest 3: eventIds holds a value that is not a signed event ID: 0" },
+    "zero carries no sign and is reported")
+  equal(questProblems({ nil, 324 }), { "Quest 3: eventIds has a gap, usually a misspelled constant" },
+    "a misspelled event constant is reported")
   local ok, message = pcall(facts.assertValid, { Object = { meta = meta, entities = { [7] = { [keys.services] = { 9999 } } } } })
   equal(ok, false, "Generation stops on a malformed fact field")
   check(tostring(message):find("Object 7: services holds unknown ID 9999", 1, true) ~= nil,
     "the failure names the entity and the problem")
+end)
+
+suite("event-ids", "shared", function()
+  dofile("tools/validation/event-ids.test.lua")(check, equal)
 end)
 
 suite("npc-services", "shared", function()

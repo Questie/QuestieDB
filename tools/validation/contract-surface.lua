@@ -133,6 +133,7 @@ add(5, "function", {
   "LibQuestieDB.Object.HasServices", "LibQuestieDB.Object.GetServices",
   "LibQuestieDB.Npc.services", "LibQuestieDB.Npc.trainerClass", "LibQuestieDB.Npc.trainerSkills",
   "LibQuestieDB.Npc.HasServices", "LibQuestieDB.Npc.GetServices",
+  "LibQuestieDB.Quest.eventIds", "LibQuestieDB.Npc.eventIds",
 })
 
 return entries

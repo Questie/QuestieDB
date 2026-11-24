@@ -94,7 +94,9 @@ object does not pay for a stack string on each call. `minSupportedContract` does
 Event IDs come from two sources:
 
 - Blizzard Holidays IDs, used as-is where a Holidays row exists (for example Hallow's End 324).
-  Darkmoon Faire has one Holidays ID per location, which expresses location-dependent quests.
+  Darkmoon Faire has one Holidays ID per location before Cataclysm, which expresses
+  location-dependent quests, and one for Darkmoon Island afterwards. Classic Era's client has no
+  Holidays rows for these events; the same IDs serve as stable keys there.
 - QuestieDB-defined IDs from 100000 upward for events without a Holidays row, such as the
   Ahn'Qiraj war effort and the Scourge invasion.
 
@@ -136,8 +138,7 @@ New fields and helpers are added under contract 5. Nothing is removed.
 
 ## Open questions
 
-- Confirm Holidays IDs are the same in Classic Era, Cata and MoP clients. Only the Wotlk export
-  has been checked. Cata may add an ID for Darkmoon Island.
-- Map Holidays IDs to names from a `HolidayNames` export, including which Darkmoon Faire ID
-  (374, 375, 376) is which location.
+- Which Darkmoon Faire Holidays ID (374, 375, 376) is which location is inferred from the calendar
+  texture order and not confirmed in game. IDs and names were checked against the Mists Classic
+  Holidays and HolidayNames exports.
 - Decide whether `eventIds` is needed on objects.

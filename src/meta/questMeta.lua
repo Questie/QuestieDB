@@ -13,7 +13,7 @@ local _, LibQuestieDB = ...
 local meta = {
   entity = 'Quest',
   metaPrefix = 'Quest-',
-  fieldCount = 36,
+  fieldCount = 37,
 
   --- fieldName -> fieldIndex. The Database Key Enum.
   keys = {
@@ -89,31 +89,34 @@ local meta = {
     ['requiredRanks'] = 35,
     -- Quest that temporarily disables this quest while active.
     ['disabledByQuest'] = 36,
+    -- Signed Enum.eventKeys values: positive means available only during that event (any one
+    -- of several is enough), negative means unavailable during it.
+    ['eventIds'] = 37,
   },
 
   --- fieldIndex -> fieldName
   names = {
-[1]='name', [2]='startedBy', [3]='finishedBy', [4]='requiredLevel', [5]='questLevel', [6]='requiredRaces', [7]='requiredClasses', [8]='objectivesText', [9]='triggerEnd', [10]='objectives', [11]='sourceItemId', [12]='preQuestGroup', [13]='preQuestSingle', [14]='childQuests', [15]='inGroupWith', [16]='exclusiveTo', [17]='zoneOrSort', [18]='requiredSkill', [19]='requiredMinRep', [20]='requiredMaxRep', [21]='requiredSourceItems', [22]='nextQuestInChain', [23]='questFlags', [24]='specialFlags', [25]='parentQuest', [26]='reputationReward', [27]='breadcrumbForQuestId', [28]='breadcrumbs', [29]='extraObjectives', [30]='requiredSpell', [31]='requiredSpecialization', [32]='requiredMaxLevel', [33]='availableUntilCompleted', [34]='availableStartingWith', [35]='requiredRanks', [36]='disabledByQuest'
+[1]='name', [2]='startedBy', [3]='finishedBy', [4]='requiredLevel', [5]='questLevel', [6]='requiredRaces', [7]='requiredClasses', [8]='objectivesText', [9]='triggerEnd', [10]='objectives', [11]='sourceItemId', [12]='preQuestGroup', [13]='preQuestSingle', [14]='childQuests', [15]='inGroupWith', [16]='exclusiveTo', [17]='zoneOrSort', [18]='requiredSkill', [19]='requiredMinRep', [20]='requiredMaxRep', [21]='requiredSourceItems', [22]='nextQuestInChain', [23]='questFlags', [24]='specialFlags', [25]='parentQuest', [26]='reputationReward', [27]='breadcrumbForQuestId', [28]='breadcrumbs', [29]='extraObjectives', [30]='requiredSpell', [31]='requiredSpecialization', [32]='requiredMaxLevel', [33]='availableUntilCompleted', [34]='availableStartingWith', [35]='requiredRanks', [36]='disabledByQuest', [37]='eventIds'
   },
 
   --- fieldIndex -> storage type: number | string | table
   types = {
-[1]='string', [2]='table', [3]='table', [4]='number', [5]='number', [6]='number', [7]='number', [8]='table', [9]='table', [10]='table', [11]='number', [12]='table', [13]='table', [14]='table', [15]='table', [16]='table', [17]='number', [18]='table', [19]='table', [20]='table', [21]='table', [22]='number', [23]='number', [24]='number', [25]='number', [26]='table', [27]='number', [28]='table', [29]='table', [30]='number', [31]='number', [32]='number', [33]='number', [34]='number', [35]='table', [36]='number'
+[1]='string', [2]='table', [3]='table', [4]='number', [5]='number', [6]='number', [7]='number', [8]='table', [9]='table', [10]='table', [11]='number', [12]='table', [13]='table', [14]='table', [15]='table', [16]='table', [17]='number', [18]='table', [19]='table', [20]='table', [21]='table', [22]='number', [23]='number', [24]='number', [25]='number', [26]='table', [27]='number', [28]='table', [29]='table', [30]='number', [31]='number', [32]='number', [33]='number', [34]='number', [35]='table', [36]='number', [37]='table'
   },
 
   --- fieldIndex -> structural shape, for validators. nil for scalars.
   structures = {
-[2]='questgivers', [3]='questgivers', [8]='stringarray', [9]='trigger', [10]='objectives', [12]='idarray', [13]='idarray', [14]='idarray', [15]='idarray', [16]='idarray', [18]='pair', [19]='pair', [20]='pair', [21]='idarray', [26]='reputationpairs', [28]='idarray', [29]='extraobjectives', [35]='pairs'
+[2]='questgivers', [3]='questgivers', [8]='stringarray', [9]='trigger', [10]='objectives', [12]='idarray', [13]='idarray', [14]='idarray', [15]='idarray', [16]='idarray', [18]='pair', [19]='pair', [20]='pair', [21]='idarray', [26]='reputationpairs', [28]='idarray', [29]='extraobjectives', [35]='pairs', [37]='idarray'
   },
 
   --- fieldIndex -> Questie compiler type. Materialized provenance.
   compilerTypes = {
-[1]='u8string', [2]='questgivers', [3]='questgivers', [4]='u8', [5]='s16', [6]='u32', [7]='u16', [8]='u8u16stringarray', [9]='trigger', [10]='objectives', [11]='u24', [12]='u8s24array', [13]='u8u24array', [14]='u8u24array', [15]='u8u24array', [16]='u8u24array', [17]='s16', [18]='u12pair', [19]='s24pair', [20]='s24pair', [21]='u8u24array', [22]='u24', [23]='u24', [24]='u16', [25]='u24', [26]='u8s24pairs', [27]='u24', [28]='u8u24array', [29]='extraobjectives', [30]='s24', [31]='u24', [32]='u8', [33]='u24', [34]='u24', [35]='u8s24pairs', [36]='u24'
+[1]='u8string', [2]='questgivers', [3]='questgivers', [4]='u8', [5]='s16', [6]='u32', [7]='u16', [8]='u8u16stringarray', [9]='trigger', [10]='objectives', [11]='u24', [12]='u8s24array', [13]='u8u24array', [14]='u8u24array', [15]='u8u24array', [16]='u8u24array', [17]='s16', [18]='u12pair', [19]='s24pair', [20]='s24pair', [21]='u8u24array', [22]='u24', [23]='u24', [24]='u16', [25]='u24', [26]='u8s24pairs', [27]='u24', [28]='u8u24array', [29]='extraobjectives', [30]='s24', [31]='u24', [32]='u8', [33]='u24', [34]='u24', [35]='u8s24pairs', [36]='u24', [37]='u8s24array'
   },
 
   --- fieldIndex -> true when an empty table must read back as nil
   emptyIsNil = {
-[2]=true, [3]=true, [8]=true, [9]=true, [10]=true, [12]=true, [13]=true, [14]=true, [15]=true, [16]=true, [18]=true, [19]=true, [20]=true, [21]=true, [26]=true, [28]=true, [29]=true, [35]=true
+[2]=true, [3]=true, [8]=true, [9]=true, [10]=true, [12]=true, [13]=true, [14]=true, [15]=true, [16]=true, [18]=true, [19]=true, [20]=true, [21]=true, [26]=true, [28]=true, [29]=true, [35]=true, [37]=true
   },
 
   --- fieldIndex -> true when {0,0} must read back as nil
