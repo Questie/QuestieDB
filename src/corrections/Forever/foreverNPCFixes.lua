@@ -122,6 +122,9 @@ function ForeverNpcFixes:Load()
             [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{28.67,67.52}}},
             [npcKeys.zoneID] = zoneIDs.DUN_MOROGH,
         },
+        [2785] = { -- Theldurin the Lost
+            [npcKeys.spawns] = {[zoneIDs.BADLANDS] = {{51.22,76.78}}},
+        },
         [3188] = { -- Master Gadrin
             [npcKeys.questStarts_remove] = {97225},
         },

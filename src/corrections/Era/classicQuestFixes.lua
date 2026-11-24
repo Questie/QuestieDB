@@ -6903,6 +6903,7 @@ function QuestieQuestFixes:LoadFactionFixes()
         },
         [687] = { -- Theldurin the Lost
             [questKeys.startedBy] = {{2787}},
+            [questKeys.preQuestSingle] = {688},
         },
         [709] = { -- Solution to Doom
             [questKeys.nextQuestInChain] = 728,
@@ -7199,6 +7200,7 @@ function QuestieQuestFixes:LoadFactionFixes()
         },
         [687] = { -- Theldurin the Lost
             [questKeys.startedBy] = {{2786}},
+            [questKeys.preQuestSingle] = {652},
         },
         [709] = { -- Solution to Doom
             [questKeys.nextQuestInChain] = 727,
