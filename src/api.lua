@@ -76,6 +76,19 @@ end
 LibQuestieDB.Enum.classKeys = activeConstants("classKeys")
 LibQuestieDB.Enum.npcFlags = activeConstants("npcFlags")
 
+--- Build a lookup set from IDs: `Set(3, 8)` returns `{ [3] = true, [8] = true }`. Build it once
+--- and pass it to `Entity.HasAny` or `HasServices`; a hash lookup per value replaces a scan.
+---@param ... any Values to include; nil arguments are skipped.
+---@return table<any, boolean> set A fresh table the caller owns.
+function LibQuestieDB.Set(...)
+  local set = {}
+  for index = 1, select("#", ...) do
+    local value = select(index, ...)
+    if value ~= nil then set[value] = true end
+  end
+  return set
+end
+
 --------------------------------------------------------------------------------------------
 -- Contract
 --------------------------------------------------------------------------------------------

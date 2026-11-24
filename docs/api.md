@@ -107,6 +107,22 @@ The hashmap and list answer over the **composed view**: an entity a Dynamic Corr
 is readable, enumerable, and exists — all three or none. Treat both returns as read-only;
 they are shared, not copies.
 
+### `Entity.HasAny(id, key, wanted) -> boolean`
+
+Whether a list field holds any value that is a key of `wanted`. Build the lookup set once with
+`LibQuestieDB.Set(...)`, outside the loop:
+
+```lua
+local wanted = LibQuestieDB.Set(7, 9)        --> { [7] = true, [9] = true }
+QuestDB.HasAny(10, "exclusiveTo", wanted)    --> true when quest 10 is exclusive to 7 or 9
+```
+
+The check runs over a list QuestieDB retains, so it allocates nothing per call. Prefer it to
+reading the list when scanning many entities. Matching is exact: a signed ID matches only the
+same sign. It returns `false` for an unknown entity, an entity without the list, a scalar field,
+an unknown field, or a missing `wanted`. Corrections and cache invalidation are honoured like any
+other read. Contract 5 guarantees `HasAny` and `LibQuestieDB.Set`.
+
 ### `Entity.IdsByName(name) -> list | nil`
 
 The reverse of the `name` getter: every composed id whose **current** name equals `name`
@@ -327,6 +343,24 @@ differ between Classic and later flavors, and a flavor lacks the flags it does n
 absent rather than zero. Flavors without their own tables (Forever) use their rules flavor's
 tables, Classic. Contract 4 guarantees both tables; call `RequireContract(4)` before using them.
 `Enum.byExpansion` remains internal.
+
+### Services, events, class IDs and weapon skills
+
+Four shared tables name the values of the entity-fact fields introduced by
+[ADR 0017](adr/0017-entity-facts-replace-consumer-id-lists.md). They are the same in every flavor
+and read-only by contract:
+
+| Table | Values | Used by |
+| --- | --- | --- |
+| `LibQuestieDB.Enum.serviceKeys` | Service IDs (`VENDOR`, `INNKEEPER`, `MAILBOX`, ...) | `services` lists |
+| `LibQuestieDB.Enum.eventKeys` | World event IDs (`HALLOWS_END`, `DARKMOON_FAIRE_ELWYNN`, ...) | signed `eventIds` lists |
+| `LibQuestieDB.Enum.classIDs` | Client class IDs (`MAGE = 8`) | `trainerClass` |
+| `LibQuestieDB.Enum.weaponSkillKeys` | Weapon skill line IDs (`BOWS = 45`) | `trainerSkills` |
+
+Event IDs below 100000 are Blizzard Holidays IDs. IDs from 100000 are QuestieDB-defined events
+that have no Holidays row. `classIDs` are plain IDs, unlike `classKeys`, whose values are
+`requiredClasses` mask bits. Contract 5 guarantees these tables; call `RequireContract(5)` before
+using them.
 
 ### Objective ordering hints
 
@@ -858,6 +892,10 @@ check before the lookup.
 Contract 4 adds the active-flavor `Enum.classKeys` and `Enum.npcFlags` tables. Contracts 1 to
 3 remain supported. A consumer requiring either table must request contract 4 so an older
 provider fails the version check before the lookup.
+
+Contract 5 adds the entity-fact enums (`Enum.serviceKeys`, `Enum.eventKeys`, `Enum.classIDs`,
+`Enum.weaponSkillKeys`), `LibQuestieDB.Set`, and `Entity.HasAny`. Contracts 1 to 4 remain
+supported.
 
 The check is a **range**: `RequireContract(v)` passes for any
 `minSupportedContract <= v <= contractVersion`, so a consumer built against an older

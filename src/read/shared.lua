@@ -463,6 +463,49 @@ function shared.CreateEntity(meta, backend)
   end
 
   ------------------------------------------------------------------------------------------
+  -- List membership (ADR 0017)
+  ------------------------------------------------------------------------------------------
+  --
+  -- Membership checks run over a list the database retains, so a scan across every entity
+  -- allocates one list per entity touched and nothing per call. The retained list is the
+  -- composed value `get` returns and is never handed out; `false` records "no list".
+
+  local retainedLists = {}
+
+  ---Return the retained composed list for one field, reading it on first use.
+  ---@param id number Entity ID.
+  ---@param fieldIndex number
+  ---@return table|false list
+  local function retainedList(id, fieldIndex)
+    local byId = retainedLists[id]
+    if not byId then
+      byId = {}
+      retainedLists[id] = byId
+    end
+    local list = byId[fieldIndex]
+    if list == nil then
+      list = get(id, fieldIndex) or false
+      byId[fieldIndex] = list
+    end
+    return list
+  end
+
+  --- Whether a list field holds any value that is a key of `wanted`. Build `wanted` once with
+  --- `LibQuestieDB.Set(...)`. Matching is exact, so signed IDs match only with the same sign.
+  --- Returns false for an unknown entity, an empty or scalar field, or a non-table `wanted`.
+  function entity.HasAny(id, key, wanted)
+    if type(id) ~= "number" or type(wanted) ~= "table" then return false end
+    local fieldIndex = keys[key] or (type(key) == "number" and key or nil)
+    if not fieldIndex or types[fieldIndex] ~= "table" then return false end
+    local list = retainedList(id, fieldIndex)
+    if not list then return false end
+    for index = 1, #list do
+      if wanted[list[index]] then return true end
+    end
+    return false
+  end
+
+  ------------------------------------------------------------------------------------------
   -- Name index (ADR 0008)
   ------------------------------------------------------------------------------------------
   --
@@ -568,8 +611,10 @@ function shared.CreateEntity(meta, backend)
   local function clearFieldCache(id)
     if id == nil then
       for key in pairs(cache) do cache[key] = nil end
+      for key in pairs(retainedLists) do retainedLists[key] = nil end
     else
       cache[id] = nil
+      retainedLists[id] = nil
     end
   end
 

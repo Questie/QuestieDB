@@ -535,6 +535,10 @@ suite("storage-contract", "shared", function()
   dofile("tools/validation/storage-contract.test.lua")(check, equal)
 end)
 
+suite("list-membership", "shared", function()
+  dofile("tools/validation/list-membership.test.lua")(check, equal)
+end)
+
 suite("rows", "shared", function()
   local meta = {
     entity = "Fixture",
@@ -1003,6 +1007,26 @@ suite("correction-enums", "shared", function()
   end
   equal(standalone.dropCorrectionKeys, { PSERVER = -2, WOWHEAD = -1 },
     "standalone loading includes the support drop sentinels")
+  -- Stored data holds these IDs, so a renumbering must fail here rather than in a consumer.
+  equal(standalone.serviceKeys.VENDOR, 3, "service IDs are fixed: VENDOR")
+  equal(standalone.serviceKeys.MAILBOX, 25, "service IDs are fixed: MAILBOX")
+  equal(standalone.serviceKeys.MOONWELL, 40, "service IDs are fixed: MOONWELL")
+  equal(standalone.eventKeys.HALLOWS_END, 324, "events use Blizzard Holidays IDs")
+  equal(standalone.eventKeys.DARKMOON_FAIRE_ISLAND, 479, "Darkmoon Island has its own Holidays ID")
+  equal(standalone.eventKeys.AHN_QIRAJ_WAR_EFFORT, 100001, "QuestieDB-defined events start at 100000")
+  equal(standalone.classIDs.MAGE, 8, "class IDs are client class IDs, not mask bits")
+  equal(standalone.weaponSkillKeys.BOWS, 45, "weapon skills use SkillLine IDs")
+  for _, name in ipairs({ "serviceKeys", "eventKeys", "classIDs", "weaponSkillKeys" }) do
+    local seen, duplicates = {}, {}
+    for key, id in pairs(standalone[name]) do
+      if seen[id] then duplicates[#duplicates + 1] = key .. " and " .. seen[id] end
+      seen[id] = key
+    end
+    equal(duplicates, {}, name .. " assigns each ID to one name")
+  end
+  for key, id in pairs(standalone.eventKeys) do
+    check(id > 0, "event IDs are positive so the sign can carry availability: " .. key)
+  end
   equal(standalone.byExpansion.Forever.raceKeys.ALL_ALLIANCE, 4294967373,
     "Forever race masks retain values beyond 32 bits")
   equal(standalone.waypointPresets.ALLIANCE_GUNSHIP[5042][1][1], { 61.79, 46.28 },
@@ -1012,12 +1036,13 @@ suite("correction-enums", "shared", function()
   client.install({ expansion = "Forever" })
   local source = emulator.loadAddon(config.addonName .. ".toc", config.addonName)
   equal(source.Enum.raceMaskById, expectedMasks, "actual Source TOC exposes race encoding")
-  equal(source.contractVersion, 4, "active-flavor enums are available under contract 4")
-  equal(source.RequireContract(4), true, "shared enum consumers are supported")
+  equal(source.contractVersion, 5, "entity facts are available under contract 5")
+  equal(source.RequireContract(5), true, "entity fact consumers are supported")
+  equal(source.RequireContract(4), true, "contract 4 consumers remain supported")
   equal(source.RequireContract(3), true, "contract 3 consumers remain supported")
   equal(source.RequireContract(1), true, "contract 1 consumers remain supported")
   equal(source.RequireContract(2), true, "contract 2 consumers remain supported")
-  equal(source.RequireContract(5), false, "future consumer contracts are rejected")
+  equal(source.RequireContract(6), false, "future consumer contracts are rejected")
 
   -- Controlled rows exercise both real backends; no generated artifact or authored eligibility changes.
   local fixture = dofile("tools/validation/storage-fixture.lua")
@@ -2533,6 +2558,7 @@ suite("lua-types", "shared", function()
     BuildNameIndex = true,
     BuildNameIndexAsync = true,
     IdsByName = true,
+    HasAny = true,
   }
   local typeFiles = testFiles.list("src/types", false, { ".t.lua" })
 
@@ -2580,7 +2606,7 @@ suite("lua-types", "shared", function()
     equal(#duplicateFields, 0, entity.name .. " type has no duplicate getter declarations")
     for _, method in ipairs({
       "GetByIndex", "Get", "GetAll", "GetRaw", "GetAllIds", "Exists", "InvalidateCache",
-      "BuildNameIndex", "BuildNameIndexAsync", "IdsByName",
+      "BuildNameIndex", "BuildNameIndexAsync", "IdsByName", "HasAny",
     }) do
       check(declared[method] == true,
         entity.name .. " type declares the common method " .. method)

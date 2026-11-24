@@ -163,3 +163,13 @@ local factionRaceMasks = LibQuestieDB.Enum.factionRaceMasks
 local allianceRaceMask = factionRaceMasks.Alliance
 ---@type integer
 local hordeRaceMask = factionRaceMasks.Horde
+
+-- List membership: build the lookup set once, then check without reading the list.
+---@type table<any, boolean>
+local wantedQuests = LibQuestieDB.Set(7, 9)
+---@type boolean
+local isExclusive = QuestDB.HasAny(10, "exclusiveTo", wantedQuests)
+---@type integer
+local vendorService = LibQuestieDB.Enum.serviceKeys.VENDOR
+---@type integer
+local hallowsEnd = LibQuestieDB.Enum.eventKeys.HALLOWS_END
