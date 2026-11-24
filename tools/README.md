@@ -11,6 +11,7 @@ tests, and the bundled interpreters. See [the main README](../README.md#for-cont
 | `lua-binary/` | Prebuilt Windows/Linux x64 Lua 5.1 interpreters, checksums, and notices |
 | [`distribution/`](distribution/README.md) | Packaging, changelogs, publishing, Static Correction stripping, and release downloads/installations |
 | [`dbc/`](dbc/README.md) | DBC source downloads, map-coordinate comparison, candidate Forever map support, and separate Era-to-Forever source conversion |
+| [`foodType/`](foodType/README.md) | Pet food support data generated from wago.tools DB2 exports |
 | [`export/`](export/README.md) | Four inline Forever entity exports in one run; entry point `export-forever.lua` |
 | `validation/` | QuestieDB's own behavior checks and shared test-fixture helpers |
 | `probe-addon/` | Live-client storage and API probes |
@@ -25,7 +26,8 @@ manifest and protects edited outputs. See [Forever](../docs/forever.md) before r
 retaining current reviewed compatibility separately from native map facts.
 
 Generation and packaging cover six flavors. The `test` command includes shared behavior
-checks, selected artifact scopes, Forever distribution integration, and five DBC fixture suites.
+checks, selected artifact scopes, Forever distribution integration, five DBC fixture suites, and the
+pet food fixture suite.
 No flavor requires a Questie checkout or a full-data snapshot refresh.
 
 Tests for a tool stay beside its implementation. Python owns process orchestration and the

@@ -127,6 +127,7 @@ jobs:
           python3 tools/dbc/rewrite.test.py
           python3 tools/dbc/convert.test.py
           python3 tools/dbc/support.test.py
+          python3 tools/foodType/generate.test.py
           python3 tools/distribution/package.test.py
           python3 tools/distribution/bootstrap.test.py
           python3 tools/distribution/release_artifacts.test.py
