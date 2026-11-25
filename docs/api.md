@@ -718,7 +718,8 @@ at render time with their own string-keyed localization function.
 
 ## Support data
 
-Game reference data consumed as whole tables rather than through the metadata store.
+Game reference data consumed as whole tables rather than through the metadata store. For the one
+dataset with a lookup instead, see [object models](#object-models).
 
 ```lua
 LibQuestieDB.Support.Get("ZoneDB").zoneIDs
@@ -795,6 +796,28 @@ is `nil` even though `RequireContract(5)` succeeds, so check for that as well. T
 is never populated.
 
 See [`support-data.md`](./support-data.md) for flavor selection and copied-data maintenance.
+
+---
+
+## Object models
+
+```lua
+LibQuestieDB.GetObjectModelFileID(31)   --> 189908, the Old Lion Statue's model
+```
+
+Returns the FileDataID of an object's model on the active flavor, for
+`actor:SetModelByFileID(fileDataId)`. It takes any object ID, including objects added by Dynamic
+Corrections, and works the same in Source and Baked mode.
+
+Nil means there is no plain model to show: the object is displayed as a creature or an item, its
+model is invisible, it has none, or none is known. The model's size is not stored; ask the actor
+with `GetActiveBoundingBox()` after setting the model. The first call decodes the flavor's table.
+
+A model is decoration, so prefer testing for the function over requiring contract 5:
+
+```lua
+local fileId = LibQuestieDB.GetObjectModelFileID and LibQuestieDB.GetObjectModelFileID(objectId)
+```
 
 ---
 
@@ -892,8 +915,8 @@ Contract 4 adds the active-flavor `Enum.classKeys` and `Enum.npcFlags` tables. C
 3 remain supported. A consumer requiring either table must request contract 4 so an older
 provider fails the version check before the lookup.
 
-Contract 5 adds `Support.Get("PetFood")` on Vanilla, TBC, Wrath and Forever. Contracts 1 to 4 remain
-supported.
+Contract 5 adds `Support.Get("PetFood")` on Vanilla, TBC, Wrath and Forever, and
+`GetObjectModelFileID` on every flavor. Contracts 1 to 4 remain supported.
 
 The check is a **range**: `RequireContract(v)` passes for any
 `minSupportedContract <= v <= contractVersion`, so a consumer built against an older

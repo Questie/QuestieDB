@@ -128,38 +128,43 @@ support\DropTables\itemDropCorrections.lua [AllowLoadGameType vanilla, tbc, wrat
 support\Zones\areaIdToUiMapId.lua [AllowLoadGameType vanilla, tbc, wrath, cata]
 support\Zones\uiMapIdToAreaId.lua [AllowLoadGameType vanilla, tbc, wrath, cata]
 
-# --- Vanilla: quest XP, factions, drops and pet food ---
+# --- Vanilla: quest XP, factions, object models, drops and pet food ---
 support\QuestXP\xpDB-classic.lua [AllowLoadGameType vanilla]
 support\FactionTemplates\factionTemplateClassic.lua [AllowLoadGameType vanilla]
+support\ObjectModels\Vanilla.lua [AllowLoadGameType vanilla]
 support\DropTables\classicItemDrops.lua [AllowLoadGameType vanilla]
 support\PetFood\petFoodClassic.lua [AllowLoadGameType vanilla]
 
-# --- TBC: quest XP, factions, drops and pet food ---
+# --- TBC: quest XP, factions, object models, drops and pet food ---
 support\QuestXP\xpDB-tbc.lua [AllowLoadGameType tbc]
 support\FactionTemplates\factionTemplateTBC.lua [AllowLoadGameType tbc]
+support\ObjectModels\TBC.lua [AllowLoadGameType tbc]
 support\DropTables\tbcItemDrops.lua [AllowLoadGameType tbc]
 support\PetFood\petFoodTBC.lua [AllowLoadGameType tbc]
 
-# --- Wrath: quest XP, factions, drops and pet food ---
+# --- Wrath: quest XP, factions, object models, drops and pet food ---
 support\QuestXP\xpDB-wotlk.lua [AllowLoadGameType wrath]
 support\FactionTemplates\factionTemplateWotlk.lua [AllowLoadGameType wrath]
+support\ObjectModels\Wrath.lua [AllowLoadGameType wrath]
 support\DropTables\wotlkItemDrops.lua [AllowLoadGameType wrath]
 support\PetFood\petFoodWotlk.lua [AllowLoadGameType wrath]
 
-# --- Mists: zone maps, quest XP, factions and drops ---
+# --- Mists: zone maps, quest XP, factions, object models and drops ---
 support\Zones\MoP\areaIdToUiMapId.lua [AllowLoadGameType mists]
 support\Zones\MoP\uiMapIdToAreaId.lua [AllowLoadGameType mists]
 support\QuestXP\xpDB-mop.lua [AllowLoadGameType mists]
 support\FactionTemplates\factionTemplateMoP.lua [AllowLoadGameType mists]
+support\ObjectModels\Mists.lua [AllowLoadGameType mists]
 support\DropTables\mopItemDrops.lua [AllowLoadGameType mists]
 
 # --- Cata drops, also used by Mists ---
 # Mists loads its own drop table first, then the Cata table.
 support\DropTables\cataItemDrops.lua [AllowLoadGameType mists, cata]
 
-# --- Cata: quest XP and factions ---
+# --- Cata: quest XP, factions and object models ---
 support\QuestXP\xpDB-cata.lua [AllowLoadGameType cata]
 support\FactionTemplates\factionTemplateCata.lua [AllowLoadGameType cata]
+support\ObjectModels\Cata.lua [AllowLoadGameType cata]
 
 # --- Forever: independently owned support inputs ---
 support\Forever\Zones\dungeons.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
@@ -171,6 +176,7 @@ support\Forever\Zones\uiMapIdToAreaId.lua [ExcludeLoadGameType vanilla, tbc, wra
 support\Forever\QuestXP\xpDB-classic.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 support\Forever\QuestXP\xpDB-traces.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 support\Forever\FactionTemplates\factionTemplateClassic.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
+support\ObjectModels\Forever.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 support\Forever\DropTables\classicItemDrops.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 support\Forever\PetFood\petFoodForever.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 
@@ -612,3 +618,4 @@ src\ui\modeIndicator.lua
 # --- Public API ---
 src\api.lua
 src\support\eraToForever.lua
+src\support\objectModels.lua

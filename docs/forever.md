@@ -106,6 +106,9 @@ Quest XP is support data, not a correction. The extractor's `xpDB-traces.lua` li
 `support/Forever/QuestXP/` and loads after `xpDB-classic.lua`, adding `QuestXP.db[questId]`
 rows for quests above the Classic maximum. Never hand-edit it.
 
+New objects need no extra step, but get a 3D model only after an import; see
+[object models](../tools/object-models/README.md#a-warning-says-objects-have-no-model).
+
 A trace-derived value overrides the generated delta-base value for the same field;
 an authored fix overrides both. Fields the trace layer does not touch retain the value
 from the generated delta-base or inherited baseline. Registry priorities enforce this

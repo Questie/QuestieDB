@@ -7,6 +7,8 @@ metadata.load(stage .. "/" .. filename, "QuestieDB")
 local db, files = metadata.loadAddon(stage .. "/" .. filename, "QuestieDB", stage, "forever")
 assert(db.flavor.name == "Forever")
 assert(QuestDB.name(2) == "Sharptalon's Claw")
+-- Object models are packaged and decode; native-toc checks that each flavor loads its own.
+assert(db.GetObjectModelFileID(31) == 189908)
 local ownedProviders = 0
 for _, path in ipairs(files) do
   assert(not path:find("%["), "Baked paths must already be resolved")

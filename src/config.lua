@@ -170,6 +170,7 @@ config.runtimeFiles = {
     "src/ui/modeIndicator.lua",
     "src/api.lua",
     "src/support/eraToForever.lua",
+    "src/support/objectModels.lua",
   },
 }
 
@@ -290,21 +291,25 @@ config.supportData = {
     Vanilla = {
       "support/Zones/areaIdToUiMapId.lua", "support/Zones/uiMapIdToAreaId.lua",
       "support/QuestXP/xpDB-classic.lua", "support/FactionTemplates/factionTemplateClassic.lua",
+      "support/ObjectModels/Vanilla.lua",
       "support/DropTables/classicItemDrops.lua", "support/PetFood/petFoodClassic.lua",
     },
     TBC = {
       "support/Zones/areaIdToUiMapId.lua", "support/Zones/uiMapIdToAreaId.lua",
       "support/QuestXP/xpDB-tbc.lua", "support/FactionTemplates/factionTemplateTBC.lua",
+      "support/ObjectModels/TBC.lua",
       "support/DropTables/tbcItemDrops.lua", "support/PetFood/petFoodTBC.lua",
     },
     Wrath = {
       "support/Zones/areaIdToUiMapId.lua", "support/Zones/uiMapIdToAreaId.lua",
       "support/QuestXP/xpDB-wotlk.lua", "support/FactionTemplates/factionTemplateWotlk.lua",
+      "support/ObjectModels/Wrath.lua",
       "support/DropTables/wotlkItemDrops.lua", "support/PetFood/petFoodWotlk.lua",
     },
     Cata = {
       "support/Zones/areaIdToUiMapId.lua", "support/Zones/uiMapIdToAreaId.lua",
       "support/QuestXP/xpDB-cata.lua", "support/FactionTemplates/factionTemplateCata.lua",
+      "support/ObjectModels/Cata.lua",
       "support/DropTables/cataItemDrops.lua",
     },
     -- Mists uses its own zone maps, and loads Cata's drop table alongside its own, exactly as
@@ -312,6 +317,7 @@ config.supportData = {
     Mists = {
       "support/Zones/MoP/areaIdToUiMapId.lua", "support/Zones/MoP/uiMapIdToAreaId.lua",
       "support/QuestXP/xpDB-mop.lua", "support/FactionTemplates/factionTemplateMoP.lua",
+      "support/ObjectModels/Mists.lua",
       "support/DropTables/mopItemDrops.lua", "support/DropTables/cataItemDrops.lua",
     },
   },
@@ -325,6 +331,7 @@ config.supportData.perFlavor.Forever = {
   "support/Forever/Zones/areaIdToUiMapId.lua", "support/Forever/Zones/uiMapIdToAreaId.lua",
   "support/Forever/QuestXP/xpDB-classic.lua", "support/Forever/QuestXP/xpDB-traces.lua",
   "support/Forever/FactionTemplates/factionTemplateClassic.lua",
+  "support/ObjectModels/Forever.lua",
   "support/Forever/DropTables/classicItemDrops.lua",
   "support/Forever/PetFood/petFoodForever.lua",
 }

@@ -1012,8 +1012,8 @@ suite("correction-enums", "shared", function()
   client.install({ expansion = "Forever" })
   local source = emulator.loadAddon(config.addonName .. ".toc", config.addonName)
   equal(source.Enum.raceMaskById, expectedMasks, "actual Source TOC exposes race encoding")
-  equal(source.contractVersion, 5, "pet food support data is available under contract 5")
-  equal(source.RequireContract(5), true, "pet food consumers are supported")
+  equal(source.contractVersion, 5, "pet food and object models are available under contract 5")
+  equal(source.RequireContract(5), true, "contract 5 consumers are supported")
   equal(source.RequireContract(4), true, "contract 4 consumers remain supported")
   equal(source.RequireContract(3), true, "contract 3 consumers remain supported")
   equal(source.RequireContract(1), true, "contract 1 consumers remain supported")
@@ -3459,6 +3459,10 @@ end)
 --------------------------------------------------------------------------------------------
 -- Support data
 --------------------------------------------------------------------------------------------
+
+suite("object-models", "shared", function()
+  dofile("tools/validation/object-models.test.lua")(equal, emulator, client)
+end)
 
 suite("support", "shared", function()
   -- Loading the largest flavor before the smallest exposes leaked modules and map variants.

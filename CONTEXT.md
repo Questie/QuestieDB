@@ -61,9 +61,16 @@ from corrected inputs rather than storing an authored replacement for each affec
 _Avoid_: Preprocess, precompile, postprocess, pipeline stage
 
 **Support data**:
-Game reference data consumed as whole tables rather than through the TOC metadata store —
-zone mappings, quest XP, drop tables, faction templates, pet food. Shipped as plain Lua files.
+Game reference data shipped as plain Lua files rather than in the TOC metadata store — zone
+mappings, quest XP, drop tables, faction templates, pet food, Object models. All but Object
+models are consumed as whole tables.
 _Avoid_: Auxiliary data, helper data, lookup data
+
+**Object model**:
+The model file a game object is displayed with on one flavor, as a FileDataID. An object points
+to a display ID, which the client's `GameObjectDisplayInfo` resolves to a model file, a creature
+or an item; only a model file is an Object model.
+_Avoid_: Display (the ID before it is resolved), mesh, 3D face
 
 **Source mode**:
 The runtime state where entity reads resolve from raw entity data with all Corrections
