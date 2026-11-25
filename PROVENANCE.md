@@ -55,6 +55,31 @@ The early implementation also drew on these prototypes:
 These are source and design origins, not runtime dependencies or current workspace instructions.
 Correction constants were extracted from Questie itself, not copied from a prototype.
 
+## Object models
+
+`support/ObjectModels/sources.tsv` records display IDs per object and source. It was seeded on
+November 25, 2026 from:
+
+| Column | Origin | License |
+| --- | --- | --- |
+| `wowhead-forever`, `wowhead-classic` | English Wowhead object pages cached by scraper-questie (`forever.db`, `classic.db`) | Display IDs, included by maintainer decision |
+| `cmangos-classic`, `cmangos-tbc`, `cmangos-wotlk` | `gameobject_template.displayId` of [cmangos/classic-db](https://github.com/cmangos/classic-db), [tbc-db](https://github.com/cmangos/tbc-db) and [wotlk-db](https://github.com/cmangos/wotlk-db), through Questie/cmangos release `v2026.08.18` | GPL-3.0 |
+| `skyfire` | `gameobject_template.displayId` of [SkyFire 5.4.8](https://github.com/ProjectSkyfire/SkyFire_548), `SFDB_full_548_27.001_2026_011_03_Release.sql` | GPL-3.0 |
+| `att` | `model` in [AllTheThings](https://github.com/ATTWoWAddon/AllTheThings) `ObjectDB.lua` (FileDataIDs) | MIT |
+
+`displays/` is each client's `GameObjectDisplayInfo`, reduced to one kind and one ID per display.
+The first line of each file names its client build.
+
+The sources were checked once against `gameobjectcache.wdb` files of real clients, which record
+what the server sent. CMaNGOS agreed on all 38 Era objects (1.15.9.70576), all 518 TBC objects
+(2.5.6.69795) and all but 2 of 708 Wrath objects of a 3.4.0 cache; the 2 are Forges whose display
+later left the client. SkyFire agreed on all 335 Mists objects (5.5, build 70032), and Wowhead on
+40 of 41 Forever objects; the other is not in our database. Of the objects that only Wowhead has,
+AllTheThings knows 250 and agrees on each.
+
+Values that carry no information are not imported; see [the tool](tools/object-models/README.md#importing).
+TrinityCore TDB 442 was used only to find them. None of its values are included.
+
 ## Recovering the migration tools and evidence
 
 The [`migration-parity-complete` checkpoint](docs/adr/0014-owned-data-after-migration.md#migration-checkpoint)

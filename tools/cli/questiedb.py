@@ -14,6 +14,7 @@ Tasks:
   convert-forever  Convert Era data/corrections into separate Forever files (--help)
   dbc-support     Generate candidate-only Forever map support from local DBC (--help)
   food-type       Regenerate pet food support data from wago.tools (--help)
+  object-models   Check and update the 3D models of game objects (--help)
   verify equivalence reconstruct validators test determinism
 
 Flavors: Vanilla TBC Wrath Cata Mists Forever; omitted means all applicable flavors.
@@ -359,6 +360,7 @@ def execute(options: Options, root: Path) -> int:
             for tool in ("coordinates", "download", "rewrite", "convert", "support"):
                 jobs.append(Job("test:dbc:" + tool, [sys.executable, "tools/dbc/" + tool + ".test.py"], 100))
             jobs.append(Job("test:foodType", [sys.executable, "tools/foodType/generate.test.py"], 100))
+            jobs.append(Job("test:object-models", [sys.executable, "tools/object-models/object_models.test.py"], 400))
             continue
         for flavor in options.flavors:
             weight = WEIGHTS[flavor]
@@ -382,6 +384,7 @@ def main(argv: Optional[list[str]] = None) -> int:
         "package": "tools/distribution/package.py", "bootstrap": "tools/distribution/bootstrap.py",
         "dbc-coordinates": "tools/dbc/maps.py", "convert-forever": "tools/dbc/convert.py",
         "dbc-support": "tools/dbc/support.py", "food-type": "tools/foodType/generate.py",
+        "object-models": "tools/object-models/object_models.py",
     }
     if args and args[0] in standalone:
         task = args.pop(0)
