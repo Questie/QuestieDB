@@ -3,9 +3,7 @@
 QuestieDB owns and publishes zone mappings, quest XP, faction templates, drop tables, drop-table
 Corrections, and pet food as plain Lua values through `LibQuestieDB.Support`. These datasets are
 consumed as whole tables, so they do not use the TOC metadata store. The public access points
-and value examples are documented in [`api.md`](./api.md#support-data). Object models are
-Support data too, with a lookup function instead of a public table; see
-[below](#object-models).
+and value examples are documented in [`api.md`](./api.md#support-data).
 
 ## Flavor selection
 
@@ -20,7 +18,7 @@ The selected data preserves the imported flavor boundaries:
 - Vanilla, TBC, Wrath, and Cata use the shared area/UI map tables plus their own quest XP,
   faction-template, and drop-table variant.
 - Mists uses the MoP area/UI map tables, quest XP, and faction templates.
-- Forever uses its own files under `support/Forever` and its own object models, selected by
+- Forever uses its own files under `support/Forever`, selected by
   `[ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]`. An allow list of unknown
   Forever tokens would also pass on older clients. Shared Classic rules do not make these
   inputs inherit future Era changes.
@@ -76,20 +74,6 @@ The files under `support/PetFood` and `support/Forever/PetFood` are generated. R
 `./questiedb.sh food-type`; see [the tool](../tools/foodType/README.md) for its sources. A whole table is
 used instead of the Item `foodType` field because the consumer asks which items a pet eats, which as a
 field would mean reading every item.
-
-## Object models
-
-`support/ObjectModels/<Flavor>.lua` maps every object of the database that has a plain model to
-the model's FileDataID. Each module is generated text grouped by model;
-`src/support/objectModels.lua` inverts it on the first `LibQuestieDB.GetObjectModelFileID` call.
-Read it through that function: the text format is internal.
-
-An object has no entry when it is displayed as a creature or an item, when its model shows
-nothing (`hidden.tsv`), when `manual.tsv` says it has none, or when no source knows its model.
-
-The modules are generated from the TSV files in `tools/object-models/data`, which are the source of
-truth. Update those with [`questiedb object-models`](../tools/object-models/README.md), never by
-editing a module.
 
 ## Maintaining inputs
 

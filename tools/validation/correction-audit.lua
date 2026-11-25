@@ -150,7 +150,10 @@ function audit.corpus()
     local entries, inventory = audit.inventory(state)
     for key in pairs(inventory) do declared[key] = true end
     for _, provider in ipairs(entries) do
-      for _, persona in ipairs(audit.personas) do
+      local personas = audit.personas
+      -- Generated object models are thousands of rows that read no client facts.
+      if provider.entry.name:find("^ObjectModels/") then personas = { audit.personas[1] } end
+      for _, persona in ipairs(personas) do
         local passed, result = audit.invoke(state, provider.entry, persona)
         report.invocations = report.invocations + 1
         exercised[provider.key] = true

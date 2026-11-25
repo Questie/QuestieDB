@@ -6,8 +6,6 @@
 -- It stays plain Lua rather than becoming metadata because callers want the whole table, not
 -- lazy per-field access. Lazy decoding buys nothing when the first read materialises
 -- everything anyway.
--- Object models are the exception: a consumer looks up single objects, and most sessions
--- none, so src/support/objectModels.lua decodes their text on the first lookup.
 --
 -- **Only the data moves.** The modules that wrap it — `zoneDB.lua`, `QuestieXP.lua`,
 -- `dropDB.lua` — are `QuestieLoader` modules with runtime behaviour and stay with the

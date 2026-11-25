@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Maintain the 3D models of game objects (support/ObjectModels).
+"""Maintain the 3D models of game objects (Object.modelFileId).
 
 Usage: questiedb.sh object-models check [flavor ...]
        questiedb.sh object-models import <source> <file>
@@ -11,7 +11,7 @@ check     Offline. Reports objects without a model and writes .out/object-models
           Fails only on wrong or unusable data; a missing model is a warning.
 import    Merge one source into sources.tsv, then write. Never touches manual.tsv.
 displays  Replace one flavor's display table from a client build, then write.
-write     Regenerate the shipped Lua, for example after editing manual.tsv.
+write     Regenerate the correction providers, for example after editing manual.tsv.
 
 Sources: wowhead-forever wowhead-classic wowhead-tbc wowhead-wotlk wowhead-cata wowhead-mop
          cmangos-classic cmangos-tbc cmangos-wotlk skyfire att
@@ -41,7 +41,9 @@ LISTED = 15
 def composed_objects(flavors: list[str]) -> importing.Composed:
     """Run objects.lua, which reads the database as a consumer would."""
     lua = find_lua(os.environ.get("LUA") or None, models.ROOT)
-    result = subprocess.run([lua, "tools/object-models/objects.lua", *flavors], cwd=models.ROOT,
+    # Vanilla's database also lists the objects of Season of Discovery.
+    databases = list(dict.fromkeys(models.DISPLAYS_FROM[flavor] for flavor in flavors))
+    result = subprocess.run([lua, "tools/object-models/objects.lua", *databases], cwd=models.ROOT,
                             stdout=subprocess.PIPE, stderr=subprocess.PIPE, encoding="utf-8")
     if result.returncode != 0:
         raise ValueError("objects.lua failed: " + (result.stderr.strip() or result.stdout[-500:]))
@@ -50,7 +52,8 @@ def composed_objects(flavors: list[str]) -> importing.Composed:
     for line in result.stdout.split("\n"):
         if line:
             flavor, object_id, role, name = line.split("\t")
-            composed[flavor][int(object_id)] = importing.ComposedObject(name, role)
+            if flavor in composed:
+                composed[flavor][int(object_id)] = importing.ComposedObject(name, role)
     for flavor, objects in composed.items():
         if not objects:
             raise ValueError("objects.lua listed no objects for " + flavor)
@@ -58,7 +61,7 @@ def composed_objects(flavors: list[str]) -> importing.Composed:
 
 
 def run_write() -> None:
-    _print_written(models.write_files(models.load(models.DATA), {}, models.SHIPPED))
+    _print_written(models.write_files(models.load(models.DATA), {}, models.CORRECTIONS))
 
 
 def run_import(source: str, path: Path) -> None:
@@ -66,7 +69,7 @@ def run_import(source: str, path: Path) -> None:
     claims = importing.read_source(path, source)
     rows, result = importing.merge(data.rows, composed_objects(list(models.FLAVORS)), source, claims)
     updated = models.ModelData(rows, data.manual, data.hidden, data.displays)
-    written = models.write_files(updated, {models.DATA / "sources.tsv": models.render_sources(rows)}, models.SHIPPED)
+    written = models.write_files(updated, {models.DATA / "sources.tsv": models.render_sources(rows)}, models.CORRECTIONS)
 
     # The full list is for review; names differ far more often than anyone wants to scroll.
     refused = OUTPUT / ("refused-%s.tsv" % source)
@@ -85,13 +88,14 @@ def run_import(source: str, path: Path) -> None:
 
 
 def run_displays(flavor: str, build: str, path: Path) -> None:
-    if flavor not in models.FLAVORS:
-        raise ValueError("Unknown flavor: " + flavor)
+    if models.DISPLAYS_FROM.get(flavor) != flavor:
+        raise ValueError("No display table of its own: " + flavor)
     data = models.load(models.DATA)
     before, after = data.displays[flavor].by_id, importing.read_display_info(path, build)
-    updated = models.ModelData(data.rows, data.manual, data.hidden, {**data.displays, flavor: after})
+    updated = models.ModelData(data.rows, data.manual, data.hidden, {
+        user: after if models.DISPLAYS_FROM[user] == flavor else table for user, table in data.displays.items()})
     target = models.DATA / "displays" / (flavor + ".tsv")
-    written = models.write_files(updated, {target: models.render_displays(after)}, models.SHIPPED)
+    written = models.write_files(updated, {target: models.render_displays(after)}, models.CORRECTIONS)
     print("%s: %s -> %s, %d displays added, %d removed, %d changed" % (
         flavor, data.displays[flavor].build, build, len(set(after.by_id) - set(before)),
         len(set(before) - set(after.by_id)),
@@ -100,7 +104,7 @@ def run_displays(flavor: str, build: str, path: Path) -> None:
 
 
 def run_check(flavors: list[str]) -> int:
-    reports = checking.check(models.load(models.DATA), composed_objects(flavors), models.SHIPPED)
+    reports = checking.check(models.load(models.DATA), composed_objects(flavors), models.CORRECTIONS)
     OUTPUT.mkdir(parents=True, exist_ok=True)
     target = OUTPUT / "report.json"
     target.write_text(json.dumps({flavor: vars(report) for flavor, report in reports.items()}, indent=1) + "\n",

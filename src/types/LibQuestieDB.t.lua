@@ -60,6 +60,5 @@ function Support.Get(moduleName) end
 ---@field Support QuestieDBSupport Whole-table support data.
 ---@field EraToForever fun(areaId: AreaId, x: number, y: number): number, number Explicit Era-to-Forever zone percentages (0-100), unrounded; other AreaIDs pass through. Preserves (-1,-1), rejects partial sentinels. Never apply to already-Forever points.
 ---@field EraToForeverByUiMapId fun(uiMapId: integer, x: number, y: number): number, number Same projection using the point's Era UiMapID; other UiMapIDs pass through. No automatic flavor selection.
----@field GetObjectModelFileID fun(objectId: ObjectId): integer? Model FileDataID of an object on the active flavor, for `actor:SetModelByFileID`. Nil when it has no plain model (a creature, an item, an invisible model, none) or none is known.
 ---@field ModeIndicator table Source-mode indicator API.
 LibQuestieDB = {}

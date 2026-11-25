@@ -13,7 +13,7 @@ local _, LibQuestieDB = ...
 local meta = {
   entity = 'Object',
   metaPrefix = 'Object-',
-  fieldCount = 7,
+  fieldCount = 8,
 
   --- fieldName -> fieldIndex. The Database Key Enum.
   keys = {
@@ -31,16 +31,18 @@ local meta = {
     ['factionID'] = 6,
     -- Movement paths for objects attached to transports such as ships or zeppelins.
     ['waypoints'] = 7,
+    -- FileDataID of the plain 3D model, for SetModelByFileID; 0 when there is none to show.
+    ['modelFileId'] = 8,
   },
 
   --- fieldIndex -> fieldName
   names = {
-[1]='name', [2]='questStarts', [3]='questEnds', [4]='spawns', [5]='zoneID', [6]='factionID', [7]='waypoints'
+[1]='name', [2]='questStarts', [3]='questEnds', [4]='spawns', [5]='zoneID', [6]='factionID', [7]='waypoints', [8]='modelFileId'
   },
 
   --- fieldIndex -> storage type: number | string | table
   types = {
-[1]='string', [2]='table', [3]='table', [4]='table', [5]='number', [6]='number', [7]='table'
+[1]='string', [2]='table', [3]='table', [4]='table', [5]='number', [6]='number', [7]='table', [8]='number'
   },
 
   --- fieldIndex -> structural shape, for validators. nil for scalars.
@@ -50,7 +52,7 @@ local meta = {
 
   --- fieldIndex -> Questie compiler type. Materialized provenance.
   compilerTypes = {
-[1]='u8string', [2]='u8u24array', [3]='u8u24array', [4]='spawnlist', [5]='u16', [6]='u16', [7]='waypointlist'
+[1]='u8string', [2]='u8u24array', [3]='u8u24array', [4]='spawnlist', [5]='u16', [6]='u16', [7]='waypointlist', [8]='u24'
   },
 
   --- fieldIndex -> true when an empty table must read back as nil

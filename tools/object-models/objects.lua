@@ -11,8 +11,9 @@ local config = dofile("src/config.lua")
 local emulator = dofile("emulator/metadata.lua")
 local client = dofile("emulator/client.lua")
 
--- Seasonal sets only register on their own realm, and add objects of their own.
-local SEASONS = { Vanilla = { "SoD" }, Wrath = { "TitanReforged" } }
+-- Season of Discovery's objects only exist on its realms. They are listed as a flavor of their own,
+-- because a Dynamic Correction has to give them a model. Titan Reforged adds no real object.
+local SEASON = { Vanilla = "SoD" }
 
 -- Strongest relation to a quest wins across personas.
 local RANK = { other = 1, drop = 2, objective = 3, quest = 4 }
@@ -20,6 +21,7 @@ local RANK = { other = 1, drop = 2, objective = 3, quest = 4 }
 ---@class ComposedObject
 ---@field name string?
 ---@field role "quest"|"objective"|"drop"|"other"
+---@field seasonal boolean? Only exists while the flavor's season is active.
 
 ---@param objects table<ObjectId, ComposedObject>
 ---@param id ObjectId
@@ -47,7 +49,7 @@ local function collect(objects, flavor, persona)
   for _, id in ipairs(ObjectDB.GetAllIds()) do
     local object = objects[id]
     if not object then
-      object = { role = "other" }
+      object = { role = "other", seasonal = persona.season ~= nil }
       objects[id] = object
     end
     object.name = object.name or ObjectDB.name(id)
@@ -87,9 +89,10 @@ end
 for _, flavor in ipairs(#selected > 0 and selected or config.flavors) do
   ---@type table<ObjectId, ComposedObject>
   local objects = {}
-  for _, faction in ipairs({ "Alliance", "Horde" }) do
-    collect(objects, flavor, { faction = faction })
-    for _, season in ipairs(SEASONS[flavor.name] or {}) do
+  local season = SEASON[flavor.name]
+  for _, faction in ipairs({ "Alliance", "Horde" }) do collect(objects, flavor, { faction = faction }) end
+  if season then
+    for _, faction in ipairs({ "Alliance", "Horde" }) do
       collect(objects, flavor, { faction = faction, season = season })
     end
   end
@@ -99,6 +102,6 @@ for _, flavor in ipairs(#selected > 0 and selected or config.flavors) do
   table.sort(ids)
   for _, id in ipairs(ids) do
     local name = (objects[id].name or ""):gsub("%s", " ")
-    io.write(flavor.name, "\t", id, "\t", objects[id].role, "\t", name, "\n")
+    io.write(objects[id].seasonal and season or flavor.name, "\t", id, "\t", objects[id].role, "\t", name, "\n")
   end
 end

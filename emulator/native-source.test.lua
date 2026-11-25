@@ -78,10 +78,7 @@ for _, flavor in ipairs(config.flavors) do
     if path:match("^data/.+DB%.lua$") then
       assert(path:match("^data/" .. flavor.expansion .. "/"), "foreign raw payload: " .. path)
     end
-    local modelFlavor = path:match("^support/ObjectModels/(%a+)%.lua$")
-    if modelFlavor then
-      assert(modelFlavor == flavor.name, "foreign object models: " .. path)
-    elseif path:match("^support/") then
+    if path:match("^support/") then
       assert((path:match("^support/Forever/") ~= nil) == (flavor.name == "Forever"), path)
     end
   end

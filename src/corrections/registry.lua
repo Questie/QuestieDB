@@ -61,6 +61,8 @@ registry.loadOrder = {
   -- MoP Dynamic shares this number but never registers for the owned Forever flavor.
   ForeverDeltaBaseStatic = 1300,
   ForeverStatic = 1400, ForeverDynamic = 1500,
+  -- Last, after every Static Correction that adds an object. It never overwrites their values.
+  ObjectModelsStatic = 1600,
 }
 
 registry.OWNER = "QuestieDB"

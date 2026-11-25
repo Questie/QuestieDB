@@ -526,7 +526,7 @@ class PackageTest(unittest.TestCase):
             self.write("support/%s.lua" % flavor, "return '%s'\n" % flavor)
             self.write(
                 "QuestieDB_%s.toc" % flavor,
-                "## Version: 1.2.3-dev.abcdef0\n## X-Contract-Version: 5\n"
+                "## Version: 1.2.3-dev.abcdef0\n## X-Contract-Version: 6\n"
                 + "## Interface: %s\n" % TOC_INTERFACES[flavor]
                 + "## IconTexture: Interface\\AddOns\\QuestieDB\\icons\\QuestieTDB_64x64.png\n"
                 + "src\\config.lua\nsrc\\runtime.lua\nsrc\\corrections\\Era\\fixes.lua\n"
@@ -576,7 +576,7 @@ class PackageTest(unittest.TestCase):
         releases = {entry["filename"]: entry for entry in document["releases"]}
         self.assertEqual("https://github.com/Questie/QuestieDB", manifest["repository"])
         self.assertEqual("0" * 40, manifest["producerCommit"])
-        self.assertEqual(5, manifest["contractVersion"])
+        self.assertEqual(6, manifest["contractVersion"])
         self.assertEqual(1, manifest["minSupportedContract"])
         self.assertEqual("1.2.3-dev.abcdef0", manifest["version"])
         self.assertEqual("2023-11-14T22:13:20Z", manifest["builtAt"])
@@ -700,7 +700,7 @@ class PackageTest(unittest.TestCase):
         )
         self.assertIn("<summary>Build details and checksums</summary>", notes)
         self.assertIn("Producing commit: Unavailable", notes)
-        self.assertIn("Supported API contracts: `1` to `5`", notes)
+        self.assertIn("Supported API contracts: `1` to `6`", notes)
         self.assertIn("without Git history", notes)
         self.assertLess(notes.index("</details>"), notes.rindex("> [!WARNING]"))
         self.assertTrue(notes.rstrip().endswith("/releases/latest)."))
@@ -973,7 +973,7 @@ class PackageTest(unittest.TestCase):
         self.assertEqual(0, result.returncode, result.stderr)
         manifest = json.loads((self.root / ".out/dist/release.json").read_text())["questiedb"]
         self.assertEqual(2, manifest["minSupportedContract"])
-        self.assertEqual(5, manifest["contractVersion"])
+        self.assertEqual(6, manifest["contractVersion"])
 
     def test_mixed_versions_preserve_previous_output(self):
         self.preserve_previous_output()
@@ -987,7 +987,7 @@ class PackageTest(unittest.TestCase):
     def test_toc_contract_must_match_shipped_runtime(self):
         self.preserve_previous_output()
         toc = self.root / "QuestieDB_Vanilla.toc"
-        toc.write_text(toc.read_text().replace("X-Contract-Version: 5", "X-Contract-Version: 4"))
+        toc.write_text(toc.read_text().replace("X-Contract-Version: 6", "X-Contract-Version: 5"))
         result = self.run_package("Vanilla")
         self.assertNotEqual(0, result.returncode)
         self.assertIn("differs from the packaged runtime", result.stderr)
@@ -1038,7 +1038,7 @@ class PackageTest(unittest.TestCase):
         path = self.root / "src/config.lua"
         path.write_text(
             path.read_text().replace(
-                "config.minSupportedContract = 1", "config.minSupportedContract = 6"
+                "config.minSupportedContract = 1", "config.minSupportedContract = 7"
             )
         )
         result = self.run_package("Vanilla")

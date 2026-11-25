@@ -62,6 +62,10 @@ for _, entry in ipairs(withRegistry.Select({ dynamic = false })) do
   else
     assert(retained[entry.name], "Toggle dropped an inherited/generated/trace provider: " .. entry.name)
     retained[entry.name] = nil
+    -- Object models come last, so they also fill objects that only an authored provider adds.
+    if entry.name:find("^ObjectModels/") then
+      withRegistry.MergeInto(without[entry.datatype].entities, entry.func(), entry.options, entry)
+    end
   end
 end
 assert(authoredCount == 4 and next(retained) == nil, "Toggle must exclude exactly the four authored sets")

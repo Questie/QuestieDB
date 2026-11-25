@@ -7,7 +7,7 @@ from pathlib import Path
 from typing import Any
 
 from importing import WOWHEAD_PATHS, Composed, normalized_name
-from models import SOURCE_ORDER, ModelData, lua_path, render
+from models import PROVIDERS, SOURCE_ORDER, ModelData, provider_path, render
 
 # Most important first; see objects.lua.
 ROLES = ("quest", "objective", "drop", "other")
@@ -25,20 +25,20 @@ class FlavorReport:
     details: dict[str, Any] = field(default_factory=dict)
 
 
-def check(data: ModelData, composed: Composed, shipped: Path) -> dict[str, FlavorReport]:
-    """`data` is already validated; what remains is the shipped Lua and the database."""
-    return {flavor: _check_flavor(data, flavor, composed, shipped) for flavor in composed}
+def check(data: ModelData, composed: Composed, corrections: Path) -> dict[str, FlavorReport]:
+    """`data` is already validated; what remains is the generated providers and the database."""
+    return {flavor: _check_flavor(data, flavor, composed, corrections) for flavor in composed}
 
 
-def _check_flavor(data: ModelData, flavor: str, composed: Composed, shipped: Path) -> FlavorReport:
+def _check_flavor(data: ModelData, flavor: str, composed: Composed, corrections: Path) -> FlavorReport:
     report = FlavorReport()
     objects = composed[flavor]
 
-    # The committed Lua must be exactly what the committed sources produce. Read as text: a
+    # The committed provider must be exactly what the committed sources produce. Read as text: a
     # Windows checkout may hold CRLF.
-    path = lua_path(flavor, shipped)
+    path = provider_path(flavor, corrections)
     if not path.is_file() or path.read_text(encoding="utf-8") != render(data, flavor):
-        report.errors.append("%s does not match its sources; run `questiedb object-models write`" % path.name)
+        report.errors.append("%s does not match its sources; run `questiedb object-models write`" % PROVIDERS[flavor].path)
 
     # What every object of the database shows.
     kinds: Counter = Counter()

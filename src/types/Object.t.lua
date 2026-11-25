@@ -8,6 +8,7 @@
 ---@field zoneID fun(id: ObjectId): AreaId? Most common zone.
 ---@field factionID fun(id: ObjectId): number? Faction restriction mask used by spawn data.
 ---@field waypoints fun(id: ObjectId): QuestieDBWaypointList? Waypoint paths grouped by zone.
+---@field modelFileId fun(id: ObjectId): number? Model FileDataID on the active flavor, for `actor:SetModelByFileID`. 0 when a known object has no plain model to show: a creature, an item, an invisible model, none, or none known.
 ---@field GetByIndex fun(id: ObjectId, fieldIndex: integer): any Read a field by positional index.
 ---@field Get fun(id: ObjectId, key: QuestieDBObjectField|integer): any Read a field by canonical name or index.
 ---@field GetAll fun(id: ObjectId, keys: (QuestieDBObjectField|integer)[]): QuestieDBPackedValues? Read fields into a packed table, or nil for an unknown ID.

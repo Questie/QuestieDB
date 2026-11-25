@@ -56,6 +56,7 @@ function inline.render(entry, includeAuthored)
     "-- Generated Forever " .. entry.meta.entity .. " static data. Do not edit.",
     "-- Base -> inherited corrections -> generated base -> traces"
       .. (includeAuthored and " -> authored corrections." or ". Authored corrections excluded."),
+    "-- Generated object models fill modelFileId last.",
     "-- No Dynamic Corrections, Derived Passes, localization or getter normalization.",
     "local " .. name .. " = {}",
   }

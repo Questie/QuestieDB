@@ -46,6 +46,8 @@ rerun after fixing a filesystem error to regenerate the complete set.
 4. `src/corrections/Forever/traces/`: generated trace corrections.
 5. `src/corrections/Forever/forever*Fixes.lua`: authored Forever Static Corrections,
    excluded by default; opt in with `--include-authored`.
+6. `src/corrections/ObjectModels/foreverObjectModels.lua`: generated `modelFileId` values, which
+   never overwrite another layer.
 
 The existing registry supplies merge order, table `_add`/`_remove` semantics and provider
 options. Raw `data/Classic` and `src/corrections/Era` are deliberately not mixed back in:

@@ -1,10 +1,9 @@
 # Object models
 
 Maintains which 3D model each game object has, per flavor. The game client cannot be asked for
-an object's model, so QuestieDB has to know it. The inputs live here, in `data/`; the tool writes
-the Lua modules that the addon loads. See [support data](../../docs/support-data.md#object-models)
-for the runtime side and [ADR 0019](../../docs/adr/0019-object-models-as-support-data.md) for the
-reasons.
+an object's model, so QuestieDB has to know it. The inputs live here, in `data/`; the tool generates
+the Corrections that fill the Object field `modelFileId`. Generation folds them into the TOC, and
+Source mode loads them. [ADR 0019](../../docs/adr/0019-object-model-field.md) has the reasons.
 
 No command uses the network. Generation and tests need only the committed files.
 
@@ -16,11 +15,19 @@ No command uses the network. Generation and tests need only the committed files.
 | `data/manual.tsv` | you | Reviewed decisions. They win over every source |
 | `data/hidden.tsv` | you | Model files that show nothing useful |
 | `data/displays/<Flavor>.tsv` | `displays` | The client's `GameObjectDisplayInfo`, as one kind and one ID per display |
-| `support/ObjectModels/<Flavor>.lua` | `write` | The shipped module, generated from the files above |
+| `src/corrections/ObjectModels/` | `write` | Static Corrections per flavor, generated from the files above |
+| `src/corrections/Sod/sodObjectModels.lua` | `write` | The same for objects that only Season of Discovery adds, as a Dynamic Correction |
 
 Objects point to a *display ID*; the flavor's display table turns that into a model file, a
 creature, an item, or nothing. Newer clients give creature and item displays a FileDataID too,
 so the display's kind decides, never the presence of a file. Only plain model files ship.
+
+The tool treats the objects that only Season of Discovery adds as a flavor of their own, `SoD`, with
+Vanilla's client and sources. An object that only Titan Reforged adds gets no model; there is no real
+one today.
+
+The generated Corrections apply last and never overwrite another one, so an authored Correction for
+`modelFileId` wins; 0 removes a model. Prefer `data/manual.tsv`, which records the display ID and why.
 
 The first usable source wins: Wowhead for that flavor, then that flavor's emulator database,
 then other expansions', then AllTheThings. `SOURCE_ORDER` in `models.py` is the exact order.
@@ -58,7 +65,7 @@ of any source drops the old values; add a `manual.tsv` row if the model is still
 ### What fails the check
 
 Wrong or unusable data: a malformed file, a reviewed display that shows nothing in that client,
-a hidden file no client has, a display table of another game version, a shipped Lua file that does
+a hidden file no client has, a display table of another game version, a generated provider that does
 not match its sources, or a quarter of a flavor's models missing. Run `write` after editing a file
 by hand.
 
@@ -71,7 +78,7 @@ by hand.
   are read. Both kinds must say that they belong to the source, so mixed-up files are refused;
 - a CSV with `objectId`, `name`, and `displayId` (`fileDataId` for `att`).
 
-It updates one column and the list of objects, then writes the Lua. It never edits `manual.tsv`.
+It updates one column and the list of objects, then writes the providers. It never edits `manual.tsv`.
 Values that the file does not mention are kept, because an export can be partial. Nothing is
 written when the result is invalid.
 

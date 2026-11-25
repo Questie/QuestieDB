@@ -1,5 +1,5 @@
 # Written by `questiedb object-models import`. Do not edit; put reviewed values in manual.tsv.
-# flavors: V=Vanilla T=TBC W=Wrath C=Cata M=Mists F=Forever
+# flavors: V=Vanilla S=SoD T=TBC W=Wrath C=Cata M=Mists F=Forever
 # Cells are display IDs, except att: model FileDataIDs. 0: no display. Empty: not known.
 objectId	flavors	name	att	cmangos-classic	cmangos-tbc	cmangos-wotlk	skyfire	wowhead-cata	wowhead-classic	wowhead-forever	wowhead-mop	wowhead-tbc	wowhead-wotlk
 31	VTWCMF	Old Lion Statue	189908	6	6	6	6	6	6	6	6	6	6
@@ -4146,7 +4146,7 @@ objectId	flavors	name	att	cmangos-classic	cmangos-tbc	cmangos-wotlk	skyfire	wowh
 175742	F	Rise of the Horde	200912	560						560			
 175743	VTWCMF	Anvil		273	273	273	273			273			
 175744	VTWCMF	Anvil		273	273	273	273			273			
-175755	VF	The Alliance Splinters	200911						558	558			
+175755	SF	The Alliance Splinters	200911						558	558			
 175760	F	Rise of the Blood Elves	200914	3871						3871			
 175764	VTWCMF	Campfire		375	375	375	375			375			
 175765	VTWCMF	Campfire		375	375	375	375			375			
@@ -4346,7 +4346,7 @@ objectId	flavors	name	att	cmangos-classic	cmangos-tbc	cmangos-wotlk	skyfire	wowh
 176364	VTF	Boat to Menethil		388	388								
 176364	WCM	Boat to Stormwind				388	388						
 176365	VTWCMF	Boat to Teldrassil		388	388	388	388						
-176366	V	Pet Fish	189086						4321				
+176366	S	Pet Fish	189086						4321				
 176369	VTWCMF	Boat to Theramore		195	195	195	195						
 176370	VTWCMF	Boat to Auberdine		195	195	195	195						
 176389	VTWCMF	Campfire		396	396	396	396			396			
@@ -4680,7 +4680,7 @@ objectId	flavors	name	att	cmangos-classic	cmangos-tbc	cmangos-wotlk	skyfire	wowh
 177241	VTWCMF	Araj's Phylactery	199744	4712	4712	4712	4712	4712	4712	4712	4712	4712	4712
 177243	VTWCMF	Demon Portal	190858	4713	4713	4713	4713	4713	4713	4713	4713	4713	4713
 177244	VTWCMF	Cauldron		216	216	216	216			216			
-177260	V	Symbol of Lost Honor	197961						4715				
+177260	S	Symbol of Lost Honor	197961						4715				
 177261	VTWCMF	Brazier		408	408	408	408			408			
 177262	VTWCMF	Campfire		867	867	867	867			867			
 177263	VTWCMF	Campfire		867	867	867	867			867			
@@ -19191,342 +19191,342 @@ objectId	flavors	name	att	cmangos-classic	cmangos-tbc	cmangos-wotlk	skyfire	wowh
 300244	WCM	TEMP Corpse of the Fallen Worg				0							
 300245	M	TEMP Forgemaster's Anvil					0						
 375544	VTWCMF	Wooden Figurine	201094					406	406	406	406	406	406
-375545	V	Unstable Chromatic Egg							5972				
+375545	S	Unstable Chromatic Egg							5972				
 375548	F	Unlit Torch								325			
-375878	VF	Sandpile							73308	73308			
-386675	VF	Buried Treasure	196988						5743	5743			
-386691	VF	Library Book	198017						185	185			
-386759	VF	Library Book	198036						447	447			
-386777	VF	Dusty Chest	219372						259	259			
-387446	V	Spell Notes							440				
-387466	VF	Rusty Lockbox	196976						10	10			
-387477	VF	Defias Stashbox	196976						10	10			
-392029	VF	Swordsman's Reward	196988						5743	5743			
-397987	VF	Kobold Stashbox	196982						41	41			
-402215	V	Charred Note							82080				
-402537	V	Beast Track							520				
-402572	V	Beast Track							520				
-402573	V	Beast Track							520				
-403041	VF	Blasting Supplies	200898						243	243			
-403102	VF	Bristleback Loot Cache	196987						4192	4192			
-403105	VF	Windfury Cone	202297						424	424			
-403718	V	Prairie Flower	219436						2310				
-404352	VF	Artifact Storage	196988						5743	5743			
-404401	V	Sandy Loam							49				
-404402	VF	Blooming Satyrweed							391	391			
-404433	VF	Lunar Chest	219372						259	259			
-404695	VF	Waterlogged Stashbox	196987						4192	4192			
-404830	VF	Dusty Chest	196988						5743	5743			
-404846	V	Beast Track							520				
-404847	V	Beast Track							520				
-404888	V	Beast Track							520				
-404911	VF	Hidden Cache	196989						5744	5744			
-404941	VF	Relic Coffer	196988						5743	5743			
-405149	VF	Mural of Ta'zo	200337						83668	83668			
-405201	VF	Shipwreck Cache	196989						5744	5744			
-405628	VF	Frostmane Loot Cache	196987						4192	4192			
-405633	VF	Rockjaw Footlocker	196976						10	10			
-405827	V	Apothecary Notes							440				
-405879	VF	Apothecary Society Primer	198025						387	387			
-405901	V	Beast Track							520				
-405902	V	Beast Track							520				
-405903	V	Beast Track							520				
-405946	VF	Dusty Chest	196988						5743	5743			
-406006	VF	Idol	198936						83915	83915			
-406736	VF	Lost Stash	196987						4192	4192			
-406918	VF	Messenger Bag							88106	88106			
-407117	V	Abandoned Snapjaw Nest	199226						84161				
-407120	V	Empty Snapjaw Nest	199452						84162				
-407247	V	Glade Flower	219436						2310				
-407289	V	Horde Warbanner	200276						5652				
-407291	V	Alliance Warbanner	200268						5651				
-407312	V	Hungry Idol							84194				
-407347	VF	Altar of Thorns	199989						5992	5992			
-407352	VF	Gnarlpine Stash	197063						2450	2450			
-407453	V	Southsea Loot Stash	196979						1				
-407454	V	Gunpowder Keg	197463						33				
-407457	V	Stable Hand's Trunk	196982						41				
-407505	VF	Etched Carving	199989						5992	5992			
-407510	VF	Etched Carving	199989						5992	5992			
-407566	VF	Goblin Tome	198039						84241	84241			
-407708	V	Beast Track							520				
-407709	V	Beast Track							520				
-407710	V	Beast Track							520				
-407731	VF	Stonemason's Toolbox	197621						317	317			
-407732	V	Escape Rope							84336				
-407734	VF	Gnarlpine Cache	196989						5744	5744			
-407844	VF	Libram of Blessings							84391	84391			
-407850	VF	Sunken Reliquary	200953						1387	1387			
-407918	VF	Empty Trophy Display	197279						84409	84409			
-407983	VF	Pile of Stolen Books	198056						43	43			
-408004	VF	Tangled Blight Pile	201087						391	391			
-408014	VF	Gnomish Tome	198039						84241	84241			
-408718	V	Equipment Stash	196982						41				
-408799	V	Idol of the Deep	201452						4853				
-408802	VF	Gnarled Harpoon	189097						748	748			
-408877	V	Coyote Feeding Ground							84664				
-409131	VF	Rusty Chest	196988						5743	5743			
-409144	V	Waterlogged Captain's Chest							5743				
-409289	VF	Strange Orb	201095						404	404			
-409311	VF	Spear of Mannoroth	201649						5812	5812			
-409315	VF	Shattered Orb							84751	84751			
-409496	VF	Scrolls	198453						164	164			
-409501	VF	Dalaran Digest	198036						447	447			
-409562	VF	Spellbook	198039						84241	84241			
-409692	VF	Scrolls	198453						164	164			
-409700	VF	Manual	198039						84241	84241			
-409711	VF	Scrolls	198452						220	220			
-409717	VF	Scrolls	198453						164	164			
-409731	VF	Scrolls	198453						164	164			
-409735	VF	Spellbook	198038						84818	84818			
-409754	VF	Wall-Mounted Shield							84825	84825			
-409758	VF	Discarded Helm							84826	84826			
-409942	V	Twin Owl Statue	201662						84873				
-409949	V	Twin Owl Statue	201662						84873				
-410020	V	Owl Statue	201662						84873				
-410034	VF	Carved Stone							5992	5992			
-410082	VF	Carved Stone							5992	5992			
-410089	V	Owl Statue							84873				
-410158	VF	Altar of Reverence	189280						328	328			
-410168	VF	Voodoo Pile							293	293			
-410220	VF	Gift of the Wisp							84856	84856			
-410299	VF	Arcane Secrets	198039						84241	84241			
-410369	VF	Dead Drop	196989						5744	5744			
-410528	VF	Ornamented Chest	196987						4192	4192			
-410779	VF	Offering Box	198238						8	8			
-410847	VF	Rusty Safe	203020						3014	3014			
-411328	V	Slumbering Bones							85331				
-411348	VF	Dusty Coffer	200953						1387	1387			
-411358	V	Artisan's Chest	196987						4192				
-411620	V	Altar of Teleportation							402				
-411674	VF	Prophecy of a King's Demise	198455						183	183			
-411710	VF	Demonic Reliquary	196976						10	10			
-411715	VF	Bough of Altek							85550	85550			
-412147	VF	Supply Locker							41	41			
-412198	VF	Stone Coffer							1387	1387			
-412224	VF	Dark Ritual Stone	201097						4972	4972			
-412261	VF	Padlocked Reliquary							6502	6502			
-412759	VF	Personal Letterbox							6396	6396			
-413699	V	Large Nest							84162				
-414197	VF	Bough of Shadows							86168	86168			
-414532	VF	Clliffspring Chest	196989						5744	5744			
-414624	VF	Lighthouse Stash	204112						49	49			
-414646	VF	Remnant	202430						86238	86238			
-414658	V	Rubble	189478						134				
-414663	VF	Shatterspear Idol	190354						653	653			
-414713	VF	Storage Locker	196976						10	10			
-414904	V	Shrine							235				
-415106	VF	Burned-Out Remains	197145						2610	2610			
-415107	VF	Burned-Out Remains	197145						2610	2610			
-415614	VF	Mysterious Formulae	198455						183	183			
-417072	VF	Nailed Plank	200454						303	303			
-417353	VF	Extinguished Campfire							86801	86801			
-418855	VF	Illari's Loot Cache	196976						10	10			
-419741	V	Sacrificial Altar							206				
-420054	VF	Rowboat							124	124			
-420055	V	Rowboat							124				
-421007	V	Boulder							87284				
-421025	V	Boulder							87288				
-421526	VF	Research Notes							164	164			
-421568	VF	Weathered Cache							259	259			
-422483	VF	The Salvagematic 9000	201020						2373	2373			
-422895	V	Tear of Theradras							219				
-422896	VF	Tear of Theradras							87688	87688			
-422902	VF	Crystal Waters of Lake Elune'ara							5112	5112			
-422911	VF	Sealed Barrel	199713						6366	6366			
-422919	VF	Tapped Shadowforge Keg							87705	87705			
-423569	VF	Dropped Pouch	200442						323	323			
-423695	VF	Libram of Deliverance	198036						447	447			
-423703	VF	Broken Warhammer	203177						1107	1107			
-423841	VF	Frozen Remains							88035	88035			
-423895	VF	Scrolls							183	183			
-423896	VF	Manual							558	558			
-423897	VF	Scrolls							164	164			
-423898	VF	Mysterious Book							4431	4431			
-423899	VF	Scrolls							190	190			
-423900	VF	Waterlogged Book							254	254			
-423901	VF	Book							1128	1128			
-423920	VF	Warrior's Bounty							259	259			
-423926	VF	Conspicuous Cache							10	10			
-423930	VF	Sizable Stolen Strongbox							5743	5743			
-424002	VF	Kurzen Supply Crate							335	335			
-424003	V	Cage							1787				
-424005	VF	Pocket Litter	197641						1209	1209			
-424006	VF	Hastily Rolled-Up Satchel	203429						440	440			
-424007	VF	Carved Figurine	200296						5912	5912			
-424010	VF	Nailed Plank	200454						303	303			
-424012	VF	Mound of Dirt	189528						20	20			
-424073	VF	Wondergear Worldporter							2047	2047			
-424074	V	Quadrangulation Beacon 001	197768						2911				
-424075	V	Quadrangulation Beacon 002	197768						2911				
-424076	V	Quadrangulation Beacon 003	197768						2911				
-424077	V	Quadrangulation Beacon 004	197768						2911				
-424079	V	Long Rifle							88108				
-424082	VF	Firepit	219237						86801	86801			
-424110	VF	Swordsman's Reward							5743	5743			
-424264	VF	Grave							2452	2452			
-424265	VF	Grave							12	12			
-424266	VF	Grave							19	19			
-424267	VF	Grave							12	12			
-424373	V	Remnant							86238				
+375878	SF	Sandpile							73308	73308			
+386675	SF	Buried Treasure	196988						5743	5743			
+386691	SF	Library Book	198017						185	185			
+386759	SF	Library Book	198036						447	447			
+386777	SF	Dusty Chest	219372						259	259			
+387446	S	Spell Notes							440				
+387466	SF	Rusty Lockbox	196976						10	10			
+387477	SF	Defias Stashbox	196976						10	10			
+392029	SF	Swordsman's Reward	196988						5743	5743			
+397987	SF	Kobold Stashbox	196982						41	41			
+402215	S	Charred Note							82080				
+402537	S	Beast Track							520				
+402572	S	Beast Track							520				
+402573	S	Beast Track							520				
+403041	SF	Blasting Supplies	200898						243	243			
+403102	SF	Bristleback Loot Cache	196987						4192	4192			
+403105	SF	Windfury Cone	202297						424	424			
+403718	S	Prairie Flower	219436						2310				
+404352	SF	Artifact Storage	196988						5743	5743			
+404401	S	Sandy Loam							49				
+404402	SF	Blooming Satyrweed							391	391			
+404433	SF	Lunar Chest	219372						259	259			
+404695	SF	Waterlogged Stashbox	196987						4192	4192			
+404830	SF	Dusty Chest	196988						5743	5743			
+404846	S	Beast Track							520				
+404847	S	Beast Track							520				
+404888	S	Beast Track							520				
+404911	SF	Hidden Cache	196989						5744	5744			
+404941	SF	Relic Coffer	196988						5743	5743			
+405149	SF	Mural of Ta'zo	200337						83668	83668			
+405201	SF	Shipwreck Cache	196989						5744	5744			
+405628	SF	Frostmane Loot Cache	196987						4192	4192			
+405633	SF	Rockjaw Footlocker	196976						10	10			
+405827	S	Apothecary Notes							440				
+405879	SF	Apothecary Society Primer	198025						387	387			
+405901	S	Beast Track							520				
+405902	S	Beast Track							520				
+405903	S	Beast Track							520				
+405946	SF	Dusty Chest	196988						5743	5743			
+406006	SF	Idol	198936						83915	83915			
+406736	SF	Lost Stash	196987						4192	4192			
+406918	SF	Messenger Bag							88106	88106			
+407117	S	Abandoned Snapjaw Nest	199226						84161				
+407120	S	Empty Snapjaw Nest	199452						84162				
+407247	S	Glade Flower	219436						2310				
+407289	S	Horde Warbanner	200276						5652				
+407291	S	Alliance Warbanner	200268						5651				
+407312	S	Hungry Idol							84194				
+407347	SF	Altar of Thorns	199989						5992	5992			
+407352	SF	Gnarlpine Stash	197063						2450	2450			
+407453	S	Southsea Loot Stash	196979						1				
+407454	S	Gunpowder Keg	197463						33				
+407457	S	Stable Hand's Trunk	196982						41				
+407505	SF	Etched Carving	199989						5992	5992			
+407510	SF	Etched Carving	199989						5992	5992			
+407566	SF	Goblin Tome	198039						84241	84241			
+407708	S	Beast Track							520				
+407709	S	Beast Track							520				
+407710	S	Beast Track							520				
+407731	SF	Stonemason's Toolbox	197621						317	317			
+407732	S	Escape Rope							84336				
+407734	SF	Gnarlpine Cache	196989						5744	5744			
+407844	SF	Libram of Blessings							84391	84391			
+407850	SF	Sunken Reliquary	200953						1387	1387			
+407918	SF	Empty Trophy Display	197279						84409	84409			
+407983	SF	Pile of Stolen Books	198056						43	43			
+408004	SF	Tangled Blight Pile	201087						391	391			
+408014	SF	Gnomish Tome	198039						84241	84241			
+408718	S	Equipment Stash	196982						41				
+408799	S	Idol of the Deep	201452						4853				
+408802	SF	Gnarled Harpoon	189097						748	748			
+408877	S	Coyote Feeding Ground							84664				
+409131	SF	Rusty Chest	196988						5743	5743			
+409144	S	Waterlogged Captain's Chest							5743				
+409289	SF	Strange Orb	201095						404	404			
+409311	SF	Spear of Mannoroth	201649						5812	5812			
+409315	SF	Shattered Orb							84751	84751			
+409496	SF	Scrolls	198453						164	164			
+409501	SF	Dalaran Digest	198036						447	447			
+409562	SF	Spellbook	198039						84241	84241			
+409692	SF	Scrolls	198453						164	164			
+409700	SF	Manual	198039						84241	84241			
+409711	SF	Scrolls	198452						220	220			
+409717	SF	Scrolls	198453						164	164			
+409731	SF	Scrolls	198453						164	164			
+409735	SF	Spellbook	198038						84818	84818			
+409754	SF	Wall-Mounted Shield							84825	84825			
+409758	SF	Discarded Helm							84826	84826			
+409942	S	Twin Owl Statue	201662						84873				
+409949	S	Twin Owl Statue	201662						84873				
+410020	S	Owl Statue	201662						84873				
+410034	SF	Carved Stone							5992	5992			
+410082	SF	Carved Stone							5992	5992			
+410089	S	Owl Statue							84873				
+410158	SF	Altar of Reverence	189280						328	328			
+410168	SF	Voodoo Pile							293	293			
+410220	SF	Gift of the Wisp							84856	84856			
+410299	SF	Arcane Secrets	198039						84241	84241			
+410369	SF	Dead Drop	196989						5744	5744			
+410528	SF	Ornamented Chest	196987						4192	4192			
+410779	SF	Offering Box	198238						8	8			
+410847	SF	Rusty Safe	203020						3014	3014			
+411328	S	Slumbering Bones							85331				
+411348	SF	Dusty Coffer	200953						1387	1387			
+411358	S	Artisan's Chest	196987						4192				
+411620	S	Altar of Teleportation							402				
+411674	SF	Prophecy of a King's Demise	198455						183	183			
+411710	SF	Demonic Reliquary	196976						10	10			
+411715	SF	Bough of Altek							85550	85550			
+412147	SF	Supply Locker							41	41			
+412198	SF	Stone Coffer							1387	1387			
+412224	SF	Dark Ritual Stone	201097						4972	4972			
+412261	SF	Padlocked Reliquary							6502	6502			
+412759	SF	Personal Letterbox							6396	6396			
+413699	S	Large Nest							84162				
+414197	SF	Bough of Shadows							86168	86168			
+414532	SF	Clliffspring Chest	196989						5744	5744			
+414624	SF	Lighthouse Stash	204112						49	49			
+414646	SF	Remnant	202430						86238	86238			
+414658	S	Rubble	189478						134				
+414663	SF	Shatterspear Idol	190354						653	653			
+414713	SF	Storage Locker	196976						10	10			
+414904	S	Shrine							235				
+415106	SF	Burned-Out Remains	197145						2610	2610			
+415107	SF	Burned-Out Remains	197145						2610	2610			
+415614	SF	Mysterious Formulae	198455						183	183			
+417072	SF	Nailed Plank	200454						303	303			
+417353	SF	Extinguished Campfire							86801	86801			
+418855	SF	Illari's Loot Cache	196976						10	10			
+419741	S	Sacrificial Altar							206				
+420054	SF	Rowboat							124	124			
+420055	S	Rowboat							124				
+421007	S	Boulder							87284				
+421025	S	Boulder							87288				
+421526	SF	Research Notes							164	164			
+421568	SF	Weathered Cache							259	259			
+422483	SF	The Salvagematic 9000	201020						2373	2373			
+422895	S	Tear of Theradras							219				
+422896	SF	Tear of Theradras							87688	87688			
+422902	SF	Crystal Waters of Lake Elune'ara							5112	5112			
+422911	SF	Sealed Barrel	199713						6366	6366			
+422919	SF	Tapped Shadowforge Keg							87705	87705			
+423569	SF	Dropped Pouch	200442						323	323			
+423695	SF	Libram of Deliverance	198036						447	447			
+423703	SF	Broken Warhammer	203177						1107	1107			
+423841	SF	Frozen Remains							88035	88035			
+423895	SF	Scrolls							183	183			
+423896	SF	Manual							558	558			
+423897	SF	Scrolls							164	164			
+423898	SF	Mysterious Book							4431	4431			
+423899	SF	Scrolls							190	190			
+423900	SF	Waterlogged Book							254	254			
+423901	SF	Book							1128	1128			
+423920	SF	Warrior's Bounty							259	259			
+423926	SF	Conspicuous Cache							10	10			
+423930	SF	Sizable Stolen Strongbox							5743	5743			
+424002	SF	Kurzen Supply Crate							335	335			
+424003	S	Cage							1787				
+424005	SF	Pocket Litter	197641						1209	1209			
+424006	SF	Hastily Rolled-Up Satchel	203429						440	440			
+424007	SF	Carved Figurine	200296						5912	5912			
+424010	SF	Nailed Plank	200454						303	303			
+424012	SF	Mound of Dirt	189528						20	20			
+424073	SF	Wondergear Worldporter							2047	2047			
+424074	S	Quadrangulation Beacon 001	197768						2911				
+424075	S	Quadrangulation Beacon 002	197768						2911				
+424076	S	Quadrangulation Beacon 003	197768						2911				
+424077	S	Quadrangulation Beacon 004	197768						2911				
+424079	S	Long Rifle							88108				
+424082	SF	Firepit	219237						86801	86801			
+424110	SF	Swordsman's Reward							5743	5743			
+424264	SF	Grave							2452	2452			
+424265	SF	Grave							12	12			
+424266	SF	Grave							19	19			
+424267	SF	Grave							12	12			
+424373	S	Remnant							86238				
 424373	F	Scarlet Banner								101224			
-425896	VF	Archivists of the Monastery							3871	3871			
-425897	VF	Archivists of the Monastery							558	558			
-425898	VF	Archivists of the Monastery							560	560			
-425899	VF	Archivists of the Monastery							2530	2530			
-428144	VF	Fount							90	90			
-428228	VF	Conspicuous Cache							10	10			
-433066	VF	Sandfury Cache							2450	2450			
-433067	VF	Clay Vessel							88792	88792			
-433591	VF	Shallow Grave							1767	1767			
-433593	VF	Zum'Rah's Satchel							323	323			
-433594	VF	Antu'Sul's Satchel							323	323			
-433596	VF	Spellbound War Chest	196987						4192	4192			
-439549	V	Idol of Hakkar							212				
-439557	VF	Nightmare Moss	219463						357	357			
-439558	VF	Cold Iron Deposit	219532						312	312			
-439627	VF	Dreamroot	219469						677	677			
-439628	VF	Fool's Gold Vein	219524						311	311			
-439631	V	Atal'ai Statue							212				
-439632	V	Atal'ai Statue							212				
-439633	V	Atal'ai Statue							212				
-439634	V	Atal'ai Statue							212				
-439635	V	Atal'ai Statue							212				
-439636	V	Atal'ai Statue							212				
-439762	VF	Star Lotus	219483						2314	2314			
-439778	VF	Starsilver Vein	219569						314	314			
-439810	VF	Moonroot	219486						4652	4652			
-439815	VF	Greater Moonstone Formation	190809						219	219			
-441061	VF	Weathered Etching							5	5			
-441113	VF	Ogre Magi Text	198021						6487	6487			
-441114	VF	Mysterious Box	196976						10	10			
-441119	VF	Unhatched Green Dragon Egg	200964						477	477			
-441124	VF	Dream-Touched Dragon Egg	200964						477	477			
-441128	VF	Vibrating Crate	197150						1868	1868			
-441129	VF	Azsharan Prophecy	198454						190	190			
-441133	VF	Star-Touched Dragon Egg	200964						477	477			
-441140	VF	Humming Box	196989						5744	5744			
-441141	VF	Dreampearl	198719						429	429			
-441222	VF	Grave Mound	219463						357	357			
-441244	V	Corrupted Shaman Shrine							1027				
-441247	VF	Book							422	422			
-441248	VF	Book							105	105			
-441249	VF	Book							6558	6558			
-441250	VF	Book							105	105			
-441251	VF	Book							184	184			
-441252	VF	Book							447	447			
-441253	VF	Book							447	447			
-441254	VF	Book							447	447			
-441310	VF	Moonglow Dragon Egg	200964						477	477			
-441312	VF	Mad Keeper's Notes	198036						447	447			
-441314	VF	Harpy Screed	201113						210	210			
-441848	V	Small Burrow	189528						20				
-441865	VF	Traveller's Knapsack							323	323			
-441870	VF	Satyrweed Bramble							391	391			
-441893	V	Door							1189				
+425896	SF	Archivists of the Monastery							3871	3871			
+425897	SF	Archivists of the Monastery							558	558			
+425898	SF	Archivists of the Monastery							560	560			
+425899	SF	Archivists of the Monastery							2530	2530			
+428144	SF	Fount							90	90			
+428228	SF	Conspicuous Cache							10	10			
+433066	SF	Sandfury Cache							2450	2450			
+433067	SF	Clay Vessel							88792	88792			
+433591	SF	Shallow Grave							1767	1767			
+433593	SF	Zum'Rah's Satchel							323	323			
+433594	SF	Antu'Sul's Satchel							323	323			
+433596	SF	Spellbound War Chest	196987						4192	4192			
+439549	S	Idol of Hakkar							212				
+439557	SF	Nightmare Moss	219463						357	357			
+439558	SF	Cold Iron Deposit	219532						312	312			
+439627	SF	Dreamroot	219469						677	677			
+439628	SF	Fool's Gold Vein	219524						311	311			
+439631	S	Atal'ai Statue							212				
+439632	S	Atal'ai Statue							212				
+439633	S	Atal'ai Statue							212				
+439634	S	Atal'ai Statue							212				
+439635	S	Atal'ai Statue							212				
+439636	S	Atal'ai Statue							212				
+439762	SF	Star Lotus	219483						2314	2314			
+439778	SF	Starsilver Vein	219569						314	314			
+439810	SF	Moonroot	219486						4652	4652			
+439815	SF	Greater Moonstone Formation	190809						219	219			
+441061	SF	Weathered Etching							5	5			
+441113	SF	Ogre Magi Text	198021						6487	6487			
+441114	SF	Mysterious Box	196976						10	10			
+441119	SF	Unhatched Green Dragon Egg	200964						477	477			
+441124	SF	Dream-Touched Dragon Egg	200964						477	477			
+441128	SF	Vibrating Crate	197150						1868	1868			
+441129	SF	Azsharan Prophecy	198454						190	190			
+441133	SF	Star-Touched Dragon Egg	200964						477	477			
+441140	SF	Humming Box	196989						5744	5744			
+441141	SF	Dreampearl	198719						429	429			
+441222	SF	Grave Mound	219463						357	357			
+441244	S	Corrupted Shaman Shrine							1027				
+441247	SF	Book							422	422			
+441248	SF	Book							105	105			
+441249	SF	Book							6558	6558			
+441250	SF	Book							105	105			
+441251	SF	Book							184	184			
+441252	SF	Book							447	447			
+441253	SF	Book							447	447			
+441254	SF	Book							447	447			
+441310	SF	Moonglow Dragon Egg	200964						477	477			
+441312	SF	Mad Keeper's Notes	198036						447	447			
+441314	SF	Harpy Screed	201113						210	210			
+441848	S	Small Burrow	189528						20				
+441865	SF	Traveller's Knapsack							323	323			
+441870	SF	Satyrweed Bramble							391	391			
+441893	S	Door							1189				
 441909	F	Head of the Obliterator								90460			
-441912	VF	Giant Golem Foot							90464	90464			
-441913	VF	Giant Golem Foot							90464	90464			
-441914	VF	Giant Golem Arm							90463	90463			
-441915	VF	Giant Golem Arm							90463	90463			
-441946	VF	Shrine of the Moon	201267						2048	2048			
-441947	VF	Shrine of the Beast	201267						2048	2048			
-441948	VF	Shrine of the Warden	201267						2048	2048			
-442397	VF	Treasure of the Bat							2450	2450			
-442398	VF	Treasure of the Bat							2450	2450			
-442404	VF	Stormcrow Egg							90544	90544			
-442405	V	Abandoned Cache							5743				
-442685	VF	Old Chest							5744	5744			
-442688	VF	Old Crate							31	31			
-442728	VF	Chest							1	1			
-442742	VF	Box of Scarlet Dye							10	10			
-443727	VF	Grimtotem Chest							5743	5743			
-443728	VF	Woodpaw Bag							6895	6895			
-445036	VF	Extraplanar Eye							91148	91148			
-445037	VF	Extraplanar Eye							91148	91148			
-445039	VF	Extraplanar Eye							91148	91148			
-445040	VF	Extraplanar Eye							91148	91148			
-445041	VF	Extraplanar Eye							91148	91148			
-445042	VF	Extraplanar Eye							91148	91148			
-445044	VF	Extraplanar Eye							91148	91148			
-446468	VF	Wondergear Worldporter							2047	2047			
-447821	VF	Torn Scroll							82080	82080			
-448042	VF	Idol of Hakkar							88145	88145			
-454487	VF	Monument to Grom Hellscream							519	519			
-455023	VF	Regurgitated Skeleton							4093	4093			
-455812	VF	Squire Cuthbert's Sword							88154	88154			
-456674	VF	Altar of Reverence	199983						214	214			
-456682	VF	Half-Buried Mech							94376	94376			
-456685	VF	Access Hatch							3078	3078			
-456775	VF	Remnant							86238	86238			
-456814	VF	Vertically Composited Patch Hampler	197740						94372	94372			
-456815	VF	Brass-fitted Flam-Tamp Flange	197674						94373	94373			
-456874	V	Sending Pillar							302				
-456875	V	Sending Pillar							302				
-456876	V	Sending Pillar							302				
-456877	V	Sending Pillar							302				
-456879	V	Sending Pillar							302				
-456883	VF	Adon's Trunk							41	41			
-456918	V	Console							6424				
+441912	SF	Giant Golem Foot							90464	90464			
+441913	SF	Giant Golem Foot							90464	90464			
+441914	SF	Giant Golem Arm							90463	90463			
+441915	SF	Giant Golem Arm							90463	90463			
+441946	SF	Shrine of the Moon	201267						2048	2048			
+441947	SF	Shrine of the Beast	201267						2048	2048			
+441948	SF	Shrine of the Warden	201267						2048	2048			
+442397	SF	Treasure of the Bat							2450	2450			
+442398	SF	Treasure of the Bat							2450	2450			
+442404	SF	Stormcrow Egg							90544	90544			
+442405	S	Abandoned Cache							5743				
+442685	SF	Old Chest							5744	5744			
+442688	SF	Old Crate							31	31			
+442728	SF	Chest							1	1			
+442742	SF	Box of Scarlet Dye							10	10			
+443727	SF	Grimtotem Chest							5743	5743			
+443728	SF	Woodpaw Bag							6895	6895			
+445036	SF	Extraplanar Eye							91148	91148			
+445037	SF	Extraplanar Eye							91148	91148			
+445039	SF	Extraplanar Eye							91148	91148			
+445040	SF	Extraplanar Eye							91148	91148			
+445041	SF	Extraplanar Eye							91148	91148			
+445042	SF	Extraplanar Eye							91148	91148			
+445044	SF	Extraplanar Eye							91148	91148			
+446468	SF	Wondergear Worldporter							2047	2047			
+447821	SF	Torn Scroll							82080	82080			
+448042	SF	Idol of Hakkar							88145	88145			
+454487	SF	Monument to Grom Hellscream							519	519			
+455023	SF	Regurgitated Skeleton							4093	4093			
+455812	SF	Squire Cuthbert's Sword							88154	88154			
+456674	SF	Altar of Reverence	199983						214	214			
+456682	SF	Half-Buried Mech							94376	94376			
+456685	SF	Access Hatch							3078	3078			
+456775	SF	Remnant							86238	86238			
+456814	SF	Vertically Composited Patch Hampler	197740						94372	94372			
+456815	SF	Brass-fitted Flam-Tamp Flange	197674						94373	94373			
+456874	S	Sending Pillar							302				
+456875	S	Sending Pillar							302				
+456876	S	Sending Pillar							302				
+456877	S	Sending Pillar							302				
+456879	S	Sending Pillar							302				
+456883	SF	Adon's Trunk							41	41			
+456918	S	Console							6424				
 457056	F	Red Bag								123945			
-457088	VF	Advanced Swordplay	198028						4431	4431			
-457089	VF	The Shadow Connection	198028						4431	4431			
-457090	VF	Famous (and Infamous) Rangers of Azeroth	198028						4431	4431			
-457091	VF	Chen's Training Manual	198028						4431	4431			
-457092	VF	The Fury of Stormrage	198028						4431	4431			
-457093	VF	Blunt Justice: A Dwarf's Tale	198028						4431	4431			
-457094	VF	The True Nature of the Light	198028						4431	4431			
-457095	VF	Elements for Dummies Volume I: Frost	198028						4431	4431			
-457096	VF	Be First: A Brawler's Guide to Boxing	198028						4431	4431			
-457097	VF	Elements for Dummies Volume II: Fire	198028						4431	4431			
-457098	VF	Finding Your Inner Feline: A Guide to Modern Druidism	198028						4431	4431			
-457099	V	Zirene's Guide to Getting Punched	198028						4431				
-457100	VF	Renzik's Thoughts on "Fair" Fighting	198028						4431	4431			
-457101	VF	The Rites of Mak'Gora	198028						4431	4431			
-457102	VF	Elements for Dummies Volume III: Arcane	198028						4431	4431			
+457088	SF	Advanced Swordplay	198028						4431	4431			
+457089	SF	The Shadow Connection	198028						4431	4431			
+457090	SF	Famous (and Infamous) Rangers of Azeroth	198028						4431	4431			
+457091	SF	Chen's Training Manual	198028						4431	4431			
+457092	SF	The Fury of Stormrage	198028						4431	4431			
+457093	SF	Blunt Justice: A Dwarf's Tale	198028						4431	4431			
+457094	SF	The True Nature of the Light	198028						4431	4431			
+457095	SF	Elements for Dummies Volume I: Frost	198028						4431	4431			
+457096	SF	Be First: A Brawler's Guide to Boxing	198028						4431	4431			
+457097	SF	Elements for Dummies Volume II: Fire	198028						4431	4431			
+457098	SF	Finding Your Inner Feline: A Guide to Modern Druidism	198028						4431	4431			
+457099	S	Zirene's Guide to Getting Punched	198028						4431				
+457100	SF	Renzik's Thoughts on "Fair" Fighting	198028						4431	4431			
+457101	SF	The Rites of Mak'Gora	198028						4431	4431			
+457102	SF	Elements for Dummies Volume III: Arcane	198028						4431	4431			
 457387	F	Dwarven Heirloom								88067			
-457387	V	Heirloom Coffer							5743				
-457389	VF	Family Records							447	447			
-457390	VF	Survivor Journal							4431	4431			
-457443	VF	Scarlet Ledger							94717	94717			
-459259	VF	Mech Arm							241	241			
-459388	VF	Artifact Cache							8	8			
-461155	VF	Console							231	231			
-461632	VF	Marked Crate							335	335			
-461633	VF	Belavus' Safe Box							10	10			
-461639	V	Orthas' Hammer	203177						1107				
-462201	V	Shards of Light							94958				
-462233	VF	Shimmering Molten Crag	219531						384	384			
-462236	VF	Mysterious Chest	219372						259	259			
-462432	V	Wooden Chest							4192				
-463206	VF	Book							105	105			
-463207	VF	Book							88118	88118			
-463208	VF	Book							4431	4431			
-463209	VF	Book							1128	1128			
-463211	VF	Book							1127	1127			
-463212	VF	Book							95237	95237			
-463213	VF	Book							1128	1128			
-463214	VF	Book							87297	87297			
-463540	VF	Scarlet Toolbox							318	318			
-464128	VF	Gift of the Wisp							84856	84856			
-465021	V	Skull							6406				
-465022	V	Skull	199401						6406				
-467315	VF	Old Campsite							86801	86801			
-469600	V	Dry Wood							96449				
-469796	VF	Campsite							96553	96553			
-477110	V	Brazier of Madness							2570				
-477757	V	Hitching Post							6134				
-478062	V	Damaged Silver Hand Breastplate							4074				
-478075	V	Campsite							86802				
-478076	V	Extinguished Campfire							86801				
-489943	VF	Shallow Grave							768	768			
-489963	V	Blistering Stone							6650				
-495500	VF	Shadowflame Cache	199748						51	51			
-495503	VF	Chromatic Hoard	200953						1387	1387			
-495505	VF	Favored Riches	200953						1387	1387			
-495577	VF	Chromatic Stash	200953						1387	1387			
-499987	VF	Spellbook							84818	84818			
-499988	VF	Spellbook							84818	84818			
+457387	S	Heirloom Coffer							5743				
+457389	SF	Family Records							447	447			
+457390	SF	Survivor Journal							4431	4431			
+457443	SF	Scarlet Ledger							94717	94717			
+459259	SF	Mech Arm							241	241			
+459388	SF	Artifact Cache							8	8			
+461155	SF	Console							231	231			
+461632	SF	Marked Crate							335	335			
+461633	SF	Belavus' Safe Box							10	10			
+461639	S	Orthas' Hammer	203177						1107				
+462201	S	Shards of Light							94958				
+462233	SF	Shimmering Molten Crag	219531						384	384			
+462236	SF	Mysterious Chest	219372						259	259			
+462432	S	Wooden Chest							4192				
+463206	SF	Book							105	105			
+463207	SF	Book							88118	88118			
+463208	SF	Book							4431	4431			
+463209	SF	Book							1128	1128			
+463211	SF	Book							1127	1127			
+463212	SF	Book							95237	95237			
+463213	SF	Book							1128	1128			
+463214	SF	Book							87297	87297			
+463540	SF	Scarlet Toolbox							318	318			
+464128	SF	Gift of the Wisp							84856	84856			
+465021	S	Skull							6406				
+465022	S	Skull	199401						6406				
+467315	SF	Old Campsite							86801	86801			
+469600	S	Dry Wood							96449				
+469796	SF	Campsite							96553	96553			
+477110	S	Brazier of Madness							2570				
+477757	S	Hitching Post							6134				
+478062	S	Damaged Silver Hand Breastplate							4074				
+478075	S	Campsite							86802				
+478076	S	Extinguished Campfire							86801				
+489943	SF	Shallow Grave							768	768			
+489963	S	Blistering Stone							6650				
+495500	SF	Shadowflame Cache	199748						51	51			
+495503	SF	Chromatic Hoard	200953						1387	1387			
+495505	SF	Favored Riches	200953						1387	1387			
+495577	SF	Chromatic Stash	200953						1387	1387			
+499987	SF	Spellbook							84818	84818			
+499988	SF	Spellbook							84818	84818			
 506307	F	Legashi Cauldron								216			
 507731	F	Fel Mote								90321			
 507746	F	Satyrweed Bramble								391			

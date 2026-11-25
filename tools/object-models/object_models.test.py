@@ -33,7 +33,7 @@ def row(object_id, name="Thing", flavors=("Forever",), **claims):
 
 
 BUILDS = {"Vanilla": "1.15.9.70576", "TBC": "2.5.6.70577", "Wrath": "3.80.2.70522", "Cata": "4.4.2.60895",
-          "Mists": "5.5.4.71089", "Forever": "1.60.1.71091"}
+          "Mists": "5.5.4.71089", "Forever": "1.60.1.71091", "SoD": "1.15.9.70576"}
 
 
 def displays_of(flavor):
@@ -102,13 +102,13 @@ class ResolveTest(unittest.TestCase):
     def test_reviewed_row_works_for_an_object_no_source_knows(self):
         data = model_data(manual=[manual(9, 20)])
         self.assertEqual(2020, data.resolve("Forever", 9).id)
-        self.assertIn("[[\n2020:9\n]]\n", models.render(data, "Forever"))
-        self.assertIn("[[\n]]\n", models.render(data, "Vanilla"))
+        self.assertIn("{\n[9] = 2020,\n    }\n", models.render(data, "Forever"))
+        self.assertIn("{\n\n    }\n", models.render(data, "Vanilla"))
 
     def test_creature_item_and_hidden_displays_never_become_a_model(self):
         data = model_data(row(1, wowhead_forever=30), row(2, wowhead_forever=40), row(3, wowhead_forever=60))
         self.assertEqual(["creature", "item", "hidden"], [data.resolve("Forever", i).kind for i in (1, 2, 3)])
-        self.assertIn("objectsByFileId = [[\n]]", models.render(data, "Forever"))
+        self.assertIn("modelFileIds = {\n\n    }", models.render(data, "Forever"))
 
     def test_source_of_another_flavor_is_not_used(self):
         self.assertEqual("missing", model_data(row(1, wowhead_classic=10)).resolve("Forever", 1).kind)
@@ -125,11 +125,12 @@ class ResolveTest(unittest.TestCase):
 
 
 class RenderTest(unittest.TestCase):
-    def test_groups_objects_by_model_and_keeps_flavors_apart(self):
-        data = model_data(row(7, wowhead_forever=20), row(3, wowhead_forever=10), row(5, wowhead_forever=20),
-                          row(9, flavors=("Vanilla",), wowhead_classic=10))
-        self.assertIn("[[\n1010:3\n2020:5,7\n]]\n", models.render(data, "Forever"))
-        self.assertIn("[[\n1010:9\n]]\n", models.render(data, "Vanilla"))
+    def test_lists_each_flavors_own_objects_in_order(self):
+        data = model_data(row(7, wowhead_forever=20), row(3, wowhead_forever=10),
+                          row(9, flavors=("Vanilla",), wowhead_classic=10), row(8, flavors=("SoD",), wowhead_classic=20))
+        self.assertIn("{\n[3] = 1010,\n[7] = 2020,\n    }\n", models.render(data, "Forever"))
+        self.assertIn("{\n[9] = 1010,\n    }\n", models.render(data, "Vanilla"))
+        self.assertIn("{\n[8] = 2020,\n    }\n", models.render(data, "SoD"))
 
 
 class MergeTest(unittest.TestCase):
@@ -378,7 +379,9 @@ class CheckTest(unittest.TestCase):
             self.database["Forever"][object_id] = ComposedObject("Rock", "other")
 
     def check(self, data):
-        models.lua_path("Forever", self.directory).write_text(models.render(data, "Forever"), encoding="utf-8")
+        path = models.provider_path("Forever", self.directory)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(models.render(data, "Forever"), encoding="utf-8")
         return checking.check(data, self.database, self.directory)["Forever"]
 
     def test_complete_data_has_nothing_to_report(self):
@@ -428,10 +431,10 @@ class CheckTest(unittest.TestCase):
     def test_wrong_shipped_model_fails(self):
         data = model_data(*self.rows)
         self.check(data)
-        path = models.lua_path("Forever", self.directory)
-        path.write_text(path.read_text().replace("1010:1,3,", "2020:1,3,"), encoding="utf-8")
+        path = models.provider_path("Forever", self.directory)
+        path.write_text(path.read_text().replace("[1] = 1010,", "[1] = 2020,"), encoding="utf-8")
         errors = checking.check(data, self.database, self.directory)["Forever"].errors
-        self.assertEqual(["Forever.lua does not match its sources; run `questiedb object-models write`"], errors)
+        self.assertEqual(["ObjectModels/foreverObjectModels.lua does not match its sources; run `questiedb object-models write`"], errors)
 
     def test_changed_source_without_write_fails(self):
         self.check(model_data(*self.rows))
@@ -440,7 +443,8 @@ class CheckTest(unittest.TestCase):
 
     def test_windows_line_endings_pass(self):
         data = model_data(*self.rows)
-        path = models.lua_path("Forever", self.directory)
+        path = models.provider_path("Forever", self.directory)
+        path.parent.mkdir(parents=True)
         path.write_bytes(models.render(data, "Forever").replace("\n", "\r\n").encode())
         self.assertEqual([], checking.check(data, self.database, self.directory)["Forever"].errors)
 
@@ -462,7 +466,8 @@ class CommandTest(unittest.TestCase):
         self.write("hidden.tsv", "fileDataId\tnote\n")
         (self.directory / "displays").mkdir()
         for flavor in models.FLAVORS:
-            self.write("displays/%s.tsv" % flavor, models.render_displays(displays_of(flavor)))
+            if flavor != "SoD":
+                self.write("displays/%s.tsv" % flavor, models.render_displays(displays_of(flavor)))
         models.write_files(models.load(self.directory), {}, self.directory)
         self.database = composed(**{flavor: {1: ("Chest", "quest"), **{i: ("Rock", "other") for i in rocks}}
                                     for flavor in models.FLAVORS})
@@ -479,7 +484,7 @@ class CommandTest(unittest.TestCase):
         with patch.object(object_models, "composed_objects", side_effect=lambda f: {x: self.database[x] for x in f}), \
                 patch.object(object_models, "OUTPUT", self.directory / "out"), \
                 patch.object(models, "DATA", self.directory), \
-                patch.object(models, "SHIPPED", self.directory), \
+                patch.object(models, "CORRECTIONS", self.directory), \
                 patch.dict(object_models.os.environ, {"GITHUB_ACTIONS": "", "GITHUB_STEP_SUMMARY": "", **(env or {})}), \
                 contextlib.redirect_stdout(io.StringIO()) as out, contextlib.redirect_stderr(io.StringIO()) as err:
             return object_models.main([str(arg) for arg in args]), out.getvalue() + err.getvalue()
@@ -492,10 +497,10 @@ class CommandTest(unittest.TestCase):
         self.assertIn("warning: quest object 1 Chest has no model: no source", output)
 
     def test_wrong_data_fails(self):
-        self.write("Forever.lua", "stale")
+        models.provider_path("Forever", self.directory).write_text("stale", encoding="utf-8")
         code, output = self.run_main("check", "Forever")
         self.assertEqual(1, code)
-        self.assertIn("ERROR: Forever: Forever.lua does not match its sources", output)
+        self.assertIn("ERROR: Forever: ObjectModels/foreverObjectModels.lua does not match its sources", output)
 
     def test_github_gets_one_annotation_per_flavor_and_a_summary(self):
         summary = self.directory / "summary.md"
@@ -503,7 +508,7 @@ class CommandTest(unittest.TestCase):
             self.database["Vanilla"][i] = ComposedObject("Chest %d" % i, "quest")
         code, output = self.run_main("check", env={"GITHUB_ACTIONS": "true", "GITHUB_STEP_SUMMARY": str(summary)})
         self.assertEqual(0, code)
-        self.assertEqual(6, output.count("::warning title=Object models ("))
+        self.assertEqual(7, output.count("::warning title=Object models ("))
         self.assertIn("::warning title=Object models (Forever)::1 object model warnings: quest object 1 Chest", output)
         self.assertIn("quest object 6 Chest 6 has no model", summary.read_text())
 
@@ -514,7 +519,7 @@ class CommandTest(unittest.TestCase):
         code, output = self.run_main("import", "wowhead-forever", source)
         self.assertEqual(0, code, output)
         self.assertEqual(before, self.files()["manual.tsv"])
-        self.assertIn(b"\n2020:1\n", self.files()["Forever.lua"])
+        self.assertIn(b"\n[1] = 2020,\n", self.files()["foreverObjectModels.lua"])
         self.assertEqual(0, self.run_main("check")[0])
 
     def test_import_saves_every_refused_value(self):
@@ -528,7 +533,7 @@ class CommandTest(unittest.TestCase):
     def test_reviewed_row_for_a_new_object_ships_after_write(self):
         self.write("manual.tsv", "objectId\tflavors\tdisplayId\tnote\n1\tForever\t20\treviewed\n")
         self.assertEqual(0, self.run_main("write")[0])
-        self.assertIn(b"\n2020:1\n", self.files()["Forever.lua"])
+        self.assertIn(b"\n[1] = 2020,\n", self.files()["foreverObjectModels.lua"])
         self.assertNotIn("has no model", self.run_main("check", "Forever")[1])
 
     def test_rejected_input_changes_no_file(self):
@@ -546,7 +551,8 @@ class CommandTest(unittest.TestCase):
                 (("displays", "Forever", "1.60.1.71500", without_reviewed), "object 1: display 20 shows nothing"),
                 (("displays", "Forever", "1.60.1.71500", bad_display), "invalid display creature 0"),
                 (("displays", "Mists", "1.15.9.70576", without_reviewed), "build 1.15.9.70576 is not a Mists client"),
-                (("displays", "Classic", "1.60.1.71500", without_reviewed), "Unknown flavor: Classic"),
+                (("displays", "Classic", "1.60.1.71500", without_reviewed), "No display table of its own: Classic"),
+                (("displays", "SoD", "1.15.9.70576", without_reviewed), "No display table of its own: SoD"),
                 (("check", "Classic"), "Unknown flavor: Classic"),
                 (("import", "att"), "invalid arguments"),
                 (("import", "att", "/nowhere.csv"), "nowhere.csv")):
@@ -564,7 +570,7 @@ class CommandTest(unittest.TestCase):
         code, output = self.run_main("displays", "Forever", "1.60.1.71500", newer)
         self.assertEqual(0, code, output)
         self.assertIn("1.60.1.71091 -> 1.60.1.71500, 1 displays added, 4 removed, 0 changed", output)
-        self.assertIn(b"\n6161:1\n", self.files()["Forever.lua"])
+        self.assertIn(b"\n[1] = 6161,\n", self.files()["foreverObjectModels.lua"])
 
 
 class RealDataTest(unittest.TestCase):
@@ -574,24 +580,24 @@ class RealDataTest(unittest.TestCase):
     def setUpClass(cls):
         cls.data = models.load()
 
-    def test_shipped_lua_matches_its_sources(self):
+    def test_providers_match_their_sources(self):
         for flavor in models.FLAVORS:
             with self.subTest(flavor=flavor):
-                self.assertEqual(models.render(self.data, flavor), models.lua_path(flavor).read_text(encoding="utf-8"))
+                self.assertEqual(models.render(self.data, flavor), models.provider_path(flavor).read_text(encoding="utf-8"))
 
     def test_invisible_models_never_ship(self):
         # Invisible.M2, two invisible stalkers, a click box, an invisible trap, a spell effect, a building.
         files = {"166432", "124640", "124641", "511490", "2199319", "4569801", "107917"}
         for flavor in models.FLAVORS:
-            shipped = set(re.findall(r"(?m)^(\d+):", models.lua_path(flavor).read_text(encoding="utf-8")))
-            self.assertEqual((set(), True), (shipped & files, len(shipped) > 1000), flavor)
+            shipped = set(re.findall(r"(?m)^\[\d+\] = (\d+),", models.provider_path(flavor).read_text(encoding="utf-8")))
+            self.assertEqual((set(), True), (shipped & files, len(shipped) > 100), flavor)
 
     def test_objects_lua_lists_the_composed_view_with_roles(self):
-        composed_view = object_models.composed_objects(["Vanilla", "Wrath"])
+        composed_view = object_models.composed_objects(["Vanilla", "SoD"])
         objects = composed_view["Vanilla"]
         self.assertEqual(ComposedObject("Old Lion Statue", "quest"), objects[31])
-        self.assertEqual("Owl Statue", objects[410020].name)  # Season of Discovery only
-        self.assertEqual("Blood Ritual Altar", composed_view["Wrath"][420002].name)  # Titan Reforged only
+        self.assertEqual(ComposedObject("Owl Statue", "quest"), composed_view["SoD"][410020])
+        self.assertEqual(set(), set(objects) & set(composed_view["SoD"]))
         for object_id, role, why in (
                 (175124, "objective", "Rookery Egg is a direct objective"),
                 (759, "objective", "The Holy Spring is an extra objective"),

@@ -26,7 +26,7 @@
 ## Category-zhCN: 任务
 ## Category-zhTW: 任務
 ## IconTexture: Interface\AddOns\QuestieDB\icons\QuestieTDB_64x64.png
-## X-Contract-Version: 5
+## X-Contract-Version: 6
 ## X-Mode: source
 
 # =============================================================================
@@ -128,43 +128,38 @@ support\DropTables\itemDropCorrections.lua [AllowLoadGameType vanilla, tbc, wrat
 support\Zones\areaIdToUiMapId.lua [AllowLoadGameType vanilla, tbc, wrath, cata]
 support\Zones\uiMapIdToAreaId.lua [AllowLoadGameType vanilla, tbc, wrath, cata]
 
-# --- Vanilla: quest XP, factions, object models, drops and pet food ---
+# --- Vanilla: quest XP, factions, drops and pet food ---
 support\QuestXP\xpDB-classic.lua [AllowLoadGameType vanilla]
 support\FactionTemplates\factionTemplateClassic.lua [AllowLoadGameType vanilla]
-support\ObjectModels\Vanilla.lua [AllowLoadGameType vanilla]
 support\DropTables\classicItemDrops.lua [AllowLoadGameType vanilla]
 support\PetFood\petFoodClassic.lua [AllowLoadGameType vanilla]
 
-# --- TBC: quest XP, factions, object models, drops and pet food ---
+# --- TBC: quest XP, factions, drops and pet food ---
 support\QuestXP\xpDB-tbc.lua [AllowLoadGameType tbc]
 support\FactionTemplates\factionTemplateTBC.lua [AllowLoadGameType tbc]
-support\ObjectModels\TBC.lua [AllowLoadGameType tbc]
 support\DropTables\tbcItemDrops.lua [AllowLoadGameType tbc]
 support\PetFood\petFoodTBC.lua [AllowLoadGameType tbc]
 
-# --- Wrath: quest XP, factions, object models, drops and pet food ---
+# --- Wrath: quest XP, factions, drops and pet food ---
 support\QuestXP\xpDB-wotlk.lua [AllowLoadGameType wrath]
 support\FactionTemplates\factionTemplateWotlk.lua [AllowLoadGameType wrath]
-support\ObjectModels\Wrath.lua [AllowLoadGameType wrath]
 support\DropTables\wotlkItemDrops.lua [AllowLoadGameType wrath]
 support\PetFood\petFoodWotlk.lua [AllowLoadGameType wrath]
 
-# --- Mists: zone maps, quest XP, factions, object models and drops ---
+# --- Mists: zone maps, quest XP, factions and drops ---
 support\Zones\MoP\areaIdToUiMapId.lua [AllowLoadGameType mists]
 support\Zones\MoP\uiMapIdToAreaId.lua [AllowLoadGameType mists]
 support\QuestXP\xpDB-mop.lua [AllowLoadGameType mists]
 support\FactionTemplates\factionTemplateMoP.lua [AllowLoadGameType mists]
-support\ObjectModels\Mists.lua [AllowLoadGameType mists]
 support\DropTables\mopItemDrops.lua [AllowLoadGameType mists]
 
 # --- Cata drops, also used by Mists ---
 # Mists loads its own drop table first, then the Cata table.
 support\DropTables\cataItemDrops.lua [AllowLoadGameType mists, cata]
 
-# --- Cata: quest XP, factions and object models ---
+# --- Cata: quest XP and factions ---
 support\QuestXP\xpDB-cata.lua [AllowLoadGameType cata]
 support\FactionTemplates\factionTemplateCata.lua [AllowLoadGameType cata]
-support\ObjectModels\Cata.lua [AllowLoadGameType cata]
 
 # --- Forever: independently owned support inputs ---
 support\Forever\Zones\dungeons.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
@@ -176,7 +171,6 @@ support\Forever\Zones\uiMapIdToAreaId.lua [ExcludeLoadGameType vanilla, tbc, wra
 support\Forever\QuestXP\xpDB-classic.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 support\Forever\QuestXP\xpDB-traces.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 support\Forever\FactionTemplates\factionTemplateClassic.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
-support\ObjectModels\Forever.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 support\Forever\DropTables\classicItemDrops.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 support\Forever\PetFood\petFoodForever.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 
@@ -248,10 +242,19 @@ src\corrections\Sod\sodBaseQuests.lua [AllowLoadGameType vanilla]
 src\corrections\Sod\sodBaseNPCs.lua [AllowLoadGameType vanilla]
 src\corrections\Sod\sodBaseItems.lua [AllowLoadGameType vanilla]
 src\corrections\Sod\sodBaseObjects.lua [AllowLoadGameType vanilla]
+src\corrections\Sod\sodObjectModels.lua [AllowLoadGameType vanilla]
 src\corrections\scopes\SodEnd.lua
 
 # --- Shared legacy Item-start Corrections ---
 src\corrections\Shared\itemStartFixes.lua [AllowLoadGameType vanilla, tbc, wrath, cata, mists]
+
+# --- Generated object models ---
+# They apply last and never overwrite another Correction.
+src\corrections\ObjectModels\classicObjectModels.lua [AllowLoadGameType vanilla]
+src\corrections\ObjectModels\tbcObjectModels.lua [AllowLoadGameType tbc]
+src\corrections\ObjectModels\wotlkObjectModels.lua [AllowLoadGameType wrath]
+src\corrections\ObjectModels\cataObjectModels.lua [AllowLoadGameType cata]
+src\corrections\ObjectModels\mopObjectModels.lua [AllowLoadGameType mists]
 
 # --- Forever: inherited baseline ---
 # Owned copies, not live Era or Shared providers. Add new work in forever*Fixes.lua.
@@ -283,6 +286,9 @@ src\corrections\Forever\foreverQuestFixes.lua [ExcludeLoadGameType vanilla, tbc,
 src\corrections\Forever\foreverNPCFixes.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 src\corrections\Forever\foreverItemFixes.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 src\corrections\Forever\foreverObjectFixes.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
+
+# --- Forever: generated object models ---
+src\corrections\ObjectModels\foreverObjectModels.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 
 # --- Provider registration and loader teardown ---
 src\corrections\manifest.lua
@@ -618,4 +624,3 @@ src\ui\modeIndicator.lua
 # --- Public API ---
 src\api.lua
 src\support\eraToForever.lua
-src\support\objectModels.lua
