@@ -62,7 +62,7 @@ November 25, 2026 from:
 
 | Column | Origin | License |
 | --- | --- | --- |
-| `wowhead-forever`, `wowhead-classic` | English Wowhead object pages cached by scraper-questie (`forever.db`, `classic.db`) | Display IDs, included by maintainer decision |
+| `wowhead-forever`, `wowhead-classic`, `wowhead-tbc`, `wowhead-wotlk`, `wowhead-cata`, `wowhead-mop` | English Wowhead object pages cached by scraper-questie (`forever.db`, `classic.db`, `tbc.db`, `wotlk.db`, `cata.db`, `mop-classic.db`) | Display IDs, included by maintainer decision |
 | `cmangos-classic`, `cmangos-tbc`, `cmangos-wotlk` | `gameobject_template.displayId` of [cmangos/classic-db](https://github.com/cmangos/classic-db), [tbc-db](https://github.com/cmangos/tbc-db) and [wotlk-db](https://github.com/cmangos/wotlk-db), through Questie/cmangos release `v2026.08.18` | GPL-3.0 |
 | `skyfire` | `gameobject_template.displayId` of [SkyFire 5.4.8](https://github.com/ProjectSkyfire/SkyFire_548), `SFDB_full_548_27.001_2026_011_03_Release.sql` | GPL-3.0 |
 | `att` | `model` in [AllTheThings](https://github.com/ATTWoWAddon/AllTheThings) `ObjectDB.lua` (FileDataIDs) | MIT |
