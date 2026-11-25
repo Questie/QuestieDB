@@ -204,6 +204,9 @@ function ForeverQuestFixes:Load()
         [618] = { -- Facing Negolash
             [questKeys.exclusiveTo] = {8554},
         },
+        [656] = { -- Summoning the Princess
+            [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Summon Myzrael"), 0, {{"object", 138492}}}},
+        },
         [684] = { -- WANTED: Marez Cowl
             [questKeys.name] = "WANTED: Marez Cowl",
         },
@@ -285,6 +288,9 @@ function ForeverQuestFixes:Load()
         },
         [1149] = { -- Test of Faith
             [questKeys.triggerEnd] = {},
+        },
+        [1203] = { -- Jarl Needs a Blade
+            [questKeys.exclusiveTo] = {81570},
         },
         [1205] = { -- Deadmire
             [questKeys.nextQuestInChain] = 97378,
@@ -2073,12 +2079,16 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {1370},
         },
         [92811] = { -- Economic Warfare
+            [questKeys.requiredRaces] = raceIDs.NONE,
             [questKeys.preQuestSingle] = {93226,94872},
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.reputationReward] = {{factionIDs.MAGRAM_CLAN_CENTAUR,750},{factionIDs.GELKIS_CLAN_CENTAUR,-3750}},
         },
         [92812] = { -- Economic Warfare
+            [questKeys.requiredRaces] = raceIDs.NONE,
             [questKeys.preQuestSingle] = {93227,94873},
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
+            [questKeys.reputationReward] = {{factionIDs.GELKIS_CLAN_CENTAUR,750},{factionIDs.MAGRAM_CLAN_CENTAUR,-3750}},
         },
         [92814] = { -- I Need a Tailor
             [questKeys.preQuestSingle] = {1370},
@@ -2669,10 +2679,12 @@ function ForeverQuestFixes:Load()
             [questKeys.nextQuestInChain] = 94050,
             [questKeys.objectives] = {{{250874,nil,Questie.ICON_TYPE_INTERACT}}},
             [questKeys.exclusiveTo] = {6063},
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
         },
         [94050] = { -- Training the Beast
             [questKeys.requiredClasses] = classIDs.HUNTER,
             [questKeys.preQuestSingle] = {94013},
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
         },
         [94212] = { -- Craftsman's Writ: Elixir of Wisdom
             [questKeys.requiredRaces] = raceIDs.NONE,
@@ -3963,12 +3975,14 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredClasses] = classIDs.HUNTER,
             [questKeys.nextQuestInChain] = 94979,
             [questKeys.objectives] = {{{254588,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
         },
         [94979] = { -- Taming the Beast
             [questKeys.requiredClasses] = classIDs.HUNTER,
             [questKeys.preQuestSingle] = {94978},
             [questKeys.nextQuestInChain] = 94013,
             [questKeys.objectives] = {{{251707,nil,Questie.ICON_TYPE_INTERACT}}},
+            [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
         },
         [94980] = { -- Krol'dok Moulding
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- wowhead
