@@ -62,7 +62,7 @@ _Avoid_: Preprocess, precompile, postprocess, pipeline stage
 
 **Support data**:
 Game reference data consumed as whole tables rather than through the TOC metadata store —
-zone mappings, quest XP, drop tables, faction templates. Shipped as plain Lua files.
+zone mappings, quest XP, drop tables, faction templates, pet food. Shipped as plain Lua files.
 _Avoid_: Auxiliary data, helper data, lookup data
 
 **Source mode**:

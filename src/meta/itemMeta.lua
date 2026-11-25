@@ -31,7 +31,7 @@ local meta = {
     ['questRewards'] = 6,
     -- Item flag bitmask; see https://github.com/cmangos/issues/wiki/Item_template#flags
     ['flags'] = 7,
-    -- Food category; see https://github.com/cmangos/issues/wiki/Item_template#foodtype
+    -- Always 0; pet food is support data, see docs/support-data.md.
     ['foodType'] = 8,
     -- Item level.
     ['itemLevel'] = 9,

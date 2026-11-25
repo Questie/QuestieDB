@@ -26,7 +26,7 @@
 ## Category-zhCN: 任务
 ## Category-zhTW: 任務
 ## IconTexture: Interface\AddOns\QuestieDB\icons\QuestieTDB_64x64.png
-## X-Contract-Version: 4
+## X-Contract-Version: 5
 ## X-Mode: source
 
 # =============================================================================
@@ -128,20 +128,23 @@ support\DropTables\itemDropCorrections.lua [AllowLoadGameType vanilla, tbc, wrat
 support\Zones\areaIdToUiMapId.lua [AllowLoadGameType vanilla, tbc, wrath, cata]
 support\Zones\uiMapIdToAreaId.lua [AllowLoadGameType vanilla, tbc, wrath, cata]
 
-# --- Vanilla: quest XP, factions and drops ---
+# --- Vanilla: quest XP, factions, drops and pet food ---
 support\QuestXP\xpDB-classic.lua [AllowLoadGameType vanilla]
 support\FactionTemplates\factionTemplateClassic.lua [AllowLoadGameType vanilla]
 support\DropTables\classicItemDrops.lua [AllowLoadGameType vanilla]
+support\PetFood\petFoodClassic.lua [AllowLoadGameType vanilla]
 
-# --- TBC: quest XP, factions and drops ---
+# --- TBC: quest XP, factions, drops and pet food ---
 support\QuestXP\xpDB-tbc.lua [AllowLoadGameType tbc]
 support\FactionTemplates\factionTemplateTBC.lua [AllowLoadGameType tbc]
 support\DropTables\tbcItemDrops.lua [AllowLoadGameType tbc]
+support\PetFood\petFoodTBC.lua [AllowLoadGameType tbc]
 
-# --- Wrath: quest XP, factions and drops ---
+# --- Wrath: quest XP, factions, drops and pet food ---
 support\QuestXP\xpDB-wotlk.lua [AllowLoadGameType wrath]
 support\FactionTemplates\factionTemplateWotlk.lua [AllowLoadGameType wrath]
 support\DropTables\wotlkItemDrops.lua [AllowLoadGameType wrath]
+support\PetFood\petFoodWotlk.lua [AllowLoadGameType wrath]
 
 # --- Mists: zone maps, quest XP, factions and drops ---
 support\Zones\MoP\areaIdToUiMapId.lua [AllowLoadGameType mists]
@@ -169,6 +172,7 @@ support\Forever\QuestXP\xpDB-classic.lua [ExcludeLoadGameType vanilla, tbc, wrat
 support\Forever\QuestXP\xpDB-traces.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 support\Forever\FactionTemplates\factionTemplateClassic.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 support\Forever\DropTables\classicItemDrops.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
+support\Forever\PetFood\petFoodForever.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 
 # --- Loader teardown ---
 src\support\_end.lua

@@ -15,7 +15,7 @@ config.addonName = "QuestieDB"
 
 --- Bumped when the shape of the public API or the storage format changes in a way a consumer
 --- can observe. Questie checks this at init and fails with a specific message on mismatch.
-config.contractVersion = 4
+config.contractVersion = 5
 
 --- The oldest consumer contract this release still honors. `RequireContract` passes any
 --- required version in [minSupportedContract, contractVersion]; raise this floor only when a
@@ -290,17 +290,17 @@ config.supportData = {
     Vanilla = {
       "support/Zones/areaIdToUiMapId.lua", "support/Zones/uiMapIdToAreaId.lua",
       "support/QuestXP/xpDB-classic.lua", "support/FactionTemplates/factionTemplateClassic.lua",
-      "support/DropTables/classicItemDrops.lua",
+      "support/DropTables/classicItemDrops.lua", "support/PetFood/petFoodClassic.lua",
     },
     TBC = {
       "support/Zones/areaIdToUiMapId.lua", "support/Zones/uiMapIdToAreaId.lua",
       "support/QuestXP/xpDB-tbc.lua", "support/FactionTemplates/factionTemplateTBC.lua",
-      "support/DropTables/tbcItemDrops.lua",
+      "support/DropTables/tbcItemDrops.lua", "support/PetFood/petFoodTBC.lua",
     },
     Wrath = {
       "support/Zones/areaIdToUiMapId.lua", "support/Zones/uiMapIdToAreaId.lua",
       "support/QuestXP/xpDB-wotlk.lua", "support/FactionTemplates/factionTemplateWotlk.lua",
-      "support/DropTables/wotlkItemDrops.lua",
+      "support/DropTables/wotlkItemDrops.lua", "support/PetFood/petFoodWotlk.lua",
     },
     Cata = {
       "support/Zones/areaIdToUiMapId.lua", "support/Zones/uiMapIdToAreaId.lua",
@@ -326,6 +326,7 @@ config.supportData.perFlavor.Forever = {
   "support/Forever/QuestXP/xpDB-classic.lua", "support/Forever/QuestXP/xpDB-traces.lua",
   "support/Forever/FactionTemplates/factionTemplateClassic.lua",
   "support/Forever/DropTables/classicItemDrops.lua",
+  "support/Forever/PetFood/petFoodForever.lua",
 }
 
 ---@param flavor table
