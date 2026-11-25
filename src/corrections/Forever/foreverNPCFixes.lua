@@ -90,6 +90,9 @@ function ForeverNpcFixes:Load()
         [2359] = { -- Elemental Slave
             [npcKeys.spawns] = {[zoneIDs.ALTERAC_MOUNTAINS] = {{22.35,56.06},{22.28,58.52},{24.62,54.86},{23.31,54.14},{20.16,52.33},{21.07,55.6},{21.09,54.26},{25.4,53.09},{24.62,51.75},{23.6,50.15},{25.98,58.03},{24.67,58.69},{25.17,62.64},{26.1,60.22}}},
         },
+        [2404] = { -- Blacksmith Verringtan
+            [npcKeys.npcFlags] = npcFlags.NONE,
+        },
         [2411] = { -- Ricter
             [npcKeys.spawns_add] = {[zoneIDs.ALTERAC_MOUNTAINS] = {{19.31,90.22}}},
         },
@@ -352,6 +355,9 @@ function ForeverNpcFixes:Load()
             [npcKeys.name] = "Caverndeep Ambusher",
             [npcKeys.spawns] = {[zoneIDs.GNOMEREGAN] = {{-1,-1}}},
             [npcKeys.zoneID] = zoneIDs.GNOMEREGAN,
+        },
+        [218032] = { -- Witherbark Goliath
+            [npcKeys.spawns] = {[zoneIDs.ARATHI_HIGHLANDS] = {{69.6,81.57}}},
         },
         [218969] = { -- STX-96/FR
             [npcKeys.name] = "STX-96/FR",
@@ -662,6 +668,9 @@ function ForeverNpcFixes:Load()
         },
         [252800] = { -- Aamelia Windfield
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{46.7,81.95}}},
+        },
+        [252863] = { -- Ferauu the Bludgeon
+            [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{47.82,77.81}}},
         },
         [253004] = { -- Iaadaria Bitterwind
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{66.34,79.5}}},
