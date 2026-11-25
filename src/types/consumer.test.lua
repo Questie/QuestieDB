@@ -163,3 +163,16 @@ local factionRaceMasks = LibQuestieDB.Enum.factionRaceMasks
 local allianceRaceMask = factionRaceMasks.Alliance
 ---@type integer
 local hordeRaceMask = factionRaceMasks.Horde
+
+-- Support modules are selected by name, and a flavor does not have all of them.
+---@type table?
+local zoneData = LibQuestieDB.Support.Get("ZoneDB")
+local petFood = LibQuestieDB.Support.Get("PetFood")
+if petFood then
+  ---@type ItemId[]?
+  local meatItemIds = petFood.itemIdsByFoodType[1]
+  ---@type integer[]?
+  local wolfFoodTypes = petFood.foodTypesByFamily[1]
+  ---@type integer?
+  local meat = petFood.foodTypesByName["Fleisch"]
+end

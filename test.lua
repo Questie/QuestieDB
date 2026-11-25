@@ -1012,12 +1012,13 @@ suite("correction-enums", "shared", function()
   client.install({ expansion = "Forever" })
   local source = emulator.loadAddon(config.addonName .. ".toc", config.addonName)
   equal(source.Enum.raceMaskById, expectedMasks, "actual Source TOC exposes race encoding")
-  equal(source.contractVersion, 4, "active-flavor enums are available under contract 4")
-  equal(source.RequireContract(4), true, "shared enum consumers are supported")
+  equal(source.contractVersion, 5, "pet food support data is available under contract 5")
+  equal(source.RequireContract(5), true, "pet food consumers are supported")
+  equal(source.RequireContract(4), true, "contract 4 consumers remain supported")
   equal(source.RequireContract(3), true, "contract 3 consumers remain supported")
   equal(source.RequireContract(1), true, "contract 1 consumers remain supported")
   equal(source.RequireContract(2), true, "contract 2 consumers remain supported")
-  equal(source.RequireContract(5), false, "future consumer contracts are rejected")
+  equal(source.RequireContract(6), false, "future consumer contracts are rejected")
 
   -- Controlled rows exercise both real backends; no generated artifact or authored eligibility changes.
   local fixture = dofile("tools/validation/storage-fixture.lua")
@@ -2934,18 +2935,26 @@ end)
 ---@param contract integer Provider contractVersion.
 ---@param minimum integer Provider minSupportedContract.
 ---@param root table Table the entry paths resolve from.
+---@param expansion string? Loaded expansion; entries limited to other expansions are skipped.
 ---@return string[] problems
-local function contractSurfaceProblems(entries, contract, minimum, root)
+local function contractSurfaceProblems(entries, contract, minimum, root, expansion)
   local problems = {}
   for _, entry in ipairs(entries) do
     if entry.since > contract then
       problems[#problems + 1] = entry.path .. " is promised by future contract " .. entry.since
-    elseif entry.removedIn == nil or minimum < entry.removedIn then
+    elseif (entry.removedIn == nil or minimum < entry.removedIn) and
+        (entry.expansions == nil or entry.expansions[expansion]) then
       local value = root
       for part in entry.path:gmatch("[^.]+") do
+        local name, argument = part:match("^(.+)%((.+)%)$")
         if type(value) == "table" then
-          value = value[part]
+          value = value[name or part]
         else
+          value = nil
+        end
+        if argument and type(value) == "function" then
+          value = value(argument)
+        elseif argument then
           value = nil
         end
       end
@@ -2960,11 +2969,16 @@ end
 
 suite("contract-surface", "shared", function()
   local entries = dofile("tools/validation/contract-surface.lua")
+  for _, entry in ipairs(entries) do
+    for expansion in pairs(entry.expansions or {}) do
+      check(client.projectIds[expansion] ~= nil, entry.path .. " is limited to a known expansion: " .. expansion)
+    end
+  end
   for expansion in pairs(client.projectIds) do
     client.reset()
     client.install({ expansion = expansion })
     local loaded = emulator.loadAddon(config.addonName .. ".toc", config.addonName)
-    equal(contractSurfaceProblems(entries, loaded.contractVersion, loaded.minSupportedContract, _G), {},
+    equal(contractSurfaceProblems(entries, loaded.contractVersion, loaded.minSupportedContract, _G, expansion), {},
       expansion .. " provides every name its supported contracts promise")
   end
 
@@ -2982,6 +2996,14 @@ suite("contract-surface", "shared", function()
   root.Lib.Enum.npcFlags = 1
   equal(#contractSurfaceProblems(fixture, 4, 3, root), 1, "a changed kind fails")
   equal(#contractSurfaceProblems(fixture, 3, 3, root), 1, "an entry for a future contract fails")
+  local limited = { { path = "Lib.PetFood", kind = "table", since = 4, expansions = { TBC = true } } }
+  equal(#contractSurfaceProblems(limited, 4, 3, root, "TBC"), 1, "a flavor-limited name fails where it is promised")
+  equal(contractSurfaceProblems(limited, 4, 3, root, "Cata"), {}, "a flavor-limited name may be absent elsewhere")
+  local called = { { path = "Lib.Get(Food).items", kind = "table", since = 4 } }
+  root.Lib.Get = function(name) return name == "Food" and { items = {} } or nil end
+  equal(contractSurfaceProblems(called, 4, 3, root), {}, "a called name is resolved through its function")
+  root.Lib.Get = function() end
+  equal(#contractSurfaceProblems(called, 4, 3, root), 1, "a called name fails when its function returns nothing")
 end)
 
 suite("api", "Vanilla", function()
@@ -3493,6 +3515,68 @@ suite("support", "shared", function()
   local forever = loadSupportBlock(config.flavorByName.Forever, "Alliance")
   check(forever.QuestXP.db[2] ~= nil and forever.QuestXP.db[9665] ~= nil,
     "Forever trace quest XP is added to the base table, not replacing it")
+
+  -- Pet food follows pet happiness, which patch 4.1.0 removed. Each flavor is loaded after a different
+  -- one, so a stale module from the previous load would show up here.
+  local function petFood(flavorName)
+    loadSupportBlock(config.flavorByName[flavorName], "Alliance")
+    return support.Get("PetFood")
+  end
+  ---@param list number[]?
+  local function contains(list, value)
+    for _, entry in ipairs(list or {}) do if entry == value then return true end end
+    return false
+  end
+  local MEAT, FISH, FRUIT = 1, 2, 6
+  local toughJerky, shinyRedApple, galestriderJerky = 117, 4536, 252022
+  local smokedTalbukVenison, saltedVenison = 27854, 33454
+  for _, flavorName in ipairs({ "Forever", "Vanilla", "Wrath", "TBC" }) do
+    local data = petFood(flavorName)
+    check(contains(data.itemIdsByFoodType[MEAT], toughJerky), flavorName .. " lists Tough Jerky as meat")
+    check(contains(data.itemIdsByFoodType[FRUIT], shinyRedApple), flavorName .. " lists Shiny Red Apple as fruit")
+    equal(data.foodTypesByFamily[1], { MEAT }, flavorName .. " wolves eat only meat")
+    equal(data.foodTypesByFamily[23], nil, flavorName .. " imps eat nothing")
+    for name, foodType in pairs({ Meat = 1, ["Käse"] = 3, ["Raw Fish"] = 8, Viande = 1, ["고기"] = 1,
+        ["Сырая рыба"] = 8, ["肉"] = 1, ["鱼"] = 2, ["魚"] = 2 }) do
+      equal(data.foodTypesByName[name], foodType, flavorName .. " knows what " .. name .. " means")
+    end
+    for language, names in pairs({
+      German = { "Fleisch", "Fisch", "Käse", "Brot", "Fungus", "Obst", "Rohes Fleisch", "Roher Fisch" },
+      Russian = { "Мясо", "Рыба", "Сыр", "Хлеб", "Грибы", "Фрукты", "Сырое мясо", "Сырая рыба" },
+      ["Traditional Chinese"] = { "肉", "魚", "乳酪", "麵包", "蘑菇", "水果", "生肉", "生魚" },
+    }) do
+      local foodTypes = {}
+      for _, name in ipairs(names) do foodTypes[#foodTypes + 1] = data.foodTypesByName[name] or 0 end
+      equal(foodTypes, { 1, 2, 3, 4, 5, 6, 7, 8 }, flavorName .. " names every food type in " .. language)
+    end
+    local unordered = {}
+    for familyId, foodTypes in pairs(data.foodTypesByFamily) do
+      for index = 2, #foodTypes do
+        if foodTypes[index - 1] >= foodTypes[index] then unordered[#unordered + 1] = familyId end
+      end
+    end
+    equal(unordered, {}, flavorName .. " lists what a family eats in ascending order")
+    local typeByItem, duplicates, unsorted = {}, {}, {}
+    for foodType, ids in pairs(data.itemIdsByFoodType) do
+      for index, id in ipairs(ids) do
+        if typeByItem[id] then duplicates[#duplicates + 1] = id end
+        if index > 1 and ids[index - 1] >= id then unsorted[#unsorted + 1] = id end
+        typeByItem[id] = foodType
+      end
+    end
+    equal(duplicates, {}, flavorName .. " gives every item one food type")
+    equal(unsorted, {}, flavorName .. " lists items in ascending order")
+    equal(typeByItem[4357], nil, flavorName .. " leaves out Mechanical Bits")
+    equal(typeByItem[galestriderJerky] ~= nil, flavorName == "Forever", flavorName .. " lists only its own items: Galestrider Jerky")
+    equal(typeByItem[smokedTalbukVenison] ~= nil, flavorName == "TBC" or flavorName == "Wrath",
+      flavorName .. " lists only its own items: Smoked Talbuk Venison")
+    equal(typeByItem[saltedVenison] ~= nil, flavorName == "Wrath", flavorName .. " lists only its own items: Salted Venison")
+  end
+  -- Diets change between expansions, so one shared family table would be wrong.
+  equal(petFood("Vanilla").foodTypesByFamily[26], { MEAT }, "Vanilla owls eat only meat")
+  equal(petFood("Wrath").foodTypesByFamily[26], { MEAT, FISH }, "Wrath birds of prey also eat fish")
+  equal(petFood("Cata"), nil, "Cata has no pet food")
+  equal(petFood("Mists"), nil, "Mists has no pet food")
 
   env.QuestieLoader = nil
   support.Install(config.flavorByName.Vanilla)

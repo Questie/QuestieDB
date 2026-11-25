@@ -1,7 +1,7 @@
 -- src/support/data.lua
 --
 -- Support data: game reference data consumed as whole tables rather than through the TOC
--- metadata store — zone mappings, quest XP, drop tables, faction templates.
+-- metadata store — zone mappings, quest XP, drop tables, faction templates, pet food.
 --
 -- It stays plain Lua rather than becoming metadata because callers want the whole table, not
 -- lazy per-field access. Lazy decoding buys nothing when the first read materialises

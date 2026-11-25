@@ -8,12 +8,14 @@
 --   * Never edit or delete a promised entry. To drop one, set `removedIn` to the first
 --     contract without it, and raise config.minSupportedContract to at least that contract.
 --   * The `since = 1` baseline was recorded at contract 4; earlier history is not split out.
+--   * `expansions` limits a promise to some expansions; leave it out for a name all of them provide.
+--   * `Name(Argument)` in a path stands for the result of calling that function with one string.
 
 local entries = {}
 
-local function add(since, kind, paths)
+local function add(since, kind, paths, expansions)
   for _, path in ipairs(paths) do
-    entries[#entries + 1] = { path = path, kind = kind, since = since }
+    entries[#entries + 1] = { path = path, kind = kind, since = since, expansions = expansions }
   end
 end
 
@@ -118,5 +120,11 @@ add(3, "table", {
 })
 add(3, "number", { "LibQuestieDB.Enum.factionRaceMasks.Alliance", "LibQuestieDB.Enum.factionRaceMasks.Horde" })
 add(4, "table", { "LibQuestieDB.Enum.classKeys", "LibQuestieDB.Enum.npcFlags" })
+-- Patch 4.1.0 removed pet happiness, so Cata and MoP have no pet food.
+add(5, "table", {
+  "LibQuestieDB.Support.Get(PetFood).itemIdsByFoodType",
+  "LibQuestieDB.Support.Get(PetFood).foodTypesByFamily",
+  "LibQuestieDB.Support.Get(PetFood).foodTypesByName",
+}, { Classic = true, TBC = true, Wotlk = true, Forever = true })
 
 return entries

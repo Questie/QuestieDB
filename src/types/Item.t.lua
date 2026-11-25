@@ -8,7 +8,7 @@
 ---@field startQuest fun(id: ItemId): QuestId? Quest started by this item.
 ---@field questRewards fun(id: ItemId): QuestId[]? Quests that reward this item.
 ---@field flags fun(id: ItemId): number? Item flag bitmask.
----@field foodType fun(id: ItemId): number? Food type.
+---@field foodType fun(id: ItemId): number? Always 0 for an existing item; use `LibQuestieDB.Support.Get("PetFood")`.
 ---@field itemLevel fun(id: ItemId): number? Item level.
 ---@field requiredLevel fun(id: ItemId): number? Required player level.
 ---@field ammoType fun(id: ItemId): number? Ammo type.

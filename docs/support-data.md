@@ -1,7 +1,7 @@
 # Support data
 
-QuestieDB owns and publishes zone mappings, quest XP, faction templates, drop tables, and
-drop-table Corrections as plain Lua values through `LibQuestieDB.Support`. These datasets are
+QuestieDB owns and publishes zone mappings, quest XP, faction templates, drop tables, drop-table
+Corrections, and pet food as plain Lua values through `LibQuestieDB.Support`. These datasets are
 consumed as whole tables, so they do not use the TOC metadata store. The public access points
 and value examples are documented in [`api.md`](./api.md#support-data).
 
@@ -18,12 +18,14 @@ The selected data preserves the imported flavor boundaries:
 - Vanilla, TBC, Wrath, and Cata use the shared area/UI map tables plus their own quest XP,
   faction-template, and drop-table variant.
 - Mists uses the MoP area/UI map tables, quest XP, and faction templates.
-- Forever uses nine independent files under `support/Forever`, selected by
+- Forever uses its own files under `support/Forever`, selected by
   `[ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]`. An allow list of unknown
   Forever tokens would also pass on older clients. Shared Classic rules do not make these
   inputs inherit future Era changes.
 - Mists loads the MoP drop table followed by the Cata drop table. The cumulative order is
   intentional and matches Questie.
+- Vanilla, TBC, Wrath and Forever each load their own pet food file. Cata and Mists load none:
+  patch 4.1.0 removed pet happiness, so nobody has to feed a pet there.
 
 Forever's current map tables contain 1,065 forward and 54 canonical reverse DBC relationships
 through build `1.60.1.70291`. The October 9 refresh also adds twelve instance identities and
@@ -65,6 +67,13 @@ A dungeon's optional second slot is a dense `alternativeAreaIds` list, not a sca
 
 Consumers should preserve these raw types when binding the values to their existing wrapper
 modules.
+
+## Pet food
+
+The files under `support/PetFood` and `support/Forever/PetFood` are generated. Regenerate them with
+`./questiedb.sh food-type`; see [the tool](../tools/foodType/README.md) for its sources. A whole table is
+used instead of the Item `foodType` field because the consumer asks which items a pet eats, which as a
+field would mean reading every item.
 
 ## Maintaining inputs
 

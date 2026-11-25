@@ -726,6 +726,7 @@ LibQuestieDB.Support.Get("ZoneDB").private.areaIdToUiMapId   -- a string; loadst
 LibQuestieDB.Support.Get("QuestXP").db
 LibQuestieDB.Support.Get("DropDB")
 LibQuestieDB.Support.Get("QuestieDB").factionTemplate
+LibQuestieDB.Support.Get("PetFood")           -- nil on Cata and Mists
 ```
 
 The modules that wrap this data, including zone lookup, XP calculation, and drop resolution,
@@ -760,6 +761,38 @@ shape:
     dungeonLocations,             -- { { areaId, x, y }, ... }
 }
 ```
+
+`PetFood` says what a hunter pet eats, in three read-only tables that share food type IDs
+(1 Meat, 2 Fish, 3 Cheese, 4 Bread, 5 Fungus, 6 Fruit, 7 Raw Meat, 8 Raw Fish):
+
+| Table | From | To |
+| --- | --- | --- |
+| `itemIdsByFoodType` | Food type | Its items, ascending |
+| `foodTypesByName` | Food type name as the client gives it, in any language | Food type |
+| `foodTypesByFamily` | Creature family ID | The food types its pets eat, ascending |
+
+The client knows best what its pet eats, so ask it first. `foodTypesByName` holds the names of every language, so the
+caller does not need to know the client's. `foodTypesByFamily` is for when the client does not answer:
+
+```lua
+local petFood = LibQuestieDB.Support.Get("PetFood")
+if petFood then
+    -- Forever returns one table of names, the older clients return every name as a value of its own.
+    local names = C_PetInfo and C_PetInfo.GetPetFoodTypes and C_PetInfo.GetPetFoodTypes() or {GetPetFoodTypes()}
+    for _, name in ipairs(names) do
+        local foodType = petFood.foodTypesByName[name]         -- nil for a name QuestieDB does not know
+        local itemIds = petFood.itemIdsByFoodType[foodType]    -- nil when no item has this food type
+    end
+
+    local _, familyId = UnitCreatureFamily("pet")
+    local foodTypes = petFood.foodTypesByFamily[familyId]      -- nil for an unknown family
+end
+```
+
+Item IDs come from the client's item table, so some are not QuestieDB entities. Contract 5 guarantees
+`PetFood` on Vanilla, TBC, Wrath and Forever. On Cata and Mists, where pet happiness no longer exists, it
+is `nil` even though `RequireContract(5)` succeeds, so check for that as well. The `foodType` Item field
+is never populated.
 
 See [`support-data.md`](./support-data.md) for flavor selection and copied-data maintenance.
 
@@ -858,6 +891,9 @@ check before the lookup.
 Contract 4 adds the active-flavor `Enum.classKeys` and `Enum.npcFlags` tables. Contracts 1 to
 3 remain supported. A consumer requiring either table must request contract 4 so an older
 provider fails the version check before the lookup.
+
+Contract 5 adds `Support.Get("PetFood")` on Vanilla, TBC, Wrath and Forever. Contracts 1 to 4 remain
+supported.
 
 The check is a **range**: `RequireContract(v)` passes for any
 `minSupportedContract <= v <= contractVersion`, so a consumer built against an older
