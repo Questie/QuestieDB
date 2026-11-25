@@ -1024,14 +1024,14 @@ local classicObjectiveLocales = {
     },
     ["Summon Myzrael"] = {
         ["enUS"] = true,
-        ["deDE"] = false,
+        ["deDE"] = "Beschwöre Myzrael",
         ["esES"] = false,
         ["esMX"] = false,
         ["frFR"] = false,
         ["koKR"] = false,
         ["ptBR"] = false,
         ["ruRU"] = false,
-        ["zhCN"] = false,
+        ["zhCN"] = "召唤密斯莱尔",
         ["zhTW"] = false,
     },
 }
