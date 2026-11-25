@@ -479,6 +479,7 @@ class CommandTest(unittest.TestCase):
         with patch.object(object_models, "composed_objects", side_effect=lambda f: {x: self.database[x] for x in f}), \
                 patch.object(object_models, "OUTPUT", self.directory / "out"), \
                 patch.object(models, "DATA", self.directory), \
+                patch.object(models, "SHIPPED", self.directory), \
                 patch.dict(object_models.os.environ, {"GITHUB_ACTIONS": "", "GITHUB_STEP_SUMMARY": "", **(env or {})}), \
                 contextlib.redirect_stdout(io.StringIO()) as out, contextlib.redirect_stderr(io.StringIO()) as err:
             return object_models.main([str(arg) for arg in args]), out.getvalue() + err.getvalue()

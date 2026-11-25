@@ -13,7 +13,9 @@ import re
 from typing import Iterable, Optional
 
 ROOT = Path(__file__).resolve().parents[2]
-DATA = ROOT / "support/ObjectModels"
+# Inputs stay with the tool; only the generated Lua belongs to the addon.
+DATA = Path(__file__).resolve().parent / "data"
+SHIPPED = ROOT / "support/ObjectModels"
 
 # One letter per flavor keeps the flavors column of sources.tsv readable.
 FLAVOR_LETTERS = {"Vanilla": "V", "TBC": "T", "Wrath": "W", "Cata": "C", "Mists": "M", "Forever": "F"}
@@ -395,17 +397,17 @@ def render(data: ModelData, flavor: str) -> str:
     return "\n".join([*lines, "]]"]) + "\n"
 
 
-def lua_path(flavor: str, data: Path = DATA) -> Path:
-    return data / (flavor + ".lua")
+def lua_path(flavor: str, shipped: Path = SHIPPED) -> Path:
+    return shipped / (flavor + ".lua")
 
 
-def write_files(data: ModelData, changed: dict[Path, str], directory: Path = DATA) -> list[Path]:
+def write_files(data: ModelData, changed: dict[Path, str], shipped: Path = SHIPPED) -> list[Path]:
     """Write the changed inputs and the Lua generated from them.
 
     `data` is already validated and everything is rendered first, so bad input cannot leave
     half-written files. LF on every platform keeps contributors' files identical.
     """
-    outputs = {**changed, **{lua_path(flavor, directory): render(data, flavor) for flavor in FLAVORS}}
+    outputs = {**changed, **{lua_path(flavor, shipped): render(data, flavor) for flavor in FLAVORS}}
     for path, text in outputs.items():
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_bytes(text.encode("utf-8"))

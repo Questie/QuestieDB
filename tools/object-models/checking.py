@@ -25,18 +25,18 @@ class FlavorReport:
     details: dict[str, Any] = field(default_factory=dict)
 
 
-def check(data: ModelData, composed: Composed, data_dir: Path) -> dict[str, FlavorReport]:
+def check(data: ModelData, composed: Composed, shipped: Path) -> dict[str, FlavorReport]:
     """`data` is already validated; what remains is the shipped Lua and the database."""
-    return {flavor: _check_flavor(data, flavor, composed, data_dir) for flavor in composed}
+    return {flavor: _check_flavor(data, flavor, composed, shipped) for flavor in composed}
 
 
-def _check_flavor(data: ModelData, flavor: str, composed: Composed, data_dir: Path) -> FlavorReport:
+def _check_flavor(data: ModelData, flavor: str, composed: Composed, shipped: Path) -> FlavorReport:
     report = FlavorReport()
     objects = composed[flavor]
 
     # The committed Lua must be exactly what the committed sources produce. Read as text: a
     # Windows checkout may hold CRLF.
-    path = lua_path(flavor, data_dir)
+    path = lua_path(flavor, shipped)
     if not path.is_file() or path.read_text(encoding="utf-8") != render(data, flavor):
         report.errors.append("%s does not match its sources; run `questiedb object-models write`" % path.name)
 

@@ -57,7 +57,7 @@ Correction constants were extracted from Questie itself, not copied from a proto
 
 ## Object models
 
-`support/ObjectModels/sources.tsv` records display IDs per object and source. It was seeded on
+`tools/object-models/data/sources.tsv` records display IDs per object and source. It was seeded on
 November 25, 2026 from:
 
 | Column | Origin | License |

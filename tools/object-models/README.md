@@ -1,21 +1,22 @@
 # Object models
 
 Maintains which 3D model each game object has, per flavor. The game client cannot be asked for
-an object's model, so QuestieDB has to know it. Shipped data lives in `support/ObjectModels/`;
-see [support data](../../docs/support-data.md#object-models) for the runtime side and
-[ADR 0019](../../docs/adr/0019-object-models-as-support-data.md) for the reasons.
+an object's model, so QuestieDB has to know it. The inputs live here, in `data/`; the tool writes
+the Lua modules that the addon loads. See [support data](../../docs/support-data.md#object-models)
+for the runtime side and [ADR 0019](../../docs/adr/0019-object-models-as-support-data.md) for the
+reasons.
 
 No command uses the network. Generation and tests need only the committed files.
 
-## Files in `support/ObjectModels/`
+## Files
 
 | File | Written by | Holds |
 | --- | --- | --- |
-| `sources.tsv` | `import` | What every source says: one row per object and name, one column per source |
-| `manual.tsv` | you | Reviewed decisions. They win over every source |
-| `hidden.tsv` | you | Model files that show nothing useful |
-| `displays/<Flavor>.tsv` | `displays` | The client's `GameObjectDisplayInfo`, as one kind and one ID per display |
-| `<Flavor>.lua` | `write` | The shipped module, generated from the files above |
+| `data/sources.tsv` | `import` | What every source says: one row per object and name, one column per source |
+| `data/manual.tsv` | you | Reviewed decisions. They win over every source |
+| `data/hidden.tsv` | you | Model files that show nothing useful |
+| `data/displays/<Flavor>.tsv` | `displays` | The client's `GameObjectDisplayInfo`, as one kind and one ID per display |
+| `support/ObjectModels/<Flavor>.lua` | `write` | The shipped module, generated from the files above |
 
 Objects point to a *display ID*; the flavor's display table turns that into a model file, a
 creature, an item, or nothing. Newer clients give creature and item displays a FileDataID too,

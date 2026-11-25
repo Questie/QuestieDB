@@ -87,8 +87,9 @@ Read it through that function: the text format is internal.
 An object has no entry when it is displayed as a creature or an item, when its model shows
 nothing (`hidden.tsv`), when `manual.tsv` says it has none, or when no source knows its model.
 
-The TSV files beside the modules are the source of truth and are not packaged. Update them with
-[`questiedb object-models`](../tools/object-models/README.md), never by editing a module.
+The modules are generated from the TSV files in `tools/object-models/data`, which are the source of
+truth. Update those with [`questiedb object-models`](../tools/object-models/README.md), never by
+editing a module.
 
 ## Maintaining inputs
 

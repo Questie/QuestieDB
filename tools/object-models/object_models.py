@@ -58,7 +58,7 @@ def composed_objects(flavors: list[str]) -> importing.Composed:
 
 
 def run_write() -> None:
-    _print_written(models.write_files(models.load(models.DATA), {}, models.DATA))
+    _print_written(models.write_files(models.load(models.DATA), {}, models.SHIPPED))
 
 
 def run_import(source: str, path: Path) -> None:
@@ -66,7 +66,7 @@ def run_import(source: str, path: Path) -> None:
     claims = importing.read_source(path, source)
     rows, result = importing.merge(data.rows, composed_objects(list(models.FLAVORS)), source, claims)
     updated = models.ModelData(rows, data.manual, data.hidden, data.displays)
-    written = models.write_files(updated, {models.DATA / "sources.tsv": models.render_sources(rows)}, models.DATA)
+    written = models.write_files(updated, {models.DATA / "sources.tsv": models.render_sources(rows)}, models.SHIPPED)
 
     # The full list is for review; names differ far more often than anyone wants to scroll.
     refused = OUTPUT / ("refused-%s.tsv" % source)
@@ -91,7 +91,7 @@ def run_displays(flavor: str, build: str, path: Path) -> None:
     before, after = data.displays[flavor].by_id, importing.read_display_info(path, build)
     updated = models.ModelData(data.rows, data.manual, data.hidden, {**data.displays, flavor: after})
     target = models.DATA / "displays" / (flavor + ".tsv")
-    written = models.write_files(updated, {target: models.render_displays(after)}, models.DATA)
+    written = models.write_files(updated, {target: models.render_displays(after)}, models.SHIPPED)
     print("%s: %s -> %s, %d displays added, %d removed, %d changed" % (
         flavor, data.displays[flavor].build, build, len(set(after.by_id) - set(before)),
         len(set(before) - set(after.by_id)),
@@ -100,7 +100,7 @@ def run_displays(flavor: str, build: str, path: Path) -> None:
 
 
 def run_check(flavors: list[str]) -> int:
-    reports = checking.check(models.load(models.DATA), composed_objects(flavors), models.DATA)
+    reports = checking.check(models.load(models.DATA), composed_objects(flavors), models.SHIPPED)
     OUTPUT.mkdir(parents=True, exist_ok=True)
     target = OUTPUT / "report.json"
     target.write_text(json.dumps({flavor: vars(report) for flavor, report in reports.items()}, indent=1) + "\n",
