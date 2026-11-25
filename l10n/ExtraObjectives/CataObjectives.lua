@@ -2690,18 +2690,6 @@ local cataObjectiveLocales = {
         ["zhCN"] = "召唤黑暗烈焰",
         ["zhTW"] = false,
     },
-    ["Summon Myzrael"] = {
-        ["enUS"] = true,
-        ["deDE"] = "Beschwöre Myzrael",
-        ["esES"] = false,
-        ["esMX"] = false,
-        ["frFR"] = false,
-        ["koKR"] = false,
-        ["ptBR"] = false,
-        ["ruRU"] = false,
-        ["zhCN"] = "召唤密斯莱尔",
-        ["zhTW"] = false,
-    },
     ["Talk to Korrah"] = {
         ["enUS"] = true,
         ["deDE"] = "Sprich mit Korrah",
