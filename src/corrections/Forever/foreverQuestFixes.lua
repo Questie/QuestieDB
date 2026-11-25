@@ -346,6 +346,9 @@ function ForeverQuestFixes:Load()
         [1638] = { -- A Warrior's Training
             [questKeys.nextQuestInChain] = 0,
         },
+        [1639] = { -- Bartleby the Drunk
+            [questKeys.breadcrumbs] = {},
+        },
         [1657] = { -- Stinking Up Southshore
             [questKeys.objectives] = {{{15415,nil,Questie.ICON_TYPE_EVENT}}},
         },
@@ -1189,6 +1192,12 @@ function ForeverQuestFixes:Load()
         [86577] = {
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
+        [86611] = { -- Stag Lord's Bauble
+            [questKeys.exclusiveTo] = {86612},
+        },
+        [86612] = { -- Stag Lord's Bauble
+            [questKeys.exclusiveTo] = {86611},
+        },
         [86615] = { -- Treaty Obligations
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- wowhead
         },
@@ -1291,6 +1300,9 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {88821},
             [questKeys.nextQuestInChain] = 88884,
         },
+        [89001] = { -- Home on the Range
+            [questKeys.exclusiveTo] = {91488},
+        },
         [89013] = { -- Gettin' Buzzed
             [questKeys.preQuestSingle] = {89001,91488},
             [questKeys.exclusiveTo] = {91608},
@@ -1362,6 +1374,9 @@ function ForeverQuestFixes:Load()
         [91317] = { -- The Tarnished
             [questKeys.preQuestSingle] = {91294},
             [questKeys.objectives] = {nil,nil,{{270435}},nil,{{{259434},259434},{{259433},259433}}},
+        },
+        [91488] = { -- Home on the Range
+            [questKeys.exclusiveTo] = {89001},
         },
         [91497] = { -- Seals of the Sin'dorei
             [questKeys.preQuestSingle] = {3505},
@@ -1727,9 +1742,11 @@ function ForeverQuestFixes:Load()
         },
         [92345] = { -- Beneath Nordrassil
             [questKeys.nextQuestInChain] = 92344,
+            [questKeys.exclusiveTo] = {92346},
         },
         [92346] = { -- Beneath Nordrassil
             [questKeys.nextQuestInChain] = 92343,
+            [questKeys.exclusiveTo] = {92345},
         },
         [92401] = { -- A Frightened Request
             [questKeys.triggerEnd] = {"Investigate the disappearance of Edward Heartweaver in the Ruins of Lordaeron.",{[zoneIDs.RUINS_OF_LORDAERON] = {{-1,-1}}}},
@@ -2440,8 +2457,9 @@ function ForeverQuestFixes:Load()
         [93568] = { -- Partially Digested Collar
             [questKeys.requiredRaces] = raceIDs.NONE, -- wowhead
         },
-        [93572] = {
-            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        [93572] = { -- To Serve The Draenei
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.preQuestSingle] = {93685},
         },
         [93574] = { -- Corpsefeeder's Carapace
             [questKeys.requiredRaces] = raceIDs.NONE, -- wowhead
@@ -2535,7 +2553,8 @@ function ForeverQuestFixes:Load()
             [questKeys.objectives] = {{{256247,nil,Questie.ICON_TYPE_TALK}}},
         },
         [93747] = { -- Violence Into Verdure
-            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.preQuestSingle] = {95568},
         },
         [93759] = { -- The Bounty of Nature
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
@@ -4132,8 +4151,9 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {95123},
         },
         [95183] = { -- Step One: Rock
-            [questKeys.requiredRaces] = raceIDs.ALL_HORDE, -- wowhead
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.nextQuestInChain] = 96026,
+            [questKeys.preQuestSingle] = {95424},
         },
         [95184] = { -- The Sharpest of Blades
             [questKeys.preQuestSingle] = {95156},
@@ -4987,10 +5007,17 @@ function ForeverQuestFixes:Load()
         [96369] = { -- Bad News for Folkar
             [questKeys.preQuestSingle] = {95454},
         },
+        [96376] = { -- State Secrets
+            [questKeys.exclusiveTo] = {96377,96379},
+        },
+        [96377] = { -- State Secrets
+            [questKeys.exclusiveTo] = {96376,96379},
+        },
         [96379] = { -- State Secrets
             [questKeys.requiredLevel] = 48,
             [questKeys.questLevel] = 53,
-            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.exclusiveTo] = {96376,96377},
         },
         [96381] = { -- A Bit of Wet Work
             [questKeys.preQuestSingle] = {95198},
