@@ -84,6 +84,11 @@ jobs:
         working-directory: QuestieDB
         run: lua5.1 validators/run.lua "$FLAVOR"
 
+      - name: Report incomplete Forever entities
+        if: matrix.check == 'verify' && matrix.flavor == 'Forever'
+        working-directory: QuestieDB
+        run: lua5.1 validators/report-incomplete.lua Forever
+
       - name: Upload validator diagnostics
         if: always() && matrix.check == 'verify'
         uses: actions/upload-artifact@v7
