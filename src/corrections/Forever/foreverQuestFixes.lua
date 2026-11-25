@@ -4153,7 +4153,6 @@ function ForeverQuestFixes:Load()
         [95183] = { -- Step One: Rock
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.nextQuestInChain] = 96026,
-            [questKeys.preQuestSingle] = {95424},
         },
         [95184] = { -- The Sharpest of Blades
             [questKeys.preQuestSingle] = {95156},
