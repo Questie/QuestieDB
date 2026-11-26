@@ -5121,11 +5121,15 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {95285},
         },
         [96335] = { -- The Man in the Iron Chains
-            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+            [questKeys.requiredLevel] = 48,
+            [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [96337] = { -- More Valuable Than Gold
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
             [questKeys.preQuestSingle] = {96335},
+        },
+        [96339] = { -- Legacy Reward: Replica Ironforge Air Rifle
+            [questKeys.requiredLevel] = 1,
         },
         [96369] = { -- Bad News for Folkar
             [questKeys.preQuestSingle] = {95454},
@@ -5144,6 +5148,9 @@ function ForeverQuestFixes:Load()
         },
         [96381] = { -- A Bit of Wet Work
             [questKeys.preQuestSingle] = {95198},
+        },
+        [96383] = { -- Legacy Reward: Spectral Bear Cub
+            [questKeys.requiredLevel] = 1,
         },
         [96390] = { -- Nip 'Em in the Bud
             [questKeys.preQuestSingle] = {96392},
@@ -5187,7 +5194,8 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {92100},
         },
         [96558] = { -- Soldier's Solace
-            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+            [questKeys.requiredLevel] = 56,
+            [questKeys.requiredRaces] = raceIDs.NONE,
             [questKeys.preQuestSingle] = {93567},
         },
         [96559] = { -- Supply Drop
@@ -5195,7 +5203,8 @@ function ForeverQuestFixes:Load()
             [questKeys.nextQuestInChain] = 93383,
         },
         [96561] = { -- Last Wishes
-            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+            [questKeys.requiredLevel] = 56,
+            [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [96602] = { -- More Unstable Magic
             [questKeys.preQuestSingle] = {96603},
@@ -5347,7 +5356,8 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {96785},
         },
         [96796] = { -- Woods Workshop
-            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+            [questKeys.requiredLevel] = 54,
+            [questKeys.requiredRaces] = raceIDs.NONE,
             [questKeys.preQuestSingle] = {94479},
         },
         [96797] = { -- The Orphan
@@ -5367,6 +5377,12 @@ function ForeverQuestFixes:Load()
         },
         [96812] = { -- Thicker Than Water
             [questKeys.preQuestSingle] = {96799},
+        },
+        [96830] = { -- Farsight Guided
+            [questKeys.requiredLevel] = 54,
+        },
+        [96833] = { -- Venom Maws
+            [questKeys.requiredLevel] = 54,
         },
         [96873] = { -- A Pain in the Neck
             [questKeys.requiredSkill] = {profKeys.ENCHANTING, 1},
@@ -5393,13 +5409,30 @@ function ForeverQuestFixes:Load()
             [questKeys.nextQuestInChain] = 96896,
         },
         [96912] = { -- Field of Honor: Week 1
-            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.zoneOrSort] = zoneIDs.GADGETZAN,
         },
-        [96913] = {
-            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        [96913] = { -- Field of Honor: Week 2
+            [questKeys.requiredLevel] = 60,
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.zoneOrSort] = zoneIDs.WARSONG_GULCH,
+        },
+        [96914] = { -- Field of Honor: Week 3
+            [questKeys.zoneOrSort] = zoneIDs.WARSONG_GULCH,
+        },
+        [96915] = { -- Field of Honor: Week 4
+            [questKeys.name] = "Field of Honor: Week 4",
+            [questKeys.requiredLevel] = 60,
+            [questKeys.questLevel] = 60,
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.startedBy] = {{267525}},
+            [questKeys.finishedBy] = {{267525}},
+            [questKeys.objectivesText] = {"Complete 3 Arathi Basin battles."},
+            [questKeys.zoneOrSort] = zoneIDs.ARATHI_BASIN,
         },
         [96930] = { -- The Capricious Corvid
-            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+            [questKeys.requiredLevel] = 54,
+            [questKeys.requiredRaces] = raceIDs.NONE,
             [questKeys.preQuestSingle] = {93773},
             [questKeys.nextQuestInChain] = 96931,
         },
@@ -5408,25 +5441,30 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {96930},
         },
         [96939] = { -- The Balance of Life and Death
-            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+            [questKeys.requiredLevel] = 54,
+            [questKeys.requiredRaces] = raceIDs.NONE,
             [questKeys.preQuestSingle] = {96931},
             [questKeys.nextQuestInChain] = 92317,
         },
         [96957] = { -- Bone Sweet Bone
-            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+            [questKeys.requiredLevel] = 54,
+            [questKeys.requiredRaces] = raceIDs.NONE,
             [questKeys.preQuestSingle] = {96939},
         },
         [96959] = { -- Blademaster's Bonfires
-            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+            [questKeys.requiredLevel] = 56,
+            [questKeys.requiredRaces] = raceIDs.NONE,
             [questKeys.nextQuestInChain] = 96983,
         },
         [96964] = { -- A Clever Creature
-            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+            [questKeys.requiredLevel] = 54,
+            [questKeys.requiredRaces] = raceIDs.NONE,
             [questKeys.preQuestSingle] = {96931},
             [questKeys.nextQuestInChain] = 92335,
         },
         [96971] = { -- To Outfox a Demon
-            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+            [questKeys.requiredLevel] = 54,
+            [questKeys.requiredRaces] = raceIDs.NONE,
             [questKeys.preQuestSingle] = {96964},
         },
         [96978] = { -- Violent Venison
@@ -5434,7 +5472,8 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {96931},
         },
         [96979] = { -- Sacred Refreshment
-            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+            [questKeys.requiredLevel] = 54,
+            [questKeys.requiredRaces] = raceIDs.NONE,
             [questKeys.nextQuestInChain] = 96991,
         },
         [96982] = { -- Your First Riding Kodo
@@ -5457,7 +5496,8 @@ function ForeverQuestFixes:Load()
             [questKeys.exclusiveTo] = {95511,96982,96994,96996,96997,97017,97045,97046,97171,97446,98166,99326},
         },
         [96991] = { -- Trail Assist
-            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+            [questKeys.requiredLevel] = 56,
+            [questKeys.requiredRaces] = raceIDs.NONE,
             [questKeys.preQuestSingle] = {96979},
         },
         [96992] = { -- Resupply
@@ -5476,11 +5516,12 @@ function ForeverQuestFixes:Load()
         [96998] = { -- Tribal Colors
             [questKeys.nextQuestInChain] = 96999,
         },
-        [96999] = { -- Wrap Return https://wowhead.com/forever/quest=96999
+        [96999] = { -- Wrap Return
             [questKeys.preQuestSingle] = {96998},
         },
         [97009] = { -- Maerion's Misery
-            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+            [questKeys.requiredLevel] = 56,
+            [questKeys.requiredRaces] = raceIDs.NONE,
             [questKeys.nextQuestInChain] = 97010,
         },
         [97010] = { -- Blind Vengeance
@@ -5520,6 +5561,7 @@ function ForeverQuestFixes:Load()
         [97065] = { -- Tip the Scales - Keefer's Angelfish
             [questKeys.finishedBy_add] = {{267806}},
             [questKeys.questLevel] = 60,
+            [questKeys.requiredLevel] = 1,
             [questKeys.requiredRaces] = raceIDs.NONE,
             [questKeys.zoneOrSort] = sortKeys.FISHING,
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
@@ -5528,6 +5570,7 @@ function ForeverQuestFixes:Load()
             [questKeys.name] = "Tip the Scales - Brownell's Blue Striped Racer",
             [questKeys.finishedBy_add] = {{267806}},
             [questKeys.questLevel] = 60,
+            [questKeys.requiredLevel] = 1,
             [questKeys.requiredRaces] = raceIDs.NONE,
             [questKeys.zoneOrSort] = sortKeys.FISHING,
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
@@ -5536,6 +5579,7 @@ function ForeverQuestFixes:Load()
             [questKeys.name] = "Tip the Scales - Dezian Queenfish",
             [questKeys.finishedBy_add] = {{267806}},
             [questKeys.questLevel] = 60,
+            [questKeys.requiredLevel] = 1,
             [questKeys.requiredRaces] = raceIDs.NONE,
             [questKeys.zoneOrSort] = sortKeys.FISHING,
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
@@ -5546,6 +5590,11 @@ function ForeverQuestFixes:Load()
         [97130] = { -- Ancient Gurubashi Secrets
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- wowhead
         },
+        [97169] = { -- The Darkreaver Menace
+            [questKeys.requiredLevel] = 58,
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.requiredClasses] = classIDs.SHAMAN,
+        },
         [97170] = { -- Learning to Ride
             [questKeys.exclusiveTo] = {97018,97074,97188,97194,97200,97203,97204,97205},
         },
@@ -5555,8 +5604,10 @@ function ForeverQuestFixes:Load()
         [97176] = {
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
-        [97178] = {
-            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        [97178] = { -- Ott of Tarren Mill
+            [questKeys.requiredLevel] = 60,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.requiredClasses] = classIDs.PALADIN,
         },
         [97180] = {
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
@@ -5651,11 +5702,13 @@ function ForeverQuestFixes:Load()
         [97263] = { -- Your Package Has Arrived
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
-        [97270] = {
-            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        [97270] = { -- Brawl at the Maul
+            [questKeys.requiredLevel] = 55,
+            [questKeys.requiredRaces] = raceIDs.NONE,
         },
-        [97271] = {
-            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        [97271] = { -- Maul or Nothing!
+            [questKeys.requiredLevel] = 55,
+            [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [97275] = { -- Whuut's the Rush
             [questKeys.preQuestSingle] = {97242},
@@ -5724,7 +5777,9 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestGroup] = {97328,97331},
         },
         [97378] = { -- Mirrorscale
+            [questKeys.requiredLevel] = 45,
             [questKeys.preQuestSingle] = {1205},
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
         },
         [97386] = { -- The Offense of Grom'gol
             [questKeys.preQuestSingle] = {569},
@@ -5732,11 +5787,12 @@ function ForeverQuestFixes:Load()
         [97404] = { -- Too Bad to Bear
             [questKeys.preQuestSingle] = {97264},
         },
-        [97412] = {
-            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        [97412] = { -- Just Compensation
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
         },
         [97413] = { -- Anthion's Parting Words
-            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+            [questKeys.requiredLevel] = 58,
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
         },
         [97446] = { -- Your First Riding Kodo
             [questKeys.exclusiveTo] = {95511,96982,96989,96994,96996,96997,97017,97045,97046,97171,98166,99326},
@@ -6259,7 +6315,8 @@ function ForeverQuestFixes:Load()
             [questKeys.objectives] = {nil,nil,nil,nil,nil,{{1259799},{20580}}},
         },
         [97986] = { -- Argent Arbiter
-            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+            [questKeys.requiredLevel] = 53,
+            [questKeys.requiredRaces] = raceIDs.NONE,
             [questKeys.preQuestSingle] = {8152},
         },
         [97987] = { -- Stormwind's High Order
@@ -6298,6 +6355,8 @@ function ForeverQuestFixes:Load()
         [98072] = { -- Crocs of the Sky
             [questKeys.preQuestSingle] = {471},
             [questKeys.nextQuestInChain] = 98240,
+            [questKeys.requiredLevel] = 19,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
         },
         [98094] = { -- Scout Support
             [questKeys.preQuestSingle] = {528},
@@ -6311,7 +6370,8 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {98067},
         },
         [98109] = { -- Bleeding Edge
-            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+            [questKeys.requiredLevel] = 53,
+            [questKeys.requiredRaces] = raceIDs.NONE,
             [questKeys.preQuestSingle] = {97986},
         },
         [98155] = { -- Pristine Pesterhide Pelts
@@ -6341,6 +6401,7 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [98208] = { -- Bloom of the Heavens
+            [questKeys.requiredLevel] = 22,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.nextQuestInChain] = 98209,
         },
@@ -7008,7 +7069,8 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredMinRep] = {factionIDs.THERAMORE_EXPEDITIONARY_FORCE, 3000}, -- big assumption here. update when confirmed/disproved
         },
         [98919] = { -- Conquering the Island
-            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+            [questKeys.requiredLevel] = 50,
+            [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [99046] = { -- The Lost Runner
             [questKeys.breadcrumbForQuestId] = 99047,
@@ -7217,11 +7279,13 @@ function ForeverQuestFixes:Load()
         [99203] = { -- Swift as the Wind
             [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
         },
-        [99233] = {
-            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        [99233] = { -- Brawl at the Maul
+            [questKeys.requiredLevel] = 55,
+            [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [99234] = { -- Brawl at the Maul
-            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+            [questKeys.requiredLevel] = 55,
+            [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [99257] = { -- A Heart of Crystal
             [questKeys.requiredRaces] = raceIDs.NONE, -- wowhead
@@ -7258,8 +7322,9 @@ function ForeverQuestFixes:Load()
             [questKeys.questFlags] = 8,
             [questKeys.reputationReward] = {{factionIDs.THUNDER_BLUFF, 100}},
         },
-        [99435] = {
-            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        [99435] = { -- The Great Masquerade
+            [questKeys.requiredLevel] = 50,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.preQuestSingle] = {6402},
             [questKeys.exclusiveTo] = {6403},
         },
