@@ -438,6 +438,12 @@ function ForeverObjectFixes:Load()
             [objectKeys.spawns] = {[zoneIDs.CITY_OF_DALARAN] = {{-1,-1}}},
             [objectKeys.zoneID] = zoneIDs.CITY_OF_DALARAN,
         },
+        [656809] = { -- Pile of Nails
+            [objectKeys.name] = "Pile of Nails",
+        },
+        [656812] = { -- Bracket
+            [objectKeys.name] = "Bracket",
+        },
         [658924] = { -- Mailbox
             [objectKeys.questStarts_remove] = {5725},
         },
@@ -469,6 +475,9 @@ function ForeverObjectFixes:Load()
             [objectKeys.name] = "Kuramaa's Stump",
             [objectKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{42.35,68.82}}},
             [objectKeys.zoneID] = zoneIDs.ZEPHRAS_ISLE,
+        },
+        [661516] = { -- Thoroughly Scavenged Supplies
+            [objectKeys.spawns] = {[zoneIDs.STRANGLETHORN_VALE] = {{31.47,12.88}}},
         },
         [664122] = { -- Gozwin's Mechanic's Log
             [objectKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{27.27,62.86}}},
@@ -521,6 +530,15 @@ function ForeverObjectFixes:Load()
         },
         [676059] = { -- Ancient Hilt
             [objectKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{58.16,24.01}}},
+        },
+        [678585] = { -- Essene's Waterskin
+            [objectKeys.name] = "Essene's Waterskin",
+        },
+        [678590] = { -- Essene's Spellbook
+            [objectKeys.name] = "Essene's Spellbook",
+        },
+        [687845] = { -- Essene's Necklace
+            [objectKeys.name] = "Essene's Necklace",
         },
         [693669] = { -- Weapon Piece
             [objectKeys.spawns] = {[zoneIDs.DUROTAR] = {{60.11,44.8}}},

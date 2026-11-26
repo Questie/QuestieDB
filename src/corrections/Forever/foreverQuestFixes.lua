@@ -529,7 +529,7 @@ function ForeverQuestFixes:Load()
         },
         [7790] = { -- River Ends
             [questKeys.name] = "River Ends",
-            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+            [questKeys.requiredRaces] = raceIDs.NONE,
             [questKeys.nextQuestInChain] = 8152,
         },
         [8105] = { -- The Battle for Arathi Basin!
@@ -539,10 +539,12 @@ function ForeverQuestFixes:Load()
             [questKeys.exclusiveTo] = {8105,8166,8167,8168,8169,8170,8171},
         },
         [8152] = { -- Rapid Escape
+            [questKeys.name] = "Rapid Escape",
+            [questKeys.requiredLevel] = 53,
             [questKeys.preQuestSingle] = {7790},
             [questKeys.nextQuestInChain] = 97986,
-            [questKeys.name] = "Rapid Escape",
-            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.zoneOrSort] = zoneIDs.EASTERN_PLAGUELANDS,
         },
         [8166] = { -- The Battle for Arathi Basin!
             [questKeys.exclusiveTo] = {8105,8120,8167,8168,8169,8170,8171},
@@ -586,13 +588,19 @@ function ForeverQuestFixes:Load()
         },
         [60860] = { -- Your Reward has Arrived!
             [questKeys.name] = "Your Reward has Arrived!",
+            [questKeys.requiredLevel] = 1,
+            [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = raceIDs.NONE,
             [questKeys.exclusiveTo] = {60870},
+            [questKeys.zoneOrSort] = sortKeys.SPECIAL,
         },
         [60870] = { -- A Special Gift
-            [questKeys.name] = "A Special Gift", -- google translate
+            [questKeys.name] = "A Special Gift",
+            [questKeys.requiredLevel] = 1,
+            [questKeys.questLevel] = 60,
             [questKeys.requiredRaces] = raceIDs.NONE,
             [questKeys.exclusiveTo] = {60860},
+            [questKeys.zoneOrSort] = sortKeys.SPECIAL,
         },
         [76156] = { -- Stalk With The Earthmother
             [questKeys.requiredRaces] = raceIDs.TAUREN,
@@ -1093,8 +1101,11 @@ function ForeverQuestFixes:Load()
         [84171] = {
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
-        [84198] = {
-            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        [84198] = { -- Saving the Best for Last
+            [questKeys.requiredLevel] = 58,
+            [questKeys.questLevel] = 60,
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.requiredClasses] = classIDs.NONE,
         },
         [84211] = {
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
@@ -4852,7 +4863,8 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {96084},
         },
         [96088] = { -- In Demand - Titan Relics
-            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+            [questKeys.name] = "In Demand - Titan Relics",
+            [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [96101] = { -- The Great Outdoors
             [questKeys.breadcrumbs] = {96638},
@@ -4919,6 +4931,7 @@ function ForeverQuestFixes:Load()
         [96136] = { -- Call of Air
             [questKeys.exclusiveTo] = {1531,1532},
             [questKeys.nextQuestInChain] = 79360,
+            [questKeys.requiredClasses] = classIDs.SHAMAN,
         },
         [96139] = { -- The Valor Family
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
@@ -5592,7 +5605,7 @@ function ForeverQuestFixes:Load()
             [questKeys.nextQuestInChain] = 97331,
         },
         [97331] = { -- Zimmix's Great Escape
-            [questKeys.triggerEnd] = {"Escort Zimmix Sputterspark to safety", {[zoneIDs.STRANGLETHORN_VALE] = {{26.9,11.4}}}},
+            [questKeys.triggerEnd] = {"Escort Zimmix Sputterspark to safety", {[zoneIDs.STRANGLETHORN_VALE] = {{26.85,11.42}}}},
             [questKeys.preQuestSingle] = {97329},
         },
         [97332] = { -- Twice Misplaced Trust
