@@ -144,12 +144,18 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {},
             [questKeys.preQuestGroup] = {464,98221},
         },
+        [469] = { -- Daily Delivery
+            [questKeys.breadcrumbForQuestId] = 484,
+        },
         [479] = { -- Ambermill Investigations
             [questKeys.nextQuestInChain] = 0,
         },
         [480] = { -- The Weaver
             [questKeys.preQuestSingle] = {},
             [questKeys.preQuestGroup] = {479,95981},
+        },
+        [484] = { -- Young Crocolisk Skins
+            [questKeys.breadcrumbs] = {469},
         },
         [490] = { -- Bounty: Gnarlpine Furbolg
             [questKeys.name] = "Bounty: Gnarlpine Furbolg",
@@ -2520,9 +2526,11 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {92102},
         },
         [93568] = { -- Partially Digested Collar
-            [questKeys.requiredRaces] = raceIDs.NONE, -- wowhead
+            [questKeys.requiredLevel] = 35,
+            [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [93572] = { -- To Serve The Draenei
+            [questKeys.requiredLevel] = 45,
             [questKeys.requiredRaces] = raceIDs.NONE,
             [questKeys.preQuestSingle] = {93685},
         },
