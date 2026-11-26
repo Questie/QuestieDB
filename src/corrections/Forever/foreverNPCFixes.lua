@@ -272,7 +272,9 @@ function ForeverNpcFixes:Load()
             [npcKeys.spawns] = {[zoneIDs.STORMWIND_CITY] = {{68,28.9}}},
             [npcKeys.zoneID] = zoneIDs.STORMWIND_CITY,
         },
-        [18232] = { -- Field Repair Bot 74A
+        [18232] = { -- Nimrida
+            [npcKeys.name] = "Nimrida",
+            [npcKeys.subName] = "Keyanomir's Minion",
             [npcKeys.spawns] = {},
         },
         [28687] = { -- Amisi Azuregaze
@@ -928,6 +930,9 @@ function ForeverNpcFixes:Load()
         [260801] = { -- Thicket Hunter
             [npcKeys.spawns] = {[zoneIDs.EXCAVATION_SITE_WETLANDS] = {{-1,-1}}},
             [npcKeys.zoneID] = zoneIDs.EXCAVATION_SITE_WETLANDS,
+        },
+        [261025] = { -- Invisible Stalker
+            [npcKeys.name] = "Invisible Stalker",
         },
         [261306] = { -- Faldrim Anvilmar
             [npcKeys.spawns] = {[zoneIDs.THE_HALL_OF_THANES] = {{-1,-1}}},
