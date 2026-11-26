@@ -811,6 +811,9 @@ function ForeverNpcFixes:Load()
         [256996] = { -- Al'Aketh Warrior
             [npcKeys.friendlyToFaction] = {}, -- Clear incorrect trace data. These are hostile
         },
+        [257001] = { -- Old Rot-Chum
+            [npcKeys.spawns] = {[zoneIDs.RIVERGLADES] = {{77.22,72.78}}},
+        },
         [257003] = { -- Ishlee Breezewhisper
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{59.63,76.06}}},
         },
@@ -865,6 +868,9 @@ function ForeverNpcFixes:Load()
         [257808] = { -- Braldir Ashmantle
             [npcKeys.spawns] = {[zoneIDs.LOCH_MODAN] = {{32.17,65.97}}},
         },
+        [257861] = { -- Admiral Lamora
+            [npcKeys.spawns] = {[zoneIDs.RIVERGLADES] = {{90.6,30.32}}},
+        },
         [258113] = { -- Ingrid Dunwald
             [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{47.58,51.95}}},
         },
@@ -916,6 +922,15 @@ function ForeverNpcFixes:Load()
         [259431] = { -- Rudolph Gelhardt
             [npcKeys.spawns] = {[zoneIDs.TIRISFAL_GLADES] = {{11.51,64.18}}},
         },
+        [260211] = { -- Scoutmaster Vargas
+            [npcKeys.spawns] = {[zoneIDs.RIVERGLADES] = {{75.51,34.37}}},
+        },
+        [260235] = { -- Trapclaw
+            [npcKeys.spawns] = {[zoneIDs.RIVERGLADES] = {{84.38,51.2}}},
+        },
+        [260244] = { -- Monstrous Threshadon
+            [npcKeys.spawns] = {[zoneIDs.RIVERGLADES] = {{74.42,72.63}}},
+        },
         [260325] = { -- Shadetooth
             [npcKeys.spawns] = {[zoneIDs.EXCAVATION_SITE_WETLANDS] = {{-1,-1}}},
             [npcKeys.zoneID] = zoneIDs.EXCAVATION_SITE_WETLANDS,
@@ -955,9 +970,15 @@ function ForeverNpcFixes:Load()
         [262119] = { -- Corporal Adamore
             [npcKeys.spawns] = {[zoneIDs.THE_BARRENS] = {{41.8,15.76}}},
         },
+        [263315] = { -- Ombassa
+            [npcKeys.spawns] = {[zoneIDs.RIVERGLADES] = {{59.41,53.89}}},
+        },
         [263349] = { -- James Battlewing
             [npcKeys.spawns] = {[zoneIDs.STORMWIND_CITY] = {{81.19,38.74}}},
             [npcKeys.npcFlags] = npcFlags.GOSSIP + npcFlags.BATTLEMASTER,
+        },
+        [263369] = { -- G45-B4G
+            [npcKeys.spawns] = {[zoneIDs.RIVERGLADES] = {{68.25,48.68}}},
         },
         [263389] = { -- Enraged Apparition
             [npcKeys.spawns] = {[zoneIDs.THE_HALL_OF_THANES] = {{-1,-1}}},

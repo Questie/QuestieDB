@@ -3719,6 +3719,7 @@ function ForeverQuestFixes:Load()
         },
         [94556] = { -- Jom-jom's Escape
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE, -- wowhead
+            [questKeys.triggerEnd] = {"Help Jom-Jom reach Bolder'ok", {[zoneIDs.RIVERGLADES] = {{64.57,14.84}}}},
         },
         [94568] = { -- The Cult's True Plans
             [questKeys.preQuestSingle] = {92644},
@@ -4052,6 +4053,7 @@ function ForeverQuestFixes:Load()
         [94963] = { -- Biting the Hand
             [questKeys.requiredRaces] = raceIDs.NONE, -- wowhead
             [questKeys.preQuestSingle] = {94961},
+            [questKeys.triggerEnd] = {"Help Fuzzle escape Sunnyglade.", {[zoneIDs.RIVERGLADES] = {{41.62,47.73}}}},
         },
         [94964] = { -- Bloodmaster's Ring
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE, -- wowhead
@@ -4200,11 +4202,12 @@ function ForeverQuestFixes:Load()
         [95124] = { -- Admiral Lamora
             [questKeys.requiredRaces] = raceIDs.NONE, -- wowhead
             [questKeys.preQuestSingle] = {95123},
+            [questKeys.requiredSourceItems] = {268520},
         },
         [95125] = { -- Ott's Masterwork
             [questKeys.preQuestSingle] = {95111},
             [questKeys.nextQuestInChain] = 95126,
-            [questKeys.objectives] = {{{3539,nil,Questie.ICON_TYPE_EVENT}}}, -- Watch Ott forge the blade
+            [questKeys.objectives] = {{{3539,nil,Questie.ICON_TYPE_EVENT}}},
         },
         [95126] = { -- The Moonsilver Blade
             [questKeys.preQuestSingle] = {95125},
@@ -4212,7 +4215,7 @@ function ForeverQuestFixes:Load()
         },
         [95140] = { -- Old Fire-Eye
             [questKeys.preQuestSingle] = {95126},
-            [questKeys.objectives] = {{{259897}},nil,{{268484}}}, -- Old Fire-Eye + Moonsilver Blade
+            [questKeys.objectives] = {{{259897}},nil,{{268484}}},
         },
         [95144] = { -- Overseas Delivery
             [questKeys.requiredRaces] = raceIDs.NONE, -- wowhead
@@ -4232,14 +4235,16 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {92415},
         },
         [95162] = { -- Paletusk Harvesting
-            [questKeys.requiredRaces] = raceIDs.ALL_HORDE, -- wowhead
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
         },
         [95163] = { -- Drive Them Back
-            [questKeys.requiredRaces] = raceIDs.ALL_HORDE, -- wowhead
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.objectives] = {{{258331,nil,Questie.ICON_TYPE_INTERACT}}},
         },
         [95165] = { -- See Ya, Scallywags!
-            [questKeys.requiredRaces] = raceIDs.NONE, -- wowhead
+            [questKeys.requiredRaces] = raceIDs.NONE,
             [questKeys.preQuestSingle] = {95123},
+            [questKeys.objectives] = {nil,{{629425},{629426},{629427}}},
         },
         [95183] = { -- Step One: Rock
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
@@ -4322,8 +4327,9 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {95263},
         },
         [95267] = { -- The Monster Surfaces
-            [questKeys.requiredRaces] = raceIDs.NONE, -- wowhead
+            [questKeys.requiredRaces] = raceIDs.NONE,
             [questKeys.preQuestSingle] = {95261},
+            [questKeys.extraObjectives] = {{nil,Questie.ICON_TYPE_OBJECT,l10n("Use the Big Ball o' Bait"),0,{{"object",630533}}}},
         },
         [95273] = { -- Water of Hyjal
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
@@ -4747,6 +4753,7 @@ function ForeverQuestFixes:Load()
         [95951] = { -- Fetch 'n' Fletch
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE, -- wowhead
             [questKeys.nextQuestInChain] = 95955,
+            [questKeys.requiredSourceItems] = {271629},
         },
         [95955] = { -- Stick 'Em
             [questKeys.preQuestSingle] = {95951},
@@ -4925,8 +4932,9 @@ function ForeverQuestFixes:Load()
             [questKeys.nextQuestInChain] = 96067,
         },
         [96067] = { -- Rock 'em and Sock 'em
-            [questKeys.requiredRaces] = raceIDs.NONE, -- wowhead
+            [questKeys.requiredRaces] = raceIDs.NONE,
             [questKeys.preQuestSingle] = {96063},
+            [questKeys.objectives] = {{{263369}}},
         },
         [96075] = {
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified

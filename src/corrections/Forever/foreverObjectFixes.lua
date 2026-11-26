@@ -549,6 +549,26 @@ function ForeverObjectFixes:Load()
         [693674] = { -- Abandoned Dagger
             [objectKeys.spawns] = {[zoneIDs.DUROTAR] = {{58.85,44.35}}},
         },
+        [629425] = { -- Cannon Ammunition
+            [objectKeys.name] = "Cannon Ammunition",
+            [objectKeys.spawns] = {[zoneIDs.RIVERGLADES] = {{88.27,25.77}}},
+            [objectKeys.zoneID] = zoneIDs.RIVERGLADES,
+        },
+        [629426] = { -- Cannon Ammunition
+            [objectKeys.name] = "Cannon Ammunition",
+            [objectKeys.spawns] = {[zoneIDs.RIVERGLADES] = {{90.63,29.45}}},
+            [objectKeys.zoneID] = zoneIDs.RIVERGLADES,
+        },
+        [629427] = { -- Cannon Ammunition
+            [objectKeys.name] = "Cannon Ammunition",
+            [objectKeys.spawns] = {[zoneIDs.RIVERGLADES] = {{90.87,39.35}}},
+            [objectKeys.zoneID] = zoneIDs.RIVERGLADES,
+        },
+        [630533] = { -- Fresh Wreckage
+            [objectKeys.name] = "Fresh Wreckage",
+            [objectKeys.spawns] = {[zoneIDs.RIVERGLADES] = {{74.4,72.4}}},
+            [objectKeys.zoneID] = zoneIDs.RIVERGLADES,
+        },
         [694895] = { -- Glowing Crystal Fragment
             [objectKeys.spawns] = {[zoneIDs.TIRISFAL_GLADES] = {{9.74,69.43}}},
         },

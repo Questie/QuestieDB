@@ -17,6 +17,9 @@ function ForeverItemFixes:Load()
         [750] = { -- Tough Wolf Meat
             [itemKeys.npcDrops_remove] = {238425,238426,238427,247809},
         },
+        [769] = { -- Chunk of Boar Meat
+            [itemKeys.npcDrops_add] = {255851},
+        },
         [780] = { -- Torn Murloc Fin
             [itemKeys.npcDrops_remove] = {202060},
         },
@@ -173,6 +176,9 @@ function ForeverItemFixes:Load()
         },
         [270888] = { -- Advertising License Application
             [itemKeys.startQuest] = 95816,
+        },
+        [271629] = { -- Wood Bundle
+            [itemKeys.class] = itemClasses.QUEST,
         },
         [274286] = { -- Durgen Dirgehammer's Head
             [itemKeys.npcDrops] = {261319},
