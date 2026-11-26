@@ -321,6 +321,10 @@ function ForeverNpcFixes:Load()
         [185317]= { -- Incubus
             [npcKeys.name] = "Incubus",
         },
+        [205153] = { -- Ada Gelhardt
+            [npcKeys.questStarts_add] = {95771},
+            [npcKeys.questEnds_add] = {95771},
+        },
         [205729] = { -- Boarton Shadetotem
             [npcKeys.spawns] = {[zoneIDs.THUNDER_BLUFF] = {{39.44,65.82}}},
         },
@@ -1085,6 +1089,10 @@ function ForeverNpcFixes:Load()
         },
         [267338] = { -- Emrys Flintbeard
             [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{28.95,66.59}}},
+        },
+        [267525] = { -- Wizzik Dustfizz
+            [npcKeys.questStarts_add] = {96915},
+            [npcKeys.questEnds_add] = {96915},
         },
         [267806] = { -- "Flipfin"
             [npcKeys.questEnds_add] = {97065,97066,97067},
