@@ -778,6 +778,12 @@ function ForeverNpcFixes:Load()
         [255534] = { -- "Badwind" Bennic
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{50.62,34.27}}},
         },
+        [255906] = { -- Snargl
+            [npcKeys.spawns] = {[zoneIDs.RIVERGLADES] = {{16,73.2}}},
+        },
+        [257926] = { -- Farholde Scout
+            [npcKeys.spawns_remove] = {[zoneIDs.RIVERGLADES] = {{65.5,80.2},{65.87,79.65}}},
+        },
         [255940] = { -- Donaal Downbreeze
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{62.19,72.61}}},
         },
