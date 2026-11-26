@@ -39,7 +39,7 @@ for _, kind in ipairs({ "Npc", "Object", "Item", "Quest" }) do
   local lines = {}
   for _, id in ipairs(sortedIds(loaded[kind].entities)) do
     local name = loaded[kind].entities[id][nameKey]
-    if name == nil or name == "" then lines[#lines + 1] = tostring(id) end
+    if name == nil then lines[#lines + 1] = tostring(id) end
   end
   section(flavor.name .. " " .. kind .. "s without a name", lines)
 end
