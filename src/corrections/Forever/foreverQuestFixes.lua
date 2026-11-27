@@ -4665,24 +4665,30 @@ function ForeverQuestFixes:Load()
         },
         [95775] = { -- The Drowned City
             [questKeys.preQuestSingle] = {95770},
+            [questKeys.zoneOrSort] = zoneIDs.THE_DROWNED_CITY,
         },
         [95776] = { -- The Only Good Brinescale...
             [questKeys.preQuestGroup] = {95770,95773},
+            [questKeys.zoneOrSort] = zoneIDs.THE_DROWNED_CITY,
         },
         [95786] = { -- An Acquaintance in Southshore
             [questKeys.preQuestSingle] = {205},
         },
         [95787] = { -- Take Two With Water
             [questKeys.preQuestSingle] = {95786},
+            [questKeys.zoneOrSort] = zoneIDs.THE_DROWNED_CITY,
         },
         [95788] = { -- Magics of the Drowned City
             [questKeys.preQuestSingle] = {95786},
+            [questKeys.zoneOrSort] = zoneIDs.THE_DROWNED_CITY,
         },
         [95789] = { -- Shady Saltseers
-            [questKeys.requiredRaces] = raceIDs.NONE, -- wowhead
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.zoneOrSort] = zoneIDs.THE_DROWNED_CITY,
         },
         [95791] = { -- The Saltseer Captain
-            [questKeys.requiredRaces] = raceIDs.NONE, -- wowhead
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.zoneOrSort] = zoneIDs.THE_DROWNED_CITY,
         },
         [95792] = { -- Clear 'em Out
             [questKeys.requiredLevel] = 36,
@@ -5374,6 +5380,9 @@ function ForeverQuestFixes:Load()
         [96773] = { -- The Coldbringer's Eye
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- wowhead
         },
+        [96774] = { -- Ancient Gurubashi Idol
+            [questKeys.zoneOrSort] = zoneIDs.THE_DROWNED_CITY,
+        },
         [96779] = { -- Syndicate Sabotage
             [questKeys.preQuestSingle] = {6681},
         },
@@ -5632,7 +5641,8 @@ function ForeverQuestFixes:Load()
             [questKeys.exclusiveTo] = {97018,97170,97188,97194,97200,97203,97204,97205},
         },
         [97130] = { -- Ancient Gurubashi Secrets
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- wowhead
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.zoneOrSort] = zoneIDs.THE_DROWNED_CITY,
         },
         [97169] = { -- The Darkreaver Menace
             [questKeys.requiredLevel] = 58,
