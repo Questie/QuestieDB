@@ -3837,6 +3837,7 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE, -- wowhead
             [questKeys.preQuestSingle] = {94669},
             [questKeys.nextQuestInChain] = 94739,
+            [questKeys.objectives] = {{{257056}}},
         },
         [94672] = { -- Encroaching Twilight
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE, -- wowhead
@@ -3878,6 +3879,7 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE, -- wowhead
             [questKeys.preQuestSingle] = {94670},
             [questKeys.nextQuestInChain] = 94962,
+            [questKeys.objectives] = {{{258491}}},
         },
         [94744] = { -- The Wayward Warrior
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE, -- wowhead
@@ -4087,7 +4089,7 @@ function ForeverQuestFixes:Load()
             [questKeys.nextQuestInChain] = 94928,
         },
         [94927] = { -- Dunston Checks Out
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- wowhead
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.preQuestSingle] = {96126},
         },
         [94928] = { -- A Few Furs for Friz
@@ -4098,7 +4100,7 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {1398},
         },
         [94930] = { -- Lost Shipping Crate
-            [questKeys.requiredRaces] = raceIDs.ALL_HORDE, -- wowhead
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.exclusiveTo] = {93443,94841,94895},
         },
         [94946] = { -- The Magical City of Dalaran
@@ -4110,28 +4112,31 @@ function ForeverQuestFixes:Load()
             [questKeys.objectives] = {nil,{{631299}}},
         },
         [94961] = { -- Biting the Hand
-            [questKeys.requiredRaces] = raceIDs.NONE, -- wowhead
+            [questKeys.requiredRaces] = raceIDs.NONE,
             [questKeys.nextQuestInChain] = 94963,
         },
         [94962] = { -- Bloodmaster's Ring
-            [questKeys.requiredRaces] = raceIDs.ALL_HORDE, -- wowhead
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.preQuestSingle] = {94739},
             [questKeys.nextQuestInChain] = 94964,
+            [questKeys.objectives] = {{{255892}}},
         },
         [94963] = { -- Biting the Hand
-            [questKeys.requiredRaces] = raceIDs.NONE, -- wowhead
+            [questKeys.requiredRaces] = raceIDs.NONE,
             [questKeys.preQuestSingle] = {94961},
             [questKeys.triggerEnd] = {"Help Fuzzle escape Sunnyglade.", {[zoneIDs.RIVERGLADES] = {{41.62,47.73}}}},
         },
         [94964] = { -- Bloodmaster's Ring
-            [questKeys.requiredRaces] = raceIDs.ALL_HORDE, -- wowhead
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.preQuestSingle] = {94962},
             [questKeys.nextQuestInChain] = 94733,
+            [questKeys.objectives] = {{{258626}}},
         },
         [94965] = { -- Bloodmaster's Ring
-            [questKeys.requiredRaces] = raceIDs.ALL_HORDE, -- wowhead
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.preQuestSingle] = {94737},
             [questKeys.nextQuestInChain] = 95063,
+            [questKeys.objectives] = {{{258595}}},
         },
         [94968] = { -- Eye of Mugg
             [questKeys.preQuestSingle] = {95278},
@@ -4241,6 +4246,7 @@ function ForeverQuestFixes:Load()
         [95063] = { -- Bloodmaster's Ring
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE, -- wowhead
             [questKeys.preQuestSingle] = {94965},
+            [questKeys.objectives] = {{{257059}}},
         },
         [95064] = { -- Preventative Measures
             [questKeys.preQuestSingle] = {94924},
