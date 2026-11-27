@@ -778,11 +778,11 @@ function ForeverNpcFixes:Load()
         [255534] = { -- "Badwind" Bennic
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{50.62,34.27}}},
         },
+        [255829] = { -- Clugfist
+            [npcKeys.spawns] = {[zoneIDs.RIVERGLADES] = {{64.5,14.69}}},
+        },
         [255906] = { -- Snargl
             [npcKeys.spawns] = {[zoneIDs.RIVERGLADES] = {{16,73.2}}},
-        },
-        [257926] = { -- Farholde Scout
-            [npcKeys.spawns_remove] = {[zoneIDs.RIVERGLADES] = {{65.5,80.2},{65.87,79.65}}},
         },
         [255940] = { -- Donaal Downbreeze
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{62.19,72.61}}},
@@ -810,6 +810,9 @@ function ForeverNpcFixes:Load()
         },
         [256507] = { -- Belann Windwood
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{62.89,77.44}}},
+        },
+        [256899] = { -- Chogg'Zac
+            [npcKeys.spawns] = {[zoneIDs.RIVERGLADES] = {{44.85,51.2}}},
         },
         [256935] = { -- Malduko Cloudcrush
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{36.05,33.53}}},
@@ -876,6 +879,9 @@ function ForeverNpcFixes:Load()
         },
         [257861] = { -- Admiral Lamora
             [npcKeys.spawns] = {[zoneIDs.RIVERGLADES] = {{90.6,30.32}}},
+        },
+        [257926] = { -- Farholde Scout
+            [npcKeys.spawns_remove] = {[zoneIDs.RIVERGLADES] = {{65.5,80.2},{65.87,79.65}}},
         },
         [258113] = { -- Ingrid Dunwald
             [npcKeys.spawns] = {[zoneIDs.DUN_MOROGH] = {{47.58,51.95}}},
@@ -956,8 +962,14 @@ function ForeverNpcFixes:Load()
             [npcKeys.spawns] = {[zoneIDs.EXCAVATION_SITE_WETLANDS] = {{-1,-1}}},
             [npcKeys.zoneID] = zoneIDs.EXCAVATION_SITE_WETLANDS,
         },
+        [260973] = { -- Klunk
+            [npcKeys.spawns] = {[zoneIDs.RIVERGLADES] = {{73.86,26.67}}},
+        },
         [261025] = { -- Invisible Stalker
             [npcKeys.name] = "Invisible Stalker",
+        },
+        [261208] = { -- Twilight Brute
+            [npcKeys.spawns] = {[zoneIDs.RIVERGLADES] = {{47.95,48.02},{48.14,47.68},{47.95,47.53},{47.86,47.29},{47.57,47.4},{47.39,47.68},{49.18,46.76},{47.19,49.2},{46.96,52.22},{47.69,51.48},{44.99,50.34},{45.79,50.43},{45.3,51.68},{45.76,52.01},{48.65,49.67}}},
         },
         [261306] = { -- Faldrim Anvilmar
             [npcKeys.spawns] = {[zoneIDs.THE_HALL_OF_THANES] = {{-1,-1}}},
@@ -972,6 +984,9 @@ function ForeverNpcFixes:Load()
         },
         [261367] = { -- Terry Longdrink
             [npcKeys.spawns] = {[zoneIDs.THE_BARRENS] = {{41.89,11.4}}},
+        },
+        [262006] = { -- Twilight Ritual Circle
+            [npcKeys.spawns] = {[zoneIDs.RIVERGLADES] = {{49.18,46.76},{47.19,49.2},{46.96,52.22},{47.69,51.48},{44.99,50.34},{45.79,50.43},{45.3,51.68},{45.76,52.01},{48.65,49.67},{47.73,47.8},{48.17,49.94},{50.22,49.32}}},
         },
         [262119] = { -- Corporal Adamore
             [npcKeys.spawns] = {[zoneIDs.THE_BARRENS] = {{41.8,15.76}}},
