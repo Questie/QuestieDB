@@ -12,6 +12,27 @@ QuestieDB publishes a single global, `LibQuestieDB`, plus the shorthand Entity g
 The client's red missing-dependency warning covers *absence*. It does not cover *presence with
 the wrong version* — see [Contract version](#contract-version).
 
+### Publishing on CurseForge
+
+When you upload your addon to CurseForge, we recommend declaring QuestieDB as a dependency. It
+then shows up under "Relations" on your project page.
+
+We advise against deriving data from a snapshot or bundling a copy inside your own addon zip.
+
+Depending on the standalone QuestieDB addon means your users receive every QuestieDB data
+update without you having to release a new version of your addon.
+
+Example, when uploading through the [BigWigs packager](https://github.com/BigWigsMods/packager),
+add this to your `.pkgmeta` (use QuestieDB's CurseForge project slug):
+
+```yaml
+required-dependencies:
+  - questiedb
+```
+
+When uploading manually, add QuestieDB as a "Required dependency" in the Relations section of
+the upload form. Keep `## Dependencies: QuestieDB` in your TOC either way.
+
 ---
 
 ## LuaLS declarations
