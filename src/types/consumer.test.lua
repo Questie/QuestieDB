@@ -96,6 +96,10 @@ local mapX, mapY = LibQuestieDB.EraToForeverByUiMapId(1412, 44.18, 76.06)
 ---@type number[]
 local foreverCoordinates = { areaX, areaY, mapX, mapY }
 
+-- Object models are FileDataIDs; 0 and unknown objects have none to show.
+---@type number?
+local modelFileId = ObjectDB.modelFileId(31)
+
 -- Zone symbols identify areas, including Forever dungeons with no UiMap.
 ---@type AreaId
 local excavationSite = LibQuestieDB.Enum.zoneIDs.EXCAVATION_SITE_WETLANDS

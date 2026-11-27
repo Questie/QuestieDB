@@ -58,6 +58,7 @@ jobs:
           python3 tools/dbc/convert.test.py
           python3 tools/dbc/support.test.py
           python3 tools/foodType/generate.test.py
+          python3 tools/object-models/object_models.test.py
           python3 tools/distribution/package.test.py
           python3 tools/distribution/bootstrap.test.py
           python3 tools/distribution/release_artifacts.test.py
@@ -70,6 +71,11 @@ jobs:
         run: |
           lua5.1 generate.lua toc
           git diff --exit-code QuestieDB.toc
+
+      # Fails on wrong models only; missing ones are warnings, so new content never blocks.
+      - name: Object models
+        working-directory: QuestieDB
+        run: python3 tools/object-models/object_models.py check
 
       - name: Shared unit tests
         working-directory: QuestieDB

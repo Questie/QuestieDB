@@ -819,6 +819,26 @@ See [`support-data.md`](./support-data.md) for flavor selection and copied-data 
 
 ---
 
+## Object models
+
+```lua
+ObjectDB.modelFileId(31)   --> 189908, the Old Lion Statue's model
+```
+
+The FileDataID of an object's model on the active flavor, for `actor:SetModelByFileID(fileDataId)`.
+0 means a known object has no plain model to show: it is displayed as a creature or an item, its
+model is invisible, it has none, or none is known. Unknown objects read nil. The model's size is not
+stored; ask the actor with `GetActiveBoundingBox()` after setting the model.
+
+A model is decoration, so prefer testing for the getter over requiring contract 6:
+
+```lua
+local fileId = ObjectDB.modelFileId and ObjectDB.modelFileId(objectId)
+if fileId and fileId ~= 0 then actor:SetModelByFileID(fileId) end
+```
+
+---
+
 ## Era-to-Forever coordinates
 
 For consumer-owned Era points, such as Darkmoon Faire spawns or dungeon entrances:
@@ -915,6 +935,8 @@ provider fails the version check before the lookup.
 
 Contract 5 adds `Support.Get("PetFood")` on Vanilla, TBC, Wrath and Forever. Contracts 1 to 4 remain
 supported.
+
+Contract 6 adds the Object field `modelFileId`. Contracts 1 to 5 remain supported.
 
 The check is a **range**: `RequireContract(v)` passes for any
 `minSupportedContract <= v <= contractVersion`, so a consumer built against an older

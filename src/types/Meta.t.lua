@@ -94,6 +94,7 @@
 ---@field zoneID integer Best estimate of the object's most common zone.
 ---@field factionID integer Faction restriction mask used by spawn data.
 ---@field waypoints integer Movement paths for objects attached to transports.
+---@field modelFileId integer FileDataID of the plain 3D model, or 0.
 
 -- Correction enums extend authoring keys only. Schema keys and getters remain canonical.
 ---@class QuestieDBQuestCorrectionKeys: QuestieDBQuestKeys
@@ -251,6 +252,8 @@
 ---@field factionID_remove integer Correction-only remove; table-valued fields only.
 ---@field waypoints_add integer Correction-only add; table-valued fields only.
 ---@field waypoints_remove integer Correction-only remove; table-valued fields only.
+---@field modelFileId_add integer Correction-only add; table-valued fields only.
+---@field modelFileId_remove integer Correction-only remove; table-valued fields only.
 
 --------------------------------------------------------------------------------
 -- Complete generated schemas

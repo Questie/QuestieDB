@@ -126,5 +126,6 @@ add(5, "table", {
   "LibQuestieDB.Support.Get(PetFood).foodTypesByFamily",
   "LibQuestieDB.Support.Get(PetFood).foodTypesByName",
 }, { Classic = true, TBC = true, Wotlk = true, Forever = true })
+add(6, "function", { "LibQuestieDB.Object.modelFileId" })
 
 return entries

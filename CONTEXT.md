@@ -65,6 +65,12 @@ Game reference data consumed as whole tables rather than through the TOC metadat
 zone mappings, quest XP, drop tables, faction templates, pet food. Shipped as plain Lua files.
 _Avoid_: Auxiliary data, helper data, lookup data
 
+**Object model**:
+The model file a game object is displayed with on one flavor, as a FileDataID. An object points
+to a display ID, which the client's `GameObjectDisplayInfo` resolves to a model file, a creature
+or an item; only a model file is an Object model.
+_Avoid_: Display (the ID before it is resolved), mesh, 3D face
+
 **Source mode**:
 The runtime state where entity reads resolve from raw entity data with all Corrections
 applied live, because no generated TOC metadata store is present.

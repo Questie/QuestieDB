@@ -1012,13 +1012,14 @@ suite("correction-enums", "shared", function()
   client.install({ expansion = "Forever" })
   local source = emulator.loadAddon(config.addonName .. ".toc", config.addonName)
   equal(source.Enum.raceMaskById, expectedMasks, "actual Source TOC exposes race encoding")
-  equal(source.contractVersion, 5, "pet food support data is available under contract 5")
+  equal(source.contractVersion, 6, "object models are available under contract 6")
+  equal(source.RequireContract(6), true, "object model consumers are supported")
   equal(source.RequireContract(5), true, "pet food consumers are supported")
   equal(source.RequireContract(4), true, "contract 4 consumers remain supported")
   equal(source.RequireContract(3), true, "contract 3 consumers remain supported")
   equal(source.RequireContract(1), true, "contract 1 consumers remain supported")
   equal(source.RequireContract(2), true, "contract 2 consumers remain supported")
-  equal(source.RequireContract(6), false, "future consumer contracts are rejected")
+  equal(source.RequireContract(7), false, "future consumer contracts are rejected")
 
   -- Controlled rows exercise both real backends; no generated artifact or authored eligibility changes.
   local fixture = dofile("tools/validation/storage-fixture.lua")
@@ -3454,6 +3455,14 @@ end)
 
 suite("objective-first-addon", { Vanilla = true, TBC = true, Wrath = true, Cata = true, Mists = true }, function()
   dofile("tools/validation/objective-first-addon.test.lua")(check, equal, selectedFlavor)
+end)
+
+--------------------------------------------------------------------------------------------
+-- Object models
+--------------------------------------------------------------------------------------------
+
+suite("object-models", "shared", function()
+  dofile("tools/validation/object-models.test.lua")(equal, emulator, client)
 end)
 
 --------------------------------------------------------------------------------------------

@@ -106,11 +106,15 @@ Quest XP is support data, not a correction. The extractor's `xpDB-traces.lua` li
 `support/Forever/QuestXP/` and loads after `xpDB-classic.lua`, adding `QuestXP.db[questId]`
 rows for quests above the Classic maximum. Never hand-edit it.
 
+New objects need no extra step, but get a 3D model only after an import; see
+[object models](../tools/object-models/README.md#a-warning-says-objects-have-no-model).
+
 A trace-derived value overrides the generated delta-base value for the same field;
 an authored fix overrides both. Fields the trace layer does not touch retain the value
 from the generated delta-base or inherited baseline. Registry priorities enforce this
 order independently of file order: generated base 1302, traces 1402, quest relation traces
-1403, authored Static 1411. Quest relation traces therefore override entity traces for the
+1403, authored Static 1411. Generated object models (1602) come last but only fill `modelFileId`
+where nothing else set it. Quest relation traces therefore override entity traces for the
 same field, and authored fixes override both.
 
 ## Baked artifacts

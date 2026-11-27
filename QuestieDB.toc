@@ -26,7 +26,7 @@
 ## Category-zhCN: 任务
 ## Category-zhTW: 任務
 ## IconTexture: Interface\AddOns\QuestieDB\icons\QuestieTDB_64x64.png
-## X-Contract-Version: 5
+## X-Contract-Version: 6
 ## X-Mode: source
 
 # =============================================================================
@@ -242,10 +242,19 @@ src\corrections\Sod\sodBaseQuests.lua [AllowLoadGameType vanilla]
 src\corrections\Sod\sodBaseNPCs.lua [AllowLoadGameType vanilla]
 src\corrections\Sod\sodBaseItems.lua [AllowLoadGameType vanilla]
 src\corrections\Sod\sodBaseObjects.lua [AllowLoadGameType vanilla]
+src\corrections\Sod\sodObjectModels.lua [AllowLoadGameType vanilla]
 src\corrections\scopes\SodEnd.lua
 
 # --- Shared legacy Item-start Corrections ---
 src\corrections\Shared\itemStartFixes.lua [AllowLoadGameType vanilla, tbc, wrath, cata, mists]
+
+# --- Generated object models ---
+# They apply last and never overwrite another Correction.
+src\corrections\ObjectModels\classicObjectModels.lua [AllowLoadGameType vanilla]
+src\corrections\ObjectModels\tbcObjectModels.lua [AllowLoadGameType tbc]
+src\corrections\ObjectModels\wotlkObjectModels.lua [AllowLoadGameType wrath]
+src\corrections\ObjectModels\cataObjectModels.lua [AllowLoadGameType cata]
+src\corrections\ObjectModels\mopObjectModels.lua [AllowLoadGameType mists]
 
 # --- Forever: inherited baseline ---
 # Owned copies, not live Era or Shared providers. Add new work in forever*Fixes.lua.
@@ -277,6 +286,9 @@ src\corrections\Forever\foreverQuestFixes.lua [ExcludeLoadGameType vanilla, tbc,
 src\corrections\Forever\foreverNPCFixes.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 src\corrections\Forever\foreverItemFixes.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 src\corrections\Forever\foreverObjectFixes.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
+
+# --- Forever: generated object models ---
+src\corrections\ObjectModels\foreverObjectModels.lua [ExcludeLoadGameType vanilla, tbc, wrath, cata, mists]
 
 # --- Provider registration and loader teardown ---
 src\corrections\manifest.lua
