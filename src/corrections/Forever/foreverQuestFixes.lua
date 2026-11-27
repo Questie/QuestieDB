@@ -1116,6 +1116,9 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.requiredClasses] = classIDs.NONE,
         },
+        [84204] = { -- Saving the Best for Last
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        },
         [84211] = {
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
@@ -5861,6 +5864,9 @@ function ForeverQuestFixes:Load()
         },
         [97446] = { -- Your First Riding Kodo
             [questKeys.exclusiveTo] = {95511,96982,96989,96994,96996,96997,97017,97045,97046,97171,98166,99326},
+        },
+        [97449] = { -- Anthion's Parting Words
+            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
         [97453] = { -- Weed Whacked
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE, -- wowhead
