@@ -1713,20 +1713,25 @@ function ForeverQuestFixes:Load()
         },
         [92065] = { -- Blackmaw Reclamation
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+            [questKeys.zoneOrSort] = zoneIDs.BLACKMAW_HOLD,
         },
         [92066] = { -- The Twin Bears
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+            [questKeys.zoneOrSort] = zoneIDs.BLACKMAW_HOLD,
         },
         [92067] = { -- Feeding Time!
             [questKeys.requiredLevel] = 45,
-            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.zoneOrSort] = zoneIDs.BLACKMAW_HOLD,
         },
         [92069] = { -- Claws That Rend, Tusks that Gore
             [questKeys.requiredLevel] = 45,
             [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.zoneOrSort] = zoneIDs.BLACKMAW_HOLD,
         },
-        [92070] = {
-            [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+        [92070] = { -- A Lost Memento
+            [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.zoneOrSort] = zoneIDs.BLACKMAW_HOLD,
         },
         [92094] = { -- Rocket Gnomes
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
@@ -1793,9 +1798,11 @@ function ForeverQuestFixes:Load()
         },
         [92343] = { -- Get to the Roots of It
             [questKeys.preQuestSingle] = {92345,92346},
+            [questKeys.zoneOrSort] = zoneIDs.BLACKMAW_HOLD,
         },
         [92344] = { -- Get to the Roots of It
             [questKeys.preQuestSingle] = {92345,92346},
+            [questKeys.zoneOrSort] = zoneIDs.BLACKMAW_HOLD,
         },
         [92345] = { -- Beneath Nordrassil
             [questKeys.nextQuestInChain] = 92344,
@@ -5078,6 +5085,7 @@ function ForeverQuestFixes:Load()
         [96246] = { -- Blackmaw Pouches
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
             [questKeys.preQuestSingle] = {97327},
+            [questKeys.zoneOrSort] = zoneIDs.BLACKMAW_HOLD,
         },
         [96252] = { -- Tarnished Treasures
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
@@ -5626,6 +5634,9 @@ function ForeverQuestFixes:Load()
         [97171] = { -- Your First Horse
             [questKeys.exclusiveTo] = {95511,96982,96989,96994,96996,96997,97017,97045,97046,97446,98166,99326},
         },
+        [97173] = { -- Blackmaw Magic
+            [questKeys.zoneOrSort] = zoneIDs.BLACKMAW_HOLD,
+        },
         [97176] = {
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
@@ -5654,6 +5665,9 @@ function ForeverQuestFixes:Load()
         },
         [97188] = { -- Learning to Ride
             [questKeys.exclusiveTo] = {97018,97074,97170,97194,97200,97203,97204,97205},
+        },
+        [97198] = { -- Blackmaw Magic
+            [questKeys.zoneOrSort] = zoneIDs.BLACKMAW_HOLD,
         },
         [97194] = { -- Learning to Ride
             [questKeys.exclusiveTo] = {97018,97074,97170,97188,97200,97203,97204,97205},
@@ -5787,8 +5801,9 @@ function ForeverQuestFixes:Load()
         [97326] = { -- Rocks to Rests
             [questKeys.preQuestSingle] = {97249},
         },
-        [97327] = {
+        [97327] = { -- Blackmaw Pouches
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
+            [questKeys.zoneOrSort] = zoneIDs.BLACKMAW_HOLD,
         },
         [97329] = { -- Where's the Key?
             [questKeys.nextQuestInChain] = 97331,
