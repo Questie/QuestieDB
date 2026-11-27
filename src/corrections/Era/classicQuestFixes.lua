@@ -5008,6 +5008,7 @@ function QuestieQuestFixes:Load()
         },
         [8249] = { -- Junkboxes Needed
             [questKeys.requiredClasses] = classIDs.NONE,
+            [questKeys.zoneOrSort] = zoneIDs.ALTERAC_MOUNTAINS,
         },
         [8250] = { -- Magecraft
             [questKeys.startedBy] = {{331, 3047, 4567, 7311, 7312}},
