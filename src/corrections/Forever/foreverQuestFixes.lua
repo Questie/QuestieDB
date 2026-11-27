@@ -573,6 +573,9 @@ function ForeverQuestFixes:Load()
         [8234] = { -- Sealed Azure Bag
             [questKeys.preQuestSingle] = {},
         },
+        [8249] = { -- Junkboxes Needed
+            [questKeys.zoneOrSort] = zoneIDs.ALTERAC_MOUNTAINS,
+        },
         [8356] = { -- Flexing for Nougat
             [questKeys.objectivesText] = {"Do a flex emote at Innkeeper Allison, and in exchange you'll receive Stormwind Nougat!"},
         },
@@ -1721,6 +1724,7 @@ function ForeverQuestFixes:Load()
         },
         [92067] = { -- Feeding Time!
             [questKeys.requiredLevel] = 45,
+            [questKeys.questLevel] = 55,
             [questKeys.requiredRaces] = raceIDs.NONE,
             [questKeys.zoneOrSort] = zoneIDs.BLACKMAW_HOLD,
         },
