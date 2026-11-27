@@ -781,6 +781,9 @@ function ForeverNpcFixes:Load()
         [255829] = { -- Clugfist
             [npcKeys.spawns] = {[zoneIDs.RIVERGLADES] = {{64.5,14.69}}},
         },
+        [255892] = { -- Bonegnaw
+            [npcKeys.spawns] = {[zoneIDs.RIVERGLADES] = {{65.39,19.74}}},
+        },
         [255906] = { -- Snargl
             [npcKeys.spawns] = {[zoneIDs.RIVERGLADES] = {{16,73.2}}},
         },
@@ -852,6 +855,12 @@ function ForeverNpcFixes:Load()
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{57.91,77.12}}},
             [npcKeys.npcFlags] = npcFlags.AUCTIONEER,
         },
+        [257056] = { -- Buzzbeak
+            [npcKeys.spawns] = {[zoneIDs.RIVERGLADES] = {{65.39,19.74}}},
+        },
+        [257059] = { -- Chub'chob 
+            [npcKeys.spawns] = {[zoneIDs.RIVERGLADES] = {{65.56,21.47}}},
+        },
         [257196] = { -- Zaal Stormshield
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{56.63,50.37}}},
         },
@@ -909,6 +918,15 @@ function ForeverNpcFixes:Load()
         },
         [258289] = { -- Baeo Sharpstrike
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{65.92,33.55}}},
+        },
+        [258491] = { -- Kronk
+            [npcKeys.spawns] = {[zoneIDs.RIVERGLADES] = {{65.39,19.74}}},
+        },
+        [258595] = { -- Snufflesnout
+            [npcKeys.spawns] = {[zoneIDs.RIVERGLADES] = {{65.39,19.74}}},
+        },
+        [258626] = { -- Mog'thar
+            [npcKeys.spawns] = {[zoneIDs.RIVERGLADES] = {{65.39,19.74}}},
         },
         [258878] = { -- Auctioneer Quickcoin
             [npcKeys.spawns] = {[zoneIDs.THE_BARRENS] = {{49.95,29.45}},[zoneIDs.REDRIDGE_MOUNTAINS] = {{9.54,71.96}}},
