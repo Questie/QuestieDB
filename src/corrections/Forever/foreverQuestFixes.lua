@@ -4319,9 +4319,11 @@ function ForeverQuestFixes:Load()
         },
         [95262] = { -- The Secret Prison
             [questKeys.preQuestSingle] = {95198},
+            [questKeys.zoneOrSort] = zoneIDs.ALCAZ_PRISON,
         },
         [95263] = { -- Somber News
             [questKeys.preQuestSingle] = {95262},
+            [questKeys.zoneOrSort] = zoneIDs.ALCAZ_PRISON,
         },
         [95264] = { -- Shaw Needs To Know
             [questKeys.preQuestSingle] = {95263},
@@ -4372,6 +4374,7 @@ function ForeverQuestFixes:Load()
         },
         [95309] = { -- No Orc Left Behind
             [questKeys.preQuestSingle] = {95285},
+            [questKeys.zoneOrSort] = zoneIDs.ALCAZ_PRISON,
         },
         [95312] = { -- Coming to Collect
             [questKeys.requiredLevel] = 36,
@@ -4509,6 +4512,7 @@ function ForeverQuestFixes:Load()
         },
         [95454] = { -- The Honor of the Kor'kron
             [questKeys.preQuestSingle] = {95309},
+            [questKeys.zoneOrSort] = zoneIDs.ALCAZ_PRISON,
         },
         [95472] = { -- Consolation Prize
             [questKeys.requiredLevel] = 36,
@@ -4517,6 +4521,7 @@ function ForeverQuestFixes:Load()
         },
         [95483] = { -- Thrall Needs to Know
             [questKeys.preQuestSingle] = {96369},
+            [questKeys.zoneOrSort] = zoneIDs.ALCAZ_PRISON,
         },
         [95494] = { -- Bruised Pride and Lion Hides
             [questKeys.nextQuestInChain] = 0,
@@ -5124,38 +5129,47 @@ function ForeverQuestFixes:Load()
         },
         [96332] = { -- A Little Payback
             [questKeys.preQuestSingle] = {95285},
+            [questKeys.zoneOrSort] = zoneIDs.ALCAZ_PRISON,
         },
         [96334] = { -- Blood Red Bandanas
             [questKeys.preQuestSingle] = {95285},
+            [questKeys.zoneOrSort] = zoneIDs.ALCAZ_PRISON,
         },
         [96335] = { -- The Man in the Iron Chains
             [questKeys.requiredLevel] = 48,
             [questKeys.requiredRaces] = raceIDs.NONE,
+            [questKeys.zoneOrSort] = zoneIDs.ALCAZ_PRISON,
         },
         [96337] = { -- More Valuable Than Gold
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
             [questKeys.preQuestSingle] = {96335},
+            [questKeys.zoneOrSort] = zoneIDs.ALCAZ_PRISON,
         },
         [96339] = { -- Legacy Reward: Replica Ironforge Air Rifle
             [questKeys.requiredLevel] = 1,
         },
         [96369] = { -- Bad News for Folkar
             [questKeys.preQuestSingle] = {95454},
+            [questKeys.zoneOrSort] = zoneIDs.ALCAZ_PRISON,
         },
         [96376] = { -- State Secrets
             [questKeys.exclusiveTo] = {96377,96379},
+            [questKeys.zoneOrSort] = zoneIDs.ALCAZ_PRISON,
         },
         [96377] = { -- State Secrets
             [questKeys.exclusiveTo] = {96376,96379},
+            [questKeys.zoneOrSort] = zoneIDs.ALCAZ_PRISON,
         },
         [96379] = { -- State Secrets
             [questKeys.requiredLevel] = 48,
             [questKeys.questLevel] = 53,
             [questKeys.requiredRaces] = raceIDs.NONE,
             [questKeys.exclusiveTo] = {96376,96377},
+            [questKeys.zoneOrSort] = zoneIDs.ALCAZ_PRISON,
         },
         [96381] = { -- A Bit of Wet Work
             [questKeys.preQuestSingle] = {95198},
+            [questKeys.zoneOrSort] = zoneIDs.ALCAZ_PRISON,
         },
         [96383] = { -- Legacy Reward: Spectral Bear Cub
             [questKeys.requiredLevel] = 1,
@@ -5334,6 +5348,9 @@ function ForeverQuestFixes:Load()
         },
         [96771] = { -- Vengeance of the Highborne
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- wowhead
+        },
+        [96772] = { -- The Dragon's Journal
+            [questKeys.zoneOrSort] = zoneIDs.ALCAZ_PRISON,
         },
         [96773] = { -- The Coldbringer's Eye
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- wowhead
