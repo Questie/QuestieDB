@@ -2087,7 +2087,7 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {92693},
         },
         [92706] = { -- WANTED: Bruuz
-            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+            [questKeys.requiredRaces] = raceIDs.NONE,
         },
         [92708] = { -- A Grand Adventure
             [questKeys.preQuestSingle] = {92700},
