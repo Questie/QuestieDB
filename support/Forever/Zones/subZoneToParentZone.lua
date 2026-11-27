@@ -126,6 +126,7 @@ ZoneDB.private.subZoneToParentZoneOverride = [[return {
     [10117] = 3457, -- Karazhan - The Power Station (Dungeon/Raid)
     [10118] = 3457, -- Karazhan - Netherspace (Dungeon/Raid)
     [16169] = 331, -- Ashenvale (SoD map ID) - Ashenvale
+    [16560] = 36, -- City of Dalaran (outside location) - Alterac Mountains
 }]]
 
 --! Generated table, add something manually here and i'll kill you //Logon
