@@ -94,6 +94,9 @@ function ForeverQuestFixes:Load()
         [299] = { -- Uncovering the Past
             [questKeys.nextQuestInChain] = 98216,
         },
+        [305] = { -- In Search of The Excavation Team
+            [questKeys.breadcrumbs] = {98461},
+        },
         [324] = { -- The Lost Ingots
             [questKeys.exclusiveTo] = {526},
         },
@@ -329,8 +332,24 @@ function ForeverQuestFixes:Load()
         [1516] = { -- Call of Earth
             [questKeys.exclusiveTo] = {1519,92466},
         },
+        [1517] = { -- Call of Earth
+            [questKeys.preQuestSingle] = {1516,1519,92466,94373},
+            [questKeys.exclusiveTo] = {1520,92467,94374},
+        },
+        [1518] = { -- Call of Earth
+            [questKeys.preQuestSingle] = {1517,1520,92467,94374},
+            [questKeys.exclusiveTo] = {1521,92468,94375},
+        },
         [1519] = { -- Call of Earth
             [questKeys.exclusiveTo] = {1516,92466},
+        },
+        [1520] = { -- Call of Earth
+            [questKeys.preQuestSingle] = {1516,1519,92466,94373},
+            [questKeys.exclusiveTo] = {1517,92467,94374},
+        },
+        [1521] = { -- Call of Earth
+            [questKeys.preQuestSingle] = {1517,1520,92467,94374},
+            [questKeys.exclusiveTo] = {1518,92468,94375},
         },
         [1524] = { -- Call of Fire
             [questKeys.exclusiveTo] = {97243},
@@ -351,6 +370,7 @@ function ForeverQuestFixes:Load()
         },
         [1638] = { -- A Warrior's Training
             [questKeys.nextQuestInChain] = 0,
+            [questKeys.breadcrumbForQuestId] = 0,
         },
         [1639] = { -- Bartleby the Drunk
             [questKeys.breadcrumbs] = {},
@@ -381,12 +401,24 @@ function ForeverQuestFixes:Load()
         [2519] = { -- The Temple of the Moon
             [questKeys.breadcrumbs] = {98391},
         },
+        [2758] = { -- The Origins of Smithing
+            [questKeys.exclusiveTo] = {80241},
+        },
+        [2856] = { -- Wild Leather Vest
+            [questKeys.exclusiveTo] = {82656},
+        },
         [3450] = { -- An Easy Pickup
             [questKeys.preQuestSingle] = {},
         },
         [3505] = { -- Betrayed
             [questKeys.finishedBy_remove] = {{247449}},
             [questKeys.nextQuestInChain] = 91497,
+        },
+        [3641] = { -- Show Your Work
+            [questKeys.exclusiveTo] = {3638,3639,3643},
+        },
+        [3643] = { -- Show Your Work
+            [questKeys.exclusiveTo] = {3638,3639,3641},
         },
         [3842] = { -- A Short Incubation
             [questKeys.objectivesText] = {"Bring 2 Elixirs of Lesser Fortitude to Quentin in Thousand Needles."},
@@ -1083,6 +1115,12 @@ function ForeverQuestFixes:Load()
             [questKeys.objectivesText] = {"You will need to hand in 25 books to complete this quest, however you can hand 1 in at any time."},
             [questKeys.preQuestSingle] = {79536},
         },
+        [82656] = { -- Wild Leather Vest
+            [questKeys.exclusiveTo] = {2856},
+        },
+        [82657] = { -- Wild Leather Vest
+            [questKeys.exclusiveTo] = {2849},
+        },
         [84135] = {
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
         },
@@ -1365,6 +1403,7 @@ function ForeverQuestFixes:Load()
         },
         [89228] = { -- Winter Frontier Fishery
             [questKeys.preQuestSingle] = {89001,91488},
+            [questKeys.exclusiveTo] = {91610},
         },
         [89470] = { -- Ill Tidings
             [questKeys.preQuestSingle] = {89053},
@@ -1457,12 +1496,14 @@ function ForeverQuestFixes:Load()
         },
         [91610] = { -- Winter Frontier Fishery
             [questKeys.preQuestSingle] = {89001,91488},
+            [questKeys.exclusiveTo] = {89228},
         },
         [91685] = { -- Ley of the Land
             [questKeys.preQuestSingle] = {91569},
         },
         [91688] = { -- To the Summit of Eternity
             [questKeys.preQuestGroup] = {92449,92591},
+            [questKeys.exclusiveTo] = {95248},
         },
         [91696] = { -- Open Season
             [questKeys.requiredLevel] = 54,
@@ -1583,6 +1624,7 @@ function ForeverQuestFixes:Load()
         },
         [91881] = { -- The Western Post
             [questKeys.preQuestSingle] = {95316},
+            [questKeys.exclusiveTo] = {94782},
         },
         [91882] = { -- The Grand Alliance
             [questKeys.requiredLevel] = 55,
@@ -1837,6 +1879,9 @@ function ForeverQuestFixes:Load()
         [92446] = { -- Head Scratcher
             [questKeys.preQuestSingle] = {92609},
         },
+        [92449] = { -- Blight No More
+            [questKeys.exclusiveTo] = {95026},
+        },
         [92457] = { -- Starving Arcane
             [questKeys.preQuestSingle] = {92432},
         },
@@ -1881,10 +1926,12 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredClasses] = classIDs.SHAMAN,
             [questKeys.preQuestSingle] = {1516,1519,92466},
             [questKeys.nextQuestInChain] = 92468,
+            [questKeys.exclusiveTo] = {1517,1520,94374},
         },
         [92468] = { -- Call of Earth
             [questKeys.requiredClasses] = classIDs.SHAMAN,
             [questKeys.preQuestSingle] = {92467},
+            [questKeys.exclusiveTo] = {1518,1521,94375},
         },
         [92469] = { -- Return to Rorian
             [questKeys.preQuestSingle] = {92465},
@@ -2012,6 +2059,9 @@ function ForeverQuestFixes:Load()
         [92598] = { -- The Gift of Skysight
             [questKeys.objectives] = {nil,{{460001}}},
             [questKeys.requiredRaces] = raceIDs.SKYBORNE_HORDE,
+        },
+        [92609] = { -- Feathers in Flight
+            [questKeys.exclusiveTo] = {95027},
         },
         [92612] = { -- Aid from Moonglade
             [questKeys.requiredLevel] = 54,
@@ -2211,6 +2261,7 @@ function ForeverQuestFixes:Load()
         [92842] = { -- A Cousin Abroad
             [questKeys.requiredLevel] = 55,
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.exclusiveTo] = {97319},
         },
         [92844] = { -- Mountain of Bones
             [questKeys.preQuestSingle] = {92841},
@@ -3554,14 +3605,17 @@ function ForeverQuestFixes:Load()
         },
         [94373] = { -- Call of Earth
             [questKeys.nextQuestInChain] = 94374,
+            [questKeys.exclusiveTo] = {1516,1519,92466},
         },
         [94374] = { -- Call of Earth
             [questKeys.preQuestSingle] = {94373},
             [questKeys.nextQuestInChain] = 94375,
+            [questKeys.exclusiveTo] = {1517,1520,92467},
         },
         [94375] = { -- Call of Earth
             [questKeys.startedBy_add] = {{257446}},
             [questKeys.preQuestSingle] = {94374},
+            [questKeys.exclusiveTo] = {1518,1521,92468},
         },
         [94411] = { -- Meddlesome Mages
             [questKeys.preQuestSingle] = {92595},
@@ -3640,6 +3694,7 @@ function ForeverQuestFixes:Load()
         },
         [94481] = { -- A Serving of Strength
             [questKeys.preQuestSingle] = {94480},
+            [questKeys.objectives] = {{{256749,nil,Questie.ICON_TYPE_INTERACT}}},
         },
         [94483] = { -- Show Them How It's Done
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE, -- wowhead
@@ -3802,6 +3857,7 @@ function ForeverQuestFixes:Load()
         [94727] = { -- Digging for Answers
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE, -- wowhead
             [questKeys.preQuestGroup] = {94672,94680},
+            [questKeys.objectives] = {{{260931,nil,Questie.ICON_TYPE_TALK}}},
         },
         [94733] = { -- Our Ogre Friend
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE, -- wowhead
@@ -3861,6 +3917,7 @@ function ForeverQuestFixes:Load()
         },
         [94782] = { -- The Western Post
             [questKeys.preQuestSingle] = {95316},
+            [questKeys.exclusiveTo] = {91881},
         },
         [94789] = { -- Call of Air
             [questKeys.nextQuestInChain] = 96264,
@@ -4150,6 +4207,12 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {96209},
             [questKeys.nextQuestInChain] = 93773,
         },
+        [95026] = { -- Blight No More
+            [questKeys.exclusiveTo] = {92449},
+        },
+        [95027] = { -- Feathers in Flight
+            [questKeys.exclusiveTo] = {92609},
+        },
         [95034] = { -- The Debt
             [questKeys.preQuestSingle] = {96204},
             [questKeys.nextQuestInChain] = 95036,
@@ -4270,6 +4333,7 @@ function ForeverQuestFixes:Load()
         [95183] = { -- Step One: Rock
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
             [questKeys.nextQuestInChain] = 96026,
+            [questKeys.preQuestGroup] = {95424,95425},
         },
         [95184] = { -- The Sharpest of Blades
             [questKeys.preQuestSingle] = {95156},
@@ -4321,6 +4385,7 @@ function ForeverQuestFixes:Load()
         },
         [95248] = { -- To the Summit of Eternity
             [questKeys.preQuestGroup] = {92592,94782,95026},
+            [questKeys.exclusiveTo] = {91688},
         },
         [95250] = { -- Abominable Creatures
             [questKeys.requiredLevel] = 15,
@@ -4371,6 +4436,7 @@ function ForeverQuestFixes:Load()
         [95288] = { -- Smuggler's Paradise
             [questKeys.requiredRaces] = raceIDs.NONE, -- wowhead
             [questKeys.nextQuestInChain] = 95293,
+            [questKeys.preQuestSingle] = {93976,94928},
         },
         [95293] = { -- Smuggler's Special
             [questKeys.requiredRaces] = raceIDs.NONE, -- wowhead
@@ -4594,6 +4660,7 @@ function ForeverQuestFixes:Load()
         [95602] = { -- Sickening Lights
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE, -- wowhead
             [questKeys.preQuestSingle] = {94727},
+            [questKeys.objectives] = {{{262006,nil,Questie.ICON_TYPE_OBJECT}}},
         },
         [95603] = { -- Bats in the Belfry
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- wowhead
@@ -4789,6 +4856,7 @@ function ForeverQuestFixes:Load()
         },
         [95955] = { -- Stick 'Em
             [questKeys.preQuestSingle] = {95951},
+            [questKeys.objectives] = {{{259046,nil,Questie.ICON_TYPE_INTERACT}}},
         },
         [95957] = { -- Drink Up!
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- wowhead
@@ -5437,9 +5505,11 @@ function ForeverQuestFixes:Load()
         },
         [96830] = { -- Farsight Guided
             [questKeys.requiredLevel] = 54,
+            [questKeys.exclusiveTo] = {96833},
         },
         [96833] = { -- Venom Maws
             [questKeys.requiredLevel] = 54,
+            [questKeys.exclusiveTo] = {96830},
         },
         [96873] = { -- A Pain in the Neck
             [questKeys.requiredSkill] = {profKeys.ENCHANTING, 1},
@@ -6700,6 +6770,7 @@ function ForeverQuestFixes:Load()
         [98461] = { -- Unrequited Love
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
             [questKeys.nextQuestInChain] = 305,
+            [questKeys.breadcrumbForQuestId] = 305,
         },
         [98462] = { -- Shroud of the Winter Wilds
             [questKeys.name] = "Shroud of the Winter Wilds",
