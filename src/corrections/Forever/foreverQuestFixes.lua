@@ -4074,18 +4074,26 @@ function ForeverQuestFixes:Load()
         },
         [94968] = { -- Eye of Mugg
             [questKeys.preQuestSingle] = {95278},
+            [questKeys.zoneOrSort] = zoneIDs.KROLDOK_STRONGHOLD,
+        },
+        [94969] = { -- Krol'dok No More!
+            [questKeys.zoneOrSort] = zoneIDs.KROLDOK_STRONGHOLD,
         },
         [94972] = { -- Tome of Twilight
             [questKeys.preQuestSingle] = {95278},
+            [questKeys.zoneOrSort] = zoneIDs.KROLDOK_STRONGHOLD,
         },
         [94973] = { -- Krol'dok Moulding
             [questKeys.nextQuestInChain] = 94974,
+            [questKeys.zoneOrSort] = zoneIDs.KROLDOK_STRONGHOLD,
         },
         [94974] = { -- Key Ingredients
             [questKeys.preQuestSingle] = {94973},
+            [questKeys.zoneOrSort] = zoneIDs.KROLDOK_STRONGHOLD,
         },
         [94975] = { -- A Token of Vengeance
             [questKeys.preQuestSingle] = {94768},
+            [questKeys.zoneOrSort] = zoneIDs.KROLDOK_STRONGHOLD,
         },
         [94978] = { -- Taming the Beast
             [questKeys.requiredClasses] = classIDs.HUNTER,
@@ -4101,34 +4109,36 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
         },
         [94980] = { -- Krol'dok Moulding
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- wowhead
             [questKeys.nextQuestInChain] = 94981,
+            [questKeys.zoneOrSort] = zoneIDs.KROLDOK_STRONGHOLD,
         },
         [94981] = { -- Key Ingredients
             [questKeys.preQuestSingle] = {94980},
+            [questKeys.zoneOrSort] = zoneIDs.KROLDOK_STRONGHOLD,
+        },
+        [94982] = { -- Eye of Mugg
+            [questKeys.zoneOrSort] = zoneIDs.KROLDOK_STRONGHOLD,
         },
         [94983] = { -- Twilight Mementos
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- wowhead
             [questKeys.preQuestSingle] = {94890},
             [questKeys.nextQuestInChain] = 94997,
+            [questKeys.zoneOrSort] = zoneIDs.KROLDOK_STRONGHOLD,
         },
         [94984] = { -- Tome of Twilight
             [questKeys.preQuestSingle] = {94907},
+            [questKeys.zoneOrSort] = zoneIDs.KROLDOK_STRONGHOLD,
         },
         [94992] = { -- Rescue Roundup
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- wowhead
             [questKeys.preQuestSingle] = {94618},
         },
         [94997] = { -- Lingering Essence
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- wowhead
             [questKeys.preQuestSingle] = {94983},
             [questKeys.nextQuestInChain] = 94998,
+            [questKeys.zoneOrSort] = zoneIDs.KROLDOK_STRONGHOLD,
         },
         [94998] = { -- Curios of Curiosity
             [questKeys.preQuestSingle] = {94997},
-        },
-        [94999] = { -- Eyes for the Watchman
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- wowhead
+            [questKeys.zoneOrSort] = zoneIDs.KROLDOK_STRONGHOLD,
         },
         [95006] = { -- Stolen Power
             [questKeys.requiredLevel] = 54,
@@ -4136,13 +4146,10 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {96209},
             [questKeys.nextQuestInChain] = 93773,
         },
-        [95033] = { -- On the Other Side
-            [questKeys.requiredRaces] = raceIDs.ALL_HORDE, -- wowhead
-        },
         [95034] = { -- The Debt
             [questKeys.preQuestSingle] = {96204},
             [questKeys.nextQuestInChain] = 95036,
-            [questKeys.objectives] = {{{259620,nil,Questie.ICON_TYPE_TALK}}}, -- Lumina Windsinger in the Sepulcher
+            [questKeys.objectives] = {{{259620,nil,Questie.ICON_TYPE_TALK}}},
         },
         [95036] = { -- A Moon-Kissed Blade
             [questKeys.requiredRaces] = raceIDs.UNDEAD,
@@ -4154,6 +4161,9 @@ function ForeverQuestFixes:Load()
         [95042] = { -- Seeking the Kor Gem
             [questKeys.parentQuest] = 95036,
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
+        },
+        [95056] = { -- Krol'dok No More!
+            [questKeys.zoneOrSort] = zoneIDs.KROLDOK_STRONGHOLD,
         },
         [95059] = { -- Frazzlespark's Crate
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- wowhead
@@ -5355,7 +5365,8 @@ function ForeverQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- wowhead
         },
         [96771] = { -- Vengeance of the Highborne
-            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE, -- wowhead
+            [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
+            [questKeys.zoneOrSort] = zoneIDs.KROLDOK_STRONGHOLD,
         },
         [96772] = { -- The Dragon's Journal
             [questKeys.zoneOrSort] = zoneIDs.ALCAZ_PRISON,
