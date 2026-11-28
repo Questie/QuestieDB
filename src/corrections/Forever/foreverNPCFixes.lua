@@ -217,6 +217,8 @@ function ForeverNpcFixes:Load()
         },
         [7955] = { -- Milli Featherwhistle <Mechanostrider Merchant>
             [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data adds a wrong innkeeper bit
+            [npcKeys.questStarts_add] = {99212},
+            [npcKeys.questEnds_add] = {99212},
         },
         [9087] = { -- Bashana Runetotem
             [npcKeys.npcFlags] = npcFlags.VENDOR, -- base data adds a wrong innkeeper bit
