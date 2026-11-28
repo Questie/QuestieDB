@@ -4637,6 +4637,7 @@ function ForeverQuestFixes:Load()
         [95511] = { -- Your First Feline Friend
             [questKeys.preQuestSingle] = {97074},
             [questKeys.exclusiveTo] = {96982,96989,96994,96996,96997,97017,97045,97046,97171,97446,98166,99326},
+            [questKeys.requiredSpell] = 33388,
         },
         [95534] = { -- Strahnbrad Mystery
             [questKeys.objectives] = {{{217305}}},
@@ -5615,6 +5616,7 @@ function ForeverQuestFixes:Load()
         },
         [96982] = { -- Your First Riding Kodo
             [questKeys.exclusiveTo] = {95511,96989,96994,96996,96997,97017,97045,97046,97171,97446,98166,99326},
+            [questKeys.requiredSpell] = 33388,
         },
         [96983] = { -- Yashiro's Windwalk
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
@@ -5631,6 +5633,7 @@ function ForeverQuestFixes:Load()
         },
         [96989] = { -- Your First Riding Raptor
             [questKeys.exclusiveTo] = {95511,96982,96994,96996,96997,97017,97045,97046,97171,97446,98166,99326},
+            [questKeys.requiredSpell] = 33388,
         },
         [96991] = { -- Trail Assist
             [questKeys.requiredLevel] = 56,
@@ -5643,12 +5646,15 @@ function ForeverQuestFixes:Load()
         [96994] = { -- Your First Riding Wolf
             [questKeys.exclusiveTo] = {95511,96982,96989,96996,96997,97017,97045,97046,97171,97446,98166,99326},
             [questKeys.requiredRaces] = raceIDs.ORC,
+            [questKeys.requiredSpell] = 33388,
         },
         [96996] = { -- Your First Riding Galestrider
             [questKeys.exclusiveTo] = {95511,96982,96989,96994,96997,97017,97045,97046,97171,97446,98166,99326},
+            [questKeys.requiredSpell] = 33388,
         },
         [96997] = { -- A Steed in Death as They Were in Life
             [questKeys.exclusiveTo] = {95511,96982,96989,96994,96996,97017,97045,97046,97171,97446,98166,99326},
+            [questKeys.requiredSpell] = 33388,
         },
         [96998] = { -- Tribal Colors
             [questKeys.nextQuestInChain] = 96999,
@@ -5668,6 +5674,7 @@ function ForeverQuestFixes:Load()
         [97017] = { -- Your First Riding Ram
             [questKeys.exclusiveTo] = {95511,96982,96989,96994,96996,96997,97045,97046,97171,97446,98166,99326},
             [questKeys.requiredRaces] = raceIDs.DWARF,
+            [questKeys.requiredSpell] = 33388,
         },
         [97018] = { -- Learning to Ride
             [questKeys.exclusiveTo] = {97074,97170,97188,97194,97200,97203,97204,97205},
@@ -5684,10 +5691,12 @@ function ForeverQuestFixes:Load()
         },
         [97045] = { -- Your First Horse
             [questKeys.exclusiveTo] = {95511,96982,96989,96994,96996,96997,97017,97046,97171,97446,98166,99326},
+            [questKeys.requiredSpell] = 33388,
         },
         [97046] = { -- Your First Mechanostrider
             [questKeys.exclusiveTo] = {95511,96982,96989,96994,96996,96997,97017,97045,97171,97446,98166,99326},
             [questKeys.requiredRaces] = raceIDs.GNOME,
+            [questKeys.requiredSpell] = 33388,
         },
         [97047] = { -- The Cook in the Cage
             [questKeys.nextQuestInChain] = 97048,
@@ -5738,6 +5747,7 @@ function ForeverQuestFixes:Load()
         },
         [97171] = { -- Your First Horse
             [questKeys.exclusiveTo] = {95511,96982,96989,96994,96996,96997,97017,97045,97046,97446,98166,99326},
+            [questKeys.requiredSpell] = 33388,
         },
         [97173] = { -- Blackmaw Magic
             [questKeys.zoneOrSort] = zoneIDs.BLACKMAW_HOLD,
@@ -5941,6 +5951,7 @@ function ForeverQuestFixes:Load()
         },
         [97446] = { -- Your First Riding Kodo
             [questKeys.exclusiveTo] = {95511,96982,96989,96994,96996,96997,97017,97045,97046,97171,98166,99326},
+            [questKeys.requiredSpell] = 33388,
         },
         [97453] = { -- Weed Whacked
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE, -- wowhead
@@ -6527,6 +6538,7 @@ function ForeverQuestFixes:Load()
         },
         [98166] = { -- Your First Horse
             [questKeys.exclusiveTo] = {95511,96982,96989,96994,96996,96997,97017,97045,97046,97171,97446,99326},
+            [questKeys.requiredSpell] = 33388,
         },
         [98189] = { -- Return the Statuette
             [questKeys.preQuestSingle] = {286}, -- unverified, see 286
@@ -7425,6 +7437,36 @@ function ForeverQuestFixes:Load()
         [99203] = { -- Swift as the Wind
             [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
         },
+        [99210] = { -- An Epic Ride
+            [questKeys.requiredRaces] = raceIDs.DWARF,
+            [questKeys.requiredSpell] = 33391,
+        },
+        [99211] = { -- An Epic Ride
+            [questKeys.requiredSpell] = 33391,
+        },
+        [99212] = { -- An Epic Ride
+            [questKeys.startedBy] = {{7955}},
+            [questKeys.finishedBy] = {{7955}},
+            [questKeys.requiredSpell] = 33391,
+        },
+        [99213] = { -- An Epic Ride
+            [questKeys.requiredSpell] = 33391,
+        },
+        [99214] = { -- An Epic Ride
+            [questKeys.requiredSpell] = 33391,
+        },
+        [99215] = { -- An Epic Ride
+            [questKeys.requiredSpell] = 33391,
+        },
+        [99216] = { -- An Epic Ride
+            [questKeys.requiredSpell] = 33391,
+        },
+        [99217] = { -- An Epic Ride
+            [questKeys.requiredSpell] = 33391,
+        },
+        [99218] = { -- An Epic Ride
+            [questKeys.requiredSpell] = 33391,
+        },
         [99233] = { -- Brawl at the Maul
             [questKeys.requiredLevel] = 55,
             [questKeys.requiredRaces] = raceIDs.NONE,
@@ -7452,6 +7494,7 @@ function ForeverQuestFixes:Load()
         },
         [99326] = { -- Your First Horse
             [questKeys.exclusiveTo] = {95511,96982,96989,96994,96996,96997,97017,97045,97046,97171,97446,98166},
+            [questKeys.requiredSpell] = 33388,
         },
         [99411] = { -- Kyle's Gone Missing!
             [questKeys.name] = "Kyle's Gone Missing!",
