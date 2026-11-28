@@ -5681,6 +5681,7 @@ function ForeverQuestFixes:Load()
         },
         [97018] = { -- Learning to Ride
             [questKeys.exclusiveTo] = {97074,97170,97188,97194,97200,97203,97204,97205},
+            [questKeys.objectives] = {{{4772,nil,Questie.ICON_TYPE_TALK}}},
         },
         [97022] = { -- Report to Danitha
             [questKeys.nextQuestInChain] = 94971,
@@ -5735,6 +5736,7 @@ function ForeverQuestFixes:Load()
         },
         [97074] = { -- Learning to Ride
             [questKeys.exclusiveTo] = {97018,97170,97188,97194,97200,97203,97204,97205},
+            [questKeys.objectives] = {{{4753,nil,Questie.ICON_TYPE_TALK}}},
         },
         [97130] = { -- Ancient Gurubashi Secrets
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
@@ -5747,6 +5749,7 @@ function ForeverQuestFixes:Load()
         },
         [97170] = { -- Learning to Ride
             [questKeys.exclusiveTo] = {97018,97074,97188,97194,97200,97203,97204,97205},
+            [questKeys.objectives] = {{{4732,nil,Questie.ICON_TYPE_TALK}}},
         },
         [97171] = { -- Your First Horse
             [questKeys.exclusiveTo] = {95511,96982,96989,96994,96996,96997,97017,97045,97046,97446,98166,99326},
@@ -5783,26 +5786,32 @@ function ForeverQuestFixes:Load()
         },
         [97188] = { -- Learning to Ride
             [questKeys.exclusiveTo] = {97018,97074,97170,97194,97200,97203,97204,97205},
+            [questKeys.objectives] = {{{7954,nil,Questie.ICON_TYPE_TALK}}},
         },
         [97198] = { -- Blackmaw Magic
             [questKeys.zoneOrSort] = zoneIDs.BLACKMAW_HOLD,
         },
         [97194] = { -- Learning to Ride
             [questKeys.exclusiveTo] = {97018,97074,97170,97188,97200,97203,97204,97205},
+            [questKeys.objectives] = {{{4752,nil,Questie.ICON_TYPE_TALK}}},
         },
         [97200] = { -- Learning to Ride
             [questKeys.exclusiveTo] = {97018,97074,97170,97188,97194,97203,97204,97205},
+            [questKeys.objectives] = {{{7953,nil,Questie.ICON_TYPE_TALK}}},
         },
         [97203] = { -- Learning to Ride
             [questKeys.requiredRaces] = raceIDs.UNDEAD,
             [questKeys.exclusiveTo] = {97018,97074,97170,97188,97194,97200,97204,97205},
+            [questKeys.objectives] = {{{4773,nil,Questie.ICON_TYPE_TALK}}},
         },
         [97204] = { -- Learning to Ride
             [questKeys.exclusiveTo] = {97018,97074,97170,97188,97194,97200,97203,97205},
+            [questKeys.objectives] = {{{3690,nil,Questie.ICON_TYPE_TALK}}},
         },
         [97205] = { -- Learning to Ride
             [questKeys.exclusiveTo] = {97018,97074,97170,97188,97194,97200,97203,97204},
             [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
+            [questKeys.objectives] = {{{265756,nil,Questie.ICON_TYPE_TALK}}},
         },
         [97220] = { -- Philmor's Favor
             [questKeys.nextQuestInChain] = 97222,
@@ -7440,8 +7449,33 @@ function ForeverQuestFixes:Load()
             [questKeys.objectives] = {nil,nil,{{14047}}},
             [questKeys.specialFlags] = specialFlags.REPEATABLE,
         },
+        [99201] = { -- Swift as the Wind
+            [questKeys.objectives] = {{{7953,nil,Questie.ICON_TYPE_TALK}}},
+        },
+        [99202] = { -- Swift as the Wind
+            [questKeys.objectives] = {{{3690,nil,Questie.ICON_TYPE_TALK}}},
+        },
         [99203] = { -- Swift as the Wind
             [questKeys.requiredRaces] = raceIDs.SKYBORNE_ALLIANCE + raceIDs.SKYBORNE_HORDE,
+            [questKeys.objectives] = {{{265756,nil,Questie.ICON_TYPE_TALK}}},
+        },
+        [99204] = { -- Swift as the Wind
+            [questKeys.objectives] = {{{4752,nil,Questie.ICON_TYPE_TALK}}},
+        },
+        [99205] = { -- Swift as the Wind
+            [questKeys.objectives] = {{{4753,nil,Questie.ICON_TYPE_TALK}}},
+        },
+        [99206] = { -- Swift as the Wind
+            [questKeys.objectives] = {{{4732,nil,Questie.ICON_TYPE_TALK}}},
+        },
+        [99207] = { -- Swift as the Wind
+            [questKeys.objectives] = {{{7954,nil,Questie.ICON_TYPE_TALK}}},
+        },
+        [99208] = { -- Swift as the Wind
+            [questKeys.objectives] = {{{4773,nil,Questie.ICON_TYPE_TALK}}},
+        },
+        [99209] = { -- Swift as the Wind
+            [questKeys.objectives] = {{{4772,nil,Questie.ICON_TYPE_TALK}}},
         },
         [99210] = { -- An Epic Ride
             [questKeys.requiredRaces] = raceIDs.DWARF,
