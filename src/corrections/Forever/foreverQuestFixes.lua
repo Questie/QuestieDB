@@ -3895,6 +3895,9 @@ function ForeverQuestFixes:Load()
         [94748] = { -- Break Their Chains
             [questKeys.requiredRaces] = raceIDs.ALL_HORDE, -- wowhead
             [questKeys.preQuestSingle] = {94744},
+            [questKeys.requiredSourceItems] = {265821},
+            [questKeys.objectives] = {{{257450,nil,Questie.ICON_TYPE_EVENT}}},
+            [questKeys.extraObjectives] = {{nil,Questie.ICON_TYPE_OBJECT,l10n("Open the cage"),0,{{"object",620625}}}},
         },
         [94768] = { -- Bring Me His Head
             [questKeys.preQuestGroup] = {94745,94748},
@@ -4602,6 +4605,7 @@ function ForeverQuestFixes:Load()
         [95432] = { -- Rise Up!
             [questKeys.preQuestSingle] = {95431},
             [questKeys.nextQuestInChain] = 95433,
+            [questKeys.objectives] = {{{260995,nil,Questie.ICON_TYPE_TALK}}},
         },
         [95433] = { -- Death to the Executioner
             [questKeys.preQuestSingle] = {95432},
