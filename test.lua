@@ -950,6 +950,10 @@ suite("correction-audit", "shared", function()
   dofile("tools/validation/correction-audit.test.lua")(check, equal)
 end)
 
+suite("incomplete-report", "shared", function()
+  dofile("validators/incomplete.test.lua")(check, equal)
+end)
+
 suite("table-corrections", "shared", function()
   dofile("tools/validation/table-corrections.test.lua")(check, equal)
 end)

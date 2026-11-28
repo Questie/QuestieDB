@@ -1,17 +1,20 @@
 #!/usr/bin/env lua
 -- validators/report-incomplete.lua
 --
--- Informational report, never fails (findings surface as GitHub warning annotations): entities without a name, and quests whose requiredLevel
--- or zoneOrSort is nil or 0.
+-- Informational report, never fails (findings surface as GitHub warning annotations):
+-- entities without a name, and quests whose zoneOrSort is nil or 0.
 --
 -- Usage: lua validators/report-incomplete.lua [Flavor]   (default: Forever)
 
 local config = dofile("src/config.lua")
 local flavorLoader = dofile("generator/flavor.lua")
+local incomplete = dofile("validators/incomplete.lua")
 
 local flavor = config.flavorByName[arg[1] or "Forever"]
 if not flavor then error("Unknown flavor: " .. tostring(arg[1]), 0) end
 
+-- Before loading data: the loader leaves a LibStub global behind that the client emulator rejects.
+local dynamicRows = incomplete.dynamicQuestRows(flavor.name)
 local loaded = flavorLoader.load(flavor, nil, true)
 
 ---@param entities table
@@ -45,14 +48,17 @@ for _, kind in ipairs({ "Npc", "Object", "Item", "Quest" }) do
 end
 
 local keys = loaded.Quest.meta.keys
-for _, field in ipairs({ "requiredLevel", "zoneOrSort" }) do
-  local lines = {}
+for _, field in ipairs({ "zoneOrSort" }) do
+  local missing = {}
   for _, id in ipairs(sortedIds(loaded.Quest.entities)) do
-    local quest = loaded.Quest.entities[id]
-    local value = quest[keys[field]]
-    if value == nil or value == 0 then
-      lines[#lines + 1] = ("%d (%s)"):format(id, tostring(quest[keys.name]))
-    end
+    if incomplete.isMissing(loaded.Quest.entities[id][keys[field]]) then missing[#missing + 1] = id end
+  end
+  -- Dynamic Corrections can fill the field per faction, so only what they leave open is reported.
+  local lines = {}
+  for _, item in ipairs(incomplete.unresolved(missing, dynamicRows, keys[field])) do
+    local line = ("%d (%s)"):format(item.id, tostring(loaded.Quest.entities[item.id][keys.name]))
+    if #item.factions < #incomplete.factions then line = line .. " " .. table.concat(item.factions, ",") end
+    lines[#lines + 1] = line
   end
   section(flavor.name .. " quests with " .. field .. " nil or 0", lines)
 end
