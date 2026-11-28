@@ -7486,32 +7486,41 @@ function ForeverQuestFixes:Load()
         [99210] = { -- An Epic Ride
             [questKeys.requiredRaces] = raceIDs.DWARF,
             [questKeys.requiredSpell] = 33391,
+            [questKeys.objectives] = {{{276737,nil,Questie.ICON_TYPE_INTERACT},{276779,nil,Questie.ICON_TYPE_INTERACT},{276783,nil,Questie.ICON_TYPE_INTERACT}}},
         },
         [99211] = { -- An Epic Ride
             [questKeys.requiredSpell] = 33391,
+            [questKeys.objectives] = {{{276793,nil,Questie.ICON_TYPE_INTERACT},{276797,nil,Questie.ICON_TYPE_INTERACT},{276796,nil,Questie.ICON_TYPE_INTERACT}}},
         },
         [99212] = { -- An Epic Ride
             [questKeys.startedBy] = {{7955}},
             [questKeys.finishedBy] = {{7955}},
             [questKeys.requiredSpell] = 33391,
+            [questKeys.objectives] = {{{276734,nil,Questie.ICON_TYPE_INTERACT},{276735,nil,Questie.ICON_TYPE_INTERACT},{276736,nil,Questie.ICON_TYPE_INTERACT}}},
         },
         [99213] = { -- An Epic Ride
             [questKeys.requiredSpell] = 33391,
+            [questKeys.objectives] = {{{276785,nil,Questie.ICON_TYPE_INTERACT},{276786,nil,Questie.ICON_TYPE_INTERACT},{276787,nil,Questie.ICON_TYPE_INTERACT}}},
         },
         [99214] = { -- An Epic Ride
             [questKeys.requiredSpell] = 33391,
+            [questKeys.objectives] = {{{276730,nil,Questie.ICON_TYPE_INTERACT},{276731,nil,Questie.ICON_TYPE_INTERACT},{276732,nil,Questie.ICON_TYPE_INTERACT}}},
         },
         [99215] = { -- An Epic Ride
             [questKeys.requiredSpell] = 33391,
+            [questKeys.objectives] = {{{276833,nil,Questie.ICON_TYPE_INTERACT},{276805,nil,Questie.ICON_TYPE_INTERACT},{276832,nil,Questie.ICON_TYPE_INTERACT}}},
         },
         [99216] = { -- An Epic Ride
             [questKeys.requiredSpell] = 33391,
+            [questKeys.objectives] = {{{265762,nil,Questie.ICON_TYPE_INTERACT},{265761,nil,Questie.ICON_TYPE_INTERACT},{265760,nil,Questie.ICON_TYPE_INTERACT}}},
         },
         [99217] = { -- An Epic Ride
             [questKeys.requiredSpell] = 33391,
+            [questKeys.objectives] = {{{276877,nil,Questie.ICON_TYPE_INTERACT},{276876,nil,Questie.ICON_TYPE_INTERACT},{276879,nil,Questie.ICON_TYPE_INTERACT}}},
         },
         [99218] = { -- An Epic Ride
             [questKeys.requiredSpell] = 33391,
+            [questKeys.objectives] = {{{276803,nil,Questie.ICON_TYPE_INTERACT},{276800,nil,Questie.ICON_TYPE_INTERACT},{276801,nil,Questie.ICON_TYPE_INTERACT}}},
         },
         [99233] = { -- Brawl at the Maul
             [questKeys.requiredLevel] = 55,
