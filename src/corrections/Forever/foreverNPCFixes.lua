@@ -814,6 +814,12 @@ function ForeverNpcFixes:Load()
         [256507] = { -- Belann Windwood
             [npcKeys.spawns] = {[zoneIDs.ZEPHRAS_ISLE] = {{62.89,77.44}}},
         },
+        [256881] = { -- Overlord Kilgar
+            [npcKeys.spawns] = {[zoneIDs.RIVERGLADES] = {{25.95,44.24}}},
+        },
+        [256891] = { -- Executioner Morg
+            [npcKeys.spawns] = {[zoneIDs.RIVERGLADES] = {{29.95,41.61}}},
+        },
         [256899] = { -- Chogg'Zac
             [npcKeys.spawns] = {[zoneIDs.RIVERGLADES] = {{44.85,51.2}}},
         },
@@ -982,6 +988,9 @@ function ForeverNpcFixes:Load()
         },
         [260973] = { -- Klunk
             [npcKeys.spawns] = {[zoneIDs.RIVERGLADES] = {{73.86,26.67}}},
+        },
+        [260993] = { -- Crag'rog
+            [npcKeys.spawns] = {[zoneIDs.RIVERGLADES] = {{27.32,36.98}}},
         },
         [261025] = { -- Invisible Stalker
             [npcKeys.name] = "Invisible Stalker",
