@@ -4641,6 +4641,7 @@ function ForeverQuestFixes:Load()
             [questKeys.preQuestSingle] = {97074},
             [questKeys.exclusiveTo] = {96982,96989,96994,96996,96997,97017,97045,97046,97171,97446,98166,99326},
             [questKeys.requiredSpell] = 33388,
+            [questKeys.objectives] = {{{261529,nil,Questie.ICON_TYPE_INTERACT},{261578,nil,Questie.ICON_TYPE_INTERACT},{261579,nil,Questie.ICON_TYPE_INTERACT},{265472,nil,Questie.ICON_TYPE_INTERACT}}},
         },
         [95534] = { -- Strahnbrad Mystery
             [questKeys.objectives] = {{{217305}}},
@@ -5620,6 +5621,7 @@ function ForeverQuestFixes:Load()
         [96982] = { -- Your First Riding Kodo
             [questKeys.exclusiveTo] = {95511,96989,96994,96996,96997,97017,97045,97046,97171,97446,98166,99326},
             [questKeys.requiredSpell] = 33388,
+            [questKeys.objectives] = {{{267226,nil,Questie.ICON_TYPE_INTERACT},{267227,nil,Questie.ICON_TYPE_INTERACT},{267216,nil,Questie.ICON_TYPE_INTERACT}}},
         },
         [96983] = { -- Yashiro's Windwalk
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
@@ -5637,6 +5639,7 @@ function ForeverQuestFixes:Load()
         [96989] = { -- Your First Riding Raptor
             [questKeys.exclusiveTo] = {95511,96982,96994,96996,96997,97017,97045,97046,97171,97446,98166,99326},
             [questKeys.requiredSpell] = 33388,
+            [questKeys.objectives] = {{{267291,nil,Questie.ICON_TYPE_INTERACT},{267297,nil,Questie.ICON_TYPE_INTERACT},{267298,nil,Questie.ICON_TYPE_INTERACT}}},
         },
         [96991] = { -- Trail Assist
             [questKeys.requiredLevel] = 56,
@@ -5650,14 +5653,17 @@ function ForeverQuestFixes:Load()
             [questKeys.exclusiveTo] = {95511,96982,96989,96996,96997,97017,97045,97046,97171,97446,98166,99326},
             [questKeys.requiredRaces] = raceIDs.ORC,
             [questKeys.requiredSpell] = 33388,
+            [questKeys.objectives] = {{{267299,nil,Questie.ICON_TYPE_INTERACT},{267300,nil,Questie.ICON_TYPE_INTERACT},{267301,nil,Questie.ICON_TYPE_INTERACT},{267302,nil,Questie.ICON_TYPE_INTERACT}}},
         },
         [96996] = { -- Your First Riding Galestrider
             [questKeys.exclusiveTo] = {95511,96982,96989,96994,96997,97017,97045,97046,97171,97446,98166,99326},
             [questKeys.requiredSpell] = 33388,
+            [questKeys.objectives] = {{{267304,nil,Questie.ICON_TYPE_INTERACT},{267305,nil,Questie.ICON_TYPE_INTERACT},{267306,nil,Questie.ICON_TYPE_INTERACT}}},
         },
         [96997] = { -- A Steed in Death as They Were in Life
             [questKeys.exclusiveTo] = {95511,96982,96989,96994,96996,97017,97045,97046,97171,97446,98166,99326},
             [questKeys.requiredSpell] = 33388,
+            [questKeys.objectives] = {{{267357,nil,Questie.ICON_TYPE_INTERACT},{267364,nil,Questie.ICON_TYPE_INTERACT},{267358,nil,Questie.ICON_TYPE_INTERACT},{267354,nil,Questie.ICON_TYPE_INTERACT}}},
         },
         [96998] = { -- Tribal Colors
             [questKeys.nextQuestInChain] = 96999,
@@ -5678,6 +5684,7 @@ function ForeverQuestFixes:Load()
             [questKeys.exclusiveTo] = {95511,96982,96989,96994,96996,96997,97045,97046,97171,97446,98166,99326},
             [questKeys.requiredRaces] = raceIDs.DWARF,
             [questKeys.requiredSpell] = 33388,
+            [questKeys.objectives] = {{{267474,nil,Questie.ICON_TYPE_INTERACT},{267473,nil,Questie.ICON_TYPE_INTERACT},{267475,nil,Questie.ICON_TYPE_INTERACT}}},
         },
         [97018] = { -- Learning to Ride
             [questKeys.exclusiveTo] = {97074,97170,97188,97194,97200,97203,97204,97205},
@@ -5696,11 +5703,13 @@ function ForeverQuestFixes:Load()
         [97045] = { -- Your First Horse
             [questKeys.exclusiveTo] = {95511,96982,96989,96994,96996,96997,97017,97046,97171,97446,98166,99326},
             [questKeys.requiredSpell] = 33388,
+            [questKeys.objectives] = {{{267678,nil,Questie.ICON_TYPE_INTERACT},{267674,nil,Questie.ICON_TYPE_INTERACT},{267677,nil,Questie.ICON_TYPE_INTERACT}}},
         },
         [97046] = { -- Your First Mechanostrider
             [questKeys.exclusiveTo] = {95511,96982,96989,96994,96996,96997,97017,97045,97171,97446,98166,99326},
             [questKeys.requiredRaces] = raceIDs.GNOME,
             [questKeys.requiredSpell] = 33388,
+            [questKeys.objectives] = {{{267688,nil,Questie.ICON_TYPE_INTERACT},{267684,nil,Questie.ICON_TYPE_INTERACT},{267687,nil,Questie.ICON_TYPE_INTERACT},{267683,nil,Questie.ICON_TYPE_INTERACT}}},
         },
         [97047] = { -- The Cook in the Cage
             [questKeys.nextQuestInChain] = 97048,
@@ -5754,6 +5763,7 @@ function ForeverQuestFixes:Load()
         [97171] = { -- Your First Horse
             [questKeys.exclusiveTo] = {95511,96982,96989,96994,96996,96997,97017,97045,97046,97446,98166,99326},
             [questKeys.requiredSpell] = 33388,
+            [questKeys.objectives] = {{{268318,nil,Questie.ICON_TYPE_INTERACT},{268314,nil,Questie.ICON_TYPE_INTERACT},{268316,nil,Questie.ICON_TYPE_INTERACT},{268313,nil,Questie.ICON_TYPE_INTERACT}}},
         },
         [97173] = { -- Blackmaw Magic
             [questKeys.zoneOrSort] = zoneIDs.BLACKMAW_HOLD,
@@ -5964,6 +5974,7 @@ function ForeverQuestFixes:Load()
         [97446] = { -- Your First Riding Kodo
             [questKeys.exclusiveTo] = {95511,96982,96989,96994,96996,96997,97017,97045,97046,97171,98166,99326},
             [questKeys.requiredSpell] = 33388,
+            [questKeys.objectives] = {{{269139,nil,Questie.ICON_TYPE_INTERACT},{269140,nil,Questie.ICON_TYPE_INTERACT},{269138,nil,Questie.ICON_TYPE_INTERACT},{269141,nil,Questie.ICON_TYPE_INTERACT}}},
         },
         [97449] = { -- Anthion's Parting Words
             [questKeys.requiredRaces] = raceIDs.NONE, -- unverified
@@ -6554,6 +6565,7 @@ function ForeverQuestFixes:Load()
         [98166] = { -- Your First Horse
             [questKeys.exclusiveTo] = {95511,96982,96989,96994,96996,96997,97017,97045,97046,97171,97446,99326},
             [questKeys.requiredSpell] = 33388,
+            [questKeys.objectives] = {{{270544,nil,Questie.ICON_TYPE_INTERACT},{270542,nil,Questie.ICON_TYPE_INTERACT},{270543,nil,Questie.ICON_TYPE_INTERACT}}},
         },
         [98189] = { -- Return the Statuette
             [questKeys.preQuestSingle] = {286}, -- unverified, see 286
@@ -7535,6 +7547,7 @@ function ForeverQuestFixes:Load()
         [99326] = { -- Your First Horse
             [questKeys.exclusiveTo] = {95511,96982,96989,96994,96996,96997,97017,97045,97046,97171,97446,98166},
             [questKeys.requiredSpell] = 33388,
+            [questKeys.objectives] = {{{276789,nil,Questie.ICON_TYPE_INTERACT},{276788,nil,Questie.ICON_TYPE_INTERACT},{276790,nil,Questie.ICON_TYPE_INTERACT}}},
         },
         [99411] = { -- Kyle's Gone Missing!
             [questKeys.name] = "Kyle's Gone Missing!",
